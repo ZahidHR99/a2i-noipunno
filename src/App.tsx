@@ -4,14 +4,18 @@ import Login from "./component/Login";
 import Topbar from "./layout/Topbar";
 import Footer from "./layout/Footer";
 import Home from "./component/Home";
-import { Helmet } from 'react-helmet';
 
 function App() {
+
   return (
 
     <>
+
+    {
+      window.location.pathname != "/login" && <Topbar />
+    }
     
-<Topbar />
+
     <Router>
       <Routes>
         <Route exact path="/" element={<PrivateRoute />}>
@@ -21,7 +25,11 @@ function App() {
       </Routes>
     </Router>
 
-    <Footer />
+    {
+      window.location.pathname != "/login" && <Footer />
+    }
+
+    
     </>
   );
 }
