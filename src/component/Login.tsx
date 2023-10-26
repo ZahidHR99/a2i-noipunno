@@ -3,13 +3,14 @@ import React from 'react';
 export default function Login() {
 
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+
+
     const datas = new FormData(event.target);
-    console.log();
+    console.log(datas);
 
 
-    console.log("success");
 
 
   }
