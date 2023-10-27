@@ -21,8 +21,6 @@ function App() {
     fetchData()
   }, [window.location.pathname]);
 
-  console.log(`topbar`, topbar);
-
   return (
 
     <>
@@ -31,8 +29,6 @@ function App() {
       topbar && <Topbar />
     }
     
-
-
     <Router>
       <Routes>
         <Route  path="/" element={<PrivateRoute />}>
@@ -46,7 +42,6 @@ function App() {
       topbar && <Footer />
     }
 
-    
     </>
   );
 }
