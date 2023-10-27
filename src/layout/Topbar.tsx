@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Topbar() {
   return (
     <div>
@@ -178,7 +180,7 @@ export default function Topbar() {
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
                             </button>
                           </a>
-                          <a href="#" className="d-block ">
+                          <a href={"/product-details/"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শ্রেণির প্রতিবেদন
                             </button>
