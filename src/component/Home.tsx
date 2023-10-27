@@ -28,21 +28,21 @@ export default function Home() {
                     <div className="head-teacher-top w-100">
                       <div className="d-flex justify-content-end ">
                         <button className="btn">
-                          <img src="https://teacher.project-ca.com/frontend/images/edit.svg" />
+                          <img src="/assets/images/edit.svg" />
                         </button>
                       </div>
                       <div className="d-flex flex-column justify-content-center align-items-center ">
                         <img
-                          src="https://teacher.project-ca.com/frontend/noipunno/images/avatar/teacher.png"
+                          src="/assets/noipunno/images/avatar/teacher.png"
                           className="border rounded-circle p-3 bg-light"
                           alt=""
                         />
                         <p className="mt-3 p-2">{userDetails?.user_type?.name}</p>
                       </div>
                       <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">
-                        <img src="https://teacher.project-ca.com/frontend/noipunno/images/icons/star.svg" />
-                        <img src="https://teacher.project-ca.com/frontend/noipunno/images/icons/message.svg" />
-                        <img src="https://teacher.project-ca.com/frontend/noipunno/images/icons/moon.svg" />
+                        <img src="/assets/noipunno/images/icons/star.svg" />
+                        <img src="/assets/noipunno/images/icons/message.svg" />
+                        <img src="/assets/noipunno/images/icons/moon.svg" />
                       </div>
                     </div>
                     <div className="head-teacher-bottom d-flex flex-column ">
@@ -52,7 +52,7 @@ export default function Home() {
                         <small>TOAKUL BAZAR HIGH SCHOOL</small>
                       </div>
                       <button className="m-3 profile-button">
-                        <img src="https://teacher.project-ca.com/frontend/noipunno/images/icons/eye.svg" />
+                        <img src="/assets/noipunno/images/icons/eye.svg" />
                         <p className="m-0">আমার প্রোফাইল</p>
                       </button>
                     </div>
