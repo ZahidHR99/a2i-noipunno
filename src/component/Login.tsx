@@ -7,19 +7,23 @@ import axios from 'axios';
 export default function Login() {
   const navigate = useNavigate();
   const [error, seterror] = useState("");
+  const [userDetails, setUserDetails] = useState({})
 
-  const handleSubmit = async (event :any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     const datas = new FormData(event.target);
 
-    const { data } :any = await loginPassword(datas);
+    const { data }: any = await loginPassword(datas);
 
-    console.log("data", data.status);
+    // console.log("data", data.status);
 
     if (data?.status === true) {
+      // console.log("user Details", data?.data.user)
+      setUserDetails(data?.data.user)
+
       const token = data?.data?.access_token;
-      localStorage.setItem('customer_login_auth', JSON.stringify(data?.data) )
-      localStorage.setItem('token', token )
+      localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
+      localStorage.setItem('token', token)
       axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
       navigate("/");
     } else {
@@ -44,7 +48,7 @@ export default function Login() {
                   {
                     error && <p className="text-center text-danger">{error}</p>
                   }
-                  
+
                   <p className="teacher-login-title text-center">লগ ইন</p>
                   {/* Form Start */}
                   <form noValidate onSubmit={handleSubmit} >
