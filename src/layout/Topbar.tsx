@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { all_class } from "../Request";
+import { all_teachers } from "../Request";
 
 export default function Topbar() {
   const [classdata, setdata] = useState([])
+  const [teachersdata, setteachersdata] = useState([])
 
   const fetchData = async () => {
     const { data }: any = await all_class();
@@ -11,9 +13,18 @@ export default function Topbar() {
       setdata(data.data)
     }
   }
+  
+
+  const fetchteachersData = async () => {
+    const { data }: any = await all_teachers();
+    if (data.status) {
+      setteachersdata(data.data)
+    }
+  }
 
   useEffect(() => {
     fetchData();
+    fetchteachersData();
   }, []);
   return (
     <div>
@@ -228,6 +239,17 @@ export default function Topbar() {
                           <span className="fs-6 px-2">শিক্ষক</span>
                         </button>
                       </h2>
+                      {
+                            teachersdata.map((d:any, k)=>
+
+                            <a href="#" className="d-block " key={k}>
+                              <button className="w-100 btn btn-light px-5 text-start">
+                                {d.name_bn}
+                              </button>
+                            </a>
+                            
+                            )
+                          }
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
