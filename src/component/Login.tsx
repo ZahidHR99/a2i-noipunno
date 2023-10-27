@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 export default function Login() {
   const navigate = useNavigate();
+  const [error, seterror] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event :any) => {
     event.preventDefault();
     const datas = new FormData(event.target);
 
-    let { data } = await loginPassword(datas);
+    const { data } :any = await loginPassword(datas);
 
-    console.log("data", data);
-    if (data.success) {
-      console.log("LOGIN success", data);
+    console.log("data", data.status);
 
+    if (data?.status === true) {
+      const token = data?.data?.access_token;
+      localStorage.setItem('customer_login_auth', JSON.stringify(data?.data) )
+      localStorage.setItem('token', token )
+      axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
+      navigate("/");
     } else {
-      navigate("/login");
+      seterror("Wrong Crediantial")
     }
 
   }
@@ -35,6 +41,10 @@ export default function Login() {
               </div>
               <div className="col-md-5 cols-sm-12">
                 <div className="card login-form-card">
+                  {
+                    error && <p className="text-center text-danger">{error}</p>
+                  }
+                  
                   <p className="teacher-login-title text-center">লগ ইন</p>
                   {/* Form Start */}
                   <form noValidate onSubmit={handleSubmit} >
