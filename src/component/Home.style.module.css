@@ -1,0 +1,59 @@
+.cardDesc {
+    color        : #0fc7c7;
+    border       : 1px solid #9fdbdb51;
+    padding      : 2px 2px;
+    border-radius: 20px;
+    font-size    : 10px;
+}
+
+.teacherName {
+    font-size  : 12px;
+    font-weight: 400;
+    font-style : normal;
+}
+
+.deg {
+    font-size  : 10px;
+    font-weight: 400;
+    font-style : normal;
+}
+
+.icons {
+    transition: transform .2s;
+    margin    : 0 auto;
+}
+
+.icons:hover {
+    transform       : scale(1.5);
+    border-radius   : 50%;
+}
+
+.subject {
+    font-size  : 20px;
+    text-align : center;
+    font-weight: bold;
+}
+
+.std_class {
+    font-size  : 14px;
+    font-weight: bold;
+    text-align : center;
+}
+
+.class_teacher {
+    font-size  : 14px;
+    text-align : center;
+    font-weight: normal;
+}
+
+.class_teacher span {
+    font-size  : 14px;
+    font-weight: bold;
+    text-align : center;
+}
+
+.session,
+.horizontal_bar,
+.branch {
+    color: #0fc7c7;
+}

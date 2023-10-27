@@ -1,6 +1,8 @@
 import React from "react";
 import TeacherImg from "../assets/images/teacher.png";
-import { FiStar } from "react-icons/fi";
+import styles from "./Home.style.module.css";
+import { BiSidebar } from "react-icons/bi";
+import { IoIosBook } from "react-icons/io";
 
 export default function Home() {
   return (
@@ -47,96 +49,127 @@ export default function Home() {
                 </div>
               </div>
               <div className="col-md-9">
+                <div className="row d-flex gap-2">
+                  <div></div>
+                  <div className="d-flex">
+                    <h5>
+                      <BiSidebar /> বিষয়সমূহ
+                    </h5>
+                  </div>
+                </div>
                 <div className="row">
                   <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-sm p-1 p-lg-3 my-1 teacher-list-card">
+                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
-                        <div className="d-flex justify-content-center py-3">
-                          <img src={TeacherImg} className="img-fluid" />
+                        <div className="d-flex justify-content-center py-2">
+                          <div className="p-2 border border-1 border-light rounded-circle">
+                            <div className={styles.icons}>
+                              <IoIosBook className="fs-1" />
+                            </div>
+                          </div>
                         </div>
-                        <h5
-                          className="text-center"
-                          style={{ fontSize: "10px" }}
-                        >
-                          Showkat Ali
+                        <h5 className={styles.subject}>বাংলা</h5>
+                        <h5 className={styles.std_class}>ষষ্ঠ শ্রেণি</h5>
+                        <h5 className={styles.class_teacher}>
+                          শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
-                        <h6 className="text-center" style={{ fontSize: "8px" }}>
-                          Head Master
-                        </h6>
                       </div>
                       <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
-                        <div style={{ fontSize: "10px" }}>বাংলা</div>
-                        <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                        <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                        <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                        <h6 className={styles.horizontal_bar}>। </h6>
+                        <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
                   <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-sm p-1 p-lg-3 my-1 teacher-list-card">
+                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
-                        <div className="d-flex justify-content-center py-3">
-                          <img src={TeacherImg} className="img-fluid" />
+                        <div className="d-flex justify-content-center py-2">
+                          <div className="p-2 border border-1 border-light rounded-circle">
+                            <div className={styles.icons}>
+                              <IoIosBook className="fs-1" />
+                            </div>
+                          </div>
                         </div>
-                        <h5
-                          className="text-center"
-                          style={{ fontSize: "10px" }}
-                        >
-                          Showkat Ali
+                        <h5 className={styles.subject}>বাংলা</h5>
+                        <h5 className={styles.std_class}>ষষ্ঠ শ্রেণি</h5>
+                        <h5 className={styles.class_teacher}>
+                          শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
-                        <h6 className="text-center" style={{ fontSize: "8px" }}>
-                          Head Master
-                        </h6>
                       </div>
                       <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
-                        <div style={{ fontSize: "10px" }}>বাংলা</div>
-                        <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                        <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                        <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                        <h6 className={styles.horizontal_bar}>। </h6>
+                        <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
                   <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-sm p-1 p-lg-3 my-1 teacher-list-card">
+                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
-                        <div className="d-flex justify-content-center py-3">
-                          <img src={TeacherImg} className="img-fluid" />
+                        <div className="d-flex justify-content-center py-2">
+                          <div className="p-2 border border-1 border-light rounded-circle">
+                            <div className={styles.icons}>
+                              <IoIosBook className="fs-1" />
+                            </div>
+                          </div>
                         </div>
-                        <h5
-                          className="text-center"
-                          style={{ fontSize: "10px" }}
-                        >
-                          Showkat Ali
+                        <h5 className={styles.subject}>বাংলা</h5>
+                        <h5 className={styles.std_class}>ষষ্ঠ শ্রেণি</h5>
+                        <h5 className={styles.class_teacher}>
+                          শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
-                        <h6 className="text-center" style={{ fontSize: "8px" }}>
-                          Head Master
-                        </h6>
                       </div>
                       <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
-                        <div style={{ fontSize: "10px" }}>বাংলা</div>
-                        <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                        <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                        <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                        <h6 className={styles.horizontal_bar}>। </h6>
+                        <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
                   <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-sm p-1 p-lg-3 my-1 teacher-list-card">
+                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
-                        <div className="d-flex justify-content-center py-3">
-                          <img src={TeacherImg} className="img-fluid" />
+                        <div className="d-flex justify-content-center py-2">
+                          <div className="p-2 border border-1 border-light rounded-circle">
+                            <div className={styles.icons}>
+                              <IoIosBook className="fs-1" />
+                            </div>
+                          </div>
                         </div>
-                        <h5
-                          className="text-center"
-                          style={{ fontSize: "10px" }}
-                        >
-                          Showkat Ali
+                        <h5 className={styles.subject}>বাংলা</h5>
+                        <h5 className={styles.std_class}>ষষ্ঠ শ্রেণি</h5>
+                        <h5 className={styles.class_teacher}>
+                          শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
-                        <h6 className="text-center" style={{ fontSize: "8px" }}>
-                          Head Master
-                        </h6>
                       </div>
                       <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
-                        <div style={{ fontSize: "10px" }}>বাংলা</div>
-                        <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                        <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                        <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                        <h6 className={styles.horizontal_bar}>। </h6>
+                        <h6 className={styles.branch}>পদ্মা শাথা</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-6 col-sm-4 col-md-3">
+                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                      <div className="gap-1 gap-lg-3 justify-content-center">
+                        <div className="d-flex justify-content-center py-2">
+                          <div className="p-2 border border-1 border-light rounded-circle">
+                            <div className={styles.icons}>
+                              <IoIosBook className="fs-1" />
+                            </div>
+                          </div>
+                        </div>
+                        <h5 className={styles.subject}>বাংলা</h5>
+                        <h5 className={styles.std_class}>ষষ্ঠ শ্রেণি</h5>
+                        <h5 className={styles.class_teacher}>
+                          শ্রেণি শিক্ষক : <span> শওকত আলী</span>
+                        </h5>
+                      </div>
+                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                        <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                        <h6 className={styles.horizontal_bar}>। </h6>
+                        <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
@@ -308,232 +341,311 @@ export default function Home() {
             </div>
             {/* Teachers List start */}
             <div className="row pb-3">
-              <div className="d-flex justify-content-between p-3">
+              <div className="d-flex justify-content-between pt-5">
                 <div>
-                  <h6>শিক্ষকের তালিকা</h6>
+                  <h5>শিক্ষকের তালিকা</h5>
                 </div>
                 <div>
-                  <h6>View All</h6>
+                  <h5>View All</h5>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1 teacher-list-card">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
-                  </div>
-                  {/* <div className="teacher-list-overlay">
-                <div className="our-team-icons d-flex flex-column gap-4 mt-2 justify-content-end">
-                  <FiStar />
-                </div>
-              </div> */}
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
-                    </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
-                    </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
-                    </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
-                    </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
-                    </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
-                    </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
-                    </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
-                    </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
-                    </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
-                    </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
-                  </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-sm p-1 p-lg-3 my-1">
-                  <div className="d-flex gap-1 gap-lg-3 ">
-                    <div>
-                      <img src={TeacherImg} className="img-fluid" />
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
                     </div>
-                    <div>
-                      <h5 style={{ fontSize: "10px" }}>Showkat Ali</h5>
-                      <h6 style={{ fontSize: "8px" }}>Head Master</h6>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
                     </div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
-                  <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-2">
-                    <div style={{ fontSize: "10px" }}>বাংলা</div>
-                    <div style={{ fontSize: "10px" }}>জীবন o জীবিকা</div>
-                    <div style={{ fontSize: "10px" }}>বিজ্ঞান</div>
+                </div>
+              </div>
+              <div className="col-6 col-md-2 col-sm-4">
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
+                    </div>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
+                    </div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
+                  </div>
+                </div>
+              </div>
+              <div className="col-6 col-md-2 col-sm-4">
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
+                    </div>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
+                    </div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
+                  </div>
+                </div>
+              </div>
+              <div className="col-6 col-md-2 col-sm-4">
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
+                    </div>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
+                    </div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
+                  </div>
+                </div>
+              </div>
+              <div className="col-6 col-md-2 col-sm-4">
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
+                    </div>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
+                    </div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
+                  </div>
+                </div>
+              </div>
+              <div className="col-6 col-md-2 col-sm-4">
+                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
+                  <div className="teacher-list-card">
+                    <div className="d-flex gap-1 gap-lg-3 ">
+                      <div>
+                        <img src={TeacherImg} className="img-fluid" />
+                      </div>
+                      <div>
+                        <h5 className={styles.teacherName}>Showkat Ali</h5>
+                        <h6 className={styles.deg}>Head Master</h6>
+                      </div>
+                    </div>
+                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
+                      <div className={styles.cardDesc}>বাংলা</div>
+                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                      <div className={styles.cardDesc}>বিজ্ঞান</div>
+                    </div>
+                    {/* <div className="teacher-list-overla">
+                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
+                        <FiStar />
+                      </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
