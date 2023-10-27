@@ -1,8 +1,10 @@
 import React from 'react';
 import { loginPassword } from '../Request';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Login() {
-
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,10 +14,11 @@ export default function Login() {
 
     console.log("data", data);
     if (data.success) {
+      console.log("LOGIN success", data);
 
+    } else {
+      navigate("/login");
     }
-
-
 
   }
 
