@@ -67,3 +67,24 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* .teacher-list-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.teacher-list-overlay {
+  position: absolute;
+  margin-left: auto !important;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.3s linear;
+}
+
+.teacher-list-card:hover .teacher-list-overlay {
+  opacity: 1;
+} */

@@ -1,4 +1,5 @@
 import React from 'react';
+import { loginPassword } from '../Request';
 
 export default function Login() {
 
@@ -6,10 +7,14 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const datas = new FormData(event.target);
-    console.log();
 
+    let { data } = await loginPassword(datas);
 
-    console.log("success");
+    console.log("data", data);
+    if (data.success) {
+
+    }
+
 
 
   }
@@ -51,7 +56,7 @@ export default function Login() {
                           <span>  <img src="/images/user-square.svg" className="np-login-field-icon" alt="logo" /></span>
                         </div>
 
-                        <input type="number" id="userId" required autoComplete="caid" autofocus placeholder="৯১৩১৫০৩০৩০৪০১" name="userId" className="form-control np-login-form-field" />
+                        <input type="number" id="caid" required autoComplete="off" placeholder="৯১৩১৫০৩০৩০৪০১" name="caid" className="form-control np-login-form-field" />
 
                       </div>
                     </div>
@@ -59,7 +64,7 @@ export default function Login() {
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
                       <div className="input-group"><img src="/images/lock.svg" className="np-login-field-icon" alt="logo" />
-                        <input type="password" id="pin" className="form-control np-login-form-field" name="pin" required placeholder="Password" />
+                        <input type="password" id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
                         <div className="input-group-append password-toggle">
                           <span>
                             <i id="password-toggle" className="fa fa-eye-slash" onclick="togglePassword()" />
