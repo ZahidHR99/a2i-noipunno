@@ -12,10 +12,12 @@ export default function Login() {
 
     let { data } = await loginPassword(datas);
 
-    console.log("data", data);
-    if (data.success) {
-      console.log("LOGIN success", data);
+    console.log("data", data.status);
 
+    if (data.status === true) {
+      const token = data.data.access_token;
+      localStorage.setItem('customer_login_auth', token)
+      // axios.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem('customer_login_auth')}`;
     } else {
       navigate("/login");
     }
