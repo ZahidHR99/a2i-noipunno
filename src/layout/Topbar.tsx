@@ -1,6 +1,21 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { all_class } from "../Request";
 
 export default function Topbar() {
+
+  const fetchData = async () => {
+    const { data }: any = await all_class();
+
+    console.log("data", data.status);
+
+   
+  }
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div>
       <section className="noipunno-navbar-section np">
