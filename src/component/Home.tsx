@@ -1,8 +1,21 @@
 import React from "react";
 import TeacherImg from "../assets/images/teacher.png";
 import { FiStar } from "react-icons/fi";
+import { useState, useEffect } from "react"
+
 
 export default function Home() {
+
+  const [userDetails, setuserDetails] = useState([]);
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('customer_login_auth'));
+    if (items) {
+      setuserDetails(items.user);
+    }
+  }, []);
+
+  // console.log("userDetails", userDetails);
+
   return (
     <div className="content">
       <div className="dashboard-section">
@@ -24,7 +37,7 @@ export default function Home() {
                           className="border rounded-circle p-3 bg-light"
                           alt=""
                         />
-                        <p className="mt-3 p-2">প্রধান শিক্ষক</p>
+                        <p className="mt-3 p-2">{userDetails?.user_type?.name}</p>
                       </div>
                       <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">
                         <img src="https://teacher.project-ca.com/frontend/noipunno/images/icons/star.svg" />
@@ -34,8 +47,8 @@ export default function Home() {
                     </div>
                     <div className="head-teacher-bottom d-flex flex-column ">
                       <div className="w-100 d-flex flex-column  align-items-center justify-content-center mt-3 ">
-                        <h5>Asraful</h5>
-                        <small>113030820230001</small>
+                        <h5>{userDetails?.name}</h5>
+                        <small>{userDetails?.id}</small>
                         <small>TOAKUL BAZAR HIGH SCHOOL</small>
                       </div>
                       <button className="m-3 profile-button">
