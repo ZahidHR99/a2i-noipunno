@@ -1,17 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { all_class } from "../Request";
 
 export default function Topbar() {
+  const [classdata, setdata] = useState([])
 
   const fetchData = async () => {
     const { data }: any = await all_class();
-
-    console.log("data", data.status);
-
-   
+    if (data.status) {
+      setdata(data.data)
+    }
   }
-
 
   useEffect(() => {
     fetchData();
@@ -298,16 +297,18 @@ export default function Topbar() {
                         data-bs-parent="#sreni"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <a href="#" className="d-block ">
-                            <button className="w-100 btn btn-light px-5 text-start">
-                              ষষ্ঠ শ্রেণি
-                            </button>
-                          </a>
-                          <a href="#" className="d-block ">
-                            <button className="w-100 btn btn-light px-5 text-start">
-                              সপ্তম শ্রেণি
-                            </button>
-                          </a>
+                          {
+                            classdata.map((d:any, k)=>
+
+                            <a href="#" className="d-block " key={k}>
+                              <button className="w-100 btn btn-light px-5 text-start">
+                                {d.name_bn}
+                              </button>
+                            </a>
+                            
+                            )
+                          }
+                          
                         </div>
                       </div>
                     </div>
