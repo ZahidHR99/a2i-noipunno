@@ -5,6 +5,8 @@ import Topbar from "./layout/Topbar";
 import Footer from "./layout/Footer";
 import Home from "./component/Home";
 import { useEffect, useState } from "react";
+import StudentMullayon from './component/StudentMullayon';
+import Teacher from './component/Teacher';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -32,6 +34,8 @@ function App() {
       <Routes>
         <Route  path="/" element={<PrivateRoute />}>
           <Route path="/" element={ <Home /> } />
+          <Route path="/student-mullayon" element={ <StudentMullayon /> } />
+          <Route path="/teacher" element={ <Teacher /> } />
         </Route>
         <Route path="/login" element={ <Login /> } />
       </Routes>

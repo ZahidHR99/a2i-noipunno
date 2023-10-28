@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function ProfileCard() {
 
@@ -42,8 +43,11 @@ export default function ProfileCard() {
                         <small>TOAKUL BAZAR HIGH SCHOOL</small>
                       </div>
                       <button className="m-3 profile-button">
-                        <img src="/assets/noipunno/images/icons/eye.svg" />
+                      <Link to={"/teacher"} className='text-decoration-none'>
+                      <img src="/assets/noipunno/images/icons/eye.svg" />
                         <p className="m-0">আমার প্রোফাইল</p>
+                    </Link>
+                        
                       </button>
                     </div>
                   </div>
