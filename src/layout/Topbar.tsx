@@ -1,6 +1,38 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { all_class } from "../Request";
+import { all_teachers } from "../Request";
 
 export default function Topbar() {
+
+  const handleLogout = ()=>{
+
+  }
+
+
+  const [classdata, setdata] = useState([])
+  const [teachersdata, setteachersdata] = useState([])
+
+  const fetchData = async () => {
+    const { data }: any = await all_class();
+    if (data.status) {
+      setdata(data.data)
+    }
+  }
+
+
+  const fetchteachersData = async () => {
+    const { data }: any = await all_teachers();
+    if (data.status) {
+      setteachersdata(data.data)
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+    fetchteachersData();
+  }, []);
+
   return (
     <div>
       <section className="noipunno-navbar-section np">
@@ -52,8 +84,8 @@ export default function Topbar() {
                       <li>
                         <a
                           className="dropdown-item"
-                          href="https://teacher.project-ca.com/logout"
-                          onClick={handleLogout()} >
+                          href="#"
+                          onClick={(e:any)=>handleLogout()} >
                           Logout
                         </a>
                       </li>
@@ -214,7 +246,7 @@ export default function Topbar() {
                           <span className="fs-6 px-2">শিক্ষক</span>
                         </button>
                       </h2>
-                      {
+                      {/* {
                         teachersdata.map((d: any, k) =>
 
                           <a href="#" className="d-block " key={k}>
@@ -224,7 +256,7 @@ export default function Topbar() {
                           </a>
 
                         )
-                      }
+                      } */}
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
