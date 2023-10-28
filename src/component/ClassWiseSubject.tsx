@@ -16,17 +16,18 @@ const ClassWiseSubject = () => {
 
  }
 
- console.log("Class wise Subjects are", subjects);
+ // console.log("Class wise Subjects are", subjects);
 
  useEffect(() => {
+  window.scrollTo(0, 0)
   getClassData()
  }, [id]);
 
 
  return (
   <div className="container row mx-auto">
-   {subjects.map(subject => (
-    <div key={subject.uid} className="col-6 col-sm-4 col-md-3 mx-auto" >
+   {subjects.map((subject, index) => (
+    <div key={index} className="col-6 col-sm-4 col-md-3 mx-auto" >
      <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
       <div className="gap-1 gap-lg-3 justify-content-center">
        <div className="d-flex justify-content-center py-2 pb-4">
