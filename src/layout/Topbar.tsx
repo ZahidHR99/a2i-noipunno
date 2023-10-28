@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
+
 export default function Topbar() {
+
+
   return (
     <div>
       <section className="noipunno-navbar-section np">
@@ -53,7 +56,7 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="https://teacher.project-ca.com/logout"
-                          onClick={handleLogout()} >
+                        >
                           Logout
                         </a>
                       </li>
