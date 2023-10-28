@@ -12,8 +12,22 @@ import { SlBookOpen } from "react-icons/sl";
 import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
 import { HiOutlineSun, HiOutlineDotsVertical } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
+import { all_teachers } from "../Request";
+import TeachersList from "../layout/TeachersList"
+
 
 export default function Home() {
+  
+
+  const [teachers, setTeachers] = useState([]);
+
+  useEffect(() => {
+    all_teachers().then((response) => {
+      setTeachers(response.data.data);
+    });
+  }, []);
+  
+
   return (
     <div className="content">
       <div className="dashboard-section">
@@ -350,316 +364,7 @@ export default function Home() {
               </div>
             </div>
             {/* Teachers List start */}
-            <div className="row pb-3">
-              <div className="d-flex justify-content-between pt-5">
-                <div>
-                  <h5>শিক্ষকের তালিকা</h5>
-                </div>
-                <div>
-                  <h5>View All</h5>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-2 col-sm-4">
-                <div className="card shadow-lg p-1 p-lg-3 my-3 border-0">
-                  <div className="teacher-list-card">
-                    <div className="d-flex gap-1 gap-lg-3 ">
-                      <div>
-                        <img src={TeacherImg} className="img-fluid" />
-                      </div>
-                      <div>
-                        <h5 className={styles.teacherName}>Showkat Ali</h5>
-                        <h6 className={styles.deg}>Head Master</h6>
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 mt-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    {/* <div className="teacher-list-overla">
-                      <div className="teacher-list-overlay d-flex flex-column gap-4 mt-2 justify-content-end">
-                        <FiStar />
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             {/* Teachers List end */}
             {/* Class Six subject start */}
             <div className="row">
@@ -1268,8 +973,133 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-sm-6 col-md-4">
+              <div className="">
+                <div className="row">
+                  {teachers.map((teacher, index) => (
+                    <div key={index} className="card shadow-lg border-0 col-md-3 m-2">
+                  
+                      <div className="d-flex justify-content-between gap-3 border-bottom">
+                        <div className="d-flex gap-3 align-items-center p-2">
+                          <div>
+                            <img
+                              src={TeacherImg}
+                              className="img-fluid"
+                              style={{ height: "50px" }}
+                            />
+                          </div>
+                          <div className="mt-2">
+                            <h5 className={styles.teacherName}>{teacher.name_en}</h5>
+                            <h6 className={styles.deg}>{teacher.position}</h6>
+                          </div>
+                        </div>
+                        <div className="p-1">
+                          <HiOutlineDotsVertical
+                            className={`fs-4 ${styles.OutlineDotsVertical}`}
+                          />
+                        </div>
+                      </div>
+                      <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
+                        <div className={styles.cardDesc}>বাংলা</div>
+                        <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                        <div className={styles.cardDesc}>বিজ্ঞান</div>
+                      </div>
+                      <div className="">
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          {/* {teachers.map((teacher) => (
+                          <div key={teacher.id}>
+                            <h5 className={styles.teacherName}>{teacher.name}</h5>
+                            <h6 className={styles.deg}>{teacher.position}</h6>
+                          </div>))} */}
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              {" "}
+                              <BiRadioCircle />
+                              মোবাইল :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> {teacher.mobile_no }</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle /> জন্ম তারিখ :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> ১২/১০/১৯৭৭</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle /> লিঙ্গ :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> মহিলা</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle /> জাতীয়তা :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> বাংলাদেশী</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle />
+                              ধর্ম :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> ইসলাম</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle />
+                              বৈবাহিক অবস্থা :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> বিবাহিতা</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle />
+                              এনআইডি নম্বর :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> xxx-xxxxxxxxx</li>
+                          </ul>
+                        </div>
+                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li>
+                              <BiRadioCircle />
+                              পদবি :
+                            </li>
+                          </ul>
+                          <ul className={`${styles.teacher_info_list_group}`}>
+                            <li> সহকারী শিক্ষক</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* <div className="col-sm-6 col-md-4">
                   <div className="card shadow-lg border-0">
                     <div className="d-flex justify-content-between gap-3 border-bottom">
                       <div className="d-flex gap-3 align-items-center p-2">
@@ -1502,124 +1332,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-sm-6 col-md-4">
-                  <div className="card shadow-lg border-0">
-                    <div className="d-flex justify-content-between gap-3 border-bottom">
-                      <div className="d-flex gap-3 align-items-center p-2">
-                        <div>
-                          <img
-                            src={TeacherImg}
-                            className="img-fluid"
-                            style={{ height: "50px" }}
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <h5 className={styles.teacherName}>Showkat Ali</h5>
-                          <h6 className={styles.deg}>Head Master</h6>
-                        </div>
-                      </div>
-                      <div className="p-1">
-                        <HiOutlineDotsVertical
-                          className={`fs-4 ${styles.OutlineDotsVertical}`}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
-                      <div className={styles.cardDesc}>বাংলা</div>
-                      <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                      <div className={styles.cardDesc}>বিজ্ঞান</div>
-                    </div>
-                    <div className="">
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            {" "}
-                            <BiRadioCircle />
-                            মোবাইল :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> ০১xxxxxxxxx</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle /> জন্ম তারিখ :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> ১২/১০/১৯৭৭</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle /> লিঙ্গ :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> মহিলা</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle /> জাতীয়তা :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> বাংলাদেশী</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle />
-                            ধর্ম :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> ইসলাম</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle />
-                            বৈবাহিক অবস্থা :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> বিবাহিতা</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle />
-                            এনআইডি নম্বর :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> xxx-xxxxxxxxx</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li>
-                            <BiRadioCircle />
-                            পদবি :
-                          </li>
-                        </ul>
-                        <ul className={`${styles.teacher_info_list_group}`}>
-                          <li> সহকারী শিক্ষক</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </div> */}
               </div>
             </div>
             {/* teacher info end */}
