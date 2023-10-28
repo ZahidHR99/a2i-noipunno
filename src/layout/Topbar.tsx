@@ -1,6 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../Request";
+import { useState, useEffect } from "react";
+
 
 export default function Topbar() {
+  const navigate = useNavigate()
+  const [userDetails, setuserDetails] = useState([]);
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('customer_login_auth'));
+    if (items) {
+      setuserDetails(items.user);
+    }
+  }, []);
+  console.log("userDetails", userDetails);
+
+  const handleLogout = () => {
+    localStorage.removeItem('customer_login_auth');
+    navigate("/login")
+    console.log("Logout Not successfull");
+  };
+
   return (
     <div>
       <section className="noipunno-navbar-section np">
@@ -29,7 +48,7 @@ export default function Topbar() {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center">
-                  <li className="nav-item dropdown">
+                  <li className="nav-item dropdown" >
                     <a
                       className="nav-link dropdown-toggle noipunno-dropdown"
                       href="#"
@@ -38,7 +57,7 @@ export default function Topbar() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <div className="user-section">
+                      <div className="user-section" >
                         <img
                           src="https://teacher.project-ca.com/frontend/images/user-profile.png"
                           alt=""
@@ -53,7 +72,7 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="https://teacher.project-ca.com/logout"
-                        >
+                          onClick={handleLogout()} >
                           Logout
                         </a>
                       </li>

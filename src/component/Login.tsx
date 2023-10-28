@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import loginPageBG from '../../public/assets/images/login-bg.png';
 
 
 export default function Login() {

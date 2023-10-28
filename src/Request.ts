@@ -17,14 +17,3 @@ export function loginPassword(data: any) {
 
 
 
-export function logOut() {
- const page_list = `${API_URL}/v1/logout`;
- const options = {
-  method: "POST",
-  headers: { "content-type": "application/json" },
-  url: page_list,
- };
-
- return axios(options);
-}
-
