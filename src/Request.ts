@@ -15,6 +15,20 @@ export function loginPassword(data: any) {
  return axios(options);
 }
 
+export function all_teachers(data: any) {
+    const page_list = `${API_URL}/v1/teachers`;
+   
+    const options = {
+     method: "get",
+     headers: { "content-type": "application/json" },
+     data,
+     url: page_list,
+    };
+   
+    return axios(options);
+}
+   
+
 export function all_class(data: any) {
     const page_list = `${API_URL}/v1/classes`;
    
@@ -29,15 +43,4 @@ export function all_class(data: any) {
    }
 
 
-
-export function logOut() {
- const page_list = `${API_URL}/v1/logout`;
- const options = {
-  method: "POST",
-  headers: { "content-type": "application/json" },
-  url: page_list,
- };
-
- return axios(options);
-}
 
