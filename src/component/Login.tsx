@@ -23,8 +23,9 @@ export default function Login() {
       const token = data?.data?.access_token;
       localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
       localStorage.setItem('token', token)
-      axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-      navigate("/");
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      // navigate("/");
+      window.location = window.location.origin
     } else {
       seterror("Wrong Crediantial")
     }
@@ -83,7 +84,7 @@ export default function Login() {
                         <input type="password" id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
                         <div className="input-group-append password-toggle">
                           <span>
-                            <i id="password-toggle" className="fa fa-eye-slash" onclick="togglePassword()" />
+                            <i id="password-toggle" className="fa fa-eye-slash" onClick="togglePassword()" />
                           </span>
                         </div>
                       </div>

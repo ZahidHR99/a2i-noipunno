@@ -15,5 +15,32 @@ export function loginPassword(data: any) {
  return axios(options);
 }
 
+export function all_teachers(data: any) {
+    const page_list = `${API_URL}/v1/teachers`;
+   
+    const options = {
+     method: "get",
+     headers: { "content-type": "application/json" },
+     data,
+     url: page_list,
+    };
+   
+    return axios(options);
+}
+   
+
+export function all_class(data: any) {
+    const page_list = `${API_URL}/v1/classes`;
+   
+    const options = {
+     method: "get",
+     headers: { "content-type": "application/json" },
+     data,
+     url: page_list,
+    };
+   
+    return axios(options);
+   }
+
 
 
