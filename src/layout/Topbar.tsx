@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { all_class } from "../Request";
+import { Link, useNavigate } from "react-router-dom";
+import { all_class, clssWiseData, } from "../Request";
 import { all_teachers } from "../Request";
+
 
 export default function Topbar() {
 
-  const handleLogout = ()=>{
+  const navigate = useNavigate();
 
-  }
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate("/login")
+    console.log("Logout successful")
+  };
 
 
   const [classdata, setdata] = useState([])
@@ -20,7 +25,6 @@ export default function Topbar() {
     }
   }
 
-
   const fetchteachersData = async () => {
     const { data }: any = await all_teachers();
     if (data.status) {
@@ -28,9 +32,16 @@ export default function Topbar() {
     }
   }
 
+  // const handleClassData = async (clss_id: any) => {
+  //   const classData = await clssWiseData(clss_id)
+  //   console.log("ClssWiseData=============", classData.data.data)
+  // };
+
+
   useEffect(() => {
     fetchData();
     fetchteachersData();
+
   }, []);
 
   return (
@@ -40,10 +51,7 @@ export default function Topbar() {
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
               <a className="navbar-brand" href="/">
-                <img
-                  src="/assets/images/noipunno-new-logo.svg"
-                  alt=""
-                />
+                <img src="/assets/images/noipunno-new-logo.svg" alt="" />
               </a>
               <button
                 className="navbar-toggler"
@@ -61,7 +69,7 @@ export default function Topbar() {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center">
-                  <li className="nav-item dropdown" >
+                  <li className="nav-item dropdown">
                     <a
                       className="nav-link dropdown-toggle noipunno-dropdown"
                       href="#"
@@ -70,11 +78,8 @@ export default function Topbar() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <div className="user-section" >
-                        <img
-                          src="/assets/images/user-profile.png"
-                          alt=""
-                        />
+                      <div className="user-section">
+                        <img src="/assets/images/user-profile.png" alt="" />
                       </div>
                     </a>
                     <ul
@@ -85,7 +90,7 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e:any)=>handleLogout()} >
+                          onClick={(e: any) => handleLogout()} >
                           Logout
                         </a>
                       </li>
@@ -107,10 +112,7 @@ export default function Topbar() {
                 data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample"
               >
-                <img
-                  src="/assets/images/home.svg"
-                  alt=""
-                />
+                <img src="/assets/images/home.svg" alt="" />
               </button>
               <div
                 className="offcanvas offcanvas-start d-lg-none"
@@ -121,10 +123,7 @@ export default function Topbar() {
                 <div className="offcanvas-header">
                   <h5 className="offcanvas-title" id="offcanvasExampleLabel">
                     <a className="navbar-brand" href="/">
-                      <img
-                        src="/assets/images/noipunno-new-logo.svg"
-                        alt=""
-                      />
+                      <img src="/assets/images/noipunno-new-logo.svg" alt="" />
                     </a>
                   </h5>
                   <button
@@ -149,10 +148,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="prothompata-collapseOne"
                         >
-                          <img
-                            src="/assets/images/home.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/home.svg" alt="" />
                           <span className="fs-6 px-2">প্রথম পাতা</span>
                         </button>
                       </h2>
@@ -188,10 +184,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="report-collapseOne"
                         >
-                          <img
-                            src="/assets/images/report.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/report.svg" alt="" />
                           <span className="fs-6 px-2">রিপোর্ট</span>
                         </button>
                       </h2>
@@ -239,10 +232,7 @@ export default function Topbar() {
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
                           type="button"
                         >
-                          <img
-                            src="/assets/images/teacher.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/teacher.svg" alt="" />
                           <span className="fs-6 px-2">শিক্ষক</span>
                         </button>
                       </h2>
@@ -273,10 +263,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="shikkharthi-collapseOne"
                         >
-                          <img
-                            src="/assets/images/student.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/student.svg" alt="" />
                           <span className="fs-6 px-2">শিক্ষার্থী</span>
                         </button>
                       </h2>
@@ -312,10 +299,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="sreni-collapseOne"
                         >
-                          <img
-                            src="/assets/images/class.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/class.svg" alt="" />
                           <span className="fs-6 px-2">শ্রেণি</span>
                         </button>
                       </h2>
@@ -326,18 +310,13 @@ export default function Topbar() {
                         data-bs-parent="#sreni"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          {
-                            classdata.map((d: any, k) =>
-
-                              <a href="#" className="d-block " key={k}>
-                                <button className="w-100 btn btn-light px-5 text-start">
-                                  {d.name_bn}
-                                </button>
-                              </a>
-
-                            )
-                          }
-
+                          {classdata.map((d: any, k) => (
+                            <a href="#" className="d-block " key={k}>
+                              <button className="w-100 btn btn-light px-5 text-start">
+                                {d.name_bn}
+                              </button>
+                            </a>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -355,10 +334,7 @@ export default function Topbar() {
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
                           type="button"
                         >
-                          <img
-                            src="/assets/images/request.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/request.svg" alt="" />
                           <span className="fs-6 px-2">অনুরোধসমূহ</span>
                         </button>
                       </h2>
@@ -375,15 +351,9 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/home.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/home.svg" alt="" />
                     <span className="fs-6 px-2">প্রথম পাতা</span>
-                    <img
-                      src="/assets/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
@@ -408,15 +378,9 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                     <span className="fs-6 px-2">রিপোর্ট</span>
-                    <img
-                      src="/assets/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
@@ -451,10 +415,7 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/teacher.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/teacher.svg" alt="" />
                     <span className="fs-6 px-2">শিক্ষক</span>
                   </button>
                 </div>
@@ -466,15 +427,9 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/student.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/student.svg" alt="" />
                     <span className="fs-6 px-2">শিক্ষার্থী</span>
-                    <img
-                      src="/assets/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
@@ -499,28 +454,22 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/class.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/class.svg" alt="" />
                     <span className="fs-6 px-2">শ্রেণি</span>
-                    <img
-                      src="/assets/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={"/class/6"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span>ষষ্ঠ শ্রেণি</span>
+                          <span >ষষ্ঠ শ্রেণি</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </Link>
+                      <Link to={"/class/7"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span>সপ্তম শ্রেণি</span>
+                          <span >সপ্তম শ্রেণি</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -532,10 +481,7 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/request.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/request.svg" alt="" />
                     <span className="fs-6 px-2">অনুরোধসমূহ</span>
                   </button>
                 </div>
@@ -549,15 +495,9 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="/assets/images/add.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/add.svg" alt="" />
                     <span className="px-3">যোগ করুন</span>
-                    <img
-                      src="/assets/images/arrow-down-white.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down-white.svg" alt="" />
                   </button>
                   <div
                     className="dropdown-menu"
