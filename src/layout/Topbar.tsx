@@ -1,8 +1,52 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { all_class, clssWiseData, } from "../Request";
+import { all_teachers } from "../Request";
 
 
 export default function Topbar() {
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate("/login")
+    console.log("Logout successful")
+  };
+
+
+  const [classdata, setdata] = useState([])
+  const [teachersdata, setteachersdata] = useState([])
+
+  const fetchData = async () => {
+    const { data }: any = await all_class();
+    if (data.status) {
+      setdata(data.data)
+    }
+  }
+
+  const fetchteachersData = async () => {
+    const { data }: any = await all_teachers();
+    if (data.status) {
+      setteachersdata(data.data)
+    }
+  }
+
+  const handleClassData = async (clss_id: any) => {
+    const classData = await clssWiseData(clss_id)
+    console.log("ClssWiseData=============", classData.data.data)
+  };
+
+
+
+
+
+
+  useEffect(() => {
+    fetchData();
+    fetchteachersData();
+
+  }, []);
 
   return (
     <div>
@@ -55,8 +99,8 @@ export default function Topbar() {
                       <li>
                         <a
                           className="dropdown-item"
-                          href="https://teacher.project-ca.com/logout"
-                        >
+                          href="#"
+                          onClick={(e: any) => handleLogout()} >
                           Logout
                         </a>
                       </li>
@@ -173,11 +217,11 @@ export default function Topbar() {
                         data-bs-parent="#report"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <a href="#" className="d-block ">
+                          <Link to={"/student-mullayon"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
-                          </a>
+                          </Link>
                           <a href="#" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
@@ -217,7 +261,7 @@ export default function Topbar() {
                           <span className="fs-6 px-2">শিক্ষক</span>
                         </button>
                       </h2>
-                      {
+                      {/* {
                         teachersdata.map((d: any, k) =>
 
                           <a href="#" className="d-block " key={k}>
@@ -227,7 +271,7 @@ export default function Topbar() {
                           </a>
 
                         )
-                      }
+                      } */}
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
@@ -484,12 +528,12 @@ export default function Topbar() {
                     <div className="create-profile-dropdown-container">
                       <a className="dropdown-item">
                         <div className="d-flex ">
-                          <span>ষষ্ঠ শ্রেণি</span>
+                          <span onClick={() => handleClassData(6)}>ষষ্ঠ শ্রেণি</span>
                         </div>
                       </a>
                       <a className="dropdown-item">
                         <div className="d-flex ">
-                          <span>সপ্তম শ্রেণি</span>
+                          <span onClick={() => handleClassData(7)}>সপ্তম শ্রেণি</span>
                         </div>
                       </a>
                     </div>
