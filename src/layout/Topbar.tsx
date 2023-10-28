@@ -32,14 +32,10 @@ export default function Topbar() {
     }
   }
 
-  const handleClassData = async (clss_id: any) => {
-    const classData = await clssWiseData(clss_id)
-    console.log("ClssWiseData=============", classData.data.data)
-  };
-
-
-
-
+  // const handleClassData = async (clss_id: any) => {
+  //   const classData = await clssWiseData(clss_id)
+  //   console.log("ClssWiseData=============", classData.data.data)
+  // };
 
 
   useEffect(() => {
@@ -464,16 +460,16 @@ export default function Topbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={"/class/6"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span onClick={() => handleClassData(6)}>ষষ্ঠ শ্রেণি</span>
+                          <span >ষষ্ঠ শ্রেণি</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </Link>
+                      <Link to={"/class/7"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span onClick={() => handleClassData(7)}>সপ্তম শ্রেণি</span>
+                          <span >সপ্তম শ্রেণি</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

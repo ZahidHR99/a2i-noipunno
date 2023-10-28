@@ -5,6 +5,7 @@ import Topbar from "./layout/Topbar";
 import Footer from "./layout/Footer";
 import Home from "./component/Home";
 import { useEffect, useState } from "react";
+import ClassWiseSubject from './component/ClassWiseSubject';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -25,20 +26,22 @@ function App() {
 
     <>
 
-    {
-      topbar && <Topbar />
-    }
-    
+      {
+        topbar && <Topbar />
+      }
+
       <Routes>
-        <Route  path="/" element={<PrivateRoute />}>
-          <Route path="/" element={ <Home /> } />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/class/:id" element={<ClassWiseSubject />} />
         </Route>
-        <Route path="/login" element={ <Login /> } />
+
+        <Route path="/login" element={<Login />} />
       </Routes>
 
-    {
-      topbar && <Footer />
-    }
+      {
+        topbar && <Footer />
+      }
 
     </>
   );
