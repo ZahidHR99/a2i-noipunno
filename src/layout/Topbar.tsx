@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { all_class } from "../Request";
+import { Link, useNavigate } from "react-router-dom";
+import { all_class, clssWiseData, } from "../Request";
 import { all_teachers } from "../Request";
+
 
 export default function Topbar() {
 
-  const handleLogout = ()=>{
+  const navigate = useNavigate();
 
-  }
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate("/login")
+    console.log("Logout successful")
+  };
 
 
   const [classdata, setdata] = useState([])
@@ -20,7 +25,6 @@ export default function Topbar() {
     }
   }
 
-
   const fetchteachersData = async () => {
     const { data }: any = await all_teachers();
     if (data.status) {
@@ -28,9 +32,16 @@ export default function Topbar() {
     }
   }
 
+  // const handleClassData = async (clss_id: any) => {
+  //   const classData = await clssWiseData(clss_id)
+  //   console.log("ClssWiseData=============", classData.data.data)
+  // };
+
+
   useEffect(() => {
     fetchData();
     fetchteachersData();
+
   }, []);
 
   return (
@@ -79,7 +90,7 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e:any)=>handleLogout()} >
+                          onClick={(e: any) => handleLogout()} >
                           Logout
                         </a>
                       </li>
@@ -449,16 +460,16 @@ export default function Topbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={"/class/6"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span>ষষ্ঠ শ্রেণি</span>
+                          <span >ষষ্ঠ শ্রেণি</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </Link>
+                      <Link to={"/class/7"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span>সপ্তম শ্রেণি</span>
+                          <span >সপ্তম শ্রেণি</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
