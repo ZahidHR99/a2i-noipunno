@@ -16,7 +16,6 @@ import TeachersList from "../layout/TeachersList"
 
 
 export default function Home() {
-<<<<<<< HEAD
   
 
   const [teachers, setTeachers] = useState([]);
@@ -28,8 +27,6 @@ export default function Home() {
   }, []);
   
 
-=======
->>>>>>> 7cafd9a06c0ae89866d09773984b4b3c1c98e130
   return (
     <div className="content">
       <div className="dashboard-section">
