@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import styles from "./Home.style.module.css";
 import { FiStar } from "react-icons/fi";
+import { PiBookOpenText } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiSidebar, BiRadioCircle } from "react-icons/bi";
 import { BsCloudSun, BsMoon } from "react-icons/bs";
@@ -2028,6 +2029,199 @@ export default function Home() {
               </div>
             </div>
             {/* report end */}
+            {/* shikhon kalin mollaion start */}
+            <div className="py-5">
+              <h3
+                className="text-center py-2 text-white"
+                style={{ backgroundColor: "#428F92" }}
+              >
+                শিখনকালীন মূল্যায়ন / অধ্যায়
+              </h3>
+              <h5>অধ্যায় নির্বাচন করুন</h5>
+              <div className="row">
+                <div className="col-sm-6 col-md-4">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            <PiBookOpenText className="me-2" /> ১ মর্যাদা বজায়
+                            রেখে যোগাযোগ করি
+                          </div>
+                          <div
+                            className="px-2 rounded text-white"
+                            style={{ backgroundColor: "#428F92" }}
+                          >
+                            1/3
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            <PiBookOpenText className="me-2" /> ১ মর্যাদা বজায়
+                            রেখে যোগাযোগ করি
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            <PiBookOpenText className="me-2" /> ২ প্রমিত ভাষা
+                            শিখি
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            <PiBookOpenText className="me-2" /> ৩ অর্থ বুজে
+                            বাক্য লিখি
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            <PiBookOpenText className="me-2" /> ৪ চারপাশের লেখার
+                            সাথে পরিচিত হই
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            <PiBookOpenText className="me-2" /> ৫ বুজে পড়ি লিখতে
+                            শিখি
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* shikhon kalin mollaion end */}
+            {/* shikhon kalin mollaion odhai start */}
+            <div className="py-5">
+              <h3
+                className="text-center py-2 text-white"
+                style={{ backgroundColor: "#428F92" }}
+              >
+                শিখনকালীন মূল্যায়ন / অধ্যায় ১ / ৬.১
+              </h3>
+              <h5>পারদর্শিতার সূচক নির্বাচন করুন</h5>
+              <div className="row">
+                <div className="col-sm-6 col-md-12">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div className={`border-0 p-1 w-100`}>
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2" style={{ color: "#428F92" }}>
+                            {" "}
+                            <h6>৬.১</h6>
+                            <h6>
+                              পরিবেশ পরিস্থিতিকে বিবেচনায় নিয়ে ব্যক্তির আগ্রহ
+                              চাহিদা অনুযায়ী মর্যাদা বজায় রেখে যোগাযোগ করতে হবে
+                              ।
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-12">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                      style={{
+                        backgroundColor: "#93F0F3",
+                      }}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2 ps-4">
+                            <h6>৬.১</h6>
+                            <h6 className="">
+                              পরিবেশ পরিস্থিতিকে বিবেচনায় নিয়ে ব্যক্তির আগ্রহ
+                              চাহিদা অনুযায়ী মর্যাদা বজায় রেখে যোগাযোগ করতে হবে
+                              ।
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-12">
+                  <div className={`d-flex align-items-center py-2 gap-2`}>
+                    <div
+                      className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                      style={{
+                        backgroundColor: "#93F0F3",
+                      }}
+                    >
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                          <div className="py-2 ps-4">
+                            <h6>৬.২</h6>
+                            <h6>
+                              পরিবেশ পরিস্থিতিকে বিবেচনায় নিয়ে ব্যক্তির আগ্রহ
+                              চাহিদা অনুযায়ী মর্যাদা বজায় রেখে যোগাযোগ করতে হবে
+                              ।
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* shikhon kalin mollaion odhai start */}
           </div>
         </section>
       </div>
