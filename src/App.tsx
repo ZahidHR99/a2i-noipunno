@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from "./component/PrivateRoute";
 import Login from "./component/Login";
 import Topbar from "./layout/Topbar";
@@ -29,14 +29,12 @@ function App() {
       topbar && <Topbar />
     }
     
-    <Router>
       <Routes>
         <Route  path="/" element={<PrivateRoute />}>
           <Route path="/" element={ <Home /> } />
         </Route>
         <Route path="/login" element={ <Login /> } />
       </Routes>
-    </Router>
 
     {
       topbar && <Footer />
