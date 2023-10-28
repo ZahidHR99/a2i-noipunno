@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import loginPageBG from '../../public/assets/images/login-bg.png';
 
 
 export default function Login() {
   const navigate = useNavigate();
   const [error, seterror] = useState("");
-  const [userDetails, setUserDetails] = useState({})
+
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -19,8 +20,6 @@ export default function Login() {
 
     if (data?.status === true) {
       // console.log("user Details", data?.data.user)
-      setUserDetails(data?.data.user)
-
       const token = data?.data?.access_token;
       localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
       localStorage.setItem('token', token)

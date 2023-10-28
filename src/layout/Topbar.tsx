@@ -1,31 +1,6 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { all_class } from "../Request";
-import { all_teachers } from "../Request";
 
 export default function Topbar() {
-  const [classdata, setdata] = useState([])
-  const [teachersdata, setteachersdata] = useState([])
-
-  const fetchData = async () => {
-    const { data }: any = await all_class();
-    if (data.status) {
-      setdata(data.data)
-    }
-  }
-  
-
-  const fetchteachersData = async () => {
-    const { data }: any = await all_teachers();
-    if (data.status) {
-      setteachersdata(data.data)
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-    fetchteachersData();
-  }, []);
   return (
     <div>
       <section className="noipunno-navbar-section np">
@@ -54,7 +29,7 @@ export default function Topbar() {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center">
-                  <li className="nav-item dropdown">
+                  <li className="nav-item dropdown" >
                     <a
                       className="nav-link dropdown-toggle noipunno-dropdown"
                       href="#"
@@ -63,7 +38,7 @@ export default function Topbar() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <div className="user-section">
+                      <div className="user-section" >
                         <img
                           src="/assets/images/user-profile.png"
                           alt=""
@@ -78,7 +53,7 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="https://teacher.project-ca.com/logout"
-                        >
+                          onClick={handleLogout()} >
                           Logout
                         </a>
                       </li>
@@ -240,16 +215,16 @@ export default function Topbar() {
                         </button>
                       </h2>
                       {
-                            teachersdata.map((d:any, k)=>
+                        teachersdata.map((d: any, k) =>
 
-                            <a href="#" className="d-block " key={k}>
-                              <button className="w-100 btn btn-light px-5 text-start">
-                                {d.name_bn}
-                              </button>
-                            </a>
-                            
-                            )
-                          }
+                          <a href="#" className="d-block " key={k}>
+                            <button className="w-100 btn btn-light px-5 text-start">
+                              {d.name_bn}
+                            </button>
+                          </a>
+
+                        )
+                      }
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
@@ -320,17 +295,17 @@ export default function Topbar() {
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
                           {
-                            classdata.map((d:any, k)=>
+                            classdata.map((d: any, k) =>
 
-                            <a href="#" className="d-block " key={k}>
-                              <button className="w-100 btn btn-light px-5 text-start">
-                                {d.name_bn}
-                              </button>
-                            </a>
-                            
+                              <a href="#" className="d-block " key={k}>
+                                <button className="w-100 btn btn-light px-5 text-start">
+                                  {d.name_bn}
+                                </button>
+                              </a>
+
                             )
                           }
-                          
+
                         </div>
                       </div>
                     </div>
