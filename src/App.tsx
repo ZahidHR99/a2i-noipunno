@@ -6,6 +6,7 @@ import Footer from "./layout/Footer";
 import Home from "./component/Home";
 import { useEffect, useState } from "react";
 import ClassWiseSubject from './component/ClassWiseSubject';
+import StudentList from './component/StudentList';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/class/:id" element={<ClassWiseSubject />} />
+          <Route path="/student-list" element={<StudentList />} />
         </Route>
 
         <Route path="/login" element={<Login />} />
