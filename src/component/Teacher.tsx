@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from "react";
 import {
   all_teachers,
-  assessments,
   teacher_dashboard,
   teacher_own_subject,
 } from "../Request";
 
-import TeacherImg from "../assets/images/teacher.png";
-
 import styles from "./Home.style.module.css";
 import { BiSidebar } from "react-icons/bi";
-import { BsCloudSun, BsMoon } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
-import { HiOutlineSun, HiOutlineDotsVertical } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { PiBookOpenText } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
+const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
+const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 
 export default function Teacher() {
   const [subject, setsubject] = useState([]);
+  const [element, setelement] = useState<any>("");
   const [shikhonKalinMullayon, setshikhonKalinMullayon] = useState([]);
   const [allassessmet, setallassessmet] = useState([]);
+  const [assessment_uid, setassessment_uid] = useState('');
   const [pi_attrbute, setpi_attrbute] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
-  const [selected_subject, setselected_subject] = useState<any>('');
+  const [selected_subject, setselected_subject] = useState<any>("");
   const [showSkillBehaibor, seshowSkillBehaibor] = useState(false);
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
@@ -33,7 +35,15 @@ export default function Teacher() {
 
   const fetchData = async () => {
     const { data }: any = await teacher_dashboard();
-    const own_subjet: any = await teacher_own_subject();
+
+    let own_subjet: any = "";
+    if (own_SUbjects) {
+      own_subjet = own_SUbjects;
+    } else {
+      own_subjet = await teacher_own_subject();
+      localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+    }
+
     const al_teacher: any = await all_teachers();
 
     console.log(`datadatadata`, data, own_subjet, al_teacher);
@@ -41,10 +51,10 @@ export default function Teacher() {
     setown_data(own_subjet?.data?.data);
 
     let all_subject: any = [];
-    own_subjet.data.data.subjects.map((d: any, k: any) => {
-      data.data.subjects.map((d_2: any, key: any) => {
+    own_subjet.data.data.subjects.map((d: any) => {
+      data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
-          al_teacher.data.data.map((al_tech: any, ky: any) => {
+          al_teacher.data.data.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
               let obj: any = {
                 subject: d_2,
@@ -65,19 +75,22 @@ export default function Teacher() {
   const skill_behaibor_count = async (datas: any) => {
     seshowSkillBehaibor(true);
     seshowSubject(false);
-    setselected_subject(datas)
+    setselected_subject(datas);
     setshikhonKalinMullayon(datas.own_subjet.competence);
     setshikhonKalinMullayon(datas.own_subjet.competence);
     console.log(`datas`, datas.own_subjet);
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
+  console.log(`assessment_uid`, assessment_uid , element);
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  const pi_attr = (data: any) => {
+  const pi_attr = (data: any, e: any = "") => {
     setpi_attrbute(data.pi_attribute);
+    setelement(e);
   };
 
   return (
@@ -93,7 +106,12 @@ export default function Teacher() {
                 <div className="row d-flex gap-2">
                   <div></div>
                   <div className="d-flex">
-                    <h5 onClick={(e) => seshowSubject(true)}>
+                    <h5
+                      onClick={(e) => {
+                        seshowSubject(true);
+                        setelement(e);
+                      }}
+                    >
                       <BiSidebar /> {showSubject && "বিষয়সমূহ"}{" "}
                       {showSkillBehaibor && "পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
                     </h5>
@@ -107,7 +125,10 @@ export default function Teacher() {
                           className="col-6 col-sm-4 col-md-3"
                           style={{ cursor: "pointer" }}
                           key={key}
-                          onClick={(e) => skill_behaibor_count(d)}
+                          onClick={(e) => {
+                            skill_behaibor_count(d);
+                            setelement(e);
+                          }}
                         >
                           <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                             <div className="gap-1 gap-lg-3 justify-content-center">
@@ -151,7 +172,7 @@ export default function Teacher() {
                     <div className="row">
                       <ul className="nav justify-content-around bg-white py-1 rounded">
                         {own_data?.assessments.map((d: any, key: any) => (
-                          <li className="nav-item">
+                          <li className="nav-item" key={key}>
                             <a
                               className={
                                 key === 0
@@ -168,6 +189,8 @@ export default function Teacher() {
                               onClick={(e) => {
                                 setparodorshita_acoron_tab(key);
                                 setallassessmet(d?.assessment_details);
+                                setelement(e);
+                                
                               }}
                               href="#"
                             >
@@ -194,7 +217,11 @@ export default function Teacher() {
                                   style={{ cursor: "pointer" }}
                                   className="nav-item"
                                   key={ky}
-                                  onClick={(e: any) => seshowCompitance(true)}
+                                  onClick={(e: any) => {
+                                    setelement(e);
+                                    seshowCompitance(true);
+                                    setassessment_uid(ass_d.uid)
+                                  }}
                                 >
                                   {" "}
                                   {ass_d.assessment_details_name_bn}{" "}
@@ -219,7 +246,10 @@ export default function Teacher() {
                                 style={{ cursor: "pointer" }}
                                 className="nav-item"
                                 key={ky}
-                                onClick={(e: any) => seshowCompitance(true)}
+                                onClick={(e: any) => {
+                                  setelement(e);
+                                  seshowCompitance(true);
+                                }}
                               >
                                 {" "}
                                 {ass_d.assessment_details_name_bn}{" "}
@@ -245,9 +275,10 @@ export default function Teacher() {
                           {shikhonKalinMullayon.map((d: any, key: any) => (
                             <div
                               key={key}
-                              onClick={(e) =>
-                                setshowDetailsshikhonKalinMullayon(d)
-                              }
+                              onClick={(e: any) => {
+                                setshowDetailsshikhonKalinMullayon(d);
+                                setelement(e);
+                              }}
                               style={{ cursor: "pointer" }}
                               className="col-sm-6 col-md-4"
                             >
@@ -300,7 +331,7 @@ export default function Teacher() {
                       <div className="row">
                         {showDetailsshikhonKalinMullayon?.pis?.map(
                           (d: any, ky: any) => (
-                            <div className="col-sm-6 col-md-12">
+                            <div className="col-sm-6 col-md-12" key={ky}>
                               <div
                                 className={`d-flex align-items-center py-2 gap-2`}
                               >
@@ -315,15 +346,20 @@ export default function Teacher() {
                                           {
                                             showDetailsshikhonKalinMullayon?.class_uid
                                           }
-                                          .{d?.pi_id}
+                                          {d?.pi_id}
                                         </h6>
+
+                                        <Link to={"/student-mullayon/"+ assessment_uid} className="text-decoration-none">
                                         <h6
                                           data-bs-toggle="modal"
                                           data-bs-target="#exampleModal"
-                                          onClick={(e) => pi_attr(d)}
+                                          onClick={(e: any) => pi_attr(d, e)}
                                         >
                                           {d?.name_bn}
                                         </h6>
+
+                                        </Link>
+                                        
                                       </div>
                                     </div>
                                   </div>
@@ -340,93 +376,6 @@ export default function Teacher() {
             </div>
           </div>
         </section>
-      </div>
-
-      <div
-        className="modal fade"
-        id="exampleModal"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog" style={{ marginTop: "145px" }}>
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-
-            <div className="row">
-
-            {/* <h3
-                        className="text-center py-2"
-                      >
-                        {
-                            selected_subject.subject.name
-                        }
-                      </h3> */}
-
-                      {/* <h5
-                        className="text-center py-2"
-                      >
-                        {
-                            selected_subject.subject.name
-                        }
-                      </h5> */}
-
-                        {pi_attrbute?.map(
-                          (d: any, ky: any) => (
-                            <div className="col-sm-6 col-md-12">
-                              <div
-                                className={`d-flex align-items-center py-2 gap-2`}
-                              >
-                                <div className={`border-0 p-1 w-100`}>
-                                  <div className="d-flex justify-content-between">
-                                    <div className="d-flex justify-content-between align-items-center w-100 px-1">
-                                      <div
-                                        className="py-2"
-                                        style={{ color: "#428F92" }}
-                                      >
-                                        
-                                        <h6
-                                          data-bs-toggle="modal"
-                                          data-bs-target="#exampleModal"
-                                          onClick={(e) => pi_attr(d)}
-                                        >
-                                          {d?.title_bn}
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        )}
-                      </div>
-
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       <style
