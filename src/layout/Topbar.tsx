@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { all_class, clssWiseData } from "../Request";
-import { all_teachers } from "../Request";
+import { Link } from "react-router-dom";
+import { all_class } from "../Request";
 
 export default function Topbar() {
   const [classdata, setdata] = useState([]);
-  const [teachersdata, setteachersdata] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = (e:any) => {
     localStorage.clear();
-    navigate("/login");
-    console.log("Logout successful");
+    window.location.reload();
+    // window.location = window.location.origin;
+    console.log("Logout successful" , e);
   };
 
   const fetchData = async () => {
@@ -21,12 +20,7 @@ export default function Topbar() {
     }
   };
 
-  const fetchteachersData = async () => {
-    const { data }: any = await all_teachers();
-    if (data.status) {
-      setteachersdata(data.data);
-    }
-  };
+
 
   // const handleClassData = async (clss_id: any) => {
   //   const classData = await clssWiseData(clss_id)
@@ -35,7 +29,6 @@ export default function Topbar() {
 
   useEffect(() => {
     fetchData();
-    fetchteachersData();
   }, []);
 
   return (
@@ -84,7 +77,7 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e: any) => handleLogout()}
+                          onClick={(e: any) => handleLogout(e)}
                         >
                           Logout
                         </a>

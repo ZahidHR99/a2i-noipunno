@@ -9,8 +9,30 @@ import { BsCloudSun, BsMoon } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
 import { HiOutlineSun, HiOutlineDotsVertical } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
+import { teacher_dashboard, teacher_own_subject } from "../Request";
 
 export default function StudentMullayon() {
+
+
+
+
+  const fetchData = async () => {
+
+    console.log(`111`, 111);
+    const { data }: any = await teacher_dashboard();
+    console.log(`data`,  data);
+    const own_subjet: any = await teacher_own_subject();
+    console.log(`own_subjet`,  own_subjet);
+  };
+
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
+
 
   return (
     <div className="content">

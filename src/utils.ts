@@ -1,6 +1,6 @@
 
 export const Validation = (
-  customInputValidationCheck = [],
+  customInputValidationCheck :any= [],
   element = document
 ) => {
   let validate = true;
@@ -27,8 +27,10 @@ export const Validation = (
       }
 
       if (customInputValidationCheck && customInputValidationCheck.length) {
+
+        const y :any= collection[i].name
         if (
-          customInputValidationCheck.includes(collection[i].name) &&
+          customInputValidationCheck.includes(y) &&
           !collection[i].value
         ) {
           validate = false;
@@ -41,7 +43,7 @@ export const Validation = (
     }
   }
   if (!validate) {
-    toast(false, "Required fields can not be empty");
+    alert("Required fields can not be empty")
   }
   return validate;
 };

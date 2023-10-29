@@ -8,7 +8,7 @@ import { clssWiseSubject } from "../Request";
 
 const ClassWiseSubject = () => {
   const { id } = useParams();
-  const [subjects, setSubjects] = useState([])
+  const [subjects, setSubjects] = useState<any>([])
 
   const getClassData = async () => {
     const { data }: any = await clssWiseSubject(id);

@@ -72,8 +72,6 @@ export default function Teacher() {
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
-  console.log(`own_data`, subject, shikhonKalinMullayon , selected_subject);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -367,13 +365,13 @@ export default function Teacher() {
 
             <div className="row">
 
-            <h3
+            {/* <h3
                         className="text-center py-2"
                       >
                         {
                             selected_subject.subject.name
                         }
-                      </h3>
+                      </h3> */}
 
                       {/* <h5
                         className="text-center py-2"

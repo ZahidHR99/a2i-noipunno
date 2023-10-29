@@ -17,7 +17,6 @@ import {
 import { HiOutlineSun, HiOutlineDotsVertical } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
 import { all_teachers } from "../Request";
-import TeachersList from "../layout/TeachersList";
 
 export default function Home() {
   const [teachers, setTeachers] = useState([]);
