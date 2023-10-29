@@ -433,16 +433,16 @@ export default function Topbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={'/student-list'} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর তালিকা</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </Link>
+                      <Link to={'/'} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর হাজিরা</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

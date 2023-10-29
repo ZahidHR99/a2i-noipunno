@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import StudentMullayon from './component/StudentMullayon';
 import Teacher from './component/Teacher';
 import ClassWiseSubject from './component/ClassWiseSubject';
+import StudentList from './component/StudentList';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -33,12 +34,13 @@ function App() {
       }
 
       <Routes>
-        <Route  path="/" element={<PrivateRoute />}>
-          <Route path="/" element={ <Home /> } />
-          <Route path="/student-mullayon" element={ <StudentMullayon /> } />
-          <Route path="/teacher" element={ <Teacher /> } />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/student-mullayon" element={<StudentMullayon />} />
+          <Route path="/teacher" element={<Teacher />} />
           <Route path="/class/:id" element={<ClassWiseSubject />} />
-</Route>
+          <Route path="/student-list" element={<StudentList />} />
+        </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
 
