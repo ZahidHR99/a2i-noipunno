@@ -59,6 +59,7 @@ export function all_class(data: any) {
 }
 export function clssWiseData(data: any) {
     const page_list = `${API_URL}/v1/class-wise-subjects?class_id=${data}`;
+    console.log("Requested Url", page_list);
 
     const options = {
         method: "get",

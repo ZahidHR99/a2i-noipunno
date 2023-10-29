@@ -93,17 +93,33 @@
 
 /* class six subject end */
 /* teacher info list start */
-.teacher_info_list{
-   background-color: #9fdbdb51;
-   border-radius: 50%;
-   padding: 3px;
-}
-.OutlineDotsVertical{
+.teacher_info_list {
     background-color: #9fdbdb51;
-   border-radius: 50%;
-   padding: 3px;
+    border-radius   : 50%;
+    padding         : 3px;
 }
-.teacher_info_list_group{
+
+.OutlineDotsVertical {
+    background-color: #9fdbdb51;
+    border-radius   : 50%;
+    padding         : 3px;
+}
+
+.teacher_info_list_group {
     width: 50%;
 }
+
 /* teacher info list start */
+/* nav tab start */
+.nav_tab_bottom_border:hover {
+    border-bottom: 2px solid #428F92;
+    padding-top  : 0px;
+}
+
+/* nav tab end */
+/* shikhon kalin mollaion start */
+.card_hover:hover {
+    background-color: #D2D2D2;
+}
+
+/* shikhon kalin mollaion end */
