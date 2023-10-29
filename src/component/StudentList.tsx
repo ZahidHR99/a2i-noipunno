@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { all_tudentList } from "../Request";
+import { all_student } from "../Request";
 
 const StudentList = () => {
  const [students, setStudents] = useState([])
 
  useEffect(() => {
-  all_tudentList()
+  all_student()
    .then((res) => {
     setStudents(res.data.data)
     console.log(res.data.data);

@@ -1,47 +1,41 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { all_class, clssWiseData, } from "../Request";
+import { all_class, clssWiseData } from "../Request";
 import { all_teachers } from "../Request";
 
-
 export default function Topbar() {
-
+  const [classdata, setdata] = useState([]);
+  const [teachersdata, setteachersdata] = useState([]);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear()
-    navigate("/login")
-    console.log("Logout successful")
+    localStorage.clear();
+    navigate("/login");
+    console.log("Logout successful");
   };
-
-
-  const [classdata, setdata] = useState([])
-  const [teachersdata, setteachersdata] = useState([])
 
   const fetchData = async () => {
     const { data }: any = await all_class();
     if (data.status) {
-      setdata(data.data)
+      setdata(data.data);
     }
-  }
+  };
 
   const fetchteachersData = async () => {
     const { data }: any = await all_teachers();
     if (data.status) {
-      setteachersdata(data.data)
+      setteachersdata(data.data);
     }
-  }
+  };
 
   // const handleClassData = async (clss_id: any) => {
   //   const classData = await clssWiseData(clss_id)
   //   console.log("ClssWiseData=============", classData.data.data)
   // };
 
-
   useEffect(() => {
     fetchData();
     fetchteachersData();
-
   }, []);
 
   return (
@@ -90,7 +84,8 @@ export default function Topbar() {
                         <a
                           className="dropdown-item"
                           href="#"
-                          onClick={(e: any) => handleLogout()} >
+                          onClick={(e: any) => handleLogout()}
+                        >
                           Logout
                         </a>
                       </li>
@@ -232,8 +227,10 @@ export default function Topbar() {
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
                           type="button"
                         >
-                          <img src="/assets/images/teacher.svg" alt="" />
-                          <span className="fs-6 px-2">শিক্ষক</span>
+                          <Link to="/teacher" className="text-decoration-none">
+                            <img src="/assets/images/teacher.svg" alt="" />
+                            <span className="fs-6 px-2">শিক্ষক</span>
+                          </Link>
                         </button>
                       </h2>
                       {/* {
@@ -384,11 +381,12 @@ export default function Topbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={"/student-mullayon"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীদের মূল্যায়ন</span>
                         </div>
-                      </a>
+                      </Link>
+
                       <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর ট্রান্সক্রিপ্ট</span>
@@ -415,8 +413,10 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img src="/assets/images/teacher.svg" alt="" />
-                    <span className="fs-6 px-2">শিক্ষক</span>
+                    <Link to="/teacher" className="text-decoration-none">
+                      <img src="/assets/images/teacher.svg" alt="" />
+                      <span className="fs-6 px-2">শিক্ষক</span>
+                    </Link>
                   </button>
                 </div>
                 <div className="dropdown">
@@ -462,12 +462,12 @@ export default function Topbar() {
                     <div className="create-profile-dropdown-container">
                       <Link to={"/class/6"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span >ষষ্ঠ শ্রেণি</span>
+                          <span>ষষ্ঠ শ্রেণি</span>
                         </div>
                       </Link>
                       <Link to={"/class/7"} className="dropdown-item">
                         <div className="d-flex ">
-                          <span >সপ্তম শ্রেণি</span>
+                          <span>সপ্তম শ্রেণি</span>
                         </div>
                       </Link>
                     </div>
