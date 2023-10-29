@@ -92,3 +92,18 @@
 }
 
 /* class six subject end */
+/* teacher info list start */
+.teacher_info_list{
+   background-color: #9fdbdb51;
+   border-radius: 50%;
+   padding: 3px;
+}
+.OutlineDotsVertical{
+    background-color: #9fdbdb51;
+   border-radius: 50%;
+   padding: 3px;
+}
+.teacher_info_list_group{
+    width: 50%;
+}
+/* teacher info list start */
