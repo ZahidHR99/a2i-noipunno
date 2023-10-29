@@ -8,12 +8,10 @@ import { useEffect, useState } from "react";
 import StudentMullayon from './component/StudentMullayon';
 import Teacher from './component/Teacher';
 import ClassWiseSubject from './component/ClassWiseSubject';
+import StudentList from './component/StudentList';
 
 function App() {
   const [topbar, settopbar] = useState(false)
-  console.log(`window.location.pathname`, window.location.pathname);
-
-
   const fetchData = async () => {
     if (window.location.pathname !== "/login") {
       settopbar(true)
@@ -33,12 +31,13 @@ function App() {
       }
 
       <Routes>
-        <Route  path="/" element={<PrivateRoute />}>
-          <Route path="/" element={ <Home /> } />
-          <Route path="/student-mullayon" element={ <StudentMullayon /> } />
-          <Route path="/teacher" element={ <Teacher /> } />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/student-mullayon/:assessment_uid" element={<StudentMullayon />} />
+          <Route path="/teacher" element={<Teacher />} />
           <Route path="/class/:id" element={<ClassWiseSubject />} />
-</Route>
+          <Route path="/student-list" element={<StudentList />} />
+        </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
 

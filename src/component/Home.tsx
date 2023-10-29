@@ -28,16 +28,28 @@ import {
   HiOutlineDotsHorizontal,
 } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
-import { all_teachers } from "../Request";
-import TeachersList from "../layout/TeachersList";
+import { all_teachers, teacher_own_subject } from "../Request";
 
 export default function Home() {
-  const [teachers, setTeachers] = useState([]);
+  const [teachers, setTeachers] = useState<any>([]);
+
+
+
+  const fetchData = async () => {
+
+    const own_subjet: any = await teacher_own_subject();
+    localStorage.setItem("own_subjet" , JSON.stringify(own_subjet)  )
+  };
+
+
+
 
   useEffect(() => {
     all_teachers().then((response) => {
       setTeachers(response.data.data);
     });
+
+    fetchData()
   }, []);
 
   return (
