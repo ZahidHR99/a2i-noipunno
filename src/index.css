@@ -68,6 +68,9 @@ button:focus-visible {
   }
 }
 
+table th {
+  display: none;
+}
 /* .teacher-list-card {
   position: relative;
   overflow: hidden;

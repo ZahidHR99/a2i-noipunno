@@ -3,18 +3,30 @@ import TeacherImg from "../assets/images/teacher.png";
 import { useState, useEffect } from "react";
 
 import styles from "./Home.style.module.css";
-import { FiStar } from "react-icons/fi";
+import { FiStar, FiTriangle } from "react-icons/fi";
+import { GoPerson } from "react-icons/go";
 import { PiBookOpenText } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
-import { BiSidebar, BiRadioCircle } from "react-icons/bi";
+import {
+  BiSidebar,
+  BiFilterAlt,
+  BiSquareRounded,
+  BiCircle,
+  BiRadioCircle,
+} from "react-icons/bi";
 import { BsCloudSun, BsMoon } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
 import {
   MdArrowBackIosNew,
   MdOutlineArrowForwardIos,
   MdOutlineKeyboardArrowRight,
+  MdArrowForwardIos,
 } from "react-icons/md";
-import { HiOutlineSun, HiOutlineDotsVertical } from "react-icons/hi";
+import {
+  HiOutlineSun,
+  HiOutlineDotsVertical,
+  HiOutlineDotsHorizontal,
+} from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
 import { all_teachers } from "../Request";
 import TeachersList from "../layout/TeachersList";
@@ -2087,6 +2099,524 @@ export default function Home() {
               </div>
             </div>
             {/* expertness assessment start */}
+            {/* learing period assessment report start */}
+            <div className="py-3">
+              <div>
+                <h4>শিখনকালীন মূল্যায়ন প্রতিবেদন (PI) </h4>
+                <h5 className="fw-bold">পারদর্শিতা সূচক ৬.১.১ </h5>
+                <h6>
+                  নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                  পারছে।
+                </h6>
+              </div>
+              <div className="card shadow-lg p-3 mt-3">
+                <div className="table-responsive">
+                  <table className="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" style={{ width: "5%" }}>
+                          শিক্ষার্থীর <BiFilterAlt className="fs-5 ms-4" />
+                        </th>
+                        <th scope="col" style={{ width: "5%" }}>
+                          শিক্ষার্থীর ID
+                        </th>
+                        <th scope="col" style={{ width: "30%" }}></th>
+                        <th scope="col" style={{ width: "30%" }}>
+                          <BiFilterAlt className="fs-5" />
+                        </th>
+                        <th scope="col" style={{ width: "30%" }}></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style={{ width: "5%" }}>
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td style={{ width: "5%" }}>987654321</td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={{ width: "5%" }}>
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td style={{ width: "5%" }}>987654321</td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={{ width: "5%" }}>
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td style={{ width: "5%" }}>987654321</td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={{ width: "5%" }}>
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td style={{ width: "5%" }}>987654321</td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={{ width: "5%" }}>
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td style={{ width: "5%" }}>987654321</td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td style={{ width: "30%" }}>
+                          <div className="d-flex gap-2">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="row py-3">
+                <div className="col-md-6 col-sm-6">
+                  <div className="d-flex gap-2 align-items-center">
+                    <div>
+                      {" "}
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                      >
+                        <option selected>select</option>
+                        <option value="1">10</option>
+                        <option value="2">20</option>
+                        <option value="3">30</option>
+                      </select>
+                    </div>
+                    <div className="">
+                      {" "}
+                      <p className="pt-3" style={{ fontSize: "14px" }}>
+                        Rows Showing 1 to 10 of 100 entries
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 col-sm-6">
+                  <div className="pt-3">
+                    <nav aria-label="Page navigation example">
+                      <ul className="pagination justify-content-end">
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                            tabIndex="-1"
+                            aria-disabled="true"
+                          >
+                            <MdArrowBackIosNew />
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            1
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            2
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            4
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            7
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            <HiOutlineDotsHorizontal />
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className="page-link text-dark page_link_hover rounded"
+                            href="#"
+                          >
+                            9
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className="page-link text-dark page_link_hover rounded"
+                            href="#"
+                          >
+                            <MdArrowForwardIos />
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex justify-content-between">
+                <button
+                  type="button"
+                  className={`btn btn-primay py-2 ${styles.learning_period_assessment_btn_left}`}
+                >
+                  খসড়া সংরক্ষণ করুন{" "}
+                  <MdOutlineKeyboardArrowRight
+                    className="fs-3"
+                    style={{
+                      marginTop: "-0.3rem",
+                    }}
+                  />{" "}
+                </button>
+                <button
+                  type="button"
+                  className={`btn btn-primay py-2 ${styles.learning_period_assessment_btn_right}`}
+                >
+                  জমা দিন{" "}
+                  <MdOutlineKeyboardArrowRight
+                    className="fs-3"
+                    style={{
+                      marginTop: "-0.3rem",
+                    }}
+                  />{" "}
+                </button>
+              </div>
+            </div>
+            {/* learing period assessment report end */}
             {/* shikhon kalin mollaion start */}
             <div className="py-5">
               <h3
