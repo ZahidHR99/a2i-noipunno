@@ -9,10 +9,10 @@ const StudentList = () => {
    .then((res) => {
     setStudents(res.data.data)
     console.log(res.data.data);
-
    })
 
  }, [])
+
 
 
  return (
