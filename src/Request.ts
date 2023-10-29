@@ -2,7 +2,8 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
-const token = JSON.parse(localStorage.getItem("customer_login_auth"))
+const authToken = localStorage.getItem("customer_login_auth") || ""
+const token :any = JSON.parse(authToken)
 axios.defaults.headers.common['Authorization'] = `Bearer ${token?.access_token}`;
 
 export function loginPassword(data: any) {
@@ -18,7 +19,7 @@ export function loginPassword(data: any) {
     return axios(options);
 }
 
-export function all_teachers(data: any) {
+export function all_teachers(data: any = "") {
     const page_list = `${API_URL}/v1/teachers`;
 
     const options = {
@@ -37,7 +38,6 @@ export function assessments() {
     const options = {
         method: "get",
         headers: { "content-type": "application/json" },
-        data,
         url: page_list,
     };
 
@@ -45,7 +45,7 @@ export function assessments() {
 }
 
 
-export function all_class(data: any) {
+export function all_class(data: any="") {
     const page_list = `${API_URL}/v1/classes`;
 
     const options = {

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TeachersList(teachers) {
+export default function TeachersList() {
   return (
     <div>
     <h1>List of Teachers</h1>

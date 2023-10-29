@@ -12,9 +12,6 @@ import StudentList from './component/StudentList';
 
 function App() {
   const [topbar, settopbar] = useState(false)
-  console.log(`window.location.pathname`, window.location.pathname);
-
-
   const fetchData = async () => {
     if (window.location.pathname !== "/login") {
       settopbar(true)
