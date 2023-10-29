@@ -38,7 +38,7 @@ const StudentList = () => {
                     <h5 className={styles.teacherName}>
                       {student?.student_name_bn}
                     </h5>
-                    <h6 className={styles.deg}>শ্রেণিঃ {student.class}</h6>
+                    <h6 className={styles.deg}>শ্রেণিঃ {student?.class}</h6>
                   </div>
                 </div>
                 <div className="p-1">
@@ -213,7 +213,6 @@ const StudentList = () => {
           </div>
         ))}
       </div>
-
     </div>
   );
 };
