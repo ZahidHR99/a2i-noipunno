@@ -9,16 +9,17 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiSidebar, BiRadioCircle } from "react-icons/bi";
 import { BsCloudSun, BsMoon } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
-import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import {
+  MdArrowBackIosNew,
+  MdOutlineArrowForwardIos,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 import { HiOutlineSun, HiOutlineDotsVertical } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
 import { all_teachers } from "../Request";
-import TeachersList from "../layout/TeachersList"
-
+import TeachersList from "../layout/TeachersList";
 
 export default function Home() {
-  
-
   const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
@@ -26,7 +27,6 @@ export default function Home() {
       setTeachers(response.data.data);
     });
   }, []);
-  
 
   return (
     <div className="content">
@@ -364,7 +364,7 @@ export default function Home() {
               </div>
             </div>
             {/* Teachers List start */}
-            
+
             {/* Teachers List end */}
             {/* Class Six subject start */}
             <div className="row">
@@ -976,124 +976,151 @@ export default function Home() {
               <div className="">
                 <div className="row">
                   {teachers.map((teacher, index) => (
-                    <div key={index} className="card shadow-lg border-0 col-md-3 m-2">
-                  
-                      <div className="d-flex justify-content-between gap-3 border-bottom">
-                        <div className="d-flex gap-3 align-items-center p-2">
-                          <div>
-                            <img
-                              src={TeacherImg}
-                              className="img-fluid"
-                              style={{ height: "50px" }}
+                    <div className="col-sm-6 col-md-4 my-2">
+                      <div key={index} className="card shadow-lg border-0">
+                        <div className="d-flex justify-content-between gap-3 border-bottom">
+                          <div className="d-flex gap-3 align-items-center p-2">
+                            <div>
+                              <img
+                                src={TeacherImg}
+                                className="img-fluid"
+                                style={{ height: "50px" }}
+                              />
+                            </div>
+                            <div className="mt-2">
+                              <h5 className={styles.teacherName}>
+                                {teacher.name_en}
+                              </h5>
+                              <h6 className={styles.deg}>{teacher.position}</h6>
+                            </div>
+                          </div>
+                          <div className="p-1">
+                            <HiOutlineDotsVertical
+                              className={`fs-4 ${styles.OutlineDotsVertical}`}
                             />
                           </div>
-                          <div className="mt-2">
-                            <h5 className={styles.teacherName}>{teacher.name_en}</h5>
-                            <h6 className={styles.deg}>{teacher.position}</h6>
-                          </div>
                         </div>
-                        <div className="p-1">
-                          <HiOutlineDotsVertical
-                            className={`fs-4 ${styles.OutlineDotsVertical}`}
-                          />
+                        <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
+                          <div className={styles.cardDesc}>বাংলা</div>
+                          <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                          <div className={styles.cardDesc}>বিজ্ঞান</div>
                         </div>
-                      </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
-                        <div className={styles.cardDesc}>বাংলা</div>
-                        <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                        <div className={styles.cardDesc}>বিজ্ঞান</div>
-                      </div>
-                      <div className="">
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          {/* {teachers.map((teacher) => (
+                        <div className="">
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            {/* {teachers.map((teacher) => (
                           <div key={teacher.id}>
                             <h5 className={styles.teacherName}>{teacher.name}</h5>
                             <h6 className={styles.deg}>{teacher.position}</h6>
                           </div>))} */}
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              {" "}
-                              <BiRadioCircle />
-                              মোবাইল :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> {teacher.mobile_no }</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle /> জন্ম তারিখ :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> ১২/১০/১৯৭৭</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle /> লিঙ্গ :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> মহিলা</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle /> জাতীয়তা :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> বাংলাদেশী</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle />
-                              ধর্ম :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> ইসলাম</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle />
-                              বৈবাহিক অবস্থা :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> বিবাহিতা</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle />
-                              এনআইডি নম্বর :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> xxx-xxxxxxxxx</li>
-                          </ul>
-                        </div>
-                        <div className="d-flex" style={{ marginLeft: "-1.5rem" }}>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li>
-                              <BiRadioCircle />
-                              পদবি :
-                            </li>
-                          </ul>
-                          <ul className={`${styles.teacher_info_list_group}`}>
-                            <li> সহকারী শিক্ষক</li>
-                          </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                {" "}
+                                <BiRadioCircle />
+                                মোবাইল :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> {teacher.mobile_no}</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle /> জন্ম তারিখ :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> ১২/১০/১৯৭৭</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle /> লিঙ্গ :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> মহিলা</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle /> জাতীয়তা :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> বাংলাদেশী</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle />
+                                ধর্ম :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> ইসলাম</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle />
+                                বৈবাহিক অবস্থা :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> বিবাহিতা</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle />
+                                এনআইডি নম্বর :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> xxx-xxxxxxxxx</li>
+                            </ul>
+                          </div>
+                          <div
+                            className="d-flex"
+                            style={{ marginLeft: "-1.5rem" }}
+                          >
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li>
+                                <BiRadioCircle />
+                                পদবি :
+                              </li>
+                            </ul>
+                            <ul className={`${styles.teacher_info_list_group}`}>
+                              <li> সহকারী শিক্ষক</li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1742,6 +1769,324 @@ export default function Home() {
               </div>
             </div>
             {/* report end */}
+            {/* expertness assessment start */}
+            <div className="row py-5">
+              <div className="d-flex align-items-center py-2 gap-2">
+                <div className="card shadow-lg border-0 p-2">
+                  <MdArrowBackIosNew className="fs-1" />
+                </div>
+                <div className="card shadow-lg border-0 p-1 w-100">
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <div style={{ fontSize: "14px" }}>
+                        <BiSidebar
+                          className={`fs-3 ${styles.teacher_info_list}`}
+                        />{" "}
+                        পারদর্শিতার মূল্যায়ন
+                      </div>
+                      <div style={{ marginLeft: "2rem" }}>
+                        <h6 style={{ color: "#C8DFDF", fontSize: "10px" }}>
+                          {" "}
+                          <AiOutlineHome />
+                          Dashboard{" "}
+                          <span style={{ color: "#000" }}>
+                            {" "}
+                            <MdOutlineArrowForwardIos />
+                            Data
+                          </span>
+                        </h6>
+                      </div>
+                    </div>
+                    <div className="d-flex gap-2 align-items-center fs-4">
+                      <FiStar /> <HiOutlineDotsVertical />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex align-items-center">
+                <div className="card shadow-lg border-0 w-100 rounded">
+                  <ul className="nav d-flex mt-2 justify-content-around py-1">
+                    <li className={`nav-item`}>
+                      <a
+                        className={`nav-link link-secondary ${styles.nav_tab_bottom_border} active`}
+                        id="expertness_assessment-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#expertness_assessment"
+                        href="#"
+                      >
+                        <SlBookOpen className="me-1" /> পারদর্শিতার মূল্যায়ন
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className={`nav-link link-secondary ${styles.nav_tab_bottom_border}`}
+                        id="behaviour_assessment-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#behaviour_assessment"
+                        href="#"
+                      >
+                        <SlBookOpen className="me-1" /> আচরণগত মূল্যায়ন
+                      </a>
+                    </li>
+                  </ul>
+                  <div
+                    className="tab-content"
+                    id="tabContent"
+                    style={{ backgroundColor: "#E4FEFF" }}
+                  >
+                    <div
+                      className="tab-pane fade show active"
+                      id="expertness_assessment"
+                      role="tabpanel"
+                      aria-labelledby="expertness_assessment-tab"
+                    >
+                      <div className="row p-5">
+                        <div className="col-sm-6 col-md-4">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              মূল্যায়ন শিরোনাম নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>
+                                মূল্যায়ন শিরোনাম নির্বাচন করুন
+                              </option>
+                              <option value="1">শিখনকালীন মূল্যায়ন</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-4">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              শিক্ষার্থী নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>
+                                {" "}
+                                শিক্ষার্থী নির্বাচন করুন
+                              </option>
+                              <option value="1">ইনতিশার পারভেজ - ৩২১০০</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-4">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              অধ্যায় নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>অধ্যায় নির্বাচন করুন </option>
+                              <option value="1">অধ্যায় ১</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-6">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              যোগ্যতা নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>যোগ্যতা নির্বাচন করুন </option>
+                              <option value="1">
+                                ৬.১ পরিবেশ - পরিস্থিতিকে বিবেচনায় নিয়ে ব্যক্তির
+                                আগ্রহ-চাহিদা অনুযায়ী মর্যাদা বজায় রেখে যোগাযোগ
+                                করতে পারা।
+                              </option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-6">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              পারদর্শিতা সূচক
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected> পারদর্শিতা সূচক</option>
+                              <option value="1">
+                                ৬.১.১ নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
+                                নিয়ে যোগাযোগ করতে পারছে।
+                              </option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="d-flex justify-content-end align-items-center pt-5 pe-5">
+                          <button
+                            type="button"
+                            className="btn btn-primay px-5"
+                            style={{
+                              backgroundColor: "#428F92",
+                              color: "#fff",
+                            }}
+                          >
+                            মূল্যায়ন শুরু করুন{" "}
+                            <MdOutlineKeyboardArrowRight
+                              className="fs-3"
+                              style={{
+                                marginTop: "-0.3rem",
+                              }}
+                            />{" "}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="tab-pane fade"
+                      id="behaviour_assessment"
+                      role="tabpanel"
+                      aria-labelledby="behaviour_assessment-tab"
+                    >
+                      <div className="row p-5">
+                        <div className="col-sm-6 col-md-4">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              মূল্যায়ন শিরোনাম নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>
+                                মূল্যায়ন শিরোনাম নির্বাচন করুন
+                              </option>
+                              <option value="1">শিখনকালীন মূল্যায়ন</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-4">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              শিক্ষার্থী নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>
+                                {" "}
+                                শিক্ষার্থী নির্বাচন করুন
+                              </option>
+                              <option value="1">ইনতিশার পারভেজ - ৩২১০০</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-4">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              অধ্যায় নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>অধ্যায় নির্বাচন করুন </option>
+                              <option value="1">অধ্যায় ১</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-6">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              যোগ্যতা নির্বাচন করুন
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected>যোগ্যতা নির্বাচন করুন </option>
+                              <option value="1">
+                                ৬.১ পরিবেশ - পরিস্থিতিকে বিবেচনায় নিয়ে ব্যক্তির
+                                আগ্রহ-চাহিদা অনুযায়ী মর্যাদা বজায় রেখে যোগাযোগ
+                                করতে পারা।
+                              </option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6 col-md-6">
+                          <div className="mb-3" style={{ fontSize: "12px" }}>
+                            <label className="form-label">
+                              পারদর্শিতা সূচক
+                            </label>
+                            <select
+                              className="form-select p-2"
+                              aria-label="Default select example"
+                              style={{ fontSize: "12px" }}
+                            >
+                              <option selected> পারদর্শিতা সূচক</option>
+                              <option value="1">
+                                ৬.১.১ নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
+                                নিয়ে যোগাযোগ করতে পারছে।
+                              </option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="d-flex justify-content-end align-items-center pt-5 pe-5">
+                          <button
+                            type="button"
+                            className="btn btn-primay px-5"
+                            style={{
+                              backgroundColor: "#428F92",
+                              color: "#fff",
+                            }}
+                          >
+                            মূল্যায়ন শুরু করুন{" "}
+                            <MdOutlineKeyboardArrowRight
+                              className="fs-3"
+                              style={{
+                                marginTop: "-0.3rem",
+                              }}
+                            />{" "}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* expertness assessment start */}
             {/* shikhon kalin mollaion start */}
             <div className="py-5">
               <h3
