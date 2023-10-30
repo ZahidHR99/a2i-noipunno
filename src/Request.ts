@@ -64,12 +64,12 @@ export function all_class(data: any = "") {
 export function Pi_save(
     data: any
 ) {
-    const page_list = `${API_URL}/v1/pi-evaluation`;
+    const page_list = `https://teacher2.project-ca.com/api/pi-evaluation`;
 
 
     const options = {
         method: "POST",
-        headers: { 'content-type': 'application/form-data' },
+        headers: { "content-type": "application/json" },
         data,
         url: page_list,
     };
