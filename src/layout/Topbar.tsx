@@ -215,28 +215,18 @@ export default function Topbar() {
                       <h2
                         className="accordion-header pages-buttons"
                         id="shikkhok-headingOne"
-                      >
+                      ><a href="/teachers-list" className="text-decoration-none">
                         <button
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
                           type="button"
                         >
-                          <Link to="/teacher" className="text-decoration-none">
+                          
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 px-2">শিক্ষক</span>
-                          </Link>
+                          
                         </button>
+                        </a>
                       </h2>
-                      {/* {
-                        teachersdata.map((d: any, k) =>
-
-                          <a href="#" className="d-block " key={k}>
-                            <button className="w-100 btn btn-light px-5 text-start">
-                              {d.name_bn}
-                            </button>
-                          </a>
-
-                        )
-                      } */}
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
@@ -345,7 +335,7 @@ export default function Topbar() {
                     <span className="fs-6 px-2">প্রথম পাতা</span>
                     <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
-                  <div className="dropdown-menu" aria-labelledby="prothomPata">
+                  {/* <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
                       <a className="dropdown-item">
                         <div className="d-flex t">
@@ -358,7 +348,7 @@ export default function Topbar() {
                         </div>
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="dropdown">
                   <button
@@ -398,20 +388,37 @@ export default function Topbar() {
                     </div>
                   </div>
                 </div>
-                <div className="dropdown">
-                  <button
-                    className="d-flex justify-content-between align-items-center btn btn-ligh"
-                    type="button"
-                    id="prothomPata"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
+                {/* <div className="dropdown">
+
+                
+                <div
+                    className="accordion accordion-flush responsive-single-menu-button"
+                    id="shikkhok"
                   >
-                    <Link to="/teacher" className="text-decoration-none">
-                      <img src="/assets/images/teacher.svg" alt="" />
-                      <span className="fs-6 px-2">শিক্ষক</span>
-                    </Link>
-                  </button>
-                </div>
+                    <div className="accordion-item">
+                      <h2
+                        className="accordion-header pages-buttons"
+                        id="shikkhok-headingOne"
+                      >
+
+                  
+                        <button
+                          className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
+                          type="button"
+                        >
+                          <Link to="/teachers-list" className="text-decoration-none">
+                          
+                            <img src="/assets/images/teacher.svg" alt="" />
+                            <span className="fs-6 px-2">শিক্ষক</span>
+                            </Link>
+                        </button>
+</h2>
+</div>
+</div>
+                
+
+
+                </div> */}
                 <div className="dropdown">
                   <button
                     className="d-flex justify-content-between align-items-center btn btn-ligh"
@@ -466,7 +473,7 @@ export default function Topbar() {
                     </div>
                   </div>
                 </div>
-                <div className="dropdown">
+                {/* <div className="dropdown">
                   <button
                     className="d-flex justify-content-between align-items-center btn btn-ligh"
                     type="button"
@@ -477,10 +484,10 @@ export default function Topbar() {
                     <img src="/assets/images/request.svg" alt="" />
                     <span className="fs-6 px-2">অনুরোধসমূহ</span>
                   </button>
-                </div>
+                </div> */}
               </div>
               <div>
-                <div className="dropdown">
+                {/* <div className="dropdown">
                   <button
                     className="np-btn-form-submit border-0 rounded-1 d-flex justify-content-between align-items-center rounded-1 dropdown-toggle"
                     type="button"
@@ -590,7 +597,7 @@ export default function Topbar() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </nav>
