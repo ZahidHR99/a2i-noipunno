@@ -82,7 +82,7 @@ export default function Teacher() {
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
-  console.log(`assessment_uid`, assessment_uid , element);
+  console.log(`assessment_uid`, assessment_uid, element);
 
   useEffect(() => {
     fetchData();
@@ -159,6 +159,8 @@ export default function Teacher() {
                             </div>
                             <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
                               <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                              {/* <h6 className={styles.session}> {d.own_subjet.class_room.shift_id
+                              } </h6> */}
                               <h6 className={styles.horizontal_bar}>। </h6>
                               <h6 className={styles.branch}>পদ্মা শাথা</h6>
                             </div>
@@ -190,7 +192,7 @@ export default function Teacher() {
                                 setparodorshita_acoron_tab(key);
                                 setallassessmet(d?.assessment_details);
                                 setelement(e);
-                                
+
                               }}
                               href="#"
                             >
@@ -349,17 +351,17 @@ export default function Teacher() {
                                           {d?.pi_id}
                                         </h6>
 
-                                        <Link to={"/student-mullayon/"+ assessment_uid} className="text-decoration-none">
-                                        <h6
-                                          data-bs-toggle="modal"
-                                          data-bs-target="#exampleModal"
-                                          onClick={(e: any) => pi_attr(d, e)}
-                                        >
-                                          {d?.name_bn}
-                                        </h6>
+                                        <Link to={"/student-mullayon/" + assessment_uid} className="text-decoration-none">
+                                          <h6
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"
+                                            onClick={(e: any) => pi_attr(d, e)}
+                                          >
+                                            {d?.name_bn}
+                                          </h6>
 
                                         </Link>
-                                        
+
                                       </div>
                                     </div>
                                   </div>
