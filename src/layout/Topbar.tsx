@@ -1,4 +1,36 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { all_class } from "../Request";
+
 export default function Topbar() {
+  const [classdata, setdata] = useState([]);
+  // const navigate = useNavigate();
+
+  const handleLogout = (e:any) => {
+    localStorage.clear();
+    window.location.reload();
+    // window.location = window.location.origin;
+    console.log("Logout successful" , e);
+  };
+
+  const fetchData = async () => {
+    const { data }: any = await all_class();
+    if (data.status) {
+      setdata(data.data);
+    }
+  };
+
+
+
+  // const handleClassData = async (clss_id: any) => {
+  //   const classData = await clssWiseData(clss_id)
+  //   console.log("ClssWiseData=============", classData.data.data)
+  // };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
       <section className="noipunno-navbar-section np">
@@ -6,10 +38,7 @@ export default function Topbar() {
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
               <a className="navbar-brand" href="/">
-                <img
-                  src="https://teacher.project-ca.com/frontend/images/noipunno-new-logo.svg"
-                  alt=""
-                />
+                <img src="/assets/images/noipunno-new-logo.svg" alt="" />
               </a>
               <button
                 className="navbar-toggler"
@@ -37,10 +66,7 @@ export default function Topbar() {
                       aria-expanded="false"
                     >
                       <div className="user-section">
-                        <img
-                          src="https://teacher.project-ca.com/frontend/images/user-profile.png"
-                          alt=""
-                        />
+                        <img src="/assets/images/user-profile.png" alt="" />
                       </div>
                     </a>
                     <ul
@@ -50,7 +76,8 @@ export default function Topbar() {
                       <li>
                         <a
                           className="dropdown-item"
-                          href="https://teacher.project-ca.com/logout"
+                          href="#"
+                          onClick={(e: any) => handleLogout(e)}
                         >
                           Logout
                         </a>
@@ -73,10 +100,7 @@ export default function Topbar() {
                 data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample"
               >
-                <img
-                  src="https://teacher.project-ca.com/frontend/images/home.svg"
-                  alt=""
-                />
+                <img src="/assets/images/home.svg" alt="" />
               </button>
               <div
                 className="offcanvas offcanvas-start d-lg-none"
@@ -87,10 +111,7 @@ export default function Topbar() {
                 <div className="offcanvas-header">
                   <h5 className="offcanvas-title" id="offcanvasExampleLabel">
                     <a className="navbar-brand" href="/">
-                      <img
-                        src="https://teacher.project-ca.com/frontend/images/noipunno-new-logo.svg"
-                        alt=""
-                      />
+                      <img src="/assets/images/noipunno-new-logo.svg" alt="" />
                     </a>
                   </h5>
                   <button
@@ -115,10 +136,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="prothompata-collapseOne"
                         >
-                          <img
-                            src="https://teacher.project-ca.com/frontend/images/home.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/home.svg" alt="" />
                           <span className="fs-6 px-2">প্রথম পাতা</span>
                         </button>
                       </h2>
@@ -154,10 +172,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="report-collapseOne"
                         >
-                          <img
-                            src="https://teacher.project-ca.com/frontend/images/report.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/report.svg" alt="" />
                           <span className="fs-6 px-2">রিপোর্ট</span>
                         </button>
                       </h2>
@@ -168,17 +183,17 @@ export default function Topbar() {
                         data-bs-parent="#report"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <a href="#" className="d-block ">
+                          <Link to={"/student-mullayon"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
-                          </a>
+                          </Link>
                           <a href="#" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
                             </button>
                           </a>
-                          <a href="#" className="d-block ">
+                          <a href={"/product-details/"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শ্রেণির প্রতিবেদন
                             </button>
@@ -205,13 +220,23 @@ export default function Topbar() {
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
                           type="button"
                         >
-                          <img
-                            src="https://teacher.project-ca.com/frontend/images/teacher.svg"
-                            alt=""
-                          />
-                          <span className="fs-6 px-2">শিক্ষক</span>
+                          <Link to="/teacher" className="text-decoration-none">
+                            <img src="/assets/images/teacher.svg" alt="" />
+                            <span className="fs-6 px-2">শিক্ষক</span>
+                          </Link>
                         </button>
                       </h2>
+                      {/* {
+                        teachersdata.map((d: any, k) =>
+
+                          <a href="#" className="d-block " key={k}>
+                            <button className="w-100 btn btn-light px-5 text-start">
+                              {d.name_bn}
+                            </button>
+                          </a>
+
+                        )
+                      } */}
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
@@ -228,10 +253,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="shikkharthi-collapseOne"
                         >
-                          <img
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/student.svg" alt="" />
                           <span className="fs-6 px-2">শিক্ষার্থী</span>
                         </button>
                       </h2>
@@ -267,10 +289,7 @@ export default function Topbar() {
                           aria-expanded="false"
                           aria-controls="sreni-collapseOne"
                         >
-                          <img
-                            src="https://teacher.project-ca.com/frontend/images/class.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/class.svg" alt="" />
                           <span className="fs-6 px-2">শ্রেণি</span>
                         </button>
                       </h2>
@@ -281,16 +300,13 @@ export default function Topbar() {
                         data-bs-parent="#sreni"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <a href="#" className="d-block ">
-                            <button className="w-100 btn btn-light px-5 text-start">
-                              ষষ্ঠ শ্রেণি
-                            </button>
-                          </a>
-                          <a href="#" className="d-block ">
-                            <button className="w-100 btn btn-light px-5 text-start">
-                              সপ্তম শ্রেণি
-                            </button>
-                          </a>
+                          {classdata.map((d: any, k) => (
+                            <a href="#" className="d-block " key={k}>
+                              <button className="w-100 btn btn-light px-5 text-start">
+                                {d.name_bn}
+                              </button>
+                            </a>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -308,10 +324,7 @@ export default function Topbar() {
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
                           type="button"
                         >
-                          <img
-                            src="https://teacher.project-ca.com/frontend/images/request.svg"
-                            alt=""
-                          />
+                          <img src="/assets/images/request.svg" alt="" />
                           <span className="fs-6 px-2">অনুরোধসমূহ</span>
                         </button>
                       </h2>
@@ -328,15 +341,9 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/home.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/home.svg" alt="" />
                     <span className="fs-6 px-2">প্রথম পাতা</span>
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
@@ -361,23 +368,18 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                     <span className="fs-6 px-2">রিপোর্ট</span>
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={"/student-mullayon"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীদের মূল্যায়ন</span>
                         </div>
-                      </a>
+                      </Link>
+
                       <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর ট্রান্সক্রিপ্ট</span>
@@ -404,11 +406,10 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/teacher.svg"
-                      alt=""
-                    />
-                    <span className="fs-6 px-2">শিক্ষক</span>
+                    <Link to="/teacher" className="text-decoration-none">
+                      <img src="/assets/images/teacher.svg" alt="" />
+                      <span className="fs-6 px-2">শিক্ষক</span>
+                    </Link>
                   </button>
                 </div>
                 <div className="dropdown">
@@ -419,28 +420,22 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/student.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/student.svg" alt="" />
                     <span className="fs-6 px-2">শিক্ষার্থী</span>
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={'/student-list'} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর তালিকা</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </Link>
+                      <Link to={'/'} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর হাজিরা</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -452,28 +447,22 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/class.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/class.svg" alt="" />
                     <span className="fs-6 px-2">শ্রেণি</span>
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/arrow-down.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <a className="dropdown-item">
+                      <Link to={"/class/6"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>ষষ্ঠ শ্রেণি</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </Link>
+                      <Link to={"/class/7"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>সপ্তম শ্রেণি</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -485,10 +474,7 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/request.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/request.svg" alt="" />
                     <span className="fs-6 px-2">অনুরোধসমূহ</span>
                   </button>
                 </div>
@@ -502,15 +488,9 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/add.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/add.svg" alt="" />
                     <span className="px-3">যোগ করুন</span>
-                    <img
-                      src="https://teacher.project-ca.com/frontend/images/arrow-down-white.svg"
-                      alt=""
-                    />
+                    <img src="/assets/images/arrow-down-white.svg" alt="" />
                   </button>
                   <div
                     className="dropdown-menu"
@@ -524,7 +504,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/teacher.svg"
+                            src="/assets/images/teacher.svg"
                             alt=""
                           />
                           <span>শিক্ষক যোগ করুন</span>
@@ -537,7 +517,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
+                            src="/assets/images/student.svg"
                             alt=""
                           />
                           <span>ব্রাঞ্চ যোগ করুন</span>
@@ -550,7 +530,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
+                            src="/assets/images/student.svg"
                             alt=""
                           />
                           <span>ভার্সন যোগ করুন</span>
@@ -563,7 +543,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
+                            src="/assets/images/student.svg"
                             alt=""
                           />
                           <span>শিক্ষার্থী যোগ করুন</span>
@@ -576,7 +556,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
+                            src="/assets/images/student.svg"
                             alt=""
                           />
                           <span>শিফট যোগ করুন</span>
@@ -589,7 +569,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
+                            src="/assets/images/student.svg"
                             alt=""
                           />
                           <span>সেকশন যোগ করুন</span>
@@ -602,7 +582,7 @@ export default function Topbar() {
                         <div className="d-flex align-items-center">
                           <img
                             className="d-block pe-2"
-                            src="https://teacher.project-ca.com/frontend/images/student.svg"
+                            src="/assets/images/student.svg"
                             alt=""
                           />
                           <span>শাখা যোগ করুন</span>

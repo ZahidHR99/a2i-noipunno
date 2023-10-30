@@ -1,36 +1,50 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from "./component/PrivateRoute";
 import Login from "./component/Login";
 import Topbar from "./layout/Topbar";
 import Footer from "./layout/Footer";
 import Home from "./component/Home";
+import { useEffect, useState } from "react";
+import StudentMullayon from './component/StudentMullayon';
+import Teacher from './component/Teacher';
+import ClassWiseSubject from './component/ClassWiseSubject';
+import StudentList from './component/StudentList';
 
 function App() {
+  const [topbar, settopbar] = useState(false)
+  const fetchData = async () => {
+    if (window.location.pathname !== "/login") {
+      settopbar(true)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [window.location.pathname]);
 
   return (
 
     <>
 
-    {
-      window.location.pathname != "/login" && <Topbar />
-    }
-    
+      {
+        topbar && <Topbar />
+      }
 
-
-    <Router>
       <Routes>
-        <Route exact path="/" element={<PrivateRoute />}>
-          <Route path="/" element={ <Home /> } />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/student-mullayon/:assessment_uid" element={<StudentMullayon />} />
+          <Route path="/teacher" element={<Teacher />} />
+          <Route path="/class/:id" element={<ClassWiseSubject />} />
+          <Route path="/student-list" element={<StudentList />} />
         </Route>
-        <Route path="/login" element={ <Login /> } />
+        <Route path="/login" element={<Login />} />
       </Routes>
-    </Router>
 
-    {
-      window.location.pathname != "/login" && <Footer />
-    }
+      {
+        topbar && <Footer />
+      }
 
-    
     </>
   );
 }

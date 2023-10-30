@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import loginPageBG from '../../public/assets/images/login-bg.png';
 
 
 export default function Login() {
-
   const navigate = useNavigate();
+  const [error, seterror] = useState("");
 
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     const datas = new FormData(event.target);
 
-    let { data } = await loginPassword(datas);
+    const { data }: any = await loginPassword(datas);
 
-    console.log("data ==========", data);
+    // console.log("data", data.status);
 
-    if (data.success) {
-      console.log("success");
-
+    if (data?.status === true) {
+      // console.log("user Details", data?.data.user)
+      const token = data?.data?.access_token;
+      localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
+      localStorage.setItem('token', token)
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      // navigate("/");
+      window.location.reload();
     } else {
-      navigate('/login')
+      seterror("Wrong Crediantial")
     }
-
-
 
   }
 
@@ -40,6 +45,10 @@ export default function Login() {
               </div>
               <div className="col-md-5 cols-sm-12">
                 <div className="card login-form-card">
+                  {
+                    error && <p className="text-center text-danger">{error}</p>
+                  }
+
                   <p className="teacher-login-title text-center">লগ ইন</p>
                   {/* Form Start */}
                   <form noValidate onSubmit={handleSubmit} >
@@ -75,7 +84,7 @@ export default function Login() {
                         <input type="password" id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
                         <div className="input-group-append password-toggle">
                           <span>
-                            <i id="password-toggle" className="fa fa-eye-slash" onclick="togglePassword()" />
+                            <i id="password-toggle" className="fa fa-eye-slash" onClick="togglePassword()" />
                           </span>
                         </div>
                       </div>
