@@ -33,23 +33,17 @@ import { all_teachers, teacher_own_subject } from "../Request";
 export default function Home() {
   const [teachers, setTeachers] = useState<any>([]);
 
-
-
   const fetchData = async () => {
-
     const own_subjet: any = await teacher_own_subject();
-    localStorage.setItem("own_subjet" , JSON.stringify(own_subjet)  )
+    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
-
-
-
 
   useEffect(() => {
     all_teachers().then((response) => {
       setTeachers(response.data.data);
     });
 
-    fetchData()
+    fetchData();
   }, []);
 
   return (
@@ -2126,27 +2120,33 @@ export default function Home() {
                   <table className="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col" style={{ width: "5%" }}>
+                        <th className={`${styles.table_1st_column_sticky}`}>
                           শিক্ষার্থীর <BiFilterAlt className="fs-5 ms-4" />
                         </th>
-                        <th scope="col" style={{ width: "5%" }}>
+                        <th className={`${styles.table_2nd_column_sticky}`}>
                           শিক্ষার্থীর ID
                         </th>
-                        <th scope="col" style={{ width: "30%" }}></th>
-                        <th scope="col" style={{ width: "30%" }}>
+                        <th style={{ minWidth: "330px" }}></th>
+                        <th style={{ minWidth: "300px" }}>
                           <BiFilterAlt className="fs-5" />
                         </th>
-                        <th scope="col" style={{ width: "30%" }}></th>
+                        <th style={{ minWidth: "380px" }}></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td style={{ width: "5%" }}>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
                           <GoPerson className="fs-6" /> ইনতিশার পারভেজ
                         </td>
-                        <td style={{ width: "5%" }}>987654321</td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2165,8 +2165,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2185,8 +2185,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2208,12 +2208,18 @@ export default function Home() {
                         </td>
                       </tr>
                       <tr>
-                        <td style={{ width: "5%" }}>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
                           <GoPerson className="fs-6" /> ইনতিশার পারভেজ
                         </td>
-                        <td style={{ width: "5%" }}>987654321</td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2232,8 +2238,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2252,8 +2258,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2275,12 +2281,18 @@ export default function Home() {
                         </td>
                       </tr>
                       <tr>
-                        <td style={{ width: "5%" }}>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
                           <GoPerson className="fs-6" /> ইনতিশার পারভেজ
                         </td>
-                        <td style={{ width: "5%" }}>987654321</td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2299,8 +2311,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2319,8 +2331,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2342,12 +2354,18 @@ export default function Home() {
                         </td>
                       </tr>
                       <tr>
-                        <td style={{ width: "5%" }}>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
                           <GoPerson className="fs-6" /> ইনতিশার পারভেজ
                         </td>
-                        <td style={{ width: "5%" }}>987654321</td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2366,8 +2384,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2386,8 +2404,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2409,12 +2427,18 @@ export default function Home() {
                         </td>
                       </tr>
                       <tr>
-                        <td style={{ width: "5%" }}>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
                           <GoPerson className="fs-6" /> ইনতিশার পারভেজ
                         </td>
-                        <td style={{ width: "5%" }}>987654321</td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2433,8 +2457,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2453,8 +2477,8 @@ export default function Home() {
                             </div>
                           </div>
                         </td>
-                        <td style={{ width: "30%" }}>
-                          <div className="d-flex gap-2">
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
                             {" "}
                             <div
                               className=""
@@ -2510,8 +2534,6 @@ export default function Home() {
                           <a
                             className={`page-link text-dark ${styles.page_link_hover} rounded`}
                             href="#"
-                            tabIndex="-1"
-                            aria-disabled="true"
                           >
                             <MdArrowBackIosNew />
                           </a>
@@ -2582,7 +2604,7 @@ export default function Home() {
                         </li>
                         <li className="page-item">
                           <a
-                            className="page-link text-dark page_link_hover rounded"
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
                             href="#"
                           >
                             9
@@ -2590,7 +2612,7 @@ export default function Home() {
                         </li>
                         <li className="page-item">
                           <a
-                            className="page-link text-dark page_link_hover rounded"
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
                             href="#"
                           >
                             <MdArrowForwardIos />
