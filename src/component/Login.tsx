@@ -1,7 +1,11 @@
 import React from 'react';
 import { loginPassword } from '../Request';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Login() {
+
+  const navigate = useNavigate();
 
 
   const handleSubmit = async (event) => {
@@ -10,9 +14,13 @@ export default function Login() {
 
     let { data } = await loginPassword(datas);
 
-    console.log("data", data);
-    if (data.success) {
+    console.log("data ==========", data);
 
+    if (data.success) {
+      console.log("success");
+
+    } else {
+      navigate('/login')
     }
 
 
