@@ -33,23 +33,17 @@ import { all_teachers, teacher_own_subject } from "../Request";
 export default function Home() {
   const [teachers, setTeachers] = useState<any>([]);
 
-
-
   const fetchData = async () => {
-
     const own_subjet: any = await teacher_own_subject();
-    localStorage.setItem("own_subjet" , JSON.stringify(own_subjet)  )
+    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
-
-
-
 
   useEffect(() => {
     all_teachers().then((response) => {
       setTeachers(response.data.data);
     });
 
-    fetchData()
+    fetchData();
   }, []);
 
   return (
@@ -71,8 +65,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -89,15 +83,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -114,15 +108,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -139,15 +133,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -164,15 +158,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -189,15 +183,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -214,7 +208,7 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
@@ -436,7 +430,7 @@ export default function Home() {
                   aria-labelledby="provati-tab"
                 >
                   <div className="row">
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -460,7 +454,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -484,7 +478,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -508,7 +502,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -532,7 +526,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -556,7 +550,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -580,7 +574,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -613,7 +607,7 @@ export default function Home() {
                   aria-labelledby="deba_session-tab"
                 >
                   <div className="row">
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -637,7 +631,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -661,7 +655,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -685,7 +679,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -709,7 +703,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -733,7 +727,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -757,7 +751,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -790,7 +784,7 @@ export default function Home() {
                   aria-labelledby="sondha_session-tab"
                 >
                   <div className="row">
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -814,7 +808,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -838,7 +832,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -862,7 +856,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -886,7 +880,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -910,7 +904,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -934,7 +928,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -2110,7 +2104,554 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            
+            {/* expertness assessment start */}
+            {/* learing period assessment report start */}
+            <div className="py-3">
+              <div>
+                <h4>শিখনকালীন মূল্যায়ন প্রতিবেদন (PI) </h4>
+                <h5 className="fw-bold">পারদর্শিতা সূচক ৬.১.১ </h5>
+                <h6>
+                  নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                  পারছে।
+                </h6>
+              </div>
+              <div className="card shadow-lg p-3 mt-3">
+                <div className="table-responsive">
+                  <table className="table table-sm">
+                    <thead>
+                      <tr>
+                        <th className={`${styles.table_1st_column_sticky}`}>
+                          শিক্ষার্থীর <BiFilterAlt className="fs-5 ms-4" />
+                        </th>
+                        <th className={`${styles.table_2nd_column_sticky}`}>
+                          শিক্ষার্থীর ID
+                        </th>
+                        <th style={{ minWidth: "330px" }}></th>
+                        <th style={{ minWidth: "300px" }}>
+                          <BiFilterAlt className="fs-5" />
+                        </th>
+                        <th style={{ minWidth: "380px" }}></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          className={`pt-3 ${styles.table_1st_column_sticky}`}
+                        >
+                          <GoPerson className="fs-6" /> ইনতিশার পারভেজ
+                        </td>
+                        <td
+                          className={`pt-3 ${styles.table_2nd_column_sticky}`}
+                        >
+                          987654321
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                              করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <BiCircle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                              ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="d-flex gap-2 align-items-center">
+                            {" "}
+                            <div
+                              className=""
+                              style={{
+                                border: "1px solid #eee",
+                                padding: "5px 6px",
+                                borderRadius: "3px",
+                                maxHeight: "40px",
+                              }}
+                            >
+                              <FiTriangle className="fs-5 mt-1" />
+                            </div>
+                            <div>
+                              অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় পরিবেশ -
+                              পরিস্থিতির ভিন্নতা অনুযায়ী ব্যক্তির আগ্রহ, চাহিদা
+                              ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="row py-3">
+                <div className="col-md-6 col-sm-6">
+                  <div className="d-flex gap-2 align-items-center">
+                    <div>
+                      {" "}
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                      >
+                        <option selected>select</option>
+                        <option value="1">10</option>
+                        <option value="2">20</option>
+                        <option value="3">30</option>
+                      </select>
+                    </div>
+                    <div className="">
+                      {" "}
+                      <p className="pt-3" style={{ fontSize: "14px" }}>
+                        Rows Showing 1 to 10 of 100 entries
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 col-sm-6">
+                  <div className="pt-3">
+                    <nav aria-label="Page navigation example">
+                      <ul className="pagination justify-content-end">
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            <MdArrowBackIosNew />
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            1
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            2
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            3
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            4
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            7
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            <HiOutlineDotsHorizontal />
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            9
+                          </a>
+                        </li>
+                        <li className="page-item">
+                          <a
+                            className={`page-link text-dark ${styles.page_link_hover} rounded`}
+                            href="#"
+                          >
+                            <MdArrowForwardIos />
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex justify-content-between">
+                <button
+                  type="button"
+                  className={`btn btn-primay py-2 ${styles.learning_period_assessment_btn_left}`}
+                >
+                  খসড়া সংরক্ষণ করুন{" "}
+                  <MdOutlineKeyboardArrowRight
+                    className="fs-3"
+                    style={{
+                      marginTop: "-0.3rem",
+                    }}
+                  />{" "}
+                </button>
+                <button
+                  type="button"
+                  className={`btn btn-primay py-2 ${styles.learning_period_assessment_btn_right}`}
+                >
+                  জমা দিন{" "}
+                  <MdOutlineKeyboardArrowRight
+                    className="fs-3"
+                    style={{
+                      marginTop: "-0.3rem",
+                    }}
+                  />{" "}
+                </button>
+              </div>
+            </div>
+            {/* learing period assessment report end */}
+            {/* shikhon kalin mollaion start */}
             <div className="py-5">
               <h3
                 className="text-center py-2 text-white"

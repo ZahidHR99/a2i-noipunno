@@ -82,18 +82,29 @@ export default function StudentMullayon() {
     pi_uid: any,
     weight_uid: any
   ) => {
-    const datas = new FormData();
-    datas.append("assessment_uid", assessment_uid);
-    datas.append("competence_uid", competence_uid);
-    datas.append("pi_uid", pi_uid);
-    datas.append("weight_uid", weight_uid);
-    datas.append("student_uid", individual_student.uid);
-    datas.append("teacher_caid", teacher.caid);
-    datas.append("submit_status", "2");
-    datas.append("is_approved", "1");
 
-    let { data } = await Pi_save(datas);
-    console.log(`data`, data);
+    try {
+
+      let { data } = await Pi_save(
+        assessment_uid,
+        competence_uid,
+        pi_uid,
+        weight_uid,
+        individual_student.uid,
+        teacher.caid,
+        2,
+        1
+      );
+  
+      if (data.status) {
+        alert("Success")
+      }
+      
+    } catch (error) {
+      alert("SOmething went wrong")
+    }
+
+    
   };
 
   console.log(`Student`, Student);
@@ -230,7 +241,7 @@ export default function StudentMullayon() {
                                                         scope="col"
                                                         style={{ width: "5%" }}
                                                       >
-                                                        শিক্ষার্থীর{" "} 
+                                                        শিক্ষার্থীর{" "}
                                                         <BiFilterAlt className="fs-5 ms-4" />
                                                       </th>
                                                       <th
@@ -255,7 +266,10 @@ export default function StudentMullayon() {
                                                         style={{ width: "5%" }}
                                                       >
                                                         <GoPerson className="fs-6" />{" "}
-                                                        {individual_student.student_name_bn} <br />
+                                                        {
+                                                          individual_student.student_name_bn
+                                                        }{" "}
+                                                        <br />
                                                         {individual_student.uid}
                                                       </td>
 
