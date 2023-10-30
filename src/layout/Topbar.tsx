@@ -140,7 +140,7 @@ export default function Topbar() {
                           <span className="fs-6 px-2">প্রথম পাতা</span>
                         </button>
                       </h2>
-                      {/* <div
+                      <div
                         id="prothompata-collapseOne"
                         className="accordion-collapse collapse"
                         aria-labelledby="prothompata-headingOne"
@@ -158,7 +158,7 @@ export default function Topbar() {
                             </button>
                           </a>
                         </div>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="report">
@@ -333,7 +333,7 @@ export default function Topbar() {
                   >
                     <img src="/assets/images/home.svg" alt="" />
                     <span className="fs-6 px-2">প্রথম পাতা</span>
-                    {/* <img src="/assets/images/arrow-down.svg" alt="" /> */}
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
                   {/* <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
@@ -358,7 +358,7 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {/* <img src="/assets/images/arrow-down.svg" alt="" /> */}
+                    <img src="/assets/images/arrow-down.svg" alt="" />
                     <span className="fs-6 px-2">রিপোর্ট</span>
                     <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
@@ -388,7 +388,7 @@ export default function Topbar() {
                     </div>
                   </div>
                 </div>
-                <div className="dropdown">
+                {/* <div className="dropdown">
 
                 
                 <div
@@ -418,7 +418,7 @@ export default function Topbar() {
                 
 
 
-                </div>
+                </div> */}
                 <div className="dropdown">
                   <button
                     className="d-flex justify-content-between align-items-center btn btn-ligh"
