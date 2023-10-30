@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function ProfileCard() {
 
-    const [userDetails, setuserDetails] = useState({});
+    const [userDetails, setuserDetails] = useState<any>({});
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("customer_login_auth"));
     if (items) {

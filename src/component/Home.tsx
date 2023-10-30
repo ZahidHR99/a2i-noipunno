@@ -2534,8 +2534,6 @@ export default function Home() {
                           <a
                             className={`page-link text-dark ${styles.page_link_hover} rounded`}
                             href="#"
-                            tabIndex="-1"
-                            aria-disabled="true"
                           >
                             <MdArrowBackIosNew />
                           </a>
