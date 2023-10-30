@@ -333,7 +333,7 @@ export default function Topbar() {
                   >
                     <img src="/assets/images/home.svg" alt="" />
                     <span className="fs-6 px-2">প্রথম পাতা</span>
-                    <img src="/assets/images/arrow-down.svg" alt="" />
+                    
                   </button>
                   {/* <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
@@ -358,7 +358,7 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img src="/assets/images/arrow-down.svg" alt="" />
+                    
                     <span className="fs-6 px-2">রিপোর্ট</span>
                     <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
