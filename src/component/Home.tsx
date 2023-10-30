@@ -65,8 +65,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -83,15 +83,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -108,15 +108,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -133,15 +133,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -158,15 +158,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -183,15 +183,15 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-sm-4 col-md-3">
-                    <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                  <div className="col-6 col-sm-4 col-md-4 col-lg-3">
+                    <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
                         <div className="d-flex justify-content-center py-2 pb-4">
                           <div
@@ -208,7 +208,7 @@ export default function Home() {
                           শ্রেণি শিক্ষক : <span> শওকত আলী</span>
                         </h5>
                       </div>
-                      <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                      <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                         <h6 className={styles.session}>প্রভাতি সেশন</h6>
                         <h6 className={styles.horizontal_bar}>। </h6>
                         <h6 className={styles.branch}>পদ্মা শাথা</h6>
@@ -430,7 +430,7 @@ export default function Home() {
                   aria-labelledby="provati-tab"
                 >
                   <div className="row">
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -454,7 +454,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -478,7 +478,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -502,7 +502,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -526,7 +526,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -550,7 +550,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -574,7 +574,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -607,7 +607,7 @@ export default function Home() {
                   aria-labelledby="deba_session-tab"
                 >
                   <div className="row">
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -631,7 +631,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -655,7 +655,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -679,7 +679,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -703,7 +703,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -727,7 +727,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -751,7 +751,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -784,7 +784,7 @@ export default function Home() {
                   aria-labelledby="sondha_session-tab"
                 >
                   <div className="row">
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -808,7 +808,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -832,7 +832,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -856,7 +856,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -880,7 +880,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -904,7 +904,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
@@ -928,7 +928,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6 col-sm-4 col-md-2">
+                    <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                       <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
                         <div className="gap-1 gap-lg-3 justify-content-center">
                           <div className="d-flex justify-content-center py-2 pb-4">
