@@ -25,7 +25,7 @@ export default function Login() {
       localStorage.setItem('token', token)
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       // navigate("/");
-      window.location.reload();
+      window.location.assign("/");
     } else {
       seterror("Wrong Crediantial")
     }
