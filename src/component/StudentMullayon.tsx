@@ -43,7 +43,6 @@ export default function StudentMullayon(props:any) {
   const [showToggle, setshowToggle] = useState<any>({});
   const [compitance, setcompitance] = useState<any>([]);
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
-  console.log(`props`, props, all_pi_arrtibute );
   const fetchData = async () => {
 
 
@@ -111,6 +110,16 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
         submit_status :2,
         is_approved:1,
       };
+
+
+      console.log(`weight_uid`,  weight_uid);
+
+      let id = weight_uid + student_id
+
+      let el :any = document.getElementById(id)
+      el.checked = true
+
+      console.log(`el`, el);
 
 
 
@@ -191,9 +200,11 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                 }}
                                 key={kedy}
                               >
+                                <input type="radio" name={pi_attr.pi_uid} id={pi_attr.weight_uid + teacher.uid} />
+                                
                                 <div className="d-flex gap-2">
-                                  {" "}
                                   <div
+                                  
                                     className=""
                                     style={{
                                       border: "1px solid #eee",
@@ -201,6 +212,7 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                       borderRadius: "3px",
                                       maxHeight: "40px",
                                     }}
+                                    
                                     onClick={() =>
                                       save_PI_evalution(
                                         pi_attr.uid,
@@ -220,7 +232,8 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                       <FiTriangle className="fs-5 mt-1" />
                                     )}
                                   </div>
-                                  <div>{pi_attr.title_bn}</div>
+                                  
+                                  <div htmlFor={pi_attr.weight_uid + teacher.uid} >{pi_attr.title_bn}</div>
                                 </div>
                               </td>
                             ))}
