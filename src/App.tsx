@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
-          <Route path="/student-mullayon/:assessment_uid" element={<StudentMullayon />} />
+          <Route path="/student-mullayon/:assessment_uid/:competence_uid" element={<StudentMullayon />} />
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/class/:id" element={<ClassWiseSubject />} />
           <Route path="/student-list" element={<StudentList />} />

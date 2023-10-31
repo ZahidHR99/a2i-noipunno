@@ -22,7 +22,7 @@ export default function Teacher() {
   const [element, setelement] = useState<any>("");
   const [shikhonKalinMullayon, setshikhonKalinMullayon] = useState([]);
   const [allassessmet, setallassessmet] = useState([]);
-  const [assessment_uid, setassessment_uid] = useState('');
+  const [assessment_uid, setassessment_uid] = useState("");
   const [pi_attrbute, setpi_attrbute] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
   const [selected_subject, setselected_subject] = useState<any>("");
@@ -82,7 +82,7 @@ export default function Teacher() {
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
-  console.log(`assessment_uid`, assessment_uid , element);
+  console.log(`assessment_uid`, assessment_uid, element);
 
   useEffect(() => {
     fetchData();
@@ -95,6 +95,8 @@ export default function Teacher() {
 
   return (
     <div className="content">
+      {subject.length == 0 && "loading..."}
+
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
           <div className="container">
@@ -190,7 +192,6 @@ export default function Teacher() {
                                 setparodorshita_acoron_tab(key);
                                 setallassessmet(d?.assessment_details);
                                 setelement(e);
-                                
                               }}
                               href="#"
                             >
@@ -220,7 +221,7 @@ export default function Teacher() {
                                   onClick={(e: any) => {
                                     setelement(e);
                                     seshowCompitance(true);
-                                    setassessment_uid(ass_d.uid)
+                                    setassessment_uid(ass_d.uid);
                                   }}
                                 >
                                   {" "}
@@ -280,7 +281,7 @@ export default function Teacher() {
                                 setelement(e);
                               }}
                               style={{ cursor: "pointer" }}
-                              className="col-sm-6 col-md-4"
+                              className="col-sm-12 col-md-12"
                             >
                               <div
                                 className={`d-flex align-items-center py-2 gap-2`}
@@ -346,20 +347,45 @@ export default function Teacher() {
                                           {
                                             showDetailsshikhonKalinMullayon?.class_uid
                                           }
-                                          {d?.pi_id}
+                                          .
+                                          {
+                                            showDetailsshikhonKalinMullayon?.competence_id
+                                          }
+                                          .{d?.pi_id}
                                         </h6>
 
-                                        <Link to={"/student-mullayon/"+ assessment_uid} className="text-decoration-none">
-                                        <h6
-                                          data-bs-toggle="modal"
-                                          data-bs-target="#exampleModal"
-                                          onClick={(e: any) => pi_attr(d, e)}
+                                        <Link
+                                          onClick={(e) => {
+                                            localStorage.setItem(
+                                              "pi_attr",
+                                              JSON.stringify(d?.pi_attribute)
+                                            );
+
+                                            localStorage.setItem(
+                                              "pi_attr_name",
+                                              d?.name_bn
+                                            );
+                                          }}
+                                          to={"/student-mullayon/" +
+                                          assessment_uid +
+                                          "/" +
+                                          showDetailsshikhonKalinMullayon.uid}
+                                          // to={
+                                          //   "/student-mullayon/" +
+                                          //   assessment_uid +
+                                          //   "/" +
+                                          //   showDetailsshikhonKalinMullayon.uid
+                                          // }
+                                          className="text-decoration-none"
                                         >
-                                          {d?.name_bn}
-                                        </h6>
-
+                                          <h6
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"
+                                            onClick={(e: any) => pi_attr(d, e)}
+                                          >
+                                            {d?.name_bn}
+                                          </h6>
                                         </Link>
-                                        
                                       </div>
                                     </div>
                                   </div>
