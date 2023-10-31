@@ -188,11 +188,11 @@ export default function Topbar() {
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
                           </Link>
-                          <a href="/student-transcript" className="d-block ">
+                          <Link to="/student-transcript" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
                             </button>
-                          </a>
+                          </Link>
                           <a href={"/product-details/"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শ্রেণির প্রতিবেদন
@@ -370,11 +370,11 @@ export default function Topbar() {
                         </div>
                       </Link>
 
-                      <a className="dropdown-item">
+                      <Link to="/student-transcript" className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর ট্রান্সক্রিপ্ট</span>
                         </div>
-                      </a>
+                      </Link>
                       <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শ্রেণির প্রতিবেদন</span>

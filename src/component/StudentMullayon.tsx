@@ -111,41 +111,32 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
         is_approved:1,
       };
       let id = weight_uid + student_id
-
       let el :any = document.getElementById(id)
       el.checked = true
 
-      el.parentElement.style.background = "green"
-      // console.log(`el - - `, el);
+      let obj :any = {...submitObj , [student_id]: params }
+      setsubmitObj(obj)
 
+      checkedIn(obj)
       
-
-      setsubmitObj({...submitObj , [student_id]: params })
-      // let { data } = await Pi_save(
-      //   assessment_uid,
-      //   competence_uid,
-      //   pi_uid,
-      //   weight_uid,
-      //   student_id,
-      //   teacher.caid,
-      //   2,
-      //   1
-      // );
-
-      // if (data.status) {
-      //   alert("Success");
-      // }
     } catch (error) {
       alert("SOmething went wrong");
     }
   };
 
 
-  // const checkedIn = () => {
+  const checkedIn = (obj:any) => {
 
-  // }
+for (const x in obj) {
+  
 
-  console.log(`Student`, submitObj);
+  let id :any = obj[x].weight_uid + x
+  let el :any = document.getElementById(id)
+
+  console.log(`x`, el);
+}
+
+  }
 
   return (
     <div className="content">
@@ -224,7 +215,7 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                     }
                                   >
 
-                                    <input type="radio" className="d-none" name={pi_attr.pi_uid} id={pi_attr.weight_uid + teacher.uid} />
+                                    <input type="radio" name={pi_attr.pi_uid + teacher.uid} id={pi_attr.weight_uid + teacher.uid} />
                                     {" "}
                                     {pi_attr.weight.name == "Square" && (
                                       <BiSquareRounded className="fs-5 mt-1" />
