@@ -7,7 +7,7 @@ import { update_teacher_profile } from "../Request";
 const EditTeacherProfile = () => {
 
  const [userDetails, setuserDetails] = useState<any>({});
- const { caid, name, email, phone_no, role } = userDetails;
+ const { caid, eiin, name, email, phone_no, role } = userDetails;
 
  useEffect(() => {
   const items = JSON.parse(localStorage.getItem("customer_login_auth"));
@@ -20,23 +20,26 @@ const EditTeacherProfile = () => {
 
 
  const handleTeacherProfileEdit = async (event: any) => {
+
+
   event.preventDefault()
   const formDatas = new FormData(event.target);
 
   //see The field-value  ->> way-2
-  formDatas.forEach((value, name) => {
-   console.log(`KeyName: ${name}, value: ${value}`)
-  });
+  // formDatas.forEach((value, name) => {
+  //  console.log(`KeyName: ${name}, value: ${value}`)
+  // });
 
   const { data }: any = await update_teacher_profile(caid, formDatas);
 
-  console.log("Result Of PUTT Method", data);
+  console.log("Result Of PUTT Method", data.data);
 
   if (data.status === true) {
-   alert("Data update Successfully!")
+   alert("Profile update Successfully!")
+
   }
   else
-   alert("Some thing error!")
+   alert("Something error!")
  }
 
 
@@ -71,7 +74,7 @@ const EditTeacherProfile = () => {
          <div className="mb-3" style={{ fontSize: "16px" }}>
           <label className="form-label">ইউজার আইডি</label>
           <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="caid" defaultValue={caid} placeholder={caid} />
+           <input type="text" id="pin" className="form-control" name="caid" defaultValue={eiin} placeholder={eiin} />
           </div>
          </div>
         </div>

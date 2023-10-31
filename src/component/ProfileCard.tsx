@@ -29,7 +29,7 @@ export default function ProfileCard() {
               alt=""
             />
             <p className="mt-3 p-2">
-              {userDetails?.user_type?.name}
+              {userDetails?.role}
             </p>
           </div>
           <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">
@@ -41,7 +41,7 @@ export default function ProfileCard() {
         <div className="head-teacher-bottom d-flex flex-column ">
           <div className="w-100 d-flex flex-column  align-items-center justify-content-center mt-3 ">
             <h5>{userDetails?.name}</h5>
-            <small>{userDetails?.id}</small>
+            <small>{userDetails?.eiin}</small>
             <small>TOAKUL BAZAR HIGH SCHOOL</small>
           </div>
           <button className="m-3 profile-button">
