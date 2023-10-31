@@ -51,10 +51,6 @@ export default function StudentMullayon(props:any) {
 const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
 const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
 
-console.log(`all_pi_arrtibute_name`, localStorage.getItem("pi_attr_name") );
-console.log(`all_pi_arrtibute`, localStorage.getItem("pi_attr") );
-
-
     setpi_name(all_pi_arrtibute_name)
     setal_pi_attr(all_pi_arrtibute)
     let own_subjet: any = "";

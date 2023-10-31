@@ -17,6 +17,10 @@ import { Link } from "react-router-dom";
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 
+
+const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
+const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
+
 export default function Teacher() {
   const [subject, setsubject] = useState([]);
   const [element, setelement] = useState<any>("");
@@ -34,7 +38,6 @@ export default function Teacher() {
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
   const fetchData = async () => {
-    const { data }: any = await teacher_dashboard();
 
     let own_subjet: any = "";
     if (own_SUbjects) {
@@ -44,9 +47,20 @@ export default function Teacher() {
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
+
+    let data: any = "";
+    if (teacher_dash) {
+      data = teacher_dash;
+    } else {
+      const data_dash :any = await teacher_dashboard();
+      data = data_dash.data
+      localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
+    }
+
+
+
     const al_teacher: any = await all_teachers();
 
-    console.log(`datadatadata`, data, own_subjet, al_teacher);
 
     setown_data(own_subjet?.data?.data);
 
@@ -172,7 +186,7 @@ export default function Teacher() {
 
                   {showSkillBehaibor && (
                     <div className="row">
-                      <ul className="nav justify-content-around bg-white py-1 rounded">
+                      <ul className="nav justify-content-around bg-white py-1 rounded assestment-tabs ">
                         {own_data?.assessments.map((d: any, key: any) => (
                           <li className="nav-item" key={key}>
                             <a
