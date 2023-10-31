@@ -115,6 +115,11 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
       let el :any = document.getElementById(id)
       el.checked = true
 
+      el.parentElement.style.background = "green"
+      // console.log(`el - - `, el);
+
+      
+
       setsubmitObj({...submitObj , [student_id]: params })
       // let { data } = await Pi_save(
       //   assessment_uid,
@@ -227,7 +232,7 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                     )}
                                   </div>
                                   
-                                  <div htmlFor={pi_attr.weight_uid + teacher.uid} >{pi_attr.title_bn}</div>
+                                  <div >{pi_attr.title_bn}</div>
                                 </div>
                               </td>
                             ))}
