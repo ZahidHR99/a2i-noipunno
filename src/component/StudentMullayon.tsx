@@ -140,6 +140,11 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
     }
   };
 
+
+  // const checkedIn = () => {
+
+  // }
+
   console.log(`Student`, submitObj);
 
   return (
