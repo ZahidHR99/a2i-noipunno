@@ -147,3 +147,21 @@ export function all_student() {
 
     return axios(options);
 }
+
+export function update_teacher_profile(caid: any, data: any,) {
+    const page_list = `${API_URL}/v1/account-update/${caid}`;
+
+    const options = {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        data,
+        url: page_list,
+
+    };
+
+    return axios(options,);
+}
+
+
+
+
