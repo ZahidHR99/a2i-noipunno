@@ -6,24 +6,16 @@ import styles from "./Home.style.module.css";
 import { FiStar } from "react-icons/fi";
 
 import { AiOutlineHome } from "react-icons/ai";
-import {
-  BiSidebar,
+import { BiSidebar, BiRadioCircle } from "react-icons/bi";
 
-  BiRadioCircle,
-} from "react-icons/bi";
-
-import {
-  MdArrowBackIosNew,
-  MdOutlineArrowForwardIos,
-
-} from "react-icons/md";
-import {
-
-  HiOutlineDotsVertical,
-
-} from "react-icons/hi";
+import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
 import { all_teachers, teacher_own_subject } from "../Request";
+import { IoIosArrowUp } from "react-icons/io";
+import { PiBookOpenTextBold } from "react-icons/pi";
+import { BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
+import { TiTick } from "react-icons/ti";
 
 export default function Home() {
   const [teachers, setTeachers] = useState<any>([]);
@@ -33,8 +25,6 @@ export default function Home() {
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
 
-   
-  
   useEffect(() => {
     all_teachers().then((response) => {
       setTeachers(response.data.data);
@@ -48,7 +38,7 @@ export default function Home() {
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
           <div className="container">
-             <div className="row">
+            <div className="row">
               <div className="col-md-3">
                 <ProfileCard />
               </div>
@@ -377,7 +367,7 @@ export default function Home() {
                   </div>
                 </div> */}
               </div>
-            </div> 
+            </div>
             {/* Teachers List start */}
 
             {/* Teachers List end */}
@@ -2841,6 +2831,277 @@ export default function Home() {
               </div>
             </div> */}
             {/* shikhon kalin mollaion odhai start */}
+            {/* student assessment start*/}
+            <div className="row py-5">
+              <h6>শিখনকালীন মূল্যায়ন প্রতিবেদন (BI)</h6>
+              <div className="card shadow-lg border-0">
+                <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
+                  <div className="">
+                    <h5>শিক্ষার্থীর নাম: ইনতিশার পারভেজ </h5>
+                    <p>রোল নম্বর #৩২১০০</p>
+                  </div>
+                  <div className="d-flex gap-2">
+                    <div className={`${styles.download_btn}`}>
+                      <BsFillFileEarmarkArrowDownFill className="fs-4 me-2" />
+                      ডাউনলোড করুন
+                    </div>
+                    <div className={`${styles.download_icon}`}>
+                      <IoIosArrowUp className="fs-2" />
+                    </div>
+                  </div>
+                </div>
+                {/* subjects list start */}
+                <div className="d-flex py-2 flex-lg-row flex-column">
+                  <div className="d-flex py-1">
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      বাংলা
+                    </div>
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      গনিত
+                    </div>
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      ইংরেজি
+                    </div>
+                  </div>
+                  <div className="d-flex py-1">
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      জীবন ও জীবিকা
+                    </div>
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      স্বাস্থ্য সুরক্ষা
+                    </div>
+                  </div>
+                  <div className="d-flex py-1">
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      ডিজিটাল প্রযুক্তি
+                    </div>
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      ইসলাম শিক্ষা
+                    </div>
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      বিজ্ঞান
+                    </div>
+                  </div>
+                  <div className="d-flex py-1">
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      জীবন ও জীবিকা
+                    </div>
+                    <div className="d-flex px-1" style={{ fontSize: "14px" }}>
+                      <PiBookOpenTextBold className="fs-5 mx-1" />
+                      জীবন ও জীবিকা
+                    </div>
+                  </div>
+                </div>
+                {/* subjects list end */}
+                <div className="row pb-5 pt-2">
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div className="border-0 p-2 h-100">
+                      <div className="d-flex">
+                        <div>
+                          <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
+                          <h6 style={{ fontSize: "14px" }}>
+                            নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                            যোগাযোগ করতে পারছে।
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div
+                      className="card h-100 shadow-lg border-0 p-2"
+                      style={{ backgroundColor: "#F0FAE9" }}
+                    >
+                      <div className="d-flex">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                            যোগাযোগ করতে পারছে।
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div className="card shadow-lg border-0 p-2 h-100">
+                      <div className="d-flex ">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে যথাযথভাবে
+                            অংশগ্রহণ না করলেও দলীয় নির্দেশনা অনুযায়ী নিজের
+                            দায়িত্বটুকু যথাযথভাবে পালন করছে
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div
+                      className="card shadow-lg border-0 p-2 h-100"
+                      style={{ backgroundColor: "#F0FAE9" }}
+                    >
+                      <div className="d-flex">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয় অংশগ্রহণ
+                            করছে, সেই অনুযায়ী নিজের ভূমিকা যথাযথভাবে পালন করছে
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div className="border-0 p-2 h-100">
+                      <div className="d-flex">
+                        <div>
+                          <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
+                          <h6 style={{ fontSize: "14px" }}>
+                            নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                            যোগাযোগ করতে পারছে।
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div
+                      className="card h-100 shadow-lg border-0 p-2"
+                      style={{ backgroundColor: "#F0FAE9" }}
+                    >
+                      <div className="d-flex">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                            যোগাযোগ করতে পারছে।
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div className="card shadow-lg border-0 p-2 h-100">
+                      <div className="d-flex ">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে যথাযথভাবে
+                            অংশগ্রহণ না করলেও দলীয় নির্দেশনা অনুযায়ী নিজের
+                            দায়িত্বটুকু যথাযথভাবে পালন করছে
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div
+                      className="card shadow-lg border-0 p-2 h-100"
+                      style={{ backgroundColor: "#F0FAE9" }}
+                    >
+                      <div className="d-flex">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয় অংশগ্রহণ
+                            করছে, সেই অনুযায়ী নিজের ভূমিকা যথাযথভাবে পালন করছে
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div className="border-0 p-2 h-100">
+                      <div className="d-flex">
+                        <div>
+                          <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
+                          <h6 style={{ fontSize: "14px" }}>
+                            নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                            যোগাযোগ করতে পারছে।
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div
+                      className="card h-100 shadow-lg border-0 p-2"
+                      style={{ backgroundColor: "#F0FAE9" }}
+                    >
+                      <div className="d-flex">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                            যোগাযোগ করতে পারছে।
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div className="card shadow-lg border-0 p-2 h-100">
+                      <div className="d-flex ">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে যথাযথভাবে
+                            অংশগ্রহণ না করলেও দলীয় নির্দেশনা অনুযায়ী নিজের
+                            দায়িত্বটুকু যথাযথভাবে পালন করছে
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-3 py-2">
+                    <div
+                      className="card shadow-lg border-0 p-2 h-100"
+                      style={{ backgroundColor: "#F0FAE9" }}
+                    >
+                      <div className="d-flex">
+                        <div>
+                          <TiTick className={`${styles.tick_mark}`} />
+                        </div>
+                        <div>
+                          <h6 style={{ fontSize: "14px" }}>
+                            দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয় অংশগ্রহণ
+                            করছে, সেই অনুযায়ী নিজের ভূমিকা যথাযথভাবে পালন করছে
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* student assessment end*/}
           </div>
         </section>
       </div>

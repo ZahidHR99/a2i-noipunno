@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-import loginPageBG from '../../public/assets/assets/images/login-bg.png';
 import logo from "../../public/assets/images/noipunno-new-logo.svg";
 
 
