@@ -29,7 +29,7 @@ export default function TeachersList() {
   }, []);
   return (
     <div>
-      <div className="content">
+      <div className="content mx-4">
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
           <div className="container">
