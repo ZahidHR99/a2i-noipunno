@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import loginPageBG from '../../public/assets/assets/images/login-bg.png';
+import logo from "../../public/assets/images/noipunno-new-logo.svg";
 
 
 export default function Login() {
@@ -39,7 +39,7 @@ export default function Login() {
           <div >
             <div className="row d-flex justify-content-center align-items-center login-container">
               <div className="col-md-7 cols-sm-12">
-                <img src="/assets/images/brand-logo.png" alt="logo" />
+                <img src={logo} alt="logo" className='mb-3' width={100} />
                 <p className="teacher-login-title">বিষয়ভিত্তিক মূল্যায়ন অ্যাপ্লিকেশন</p>
                 <p className="np-login-subtitle">অনুগ্রহ করে আপনার অ্যাকাউন্টে সাইন ইন করুন এবং অ্যাডভেঞ্চার শুরু করুন</p>
               </div>

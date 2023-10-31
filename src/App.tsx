@@ -9,6 +9,7 @@ import StudentMullayon from './component/StudentMullayon';
 import Teacher from './component/Teacher';
 import ClassWiseSubject from './component/ClassWiseSubject';
 import StudentList from './component/StudentList';
+import EditTeacherProfile from './component/EditTeacherProfile';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -37,6 +38,7 @@ function App() {
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/class/:id" element={<ClassWiseSubject />} />
           <Route path="/student-list" element={<StudentList />} />
+          <Route path="/edit-techer-profile" element={<EditTeacherProfile />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
