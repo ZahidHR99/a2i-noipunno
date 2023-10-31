@@ -110,18 +110,10 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
         submit_status :2,
         is_approved:1,
       };
-
-
-      console.log(`weight_uid`,  weight_uid);
-
       let id = weight_uid + student_id
 
       let el :any = document.getElementById(id)
       el.checked = true
-
-      console.log(`el`, el);
-
-
 
       setsubmitObj({...submitObj , [student_id]: params })
       // let { data } = await Pi_save(
@@ -200,7 +192,7 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                 }}
                                 key={kedy}
                               >
-                                <input type="radio" name={pi_attr.pi_uid} id={pi_attr.weight_uid + teacher.uid} />
+                                
                                 
                                 <div className="d-flex gap-2">
                                   <div
@@ -221,6 +213,8 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                       )
                                     }
                                   >
+
+                                    <input type="radio" className="d-none" name={pi_attr.pi_uid} id={pi_attr.weight_uid + teacher.uid} />
                                     {" "}
                                     {pi_attr.weight.name == "Square" && (
                                       <BiSquareRounded className="fs-5 mt-1" />
