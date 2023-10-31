@@ -92,3 +92,7 @@
     font-weight: 500;
     line-height: 20px;
 }
+
+.assestment-tabs .active {
+    background-color: aliceblue;
+}

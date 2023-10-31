@@ -17,12 +17,16 @@ import { Link } from "react-router-dom";
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 
+
+const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
+const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
+
 export default function Teacher() {
   const [subject, setsubject] = useState([]);
   const [element, setelement] = useState<any>("");
   const [shikhonKalinMullayon, setshikhonKalinMullayon] = useState([]);
   const [allassessmet, setallassessmet] = useState([]);
-  const [assessment_uid, setassessment_uid] = useState('');
+  const [assessment_uid, setassessment_uid] = useState("");
   const [pi_attrbute, setpi_attrbute] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
   const [selected_subject, setselected_subject] = useState<any>("");
@@ -34,7 +38,6 @@ export default function Teacher() {
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
   const fetchData = async () => {
-    const { data }: any = await teacher_dashboard();
 
     let own_subjet: any = "";
     if (own_SUbjects) {
@@ -44,9 +47,20 @@ export default function Teacher() {
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
+
+    let data: any = "";
+    if (teacher_dash) {
+      data = teacher_dash;
+    } else {
+      const data_dash :any = await teacher_dashboard();
+      data = data_dash.data
+      localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
+    }
+
+
+
     const al_teacher: any = await all_teachers();
 
-    console.log(`datadatadata`, data, own_subjet, al_teacher);
 
     setown_data(own_subjet?.data?.data);
 
@@ -95,6 +109,8 @@ export default function Teacher() {
 
   return (
     <div className="content">
+      {subject.length == 0 && "loading..."}
+
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
           <div className="container">
@@ -159,8 +175,6 @@ export default function Teacher() {
                             </div>
                             <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
                               <h6 className={styles.session}>প্রভাতি সেশন</h6>
-                              {/* <h6 className={styles.session}> {d.own_subjet.class_room.shift_id
-                              } </h6> */}
                               <h6 className={styles.horizontal_bar}>। </h6>
                               <h6 className={styles.branch}>পদ্মা শাথা</h6>
                             </div>
@@ -172,7 +186,7 @@ export default function Teacher() {
 
                   {showSkillBehaibor && (
                     <div className="row">
-                      <ul className="nav justify-content-around bg-white py-1 rounded">
+                      <ul className="nav justify-content-around bg-white py-1 rounded assestment-tabs ">
                         {own_data?.assessments.map((d: any, key: any) => (
                           <li className="nav-item" key={key}>
                             <a
@@ -192,7 +206,6 @@ export default function Teacher() {
                                 setparodorshita_acoron_tab(key);
                                 setallassessmet(d?.assessment_details);
                                 setelement(e);
-
                               }}
                               href="#"
                             >
@@ -222,7 +235,7 @@ export default function Teacher() {
                                   onClick={(e: any) => {
                                     setelement(e);
                                     seshowCompitance(true);
-                                    setassessment_uid(ass_d.uid)
+                                    setassessment_uid(ass_d.uid);
                                   }}
                                 >
                                   {" "}
@@ -282,7 +295,7 @@ export default function Teacher() {
                                 setelement(e);
                               }}
                               style={{ cursor: "pointer" }}
-                              className="col-sm-6 col-md-4"
+                              className="col-sm-12 col-md-12"
                             >
                               <div
                                 className={`d-flex align-items-center py-2 gap-2`}
@@ -348,10 +361,37 @@ export default function Teacher() {
                                           {
                                             showDetailsshikhonKalinMullayon?.class_uid
                                           }
-                                          {d?.pi_id}
+                                          .
+                                          {
+                                            showDetailsshikhonKalinMullayon?.competence_id
+                                          }
+                                          .{d?.pi_id}
                                         </h6>
 
-                                        <Link to={"/student-mullayon/" + assessment_uid} className="text-decoration-none">
+                                        <Link
+                                          onClick={(e) => {
+                                            localStorage.setItem(
+                                              "pi_attr",
+                                              JSON.stringify(d?.pi_attribute)
+                                            );
+
+                                            localStorage.setItem(
+                                              "pi_attr_name",
+                                              d?.name_bn
+                                            );
+                                          }}
+                                          to={"/student-mullayon/" +
+                                          assessment_uid +
+                                          "/" +
+                                          showDetailsshikhonKalinMullayon.uid}
+                                          // to={
+                                          //   "/student-mullayon/" +
+                                          //   assessment_uid +
+                                          //   "/" +
+                                          //   showDetailsshikhonKalinMullayon.uid
+                                          // }
+                                          className="text-decoration-none"
+                                        >
                                           <h6
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"
@@ -359,9 +399,7 @@ export default function Teacher() {
                                           >
                                             {d?.name_bn}
                                           </h6>
-
                                         </Link>
-
                                       </div>
                                     </div>
                                   </div>

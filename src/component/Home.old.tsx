@@ -1,31 +1,52 @@
+import React from "react";
+import TeacherImg from "../assets/images/teacher.png";
+import { useState, useEffect } from "react";
 
-<<<<<<< HEAD
 import styles from "./Home.style.module.css";
-import { FiStar } from "react-icons/fi";
-
+import { FiStar, FiTriangle } from "react-icons/fi";
+import { GoPerson } from "react-icons/go";
+import { PiBookOpenText } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
-import { BiSidebar, BiRadioCircle } from "react-icons/bi";
+import {
+  BiSidebar,
+  BiFilterAlt,
+  BiSquareRounded,
+  BiCircle,
+  BiRadioCircle,
+} from "react-icons/bi";
+import { BsCloudSun, BsMoon } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
-import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import {
+  MdArrowBackIosNew,
+  MdOutlineArrowForwardIos,
+  MdOutlineKeyboardArrowRight,
+  MdArrowForwardIos,
+} from "react-icons/md";
+import {
+  HiOutlineSun,
+  HiOutlineDotsVertical,
+  HiOutlineDotsHorizontal,
+} from "react-icons/hi";
 import ProfileCard from "./ProfileCard";
 import { all_teachers, teacher_own_subject } from "../Request";
-import { IoIosArrowUp } from "react-icons/io";
-import { PiBookOpenTextBold } from "react-icons/pi";
-import { BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
-import { TiTick } from "react-icons/ti";
-import StudentTranscript from "./studentTranscript"
-
-=======
-import { useEffect, useState } from "react";
-import { all_teachers, teacher_own_subject } from "../Request";
-import Teacher from "./Teacher";
->>>>>>> 627a8d351fd37d85ba2abdec99fdcb1e6ab43ddc
 
 export default function Home() {
+  const [teachers, setTeachers] = useState<any>([]);
+
+  const fetchData = async () => {
+    const own_subjet: any = await teacher_own_subject();
+    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+  };
+
+  useEffect(() => {
+    all_teachers().then((response) => {
+      setTeachers(response.data.data);
+    });
+
+    fetchData();
+  }, []);
 
   return (
-<<<<<<< HEAD
     <div className="content">
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
@@ -34,16 +55,16 @@ export default function Home() {
               <div className="col-md-3">
                 <ProfileCard />
               </div>
-              {/* <div className="col-md-9"> */}
-                {/* <div className="row d-flex gap-2">
+              <div className="col-md-9">
+                <div className="row d-flex gap-2">
                   <div></div>
                   <div className="d-flex">
                     <h5>
                       <BiSidebar /> বিষয়সমূহ
                     </h5>
                   </div>
-                </div> */}
-                {/* <div className="row">
+                </div>
+                <div className="row">
                   <div className="col-6 col-sm-4 col-md-4 col-lg-3">
                     <div className="card shadow-lg border-0 p-1 my-3 teacher-list-card">
                       <div className="gap-1 gap-lg-3 justify-content-center">
@@ -194,7 +215,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
                 {/* <div className="row" style={{ rowGap: 10 }}>
                   <div className="col-md-6">
                     <a
@@ -364,7 +385,7 @@ export default function Home() {
 
             {/* Teachers List end */}
             {/* Class Six subject start */}
-            {/* <div className="row">
+            <div className="row">
               <h5>ষষ্ঠ শ্রেণি বিষয়</h5>
               <ul className="nav d-flex justify-content-around bg-white py-1 rounded">
                 <li className="nav-item">
@@ -934,11 +955,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
             {/* Class Six subject end */}
             {/* teacher info start */}
-            {/* <div className="py-2"> */}
-              {/* <div className="d-flex align-items-center py-2 gap-2">
+            <div className="py-2">
+              <div className="d-flex align-items-center py-2 gap-2">
                 <div className="card shadow-lg border-0 p-2">
                   <MdArrowBackIosNew className="fs-1" />
                 </div>
@@ -969,8 +990,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div> */}
-              {/* <div className="">
+              </div>
+              <div className="">
                 <div className="row">
                   {teachers.map((teacher, index) => (
                     <div className="col-sm-6 col-md-4 my-2">
@@ -1007,7 +1028,11 @@ export default function Home() {
                             className="d-flex"
                             style={{ marginLeft: "-1.5rem" }}
                           >
-                            
+                            {/* {teachers.map((teacher) => (
+                          <div key={teacher.id}>
+                            <h5 className={styles.teacherName}>{teacher.name}</h5>
+                            <h6 className={styles.deg}>{teacher.position}</h6>
+                          </div>))} */}
                             <ul className={`${styles.teacher_info_list_group}`}>
                               <li>
                                 {" "}
@@ -1118,7 +1143,7 @@ export default function Home() {
                       </div>
                     </div>
                   ))}
-                </div> */}
+                </div>
                 {/* <div className="col-sm-6 col-md-4">
                   <div className="card shadow-lg border-0">
                     <div className="d-flex justify-content-between gap-3 border-bottom">
@@ -1353,11 +1378,11 @@ export default function Home() {
                     </div>
                   </div>
                 </div> */}
-              {/* </div>
-            </div> */}
+              </div>
+            </div>
             {/* teacher info end */}
             {/* report start */}
-            {/* <div className="row py-5">
+            <div className="row py-5">
               <div className="d-flex align-items-center py-2 gap-2">
                 <div className="card shadow-lg border-0 p-2">
                   <MdArrowBackIosNew className="fs-1" />
@@ -1760,9 +1785,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>            report end */}
+            </div>
+            {/* report end */}
             {/* expertness assessment start */}
-             {/* <div className="row py-5">
+            <div className="row py-5">
               <div className="d-flex align-items-center py-2 gap-2">
                 <div className="card shadow-lg border-0 p-2">
                   <MdArrowBackIosNew className="fs-1" />
@@ -1795,7 +1821,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              {/* <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center">
                 <div className="card shadow-lg border-0 w-100 rounded">
                   <ul className="nav d-flex mt-2 justify-content-around py-1">
                     <li className={`nav-item`}>
@@ -2077,10 +2103,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
             {/* expertness assessment start */}
             {/* learing period assessment report start */}
-            {/* <div className="py-3">
+            <div className="py-3">
               <div>
                 <h4>শিখনকালীন মূল্যায়ন প্রতিবেদন (PI) </h4>
                 <h5 className="fw-bold">পারদর্শিতা সূচক ৬.১.১ </h5>
@@ -2623,10 +2649,10 @@ export default function Home() {
                   />{" "}
                 </button>
               </div>
-            </div> */}
+            </div>
             {/* learing period assessment report end */}
             {/* shikhon kalin mollaion start */}
-            {/* <div className="py-5">
+            <div className="py-5">
               <h3
                 className="text-center py-2 text-white"
                 style={{ backgroundColor: "#428F92" }}
@@ -2738,10 +2764,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
             {/* shikhon kalin mollaion end */}
             {/* shikhon kalin mollaion odhai start */}
-            {/* <div className="py-5">
+            <div className="py-5">
               <h3
                 className="text-center py-2 text-white"
                 style={{ backgroundColor: "#428F92" }}
@@ -2816,12 +2842,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
             {/* shikhon kalin mollaion odhai start */}
-            {/* student assessment start*/}
-            {/* <StudentTranscript /> */}
-            {/* student assessment end*/}
-          {/* </div> */}
+          </div>
         </section>
       </div>
       <style
@@ -2833,12 +2856,5 @@ export default function Home() {
 
       {/* Teachers List end */}
     </div>
-
-);
-=======
-    <>
-    <Teacher />
-    </>
   );
->>>>>>> 627a8d351fd37d85ba2abdec99fdcb1e6ab43ddc
 }
