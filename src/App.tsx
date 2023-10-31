@@ -11,6 +11,7 @@ import ClassWiseSubject from './component/ClassWiseSubject';
 import StudentList from './component/StudentList';
 import EditTeacherProfile from './component/EditTeacherProfile';
 import StudentTranscript from './component/studentTranscript';
+import TeachersList from './component/TeachersList';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -41,6 +42,8 @@ function App() {
           <Route path="/student-list" element={<StudentList />} />
           <Route path="/student-transcript" element={<StudentTranscript />} />
           <Route path="/edit-teacher-profile" element={<EditTeacherProfile />} />
+          <Route path="/teachers-list" element={<TeachersList />} />
+
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
