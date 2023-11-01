@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { all_student } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
 
+import Breadcumb from "../layout/Breadcumb";
+
 const StudentList = () => {
 
 
@@ -24,6 +26,10 @@ const StudentList = () => {
 
   return (
     <div className="container">
+
+      <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
+
+
       <Accordion className="row">
         {students?.map((student, index) => (
 
