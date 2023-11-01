@@ -12,6 +12,8 @@ import StudentList from './component/StudentList';
 import EditTeacherProfile from './component/EditTeacherProfile';
 import StudentTranscript from './component/StudentTranscript';
 import TeachersList from './component/TeachersList';
+import StudentMullayonBehave from './component/StudentMullayonBehave';
+import StudentMullayonBehaveSubmit from './component/StudentMullayonBehaveSubmit';
 
 function App() {
   const [topbar, settopbar] = useState(false)
@@ -37,6 +39,8 @@ function App() {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/student-mullayon/:assessment_uid/:competence_uid" element={<StudentMullayon />} />
+          <Route path="/student-mullayon-behave/:assessment_uid" element={<StudentMullayonBehave />} />
+          <Route path="/student-mullayon-behave-submit/:assessment_uid/:competence_uid" element={<StudentMullayonBehaveSubmit />} />
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/class/:id" element={<ClassWiseSubject />} />
           <Route path="/student-list" element={<StudentList />} />

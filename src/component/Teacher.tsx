@@ -103,7 +103,7 @@ export default function Teacher() {
     setelement(e);
   };
 
-  console.log(`Showcollaps`, Showcollaps);
+  console.log(`subjectsubject`, subject,  Showcollaps);
 
   return (
     <div className="content">
@@ -142,6 +142,7 @@ export default function Teacher() {
                           onClick={(e) => {
                             skill_behaibor_count(d);
                             setelement(e);
+                            localStorage.setItem("class_room_id" , d.own_subjet.class_room_id )
                           }}
                         >
                           <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
@@ -268,7 +269,13 @@ export default function Teacher() {
                                     );
                                   }}
                                 >
-                                  {ass_d.assessment_details_name_bn}
+                                  <Link
+                                    className="text-decoration-none"
+                                    style={{color:"#3fabd4"}}
+                                    to={"/student-mullayon-behave/" + ass_d.uid}
+                                  >
+                                    {ass_d.assessment_details_name_bn}
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
