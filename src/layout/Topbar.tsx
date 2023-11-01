@@ -6,11 +6,11 @@ export default function Topbar() {
   const [classdata, setdata] = useState([]);
   // const navigate = useNavigate();
 
-  const handleLogout = (e:any) => {
+  const handleLogout = (e: any) => {
     localStorage.clear();
     window.location.reload();
     // window.location = window.location.origin;
-    console.log("Logout successful" , e);
+    console.log("Logout successful", e);
   };
 
   const fetchData = async () => {
@@ -137,7 +137,9 @@ export default function Topbar() {
                           aria-controls="prothompata-collapseOne"
                         >
                           <img src="/assets/images/home.svg" alt="" />
-                          <span className="fs-6 px-2">প্রথম পাতা</span>
+                          <Link to={'/'}>
+                            <span className="fs-6 px-2">প্রথম পাতা</span>
+                          </Link>
                         </button>
                       </h2>
                       <div
@@ -216,15 +218,15 @@ export default function Topbar() {
                         className="accordion-header pages-buttons"
                         id="shikkhok-headingOne"
                       ><a href="/teachers-list" className="text-decoration-none">
-                        <button
-                          className="w-100 btn btn-light px-5 text-start"
-                          type="button"
-                        >
-                          
+                          <button
+                            className="w-100 btn btn-light px-5 text-start"
+                            type="button"
+                          >
+
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 px-2">শিক্ষক</span>
-                          
-                        </button>
+
+                          </button>
                         </a>
                       </h2>
                     </div>
@@ -259,11 +261,11 @@ export default function Topbar() {
                               শিক্ষার্থীর তালিকা
                             </button>
                           </a>
-                          <a href="#" className="d-block ">
+                          {/* <a href="#" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর হাজিরা
                             </button>
-                          </a>
+                          </a> */}
                         </div>
                       </div>
                     </div>
@@ -324,17 +326,33 @@ export default function Topbar() {
               </div>
               <div className="d-none d-lg-flex pages-buttons">
                 <div className="dropdown">
-                  <button
-                    className="d-flex justify-content-between align-items-center btn btn-ligh"
-                    type="button"
-                    id="prothomPata"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
+
+                  <div
+                    className="accordion accordion-flush responsive-single-menu-button"
+                    id="shikkhok"
                   >
-                    <img src="/assets/images/home.svg" alt="" />
-                    <span className="fs-6 px-2">প্রথম পাতা</span>
-                    
-                  </button>
+                    <div className="accordion-item">
+                      <h2
+                        className="accordion-header pages-buttons"
+                        id="shikkhok-headingOne"
+                      >
+
+
+                        <button
+                          className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button"
+                          type="button"
+                        >
+                          <Link to="/" className="text-decoration-none">
+
+                            {/* <img src="/assets/images/teacher.svg" alt="" /> */}
+                            <span className="fs-6 ">প্রধান শিক্ষক</span>
+                          </Link>
+                        </button>
+                      </h2>
+                    </div>
+                  </div>
+
+
                   {/* <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
                       <a className="dropdown-item">
@@ -358,7 +376,7 @@ export default function Topbar() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    
+
                     <span className="fs-6 px-2">রিপোর্ট</span>
                     <img src="/assets/images/arrow-down.svg" alt="" />
                   </button>
@@ -390,8 +408,8 @@ export default function Topbar() {
                 </div>
                 <div className="dropdown">
 
-                
-                <div
+
+                  <div
                     className="accordion accordion-flush responsive-single-menu-button"
                     id="shikkhok"
                   >
@@ -401,21 +419,21 @@ export default function Topbar() {
                         id="shikkhok-headingOne"
                       >
 
-                  
+
                         <button
                           className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button"
                           type="button"
                         >
                           <Link to="/teachers-list" className="text-decoration-none">
-                          
+
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 ">শিক্ষক</span>
-                            </Link>
+                          </Link>
                         </button>
-</h2>
-</div>
-</div>
-                
+                      </h2>
+                    </div>
+                  </div>
+
 
 
                 </div>
@@ -438,11 +456,11 @@ export default function Topbar() {
                           <span>শিক্ষার্থীর তালিকা</span>
                         </div>
                       </Link>
-                      <Link to={'/'} className="dropdown-item">
+                      {/* <Link to={'/'} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর হাজিরা</span>
                         </div>
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </div>
