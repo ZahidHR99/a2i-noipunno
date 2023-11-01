@@ -41,8 +41,9 @@ function App() {
           <Route path="/class/:id" element={<ClassWiseSubject />} />
           <Route path="/student-list" element={<StudentList />} />
           <Route path="/student-transcript" element={<StudentTranscript />} />
+          <Route path="/edit-teacher-profile" element={<EditTeacherProfile />} />
           <Route path="/teachers-list" element={<TeachersList />} />
-          <Route path="/edit-techer-profile" element={<EditTeacherProfile />} />
+
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>

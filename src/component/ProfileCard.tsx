@@ -16,7 +16,7 @@ export default function ProfileCard() {
       <div className="card np-card head-teacher-card">
         <div className="head-teacher-top w-100">
           <div className="d-flex justify-content-end ">
-            <Link to={"/edit-techer-profile"}>
+            <Link to={"/edit-teacher-profile"}>
               <button className="btn">
                 <img src="/assets/images/edit.svg" />
               </button>
@@ -45,7 +45,7 @@ export default function ProfileCard() {
             <small>TOAKUL BAZAR HIGH SCHOOL</small>
           </div>
           <button className="m-3 profile-button">
-            <Link to={"/edit-techer-profile"} className='text-decoration-none'>
+            <Link to={"/edit-teacher-profile"} className='text-decoration-none'>
               {/* <img src="/assets/noipunno/images/icons/eye.svg" /> */}
               <p className="">আমার প্রোফাইল</p>
             </Link>
