@@ -10,7 +10,7 @@ import Teacher from './component/Teacher';
 import ClassWiseSubject from './component/ClassWiseSubject';
 import StudentList from './component/StudentList';
 import EditTeacherProfile from './component/EditTeacherProfile';
-import StudentTranscript from './component/studentTranscript';
+import StudentTranscript from './component/StudentTranscript';
 import TeachersList from './component/TeachersList';
 
 function App() {
@@ -41,8 +41,9 @@ function App() {
           <Route path="/class/:id" element={<ClassWiseSubject />} />
           <Route path="/student-list" element={<StudentList />} />
           <Route path="/student-transcript" element={<StudentTranscript />} />
+          <Route path="/edit-teacher-profile" element={<EditTeacherProfile />} />
           <Route path="/teachers-list" element={<TeachersList />} />
-          <Route path="/edit-techer-profile" element={<EditTeacherProfile />} />
+
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>

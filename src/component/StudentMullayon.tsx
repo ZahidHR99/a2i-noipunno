@@ -1,30 +1,18 @@
-import React from "react";
-import TeacherImg from "../assets/images/teacher.png";
-import { FiStar, FiTriangle } from "react-icons/fi";
+
+import {  FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
 
-import styles from "./Home.style.module.css";
 import {
   BiCircle,
   BiFilterAlt,
   BiSidebar,
   BiSquareRounded,
 } from "react-icons/bi";
-import { BsCloudSun, BsMoon } from "react-icons/bs";
-import { SlBookOpen } from "react-icons/sl";
-import {
-  HiOutlineSun,
-  HiOutlineDotsVertical,
-  HiOutlineDotsHorizontal,
-} from "react-icons/hi";
+
 import ProfileCard from "./ProfileCard";
-import { Pi_save, teacher_dashboard, teacher_own_subject } from "../Request";
+import { Pi_save, teacher_own_subject } from "../Request";
 import { useParams } from "react-router-dom";
-import {
-  MdArrowBackIosNew,
-  MdArrowForwardIos,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
+
 import { GoPerson } from "react-icons/go";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
@@ -33,25 +21,24 @@ const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const all_pi_arrtibute_name: any = localStorage.getItem("pi_attr_name") || "";
 const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
 const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
-export default function StudentMullayon(props:any) {
+export default function StudentMullayon(props: any) {
   const { assessment_uid, competence_uid }: any = useParams();
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [submitObj, setsubmitObj] = useState<any>({});
-  const [individual_student, setindividual_student] = useState<any>({});
   const [pi_name, setpi_name] = useState<any>("");
-  const [showToggle, setshowToggle] = useState<any>({});
-  const [compitance, setcompitance] = useState<any>([]);
+  const [submitData, setsubmitData] = useState<any>([]);
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const fetchData = async () => {
+    const all_pi_arrtibute_name: any =
+      localStorage.getItem("pi_attr_name") || "";
+    const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
+    const all_pi_arrtibute = all_pi_arrtibute_
+      ? JSON.parse(all_pi_arrtibute_)
+      : "";
 
-
-    const all_pi_arrtibute_name: any = localStorage.getItem("pi_attr_name") || "";
-const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
-const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
-
-    setpi_name(all_pi_arrtibute_name)
-    setal_pi_attr(all_pi_arrtibute)
+    setpi_name(all_pi_arrtibute_name);
+    setal_pi_attr(all_pi_arrtibute);
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -74,9 +61,6 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
     );
 
     setStudent(uniqueObjectsArray);
-
-    console.log(`uniqueObjectsArray`, uniqueObjectsArray);
-    setcompitance(uniqueObjectsArray[0].competence);
     setteacher(own_subjet.data.data.user);
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
@@ -85,12 +69,14 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
     fetchData();
   }, []);
 
-
-
-  const handleSave =async (e:any) => {
-    
-  }
-
+  const handleSave = async (e: any) => {
+    try {
+      await Pi_save(submitData)
+      alert("success")
+    } catch (error) {
+      alert("something went wrong")
+    }
+  };
 
   const save_PI_evalution = async (
     pi_uid: any,
@@ -98,54 +84,44 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
     student_id: any
   ) => {
     try {
-
-
       const params: any = {
-        evaluate_type : assessment_uid,
+        evaluate_type: assessment_uid,
         competence_uid,
         pi_uid,
         weight_uid,
-        student_uid : student_id,
-        teacher_uid : teacher.caid,
-        submit_status :2,
-        is_approved:1,
+        student_uid: student_id,
+        teacher_uid: teacher.caid,
+        submit_status: 2,
+        is_approved: 1,
       };
-      let id = weight_uid + student_id
+      let obj: any = { ...submitObj, [student_id]: params };
+      setsubmitObj(obj);
 
-      let el :any = document.getElementById(id)
-      el.checked = true
-
-      el.parentElement.style.background = "green"
-      // console.log(`el - - `, el);
-
-      
-
-      setsubmitObj({...submitObj , [student_id]: params })
-      // let { data } = await Pi_save(
-      //   assessment_uid,
-      //   competence_uid,
-      //   pi_uid,
-      //   weight_uid,
-      //   student_id,
-      //   teacher.caid,
-      //   2,
-      //   1
-      // );
-
-      // if (data.status) {
-      //   alert("Success");
-      // }
+      checkedIn(obj);
     } catch (error) {
-      alert("SOmething went wrong");
+      console.log(`error`, error);
     }
   };
 
+  const checkedIn = (obj: any) => {
+    let all_elem :any = document.getElementsByClassName("all_pi_arrtiburte");
 
-  // const checkedIn = () => {
+    for (let index = 0; index < all_elem.length; index++) {
+      const element: any = all_elem[index];
+      element.style.background = "";
+    }
 
-  // }
+    let sumbitArray :any= []
 
-  console.log(`Student`, submitObj);
+    for (const x in obj) {
+      let id: any = obj[x].weight_uid + "-" + x;
+      let el: any = document.getElementById(id);
+      el.style.background = "#69CB1C";
+      sumbitArray.push(obj[x])
+    }
+
+    setsubmitData(sumbitArray)
+  };
 
   return (
     <div className="content">
@@ -157,7 +133,7 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                 <ProfileCard />
               </div>
               <div className="col-md-9">
-              <div className="row d-flex gap-2">
+                <div className="row d-flex gap-2">
                   <div></div>
                   <div className="d-flex">
                     <h5>
@@ -202,19 +178,16 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                 }}
                                 key={kedy}
                               >
-                                
-                                
                                 <div className="d-flex gap-2">
                                   <div
-                                  
-                                    className=""
+                                    id={pi_attr.weight_uid + "-" + teacher.uid}
+                                    className="all_pi_arrtiburte"
                                     style={{
                                       border: "1px solid #eee",
                                       padding: "5px 6px",
                                       borderRadius: "3px",
                                       maxHeight: "40px",
                                     }}
-                                    
                                     onClick={() =>
                                       save_PI_evalution(
                                         pi_attr.uid,
@@ -223,9 +196,7 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                       )
                                     }
                                   >
-
-                                    <input type="radio" className="d-none" name={pi_attr.pi_uid} id={pi_attr.weight_uid + teacher.uid} />
-                                    {" "}
+                                    {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
                                     {pi_attr.weight.name == "Square" && (
                                       <BiSquareRounded className="fs-5 mt-1" />
                                     )}
@@ -236,8 +207,8 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                                       <FiTriangle className="fs-5 mt-1" />
                                     )}
                                   </div>
-                                  
-                                  <div >{pi_attr.title_bn}</div>
+
+                                  <div>{pi_attr.title_bn}</div>
                                 </div>
                               </td>
                             ))}
@@ -245,10 +216,14 @@ const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
                         </tr>
                       ))}
                     </tbody>
-                    <button type="button" className="btn btn-sm btn-primary m-2" onClick={(e)=>handleSave(e)}>Save</button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary m-2"
+                      onClick={(e) => handleSave(e)}
+                    >
+                      Save
+                    </button>
                   </table>
-
-                  
                 </div>
               </div>
             </div>
