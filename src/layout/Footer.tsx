@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     
-    <div className="container noipunno-footer d-flex justify-content-between">
-  <div style={{ fontWeight: "bold", fontSize: 12 }}>
+    <div className="container fixed-bottom noipunno-footer d-flex justify-content-between">
+  <div style={{ fontWeight: "bold", fontSize: "12"  }}>
     সর্বস্বত্ব সংরক্ষিত © 2023 শিক্ষা মন্ত্রণালয়, গণপ্রজাতন্ত্রী বাংলাদেশ সরকার
   </div>
   <div className="d-flex">

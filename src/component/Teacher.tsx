@@ -110,8 +110,8 @@ export default function Teacher() {
       {subject.length == 0 && "loading..."}
 
       <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
-          <div className="container">
+        <section className="np-breadcumb-section pt-3">
+          <div className="container mb-4">
             <div className="row">
               <div className="col-md-3">
                 <ProfileCard />
