@@ -29,7 +29,7 @@ export default function ProfileCard() {
               alt=""
             />
             <p className="mt-3 p-2">
-              {userDetails?.role}
+              {(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}
             </p>
           </div>
           <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">

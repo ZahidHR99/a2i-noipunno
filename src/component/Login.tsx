@@ -3,6 +3,7 @@ import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from "../../public/assets/images/noipunno-new-logo.svg";
+import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
 
 
 export default function Login() {
@@ -109,7 +110,7 @@ export default function Login() {
               </div>
             </div>
           </div>
-          <div className="switch-container">
+          {/* <div className="switch-container">
             <input type="checkbox" id="switch" className="language-switch" />
             <label htmlFor="switch" className="switch-label">
               <small className="login-language">আপনি কি বাংলাকে আপনার ডিফল্ট ভাষা হিসেবে রাখতে চান ?</small>
@@ -117,6 +118,39 @@ export default function Login() {
                 <div className="switch-slider" />
               </div>
             </label>
+          </div> */}
+
+          {/* <div className="switch-container">
+            <div className='d-flex justify-content-between align-content-center'>
+              <div className=''>
+                <input type="checkbox" id="switch" className="language-switch" />
+                <label htmlFor="switch" className="switch-label d-flex justify-content-start align-items-center gap-4">
+                  <small className="login-language">© ২০২৩ সর্বস্বত্ব সংরক্ষিত </small>
+                  <small className="login-language">গোপনীয়তা নীতি </small>
+                  <small className="login-language">সাহায্য </small>
+                  <small className="login-language">কোন প্রশ্ন? </small>
+                </label>
+              </div>
+              <div>
+                <img src={nav_bottom_logo} width={217} alt="logos" />
+              </div>
+            </div>
+          </div> */}
+        </div>
+        <div className="switch-container mt-5">
+          <div className='d-flex justify-content-between align-content-center'>
+            <div className=''>
+              <input type="checkbox" id="switch" className="language-switch" />
+              <label htmlFor="switch" className="switch-label d-flex justify-content-start align-items-center gap-4">
+                <small className="login-language">© ২০২৩ সর্বস্বত্ব সংরক্ষিত </small>
+                <small className="login-language">গোপনীয়তা নীতি </small>
+                <small className="login-language">সাহায্য </small>
+                <small className="login-language">কোন প্রশ্ন? </small>
+              </label>
+            </div>
+            <div>
+              <img src={nav_bottom_logo} width={217} alt="logos" />
+            </div>
           </div>
         </div>
       </div>

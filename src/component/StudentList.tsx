@@ -1,14 +1,17 @@
 
-import studentImage from "../assets/images/teacher.png";
+import studentImage from "../../public/assets/images/user-profile.png";
 import styles from "./Home.style.module.css";
 import { BiRadioCircle } from "react-icons/bi";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { all_student } from "../Request";
+import Accordion from 'react-bootstrap/Accordion';
 
 import Breadcumb from "../layout/Breadcumb";
 
 const StudentList = () => {
+
+
   const [students, setStudents] = useState([])
 
   useEffect(() => {
@@ -22,15 +25,17 @@ const StudentList = () => {
   }, [])
 
   return (
-    <div className="">
-      <div className="dashboard-section">
-      <section className="np-breadcumb-section pt-5">
-      <div className="container">
-      <div className="row">
-      <Breadcumb title={"শিক্ষার্থীর তালিকা"}  /> 
+    <div className="container">
+
+      <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
+
+
+      <Accordion className="row">
         {students?.map((student, index) => (
-          <div key={student?.id} className="col-sm-6 col-md-4 my-2">
-            <div key={index} className="card shadow-lg border-0">
+
+          <Accordion.Item eventKey={index} className="col-sm-6 col-md-4 my-2">
+            <Accordion.Header>
+              {/* Accordion Item #{index} */}
               <div className="d-flex justify-content-between gap-3 border-bottom">
                 <div className="d-flex gap-3 align-items-center p-2">
                   <div>
@@ -47,13 +52,10 @@ const StudentList = () => {
                     <h6 className={styles.deg}>শ্রেণিঃ {student?.class}</h6>
                   </div>
                 </div>
-                <div className="p-1">
-                  <HiOutlineDotsVertical
-                    className={`fs-4 ${styles.OutlineDotsVertical}`}
-                  />
-                </div>
               </div>
-
+            </Accordion.Header>
+            <Accordion.Body>
+              Accordion Item {index} <br />
               <div className="mt-4">
                 <div
                   className="d-flex"
@@ -213,15 +215,12 @@ const StudentList = () => {
                     <li> {student?.guardian_mobile_no || "013654582555"}</li>
                   </ul>
                 </div>
-
               </div>
-            </div>
-          </div>
+            </Accordion.Body>
+          </Accordion.Item>
         ))}
-      </div>
-      </div>
-      </section>
-    </div>
+      </Accordion>
+
     </div>
   );
 };
