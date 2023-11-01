@@ -10,7 +10,7 @@ import Teacher from './component/Teacher';
 import ClassWiseSubject from './component/ClassWiseSubject';
 import StudentList from './component/StudentList';
 import EditTeacherProfile from './component/EditTeacherProfile';
-import StudentTranscript from './component/studentTranscript';
+import StudentTranscript from './component/StudentTranscript';
 import TeachersList from './component/TeachersList';
 
 function App() {
