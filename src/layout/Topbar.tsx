@@ -364,27 +364,27 @@ export default function Topbar() {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <Link to={"/student-mullayon"} className="dropdown-item">
+                      {/* <Link to={"/student-mullayon"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীদের মূল্যায়ন</span>
                         </div>
-                      </Link>
+                      </Link> */}
 
                       <a href="/student-transcript" className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর ট্রান্সক্রিপ্ট</span>
                         </div>
                       </a>
-                      <a className="dropdown-item">
+                      {/* <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শ্রেণির প্রতিবেদন</span>
                         </div>
-                      </a>
-                      <a className="dropdown-item">
+                      </a> */}
+                      {/* <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর হাজিরা প্রতিবেদন</span>
                         </div>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -409,7 +409,7 @@ export default function Topbar() {
                           <Link to="/teachers-list" className="text-decoration-none">
                           
                             <img src="/assets/images/teacher.svg" alt="" />
-                            <span className="fs-6 px-2">শিক্ষক</span>
+                            <span className="fs-6 ">শিক্ষক</span>
                             </Link>
                         </button>
 </h2>

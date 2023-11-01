@@ -1,5 +1,9 @@
 import TeacherImg from "../assets/images/teacher.png";
 import { useState, useEffect } from "react";
+import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import { BiSidebar } from "react-icons/bi";
+import { AiOutlineHome } from "react-icons/ai";
+import { FiStar } from "react-icons/fi";
 
 import styles from "./Home.style.module.css";
 import {
@@ -29,12 +33,43 @@ export default function TeachersList() {
   }, []);
   return (
     <div>
-      <div className="content mx-4">
+      <div className="">
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
           <div className="container">
-    <h1>শিক্ষকের তালিকা</h1>
     <div className="row">
+    <div className="d-flex align-items-center py-2 gap-2 ">
+                <div className="card shadow-lg border-0 p-2">
+                  <MdArrowBackIosNew className="fs-1" />
+                </div>
+                <div className="card shadow-lg border-0 p-1 w-100">
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <div style={{ fontSize: "14px" }}>
+                        <BiSidebar
+                          className={`fs-3 ${styles.teacher_info_list}`}
+                        />{" "}
+                          শিক্ষকের তালিকা
+                      </div>
+                      <div style={{ marginLeft: "2rem" }}>
+                        <h6 style={{ color: "#C8DFDF", fontSize: "10px" }}>
+                          {" "}
+                          <AiOutlineHome />
+                          Dashboard{" "}
+                          <span style={{ color: "#000" }}>
+                            {" "}
+                            <MdOutlineArrowForwardIos />
+                            Data
+                          </span>
+                        </h6>
+                      </div>
+                    </div>
+                    <div className="d-flex gap-2 align-items-center fs-4">
+                      <FiStar /> <HiOutlineDotsVertical />
+                    </div>
+                  </div>
+                </div>
+              </div>
                   {teachers.map((teacher, index) => (
                     <div className="col-sm-6 col-md-4 my-2">
                       <div key={index} className="card shadow-lg border-0">
