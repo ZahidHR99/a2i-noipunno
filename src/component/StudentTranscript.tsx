@@ -13,13 +13,16 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 
 
 export default function StudentTranscript() {
+
+  
   return (
-    <div className='mx-4'>
+    <div className=''>
                    {/* report end */}
             {/* expertness assessment start */}
-             <div className="row py-5">
-              <div className="container">
-              <div className="row">
+            <div className="dashboard-section">
+        <section className="np-breadcumb-section pt-5">
+          <div className="container">
+            <div className="row">
               
              <div className="d-flex align-items-center py-2 gap-2 ">
                 <div className="card shadow-lg border-0 p-2">
@@ -726,6 +729,7 @@ export default function StudentTranscript() {
         
               </div>
             </div>
+            </section>
       
     </div>
     </div>
