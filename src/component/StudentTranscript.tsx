@@ -10,7 +10,7 @@ import { BiSidebar } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiStar } from "react-icons/fi";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-
+import Breadcumb from "../layout/Breadcumb"
 
 export default function StudentTranscript() {
 
@@ -24,38 +24,7 @@ export default function StudentTranscript() {
           <div className="container">
             <div className="row">
               
-             <div className="d-flex align-items-center py-2 gap-2 ">
-                <div className="card shadow-lg border-0 p-2">
-                  <MdArrowBackIosNew className="fs-1" />
-                </div>
-                <div className="card shadow-lg border-0 p-1 w-100">
-                  <div className="d-flex justify-content-between">
-                    <div>
-                      <div style={{ fontSize: "14px" }}>
-                        <BiSidebar
-                          className={`fs-3 ${styles.teacher_info_list}`}
-                        />{" "}
-                        মূল্যায়ন প্রতিবেদন
-                      </div>
-                      <div style={{ marginLeft: "2rem" }}>
-                        <h6 style={{ color: "#C8DFDF", fontSize: "10px" }}>
-                          {" "}
-                          <AiOutlineHome />
-                          Dashboard{" "}
-                          <span style={{ color: "#000" }}>
-                            {" "}
-                            <MdOutlineArrowForwardIos />
-                            Data
-                          </span>
-                        </h6>
-                      </div>
-                    </div>
-                    <div className="d-flex gap-2 align-items-center fs-4">
-                      <FiStar /> <HiOutlineDotsVertical />
-                    </div>
-                  </div>
-                </div>
-              </div>
+             <Breadcumb  title={"মূল্যায়ন প্রতিবেদন"} />
               <div className="d-flex align-items-center">
                 <div className="card shadow-lg border-0 w-100 rounded">
                   <ul className="nav d-flex mt-2 justify-content-around py-1">

@@ -13,6 +13,7 @@ import {
   HiOutlineDotsVertical,
 } from "react-icons/hi";
 import { all_teachers } from "../Request";
+import Breadcumb from "../layout/Breadcumb";
 
 export default function TeachersList() {
 
@@ -38,38 +39,7 @@ export default function TeachersList() {
         <section className="np-breadcumb-section pt-5">
           <div className="container">
     <div className="row">
-    <div className="d-flex align-items-center py-2 gap-2 ">
-                <div className="card shadow-lg border-0 p-2">
-                  <MdArrowBackIosNew className="fs-1" />
-                </div>
-                <div className="card shadow-lg border-0 p-1 w-100">
-                  <div className="d-flex justify-content-between">
-                    <div>
-                      <div style={{ fontSize: "14px" }}>
-                        <BiSidebar
-                          className={`fs-3 ${styles.teacher_info_list}`}
-                        />{" "}
-                          শিক্ষকের তালিকা
-                      </div>
-                      <div style={{ marginLeft: "2rem" }}>
-                        <h6 style={{ color: "#C8DFDF", fontSize: "10px" }}>
-                          {" "}
-                          <AiOutlineHome />
-                          Dashboard{" "}
-                          <span style={{ color: "#000" }}>
-                            {" "}
-                            <MdOutlineArrowForwardIos />
-                            Data
-                          </span>
-                        </h6>
-                      </div>
-                    </div>
-                    <div className="d-flex gap-2 align-items-center fs-4">
-                      <FiStar /> <HiOutlineDotsVertical />
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <Breadcumb title={"শিক্ষকের তালিকা"} />  
                   {teachers.map((teacher, index) => (
                     <div className="col-sm-6 col-md-4 my-2">
                       <div key={index} className="card shadow-lg border-0">
