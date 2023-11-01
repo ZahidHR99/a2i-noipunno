@@ -13,10 +13,10 @@ import ProfileCard from "./ProfileCard";
 // import { Link } from "react-router-dom";
 import { PiBookOpenText } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
-
 
 const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
 const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
@@ -24,6 +24,7 @@ const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
 export default function Teacher() {
   const [subject, setsubject] = useState([]);
   const [element, setelement] = useState<any>("");
+  const [Showcollaps, setShowcollaps] = useState<any>({});
   const [shikhonKalinMullayon, setshikhonKalinMullayon] = useState([]);
   const [allassessmet, setallassessmet] = useState([]);
   const [assessment_uid, setassessment_uid] = useState("");
@@ -39,7 +40,6 @@ export default function Teacher() {
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
   const fetchData = async () => {
-
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -48,20 +48,16 @@ export default function Teacher() {
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
-
     let data: any = "";
     if (teacher_dash) {
       data = teacher_dash;
     } else {
-      const data_dash :any = await teacher_dashboard();
-      data = data_dash.data
+      const data_dash: any = await teacher_dashboard();
+      data = data_dash.data;
       localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
     }
 
-
-
     const al_teacher: any = await all_teachers();
-
 
     setown_data(own_subjet?.data?.data);
 
@@ -106,6 +102,8 @@ export default function Teacher() {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
+
+  console.log(`Showcollaps`, Showcollaps);
 
   return (
     <div className="content">
@@ -162,10 +160,7 @@ export default function Teacher() {
                               </h5>
 
                               <h5 className={styles.std_class}>
-                                
-                                {d?.subject.class_uid == "6"
-                                  ? "ষষ্ঠ"
-                                  : "সপ্তম"}
+                                {d?.subject.class_uid == "6" ? "ষষ্ঠ" : "সপ্তম"}
                                 শ্রেণি
                               </h5>
                               <h5 className={styles.class_teacher}>
@@ -236,10 +231,11 @@ export default function Teacher() {
                                     setelement(e);
                                     seshowCompitance(true);
                                     setassessment_uid(ass_d.uid);
-                                    setMullayon_name(ass_d.assessment_details_name_bn)
+                                    setMullayon_name(
+                                      ass_d.assessment_details_name_bn
+                                    );
                                   }}
                                 >
-                                  
                                   {ass_d.assessment_details_name_bn}
                                 </li>
                               ))}
@@ -257,24 +253,24 @@ export default function Teacher() {
                           aria-labelledby="sondha_session-tab"
                         >
                           <div className="row">
-                          <ul className="nav justify-content-around bg-white py-1 rounded">
-                            {allassessmet.map((ass_d: any, ky: any) => (
-                              <li
-                                style={{ cursor: "pointer" }}
-                                className="nav-item fs-6 py-1"
-                                key={ky}
-                                onClick={(e: any) => {
-                                  setelement(e);
-                                  seshowCompitance(true);
-                                  setassessment_uid(ass_d.uid);
-                                  setMullayon_name(ass_d.assessment_details_name_bn)
-                                }} 
-                              >
-                                
-                                {ass_d.assessment_details_name_bn}
-
-                              </li>
-                            ))}
+                            <ul className="nav justify-content-around bg-white py-1 rounded">
+                              {allassessmet.map((ass_d: any, ky: any) => (
+                                <li
+                                  style={{ cursor: "pointer" }}
+                                  className="nav-item fs-6 py-1"
+                                  key={ky}
+                                  onClick={(e: any) => {
+                                    setelement(e);
+                                    seshowCompitance(true);
+                                    setassessment_uid(ass_d.uid);
+                                    setMullayon_name(
+                                      ass_d.assessment_details_name_bn
+                                    );
+                                  }}
+                                >
+                                  {ass_d.assessment_details_name_bn}
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         </div>
@@ -294,133 +290,77 @@ export default function Teacher() {
                         <h5>অধ্যায় নির্বাচন করুন</h5>
                         <div className="row">
                           {shikhonKalinMullayon.map((d: any, key: any) => (
-                            <div
-                              key={key}
-                              onClick={(e: any) => {
-                                setshowDetailsshikhonKalinMullayon(d);
-                                setelement(e);
-                              }}
-                              style={{ cursor: "pointer" }}
-                              className="col-sm-12 col-md-12"
-                            >
+                            <>
                               <div
-                                className={`d-flex align-items-center py-2 gap-2`}
+                                key={key}
+                                onClick={(e: any) => {
+                                  setshowDetailsshikhonKalinMullayon(d);
+                                  setelement(e);
+                                  setShowcollaps({
+                                    ...Showcollaps,
+                                    [key]: Showcollaps[key]
+                                      ? !Showcollaps[key]
+                                      : true,
+                                  });
+                                }}
+                                style={{ cursor: "pointer" }}
+                                className="col-sm-12 col-md-12"
                               >
                                 <div
-                                  className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                                  className={`d-flex align-items-center py-2 gap-2`}
                                 >
-                                  <div className="d-flex justify-content-between">
-                                    <div className="d-flex justify-content-between align-items-center w-100 px-1">
-                                      <div
-                                        className="py-2"
-                                        style={{ color: "#428F92" }}
-                                      >
-                                        <PiBookOpenText className="me-2" />
-                                        {d.name_bn}
-                                      </div>
-                                      <div
-                                        className="px-2 rounded text-white"
-                                        style={{ backgroundColor: "#428F92" }}
-                                      >
-                                        {d?.pis.length}
+                                  <div
+                                    className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
+                                  >
+                                    <div className="d-flex justify-content-between">
+                                      <div className="d-flex justify-content-between align-items-center w-100 px-1">
+                                        <div
+                                          className="py-2"
+                                          style={{ color: "#428F92" }}
+                                        >
+                                          <PiBookOpenText className="me-2" />
+                                          {d.name_bn}
+                                        </div>
+                                        <div
+                                          className="px-2 rounded text-white"
+                                          style={{ backgroundColor: "#428F92" }}
+                                        >
+                                          {d?.pis.length}
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
+
+                              <div
+                                className={
+                                  Showcollaps[key] && Showcollaps[key] == true
+                                    ? "collapse show"
+                                    : "collapse"
+                                }
+                              >
+                                <div className="card card-body">
+                                  {showDetailsshikhonKalinMullayon && (
+                                    <DetailsShikhonMullayon
+                                      showDetailsshikhonKalinMullayon={
+                                        showDetailsshikhonKalinMullayon
+                                      }
+                                      assessment_uid={assessment_uid}
+                                      pi_attr={pi_attr}
+                                    />
+                                  )}
+                                </div>
+                              </div>
+                            </>
                           ))}
                         </div>
                       </div>
                     </>
                   )}
-
-                  <br />
-
-                  {showDetailsshikhonKalinMullayon && (
-                    <div className="py-5">
-                      <h3
-                        className="text-center py-2 text-white"
-                        style={{ backgroundColor: "#428F92" }}
-                      >
-                        শিখনকালীন মূল্যায়ন / অধ্যায়
-                        {showDetailsshikhonKalinMullayon?.competence_id} /
-                        {showDetailsshikhonKalinMullayon?.competence_id}.
-                        {showDetailsshikhonKalinMullayon?.class_uid}
-                      </h3>
-                      <h5>{showDetailsshikhonKalinMullayon?.details_bn}</h5>
-                      <div className="row">
-                        {showDetailsshikhonKalinMullayon?.pis?.map(
-                          (d: any, ky: any) => (
-                            <div className="col-sm-6 col-md-12" key={ky}>
-                              <div
-                                className={`d-flex align-items-center py-2 gap-2`}
-                              >
-                                <div className={`border-0 p-1 w-100`}>
-                                  <div className="d-flex justify-content-between">
-                                    <div className="d-flex justify-content-between align-items-center w-100 px-1">
-                                      <div
-                                        className="py-2"
-                                        style={{ color: "#428F92" }}
-                                      >
-                                        <h6>
-                                          {
-                                            showDetailsshikhonKalinMullayon?.class_uid
-                                          }
-                                          .
-                                          {
-                                            showDetailsshikhonKalinMullayon?.competence_id
-                                          }
-                                          .{d?.pi_id}
-                                        </h6>
-
-                                        <Link
-                                          onClick={(e) => {
-                                            localStorage.setItem(
-                                              "pi_attr",
-                                              JSON.stringify(d?.pi_attribute)
-                                            );
-
-                                            localStorage.setItem(
-                                              "pi_attr_name",
-                                              d?.name_bn
-                                            );
-                                          }}
-                                          to={"/student-mullayon/" +
-                                          assessment_uid +
-                                          "/" +
-                                          showDetailsshikhonKalinMullayon.uid}
-                                          // to={
-                                          //   "/student-mullayon/" +
-                                          //   assessment_uid +
-                                          //   "/" +
-                                          //   showDetailsshikhonKalinMullayon.uid
-                                          // }
-                                          className="text-decoration-none"
-                                        >
-                                          <h6
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"
-                                            onClick={(e: any) => pi_attr(d, e)}
-                                          >
-                                            {d?.name_bn}
-                                          </h6>
-                                        </Link>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        )}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
-           
           </div>
         </section>
       </div>
