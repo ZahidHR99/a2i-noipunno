@@ -52,7 +52,7 @@ export default function Teacher() {
     if (teacher_dash) {
       data = teacher_dash;
     } else {
-      const data_dash :any = await teacher_dashboard();
+      const data_dash: any = await teacher_dashboard();
       data = data_dash.data
       localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
     }
@@ -106,6 +106,10 @@ export default function Teacher() {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
+
+  // const techerID = subject.map(data => console.log("Subject", data.teacher.uid))
+
+
 
   return (
     <div className="content">
@@ -381,9 +385,9 @@ export default function Teacher() {
                                             );
                                           }}
                                           to={"/student-mullayon/" +
-                                          assessment_uid +
-                                          "/" +
-                                          showDetailsshikhonKalinMullayon.uid}
+                                            assessment_uid +
+                                            "/" +
+                                            showDetailsshikhonKalinMullayon.uid}
                                           // to={
                                           //   "/student-mullayon/" +
                                           //   assessment_uid +
@@ -414,7 +418,7 @@ export default function Teacher() {
                 </div>
               </div>
             </div>
-           
+
           </div>
         </section>
       </div>
