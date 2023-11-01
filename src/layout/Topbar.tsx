@@ -217,7 +217,7 @@ export default function Topbar() {
                         id="shikkhok-headingOne"
                       ><a href="/teachers-list" className="text-decoration-none">
                         <button
-                          className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
+                          className="w-100 btn btn-light px-5 text-start"
                           type="button"
                         >
                           
@@ -388,7 +388,7 @@ export default function Topbar() {
                     </div>
                   </div>
                 </div>
-                {/* <div className="dropdown">
+                <div className="dropdown">
 
                 
                 <div
@@ -403,7 +403,7 @@ export default function Topbar() {
 
                   
                         <button
-                          className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100 responsive-single-menu-button"
+                          className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button"
                           type="button"
                         >
                           <Link to="/teachers-list" className="text-decoration-none">
@@ -418,7 +418,7 @@ export default function Topbar() {
                 
 
 
-                </div> */}
+                </div>
                 <div className="dropdown">
                   <button
                     className="d-flex justify-content-between align-items-center btn btn-ligh"

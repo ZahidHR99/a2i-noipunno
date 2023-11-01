@@ -30,6 +30,7 @@ export default function Teacher() {
   const [pi_attrbute, setpi_attrbute] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
   const [selected_subject, setselected_subject] = useState<any>("");
+  const [Mullayon_name, setMullayon_name] = useState<any>("");
   const [showSkillBehaibor, seshowSkillBehaibor] = useState(false);
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
@@ -91,8 +92,7 @@ export default function Teacher() {
     seshowSubject(false);
     setselected_subject(datas);
     setshikhonKalinMullayon(datas.own_subjet.competence);
-    setshikhonKalinMullayon(datas.own_subjet.competence);
-    console.log(`datas`, datas.own_subjet);
+    console.log(`datas`, datas);
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
@@ -128,7 +128,7 @@ export default function Teacher() {
                         setelement(e);
                       }}
                     >
-                      <BiSidebar /> {showSubject && "বিষয়সমূহ"}{" "}
+                      <BiSidebar /> {showSubject && "বিষয়সমূহ"}
                       {showSkillBehaibor && "পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
                     </h5>
                   </div>
@@ -138,7 +138,7 @@ export default function Teacher() {
                     <>
                       {subject.map((d: any, key: any) => (
                         <div
-                          className="col-6 col-sm-4 col-md-3"
+                          className="col-6 col-sm-4 col-md-6 col-lg-4 col-xl-3"
                           style={{ cursor: "pointer" }}
                           key={key}
                           onClick={(e) => {
@@ -162,18 +162,18 @@ export default function Teacher() {
                               </h5>
 
                               <h5 className={styles.std_class}>
-                                {" "}
+                                
                                 {d?.subject.class_uid == "6"
                                   ? "ষষ্ঠ"
-                                  : "সপ্তম"}{" "}
+                                  : "সপ্তম"}
                                 শ্রেণি
                               </h5>
                               <h5 className={styles.class_teacher}>
-                                শ্রেণি শিক্ষক :{" "}
+                                শ্রেণি শিক্ষক :
                                 <span> {d?.teacher?.name_en}</span>
                               </h5>
                             </div>
-                            <div className="flex-md-column flex-lg-row d-flex  justify-content-center gap-2">
+                            <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                               <h6 className={styles.session}>প্রভাতি সেশন</h6>
                               <h6 className={styles.horizontal_bar}>। </h6>
                               <h6 className={styles.branch}>পদ্মা শাথা</h6>
@@ -188,7 +188,7 @@ export default function Teacher() {
                     <div className="row">
                       <ul className="nav justify-content-around bg-white py-1 rounded assestment-tabs ">
                         {own_data?.assessments.map((d: any, key: any) => (
-                          <li className="nav-item" key={key}>
+                          <li className="nav-item fs-4 py-2" key={key}>
                             <a
                               className={
                                 key === 0
@@ -214,7 +214,7 @@ export default function Teacher() {
                           </li>
                         ))}
                       </ul>
-                      <div className="tab-content" id="tabContent">
+                      <div className="tab-content p-2" id="tabContent">
                         <div
                           className={
                             parodorshita_acoron_tab === 0
@@ -230,16 +230,17 @@ export default function Teacher() {
                               {allassessmet?.map((ass_d: any, ky: any) => (
                                 <li
                                   style={{ cursor: "pointer" }}
-                                  className="nav-item"
+                                  className="nav-item fs-6 py-1"
                                   key={ky}
                                   onClick={(e: any) => {
                                     setelement(e);
                                     seshowCompitance(true);
                                     setassessment_uid(ass_d.uid);
+                                    setMullayon_name(ass_d.assessment_details_name_bn)
                                   }}
                                 >
-                                  {" "}
-                                  {ass_d.assessment_details_name_bn}{" "}
+                                  
+                                  {ass_d.assessment_details_name_bn}
                                 </li>
                               ))}
                             </ul>
@@ -256,20 +257,25 @@ export default function Teacher() {
                           aria-labelledby="sondha_session-tab"
                         >
                           <div className="row">
+                          <ul className="nav justify-content-around bg-white py-1 rounded">
                             {allassessmet.map((ass_d: any, ky: any) => (
                               <li
                                 style={{ cursor: "pointer" }}
-                                className="nav-item"
+                                className="nav-item fs-6 py-1"
                                 key={ky}
                                 onClick={(e: any) => {
                                   setelement(e);
                                   seshowCompitance(true);
-                                }}
+                                  setassessment_uid(ass_d.uid);
+                                  setMullayon_name(ass_d.assessment_details_name_bn)
+                                }} 
                               >
-                                {" "}
-                                {ass_d.assessment_details_name_bn}{" "}
+                                
+                                {ass_d.assessment_details_name_bn}
+
                               </li>
                             ))}
+                            </ul>
                           </div>
                         </div>
                       </div>
@@ -283,7 +289,7 @@ export default function Teacher() {
                           className="text-center py-2 text-white"
                           style={{ backgroundColor: "#428F92" }}
                         >
-                          শিখনকালীন মূল্যায়ন / অধ্যায়
+                          {Mullayon_name} / অভিজ্ঞতা
                         </h3>
                         <h5>অধ্যায় নির্বাচন করুন</h5>
                         <div className="row">
@@ -309,7 +315,7 @@ export default function Teacher() {
                                         className="py-2"
                                         style={{ color: "#428F92" }}
                                       >
-                                        <PiBookOpenText className="me-2" />{" "}
+                                        <PiBookOpenText className="me-2" />
                                         {d.name_bn}
                                       </div>
                                       <div
@@ -337,8 +343,8 @@ export default function Teacher() {
                         className="text-center py-2 text-white"
                         style={{ backgroundColor: "#428F92" }}
                       >
-                        শিখনকালীন মূল্যায়ন / অধ্যায়{" "}
-                        {showDetailsshikhonKalinMullayon?.competence_id} /{" "}
+                        শিখনকালীন মূল্যায়ন / অধ্যায়
+                        {showDetailsshikhonKalinMullayon?.competence_id} /
                         {showDetailsshikhonKalinMullayon?.competence_id}.
                         {showDetailsshikhonKalinMullayon?.class_uid}
                       </h3>
