@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { all_class } from "../Request";
+import logoutImage from "../../public/assets/images/logotIcon.png"
+
+import myprofile from "../../public/assets/images/my_profile.png"
 
 export default function Topbar() {
   const [classdata, setdata] = useState([]);
@@ -51,10 +54,19 @@ export default function Topbar() {
                         <img src="/assets/images/user-profile.png" alt="" />
                       </div>
                     </a>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownUser" >
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownUser " >
                       <li>
-                        <a className="dropdown-item" href="#" onClick={(e: any) => handleLogout(e)} >
-                          Logout
+
+                        <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" >
+                          <img src={myprofile} alt="" />
+                          আমার প্রোফাইল
+                        </a>
+                      </li>
+                      <li>
+
+                        <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
+                          <img src={logoutImage} alt="" className="pe-4" />
+                          সাইন আউট
                         </a>
                       </li>
                     </ul>
