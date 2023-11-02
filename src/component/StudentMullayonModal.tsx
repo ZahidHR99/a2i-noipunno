@@ -4,23 +4,17 @@ import { useState, useEffect } from "react";
 import {
   BiCircle,
   BiFilterAlt,
-  BiSidebar,
   BiSquareRounded,
 } from "react-icons/bi";
 
-import ProfileCard from "./ProfileCard";
 import { Pi_save, teacher_own_subject } from "../Request";
-import { useParams } from "react-router-dom";
-
 import { GoPerson } from "react-icons/go";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const class_room_id = localStorage.getItem("class_room_id")
 
-export default function StudentMullayonModal(props: any) {
-  const { assessment_uid, competence_uid }: any = useParams();
+export default function StudentMullayonModal({ assessment_uid , competence_uid} :any) {
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [submitObj, setsubmitObj] = useState<any>({});
