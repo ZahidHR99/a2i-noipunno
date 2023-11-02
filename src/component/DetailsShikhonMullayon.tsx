@@ -7,9 +7,9 @@ export default function DetailsShikhonMullayon({
   assessment_uid,
   pi_attr,
 }: any) {
-
-  const [competence_uid, setcompetence_uid] = useState<any>('');
-
+  const [competence_uid, setcompetence_uid] = useState<any>("");
+  const [al_pi_attr, setal_pi_attr] = useState<any>([]);
+  const [pi_name, setpi_name] = useState<any>("");
   return (
     <div>
       <h3
@@ -31,25 +31,20 @@ export default function DetailsShikhonMullayon({
                       <h6>
                         {showDetailsshikhonKalinMullayon?.class_uid}.
                         {showDetailsshikhonKalinMullayon?.competence_id}.
-                        {d?.pi_id} {" "}
+                        {d?.pi_id}{" "}
                       </h6>
-                      
 
                       <Link
                         onClick={(e) => {
-                          localStorage.setItem(
-                            "pi_attr",
-                            JSON.stringify(d?.pi_attribute)
+                          pi_attr(d, e);
+                          setal_pi_attr(d?.pi_attribute)
+                          setcompetence_uid(
+                            showDetailsshikhonKalinMullayon.uid
                           );
-                          pi_attr(d, e)
 
-                          setcompetence_uid(showDetailsshikhonKalinMullayon.uid)
-
-                          localStorage.setItem("pi_attr_name", d?.name_bn);
+                          setpi_name(d?.name_bn)
                         }}
-                        to={
-                          "#"
-                        }
+                        to={"#"}
                         className="text-decoration-none"
                       >
                         <h6
@@ -68,25 +63,44 @@ export default function DetailsShikhonMullayon({
         ))}
       </div>
 
-
-
-
-      <div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <StudentMullayonModal
+                competence_uid={competence_uid}
+                assessment_uid={assessment_uid}
+                al_pi_attr={al_pi_attr}
+                setal_pi_attr={setal_pi_attr}
+                pi_name={pi_name}
+                setpi_name={setpi_name}
+              />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-sm btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="modal-body">
-        <StudentMullayonModal competence_uid={competence_uid}  assessment_uid={assessment_uid} />
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
     </div>
   );
 }

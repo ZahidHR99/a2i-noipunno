@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import { Spinner } from "react-bootstrap";
 import ShowAssesment from "./ShowAssesment";
+import ParodorshitaComponent from "./ParodorshitaComponent";
+import AcorongotoComponent from "./AcorongotoComponent";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -35,6 +37,7 @@ export default function Teacher() {
   const [selected_subject, setselected_subject] = useState<any>("");
   const [Mullayon_name, setMullayon_name] = useState<any>("");
   const [showSkillBehaibor, seshowSkillBehaibor] = useState(false);
+  const [ShowProfile, setShowProfile] = useState(true);
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
   const [showSubject, seshowSubject] = useState(true);
@@ -117,17 +120,20 @@ export default function Teacher() {
         <section className="np-breadcumb-section pt-5">
           <div className="container">
             <div className="row">
-              <div className="col-md-3">
+              {
+                ShowProfile && <div className="col-md-3">
                 <ProfileCard />
               </div>
-              <div className="col-md-9">
+              }
+              
+              <div className={ShowProfile ? "col-md-9" : "col-md-12" }>
                 <div className="row d-flex gap-2">
                   <div></div>
                   <div className="d-flex">
                     <h5
                       onClick={(e) => {
                         seshowSubject(true);
-                        setelement(e);
+                        setShowProfile(true)
                       }}
                     >
                       <BiSidebar /> {showSubject && "বিষয়সমূহ"}
@@ -145,7 +151,7 @@ export default function Teacher() {
                           key={key}
                           onClick={(e) => {
                             skill_behaibor_count(d);
-                            setelement(e);
+                            setShowProfile(false)
                             localStorage.setItem(
                               "class_room_id",
                               d.own_subjet.class_room_id
@@ -187,6 +193,9 @@ export default function Teacher() {
                     </>
                   )}
 
+                  {
+                    ShowProfile === false && <>
+
                   {showSkillBehaibor && (
                     <>
                       <ShowAssesment
@@ -204,84 +213,23 @@ export default function Teacher() {
 
                   {showCompitance && (
                     <>
-                      <div className="py-5">
-                        <h3
-                          className="text-center py-2 text-white"
-                          style={{ backgroundColor: "#428F92" }}
-                        >
-                          {Mullayon_name} / অভিজ্ঞতা
-                        </h3>
-                        <h5>অধ্যায় নির্বাচন করুন</h5>
-                        <div className="row">
-                          {shikhonKalinMullayon.map((d: any, key: any) => (
-                            <>
-                              <div
-                                key={key}
-                                onClick={(e: any) => {
-                                  setshowDetailsshikhonKalinMullayon(d);
-                                  setelement(e);
-                                  setShowcollaps({
-                                    ...Showcollaps,
-                                    [key]: Showcollaps[key]
-                                      ? !Showcollaps[key]
-                                      : true,
-                                  });
-                                }}
-                                style={{ cursor: "pointer" }}
-                                className="col-sm-12 col-md-12"
-                              >
-                                <div
-                                  className={`d-flex align-items-center py-2 gap-2`}
-                                >
-                                  <div
-                                    className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
-                                  >
-                                    <div className="d-flex justify-content-between">
-                                      <div className="d-flex justify-content-between align-items-center w-100 px-1">
-                                        <div
-                                          className="py-2"
-                                          style={{ color: "#428F92" }}
-                                        >
-                                          <PiBookOpenText className="me-2" />
-                                          {d.name_bn}
-                                        </div>
-                                        <div
-                                          className="px-2 rounded text-white"
-                                          style={{ backgroundColor: "#428F92" }}
-                                        >
-                                          {d?.pis.length}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                    {
+                      parodorshita_acoron_tab === 0 &&
+                      <ParodorshitaComponent assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon}  setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+                    }
 
-                              <div
-                                className={
-                                  Showcollaps[key] && Showcollaps[key] == true
-                                    ? "collapse show"
-                                    : "collapse"
-                                }
-                              >
-                                <div className="card card-body">
-                                  {showDetailsshikhonKalinMullayon && (
-                                    <DetailsShikhonMullayon
-                                      showDetailsshikhonKalinMullayon={
-                                        showDetailsshikhonKalinMullayon
-                                      }
-                                      assessment_uid={assessment_uid}
-                                      pi_attr={pi_attr}
-                                    />
-                                  )}
-                                </div>
-                              </div>
-                            </>
-                          ))}
-                        </div>
-                      </div>
+
+                    {
+                      parodorshita_acoron_tab === 1 &&
+                      <>acoron</>
+                      // <AcorongotoComponent assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon}  setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+
+                    }
+
                     </>
                   )}
+                  </>
+                  }
                 </div>
               </div>
             </div>

@@ -1,36 +1,26 @@
 import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
 
-import {
-  BiCircle,
-  BiFilterAlt,
-  BiSquareRounded,
-} from "react-icons/bi";
+import { BiCircle, BiFilterAlt, BiSquareRounded } from "react-icons/bi";
 
 import { Pi_save, teacher_own_subject } from "../Request";
 import { GoPerson } from "react-icons/go";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
-const class_room_id = localStorage.getItem("class_room_id")
+const class_room_id = localStorage.getItem("class_room_id");
 
-export default function StudentMullayonModal({ assessment_uid , competence_uid} :any) {
+export default function StudentMullayonModal({
+  assessment_uid,
+  competence_uid,
+  al_pi_attr,
+  pi_name,
+}: any) {
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [submitObj, setsubmitObj] = useState<any>({});
-  const [pi_name, setpi_name] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
-  const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const fetchData = async () => {
-    const all_pi_arrtibute_name: any =
-      localStorage.getItem("pi_attr_name") || "";
-    const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
-    const all_pi_arrtibute = all_pi_arrtibute_
-      ? JSON.parse(all_pi_arrtibute_)
-      : "";
-
-    setpi_name(all_pi_arrtibute_name);
-    setal_pi_attr(all_pi_arrtibute);
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -63,20 +53,18 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
-
-      const data :any = submitData.map((d:any)=>{
-        d.submit_status = submit_status
-        return d
-      })
+      const data: any = submitData.map((d: any) => {
+        d.submit_status = submit_status;
+        return d;
+      });
 
       await Pi_save(data);
 
       if (submit_status == 1) {
-        alert("Saved Draft")
-      }else{
-        alert("Saved Successfully")
+        alert("Saved Draft");
+      } else {
+        alert("Saved Successfully");
       }
-
     } catch (error) {
       alert("something went wrong");
     }
@@ -96,9 +84,9 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
         class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
-        submit_status : 2,
+        submit_status: 2,
         is_approved: 1,
-        remark: null
+        remark: null,
       };
       let obj: any = { ...submitObj, [student_id]: params };
       setsubmitObj(obj);
@@ -128,6 +116,8 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
 
     setsubmitData(sumbitArray);
   };
+
+  console.log(`al_pi_attr`, al_pi_attr);
 
   return (
     <div className="content">
@@ -181,7 +171,7 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
                                         {teacher.uid}
                                       </td>
 
-                                      {al_pi_attr.map(
+                                      {al_pi_attr?.map(
                                         (pi_attr: any, kedy: any) => (
                                           <td
                                             style={{
@@ -265,7 +255,6 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
 
                             {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
                           </div>
-
                         </div>
                       </div>
                     </div>

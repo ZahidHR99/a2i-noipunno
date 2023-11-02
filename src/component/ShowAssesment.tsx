@@ -13,9 +13,10 @@ export default function ShowAssesment({
   setMullayon_name,
   allassessmet,
   own_data,
+  setparodorshita_acoron_tab,
+  parodorshita_acoron_tab,
   setallassessmet,
 }: any) {
-  const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
 
   return (
