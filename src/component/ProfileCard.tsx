@@ -47,7 +47,7 @@ export default function ProfileCard() {
           <button className="m-3 profile-button">
             <Link to={"/edit-teacher-profile"} className='text-decoration-none'>
               {/* <img src="/assets/noipunno/images/icons/eye.svg" /> */}
-              <p className="">আমার প্রোফাইল</p>
+              <p className="pt-2">আমার প্রোফাইল</p>
             </Link>
 
           </button>
