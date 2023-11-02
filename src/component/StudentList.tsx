@@ -243,7 +243,7 @@ const StudentList = () => {
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>
-                  Close
+                  বন্ধ করুন
                 </Button>
               </Modal.Footer>
             </Modal>
