@@ -9,7 +9,7 @@ export default function DetailsShikhonMullayon({
 }: any) {
 
   const [competence_uid, setcompetence_uid] = useState<any>('');
-
+  const [pi_name, setpi_name] = useState<any>("");
   return (
     <div>
       <h3
@@ -69,16 +69,31 @@ export default function DetailsShikhonMullayon({
       </div>
 
 
+      <div className="modal" id="exampleModal"  tabindex="-1" style={{zIndex:"99999"}}>
+  <div className="modal-dialog modal-xl">
+    <div className="modal-content">
+      <div className="modal-header">
+      <h5 className="modal-title" id="exampleModalLabel">{pi_name}</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="">
+      <StudentMullayonModal competence_uid={competence_uid}  assessment_uid={assessment_uid} setpi_name={setpi_name} pi_name={pi_name} />
+      </div>
+      <div className="modal-footer">
+      {/* <button type="button" className="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button> */}
+      </div>
+    </div>
+  </div>
+</div>
 
-
-      <div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
+      {/* <div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog px-10">
     <div className="modal-content">
       <div className="modal-header">
         <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body">
+      <div className="modal-body ">
         <StudentMullayonModal competence_uid={competence_uid}  assessment_uid={assessment_uid} />
       </div>
       <div className="modal-footer">
@@ -86,7 +101,7 @@ export default function DetailsShikhonMullayon({
       </div>
     </div>
   </div>
-</div>
+</div> */}
     </div>
   );
 }

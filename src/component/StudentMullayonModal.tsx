@@ -14,11 +14,10 @@ const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const class_room_id = localStorage.getItem("class_room_id")
 
-export default function StudentMullayonModal({ assessment_uid , competence_uid} :any) {
+export default function StudentMullayonModal({ assessment_uid , competence_uid , setpi_name , pi_name} :any) {
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [submitObj, setsubmitObj] = useState<any>({});
-  const [pi_name, setpi_name] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const fetchData = async () => {
@@ -140,9 +139,6 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
                   <div className="d-flex align-items-center">
                     <div className="card shadow-lg border-0 w-100 rounded">
                       <ul className="nav d-flex mt-2 justify-content-around py-1">
-                        <li className={`nav-item`}>
-                          <h4 className="p-1"> {pi_name} </h4>
-                        </li>
                       </ul>
                       <div className="tab-content" id="tabContent">
                         <div
@@ -152,12 +148,12 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
                           aria-labelledby="expertness-tab"
                         >
                           <div className="row p-3">
-                            <table className="table table-sm">
+                            <table className="table table-lg">
                               <thead>
                                 <tr>
-                                  <th scope="col" style={{ width: "5%" }}>
-                                    শিক্ষার্থীর{" "}
-                                    <BiFilterAlt className="fs-5 ms-4" />
+                                  <th scope="col" style={{ width: "15%" }}>
+                                    শিক্ষার্থীর নাম{" "}
+                                    {/* <BiFilterAlt className="fs-5 ms-4" /> */}
                                   </th>
                                   <th scope="col" style={{ width: "30%" }}></th>
                                   <th scope="col" style={{ width: "30%" }}>
@@ -175,7 +171,7 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid} 
                                           width: "5%",
                                         }}
                                       >
-                                        <GoPerson className="fs-6" />{" "}
+                                        <GoPerson className="fs-6 fw-bold" />{" "}
                                         {teacher.student_name_bn}
                                         <br />
                                         {teacher.uid}
