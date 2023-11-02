@@ -15,30 +15,23 @@ import { useParams } from "react-router-dom";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { weightId } from "../utils/Utils";
+import { TiTick } from "react-icons/ti";
+import styles from "./Home.style.module.css";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
-const class_room_id = localStorage.getItem("class_room_id")
+const class_room_id = localStorage.getItem("class_room_id");
 
-export default function StudentMullayonBehaveSubmit(props: any) {
-  const { assessment_uid, competence_uid }: any = useParams();
+export default function StudentMullayonBehaveSubmit({
+  assessment_uid,
+  al_pi_attr,
+  teacher,
+}) {
   const [Student, setStudent] = useState<any>([]);
-  const [teacher, setteacher] = useState<any>({});
   const [submitObj, setsubmitObj] = useState<any>({});
-  const [pi_name, setpi_name] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
-  const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const [pi_attribute_weight, setpi_attribute_weight] = useState<any>([]);
   const fetchData = async () => {
-    const all_pi_arrtibute_name: any =
-      localStorage.getItem("pi_attr_name") || "";
-    const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
-    const all_pi_arrtibute = all_pi_arrtibute_
-      ? JSON.parse(all_pi_arrtibute_)
-      : "";
-
-    setpi_name(all_pi_arrtibute_name);
-    setal_pi_attr(all_pi_arrtibute);
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -47,23 +40,7 @@ export default function StudentMullayonBehaveSubmit(props: any) {
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
-    setpi_attribute_weight(own_subjet.data.data.pi_attribute_weight)    
-
-    const student: any = [];
-    own_subjet.data.data.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
-
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-
-    setStudent(uniqueObjectsArray);
-    setteacher(own_subjet.data.data.user);
+    setpi_attribute_weight(own_subjet.data.data.pi_attribute_weight);
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
 
@@ -73,20 +50,18 @@ export default function StudentMullayonBehaveSubmit(props: any) {
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
-
-      const data :any = submitData.map((d:any)=>{
-        d.submit_status = submit_status
-        return d
-      })
+      const data: any = submitData.map((d: any) => {
+        d.submit_status = submit_status;
+        return d;
+      });
 
       await Bi_save(data);
 
       if (submit_status == 1) {
-        alert("Saved Draft")
-      }else{
-        alert("Saved Successfully")
+        alert("Saved Draft");
+      } else {
+        alert("Saved Successfully");
       }
-
     } catch (error) {
       alert("something went wrong");
     }
@@ -95,21 +70,21 @@ export default function StudentMullayonBehaveSubmit(props: any) {
   const save_PI_evalution = async (
     pi_uid: any,
     weight_uid: any,
-    student_id: any
+    student_id: any,
   ) => {
     try {
       const params: any = {
         evaluate_type: assessment_uid,
-        bi_uid :pi_uid,
+        bi_uid: pi_uid,
         weight_uid,
         class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
-        submit_status : 2,
+        submit_status: 2,
         is_approved: 1,
-        remark: null
+        remark: null,
       };
-      let obj: any = { ...submitObj, [student_id]: params };
+      const obj: any = { ...submitObj, [weight_uid + "_" + student_id]: params };
       setsubmitObj(obj);
 
       checkedIn(obj);
@@ -119,6 +94,8 @@ export default function StudentMullayonBehaveSubmit(props: any) {
   };
 
   const checkedIn = (obj: any) => {
+
+    console.log(`submitData obj`, obj);
     let all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
 
     for (let index = 0; index < all_elem.length; index++) {
@@ -129,8 +106,10 @@ export default function StudentMullayonBehaveSubmit(props: any) {
     let sumbitArray: any = [];
 
     for (const x in obj) {
-      let id: any = obj[x].weight_uid + "-" + x;
+      let id: any = obj[x].weight_uid + "_" + obj[x].student_uid  ;
       let el: any = document.getElementById(id);
+
+      console.log(`el`, id);
       el.style.background = "#69CB1C";
       sumbitArray.push(obj[x]);
     }
@@ -138,154 +117,40 @@ export default function StudentMullayonBehaveSubmit(props: any) {
     setsubmitData(sumbitArray);
   };
 
-
-  console.log(`submitData`, al_pi_attr, submitData);
+  console.log(`submitData`, teacher , al_pi_attr);
 
   return (
     <div className="content">
-      <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
-          <div className="container">
+      <div className="row">
+        {al_pi_attr.map((pi_attr: any, kedy: any) => (
+          <div
+            className=" all_pi_arrtiburte"
+            id={pi_attr.weight_uid + "_" + teacher.caid }
+            key={kedy}
+            onClick={(e: any) =>
+              save_PI_evalution(pi_attr.uid, pi_attr.weight_uid, teacher.caid)
+            }
+          >
+            {/* subjects list end */}
             <div className="row">
-              <div className="col-md-12">
-                <div className="container">
-                  <div className="d-flex align-items-center">
-                    <div className="card shadow-lg border-0 w-100 rounded">
-                      <ul className="nav d-flex mt-2 justify-content-around py-1">
-                        <li className={`nav-item`}>
-                          <h4 className="p-1"> {pi_name} </h4>
-                        </li>
-                      </ul>
-                      <div className="tab-content" id="tabContent">
-                        <div
-                          className="tab-pane fade show active"
-                          id="expertness"
-                          role="tabpanel"
-                          aria-labelledby="expertness-tab"
-                        >
-                          <div className="row p-3">
-                            <table className="table table-sm">
-                              <thead>
-                                <tr>
-                                  <th scope="col" style={{ width: "5%" }}>
-                                    শিক্ষার্থীর{" "}
-                                    <BiFilterAlt className="fs-5 ms-4" />
-                                  </th>
-                                  <th scope="col" style={{ width: "30%" }}></th>
-                                  <th scope="col" style={{ width: "30%" }}>
-                                    <BiFilterAlt className="fs-5" />
-                                  </th>
-                                  <th scope="col" style={{ width: "30%" }}></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {Student.map((teacher: any, k: any) => (
-                                  <tr key={k}>
-                                    <>
-                                      <td
-                                        style={{
-                                          width: "5%",
-                                        }}
-                                      >
-                                        <GoPerson className="fs-6" />{" "}
-                                        {teacher.student_name_bn}
-                                        <br />
-                                        {teacher.uid}
-                                      </td>
+              <div className="d-flex ">
+                <div>
+                  {weightId(pi_attribute_weight, pi_attr.weight_uid) ==
+                    "Square" && <BiSquareRounded className="fs-5 mt-1" />}
+                  {weightId(pi_attribute_weight, pi_attr.weight_uid) ==
+                    "Circle" && <BiCircle className="fs-5 mt-1" />}
+                  {weightId(pi_attribute_weight, pi_attr.weight_uid) ==
+                    "Triangle" && <FiTriangle className="fs-5 mt-1" />}
 
-                                      {al_pi_attr.map(
-                                        (pi_attr: any, kedy: any) => (
-                                          <td
-                                            style={{
-                                              width: "30%",
-                                            }}
-                                            key={kedy}
-                                          >
-                                            <div className="d-flex gap-2">
-                                              <div
-                                                id={
-                                                  pi_attr.weight_uid +
-                                                  "-" +
-                                                  teacher.uid
-                                                }
-                                                className="all_pi_arrtiburte"
-                                                style={{
-                                                  border: "1px solid #eee",
-                                                  padding: "5px 6px",
-                                                  borderRadius: "3px",
-                                                  maxHeight: "40px",
-                                                }}
-                                                onClick={() =>
-                                                  save_PI_evalution(
-                                                    pi_attr.uid,
-                                                    pi_attr.weight_uid,
-                                                    teacher.uid
-                                                  )
-                                                }
-                                              >
-                                                {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
-                                                { weightId(pi_attribute_weight , pi_attr.weight_uid)  ==
-                                                  "Square" && (
-                                                  <BiSquareRounded className="fs-5 mt-1" />
-                                                )}
-                                                {weightId(pi_attribute_weight , pi_attr.weight_uid) ==
-                                                  "Circle" && (
-                                                  <BiCircle className="fs-5 mt-1" />
-                                                )}
-                                                {weightId(pi_attribute_weight , pi_attr.weight_uid) ==
-                                                  "Triangle" && (
-                                                  <FiTriangle className="fs-5 mt-1" />
-                                                )}
-                                              </div>
-
-                                              <div>{pi_attr.title_bn}</div>
-                                            </div>
-                                          </td>
-                                        )
-                                      )}
-                                    </>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-
-                          <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
-                            <button
-                              type="button"
-                              className="btn btn-warning m-1 "
-                              style={{
-                                // backgroundColor: "#428F92",
-                                color: "#fff",
-                              }}
-                              onClick={(e) => handleSave(e, 1)}
-                            >
-                              খসড়া
-                            </button>
-
-                            <button
-                              type="button"
-                              className="btn btn-primay px-5 "
-                              style={{
-                                backgroundColor: "#428F92",
-                                color: "#fff",
-                              }}
-                              onClick={(e) => handleSave(e, 2)}
-                            >
-                              সংরক্ষণ করুন
-                            </button>
-
-                            {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {/* <TiTick className={`${styles.tick_mark}`} /> */}
+                </div>
+                <div>
+                  <h6 style={{ fontSize: "14px" }}>{pi_attr.title_bn}</h6>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        ))}
       </div>
       <style
         dangerouslySetInnerHTML={{

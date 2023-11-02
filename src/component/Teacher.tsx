@@ -34,10 +34,13 @@ export default function Teacher() {
   const [assessment_uid, setassessment_uid] = useState("");
   const [pi_attrbute, setpi_attrbute] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
+  const [all_bis, setall_bis] = useState<any>([]);
   const [selected_subject, setselected_subject] = useState<any>("");
   const [Mullayon_name, setMullayon_name] = useState<any>("");
   const [showSkillBehaibor, seshowSkillBehaibor] = useState(false);
   const [ShowProfile, setShowProfile] = useState(true);
+  const [Student, setStudent] = useState<any>([]);
+  const [teacher, setteacher] = useState<any>({});
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
   const [showSubject, seshowSubject] = useState(true);
@@ -62,9 +65,13 @@ export default function Teacher() {
       localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
     }
 
+    
+
     const al_teacher: any = await all_teachers();
 
     setown_data(own_subjet?.data?.data);
+
+    setteacher(own_subjet.data.data.user)
 
     let all_subject: any = [];
     own_subjet.data.data.subjects.map((d: any) => {
@@ -85,6 +92,28 @@ export default function Teacher() {
       });
     });
 
+
+
+
+    const student: any = [];
+
+    own_subjet.data.data.subjects.map((std_data: any) => {
+      return std_data.class_room.students.map((stu_data: any) => {
+        stu_data.competence = std_data.competence;
+        student.push(stu_data);
+      });
+    });
+
+    const uniqueObjectsArray = student.filter(
+      (obj: any, index: any, self: any) =>
+        index === self.findIndex((o: any) => o.uid === obj.uid)
+    );
+
+    setStudent(uniqueObjectsArray);
+    setall_bis(own_subjet.data.data.bis);
+
+
+    
     setsubject(all_subject);
   };
 
@@ -221,8 +250,7 @@ export default function Teacher() {
 
                     {
                       parodorshita_acoron_tab === 1 &&
-                      <>acoron</>
-                      // <AcorongotoComponent assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon}  setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+                      <AcorongotoComponent teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon}  setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
 
                     }
 

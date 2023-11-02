@@ -63,24 +63,16 @@ export default function DetailsShikhonMullayon({
         ))}
       </div>
 
-      <div
-        className="modal fade"
-        id="exampleModal"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <StudentMullayonModal
+
+      <div className="modal" id="exampleModal" style={{zIndex:"99999"}}>
+  <div className="modal-dialog modal-xl">
+    <div className="modal-content">
+      <div className="modal-header">
+      <h5 className="modal-title" id="exampleModalLabel">{pi_name}</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="">
+      <StudentMullayonModal
                 competence_uid={competence_uid}
                 assessment_uid={assessment_uid}
                 al_pi_attr={al_pi_attr}
@@ -88,19 +80,14 @@ export default function DetailsShikhonMullayon({
                 pi_name={pi_name}
                 setpi_name={setpi_name}
               />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-sm btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
+      <div className="modal-footer">
+      {/* <button type="button" className="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button> */}
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
   );
 }
