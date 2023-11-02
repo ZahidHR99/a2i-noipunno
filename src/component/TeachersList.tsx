@@ -1,17 +1,12 @@
 import TeacherImg from "../assets/images/teacher.png";
 import { useState, useEffect } from "react";
-import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
-import { BiSidebar } from "react-icons/bi";
-import { AiOutlineHome } from "react-icons/ai";
-import { FiStar } from "react-icons/fi";
+
 
 import styles from "./Home.style.module.css";
 import {
   BiRadioCircle,
 } from "react-icons/bi";
-import {
-  HiOutlineDotsVertical,
-} from "react-icons/hi";
+
 import { all_teachers } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
@@ -46,6 +41,7 @@ export default function TeachersList() {
                   <div className="d-flex gap-3 align-items-center p-2">
                     <div>
                       <img
+                    
                         src={TeacherImg}
                         className="img-fluid"
                         style={{ height: "50px" }}

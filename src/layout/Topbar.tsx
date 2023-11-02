@@ -345,7 +345,7 @@ export default function Topbar() {
                           <Link to="/" className="text-decoration-none">
 
                             {/* <img src="/assets/images/teacher.svg" alt="" /> */}
-                            <span className="fs-6 ">প্রধান শিক্ষক</span>
+                            <span className="fs-6 ">প্রথম পাতা</span>
                           </Link>
                         </button>
                       </h2>
@@ -426,7 +426,7 @@ export default function Topbar() {
                         >
                           <Link to="/teachers-list" className="text-decoration-none">
 
-                            <img src="/assets/images/teacher.svg" alt="" />
+                            <img src="/assets/images/teacher.svg" alt="" className="pb-1 pe-2"/>
                             <span className="fs-6 ">শিক্ষক</span>
                           </Link>
                         </button>
