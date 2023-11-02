@@ -237,7 +237,7 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid ,
                           <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
                             <button
                               type="button"
-                              className="btn btn-warning m-1 "
+                              className="btn btn-warning position-absolute bottom-0 start-0 m-2 "
                               style={{
                                 // backgroundColor: "#428F92",
                                 color: "#fff",
