@@ -17,17 +17,16 @@ export default function Breadcumbtitle({title} :any) {
     <div>
    
        
-          <div className="d-flex align-items-center py-2 gap-2 ">
-                    <div className="card shadow-lg border-0 p-2">
-                    <button
+          <div className="d-flex align-items-center py-4 gap-2 ">
+          <div >
+                <button className="card shadow-lg border-0 p-2"
       onClick={() => {
         navigate(-1)
       }}
     >
       <MdArrowBackIosNew className="fs-1" />
     </button>
-                      
-                    </div>
+                </div>
                     <div className="card shadow-lg border-0 p-1 w-100">
                       <div className="d-flex justify-content-between">
                         <div>
@@ -45,7 +44,7 @@ export default function Breadcumbtitle({title} :any) {
                               <span style={{ color: "#000" }}>
                                 {" "}
                                 <MdOutlineArrowForwardIos />
-                                Data
+                                {title}
                               </span>
                             </h6>
                           </div>

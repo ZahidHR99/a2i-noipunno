@@ -257,6 +257,7 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid ,
                               onClick={(e) => handleSave(e, 2)}
                             >
                               সংরক্ষণ করুন
+                              
                             </button>
 
                             {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
