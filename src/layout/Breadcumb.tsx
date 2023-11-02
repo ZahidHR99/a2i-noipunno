@@ -1,20 +1,9 @@
 import React from 'react'
 
-<<<<<<< HEAD
-import { FiStar } from "react-icons/fi";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiSidebar } from "react-icons/bi";
 import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
 import styles from "../component/Home.style.module.css";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-=======
-
-    import { AiOutlineHome } from "react-icons/ai";
-    import { BiSidebar } from "react-icons/bi";
-    import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
-    import styles from "../component/Home.style.module.css";
-
->>>>>>> b6d3f5b8d0808d48fdc8b60d1881aaafa7469f4a
 import { useNavigate } from 'react-router-dom';
 
 
@@ -49,7 +38,7 @@ export default function Breadcumbtitle({ title }: any) {
                   <span style={{ color: "#000" }}>
                     {" "}
                     <MdOutlineArrowForwardIos />
-                    Data
+                    {title}
                   </span>
                 </h6>
               </div>
