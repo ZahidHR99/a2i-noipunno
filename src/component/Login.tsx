@@ -137,7 +137,7 @@ export default function Login() {
             </div>
           </div> */}
         </div>
-        <div className="switch-container mt-2">
+        <div className="switch-container mt-5">
           <div className='d-flex justify-content-between align-content-center'>
             <div className=''>
               <input type="checkbox" id="switch" className="language-switch" />

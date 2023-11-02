@@ -19,8 +19,8 @@ export default function StudentTranscript() {
     <div className=''>
                    {/* report end */}
             {/* expertness assessment start */}
-            <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
+           
+        
           <div className="container">
             <div className="row">
               
@@ -697,10 +697,8 @@ export default function StudentTranscript() {
               </div> */}
         
               </div>
-            </div>
-            </section>
-      
-    </div>
+            </div>      
+    
     </div>
   )
 }
