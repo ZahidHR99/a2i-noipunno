@@ -1,30 +1,24 @@
 import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
+// import {  MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
   BiCircle,
   BiFilterAlt,
-  BiSidebar,
   BiSquareRounded,
 } from "react-icons/bi";
 
-import ProfileCard from "./ProfileCard";
 import { Pi_save, teacher_own_subject } from "../Request";
-import { useParams } from "react-router-dom";
-
 import { GoPerson } from "react-icons/go";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const class_room_id = localStorage.getItem("class_room_id")
 
-export default function StudentMullayon(props: any) {
-  const { assessment_uid, competence_uid }: any = useParams();
+export default function StudentMullayonModal({ assessment_uid , competence_uid , setpi_name , pi_name} :any) {
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [submitObj, setsubmitObj] = useState<any>({});
-  const [pi_name, setpi_name] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const fetchData = async () => {
@@ -137,18 +131,15 @@ export default function StudentMullayon(props: any) {
 
   return (
     <div className="content">
-      <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
+      <div className="card-body">
+        <section className="np-breadcumb-section pt-0">
           <div className="container">
             <div className="row">
               <div className="col-md-12">
                 <div className="container">
                   <div className="d-flex align-items-center">
-                    <div className="card shadow-lg border-0 w-100 rounded">
+                    <div className="card  border-0 w-100 rounded">
                       <ul className="nav d-flex mt-2 justify-content-around py-1">
-                        <li className={`nav-item`}>
-                          <h4 className="p-1"> {pi_name} </h4>
-                        </li>
                       </ul>
                       <div className="tab-content" id="tabContent">
                         <div
@@ -158,12 +149,12 @@ export default function StudentMullayon(props: any) {
                           aria-labelledby="expertness-tab"
                         >
                           <div className="row p-3">
-                            <table className="table table-sm">
+                            <table className="table table-lg">
                               <thead>
                                 <tr>
-                                  <th scope="col" style={{ width: "5%" }}>
-                                    শিক্ষার্থীর{" "}
-                                    <BiFilterAlt className="fs-5 ms-4" />
+                                  <th scope="col" style={{ width: "15%" }}>
+                                    শিক্ষার্থীর নাম{" "}
+                                    {/* <BiFilterAlt className="fs-5 ms-4" /> */}
                                   </th>
                                   <th scope="col" style={{ width: "30%" }}></th>
                                   <th scope="col" style={{ width: "30%" }}>
@@ -181,7 +172,7 @@ export default function StudentMullayon(props: any) {
                                           width: "5%",
                                         }}
                                       >
-                                        <GoPerson className="fs-6" />{" "}
+                                        <GoPerson className="fs-6 fw-bold" />{" "}
                                         {teacher.student_name_bn}
                                         <br />
                                         {teacher.uid}
@@ -247,7 +238,7 @@ export default function StudentMullayon(props: any) {
                           <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
                             <button
                               type="button"
-                              className="btn btn-warning m-1 "
+                              className="btn btn-warning position-absolute bottom-0 start-0 my-2 mx-2"
                               style={{
                                 // backgroundColor: "#428F92",
                                 color: "#fff",
@@ -265,8 +256,14 @@ export default function StudentMullayon(props: any) {
                                 color: "#fff",
                               }}
                               onClick={(e) => handleSave(e, 2)}
-                            >
-                              সংরক্ষণ করুন
+                            ><span>
+                              সংরক্ষণ করুন {"   "}
+                              {/* {"   "}<MdOutlineArrowForwardIos  /> */}
+                              <img src="/assets/images/arrow-right.png" 
+                              
+                              alt=""
+                              />  
+                              </span>
                             </button>
 
                             {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}

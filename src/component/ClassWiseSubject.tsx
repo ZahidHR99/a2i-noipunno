@@ -27,6 +27,9 @@ const ClassWiseSubject = () => {
 
   return (
     <div className="container row mx-auto">
+      <div className="my-4">
+        <h4> {(id == "6") && "ষষ্ঠ" || (id == "7") && "সপ্তম"} শ্রেণির বিষয় সমুহ </h4>
+      </div>
       {subjects.map((subject, index) => (
         <div key={index} className="col-6 col-sm-4 col-md-3 mx-auto" >
           <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
