@@ -69,14 +69,14 @@ export default function DetailsShikhonMullayon({
       </div>
 
 
-      <div className="modal" id="exampleModal"  tabindex="-1" style={{zIndex:"99999"}}>
+      <div className="modal" id="exampleModal"  style={{zIndex:"99999"}}>
   <div className="modal-dialog modal-xl">
     <div className="modal-content">
       <div className="modal-header">
-      <h5 className="modal-title" id="exampleModalLabel">{pi_name}</h5>
+      <h5 className="modal-title fw-bold" id="exampleModalLabel">{pi_name}</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="">
+      <div className="card">
       <StudentMullayonModal competence_uid={competence_uid}  assessment_uid={assessment_uid} setpi_name={setpi_name} pi_name={pi_name} />
       </div>
       <div className="modal-footer">

@@ -1,5 +1,6 @@
 import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
+// import {  MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
   BiCircle,
@@ -130,14 +131,14 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid ,
 
   return (
     <div className="content">
-      <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
+      <div className="card-body">
+        <section className="np-breadcumb-section pt-0">
           <div className="container">
             <div className="row">
               <div className="col-md-12">
                 <div className="container">
                   <div className="d-flex align-items-center">
-                    <div className="card shadow-lg border-0 w-100 rounded">
+                    <div className="card  border-0 w-100 rounded">
                       <ul className="nav d-flex mt-2 justify-content-around py-1">
                       </ul>
                       <div className="tab-content" id="tabContent">
@@ -237,7 +238,7 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid ,
                           <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
                             <button
                               type="button"
-                              className="btn btn-warning position-absolute bottom-0 start-0 m-2 "
+                              className="btn btn-warning position-absolute bottom-0 start-0 my-2 mx-2"
                               style={{
                                 // backgroundColor: "#428F92",
                                 color: "#fff",
@@ -255,9 +256,14 @@ export default function StudentMullayonModal({ assessment_uid , competence_uid ,
                                 color: "#fff",
                               }}
                               onClick={(e) => handleSave(e, 2)}
-                            >
-                              সংরক্ষণ করুন
+                            ><span>
+                              সংরক্ষণ করুন {"   "}
+                              {/* {"   "}<MdOutlineArrowForwardIos  /> */}
+                              <img src="/assets/images/arrow-right.png" 
                               
+                              alt=""
+                              />  
+                              </span>
                             </button>
 
                             {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}

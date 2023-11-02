@@ -1,11 +1,11 @@
 import React from 'react'
 
-    import { FiStar } from "react-icons/fi";
+
     import { AiOutlineHome } from "react-icons/ai";
     import { BiSidebar } from "react-icons/bi";
     import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
     import styles from "../component/Home.style.module.css";
-    import { HiOutlineDotsVertical } from "react-icons/hi";
+
 import { useNavigate } from 'react-router-dom';
 
 
