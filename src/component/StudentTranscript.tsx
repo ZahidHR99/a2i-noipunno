@@ -5,11 +5,7 @@ import { TiTick } from "react-icons/ti";
 import styles from "./Home.style.module.css";
 import { IoIosArrowUp } from "react-icons/io";
 import { SlBookOpen } from "react-icons/sl";
-import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
-import { BiSidebar } from "react-icons/bi";
-import { AiOutlineHome } from "react-icons/ai";
-import { FiStar } from "react-icons/fi";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+
 import Breadcumb from "../layout/Breadcumb"
 
 export default function StudentTranscript() {
@@ -19,8 +15,8 @@ export default function StudentTranscript() {
     <div className=''>
                    {/* report end */}
             {/* expertness assessment start */}
-            <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
+           
+        
           <div className="container">
             <div className="row">
               
@@ -697,10 +693,8 @@ export default function StudentTranscript() {
               </div> */}
         
               </div>
-            </div>
-            </section>
-      
-    </div>
+            </div>      
+    
     </div>
   )
 }

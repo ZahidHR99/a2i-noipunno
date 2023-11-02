@@ -9,17 +9,18 @@ import {
 } from "react-icons/bi";
 
 import ProfileCard from "./ProfileCard";
-import { Pi_save, teacher_own_subject } from "../Request";
+import { Bi_save, teacher_own_subject } from "../Request";
 import { useParams } from "react-router-dom";
 
 import { GoPerson } from "react-icons/go";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { weightId } from "../utils/Utils";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const class_room_id = localStorage.getItem("class_room_id")
 
-export default function StudentMullayon(props: any) {
+export default function StudentMullayonBehaveSubmit(props: any) {
   const { assessment_uid, competence_uid }: any = useParams();
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
@@ -27,6 +28,7 @@ export default function StudentMullayon(props: any) {
   const [pi_name, setpi_name] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
+  const [pi_attribute_weight, setpi_attribute_weight] = useState<any>([]);
   const fetchData = async () => {
     const all_pi_arrtibute_name: any =
       localStorage.getItem("pi_attr_name") || "";
@@ -44,6 +46,8 @@ export default function StudentMullayon(props: any) {
       own_subjet = await teacher_own_subject();
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
+
+    setpi_attribute_weight(own_subjet.data.data.pi_attribute_weight)    
 
     const student: any = [];
     own_subjet.data.data.subjects.map((std_data: any) => {
@@ -75,7 +79,7 @@ export default function StudentMullayon(props: any) {
         return d
       })
 
-      await Pi_save(data);
+      await Bi_save(data);
 
       if (submit_status == 1) {
         alert("Saved Draft")
@@ -96,8 +100,7 @@ export default function StudentMullayon(props: any) {
     try {
       const params: any = {
         evaluate_type: assessment_uid,
-        competence_uid,
-        pi_uid,
+        bi_uid :pi_uid,
         weight_uid,
         class_room_id,
         student_uid: student_id,
@@ -134,6 +137,9 @@ export default function StudentMullayon(props: any) {
 
     setsubmitData(sumbitArray);
   };
+
+
+  console.log(`submitData`, al_pi_attr, submitData);
 
   return (
     <div className="content">
@@ -218,15 +224,15 @@ export default function StudentMullayon(props: any) {
                                                 }
                                               >
                                                 {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
-                                                {pi_attr.weight.name ==
+                                                { weightId(pi_attribute_weight , pi_attr.weight_uid)  ==
                                                   "Square" && (
                                                   <BiSquareRounded className="fs-5 mt-1" />
                                                 )}
-                                                {pi_attr.weight.name ==
+                                                {weightId(pi_attribute_weight , pi_attr.weight_uid) ==
                                                   "Circle" && (
                                                   <BiCircle className="fs-5 mt-1" />
                                                 )}
-                                                {pi_attr.weight.name ==
+                                                {weightId(pi_attribute_weight , pi_attr.weight_uid) ==
                                                   "Triangle" && (
                                                   <FiTriangle className="fs-5 mt-1" />
                                                 )}
@@ -271,7 +277,6 @@ export default function StudentMullayon(props: any) {
 
                             {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
                           </div>
-
                         </div>
                       </div>
                     </div>

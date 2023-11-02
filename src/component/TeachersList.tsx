@@ -5,13 +5,12 @@ import { BiSidebar } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiStar } from "react-icons/fi";
 
+
 import styles from "./Home.style.module.css";
 import {
   BiRadioCircle,
 } from "react-icons/bi";
-import {
-  HiOutlineDotsVertical,
-} from "react-icons/hi";
+
 import { all_teachers } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";

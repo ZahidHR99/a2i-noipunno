@@ -32,7 +32,7 @@ export default function Topbar() {
   }, []);
 
   return (
-    <div>
+    <>
       <section className="noipunno-navbar-section np">
         <div className="container noipunno-navbar-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -554,6 +554,6 @@ export default function Topbar() {
         </div>
       </section>
       <section className="empty-section" />
-    </div>
+    </>
   );
 }
