@@ -84,7 +84,6 @@ const StudentList = () => {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body className="">
-                ব
                 <div>
                   <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
                     <ul className={`${styles.teacher_info_list_group}`}>
