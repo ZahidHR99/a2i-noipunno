@@ -20,9 +20,6 @@ const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const class_room_id = localStorage.getItem("class_room_id")
 
-const all_pi_arrtibute_name: any = localStorage.getItem("pi_attr_name") || "";
-const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
-const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
 export default function StudentMullayonBehaveSubmit(props: any) {
   const { assessment_uid, competence_uid }: any = useParams();
   const [Student, setStudent] = useState<any>([]);
@@ -110,6 +107,7 @@ export default function StudentMullayonBehaveSubmit(props: any) {
         teacher_uid: teacher.caid,
         submit_status : 2,
         is_approved: 1,
+        remark: null
       };
       let obj: any = { ...submitObj, [student_id]: params };
       setsubmitObj(obj);

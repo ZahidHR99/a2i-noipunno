@@ -1,16 +1,17 @@
 
-import studentImage from "../assets/images/teacher.png";
+import studentImage from "../../public/assets/images/user-profile.png";
 import styles from "./Home.style.module.css";
 import { BiRadioCircle } from "react-icons/bi";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { all_student } from "../Request";
-import { FiStar } from "react-icons/fi";
-import { AiOutlineHome } from "react-icons/ai";
-import { BiSidebar } from "react-icons/bi";
-import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import Accordion from 'react-bootstrap/Accordion';
+
+import Breadcumb from "../layout/Breadcumb";
 
 const StudentList = () => {
+
+
   const [students, setStudents] = useState([])
 
   useEffect(() => {
@@ -24,46 +25,17 @@ const StudentList = () => {
   }, [])
 
   return (
-    <div className="">
-      <div className="dashboard-section">
-      <section className="np-breadcumb-section pt-5">
-      <div className="container">
-      <div className="row">
-      <div className="d-flex align-items-center py-2 gap-2 ">
-                <div className="card shadow-lg border-0 p-2">
-                  <MdArrowBackIosNew className="fs-1" />
-                </div>
-                <div className="card shadow-lg border-0 p-1 w-100">
-                  <div className="d-flex justify-content-between">
-                    <div>
-                      <div style={{ fontSize: "14px" }}>
-                        <BiSidebar
-                          className={`fs-3 ${styles.teacher_info_list}`}
-                        />{" "}
-                        শিক্ষার্থীর তালিকা                     
-                         </div>
-                      <div style={{ marginLeft: "2rem" }}>
-                        <h6 style={{ color: "#C8DFDF", fontSize: "10px" }}>
-                          {" "}
-                          <AiOutlineHome />
-                          Dashboard{" "}
-                          <span style={{ color: "#000" }}>
-                            {" "}
-                            <MdOutlineArrowForwardIos />
-                            Data
-                          </span>
-                        </h6>
-                      </div>
-                    </div>
-                    <div className="d-flex gap-2 align-items-center fs-4">
-                      <FiStar /> <HiOutlineDotsVertical />
-                    </div>
-                  </div>
-                </div>
-              </div>
-        {students?.map((student, index) => (
-          <div key={student?.id} className="col-sm-6 col-md-4 my-2">
-            <div key={index} className="card shadow-lg border-0">
+    <div className="container">
+
+      <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
+
+
+      <Accordion className="row">
+        {students?.map((student:any, index:any) => (
+
+          <Accordion.Item eventKey={index} className="col-sm-6 col-md-4 my-2">
+            <Accordion.Header>
+              {/* Accordion Item #{index} */}
               <div className="d-flex justify-content-between gap-3 border-bottom">
                 <div className="d-flex gap-3 align-items-center p-2">
                   <div>
@@ -80,13 +52,9 @@ const StudentList = () => {
                     <h6 className={styles.deg}>শ্রেণিঃ {student?.class}</h6>
                   </div>
                 </div>
-                <div className="p-1">
-                  <HiOutlineDotsVertical
-                    className={`fs-4 ${styles.OutlineDotsVertical}`}
-                  />
-                </div>
               </div>
-
+            </Accordion.Header>
+            <Accordion.Body>
               <div className="mt-4">
                 <div
                   className="d-flex"
@@ -246,15 +214,12 @@ const StudentList = () => {
                     <li> {student?.guardian_mobile_no || "013654582555"}</li>
                   </ul>
                 </div>
-
               </div>
-            </div>
-          </div>
+            </Accordion.Body>
+          </Accordion.Item>
         ))}
-      </div>
-      </div>
-      </section>
-    </div>
+      </Accordion>
+
     </div>
   );
 };

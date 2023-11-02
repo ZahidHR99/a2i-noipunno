@@ -10,9 +10,6 @@ import DetailsShikhonMullayonBehave from "./DetailsShikhonMullayonBehave";
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 
-const all_pi_arrtibute_name: any = localStorage.getItem("pi_attr_name") || "";
-const all_pi_arrtibute_: any = localStorage.getItem("pi_attr") || "";
-const all_pi_arrtibute = all_pi_arrtibute_ ? JSON.parse(all_pi_arrtibute_) : "";
 export default function StudentMullayonBehave(props: any) {
   const { assessment_uid, competence_uid }: any = useParams();
   const [Student, setStudent] = useState<any>([]);
@@ -69,56 +66,6 @@ export default function StudentMullayonBehave(props: any) {
     console.log(`studentssss`, student , all_bis );
   }
 
-
-
-
-
-
-
-  const save_PI_evalution = async (
-    pi_uid: any,
-    weight_uid: any,
-    student_id: any
-  ) => {
-    try {
-      const params: any = {
-        evaluate_type: assessment_uid,
-        competence_uid,
-        pi_uid,
-        weight_uid,
-        student_uid: student_id,
-        teacher_uid: teacher.caid,
-        submit_status : 2,
-        is_approved: 1,
-      };
-      let obj: any = { ...submitObj, [student_id]: params };
-      setsubmitObj(obj);
-
-      checkedIn(obj);
-    } catch (error) {
-      console.log(`error`, error);
-    }
-  };
-
-  const checkedIn = (obj: any) => {
-    let all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
-
-    for (let index = 0; index < all_elem.length; index++) {
-      const element: any = all_elem[index];
-      element.style.background = "";
-    }
-
-    let sumbitArray: any = [];
-
-    for (const x in obj) {
-      let id: any = obj[x].weight_uid + "-" + x;
-      let el: any = document.getElementById(id);
-      el.style.background = "#69CB1C";
-      sumbitArray.push(obj[x]);
-    }
-
-    setsubmitData(sumbitArray);
-  };
   const pi_attr = (data: any, e: any = "") => {
     setpi_attrbute(data.pi_attribute);
   };

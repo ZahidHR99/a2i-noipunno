@@ -21,14 +21,13 @@ const EditTeacherProfile = () => {
 
  const handleTeacherProfileEdit = async (event: any) => {
 
-
   event.preventDefault()
   const formDatas = new FormData(event.target);
 
   //see The field-value  ->> way-2
-  // formDatas.forEach((value, name) => {
-  //  console.log(`KeyName: ${name}, value: ${value}`)
-  // });
+  formDatas.forEach((value, name) => {
+   console.log(`KeyName: ${name}, value: ${value}`)
+  });
 
   const { data }: any = await update_teacher_profile(caid, formDatas);
 
@@ -36,7 +35,9 @@ const EditTeacherProfile = () => {
 
   if (data.status === true) {
    alert("Profile update Successfully!")
-
+   // localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
+   // const datas = JSON.parse(localStorage.getItem("customer_login_auth"));
+   // console.log("local-sorege datas", datas.user);
   }
   else
    alert("Something error!")
@@ -68,22 +69,20 @@ const EditTeacherProfile = () => {
          </div>
         </div> */}
 
-
-
         <div className="form-group  col-sm-4 col-md-6">
          <div className="mb-3" style={{ fontSize: "16px" }}>
-          <label className="form-label">ইউজার আইডি</label>
+          <label className="form-label">নাম</label>
           <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="caid" defaultValue={eiin} placeholder={eiin} />
+           <input type="text" id="pin" className="form-control" name="name" defaultValue={name} />
           </div>
          </div>
         </div>
 
         <div className="form-group  col-sm-4 col-md-6">
          <div className="mb-3" style={{ fontSize: "16px" }}>
-          <label className="form-label">নাম</label>
+          <label className="form-label">ইউজার আইডি</label>
           <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="name" placeholder={name} />
+           <input type="text" id="pin" className="form-control" name="caid" defaultValue={eiin} />
           </div>
          </div>
         </div>
@@ -92,97 +91,45 @@ const EditTeacherProfile = () => {
          <div className="mb-3" style={{ fontSize: "16px" }}>
           <label className="form-label">ফোন নম্বর</label>
           <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="phone_no" placeholder={phone_no} />
+           <input type="text" id="pin" className="form-control" name="phone_no" defaultValue={phone_no} />
           </div>
          </div>
         </div>
 
-
-        <div className="form-group  col-sm-4 col-md-6">
+        {/* <div className="form-group  col-sm-4 col-md-6">
          <div className="mb-3" style={{ fontSize: "16px" }}>
           <label className="form-label">শিক্ষকের পদবি</label>
           <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="role" placeholder={role || "no-entry"} />
+           <input type="text" id="pin" className="form-control" name="role" defaultValue={role} />
           </div>
          </div>
+        </div> */}
+
+        <div className="form-group col-sm-4 col-md-6">
+         <div className="mb-3" >
+          <label className="form-label" >
+           পদবি
+          </label>
+          <select name="role" className="form-select p-2 form-control" aria-label="Default select example" style={{ fontSize: "16px" }} >
+           <option selected style={{ fontSize: "16px" }}>
+            {" "}
+            পদবী নির্বাচন করুন
+           </option>
+           <option value={1}>শিক্ষক</option>
+           <option value={2}>সহকারী শিক্ষক</option>
+           <option value={3}>প্রধান শিক্ষক</option>
+          </select>
+         </div>
         </div>
-
-
 
         <div className="form-group  col-sm-4 col-md-6">
          <div className="mb-3" style={{ fontSize: "16px" }}>
           <label className="form-label">ইমেইল আইডি </label>
           <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="email" placeholder={email} />
+           <input type="text" id="pin" className="form-control" name="email" defaultValue={email} />
           </div>
          </div>
         </div>
-
-        {/* <div className="form-group  col-sm-4 col-md-6">
-         <div className="mb-3" >
-          <label className="form-label" >
-           বিভাগ
-          </label>
-          <select
-           className="form-select p-2 form-control"
-           aria-label="Default select example"
-           style={{ fontSize: "16px" }}
-          >
-           <option selected style={{ fontSize: "16px" }}>
-            {" "}
-            বিভাগ নির্বাচন করুন
-           </option>
-           <option value="1">ঢাকা</option>
-           <option value="2">চট্টগ্রাম</option>
-           <option value="3">সিলেট</option>
-          </select>
-         </div>
-        </div> */}
-
-
-        {/* <div className="form-group  col-sm-4 col-md-6">
-         <div className="mb-3" style={{ fontSize: "16px" }}>
-          <label className="form-label">
-           জেলা
-          </label>
-          <select
-           className="form-select p-2 "
-           aria-label="Default select example"
-           style={{ fontSize: "16px" }}
-          >
-           <option selected style={{ fontSize: "16px" }}>
-            {" "}
-            জেলা নির্বাচন করুন
-           </option>
-           <option value="1">বরগুনা</option>
-           <option value="2">বরিশাল</option>
-           <option value="3">ভোলা</option>
-          </select>
-         </div>
-        </div> */}
-
-
-        {/* <div className="form-group  col-sm-4 col-md-6">
-         <div className="mb-3" style={{ fontSize: "16px" }}>
-          <label className="form-label" style={{ fontSize: "16px" }}>
-           উপজেলা
-          </label>
-          <select
-           className="form-select p-2 "
-           aria-label="Default select example"
-           style={{ fontSize: "16px" }}
-          >
-           <option selected style={{ fontSize: "16px" }}>
-            {" "}
-            উপজেলা নির্বাচন করুন
-           </option>
-           <option value="1">ফকিরাহাট</option>
-           <option value="2">মোল্লাহাট</option>
-           <option value="3">সারানখোলা</option>
-          </select>
-         </div>
-        </div> */}
-
 
         <div className="d-flex justify-content-end align-items-center pt-5 pe-5">
          <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>

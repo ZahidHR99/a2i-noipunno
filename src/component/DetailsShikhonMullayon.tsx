@@ -23,12 +23,13 @@ export default function DetailsShikhonMullayon({
               <div className={`border-0 w-100`}>
                 <div className="d-flex justify-content-between">
                   <div className="d-flex justify-content-between align-items-center w-100 px-1">
-                    <div className="" style={{ color: "#428F92" }}>
+                    <div className="d-flex" style={{ color: "#428F92" }}>
                       <h6>
                         {showDetailsshikhonKalinMullayon?.class_uid}.
                         {showDetailsshikhonKalinMullayon?.competence_id}.
-                        {d?.pi_id}
+                        {d?.pi_id} {" "}
                       </h6>
+                      
 
                       <Link
                         onClick={(e) => {

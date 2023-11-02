@@ -13,6 +13,8 @@ import {
   HiOutlineDotsVertical,
 } from "react-icons/hi";
 import { all_teachers } from "../Request";
+import Accordion from 'react-bootstrap/Accordion';
+import Breadcumb from "../layout/Breadcumb";
 
 export default function TeachersList() {
 
@@ -21,7 +23,7 @@ export default function TeachersList() {
   const fetchData = async () => {
 
     const own_subjet: any = await all_teachers();
-    localStorage.setItem("all_teachers" , JSON.stringify(own_subjet)  )
+    localStorage.setItem("all_teachers", JSON.stringify(own_subjet))
   };
 
   useEffect(() => {
@@ -31,200 +33,167 @@ export default function TeachersList() {
 
     fetchData()
   }, []);
+
   return (
-    <div>
-      <div className="">
-      <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
-          <div className="container">
-    <div className="row">
-    <div className="d-flex align-items-center py-2 gap-2 ">
-                <div className="card shadow-lg border-0 p-2">
-                  <MdArrowBackIosNew className="fs-1" />
-                </div>
-                <div className="card shadow-lg border-0 p-1 w-100">
-                  <div className="d-flex justify-content-between">
+    <>
+      <div className="container">
+        <Breadcumb title={"শিক্ষকের তালিকা"} />
+        <Accordion className="row">
+          {teachers?.map((teacher, index) => (
+            <Accordion.Item eventKey={index} className="col-sm-6 col-md-4 my-2">
+              <Accordion.Header>
+                <div className="d-flex justify-content-between gap-3 border-bottom">
+                  <div className="d-flex gap-3 align-items-center p-2">
                     <div>
-                      <div style={{ fontSize: "14px" }}>
-                        <BiSidebar
-                          className={`fs-3 ${styles.teacher_info_list}`}
-                        />{" "}
-                          শিক্ষকের তালিকা
-                      </div>
-                      <div style={{ marginLeft: "2rem" }}>
-                        <h6 style={{ color: "#C8DFDF", fontSize: "10px" }}>
-                          {" "}
-                          <AiOutlineHome />
-                          Dashboard{" "}
-                          <span style={{ color: "#000" }}>
-                            {" "}
-                            <MdOutlineArrowForwardIos />
-                            Data
-                          </span>
-                        </h6>
-                      </div>
+                      <img
+                        src={TeacherImg}
+                        className="img-fluid"
+                        style={{ height: "50px" }}
+                      />
                     </div>
-                    <div className="d-flex gap-2 align-items-center fs-4">
-                      <FiStar /> <HiOutlineDotsVertical />
+                    <div className="mt-2">
+                      <h5 className={styles.teacherName}>
+                        {teacher.name_en}
+                      </h5>
+                      <h6 className={styles.deg}>{teacher.position}</h6>
                     </div>
                   </div>
-                </div>
-              </div>
-                  {teachers.map((teacher, index) => (
-                    <div className="col-sm-6 col-md-4 my-2">
-                      <div key={index} className="card shadow-lg border-0">
-                        <div className="d-flex justify-content-between gap-3 border-bottom">
-                          <div className="d-flex gap-3 align-items-center p-2">
-                            <div>
-                              <img
-                                src={TeacherImg}
-                                className="img-fluid"
-                                style={{ height: "50px" }}
-                              />
-                            </div>
-                            <div className="mt-2">
-                              <h5 className={styles.teacherName}>
-                                {teacher.name_en}
-                              </h5>
-                              <h6 className={styles.deg}>{teacher.position}</h6>
-                            </div>
-                          </div>
-                          <div className="p-1">
+                  {/* <div className="p-1">
                             <HiOutlineDotsVertical
                               className={`fs-4 ${styles.OutlineDotsVertical}`}
                             />
-                          </div>
-                        </div>
-                        <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
-                          <div className={styles.cardDesc}>বাংলা</div>
-                          <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                          <div className={styles.cardDesc}>বিজ্ঞান</div>
-                        </div>
-                        <div className="">
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            {/* {teachers.map((teacher) => (
+                          </div> */}
+                </div>
+              </Accordion.Header>
+              <Accordion.Body>
+                <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
+                  <div className={styles.cardDesc}>বাংলা</div>
+                  <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
+                  <div className={styles.cardDesc}>বিজ্ঞান</div>
+                </div>
+                <div className="">
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    {/* {teachers.map((teacher) => (
                           <div key={teacher.id}>
                             <h5 className={styles.teacherName}>{teacher.name}</h5>
                             <h6 className={styles.deg}>{teacher.position}</h6>
                           </div>))} */}
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                {" "}
-                                <BiRadioCircle />
-                                মোবাইল :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> {teacher.mobile_no}</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle /> জন্ম তারিখ :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> ১২/১০/১৯৭৭</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle /> লিঙ্গ :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> মহিলা</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle /> জাতীয়তা :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> বাংলাদেশী</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle />
-                                ধর্ম :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> ইসলাম</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle />
-                                বৈবাহিক অবস্থা :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> বিবাহিতা</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle />
-                                এনআইডি নম্বর :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> xxx-xxxxxxxxx</li>
-                            </ul>
-                          </div>
-                          <div
-                            className="d-flex"
-                            style={{ marginLeft: "-1.5rem" }}
-                          >
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li>
-                                <BiRadioCircle />
-                                পদবি :
-                              </li>
-                            </ul>
-                            <ul className={`${styles.teacher_info_list_group}`}>
-                              <li> সহকারী শিক্ষক</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        {" "}
+                        <BiRadioCircle />
+                        মোবাইল :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> {teacher.mobile_no}</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle /> জন্ম তারিখ :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> ১২/১০/১৯৭৭</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle /> লিঙ্গ :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> মহিলা</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle /> জাতীয়তা :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> বাংলাদেশী</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle />
+                        ধর্ম :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> ইসলাম</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle />
+                        বৈবাহিক অবস্থা :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> বিবাহিতা</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle />
+                        এনআইডি নম্বর :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> xxx-xxxxxxxxx</li>
+                    </ul>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ marginLeft: "-1.5rem" }}
+                  >
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li>
+                        <BiRadioCircle />
+                        পদবি :
+                      </li>
+                    </ul>
+                    <ul className={`${styles.teacher_info_list_group}`}>
+                      <li> সহকারী শিক্ষক</li>
+                    </ul>
+                  </div>
                 </div>
-                </div>
-                </section>
-                </div>
-                </div>
-  </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+
+      </div>
+    </>
   )
 }

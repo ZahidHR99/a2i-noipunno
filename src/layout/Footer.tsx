@@ -1,7 +1,10 @@
 export default function Footer() {
   return (
-    
-    <div className="container noipunno-footer d-flex justify-content-between">
+    <div className="container-fluid bg-light sticky-bottom ">
+
+
+
+<div className="container noipunno-footer d-flex justify-content-between ">
   <div style={{ fontWeight: "bold", fontSize: 12 }}>
     সর্বস্বত্ব সংরক্ষিত © 2023 শিক্ষা মন্ত্রণালয়, গণপ্রজাতন্ত্রী বাংলাদেশ সরকার
   </div>
@@ -29,6 +32,9 @@ export default function Footer() {
     </a>
   </div>
 </div>
+
+    </div>
+    
 
 
   )

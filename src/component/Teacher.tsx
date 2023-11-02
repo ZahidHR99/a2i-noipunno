@@ -14,6 +14,8 @@ import ProfileCard from "./ProfileCard";
 import { PiBookOpenText } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
+import { Spinner } from "react-bootstrap";
+import ShowAssesment from "./ShowAssesment";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -103,11 +105,13 @@ export default function Teacher() {
     setelement(e);
   };
 
-  console.log(`subjectsubject`, subject,  Showcollaps);
+  console.log(`subjectsubject`, subject, Showcollaps);
 
   return (
     <div className="content">
-      {subject.length == 0 && "loading..."}
+      <div className={subject.length == 0 && styles.loading_container}>
+        {subject.length == 0 && <Spinner animation="border" />}
+      </div>
 
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
@@ -142,7 +146,10 @@ export default function Teacher() {
                           onClick={(e) => {
                             skill_behaibor_count(d);
                             setelement(e);
-                            localStorage.setItem("class_room_id" , d.own_subjet.class_room_id )
+                            localStorage.setItem(
+                              "class_room_id",
+                              d.own_subjet.class_room_id
+                            );
                           }}
                         >
                           <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
@@ -181,108 +188,18 @@ export default function Teacher() {
                   )}
 
                   {showSkillBehaibor && (
-                    <div className="row">
-                      <ul className="nav justify-content-around bg-white py-1 rounded assestment-tabs ">
-                        {own_data?.assessments.map((d: any, key: any) => (
-                          <li className="nav-item fs-4 py-2" key={key}>
-                            <a
-                              className={
-                                key === 0
-                                  ? "nav-link link-secondary active"
-                                  : "nav-link link-secondary"
-                              }
-                              id={key === 0 ? "provati" : "sondha_session"}
-                              data-bs-toggle="tab"
-                              data-bs-target={
-                                key === 0
-                                  ? "#provati-tab"
-                                  : "#sondha_session-tab"
-                              }
-                              onClick={(e) => {
-                                setparodorshita_acoron_tab(key);
-                                setallassessmet(d?.assessment_details);
-                                setelement(e);
-                              }}
-                              href="#"
-                            >
-                              {d.assessment_name_bn}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="tab-content p-2" id="tabContent">
-                        <div
-                          className={
-                            parodorshita_acoron_tab === 0
-                              ? "tab-pane fade show active"
-                              : "tab-pane fade"
-                          }
-                          id="provati"
-                          role="tabpanel"
-                          aria-labelledby="provati-tab"
-                        >
-                          <div className="row">
-                            <ul className="nav justify-content-around bg-white py-1 rounded">
-                              {allassessmet?.map((ass_d: any, ky: any) => (
-                                <li
-                                  style={{ cursor: "pointer" }}
-                                  className="nav-item fs-6 py-1"
-                                  key={ky}
-                                  onClick={(e: any) => {
-                                    setelement(e);
-                                    seshowCompitance(true);
-                                    setassessment_uid(ass_d.uid);
-                                    setMullayon_name(
-                                      ass_d.assessment_details_name_bn
-                                    );
-                                  }}
-                                >
-                                  {ass_d.assessment_details_name_bn}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                        <div
-                          className={
-                            parodorshita_acoron_tab === 1
-                              ? "tab-pane fade show active"
-                              : "tab-pane fade"
-                          }
-                          id="sondha_session"
-                          role="tabpanel"
-                          aria-labelledby="sondha_session-tab"
-                        >
-                          <div className="row">
-                            <ul className="nav justify-content-around bg-white py-1 rounded">
-                              {allassessmet.map((ass_d: any, ky: any) => (
-                                <li
-                                  style={{ cursor: "pointer" }}
-                                  className="nav-item fs-6 py-1"
-                                  key={ky}
-                                  onClick={(e: any) => {
-                                    setelement(e);
-                                    seshowCompitance(true);
-                                    setassessment_uid(ass_d.uid);
-                                    setMullayon_name(
-                                      ass_d.assessment_details_name_bn
-                                    );
-                                  }}
-                                >
-                                  <Link
-                                    className="text-decoration-none"
-                                    style={{color:"#3fabd4"}}
-                                    to={"/student-mullayon-behave/" + ass_d.uid}
-                                  >
-                                    {ass_d.assessment_details_name_bn}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <>
+                      <ShowAssesment
+                        seshowCompitance={seshowCompitance}
+                        setassessment_uid={setassessment_uid}
+                        setMullayon_name={setMullayon_name}
+                        allassessmet={allassessmet}
+                        parodorshita_acoron_tab={parodorshita_acoron_tab}
+                        own_data={own_data}
+                        setallassessmet={setallassessmet}
+                        setparodorshita_acoron_tab={setparodorshita_acoron_tab}
+                      />
+                    </>
                   )}
 
                   {showCompitance && (
