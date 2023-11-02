@@ -94,5 +94,5 @@
 }
 
 .assestment-tabs .active {
-    background-color: aliceblue;
+    border-bottom: 2px solid #428f92;
 }

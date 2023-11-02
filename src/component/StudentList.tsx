@@ -31,7 +31,7 @@ const StudentList = () => {
 
 
       <Accordion className="row">
-        {students?.map((student, index) => (
+        {students?.map((student:any, index:any) => (
 
           <Accordion.Item eventKey={index} className="col-sm-6 col-md-4 my-2">
             <Accordion.Header>
@@ -55,7 +55,6 @@ const StudentList = () => {
               </div>
             </Accordion.Header>
             <Accordion.Body>
-              Accordion Item {index} <br />
               <div className="mt-4">
                 <div
                   className="d-flex"

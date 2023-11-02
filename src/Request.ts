@@ -77,6 +77,24 @@ export function Pi_save(data: any) {
   return axios(options);
 }
 
+
+
+export function Bi_save(data: any) {
+  const page_list = `${EVULATION_API}/bi-evaluation`;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    data,
+    url: page_list,
+  };
+
+  return axios(options);
+}
+
+
 export function clssWiseSubject(data: any) {
   const page_list = `${API_URL}/v1/class-wise-subjects?class_id=${data}`;
   // console.log("Requested Url", page_list);

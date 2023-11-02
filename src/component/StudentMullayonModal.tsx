@@ -19,7 +19,7 @@ const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 const class_room_id = localStorage.getItem("class_room_id")
 
-export default function StudentMullayon(props: any) {
+export default function StudentMullayonModal(props: any) {
   const { assessment_uid, competence_uid }: any = useParams();
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
