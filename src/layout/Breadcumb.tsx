@@ -3,7 +3,6 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiSidebar } from "react-icons/bi";
 import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
 import styles from "../component/Home.style.module.css";
-
 import { useNavigate } from 'react-router-dom';
 
 
@@ -38,7 +37,7 @@ export default function Breadcumbtitle({ title }: any) {
                 <span style={{ color: "#000" }}>
                   {" "}
                   <MdOutlineArrowForwardIos />
-                  Data
+                  {title}
                 </span>
               </h6>
             </div>
