@@ -43,7 +43,7 @@ export default function TeachersList() {
     setShowModal(false);
   };
 
-  // console.log("Select Items", selectedItem);
+  console.log("Select Items", selectedItem);
 
   return (
     <>
@@ -61,8 +61,8 @@ export default function TeachersList() {
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
-                      <h5 className={styles.teacherName}>নামঃ {teacher.name_en} </h5>
-                      <h6 className={styles.deg}>{teacher.position}</h6>
+                      <h5 className={styles.teacherName}>নামঃ {teacher?.name_en} </h5>
+                      <h5 className={styles.teacherName}>আইডিঃ {teacher?.uid}</h5>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                       <button onClick={() => handleShowModal(teacher)} className="btn btn-primay btn-sm d-flex justify-content-center align-items-center" style={{ backgroundColor: "#428F92", color: "#fff", }} >
