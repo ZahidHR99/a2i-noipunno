@@ -47,6 +47,7 @@ export default function Teacher() {
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
   const [showSubject, seshowSubject] = useState(true);
+  const [showSubjectname, seshowSubjectname] = useState("");
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
@@ -140,13 +141,15 @@ export default function Teacher() {
     setelement(e);
   };
 
+  console.log(`subject`, subject , showSubjectname);
+
   return (
     <div className="content mb-5">
       <div className={subject.length == 0 && styles.loading_container}>
         {subject.length == 0 && <Spinner animation="border" />}
       </div>
       {
-        !ShowProfile && <BreadcumbHome setShowProfile={setShowProfile} seshowSubject={seshowSubject} title={ " পারদর্শিতা এবং আচরণগত মূল্যায়ন"} />
+        !ShowProfile && <BreadcumbHome showSubjectname={showSubjectname} setShowProfile={setShowProfile} seshowSubject={seshowSubject} title={ " পারদর্শিতা এবং আচরণগত মূল্যায়ন"} />
       }
       
 
@@ -191,6 +194,7 @@ export default function Teacher() {
                           key={key}
                           onClick={(e) => {
                             skill_behaibor_count(d);
+                            seshowSubjectname(d.subject.name)
                             setShowProfile(false)
                             localStorage.setItem(
                               "class_room_id",

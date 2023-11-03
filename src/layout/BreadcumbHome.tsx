@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function BreadcumbHome({ seshowSubject, setShowProfile, title }: any) {
+export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowProfile, title }: any) {
 
   const navigate = useNavigate()
   return (
@@ -33,7 +33,7 @@ export default function BreadcumbHome({ seshowSubject, setShowProfile, title }: 
 
             <div className="d-flex flex-column gap-2">
               <div style={{ fontSize: "14px" }}>
-                {title}
+                {showSubjectname}
               </div>
               <h6 className="d-flex justify-content-lg-center align-items-center gap-1" style={{ color: "#428F92", fontSize: "12px" }}>
                 {" "}
