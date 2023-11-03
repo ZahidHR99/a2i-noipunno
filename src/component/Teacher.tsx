@@ -18,6 +18,9 @@ import { Spinner } from "react-bootstrap";
 import ShowAssesment from "./ShowAssesment";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import AcorongotoComponent from "./AcorongotoComponent";
+import { MdArrowBackIosNew } from "react-icons/md";
+import Breadcumbtitle from "../layout/Breadcumb";
+import BreadcumbHome from "../layout/BreadcumbHome";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -137,13 +140,15 @@ export default function Teacher() {
     setelement(e);
   };
 
-  console.log(`subjectsubject`, subject, Showcollaps);
-
   return (
-    <div className="content">
+    <div className="content mb-5">
       <div className={subject.length == 0 && styles.loading_container}>
         {subject.length == 0 && <Spinner animation="border" />}
       </div>
+      {
+        !ShowProfile && <BreadcumbHome setShowProfile={setShowProfile} seshowSubject={seshowSubject} title={ " পারদর্শিতা এবং আচরণগত মূল্যায়ন"} />
+      }
+      
 
       <div className="dashboard-section">
         <section className="np-breadcumb-section pt-5">
@@ -154,19 +159,25 @@ export default function Teacher() {
                 <ProfileCard />
               </div>
               }
+
+
+
+
               
               <div className={ShowProfile ? "col-md-9" : "col-md-12" }>
                 <div className="row d-flex gap-2">
                   <div></div>
-                  <div className="d-flex">
+                  <div className="d-flex" style={{cursor:"pointer"}}>
                     <h5
                       onClick={(e) => {
                         seshowSubject(true);
                         setShowProfile(true)
                       }}
                     >
-                      <BiSidebar /> {showSubject && "বিষয়সমূহ"}
-                      {showSkillBehaibor && "পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
+                       {showSubject && <><BiSidebar /> বিষয়সমূহ </> }
+
+                      
+                      {/* {showSkillBehaibor && <><MdArrowBackIosNew className="fs-3 text-secondary" /> পারদর্শিতা এবং আচরণগত মূল্যায়ন </>  } */}
                     </h5>
                   </div>
                 </div>

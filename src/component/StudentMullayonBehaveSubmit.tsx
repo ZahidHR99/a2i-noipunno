@@ -26,7 +26,7 @@ export default function StudentMullayonBehaveSubmit({
   assessment_uid,
   al_pi_attr,
   teacher,
-}) {
+}:any) {
   const [Student, setStudent] = useState<any>([]);
   const [submitObj, setsubmitObj] = useState<any>({});
   const [submitData, setsubmitData] = useState<any>([]);

@@ -133,7 +133,7 @@ export default function StudentMullayonModal({
                 </th>
                 <th scope="col" style={{ width: "30%" }}></th>
                 <th scope="col" style={{ width: "30%" }}>
-                  <BiFilterAlt className="fs-5" />
+                  {/* <BiFilterAlt className="fs-5" /> */}
                 </th>
                 <th scope="col" style={{ width: "30%" }}></th>
               </tr>
@@ -144,7 +144,7 @@ export default function StudentMullayonModal({
                   <>
                     <td
                       style={{
-                        width: "5%",
+                        width: "17%",
                       }}
                     >
                       <GoPerson className="fs-6 fw-bold" />{" "}
@@ -156,7 +156,7 @@ export default function StudentMullayonModal({
                     {al_pi_attr?.map((pi_attr: any, kedy: any) => (
                       <td
                         style={{
-                          width: "30%",
+                          width: "26%",
                         }}
                         key={kedy}
                       >

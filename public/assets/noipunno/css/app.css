@@ -103,11 +103,11 @@
 }
 
 
-@media (min-width: 538px) {
+/* @media (min-width: 538px) {
     .modal-dialog.modal-lg.modal-dialog-centered {
         position: absolute;
         right: 0;
         top: -12px;
     }
-}
+} */
 
