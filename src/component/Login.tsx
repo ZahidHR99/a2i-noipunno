@@ -32,7 +32,6 @@ export default function Login() {
     }
 
   }
-
   return (
     <>
       <div className="login-bg">
@@ -156,4 +155,5 @@ export default function Login() {
       </div>
     </>
   )
+
 }

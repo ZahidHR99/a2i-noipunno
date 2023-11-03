@@ -47,9 +47,9 @@ const StudentList = () => {
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
       <div className="container" my-5>
         <section>
-          <div className="row p-0 m-0 ">
+          <div className={`${styles.grid_view} p-0 m-0`}>
             {students?.map((student, index) => (
-              <div key={index} className="col-sm-6 col-md-3 col-lg-4 p-2 g-2  border">
+              <div key={index} className="p-2 g-2  border">
                 <div className="d-flex justify-content-start align-items-center gap-5 ">
                   <div>
                     <img src={studentImage} className="img-fluid" style={{ height: "50px" }} />
