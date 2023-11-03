@@ -132,6 +132,11 @@ export default function StudentMullayonBehave({
                       <div
                         className="card h-100 shadow-lg border-0 p-2"
                         style={{ backgroundColor: "#F0FAE9" }}
+                        id={
+                          w_d.uid +
+                          "_" +
+                          student?.uid
+                        }
                       >
                         <div className="d-flex"
                         style={{ cursor: "pointer" }}
@@ -142,11 +147,7 @@ export default function StudentMullayonBehave({
                         >
                           <div
                           className="all_pi_arrtiburte"
-                          id={
-                            w_d.uid +
-                            "_" +
-                            student?.uid
-                          }
+                          
                           >
                             {weightId(pi_attribute_weight, w_d?.weight_uid) ==
                               "Square" && (
