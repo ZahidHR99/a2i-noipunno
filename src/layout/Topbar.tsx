@@ -65,7 +65,7 @@ export default function Topbar() {
                       <li>
 
                         <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
-                          <img src={logoutImage} alt="" className="pe-4" />
+                          {/* <img src={logoutImage} alt="" className="pe-4" /> */}
                           সাইন আউট
                         </a>
                       </li>
