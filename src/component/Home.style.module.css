@@ -212,3 +212,10 @@
   border-radius: 50%;
   margin-right: 5px;
 }
+
+/* All Teacher and students Page Card Grid */
+.grid_view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
