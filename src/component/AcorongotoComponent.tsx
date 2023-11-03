@@ -65,6 +65,7 @@ export default function AcorongotoComponent({
                   all_bis={all_bis}
                   assessment_uid={assessment_uid}
                   teacher={teacher}
+                  student={d}
                 />
               </div>
             </div>

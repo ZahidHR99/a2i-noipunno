@@ -1,5 +1,9 @@
 import TeacherImg from "../assets/images/teacher.png";
 import { useState, useEffect } from "react";
+import { MdArrowBackIosNew, MdOutlineArrowForwardIos, MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { BiSidebar } from "react-icons/bi";
+import { AiOutlineHome } from "react-icons/ai";
+import { FiStar } from "react-icons/fi";
 
 
 import styles from "./Home.style.module.css";
@@ -10,6 +14,9 @@ import {
 import { all_teachers } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
+
+import { Button, Modal } from 'react-bootstrap';
+
 
 export default function TeachersList() {
 
@@ -29,39 +36,68 @@ export default function TeachersList() {
     fetchData()
   }, []);
 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+
+  const handleShowModal = (item) => {
+    setSelectedItem(item);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  // console.log("Select Items", selectedItem);
+
   return (
     <>
+      <Breadcumb title={"শিক্ষকের তালিকা"} />
       <div className="container">
-        <Breadcumb title={"শিক্ষকের তালিকা"} />
-        <Accordion className="row">
-          {teachers?.map((teacher, index) => (
-            <Accordion.Item eventKey={index} className="col-sm-6 col-md-4 my-2">
-              <Accordion.Header>
-                <div className="d-flex justify-content-between gap-3 border-bottom">
-                  <div className="d-flex gap-3 align-items-center p-2">
+        <section className="my-2 ">
+          <div className="row p-0 m-0">
+            {teachers?.map((teacher, index) => (
+              <div key={index} className="col-sm-6 col-md-3 col-lg-4 p-2 g-2  border">
+                <div className="d-flex justify-content-start align-items-center gap-5">
+                  <div>
+                    <img src={TeacherImg} className="img-fluid" style={{ height: "50px" }} />
+                  </div>
+
+                  <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
-                      <img
-                    
-                        src={TeacherImg}
-                        className="img-fluid"
-                        style={{ height: "50px" }}
-                      />
-                    </div>
-                    <div className="mt-2">
-                      <h5 className={styles.teacherName}>
-                        {teacher.name_en}
-                      </h5>
+                      <h5 className={styles.teacherName}>নামঃ {teacher.name_en} </h5>
                       <h6 className={styles.deg}>{teacher.position}</h6>
                     </div>
+                    <div className="d-flex justify-content-center align-items-center">
+                      <button onClick={() => handleShowModal(teacher)} className="btn btn-primay btn-sm d-flex justify-content-center align-items-center" style={{ backgroundColor: "#428F92", color: "#fff", }} >
+                        বিস্তারিত{" "}
+                        <MdOutlineKeyboardArrowRight className="fs-3" />{" "}
+                      </button>
+                    </div>
                   </div>
-                  {/* <div className="p-1">
-                            <HiOutlineDotsVertical
-                              className={`fs-4 ${styles.OutlineDotsVertical}`}
-                            />
-                          </div> */}
+
                 </div>
-              </Accordion.Header>
-              <Accordion.Body>
+
+
+              </div>
+            ))}
+
+            <Modal className="mt-5" show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter"
+              centered>
+
+              {/* <Modal.Header closeButton>
+                <Modal.Title>
+                  Details
+                </Modal.Title>
+              </Modal.Header> */}
+              <Modal.Header>
+                <Modal.Title>
+                  শিক্ষকের বিস্তারিত তথ্য
+                </Modal.Title>
+              </Modal.Header>
+
+              <Modal.Body>
                 <div className="flex-md-column flex-lg-row d-flex  justify-content-start gap-1 p-2 mb-2">
                   <div className={styles.cardDesc}>বাংলা</div>
                   <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
@@ -72,11 +108,7 @@ export default function TeachersList() {
                     className="d-flex"
                     style={{ marginLeft: "-1.5rem" }}
                   >
-                    {/* {teachers.map((teacher) => (
-                          <div key={teacher.id}>
-                            <h5 className={styles.teacherName}>{teacher.name}</h5>
-                            <h6 className={styles.deg}>{teacher.position}</h6>
-                          </div>))} */}
+
                     <ul className={`${styles.teacher_info_list_group}`}>
                       <li>
                         {" "}
@@ -85,7 +117,7 @@ export default function TeachersList() {
                       </li>
                     </ul>
                     <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {teacher.mobile_no}</li>
+                      <li> {selectedItem?.mobile_no}</li>
                     </ul>
                   </div>
                   <div
@@ -184,10 +216,18 @@ export default function TeachersList() {
                     </ul>
                   </div>
                 </div>
-              </Accordion.Body>
-            </Accordion.Item>
-          ))}
-        </Accordion>
+
+
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseModal}>
+                  বন্ধ করুন
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+        </section>
+
 
       </div>
     </>

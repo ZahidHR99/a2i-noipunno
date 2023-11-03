@@ -1,5 +1,6 @@
 import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
+// import {  MdOutlineArrowForwardIos } from "react-icons/md";
 
 import { BiCircle, BiFilterAlt, BiSquareRounded } from "react-icons/bi";
 
@@ -15,8 +16,7 @@ export default function StudentMullayonModal({
   competence_uid,
   al_pi_attr,
   pi_name,
-  setpi_name 
-
+  setpi_name,
 }: any) {
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
@@ -123,146 +123,115 @@ export default function StudentMullayonModal({
 
   return (
     <div className="content">
-      <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="container">
-                  <div className="d-flex align-items-center">
-                    <div className="card shadow-lg border-0 w-100 rounded">
-                      <ul className="nav d-flex mt-2 justify-content-around py-1">
-                      </ul>
-                      <div className="tab-content" id="tabContent">
-                        <div
-                          className="tab-pane fade show active"
-                          id="expertness"
-                          role="tabpanel"
-                          aria-labelledby="expertness-tab"
-                        >
-                          <div className="row p-3">
-                            <table className="table table-lg">
-                              <thead>
-                                <tr>
-                                  <th scope="col" style={{ width: "15%" }}>
-                                    শিক্ষার্থীর নাম{" "}
-                                    {/* <BiFilterAlt className="fs-5 ms-4" /> */}
-                                  </th>
-                                  <th scope="col" style={{ width: "30%" }}></th>
-                                  <th scope="col" style={{ width: "30%" }}>
-                                    <BiFilterAlt className="fs-5" />
-                                  </th>
-                                  <th scope="col" style={{ width: "30%" }}></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {Student.map((teacher: any, k: any) => (
-                                  <tr key={k}>
-                                    <>
-                                      <td
-                                        style={{
-                                          width: "5%",
-                                        }}
-                                      >
-                                        <GoPerson className="fs-6 fw-bold" />{" "}
-                                        {teacher.student_name_bn}
-                                        <br />
-                                        {teacher.uid}
-                                      </td>
+      <div className="col-md-12">
+        <div className="row p-1">
+          <table className="table table-lg table-responsive">
+            <thead>
+              <tr>
+                <th scope="col" style={{ width: "15%" }}>
+                  শিক্ষার্থীর নাম {/* <BiFilterAlt className="fs-5 ms-4" /> */}
+                </th>
+                <th scope="col" style={{ width: "30%" }}></th>
+                <th scope="col" style={{ width: "30%" }}>
+                  <BiFilterAlt className="fs-5" />
+                </th>
+                <th scope="col" style={{ width: "30%" }}></th>
+              </tr>
+            </thead>
+            <tbody>
+              {Student.map((teacher: any, k: any) => (
+                <tr key={k}>
+                  <>
+                    <td
+                      style={{
+                        width: "5%",
+                      }}
+                    >
+                      <GoPerson className="fs-6 fw-bold" />{" "}
+                      {teacher.student_name_bn}
+                      <br />
+                      {teacher.uid}
+                    </td>
 
-                                      {al_pi_attr?.map(
-                                        (pi_attr: any, kedy: any) => (
-                                          <td
-                                            style={{
-                                              width: "30%",
-                                            }}
-                                            key={kedy}
-                                          >
-                                            <div className="d-flex gap-2">
-                                              <div
-                                                id={
-                                                  pi_attr.weight_uid +
-                                                  "-" +
-                                                  teacher.uid
-                                                }
-                                                className="all_pi_arrtiburte"
-                                                style={{
-                                                  border: "1px solid #eee",
-                                                  padding: "5px 6px",
-                                                  borderRadius: "3px",
-                                                  maxHeight: "40px",
-                                                }}
-                                                onClick={() =>
-                                                  save_PI_evalution(
-                                                    pi_attr.uid,
-                                                    pi_attr.weight_uid,
-                                                    teacher.uid
-                                                  )
-                                                }
-                                              >
-                                                {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
-                                                {pi_attr.weight.name ==
-                                                  "Square" && (
-                                                  <BiSquareRounded className="fs-5 mt-1" />
-                                                )}
-                                                {pi_attr.weight.name ==
-                                                  "Circle" && (
-                                                  <BiCircle className="fs-5 mt-1" />
-                                                )}
-                                                {pi_attr.weight.name ==
-                                                  "Triangle" && (
-                                                  <FiTriangle className="fs-5 mt-1" />
-                                                )}
-                                              </div>
-
-                                              <div>{pi_attr.title_bn}</div>
-                                            </div>
-                                          </td>
-                                        )
-                                      )}
-                                    </>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                    {al_pi_attr?.map((pi_attr: any, kedy: any) => (
+                      <td
+                        style={{
+                          width: "30%",
+                        }}
+                        key={kedy}
+                      >
+                        <div className="d-flex gap-2">
+                          <div
+                            id={pi_attr.weight_uid + "-" + teacher.uid}
+                            className="all_pi_arrtiburte"
+                            style={{
+                              border: "1px solid #eee",
+                              padding: "5px 6px",
+                              borderRadius: "3px",
+                              maxHeight: "40px",
+                            }}
+                            onClick={() =>
+                              save_PI_evalution(
+                                pi_attr.uid,
+                                pi_attr.weight_uid,
+                                teacher.uid
+                              )
+                            }
+                          >
+                            {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
+                            {pi_attr.weight.name == "Square" && (
+                              <BiSquareRounded className="fs-5 mt-1" />
+                            )}
+                            {pi_attr.weight.name == "Circle" && (
+                              <BiCircle className="fs-5 mt-1" />
+                            )}
+                            {pi_attr.weight.name == "Triangle" && (
+                              <FiTriangle className="fs-5 mt-1" />
+                            )}
                           </div>
 
-                          <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
-                            <button
-                              type="button"
-                              className="btn btn-warning position-absolute bottom-0 start-0 m-2 "
-                              style={{
-                                // backgroundColor: "#428F92",
-                                color: "#fff",
-                              }}
-                              onClick={(e) => handleSave(e, 1)}
-                            >
-                              খসড়া
-                            </button>
-
-                            <button
-                              type="button"
-                              className="btn btn-primay px-5 "
-                              style={{
-                                backgroundColor: "#428F92",
-                                color: "#fff",
-                              }}
-                              onClick={(e) => handleSave(e, 2)}
-                            >
-                              সংরক্ষণ করুন
-                            </button>
-
-                            {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
-                          </div>
+                          <div>{pi_attr.title_bn}</div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                      </td>
+                    ))}
+                  </>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
+          <button
+            type="button"
+            className="btn btn-warning  my-2 mx-2"
+            style={{
+              // backgroundColor: "#428F92",
+              color: "#fff",
+            }}
+            onClick={(e) => handleSave(e, 1)}
+          >
+            খসড়া
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-primay px-5 "
+            style={{
+              backgroundColor: "#428F92",
+              color: "#fff",
+            }}
+            onClick={(e) => handleSave(e, 2)}
+          >
+            <span>
+              সংরক্ষণ করুন {"   "}
+              {/* {"   "}<MdOutlineArrowForwardIos  /> */}
+              <img src="/assets/images/arrow-right.png" alt="" />
+            </span>
+          </button>
+
+          {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
+        </div>
       </div>
       <style
         dangerouslySetInnerHTML={{

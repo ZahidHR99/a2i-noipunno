@@ -121,6 +121,20 @@ export default function StudentMullayonBehaveSubmit({
 
   return (
     <div className="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="row">
         {al_pi_attr.map((pi_attr: any, kedy: any) => (
           <div

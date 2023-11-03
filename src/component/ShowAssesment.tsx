@@ -62,7 +62,7 @@ export default function ShowAssesment({
                       {allassessmet?.map((ass_d: any, ky: any) => (
                         <li className={`nav-item`} key={ky}>
                           <a
-                            className={`nav-link link-secondary ${
+                            className={`fw-bold nav-link link-secondary ${
                               styles.nav_tab_bottom_border
                             } ${ShowSecounderyTab?.id === ass_d.uid ? " active" : ""} `}
                             id="expertness-tab"
@@ -103,7 +103,7 @@ export default function ShowAssesment({
                       {allassessmet?.map((ass_d: any, ky: any) => (
                         <li className={`nav-item`} key={ky}>
                           <Link
-                            className={`nav-link link-secondary ${
+                            className={`fw-bold nav-link link-secondary ${
                               styles.nav_tab_bottom_border
                             } ${ShowSecounderyTab?.id === ass_d.uid ? " active" : ""} `}
                             id="expertness-tab"

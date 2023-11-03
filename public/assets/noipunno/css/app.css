@@ -36,7 +36,7 @@
     justify-content: space-between;
 }
 
-.np-total-count-card .content-details{
+.np-total-count-card .content-details {
     flex-direction: column;
     row-gap: 10px;
 }
@@ -57,9 +57,9 @@
     line-height: 16px;
     color: var(--primary-color-dark);
     margin: 0;
-} 
+}
 
-.np-total-count-card .count-details{
+.np-total-count-card .count-details {
     width: 50px;
     height: 50px;
     display: flex;
@@ -74,7 +74,7 @@
     line-height: 12px;
 }
 
-.np-selection-group label{
+.np-selection-group label {
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
@@ -96,3 +96,18 @@
 .assestment-tabs .active {
     border-bottom: 2px solid #428f92;
 }
+
+.fade.modal.show {
+    z-index: 9999 !important;
+    border-bottom: 2px solid #428f92;
+}
+
+
+@media (min-width: 538px) {
+    .modal-dialog.modal-lg.modal-dialog-centered {
+        position: absolute;
+        right: 0;
+        top: -12px;
+    }
+}
+

@@ -179,7 +179,7 @@ export default function StudentMullayonBehaveSubmit(props: any) {
                                 </tr>
                               </thead>
                               <tbody>
-                                {Student.map((teacher: any, k: any) => (
+                                {Student.map((student: any, k: any) => (
                                   <tr key={k}>
                                     <>
                                       <td
@@ -188,9 +188,9 @@ export default function StudentMullayonBehaveSubmit(props: any) {
                                         }}
                                       >
                                         <GoPerson className="fs-6" />{" "}
-                                        {teacher.student_name_bn}
+                                        {student.student_name_bn}
                                         <br />
-                                        {teacher.uid}
+                                        {student.uid}
                                       </td>
 
                                       {al_pi_attr.map(
@@ -206,7 +206,7 @@ export default function StudentMullayonBehaveSubmit(props: any) {
                                                 id={
                                                   pi_attr.weight_uid +
                                                   "-" +
-                                                  teacher.uid
+                                                  student.uid
                                                 }
                                                 className="all_pi_arrtiburte"
                                                 style={{
@@ -219,7 +219,7 @@ export default function StudentMullayonBehaveSubmit(props: any) {
                                                   save_PI_evalution(
                                                     pi_attr.uid,
                                                     pi_attr.weight_uid,
-                                                    teacher.uid
+                                                    student.uid
                                                   )
                                                 }
                                               >
