@@ -55,13 +55,13 @@ export default function Topbar() {
                       </div>
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownUser " >
-                      <li>
+                      {/* <li>
 
                         <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" >
                           <img src={myprofile} alt="" />
                           আমার প্রোফাইল
                         </a>
-                      </li>
+                      </li> */}
                       <li>
 
                         <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
