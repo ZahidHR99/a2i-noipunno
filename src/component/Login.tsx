@@ -59,9 +59,9 @@ export default function Login() {
                       <div className="input-group">
                         <select className="form-control np-login-form-field_" name="user_type_id" required>
                           <option value={1} selected>শিক্ষক</option>
-                          <option value={2}>শিক্ষার্থী</option>
+                          {/* <option value={2}>শিক্ষার্থী</option> */}
                           {/* <option value="3">বিদ্যালয়</option> */}
-                          <option value={4}>ব্যবহারকারী</option>
+                          {/* <option value={4}>ব্যবহারকারী</option> */}
                         </select>
                       </div>
                     </div>

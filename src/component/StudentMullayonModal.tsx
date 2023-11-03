@@ -144,7 +144,7 @@ export default function StudentMullayonModal({
                   <>
                     <td
                       style={{
-                        width: "17%",
+                        width: "20%",
                       }}
                     >
                       <GoPerson className="fs-6 fw-bold" />{" "}

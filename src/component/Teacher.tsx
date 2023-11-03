@@ -154,7 +154,7 @@ export default function Teacher() {
       
 
       <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5">
+        <section className="np-breadcumb-section pt-5 pb-5">
           <div className="container">
             <div className="row">
               {
@@ -162,10 +162,6 @@ export default function Teacher() {
                 <ProfileCard />
               </div>
               }
-
-
-
-
               
               <div className={ShowProfile ? "col-md-9" : "col-md-12" }>
                 <div className="row d-flex gap-2">
