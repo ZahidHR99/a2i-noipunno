@@ -72,13 +72,15 @@ export default function DetailsShikhonMullayon({
 
 
 
-      <Modal className="mt-5" show={showModal} onHide={handleCloseModal} size="lg"
+      <Modal className="mt-5" show={showModal} onHide={handleCloseModal} size="xl"
               aria-labelledby="contained-modal-title-vcenter"
               centered>
 
               <Modal.Header closeButton>
                 <Modal.Title>
+                
                 {pi_name}
+                <h6 className="text-center">{showDetailsshikhonKalinMullayon?.details_bn}</h6>
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body className="">
