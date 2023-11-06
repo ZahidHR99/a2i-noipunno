@@ -1,9 +1,7 @@
 import TeacherImg from "../assets/images/teacher.png";
 import { useState, useEffect } from "react";
-import { MdArrowBackIosNew, MdOutlineArrowForwardIos, MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { BiSidebar } from "react-icons/bi";
-import { AiOutlineHome } from "react-icons/ai";
-import { FiStar } from "react-icons/fi";
+import {  MdOutlineKeyboardArrowRight } from "react-icons/md";
+
 import styles from "./Home.style.module.css";
 import { BiRadioCircle, } from "react-icons/bi";
 import { all_teachers } from "../Request";
@@ -17,16 +15,12 @@ export default function TeachersList() {
   const [teachers, setTeachers] = useState<any>([]);
 
   const fetchData = async () => {
+    const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
+    setTeachers(teachersData.data.teachers)
 
-    const own_subjet: any = await all_teachers();
-    localStorage.setItem("all_teachers", JSON.stringify(own_subjet))
   };
 
   useEffect(() => {
-    all_teachers().then((response) => {
-      setTeachers(response.data.data);
-    });
-
     fetchData()
   }, []);
 
@@ -43,7 +37,7 @@ export default function TeachersList() {
     setShowModal(false);
   };
 
-  console.log("Select Items", selectedItem);
+  console.log("Select Items", teachers );
 
   return (
     <>

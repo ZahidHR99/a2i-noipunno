@@ -25,7 +25,7 @@ export function loginPassword(data: any) {
 }
 
 export function all_teachers(data: any = "") {
-  const page_list = `${API_URL}/v1/teachers`;
+  const page_list = `${API_URL}/v1/teacher-dashboard`;
 
   const options = {
     method: "get",

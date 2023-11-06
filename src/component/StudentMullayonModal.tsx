@@ -204,7 +204,7 @@ export default function StudentMullayonModal({
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
           <button
             type="button"
-            className="btn btn-warning  my-2 mx-2"
+            className="btn btn-warning px-5 my-2 mx-2"
             style={{
               // backgroundColor: "#428F92",
               color: "#fff",
