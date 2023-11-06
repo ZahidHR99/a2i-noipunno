@@ -161,7 +161,7 @@ export default function Teacher() {
 
 
       <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5 pb-5">
+        <section className="np-breadcumb-section pt-2 pb-5">
           <div className="container">
             <div className="row">
               {
