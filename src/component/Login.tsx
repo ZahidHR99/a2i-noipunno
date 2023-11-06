@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { loginPassword } from '../Request';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import loginPageBG from '../../public/assets/images/login-bg.png';
+import logo from "../../public/assets/images/noipunno-new-logo.svg";
+import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
 
 
 export default function Login() {
@@ -31,7 +32,6 @@ export default function Login() {
     }
 
   }
-
   return (
     <>
       <div className="login-bg">
@@ -39,7 +39,7 @@ export default function Login() {
           <div >
             <div className="row d-flex justify-content-center align-items-center login-container">
               <div className="col-md-7 cols-sm-12">
-                <img src="/images/brand-logo.png" alt="logo" />
+                <img src={logo} alt="logo" className='mb-3' width={100} />
                 <p className="teacher-login-title">বিষয়ভিত্তিক মূল্যায়ন অ্যাপ্লিকেশন</p>
                 <p className="np-login-subtitle">অনুগ্রহ করে আপনার অ্যাকাউন্টে সাইন ইন করুন এবং অ্যাডভেঞ্চার শুরু করুন</p>
               </div>
@@ -59,9 +59,9 @@ export default function Login() {
                       <div className="input-group">
                         <select className="form-control np-login-form-field_" name="user_type_id" required>
                           <option value={1} selected>শিক্ষক</option>
-                          <option value={2}>শিক্ষার্থী</option>
+                          {/* <option value={2}>শিক্ষার্থী</option> */}
                           {/* <option value="3">বিদ্যালয়</option> */}
-                          <option value={4}>ব্যবহারকারী</option>
+                          {/* <option value={4}>ব্যবহারকারী</option> */}
                         </select>
                       </div>
                     </div>
@@ -70,7 +70,7 @@ export default function Login() {
                       <label htmlFor="caid" className="login-field-title"> ইউজার আইডি </label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <span>  <img src="/images/user-square.svg" className="np-login-field-icon" alt="logo" /></span>
+                          <span>  <img src="/assets/images/user-square.svg" className="np-login-field-icon" alt="logo" /></span>
                         </div>
 
                         <input type="number" id="caid" required autoComplete="off" placeholder="৯১৩১৫০৩০৩০৪০১" name="caid" className="form-control np-login-form-field" />
@@ -80,7 +80,7 @@ export default function Login() {
 
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
-                      <div className="input-group"><img src="/images/lock.svg" className="np-login-field-icon" alt="logo" />
+                      <div className="input-group"><img src="/assets/images/lock.svg" className="np-login-field-icon" alt="logo" />
                         <input type="password" id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
                         <div className="input-group-append password-toggle">
                           <span>
@@ -109,7 +109,7 @@ export default function Login() {
               </div>
             </div>
           </div>
-          <div className="switch-container">
+          {/* <div className="switch-container">
             <input type="checkbox" id="switch" className="language-switch" />
             <label htmlFor="switch" className="switch-label">
               <small className="login-language">আপনি কি বাংলাকে আপনার ডিফল্ট ভাষা হিসেবে রাখতে চান ?</small>
@@ -117,9 +117,43 @@ export default function Login() {
                 <div className="switch-slider" />
               </div>
             </label>
+          </div> */}
+
+          {/* <div className="switch-container">
+            <div className='d-flex justify-content-between align-content-center'>
+              <div className=''>
+                <input type="checkbox" id="switch" className="language-switch" />
+                <label htmlFor="switch" className="switch-label d-flex justify-content-start align-items-center gap-4">
+                  <small className="login-language">© ২০২৩ সর্বস্বত্ব সংরক্ষিত </small>
+                  <small className="login-language">গোপনীয়তা নীতি </small>
+                  <small className="login-language">সাহায্য </small>
+                  <small className="login-language">কোন প্রশ্ন? </small>
+                </label>
+              </div>
+              <div>
+                <img src={nav_bottom_logo} width={217} alt="logos" />
+              </div>
+            </div>
+          </div> */}
+        </div>
+        <div className="switch-container mt-5">
+          <div className='d-flex justify-content-between align-content-center'>
+            <div className=''>
+              <input type="checkbox" id="switch" className="language-switch" />
+              <label htmlFor="switch" className="switch-label d-flex justify-content-start align-items-center gap-4">
+                <small className="login-language">© ২০২৩ সর্বস্বত্ব সংরক্ষিত </small>
+                <small className="login-language">গোপনীয়তা নীতি </small>
+                <small className="login-language">সাহায্য </small>
+                <small className="login-language">কোন প্রশ্ন? </small>
+              </label>
+            </div>
+            <div>
+              <img src={nav_bottom_logo} width={217} alt="logos" />
+            </div>
           </div>
         </div>
       </div>
     </>
   )
+
 }

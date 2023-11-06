@@ -1,3 +1,21 @@
+.modal_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading_container .spinner_border {
+  width: 3rem;
+  height: 3rem;
+}
+
 .teacherName {
   font-size: 12px;
   font-weight: 400;
@@ -130,6 +148,7 @@
   background-color: #fff;
   min-width: 120px;
 }
+
 .table_2nd_column_sticky {
   position: sticky;
   white-space: nowrap;
@@ -142,24 +161,61 @@
   background-color: #428f92;
   color: #fff !important;
 }
+
 .learning_period_assessment_btn_left {
   border-color: #428f92;
   color: #428f92 !important;
   width: 18rem;
 }
+
 .learning_period_assessment_btn_left:hover {
   color: #fff !important;
   background-color: #428f92;
 }
+
 .learning_period_assessment_btn_right {
   border-color: #428f92;
   background-color: #428f92;
   color: #fff !important;
   width: 18rem;
 }
+
 .learning_period_assessment_btn_right:hover {
   border-color: #428f92;
   color: #428f92 !important;
   background-color: #fff;
 }
+
 /*learning_period_assessment_btn_right end */
+
+/* student assessment start */
+.download_btn {
+  background-color: #E4FEFF;
+  color: #428F92;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.download_icon {
+  background-color: #FFFAE6;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+/* student assessment end */
+
+.tick_mark {
+  background-color: #69CB1C;
+  font-size: 20px;
+  padding: 2px;
+  color: #fff;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* All Teacher and students Page Card Grid */
+.grid_view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./Home.style.module.css";
 import { SlBookOpen } from "react-icons/sl";
 import { clssWiseSubject } from "../Request";
+import Breadcumbtitle from "../layout/Breadcumb";
 
 
 const ClassWiseSubject = () => {
@@ -27,6 +28,11 @@ const ClassWiseSubject = () => {
 
   return (
     <div className="container row mx-auto">
+      <Breadcumbtitle title={(id == "6") && "ষষ্ঠ শ্রেণির বিষয় " || (id == "7") && "সপ্তম শ্রেণির বিষয় "} />
+
+      <div className="my-4">
+        <h4> {(id == "6") && "ষষ্ঠ" || (id == "7") && "সপ্তম"} শ্রেণির বিষয় সমুহ </h4>
+      </div>
       {subjects.map((subject, index) => (
         <div key={index} className="col-6 col-sm-4 col-md-3 mx-auto" >
           <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
