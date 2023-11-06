@@ -82,7 +82,7 @@ export default function Login() {
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
                       <div className="input-group"><img src="/assets/images/lock.svg" className="np-login-field-icon" alt="logo" />
-                        <input type={showPassword ? "password" : "number"} id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
+                        <input type={showPassword ? "number" : "password"} id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
                         <div className="input-group-append password-toggle">
                           <span>
                             {

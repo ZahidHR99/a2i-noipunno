@@ -25,6 +25,7 @@ import { session } from "../utils/Utils";
 
 
 export default function Teacher() {
+  const [shift, setShift] = useState([])
   const [subject, setsubject] = useState([]);
   const [element, setelement] = useState<any>("");
   const [Showcollaps, setShowcollaps] = useState<any>({});
@@ -76,9 +77,7 @@ export default function Teacher() {
 
 
     const al_teacher: any = await all_teachers();
-
     setown_data(own_subjet?.data?.data);
-
     setteacher(own_subjet.data.data.user)
 
     let all_subject: any = [];
@@ -232,7 +231,7 @@ export default function Teacher() {
                             </div>
                             <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                               <h6 className={styles.session}>প্রভাতি সেশন</h6>
-                              <h6 className={styles.session}>{session(d.teacher.uid)}</h6>
+                              <h6 className={styles.session}>{session(d.shift_id)}</h6>
                               <h6 className={styles.horizontal_bar}>। </h6>
                               <h6 className={styles.branch}>পদ্মা শাথা</h6>
                             </div>
