@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes  } from "react-router-dom";
 import PrivateRoute from "./component/PrivateRoute";
 import Login from "./component/Login";
 import Topbar from "./layout/Topbar";

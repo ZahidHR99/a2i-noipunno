@@ -49,7 +49,7 @@ export default function DetailsShikhonMullayon({
                         }}
                         to={"#"}
                         
-                        className="text-decoration-none text-black"
+                        className="text-decoration text-success  ps-2"
                       >
                         <h6
                         >

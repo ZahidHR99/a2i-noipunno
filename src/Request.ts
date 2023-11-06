@@ -5,7 +5,6 @@ const EVULATION_API = import.meta.env.VITE_REACT_APP_PI_EVULATION_API_URL;
 
 const authToken = localStorage.getItem("customer_login_auth") || "";
 
-console.log(`authToken`, authToken);
 const token: any = authToken ? JSON.parse(authToken) : "";
 axios.defaults.headers.common[
   "Authorization"

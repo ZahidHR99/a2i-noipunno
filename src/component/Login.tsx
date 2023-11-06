@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { loginPassword } from '../Request';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from "../../public/assets/images/noipunno-new-logo.svg";
 import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
+import { Link } from 'react-router-dom';
 
 
 export default function Login() {
-  const navigate = useNavigate();
   const [error, seterror] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const datas = new FormData(event.target);
 
-    const { data }: any = await loginPassword(datas);
+    try {
 
-    // console.log("data", data.status);
+      const { data }: any = await loginPassword(datas);
 
     if (data?.status === true) {
       // console.log("user Details", data?.data.user)
@@ -25,13 +25,21 @@ export default function Login() {
       localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
       localStorage.setItem('token', token)
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // navigate("/");
       window.location.assign("/");
     } else {
       seterror("Wrong Crediantial")
     }
+      
+    } catch (error) {
 
+      // console.log(`error.response.data.error`, error.response.data.error);
+      seterror("Something Went Wrong!")
+    }
+
+    
   }
+
+
   return (
     <>
       <div className="login-bg">
@@ -78,13 +86,19 @@ export default function Login() {
                       </div>
                     </div>
 
+
+
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
                       <div className="input-group"><img src="/assets/images/lock.svg" className="np-login-field-icon" alt="logo" />
-                        <input type="password" id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
+                        <input type={showPassword ? "password" : "number"} id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
                         <div className="input-group-append password-toggle">
                           <span>
-                            <i id="password-toggle" className="fa fa-eye-slash" />
+                            {
+                              showPassword ?
+                                <i onClick={() => setShowPassword(!showPassword)} id="password-toggle_2" className="fa fa-eye" /> :
+                                <i onClick={() => setShowPassword(!showPassword)} id="password-toggle" className="fa fa-eye-slash" />
+                            }
                           </span>
                         </div>
                       </div>
@@ -94,9 +108,9 @@ export default function Login() {
                       <input type="checkbox" className="form-check-input np-login-checkbox" id="remember" name="remember" />
                       <label className="form-check-label np-login-checbox-text" htmlFor="remember">পিন সংরক্ষণ করুণ</label>
                       <p className="mb-1">
-                        <a href="https://accounts.project-ca.com/password/reset" className="link-success" style={{ color: '#428F92' }}>
+                        <Link to={"https://accounts.project-ca.com/password/reset"} className="link-success" style={{ color: '#428F92' }}>
                           পাসওয়ার্ড ভুলে গেছেন?. ক্লিক করুন
-                        </a>
+                        </Link>
                       </p>
                     </div>
 

@@ -21,6 +21,7 @@ import AcorongotoComponent from "./AcorongotoComponent";
 import { MdArrowBackIosNew } from "react-icons/md";
 import Breadcumbtitle from "../layout/Breadcumb";
 import BreadcumbHome from "../layout/BreadcumbHome";
+import { session } from "../utils/Utils";
 
 
 export default function Teacher() {
@@ -42,6 +43,7 @@ export default function Teacher() {
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
   const [showSubject, seshowSubject] = useState(true);
+  const [loader, setloader] = useState(true);
   const [showSubjectname, seshowSubjectname] = useState("");
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
@@ -72,7 +74,7 @@ export default function Teacher() {
       localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
     }
 
-    
+
 
     const al_teacher: any = await all_teachers();
 
@@ -120,8 +122,9 @@ export default function Teacher() {
     setall_bis(own_subjet.data.data.bis);
 
 
-    
+
     setsubject(all_subject);
+    setloader(false)
   };
 
   const skill_behaibor_count = async (datas: any) => {
@@ -144,41 +147,51 @@ export default function Teacher() {
     setelement(e);
   };
 
-  console.log(`subject`, subject , showSubjectname);
 
   return (
     <div className="content mb-5">
-      <div className={subject.length == 0 && styles.loading_container}>
-        {subject.length == 0 && <Spinner animation="border" />}
-      </div>
       {
-        !ShowProfile && <BreadcumbHome showSubjectname={showSubjectname} setShowProfile={setShowProfile} seshowSubject={seshowSubject} title={ " পারদর্শিতা এবং আচরণগত মূল্যায়ন"} />
+        loader && 
+
+        <div className={loader && styles.loading_container}>
+          {loader && <Spinner animation="border" />}
+        </div>
+
       }
+      
+      {
+        !ShowProfile && <BreadcumbHome showSubjectname={showSubjectname} setShowProfile={setShowProfile} seshowSubject={seshowSubject} title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"} />
+      }
+      {
+        !loader && 
       
 
       <div className="dashboard-section">
-        <section className="np-breadcumb-section pt-5 pb-5">
+        <section className="np-breadcumb-section pt-2 pb-5">
           <div className="container">
             <div className="row">
               {
                 ShowProfile && <div className="col-md-3">
-                <ProfileCard />
-              </div>
+                  <ProfileCard />
+                </div>
               }
-              
-              <div className={ShowProfile ? "col-md-9" : "col-md-12" }>
+
+              <div className={ShowProfile ? "col-md-9" : "col-md-12"}>
                 <div className="row d-flex gap-2">
                   <div></div>
-                  <div className="d-flex" style={{cursor:"pointer"}}>
+                  <div className="d-flex" style={{ cursor: "pointer" }}>
                     <h5
                       onClick={(e) => {
                         seshowSubject(true);
                         setShowProfile(true)
                       }}
                     >
-                       {showSubject && <><BiSidebar /> বিষয়সমূহ </> }
+                      {showSubject && subject.length > 0 && <><BiSidebar /> বিষয়সমূহ </>}
+                      {
+                        subject.length == 0 && <>কোন বিষয় খুঁজে পাওয়া যায়নি
+                        </>
+                      }
 
-                      
                       {/* {showSkillBehaibor && <><MdArrowBackIosNew className="fs-3 text-secondary" /> পারদর্শিতা এবং আচরণগত মূল্যায়ন </>  } */}
                     </h5>
                   </div>
@@ -227,6 +240,7 @@ export default function Teacher() {
                             </div>
                             <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
                               <h6 className={styles.session}>প্রভাতি সেশন</h6>
+                              {/* <h6 className={styles.session}>{session(d.teacher.uid)}</h6> */}
                               <h6 className={styles.horizontal_bar}>। </h6>
                               <h6 className={styles.branch}>পদ্মা শাথা</h6>
                             </div>
@@ -239,38 +253,38 @@ export default function Teacher() {
                   {
                     ShowProfile === false && <>
 
-                  {showSkillBehaibor && (
-                    <>
-                      <ShowAssesment
-                        seshowCompitance={seshowCompitance}
-                        setassessment_uid={setassessment_uid}
-                        setMullayon_name={setMullayon_name}
-                        allassessmet={allassessmet}
-                        parodorshita_acoron_tab={parodorshita_acoron_tab}
-                        own_data={own_data}
-                        setallassessmet={setallassessmet}
-                        setparodorshita_acoron_tab={setparodorshita_acoron_tab}
-                      />
+                      {showSkillBehaibor && (
+                        <>
+                          <ShowAssesment
+                            seshowCompitance={seshowCompitance}
+                            setassessment_uid={setassessment_uid}
+                            setMullayon_name={setMullayon_name}
+                            allassessmet={allassessmet}
+                            parodorshita_acoron_tab={parodorshita_acoron_tab}
+                            own_data={own_data}
+                            setallassessmet={setallassessmet}
+                            setparodorshita_acoron_tab={setparodorshita_acoron_tab}
+                          />
+                        </>
+                      )}
+
+                      {showCompitance && (
+                        <>
+                          {
+                            parodorshita_acoron_tab === 0 &&
+                            <ParodorshitaComponent assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+                          }
+
+
+                          {
+                            parodorshita_acoron_tab === 1 &&
+                            <AcorongotoComponent teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+
+                          }
+
+                        </>
+                      )}
                     </>
-                  )}
-
-                  {showCompitance && (
-                    <>
-                    {
-                      parodorshita_acoron_tab === 0 &&
-                      <ParodorshitaComponent assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon}  setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-                    }
-
-
-                    {
-                      parodorshita_acoron_tab === 1 &&
-                      <AcorongotoComponent teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon}  setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-
-                    }
-
-                    </>
-                  )}
-                  </>
                   }
                 </div>
               </div>
@@ -278,6 +292,7 @@ export default function Teacher() {
           </div>
         </section>
       </div>
+      }
 
       <style
         dangerouslySetInnerHTML={{
