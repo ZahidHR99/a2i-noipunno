@@ -84,7 +84,6 @@ export default function DetailsShikhonMullayon({
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body className="">
-
               <StudentMullayonModal
                   competence_uid={competence_uid}
                   assessment_uid={assessment_uid}

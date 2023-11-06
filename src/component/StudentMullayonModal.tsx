@@ -56,20 +56,31 @@ export default function StudentMullayonModal({
   const handleSave = async (e: any, submit_status: any) => {
     try {
 
-      console.log(`submitData`, Student,  submitData );
+      // let unListedStudentForMarking: any = Student;
 
-      let unListedStudentForMarking = []
       const data: any = submitData.map((d: any) => {
         d.submit_status = submit_status;
         return d;
       });
+
+      // console.log(`unListedStudentForMarking`, unListedStudentForMarking );
 
       await Pi_save(data);
 
       if (submit_status == 1) {
         alert("Saved Draft");
       } else {
-        alert("Saved Successfully");
+
+        // al_pi_attr.map((attr_d:any)=>{
+        //   submitData.map((sub_d:any)=>{
+        //     if (sub_d.pi_uid) {
+              
+        //     }
+        //   })
+        // })
+
+
+        console.log(`Saved Successfully`, al_pi_attr )
       }
     } catch (error) {
       alert("something went wrong");
