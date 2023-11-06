@@ -55,6 +55,9 @@ export default function StudentMullayonModal({
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
+      console.log(`submitData`, Student, submitData);
+
+      let unListedStudentForMarking = [];
       const data: any = submitData.map((d: any) => {
         d.submit_status = submit_status;
         return d;
@@ -128,14 +131,14 @@ export default function StudentMullayonModal({
           <table className="table table-lg table-responsive">
             <thead>
               <tr>
-                <th scope="col" style={{ width: "15%" }}>
+                <th scope="col" style={{ width: "10%" }}>
                   শিক্ষার্থীর নাম {/* <BiFilterAlt className="fs-5 ms-4" /> */}
                 </th>
-                <th scope="col" style={{ width: "30%" }}></th>
-                <th scope="col" style={{ width: "30%" }}>
+                <th scope="col" style={{ width: "20%" }}></th>
+                <th scope="col" style={{ width: "35%" }}>
                   {/* <BiFilterAlt className="fs-5" /> */}
                 </th>
-                <th scope="col" style={{ width: "30%" }}></th>
+                <th scope="col" style={{ width: "35%" }}></th>
               </tr>
             </thead>
             <tbody>
@@ -144,7 +147,9 @@ export default function StudentMullayonModal({
                   <>
                     <td
                       style={{
-                        width: "20%",
+                        width: "16%",
+                        fontSize: "14px",
+                        fontWeight: "bold",
                       }}
                     >
                       <GoPerson className="fs-6 fw-bold" />{" "}
@@ -156,7 +161,7 @@ export default function StudentMullayonModal({
                     {al_pi_attr?.map((pi_attr: any, kedy: any) => (
                       <td
                         style={{
-                          width: "26%",
+                          width: "22%",
                         }}
                         key={kedy}
                       >
@@ -204,10 +209,16 @@ export default function StudentMullayonModal({
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
           <button
             type="button"
+<<<<<<< HEAD
             className="btn btn-warning px-5 my-2 mx-2"
+=======
+            className="btn btn-warning  my-2"
+>>>>>>> a8dbc22e7a1cdb964f4d3be182e53e3981cdfecd
             style={{
-              // backgroundColor: "#428F92",
-              color: "#fff",
+              // backgroundColor: "#",
+              color: "#000",
+              paddingLeft: "90px",
+              paddingRight: "90px",
             }}
             onClick={(e) => handleSave(e, 1)}
           >

@@ -60,15 +60,11 @@ export default function ParodorshitaComponent({
               }
             >
               <div className="card card-body">
-                {showDetailsshikhonKalinMullayon && (
-                  <DetailsShikhonMullayon
-                    showDetailsshikhonKalinMullayon={
-                      showDetailsshikhonKalinMullayon
-                    }
-                    assessment_uid={assessment_uid}
-                    pi_attr={pi_attr}
-                  />
-                )}
+                <DetailsShikhonMullayon
+                  showDetailsshikhonKalinMullayon={d}
+                  assessment_uid={assessment_uid}
+                  pi_attr={pi_attr}
+                />
               </div>
             </div>
           </>

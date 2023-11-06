@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { loginPassword } from '../Request';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from "../../public/assets/images/noipunno-new-logo.svg";
 import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
+import { Link } from 'react-router-dom';
+import './Home.style.module.css'
+import { Helmet } from "react-helmet";
 
 
 export default function Login() {
-  const navigate = useNavigate();
   const [error, seterror] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const handleSubmit = async (event: any) => {
@@ -18,22 +20,33 @@ export default function Login() {
     const { data }: any = await loginPassword(datas);
 
     // console.log("data", data.status);
-
     if (data?.status === true) {
       // console.log("user Details", data?.data.user)
       const token = data?.data?.access_token;
       localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
       localStorage.setItem('token', token)
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // navigate("/");
       window.location.assign("/");
     } else {
       seterror("Wrong Crediantial")
     }
-
   }
+
+  const [value, setValue] = useState('');
+
+  const handleChange = event => {
+    const result = event.target.value.replace(/\D/g, '');
+
+    setValue(result);
+  };
+
+
+
   return (
     <>
+      <Helmet>
+        <title>নৈপুণ্য - লগ ইন</title>
+      </Helmet>
       <div className="login-bg">
         <div className="container">
           <div >
@@ -73,7 +86,17 @@ export default function Login() {
                           <span>  <img src="/assets/images/user-square.svg" className="np-login-field-icon" alt="logo" /></span>
                         </div>
 
-                        <input type="number" id="caid" required autoComplete="off" placeholder="৯১৩১৫০৩০৩০৪০১" name="caid" className="form-control np-login-form-field" />
+                        <input onChange={handleChange}
+                          className="form-control np-login-form-field"
+                          type="text"
+                          value={value}
+                          required
+                          autoComplete="off"
+                          placeholder="আপনার ইউজার আইডি দিন"
+                          name="caid"
+                          id="caid"
+
+                        />
 
                       </div>
                     </div>
@@ -81,10 +104,21 @@ export default function Login() {
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
                       <div className="input-group"><img src="/assets/images/lock.svg" className="np-login-field-icon" alt="logo" />
-                        <input type="password" id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          id="pin"
+                          className="form-control np-login-form-field no-spinners"
+                          name="password"
+                          required
+                          placeholder="আপনার পাসওয়ার্ড দিন"
+                        />
                         <div className="input-group-append password-toggle">
                           <span>
-                            <i id="password-toggle" className="fa fa-eye-slash" />
+                            {
+                              showPassword ?
+                                <i onClick={() => setShowPassword(!showPassword)} id="password-toggle_2" className="fa fa-eye" /> :
+                                <i onClick={() => setShowPassword(!showPassword)} id="password-toggle" className="fa fa-eye-slash" />
+                            }
                           </span>
                         </div>
                       </div>
@@ -94,9 +128,9 @@ export default function Login() {
                       <input type="checkbox" className="form-check-input np-login-checkbox" id="remember" name="remember" />
                       <label className="form-check-label np-login-checbox-text" htmlFor="remember">পিন সংরক্ষণ করুণ</label>
                       <p className="mb-1">
-                        <a href="https://accounts.project-ca.com/password/reset" className="link-success" style={{ color: '#428F92' }}>
+                        <Link to={"https://accounts.project-ca.com/password/reset"} className="link-success" style={{ color: '#428F92' }}>
                           পাসওয়ার্ড ভুলে গেছেন?. ক্লিক করুন
-                        </a>
+                        </Link>
                       </p>
                     </div>
 

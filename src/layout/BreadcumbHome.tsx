@@ -11,7 +11,7 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
 
   const navigate = useNavigate()
   return (
-    <section className="container">
+    <section className="container mt-3">
       <div className="d-flex align-items-center gap-2">
         <div className="card" style={{ backgroundColor: "white" }}>
           <button

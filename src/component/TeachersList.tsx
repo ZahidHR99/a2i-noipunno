@@ -7,7 +7,7 @@ import { BiRadioCircle, } from "react-icons/bi";
 import { all_teachers } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Spinner } from 'react-bootstrap';
 
 
 export default function TeachersList() {
@@ -41,10 +41,12 @@ export default function TeachersList() {
 
   return (
     <>
+      {/* {<div className={styles.loading_container}>
+        <Spinner animation="border" />
+      </div>} */}
       <Breadcumb title={"শিক্ষকের তালিকা"} />
-      <div className="container">
+      {(teachers?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container mb-5">
         <section className="my-2">
-
           <div className={`${styles.grid_view} p-0 m-0 `}>
             {teachers?.map((teacher, index) => (
               <div key={index} className="card p-2 border ">
@@ -217,11 +219,11 @@ export default function TeachersList() {
               </Button>
             </Modal.Footer>
           </Modal>
-
         </section>
-
-
       </div>
+      }
+
+
     </>
   )
 }

@@ -1,21 +1,21 @@
 import { useState } from "react";
 
-import styles from "./Home.style.module.css";
-import { TiTick } from "react-icons/ti";
 import { weightId } from "../utils/Utils";
 import { BiCircle, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
+import { Bi_save } from "../Request";
 
 export default function StudentMullayonBehave({
   all_bis,
   assessment_uid,
   teacher,
-  student
+  student,
 }: any) {
   const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
   const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
-  const pi_attribute_weight = own_SUbjects?.data?.data?.pi_attribute_weight || [];
-  const class_room_id = localStorage.getItem("class_room_id")
+  const pi_attribute_weight =
+    own_SUbjects?.data?.data?.pi_attribute_weight || [];
+  const class_room_id = localStorage.getItem("class_room_id");
 
   const [submitObj, setsubmitObj] = useState<any>({});
   const [submitData, setsubmitData] = useState<any>([]);
@@ -27,7 +27,7 @@ export default function StudentMullayonBehave({
         return d;
       });
 
-      // await Bi_save(data);
+      await Bi_save(data);
 
       if (submit_status == 1) {
         alert("Saved Draft");
@@ -43,23 +43,23 @@ export default function StudentMullayonBehave({
     pi_uid: any,
     weight_uid: any,
     student_id: any,
-    bi_uid:any
+    bi_uid: any
   ) => {
     try {
       const params: any = {
         evaluate_type: assessment_uid,
-        bi_uid :pi_uid,
+        bi_uid: pi_uid,
         weight_uid,
         class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
-        submit_status : 2,
+        submit_status: 2,
         is_approved: 1,
-        remark: null
+        remark: null,
       };
 
-      let obj: any = { ...submitObj, [ bi_uid + "_" + student_id]: params };
-     
+      let obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
+
       // console.log(`obj`, obj);
       setsubmitObj(obj);
 
@@ -70,34 +70,29 @@ export default function StudentMullayonBehave({
   };
 
   const checkedIn = (obj: any) => {
-
-    console.log(`obj`, obj);
     let all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
 
     for (let index = 0; index < all_elem.length; index++) {
       const element: any = all_elem[index];
       element.style.color = "";
+      // element.style.background = "";
     }
 
-    let sumbitArray: any = [];
+    const sumbitArray: any = [];
 
     for (const x in obj) {
-      let id: any =  obj[x].bi_uid + "_" + obj[x].student_uid;
-      console.log(`id`, id , obj[x] );
+      let id: any = obj[x].bi_uid + "_" + obj[x].student_uid;
       let el: any = document.getElementById(id);
-      el.style.color = "#69CB1C";
-      console.log(`el`, el  );
+      el.style.color = "green";
+
+      console.log(`obj`, obj, x);
       sumbitArray.push(obj[x]);
     }
 
     setsubmitData(sumbitArray);
   };
 
-
-
-
-// console.log(`pi_attribute_weight`, pi_attribute_weight);
-
+  console.log(`pi_attribute_weight`, submitData);
 
   return (
     <div className="content">
@@ -124,32 +119,25 @@ export default function StudentMullayonBehave({
                   </div>
 
                   {d?.weights.map((w_d: any, k: any) => (
-                    <div className="col-sm-6 col-md-3 py-2" key={k}
-                    
-                    
-
-                    >
+                    <div className="col-sm-6 col-md-3 py-2" key={k}>
                       <div
-                        className="card h-100 shadow-lg border-0 p-2"
+                        className="card bg-light h-100 shadow-lg border-0 p-2 all_pi_arrtiburte"
                         style={{ backgroundColor: "#F0FAE9" }}
-                        
+                        id={w_d.uid + "_" + student?.uid}
                       >
-                        <div className="d-flex"
-                        style={{ cursor: "pointer" }}
-                        onClick={(e: any) =>
-                          save_PI_evalution(w_d.uid, w_d.weight_uid, student.uid , w_d.bi_uid)
-                        }
-                        
-                        >
-                          <div
-                          className="all_pi_arrtiburte"
-                          id={
-                            w_d.uid +
-                            "_" +
-                            student?.uid
+                        <div
+                          className="d-flex "
+                          style={{ cursor: "pointer" }}
+                          onClick={(e: any) =>
+                            save_PI_evalution(
+                              w_d.uid,
+                              w_d.weight_uid,
+                              student.uid,
+                              w_d.bi_uid
+                            )
                           }
-                          
-                          >
+                        >
+                          <div>
                             {weightId(pi_attribute_weight, w_d?.weight_uid) ==
                               "Square" && (
                               <BiSquareRounded className="fs-5 mt-1" />
@@ -175,34 +163,32 @@ export default function StudentMullayonBehave({
             </div>
 
             <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
-                            <button
-                              type="button"
-                              className="btn btn-warning m-1 "
-                              style={{
-                                // backgroundColor: "#428F92",
-                                color: "#fff",
-                              }}
-                              onClick={(e) => handleSave(e, 1)}
-                            >
-                              খসড়া
-                            </button>
+              <button
+                type="button"
+                className="btn btn-warning m-1 "
+                style={{
+                  color: "#000",
+                  paddingLeft: "90px",
+                  paddingRight: "90px",
+                }}
+                onClick={(e) => handleSave(e, 1)}
+              >
+                খসড়া
+              </button>
 
-                            <button
-                              type="button"
-                              className="btn btn-primay px-5 "
-                              style={{
-                                backgroundColor: "#428F92",
-                                color: "#fff",
-                              }}
-                              onClick={(e) => handleSave(e, 2)}
-                            >
-                              সংরক্ষণ করুন
-                            </button>
-
-                          </div>
+              <button
+                type="button"
+                className="btn btn-primay px-5 "
+                style={{
+                  backgroundColor: "#428F92",
+                  color: "#fff",
+                }}
+                onClick={(e) => handleSave(e, 2)}
+              >
+                সংরক্ষণ করুন
+              </button>
+            </div>
           </div>
-
-          
         </div>
       </div>
 

@@ -8,7 +8,7 @@ import { all_student } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
 
 import Breadcumb from "../layout/Breadcumb";
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Spinner } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const StudentList = () => {
@@ -45,7 +45,7 @@ const StudentList = () => {
   return (
     <>
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
-      <div className="container" my-5>
+      {(students?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container" my-5>
         <section>
           <div className={`${styles.grid_view} p-0 m-0`}>
             {students?.map((student, index) => (
@@ -250,6 +250,8 @@ const StudentList = () => {
           </div>
         </section>
       </div>
+      }
+
     </>
   );
 };
