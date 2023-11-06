@@ -15,16 +15,10 @@ const StudentList = () => {
   const [student, setStudent] = useState([])
 
   const fetchData = async () => {
-    // window.scroll(0, 0)
-    // all_student()
-    //   .then((res) => {
-    //     setStudents(res.data.data)
-    //     console.log(res.data.data);
+    window.scroll(0, 0)
 
     const student: any = [];
-    
     const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
-
     studentsData.data.data.subjects.map((std_data: any) => {
       return std_data.class_room.students.map((stu_data: any) => {
         stu_data.competence = std_data.competence;
@@ -57,8 +51,6 @@ const StudentList = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  console.log("Select Items", selectedItem);
 
 
   return (

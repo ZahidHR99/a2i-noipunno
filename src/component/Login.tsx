@@ -17,9 +17,10 @@ export default function Login() {
     event.preventDefault();
     const datas = new FormData(event.target);
 
-    const { data }: any = await loginPassword(datas);
+    try {
 
-    // console.log("data", data.status);
+      const { data }: any = await loginPassword(datas);
+
     if (data?.status === true) {
       // console.log("user Details", data?.data.user)
       const token = data?.data?.access_token;
@@ -30,6 +31,14 @@ export default function Login() {
     } else {
       seterror("Wrong Crediantial")
     }
+      
+    } catch (error) {
+
+      // console.log(`error.response.data.error`, error.response.data.error);
+      seterror("Something Went Wrong!")
+    }
+
+    
   }
 
   const [value, setValue] = useState('');

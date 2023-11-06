@@ -5,7 +5,6 @@ const EVULATION_API = import.meta.env.VITE_REACT_APP_PI_EVULATION_API_URL;
 
 const authToken = localStorage.getItem("customer_login_auth") || "";
 
-console.log(`authToken`, authToken);
 const token: any = authToken ? JSON.parse(authToken) : "";
 axios.defaults.headers.common[
   "Authorization"
@@ -97,7 +96,6 @@ export function Bi_save(data: any) {
 
 export function clssWiseSubject(data: any) {
   const page_list = `${API_URL}/v1/class-wise-subjects?class_id=${data}`;
-  // console.log("Requested Url", page_list);
 
   const options = {
     method: "get",

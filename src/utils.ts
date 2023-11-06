@@ -15,7 +15,6 @@ export const Validation = (
       collection[i].style.border = "";
 
       if (collection[i].required && !collection[i].value) {
-        console.log(`collection[i].name`, collection[i].name);
         validate = false;
         collection[i].style.border = "1px solid red";
 
