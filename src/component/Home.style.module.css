@@ -197,6 +197,16 @@
 
 
 /* ==============> Army <=================== */
+/* Login-Page */
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinners {
+  -moz-appearance: textfield;
+}
 
 /* Loader Position-center */
 .loading_container {
