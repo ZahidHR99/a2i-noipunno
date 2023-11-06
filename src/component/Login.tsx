@@ -5,6 +5,7 @@ import logo from "../../public/assets/images/noipunno-new-logo.svg";
 import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
 import { Link } from 'react-router-dom';
 import './Home.style.module.css'
+import { Helmet } from "react-helmet";
 
 
 export default function Login() {
@@ -39,8 +40,13 @@ export default function Login() {
     setValue(result);
   };
 
+
+
   return (
     <>
+      <Helmet>
+        <title>নৈপুণ্য - লগ ইন</title>
+      </Helmet>
       <div className="login-bg">
         <div className="container">
           <div >
@@ -81,20 +87,19 @@ export default function Login() {
                         </div>
 
                         <input onChange={handleChange}
+                          className="form-control np-login-form-field"
                           type="text"
                           value={value}
-                          className="form-control np-login-form-field"
                           required
                           autoComplete="off"
                           placeholder="আপনার ইউজার আইডি দিন"
                           name="caid"
                           id="caid"
+
                         />
 
                       </div>
                     </div>
-
-
 
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
@@ -106,8 +111,6 @@ export default function Login() {
                           name="password"
                           required
                           placeholder="আপনার পাসওয়ার্ড দিন"
-
-
                         />
                         <div className="input-group-append password-toggle">
                           <span>
