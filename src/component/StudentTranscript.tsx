@@ -23,7 +23,7 @@ export default function StudentTranscript() {
              <Breadcumb  title={"মূল্যায়ন প্রতিবেদন"} />
               <div className="d-flex align-items-center">
                 <div className="card shadow-lg border-0 w-100 rounded">
-                  <ul className="nav d-flex mt-2 justify-content-around py-1">
+                  {/* <ul className="nav d-flex mt-2 justify-content-around py-1">
                     <li className={`nav-item`}>
                       <a
                         className={`nav-link link-secondary ${styles.nav_tab_bottom_border} active`}
@@ -48,8 +48,8 @@ export default function StudentTranscript() {
                         প্রতিবেদন(BI)
                       </a>
                     </li>
-                  </ul>
-                  <div
+                  </ul> */}
+                  {/* <div
                     className="tab-content"
                     id="tabContent"
                     style={{ backgroundColor: "#E4FEFF" }}
@@ -388,7 +388,7 @@ export default function StudentTranscript() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <h6 className='m-2'>শিখনকালীন মূল্যায়ন প্রতিবেদন (PI)</h6>
               <div className="card shadow-lg border-0">
                 <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
