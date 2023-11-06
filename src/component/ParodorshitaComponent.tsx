@@ -12,6 +12,7 @@ export default function ParodorshitaComponent({
   shikhonKalinMullayon,
   setshowDetailsshikhonKalinMullayon,
 }: any) {
+
   return (
     <div className="py-2">
       <div className="row">
@@ -38,7 +39,7 @@ export default function ParodorshitaComponent({
                     <div className="d-flex justify-content-between align-items-center w-100 px-1">
                       <div className="py-2" style={{ color: "#428F92" }}>
                         <PiBookOpenText className="me-2" />
-                        {d.name_bn}
+                        {d.name_bn} 
                       </div>
                       <div
                         className="px-2 rounded text-white"
@@ -60,15 +61,13 @@ export default function ParodorshitaComponent({
               }
             >
               <div className="card card-body">
-                {showDetailsshikhonKalinMullayon && (
                   <DetailsShikhonMullayon
                     showDetailsshikhonKalinMullayon={
-                      showDetailsshikhonKalinMullayon
+                      d
                     }
                     assessment_uid={assessment_uid}
                     pi_attr={pi_attr}
                   />
-                )}
               </div>
             </div>
           </>

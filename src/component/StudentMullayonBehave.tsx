@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-import styles from "./Home.style.module.css";
-import { TiTick } from "react-icons/ti";
 import { weightId } from "../utils/Utils";
 import { BiCircle, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
+import { Bi_save } from "../Request";
 
 export default function StudentMullayonBehave({
   all_bis,
@@ -27,7 +26,7 @@ export default function StudentMullayonBehave({
         return d;
       });
 
-      // await Bi_save(data);
+      await Bi_save(data);
 
       if (submit_status == 1) {
         alert("Saved Draft");
@@ -70,23 +69,22 @@ export default function StudentMullayonBehave({
   };
 
   const checkedIn = (obj: any) => {
-
-    console.log(`obj`, obj);
     let all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
 
     for (let index = 0; index < all_elem.length; index++) {
       const element: any = all_elem[index];
       element.style.color = "";
+      // element.style.background = "";
     }
 
-    let sumbitArray: any = [];
+    const sumbitArray: any = [];
 
     for (const x in obj) {
       let id: any =  obj[x].bi_uid + "_" + obj[x].student_uid;
-      console.log(`id`, id , obj[x] );
       let el: any = document.getElementById(id);
-      el.style.color = "#69CB1C";
-      console.log(`el`, el  );
+      el.style.color = "#d28bc2";
+
+      console.log(`obj`, obj , x );
       sumbitArray.push(obj[x]);
     }
 
@@ -96,7 +94,7 @@ export default function StudentMullayonBehave({
 
 
 
-// console.log(`pi_attribute_weight`, pi_attribute_weight);
+console.log(`pi_attribute_weight`, submitData);
 
 
   return (
@@ -125,16 +123,18 @@ export default function StudentMullayonBehave({
 
                   {d?.weights.map((w_d: any, k: any) => (
                     <div className="col-sm-6 col-md-3 py-2" key={k}
-                    
-                    
-
-                    >
+                     >
                       <div
-                        className="card h-100 shadow-lg border-0 p-2"
+                        className="card h-100 shadow-lg border-0 p-2 all_pi_arrtiburte"
                         style={{ backgroundColor: "#F0FAE9" }}
-                        
+                        id={
+                          w_d.uid +
+                          "_" +
+                          student?.uid
+                        }
                       >
-                        <div className="d-flex"
+                        <div className="d-flex "
+                       
                         style={{ cursor: "pointer" }}
                         onClick={(e: any) =>
                           save_PI_evalution(w_d.uid, w_d.weight_uid, student.uid , w_d.bi_uid)
@@ -142,12 +142,7 @@ export default function StudentMullayonBehave({
                         
                         >
                           <div
-                          className="all_pi_arrtiburte"
-                          id={
-                            w_d.uid +
-                            "_" +
-                            student?.uid
-                          }
+                          
                           
                           >
                             {weightId(pi_attribute_weight, w_d?.weight_uid) ==

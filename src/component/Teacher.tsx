@@ -23,11 +23,6 @@ import Breadcumbtitle from "../layout/Breadcumb";
 import BreadcumbHome from "../layout/BreadcumbHome";
 import { session } from "../utils/Utils";
 
-const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
-const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
-
-const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
-const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
 
 export default function Teacher() {
   const [subject, setsubject] = useState([]);
@@ -53,6 +48,14 @@ export default function Teacher() {
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
   const fetchData = async () => {
+
+    const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
+    const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
+    const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
+    const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
+
+
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
