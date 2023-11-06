@@ -2,9 +2,7 @@
 import studentImage from "../../public/assets/noipunno/images/avatar/Layer_1.png";
 import styles from "./Home.style.module.css";
 import { BiRadioCircle } from "react-icons/bi";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import { useEffect, useState } from "react";
-import { all_student } from "../Request";
+import { useState, useEffect } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 
 import Breadcumb from "../layout/Breadcumb";
@@ -14,17 +12,38 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 const StudentList = () => {
 
 
-  const [students, setStudents] = useState([])
+  const [student, setStudent] = useState([])
 
-  useEffect(() => {
-    window.scroll(0, 0)
-    all_student()
-      .then((res) => {
-        setStudents(res.data.data)
-        console.log(res.data.data);
-      })
+  const fetchData = async () => {
+    // window.scroll(0, 0)
+    // all_student()
+    //   .then((res) => {
+    //     setStudents(res.data.data)
+    //     console.log(res.data.data);
 
+    const student: any = [];
+    
+    const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+
+    studentsData.data.data.subjects.map((std_data: any) => {
+      return std_data.class_room.students.map((stu_data: any) => {
+        stu_data.competence = std_data.competence;
+        student.push(stu_data);
+      });
+    });
+
+    const uniqueObjectsArray = student.filter(
+      (obj: any, index: any, self: any) =>
+        index === self.findIndex((o: any) => o.uid === obj.uid)
+    );
+
+    setStudent(uniqueObjectsArray);
+
+      }
+      useEffect(() => {
+        fetchData()
   }, []);
+  
 
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -45,10 +64,10 @@ const StudentList = () => {
   return (
     <>
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
-      {(students?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container" my-5>
+      {(student?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container" my-5>
         <section>
           <div className={`${styles.grid_view} p-0 m-0`}>
-            {students?.map((student, index) => (
+            {student?.map((student, index) => (
               <div key={index} className="p-2 g-2  border">
                 <div className="d-flex justify-content-start align-items-center gap-5 ">
                   <div>
