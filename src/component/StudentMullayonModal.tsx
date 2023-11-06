@@ -55,6 +55,10 @@ export default function StudentMullayonModal({
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
+
+      console.log(`submitData`, Student,  submitData );
+
+      let unListedStudentForMarking = []
       const data: any = submitData.map((d: any) => {
         d.submit_status = submit_status;
         return d;
