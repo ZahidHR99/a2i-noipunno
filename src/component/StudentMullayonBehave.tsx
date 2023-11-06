@@ -85,14 +85,12 @@ export default function StudentMullayonBehave({
       let el: any = document.getElementById(id);
       el.style.color = "green";
 
-      console.log(`obj`, obj, x);
       sumbitArray.push(obj[x]);
     }
 
     setsubmitData(sumbitArray);
   };
 
-  console.log(`pi_attribute_weight`, submitData);
 
   return (
     <div className="content">

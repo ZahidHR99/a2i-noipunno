@@ -4,6 +4,8 @@ import axios from 'axios';
 import logo from "../../public/assets/images/noipunno-new-logo.svg";
 import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
 import { Link } from 'react-router-dom';
+import './Home.style.module.css'
+import { Helmet } from "react-helmet";
 
 
 export default function Login() {
@@ -39,9 +41,21 @@ export default function Login() {
     
   }
 
+  const [value, setValue] = useState('');
+
+  const handleChange = event => {
+    const result = event.target.value.replace(/\D/g, '');
+
+    setValue(result);
+  };
+
+
 
   return (
     <>
+      <Helmet>
+        <title>নৈপুণ্য - লগ ইন</title>
+      </Helmet>
       <div className="login-bg">
         <div className="container">
           <div >
@@ -81,17 +95,32 @@ export default function Login() {
                           <span>  <img src="/assets/images/user-square.svg" className="np-login-field-icon" alt="logo" /></span>
                         </div>
 
-                        <input type="number" id="caid" required autoComplete="off" placeholder="৯১৩১৫০৩০৩০৪০১" name="caid" className="form-control np-login-form-field" />
+                        <input onChange={handleChange}
+                          className="form-control np-login-form-field"
+                          type="text"
+                          value={value}
+                          required
+                          autoComplete="off"
+                          placeholder="আপনার ইউজার আইডি দিন"
+                          name="caid"
+                          id="caid"
+
+                        />
 
                       </div>
                     </div>
 
-
-
                     <div className="form-group">
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
                       <div className="input-group"><img src="/assets/images/lock.svg" className="np-login-field-icon" alt="logo" />
-                        <input type={showPassword ? "password" : "number"} id="pin" className="form-control np-login-form-field" name="password" required placeholder="Password" />
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          id="pin"
+                          className="form-control np-login-form-field no-spinners"
+                          name="password"
+                          required
+                          placeholder="আপনার পাসওয়ার্ড দিন"
+                        />
                         <div className="input-group-append password-toggle">
                           <span>
                             {

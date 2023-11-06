@@ -21,7 +21,6 @@ const StudentList = () => {
     all_student()
       .then((res) => {
         setStudents(res.data.data)
-        console.log(res.data.data);
       })
 
   }, []);
@@ -38,8 +37,6 @@ const StudentList = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  console.log("Select Items", selectedItem);
 
 
   return (

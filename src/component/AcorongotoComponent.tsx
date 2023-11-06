@@ -12,7 +12,6 @@ export default function AcorongotoComponent({
   setShowcollaps,
   teacher
 }: any) {
-  console.log(`assessment_uid----`, assessment_uid);
   return (
     <div className="py-2">
       <div className="row">

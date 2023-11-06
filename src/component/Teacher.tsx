@@ -21,10 +21,11 @@ import AcorongotoComponent from "./AcorongotoComponent";
 import { MdArrowBackIosNew } from "react-icons/md";
 import Breadcumbtitle from "../layout/Breadcumb";
 import BreadcumbHome from "../layout/BreadcumbHome";
-import { session } from "../utils/Utils";
+import {section_name, shift_name, teacher_name } from "../utils/Utils";
 
 
 export default function Teacher() {
+  const [shift, setShift] = useState([])
   const [subject, setsubject] = useState([]);
   const [element, setelement] = useState<any>("");
   const [Showcollaps, setShowcollaps] = useState<any>({});
@@ -55,6 +56,7 @@ export default function Teacher() {
 
     const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
     const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
+    
 
 
     let own_subjet: any = "";
@@ -76,17 +78,15 @@ export default function Teacher() {
 
 
 
-    const al_teacher: any = await all_teachers();
-
+    // const al_teacher: any = await all_teachers();
     setown_data(own_subjet?.data?.data);
-
     setteacher(own_subjet.data.data.user)
 
     let all_subject: any = [];
     own_subjet.data.data.subjects.map((d: any) => {
       data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
-          al_teacher.data.data.map((al_tech: any) => {
+          data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
               let obj: any = {
                 subject: d_2,
@@ -132,11 +132,9 @@ export default function Teacher() {
     seshowSubject(false);
     setselected_subject(datas);
     setshikhonKalinMullayon(datas.own_subjet.competence);
-    console.log(`datas`, datas);
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
-  console.log(`assessment_uid`, assessment_uid, element);
 
   useEffect(() => {
     fetchData();
@@ -230,19 +228,20 @@ export default function Teacher() {
                               </h5>
 
                               <h5 className={styles.std_class}>
-                                {d?.subject.class_uid == "6" ? "ষষ্ঠ" : "সপ্তম"}
+                                {d?.subject.class_uid == "6" ? "ষষ্ঠ " : "সপ্তম "}
                                 শ্রেণি
                               </h5>
                               <h5 className={styles.class_teacher}>
                                 শ্রেণি শিক্ষক :
-                                <span> {d?.teacher?.name_en}</span>
+                                <span>
+                                {teacher_name(d.own_subjet.teacher_id)}
+                                </span>
                               </h5>
                             </div>
                             <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
-                              <h6 className={styles.session}>প্রভাতি সেশন</h6>
-                              {/* <h6 className={styles.session}>{session(d.teacher.uid)}</h6> */}
+                              <h6 className={styles.session}>{shift_name(d.own_subjet.class_room.shift_id)} সেশন</h6>
                               <h6 className={styles.horizontal_bar}>। </h6>
-                              <h6 className={styles.branch}>পদ্মা শাথা</h6>
+                              <h6 className={styles.branch}>{section_name(d.own_subjet.class_room.section_id)} শাথা</h6>
                             </div>
                           </div>
                         </div>

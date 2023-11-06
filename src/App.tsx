@@ -1,4 +1,4 @@
-import { Route, Routes  } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./component/PrivateRoute";
 import Login from "./component/Login";
 import Topbar from "./layout/Topbar";
@@ -14,26 +14,41 @@ import StudentTranscript from "./component/StudentTranscript";
 import TeachersList from "./component/TeachersList";
 import StudentMullayonBehave from "./component/StudentMullayonBehave";
 import StudentMullayonBehaveSubmit from "./component/StudentMullayonBehaveSubmit";
-import { teacher_dashboard, teacher_own_subject } from "./Request";
+import {
+  all_teachers,
+  teacher_dashboard,
+  teacher_own_subject,
+} from "./Request";
 
 function App() {
   const [topbar, settopbar] = useState(false);
+  const [render, setRender] = useState(true);
   const fetchData = async () => {
-    console.log(`refresh.....`);
     if (window.location.pathname !== "/login") {
       settopbar(true);
+
+
+      if (render) {
+        console.log(11111);
+  
+        const own_subjet = await teacher_own_subject();
+        localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+  
+        const data_dash: any = await teacher_dashboard();
+        localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
+  
+        setRender(false)
+      }
+
+      
     }
 
-    const own_subjet = await teacher_own_subject();
-    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
-
-    const data_dash: any = await teacher_dashboard();
-    localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
+    
   };
 
   useEffect(() => {
     fetchData();
-  }, [window.location.pathname]);
+  }, []);
 
   return (
     <>

@@ -16,22 +16,12 @@ const EditTeacherProfile = () => {
   }
  }, []);
 
- console.log("Teacher Profile Data:", userDetails);
-
-
  const handleTeacherProfileEdit = async (event: any) => {
 
   event.preventDefault()
   const formDatas = new FormData(event.target);
 
-  //see The field-value  ->> way-2
-  formDatas.forEach((value, name) => {
-   console.log(`KeyName: ${name}, value: ${value}`)
-  });
-
   const { data }: any = await update_teacher_profile(caid, formDatas);
-
-  console.log("Result Of PUTT Method", data.data);
 
   if (data.status === true) {
    alert("Profile update Successfully!")
