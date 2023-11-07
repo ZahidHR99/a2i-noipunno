@@ -15,8 +15,6 @@ export const weightId = (allWeight: any, id: any) => {
 
 export const session = (id: any) => {
     console.log("Utilities>> Teacher id", id);
-
-
     const data = localStorage.getItem("teacher_dashboard");
     const storageData = JSON.parse(data)
     if (storageData) {
@@ -26,7 +24,6 @@ export const session = (id: any) => {
 
         const shift = allShifts.find(shift => shift.uid === id)
         console.log("User Idwise shift =>", shift);
-
 
     }
 

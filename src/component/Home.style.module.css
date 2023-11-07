@@ -197,7 +197,14 @@
 
 
 /* ==============> Army <=================== */
-/* Login-Page */
+
+.custom-input::placeholder {
+  color: rgb(0, 201, 77) !important;
+  background-color: burlywood;
+  font-size: 12px !important;
+}
+
+/* Login-Page  Input hide*/
 .no-spinners::-webkit-inner-spin-button,
 .no-spinners::-webkit-outer-spin-button {
   -webkit-appearance: none;
