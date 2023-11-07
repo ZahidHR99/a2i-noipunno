@@ -20,6 +20,10 @@ export default function StudentMullayonBehave({
   const [submitObj, setsubmitObj] = useState<any>({});
   const [submitData, setsubmitData] = useState<any>([]);
 
+  const [msg, setmsg] = useState<any>("");
+  const [err, seterr] = useState<any>("");
+  const [comment_status, setcomment_status] = useState<any>(false);
+
   const handleSave = async (e: any, submit_status: any) => {
     try {
       const data: any = submitData.map((d: any) => {
@@ -27,15 +31,38 @@ export default function StudentMullayonBehave({
         return d;
       });
 
-      await Bi_save(data);
 
-      if (submit_status == 1) {
-        alert("Saved Draft");
+
+
+
+
+      if (submit_status == 2) {
+
+        if (submitData.length == 10) {
+
+          console.log(3333);
+          
+          await Bi_save(data);
+          setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
+          
+        } else {
+
+          console.log(1111111 , submitObj);
+
+          setcomment_status(true)
+          checkedIn_comment(submitObj)
+
+        }
+        
+        
+        seterr("");
       } else {
-        alert("Saved Successfully");
+        setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+        seterr("");
       }
+
     } catch (error) {
-      alert("something went wrong");
+      seterr("something went wrong");
     }
   };
 
@@ -92,6 +119,104 @@ export default function StudentMullayonBehave({
   };
 
 
+
+
+
+
+
+
+
+
+
+
+
+  const save_PI_evalution_comment = async (
+    pi_uid: any,
+    weight_uid: any,
+    student_id: any,
+    bi_uid: any,
+    remark:any
+  ) => {
+    try {
+      const params: any = {
+        evaluate_type: assessment_uid,
+        bi_uid: pi_uid,
+        weight_uid:null,
+        class_room_id,
+        student_uid: student_id,
+        teacher_uid: teacher.caid,
+        submit_status: 2,
+        is_approved: 1,
+        remark,
+      };
+
+      if (remark) {
+
+        let obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
+
+        setsubmitObj(obj);
+
+        form_arry_comment(obj);
+        
+      }
+
+      
+    } catch (error) {
+      console.log(`error`, error);
+    }
+  };
+
+
+  const form_arry_comment = (obj: any) => {
+    
+    let sumbitArray: any = [];
+    for (const x in obj) {
+      sumbitArray.push(obj[x]);
+    }
+
+    setsubmitData(sumbitArray);
+  };
+
+
+  const checkedIn_comment = (obj: any) => {
+
+
+    for (const x in obj) {
+      
+      const clss_id = "all_textarea_" + obj[x].student_uid
+      const all_elem: any = document.getElementsByClassName(clss_id);
+
+      for (let index = 0; index < all_elem.length; index++) {
+        const element: any = all_elem[index];
+        element.style.visibility = "visible";
+      }
+
+    }
+
+
+
+    const sumbitArray: any = [];
+
+    for (const x in obj) {
+      
+      const comment_id = "comment_id_"+obj[x].bi_uid + "_" + obj[x].student_uid
+      const textarea_id = obj[x].bi_uid + "_" + obj[x].student_uid
+      const el: any = document.getElementsByClassName(textarea_id)[0];
+      const el_comment: any = document.getElementById(comment_id);
+
+      el.style.display = "none"; 
+      el_comment.style.visibility = "hidden"; 
+      sumbitArray.push(obj[x]);
+    }
+
+    setsubmitData(sumbitArray);
+  };
+
+
+
+
+
+
   return (
     <div className="content">
       <div className="row p-3">
@@ -117,7 +242,14 @@ export default function StudentMullayonBehave({
                   </div>
 
                   {d?.weights.map((w_d: any, k: any) => (
-                    <div className="col-sm-6 col-md-3 py-2" key={k}>
+
+
+                    
+                    <div className="col-sm-6 col-md-3 py-2" key={k} id={"comment_id_"+ w_d.uid + "_" + student?.uid}>
+
+                    {
+                      !comment_status && 
+                    
                       <div
                         className="card bg-light h-100 shadow-lg border-0 p-2 all_pi_arrtiburte"
                         style={{ backgroundColor: "#F0FAE9" }}
@@ -154,13 +286,39 @@ export default function StudentMullayonBehave({
                           </div>
                         </div>
                       </div>
+                      }
+
+
+                      {
+                            k === 0 && 
+
+                            <div>
+                            <textarea onChange={(e:any) =>
+                              save_PI_evalution_comment(
+                                w_d.uid,
+                                w_d.weight_uid,
+                                student.uid,
+                                w_d.bi_uid,
+                                e.target.value
+                              )
+                            } placeholder= {"আপনি কেন  চিহ্নিত করেননি তা আমাদের বলুন..." } title="required" style={{visibility:"hidden" , border : "1px solid red"}} className={"form-control all_textarea_"+student?.uid+" "+ w_d.uid + "_" + student?.uid }   id="" cols={60} rows={4}>
+
+                            </textarea>
+                          </div>
+                          }
+
                     </div>
+
                   ))}
                 </>
               ))}
             </div>
 
             <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
+
+            {msg && <h6 className="text-success">{msg}</h6>}
+
+{err && <h6 className="text-danger">{err}</h6>}
               <button
                 type="button"
                 className="btn btn-warning m-1 "
@@ -173,6 +331,8 @@ export default function StudentMullayonBehave({
               >
                 খসড়া
               </button>
+
+              
 
               <button
                 type="button"
