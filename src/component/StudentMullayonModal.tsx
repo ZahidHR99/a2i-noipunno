@@ -6,6 +6,7 @@ import { BiCircle, BiFilterAlt, BiSquareRounded } from "react-icons/bi";
 
 import { Pi_save, teacher_own_subject } from "../Request";
 import { GoPerson } from "react-icons/go";
+import { toast } from "../utils";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -20,8 +21,12 @@ export default function StudentMullayonModal({
 }: any) {
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
+  const [comment_status, setcomment_status] = useState<any>(false);
   const [submitObj, setsubmitObj] = useState<any>({});
+  const [msg, setmsg] = useState<any>("");
+  const [err, seterr] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
+  const [submited, setsubmited] = useState<any>(false);
   const fetchData = async () => {
     let own_subjet: any = "";
     if (own_SUbjects) {
@@ -55,23 +60,32 @@ export default function StudentMullayonModal({
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
-      console.log(`submitData`, Student, submitData);
-
-      let unListedStudentForMarking = [];
       const data: any = submitData.map((d: any) => {
         d.submit_status = submit_status;
         return d;
       });
 
-      await Pi_save(data);
+      if (submit_status == 2) {
+        if (Student.length === submitData.length) {
 
-      if (submit_status == 1) {
-        alert("Saved Draft");
+          await Pi_save(data);
+          setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
+          setsubmited(true);
+        } else {
+          setcomment_status(true);
+          checkedIn_comment(submitObj);
+        }
+
+        seterr("");
       } else {
-        alert("Saved Successfully");
+        setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+        seterr("");
       }
     } catch (error) {
-      alert("something went wrong");
+      console.log("err", error);
+
+      seterr(" কিছু ভুল হয়েছে");
+      setmsg("");
     }
   };
 
@@ -93,7 +107,7 @@ export default function StudentMullayonModal({
         is_approved: 1,
         remark: null,
       };
-      let obj: any = { ...submitObj, [student_id]: params };
+      const obj: any = { ...submitObj, [student_id]: params };
       setsubmitObj(obj);
 
       checkedIn(obj);
@@ -122,88 +136,185 @@ export default function StudentMullayonModal({
     setsubmitData(sumbitArray);
   };
 
-  console.log(`al_pi_attr`, al_pi_attr);
+  const save_PI_evalution_comment = async (
+    pi_uid: any,
+    weight_uid: any = undefined,
+    student_id: any,
+    remark: any
+  ) => {
+    try {
+      const params: any = {
+        evaluate_type: assessment_uid,
+        competence_uid,
+        pi_uid,
+        class_room_id,
+        weight_uid: null,
+        student_uid: student_id,
+        teacher_uid: teacher.caid,
+        submit_status: 2,
+        is_approved: 1,
+        remark,
+      };
+
+      const obj: any = { ...submitObj, [student_id]: params };
+      setsubmitObj(obj);
+      form_arry_comment(obj);
+    } catch (error) {
+      console.log(`error`, error);
+    }
+  };
+
+  const form_arry_comment = (obj: any) => {
+    const sumbitArray: any = [];
+    for (const x in obj) {
+      if (obj[x].weight_uid || obj[x].remark) {
+        sumbitArray.push(obj[x]);
+      }
+    }
+
+    setsubmitData(sumbitArray);
+  };
+
+  const checkedIn_comment = (obj: any) => {
+    let all_elem: any = document.getElementsByClassName("all_textarea");
+
+    for (let index = 0; index < all_elem.length; index++) {
+      const element: any = all_elem[index];
+      element.style.display = "block";
+    }
+
+    const sumbitArray: any = [];
+
+    for (const x in obj) {
+      if (obj[x].weight_uid || obj[x].remark) {
+        const comment_id = "comment_id_" + x;
+        const el: any = document.getElementsByClassName(x)[0];
+        const el_comment: any = document.getElementById(comment_id);
+
+        console.log(`el_comment`, el_comment);
+
+        el.style.display = "none";
+        el_comment.style.display = "none";
+        sumbitArray.push(obj[x]);
+      }
+    }
+
+    setsubmitData(sumbitArray);
+  };
 
   return (
     <div className="content">
       <div className="col-md-12">
         <div className="row p-1">
-          <table className="table table-lg table-responsive">
-            <thead>
-              <tr>
-                <th scope="col" style={{ width: "10%" }}>
-                  শিক্ষার্থীর নাম {/* <BiFilterAlt className="fs-5 ms-4" /> */}
-                </th>
-                <th scope="col" style={{ width: "20%" }}></th>
-                <th scope="col" style={{ width: "35%" }}>
-                  {/* <BiFilterAlt className="fs-5" /> */}
-                </th>
-                <th scope="col" style={{ width: "35%" }}></th>
-              </tr>
-            </thead>
-            <tbody>
-              {Student.map((teacher: any, k: any) => (
-                <tr key={k}>
-                  <>
-                    <td
-                      style={{
-                        width: "16%",
-                        fontSize: "14px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      <GoPerson className="fs-6 fw-bold" />{" "}
-                      {teacher.student_name_bn}
-                      <br />
-                      {teacher.uid}
-                    </td>
-
-                    {al_pi_attr?.map((pi_attr: any, kedy: any) => (
+          {!submited && (
+            <table className="table table-lg table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col" style={{ width: "30%" }}>
+                    শিক্ষার্থীর নাম{" "}
+                    {/* <BiFilterAlt className="fs-5 ms-4" /> */}
+                  </th>
+                  <th scope="col" style={{ width: "20%" }}></th>
+                  <th scope="col" style={{ width: "20%" }}>
+                    {/* <BiFilterAlt className="fs-5" /> */}
+                  </th>
+                  <th scope="col" style={{ width: "20%" }}></th>
+                </tr>
+              </thead>
+              <tbody>
+                {Student.map((studnt: any, k: any) => (
+                  <tr key={k} id={"comment_id_" + studnt.uid}>
+                    <>
                       <td
                         style={{
-                          width: "22%",
+                          fontSize: "14px",
+                          fontWeight: "bold",
                         }}
-                        key={kedy}
+                        
                       >
-                        <div className="d-flex gap-2">
-                          <div
-                            id={pi_attr.weight_uid + "-" + teacher.uid}
-                            className="all_pi_arrtiburte"
-                            style={{
-                              border: "1px solid #eee",
-                              padding: "5px 6px",
-                              borderRadius: "3px",
-                              maxHeight: "40px",
-                            }}
-                            onClick={() =>
-                              save_PI_evalution(
-                                pi_attr.uid,
-                                pi_attr.weight_uid,
-                                teacher.uid
-                              )
-                            }
-                          >
-                            {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
-                            {pi_attr.weight.name == "Square" && (
-                              <BiSquareRounded className="fs-5 mt-1" />
+                        <GoPerson className="fs-6 fw-bold" />{" "}
+                        {studnt.student_name_bn}
+                        <br />
+                        {studnt.uid}
+                      </td>
+
+                      {al_pi_attr?.map((pi_attr: any, kedy: any) => (
+                        <td style={{}} key={kedy}>
+                          <div className="d-flex gap-2">
+                            {!comment_status && (
+                              <>
+                                <div
+                                  id={pi_attr.weight_uid + "-" + studnt.uid}
+                                  className="all_pi_arrtiburte"
+                                  style={{
+                                    border: "1px solid #eee",
+                                    padding: "5px 6px",
+                                    borderRadius: "3px",
+                                    maxHeight: "40px",
+                                  }}
+                                  onClick={() =>
+                                    save_PI_evalution(
+                                      pi_attr.uid,
+                                      pi_attr.weight_uid,
+                                      studnt.uid
+                                    )
+                                  }
+                                >
+                                  {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + studnt.uid} id={pi_attr.weight_uid + "-"+ studnt.uid} /> */}{" "}
+                                  {pi_attr.weight.name == "Square" && (
+                                    <BiSquareRounded className="fs-5 mt-1" />
+                                  )}
+                                  {pi_attr.weight.name == "Circle" && (
+                                    <BiCircle className="fs-5 mt-1" />
+                                  )}
+                                  {pi_attr.weight.name == "Triangle" && (
+                                    <FiTriangle className="fs-5 mt-1" />
+                                  )}
+                                </div>
+
+                                <div>{pi_attr.title_bn}</div>
+                              </>
                             )}
-                            {pi_attr.weight.name == "Circle" && (
-                              <BiCircle className="fs-5 mt-1" />
-                            )}
-                            {pi_attr.weight.name == "Triangle" && (
-                              <FiTriangle className="fs-5 mt-1" />
+
+                            {kedy === 0 && (
+                              <div>
+                                <textarea
+                                  onChange={(e: any) =>
+                                    save_PI_evalution_comment(
+                                      pi_attr.uid,
+                                      undefined,
+                                      studnt.uid,
+                                      e.target.value
+                                    )
+                                  }
+                                  placeholder={
+                                    "আপনি কেন " +
+                                    studnt.student_name_bn +
+                                    " কে চিহ্নিত করেননি তা আমাদের বলুন..."
+                                  }
+                                  title="required"
+                                  style={{
+                                    display: "none",
+                                    border: "1px solid red",
+                                  }}
+                                  className={
+                                    "form-control all_textarea " + studnt.uid
+                                  }
+                                  id=""
+                                  cols={60}
+                                  rows={4}
+                                ></textarea>
+                              </div>
                             )}
                           </div>
-
-                          <div>{pi_attr.title_bn}</div>
-                        </div>
-                      </td>
-                    ))}
-                  </>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                        </td>
+                      ))}
+                    </>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
 
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
@@ -220,6 +331,9 @@ export default function StudentMullayonModal({
           >
             খসড়া
           </button>
+          {msg && <h6 className="text-success">{msg}</h6>}
+
+          {err && <h6 className="text-danger">{err}</h6>}
 
           <button
             type="button"
@@ -247,7 +361,7 @@ export default function StudentMullayonModal({
         }}
       />
 
-      {/* Teachers List end */}
+      {/* studnts List end */}
     </div>
   );
 }

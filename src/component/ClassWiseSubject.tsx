@@ -15,12 +15,8 @@ const ClassWiseSubject = () => {
   const getClassData = async () => {
     const { data }: any = await clssWiseSubject(id);
     setSubjects(data.data)
-    // console.log("Api data", data);
 
   }
-
-  // console.log("Class wise Subjects are", subjects);
-
   useEffect(() => {
     window.scrollTo(0, 0)
     getClassData()

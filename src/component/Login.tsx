@@ -3,6 +3,10 @@ import { loginPassword } from "../Request";
 import axios from "axios";
 import logo from "../../public/assets/images/noipunno-new-logo.svg";
 import nav_bottom_logo from "../../public/assets/images/nav_bottom_logo.png";
+import LogoIcon1 from "../assets/images/Vector.png";
+import LogoIcon2 from "../assets/images/NCTB_logo.png";
+import LogoIcon3 from "../assets/images/Logo_Signature_Container_Circle_ENG_RGB-300x300 1.png";
+import LogoIcon4 from "../assets/images/Aspire_to_Innovate_Seal 2.png";
 import { Link } from "react-router-dom";
 
 export default function Login() {
@@ -144,18 +148,8 @@ export default function Login() {
                     </div>
 
                     <div className="form-group form-check my-4">
-                      <input
-                        type="checkbox"
-                        className="form-check-input np-login-checkbox"
-                        id="remember"
-                        name="remember"
-                      />
-                      <label
-                        className="form-check-label np-login-checbox-text"
-                        htmlFor="remember"
-                      >
-                        পিন সংরক্ষণ করুণ
-                      </label>
+                      {/* <input type="checkbox" className="form-check-input np-login-checkbox" id="remember" name="remember" />
+                      <label className="form-check-label np-login-checbox-text" htmlFor="remember">পিন সংরক্ষণ করুণ</label> */}
                       <p className="mb-1">
                         <Link
                           to={"https://accounts.project-ca.com/password/reset"}
@@ -167,9 +161,11 @@ export default function Login() {
                       </p>
                     </div>
 
+                    {/* <button type="submit" className="btn login-button text-white"> লগ ইন করুন</button> */}
                     <button
                       type="submit"
-                      className="btn login-button text-white"
+                      className="btn text-white w-100"
+                      style={{ backgroundColor: "rgba(66, 143, 146, 1)" }}
                     >
                       {" "}
                       লগ ইন করুন
@@ -208,7 +204,95 @@ export default function Login() {
             </div>
           </div> */}
         </div>
-        <div className="switch-container mt-5">
+        <div className="row pb-2">
+          <div className="d-flex flex-column flex-md-row justify-content-between">
+            <div className="d-flex gap-2 px-y py-2 justify-content-center">
+              <ul className="d-flex gap-2">
+                <div className="d-flex gap-2 flex-column flex-md-row">
+                  <div>
+                    <p>
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        © ২০২৩ সর্বস্বত্ব সংরক্ষিত
+                      </a>{" "}
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        গোপনীয়তা নীতি
+                      </a>{" "}
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        সাহায্য
+                      </a>{" "}
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        কোন প্রশ্ন?
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </ul>
+            </div>
+            <div
+              className="d-flex gap-2 px-5 py-2 justify-content-center"
+              style={{ backgroundColor: "#fff", borderRadius: 43 }}
+            >
+              <div>
+                <div>
+                  <h6 className="">পরিকল্পনা ও বাস্তবায়নে</h6>
+                </div>
+                <div
+                  className="d-flex justify-content-around"
+                  style={{ marginTop: "-0.1rem" }}
+                >
+                  <img
+                    src={LogoIcon1}
+                    className="img-fluid"
+                    style={{ width: 25 }}
+                  />
+                  <img
+                    src={LogoIcon2}
+                    className="img-fluid"
+                    style={{ width: 25 }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <h6 className="">কারিগরি সহায়তায়</h6>
+                </div>
+                <div
+                  className="d-flex justify-content-around"
+                  style={{ marginTop: "-0.1rem" }}
+                >
+                  <img
+                    src={LogoIcon3}
+                    className="img-fluid"
+                    style={{ width: 25 }}
+                  />
+                  <img
+                    src={LogoIcon4}
+                    className="img-fluid"
+                    style={{ width: 25 }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="switch-container mt-5">
           <div className="d-flex justify-content-between align-content-center">
             <div className="">
               <input type="checkbox" id="switch" className="language-switch" />
@@ -228,7 +312,7 @@ export default function Login() {
               <img src={nav_bottom_logo} width={217} alt="logos" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

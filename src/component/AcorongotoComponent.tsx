@@ -12,7 +12,23 @@ export default function AcorongotoComponent({
   setShowcollaps,
   teacher
 }: any) {
-  console.log(`assessment_uid----`, assessment_uid);
+
+
+  const showOffCollaps = ( key :any)=>{
+
+    for (const x in Showcollaps) {
+      Showcollaps[x] = false
+    }
+
+    setShowcollaps({
+      ...Showcollaps,
+      [key]: Showcollaps[key] ? !Showcollaps[key] : true,
+    });
+
+    // console.log("obj" , obj , key);
+    
+
+  }
   return (
     <div className="py-2">
       <div className="row">
@@ -23,10 +39,9 @@ export default function AcorongotoComponent({
               onClick={(e: any) => {
                 // setshowDetailsshikhonKalinMullayon(d);
 
-                setShowcollaps({
-                  ...Showcollaps,
-                  [key]: Showcollaps[key] ? !Showcollaps[key] : true,
-                });
+                showOffCollaps( key)
+
+                
               }}
               style={{ cursor: "pointer" }}
               className="col-sm-12 col-md-12"

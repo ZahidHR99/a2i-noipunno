@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PiBookOpenTextBold } from "react-icons/pi";
 import { BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
@@ -18,6 +18,23 @@ export default function ShowAssesment({
   setallassessmet,
 }: any) {
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
+
+  const fetchData = async () => {
+    try {
+      seshowCompitance(true);
+      setparodorshita_acoron_tab(0);
+      setassessment_uid(allassessmet[0]?.uid);
+      setShowSecounderyTab({
+        ...ShowSecounderyTab,
+        ["id"]: allassessmet[0].uid,
+      });
+      setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
+    } catch (error: any) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="container">
@@ -42,7 +59,6 @@ export default function ShowAssesment({
                       }}
                     >
                       <SlBookOpen className="me-1" /> {d.assessment_name_bn}{" "}
-                      
                     </a>
                   </li>
                 </>
@@ -64,7 +80,11 @@ export default function ShowAssesment({
                           <a
                             className={`fw-bold nav-link link-secondary ${
                               styles.nav_tab_bottom_border
-                            } ${ShowSecounderyTab?.id === ass_d.uid ? " active" : ""} `}
+                            } ${
+                              ShowSecounderyTab?.id === ass_d.uid
+                                ? " active"
+                                : ""
+                            } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"
@@ -73,7 +93,10 @@ export default function ShowAssesment({
                               seshowCompitance(true);
                               setparodorshita_acoron_tab(0);
                               setassessment_uid(ass_d.uid);
-                              setShowSecounderyTab({...ShowSecounderyTab , ["id"] : ass_d.uid})
+                              setShowSecounderyTab({
+                                ...ShowSecounderyTab,
+                                ["id"]: ass_d.uid,
+                              });
                               setMullayon_name(
                                 ass_d.assessment_details_name_bn
                               );
@@ -105,7 +128,11 @@ export default function ShowAssesment({
                           <Link
                             className={`fw-bold nav-link link-secondary ${
                               styles.nav_tab_bottom_border
-                            } ${ShowSecounderyTab?.id === ass_d.uid ? " active" : ""} `}
+                            } ${
+                              ShowSecounderyTab?.id === ass_d.uid
+                                ? " active"
+                                : ""
+                            } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"
@@ -114,7 +141,10 @@ export default function ShowAssesment({
                               setparodorshita_acoron_tab(1);
                               seshowCompitance(true);
                               setassessment_uid(ass_d.uid);
-                              setShowSecounderyTab({...ShowSecounderyTab , ["id"] : ass_d.uid})
+                              setShowSecounderyTab({
+                                ...ShowSecounderyTab,
+                                ["id"]: ass_d.uid,
+                              });
                               setMullayon_name(
                                 ass_d.assessment_details_name_bn
                               );

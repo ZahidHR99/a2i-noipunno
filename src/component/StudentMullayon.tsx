@@ -111,7 +111,6 @@ export default function StudentMullayon(props: any) {
 
       checkedIn(obj);
     } catch (error) {
-      console.log(`error`, error);
     }
   };
 
