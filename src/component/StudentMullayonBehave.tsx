@@ -23,6 +23,7 @@ export default function StudentMullayonBehave({
   const [msg, setmsg] = useState<any>("");
   const [err, seterr] = useState<any>("");
   const [comment_status, setcomment_status] = useState<any>(false);
+  const [submited, setsubmited] = useState<any>(false);
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
@@ -31,38 +32,27 @@ export default function StudentMullayonBehave({
         return d;
       });
 
-
-
-
-
-
       if (submit_status == 2) {
-
         if (submitData.length == 10) {
-
           console.log(3333);
-          
+
           await Bi_save(data);
           setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
-          
+          setsubmited(true);
         } else {
+          console.log(1111111, submitObj);
 
-          console.log(1111111 , submitObj);
-
-          setcomment_status(true)
-          checkedIn_comment(submitObj)
-
+          setcomment_status(true);
+          checkedIn_comment(submitObj);
         }
-        
-        
+
         seterr("");
       } else {
         setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
         seterr("");
       }
-
     } catch (error) {
-      seterr("something went wrong");
+      seterr(" কিছু ভুল হয়েছে");
     }
   };
 
@@ -118,30 +108,18 @@ export default function StudentMullayonBehave({
     setsubmitData(sumbitArray);
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
   const save_PI_evalution_comment = async (
     pi_uid: any,
     weight_uid: any,
     student_id: any,
     bi_uid: any,
-    remark:any
+    remark: any
   ) => {
     try {
       const params: any = {
         evaluate_type: assessment_uid,
         bi_uid: pi_uid,
-        weight_uid:null,
+        weight_uid: null,
         class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
@@ -152,73 +130,59 @@ export default function StudentMullayonBehave({
 
       const obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
 
-        setsubmitObj(obj);
+      setsubmitObj(obj);
 
-        form_arry_comment(obj);
-
-      
+      form_arry_comment(obj);
     } catch (error) {
       console.log(`error`, error);
     }
   };
 
-
   const form_arry_comment = (obj: any) => {
-    
     const sumbitArray: any = [];
     for (const x in obj) {
-
-      if (obj[x].weight_uid || obj[x].remark ) {
-      sumbitArray.push(obj[x]);
+      if (obj[x].weight_uid || obj[x].remark) {
+        sumbitArray.push(obj[x]);
       }
     }
 
     setsubmitData(sumbitArray);
   };
 
-
   const checkedIn_comment = (obj: any) => {
-
-
     for (const x in obj) {
-      
-      const clss_id = "all_textarea_" + obj[x].student_uid
+      const clss_id = "all_textarea_" + obj[x].student_uid;
       const all_elem: any = document.getElementsByClassName(clss_id);
 
       for (let index = 0; index < all_elem.length; index++) {
         const element: any = all_elem[index];
         element.style.visibility = "visible";
       }
-
     }
-
-
 
     const sumbitArray: any = [];
 
     for (const x in obj) {
+      if (obj[x].weight_uid || obj[x].remark) {
+        const comment_id =
+          "comment_id_" + obj[x].bi_uid + "_" + obj[x].student_uid;
+        // const textarea_id = obj[x].bi_uid + "_" + obj[x].student_uid;
+        const textarea_id = x;
+        const el: any = document.getElementsByClassName(textarea_id)[0];
+        const el_comment: any = document.getElementById(comment_id);
 
+        console.log(`textarea_id`, textarea_id);
 
-      if (obj[x].weight_uid || obj[x].remark ) {
-      
-      const comment_id = "comment_id_"+obj[x].bi_uid + "_" + obj[x].student_uid
-      const textarea_id = obj[x].bi_uid + "_" + obj[x].student_uid
-      const el: any = document.getElementsByClassName(textarea_id)[0];
-      const el_comment: any = document.getElementById(comment_id);
-
-      el.style.display = "none"; 
-      el_comment.style.visibility = "hidden"; 
-      sumbitArray.push(obj[x]);
+        el.style.display = "none";
+        el_comment.style.visibility = "hidden";
+        sumbitArray.push(obj[x]);
       }
     }
 
     setsubmitData(sumbitArray);
   };
 
-
-console.log(`submitData`, submitData);
-
-
+  console.log(`submitData`, submitData);
 
   return (
     <div className="content">
@@ -231,95 +195,119 @@ console.log(`submitData`, submitData);
                 {/* <p>রোল নম্বর #৩২১০০</p> */}
               </div>
             </div>
-            <div className="row pb-5 pt-2">
-              {all_bis.map((d: any, key: any) => (
-                <>
-                  <div className="col-sm-6 col-md-3 py-2">
-                    <div className="border-0 p-2 h-100">
-                      <div className="d-flex">
-                        <div>
-                          <h6 style={{ fontSize: "14px" }}>{d.name_bn}</h6>
+
+            {!submited && (
+              <div className="row pb-5 pt-2">
+                {all_bis.map((d: any, key: any) => (
+                  <>
+                    <div className="col-sm-6 col-md-3 py-2">
+                      <div className="border-0 p-2 h-100">
+                        <div className="d-flex">
+                          <div>
+                            <h6 style={{ fontSize: "14px" }}>{d.name_bn}</h6>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {d?.weights.map((w_d: any, k: any) => (
-
-
-                    
-                    <div className="col-sm-6 col-md-3 py-2" key={k} id={"comment_id_"+ w_d.uid + "_" + student?.uid}>
-
-                    {
-                      !comment_status && 
-                    
+                    {d?.weights.map((w_d: any, k: any) => (
                       <div
-                        className="card bg-light h-100 shadow-lg border-0 p-2 all_pi_arrtiburte"
-                        style={{ backgroundColor: "#F0FAE9" }}
-                        id={w_d.uid + "_" + student?.uid}
+                        className="col-sm-6 col-md-3 py-2"
+                        key={k}
+                        id={"comment_id_" + w_d.uid + "_" + student?.uid}
                       >
-                        <div
-                          className="d-flex "
-                          style={{ cursor: "pointer" }}
-                          onClick={(e: any) =>
-                            save_PI_evalution(
-                              w_d.uid,
-                              w_d.weight_uid,
-                              student.uid,
-                              w_d.bi_uid
-                            )
-                          }
-                        >
-                          <div>
-                            {weightId(pi_attribute_weight, w_d?.weight_uid) ==
-                              "Square" && (
-                              <BiSquareRounded className="fs-5 mt-1" />
-                            )}
-                            {weightId(pi_attribute_weight, w_d?.weight_uid) ==
-                              "Circle" && <BiCircle className="fs-5 mt-1" />}
-                            {weightId(pi_attribute_weight, w_d?.weight_uid) ==
-                              "Triangle" && (
-                              <FiTriangle className="fs-5 mt-1" />
-                            )}
+                        {!comment_status && (
+                          <div
+                            className="card bg-light h-100 shadow-lg border-0 p-2 all_pi_arrtiburte"
+                            style={{ backgroundColor: "#F0FAE9" }}
+                            id={w_d.uid + "_" + student?.uid}
+                          >
+                            
+                            <div
+                              className="d-flex "
+                              style={{ cursor: "pointer" }}
+                              onClick={(e: any) =>
+                                save_PI_evalution(
+                                  w_d.uid,
+                                  w_d.weight_uid,
+                                  student.uid,
+                                  w_d.bi_uid
+                                )
+                              }
+                            >
+                              <div>
+                                {weightId(
+                                  pi_attribute_weight,
+                                  w_d?.weight_uid
+                                ) == "Square" && (
+                                  <BiSquareRounded className="fs-5 mt-1" />
+                                )}
+                                {weightId(
+                                  pi_attribute_weight,
+                                  w_d?.weight_uid
+                                ) == "Circle" && (
+                                  <BiCircle className="fs-5 mt-1" />
+                                )}
+                                {weightId(
+                                  pi_attribute_weight,
+                                  w_d?.weight_uid
+                                ) == "Triangle" && (
+                                  <FiTriangle className="fs-5 mt-1" />
+                                )}
 
-                            {/* <TiTick className={`${styles.tick_mark}`} /> */}
+                                {/* <TiTick className={`${styles.tick_mark}`} /> */}
+                              </div>
+                              <div>
+                                <h6 style={{ fontSize: "14px" }}>
+                                  {w_d.title_bn}
+                                </h6>
+                              </div>
+                            </div>
                           </div>
+                        )}
+
+                        {k === 0 && (
                           <div>
-                            <h6 style={{ fontSize: "14px" }}>{w_d.title_bn}</h6>
+                            <textarea
+                              onChange={(e: any) =>
+                                save_PI_evalution_comment(
+                                  w_d.uid,
+                                  w_d.weight_uid,
+                                  student.uid,
+                                  w_d.bi_uid,
+                                  e.target.value
+                                )
+                              }
+                              placeholder={
+                                "আপনি কেন  চিহ্নিত করেননি তা আমাদের বলুন..."
+                              }
+                              title="required"
+                              style={{
+                                visibility: "hidden",
+                                border: "1px solid red",
+                              }}
+                              className={
+                                "form-control all_textarea_" +
+                                student?.uid +
+                                " " +
+                                w_d.bi_uid +
+                                "_" +
+                                student?.uid
+                              }
+                              id=""
+                              cols={60}
+                              rows={4}
+                            ></textarea>
                           </div>
-                        </div>
+                        )}
                       </div>
-                      }
-
-
-                      {
-                            k === 0 && 
-
-                            <div>
-                            <textarea onChange={(e:any) =>
-                              save_PI_evalution_comment(
-                                w_d.uid,
-                                w_d.weight_uid,
-                                student.uid,
-                                w_d.bi_uid,
-                                e.target.value
-                              )
-                            } placeholder= {"আপনি কেন  চিহ্নিত করেননি তা আমাদের বলুন..." } title="required" style={{visibility:"hidden" , border : "1px solid red"}} className={"form-control all_textarea_"+student?.uid+" "+ w_d.uid + "_" + student?.uid }   id="" cols={60} rows={4}>
-
-                            </textarea>
-                          </div>
-                          }
-
-                    </div>
-
-                  ))}
-                </>
-              ))}
-            </div>
+                    ))}
+                  </>
+                ))}
+              </div>
+            )}
 
             <div className="d-flex justify-content-between align-items-center pe-5 mb-2">
-
-            
               <button
                 type="button"
                 className="btn btn-warning m-1 "
@@ -333,12 +321,9 @@ console.log(`submitData`, submitData);
                 খসড়া
               </button>
 
-
               {msg && <h6 className="text-success">{msg}</h6>}
 
               {err && <h6 className="text-danger">{err}</h6>}
-
-              
 
               <button
                 type="button"
