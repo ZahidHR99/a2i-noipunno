@@ -1,13 +1,23 @@
+import React from "react";
+import ".././assets/style.css";
+import teacher from "../assets/images/teacher.png";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { all_class } from "../Request";
 import logoutImage from "../../public/assets/images/logotIcon.png"
-
 import myprofile from "../../public/assets/images/my_profile.png"
 
-export default function Topbar() {
+export default function
+  Topbar() {
   const [classdata, setdata] = useState([]);
-  // const navigate = useNavigate();
+  const [userDetails, setuserDetails] = useState<any>({});
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("customer_login_auth"));
+    if (items) {
+      setuserDetails(items.user);
+    }
+  }, []);
 
   const handleLogout = (e: any) => {
     localStorage.clear();
@@ -15,6 +25,17 @@ export default function Topbar() {
     // window.location = window.location.origin;
     console.log("Logout successful", e);
   };
+
+  const fetchData = async () => {
+    const { data }: any = await all_class();
+    if (data.status) {
+      setdata(data.data);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -28,26 +49,34 @@ export default function Topbar() {
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                 <span className="navbar-toggler-icon" />
               </button>
+
               <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
                 <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center">
-                  <li className="nav-item dropdown">
+                  <li className="btn-group dropleft">
                     <a className="nav-link dropdown-toggle noipunno-dropdown" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                       <div className="user-section">
                         <img src="/assets/images/user-profile.png" alt="" />
                       </div>
                     </a>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownUser " >
-                      {/* <li>
-
-                        <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" >
-                          <img src={myprofile} alt="" />
-                          আমার প্রোফাইল
-                        </a>
-                      </li> */}
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser" >
+                      <li className="border-bottom">
+                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2 mb-1">
+                          <img src={teacher} className="avatar-instance " />
+                          <div className="text">
+                            <div className="text-wrapper">{userDetails?.name}</div>
+                            <div className="div">{(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}</div>
+                          </div>
+                        </div>
+                      </li>
                       <li>
-
-                        <a className="dropdown-item d-flex justify-content-center align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
-                          {/* <img src={logoutImage} alt="" className="pe-4" /> */}
+                        <Link to={"edit-teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                          <img src={myprofile} alt="alt" />
+                          আমার প্রোফাইল
+                        </Link>
+                      </li>
+                      <li>
+                        <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
+                          <img src={logoutImage} alt="img" />
                           সাইন আউট
                         </a>
                       </li>
@@ -91,12 +120,15 @@ export default function Topbar() {
                     aria-label="Close"
                   />
                 </div>
+
+                {/*For => Mobile Device */}
+
+
                 <div className="offcanvas-body subheader-accordion">
                   <div className="accordion accordion-flush" id="prothomPata">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="prothompata-headingOne" >
                         <button className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
-                          {/* <img src="/assets/images/home.svg" alt="" /> */}
                           <Link to={'/'}>
                             <span className="fs-6 px-2">প্রথম পাতা</span>
                           </Link>
@@ -165,25 +197,15 @@ export default function Topbar() {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className="accordion accordion-flush responsive-single-menu-button"
-                    id="shikkhok"
-                  >
+                  <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
-                      <h2
-                        className="accordion-header pages-buttons"
-                        id="shikkhok-headingOne"
-                      ><a href="/teachers-list" className="text-decoration-none">
-                          <button
-                            className="w-100 btn btn-light px-5 text-start"
-                            type="button"
-                          >
+                      <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" ><a href="/teachers-list" className="text-decoration-none">
+                        <button className="w-100 btn btn-light px-5 text-start" type="button" >
+                          <img src="/assets/images/teacher.svg" alt="" />
+                          <span className="fs-6 px-2">শিক্ষক</span>
 
-                            <img src="/assets/images/teacher.svg" alt="" />
-                            <span className="fs-6 px-2">শিক্ষক</span>
-
-                          </button>
-                        </a>
+                        </button>
+                      </a>
                       </h2>
                     </div>
                   </div>
@@ -281,6 +303,8 @@ export default function Topbar() {
                 </div>
               </div>
 
+
+
               {/*For => Large Device */}
 
               <div className="d-none d-lg-flex pages-buttons">
@@ -361,12 +385,12 @@ export default function Topbar() {
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
-                        <button className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button" type="button" >
-                          <Link to="/teachers-list" className="text-decoration-none d-flex justify-content-center gap-1">
+                        <Link to="/teachers-list" className="text-decoration-none d-flex justify-content-center gap-1">
+                          <button className=" collapsed d-flex justify-content-center gap-2 align-items-center pt-2 mx-2 w-100 responsive-single-menu-button" type="button" >
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 ">শিক্ষক</span>
-                          </Link>
-                        </button>
+                          </button>
+                        </Link>
                       </h2>
                     </div>
                   </div>

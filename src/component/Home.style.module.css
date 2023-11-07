@@ -1,21 +1,3 @@
-.modal_center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.loading_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.loading_container .spinner_border {
-  width: 3rem;
-  height: 3rem;
-}
-
 .teacherName {
   font-size: 12px;
   font-weight: 400;
@@ -213,9 +195,85 @@
   margin-right: 5px;
 }
 
+
+/* ==============> Army <=================== */
+
+.custom-input::placeholder {
+  color: rgb(0, 201, 77) !important;
+  background-color: burlywood;
+  font-size: 12px !important;
+}
+
+/* Login-Page  Input hide*/
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinners {
+  -moz-appearance: textfield;
+}
+
+/* Loader Position-center */
+.loading_container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.loading_container .spinner_border {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+.modal_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* All Teacher and students Page Card Grid */
 .grid_view {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+
+@media (min-width: 1200px) {
+  .grid_view {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .grid_view {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .grid_view {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .grid_view {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .grid_view {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
 }

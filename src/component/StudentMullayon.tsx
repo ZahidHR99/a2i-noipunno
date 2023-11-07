@@ -111,7 +111,6 @@ export default function StudentMullayon(props: any) {
 
       checkedIn(obj);
     } catch (error) {
-      console.log(`error`, error);
     }
   };
 
@@ -249,8 +248,9 @@ export default function StudentMullayon(props: any) {
                               type="button"
                               className="btn btn-warning m-1 "
                               style={{
-                                // backgroundColor: "#428F92",
-                                color: "#fff",
+                                color: "#000",
+                                paddingLeft: "90px",
+                                paddingRight: "90px",
                               }}
                               onClick={(e) => handleSave(e, 1)}
                             >

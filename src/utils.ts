@@ -1,6 +1,8 @@
+import cogoToast from "cogo-toast";
+
 
 export const Validation = (
-  customInputValidationCheck :any= [],
+  customInputValidationCheck: any = [],
   element = document
 ) => {
   let validate = true;
@@ -9,13 +11,12 @@ export const Validation = (
   const collection: any = element.querySelectorAll("input ,  textarea , select");
   for (let i = 0; i < collection.length; i++) {
     // eslint-disable-next-line prefer-const
-    let x :any= collection[i];
+    let x: any = collection[i];
 
     if (collection[i].name) {
       collection[i].style.border = "";
 
       if (collection[i].required && !collection[i].value) {
-        console.log(`collection[i].name`, collection[i].name);
         validate = false;
         collection[i].style.border = "1px solid red";
 
@@ -28,7 +29,7 @@ export const Validation = (
 
       if (customInputValidationCheck && customInputValidationCheck.length) {
 
-        const y :any= collection[i].name
+        const y: any = collection[i].name
         if (
           customInputValidationCheck.includes(y) &&
           !collection[i].value
@@ -46,4 +47,15 @@ export const Validation = (
     alert("Required fields can not be empty")
   }
   return validate;
+};
+
+
+export const toast = (type: any, msg: any) => {
+  if (type === true) {
+    cogoToast.success(msg, { position: "bottom-right" });
+  }
+
+  if (type === false) {
+    cogoToast.error(msg, { position: "bottom-right" });
+  }
 };

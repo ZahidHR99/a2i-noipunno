@@ -49,7 +49,7 @@ export default function DetailsShikhonMullayon({
                         }}
                         to={"#"}
                         
-                        className="text-decoration-none text-black"
+                        className="text-decoration text-success  ps-2"
                       >
                         <h6
                         >
@@ -84,7 +84,6 @@ export default function DetailsShikhonMullayon({
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body className="">
-
               <StudentMullayonModal
                   competence_uid={competence_uid}
                   assessment_uid={assessment_uid}
