@@ -67,10 +67,10 @@ export default function
                         <img src="/assets/images/user-profile.png" alt="" />
                       </div>
                     </a>
-                    <ul className="dropdown-menu me-4" aria-labelledby="navbarDropdownUser " >
-                      {/* <li className="border-bottom">
-                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2  my-4">
-                          <img src={teacher} className="avatar-instance mx-2" />
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser" >
+                      <li className="border-bottom">
+                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2 mb-1">
+                          <img src={teacher} className="avatar-instance " />
                           <div className="text">
                             <div className="text-wrapper">{userDetails?.name}</div>
                             <div className="div">{(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}</div>
@@ -78,11 +78,11 @@ export default function
                         </div>
                       </li>
                       <li>
-                        <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" >
-                          <img src={myprofile} alt="" />
+                        <Link to={"edit-teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                          <img src={myprofile} alt="alt" />
                           আমার প্রোফাইল
-                        </a>
-                      </li> */}
+                        </Link>
+                      </li>
                       <li>
                         <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
                           <img src={logoutImage} alt="img" />
@@ -93,18 +93,9 @@ export default function
                   </li>
                 </ul>
               </div>
-
-
             </div>
           </nav>
         </div>
-
-
-
-
-
-
-
         <hr />
 
         <div className="container noipunno-navbar-container ">
@@ -138,12 +129,15 @@ export default function
                     aria-label="Close"
                   />
                 </div>
+
+                {/*For => Mobile Device */}
+
+
                 <div className="offcanvas-body subheader-accordion">
                   <div className="accordion accordion-flush" id="prothomPata">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="prothompata-headingOne" >
                         <button className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
-                          {/* <img src="/assets/images/home.svg" alt="" /> */}
                           <Link to={'/'}>
                             <span className="fs-6 px-2">প্রথম পাতা</span>
                           </Link>
@@ -212,25 +206,15 @@ export default function
                       </div>
                     </div>
                   </div>
-                  <div
-                    className="accordion accordion-flush responsive-single-menu-button"
-                    id="shikkhok"
-                  >
+                  <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
-                      <h2
-                        className="accordion-header pages-buttons"
-                        id="shikkhok-headingOne"
-                      ><a href="/teachers-list" className="text-decoration-none">
-                          <button
-                            className="w-100 btn btn-light px-5 text-start"
-                            type="button"
-                          >
+                      <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" ><a href="/teachers-list" className="text-decoration-none">
+                        <button className="w-100 btn btn-light px-5 text-start" type="button" >
+                          <img src="/assets/images/teacher.svg" alt="" />
+                          <span className="fs-6 px-2">শিক্ষক</span>
 
-                            <img src="/assets/images/teacher.svg" alt="" />
-                            <span className="fs-6 px-2">শিক্ষক</span>
-
-                          </button>
-                        </a>
+                        </button>
+                      </a>
                       </h2>
                     </div>
                   </div>
@@ -328,6 +312,8 @@ export default function
                 </div>
               </div>
 
+
+
               {/*For => Large Device */}
 
               <div className="d-none d-lg-flex pages-buttons">
@@ -409,11 +395,9 @@ export default function
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
                         <Link to="/teachers-list" className="text-decoration-none d-flex justify-content-center gap-1">
-                          <button className=" collapsed d-flex justify-content-between align-items-center pt-2 mx-2 w-100 responsive-single-menu-button" type="button" >
-
+                          <button className=" collapsed d-flex justify-content-center gap-2 align-items-center pt-2 mx-2 w-100 responsive-single-menu-button" type="button" >
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 ">শিক্ষক</span>
-
                           </button>
                         </Link>
                       </h2>
