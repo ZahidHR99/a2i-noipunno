@@ -6,13 +6,11 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { all_student } from "../Request";
 import Accordion from 'react-bootstrap/Accordion';
-
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const StudentList = () => {
-
 
   const [students, setStudents] = useState([])
 
@@ -30,7 +28,7 @@ const StudentList = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
 
-  const handleShowModal = (item) => {
+  const handleShowModal = (item: any) => {
     setSelectedItem(item);
     setShowModal(true);
   };

@@ -16,24 +16,6 @@ export default function Topbar() {
     console.log("Logout successful", e);
   };
 
-  const fetchData = async () => {
-    const { data }: any = await all_class();
-    if (data.status) {
-      setdata(data.data);
-    }
-  };
-
-
-
-  // const handleClassData = async (clss_id: any) => {
-  //   const classData = await clssWiseData(clss_id)
-  //   console.log("ClssWiseData=============", classData.data.data)
-  // };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <>
       <section className="noipunno-navbar-section np">
