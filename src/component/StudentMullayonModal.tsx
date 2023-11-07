@@ -78,6 +78,8 @@ export default function StudentMullayonModal({
 
         seterr("");
       } else {
+        await Pi_save(data);
+        setsubmited(true);
         setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
         seterr("");
       }
@@ -290,7 +292,7 @@ export default function StudentMullayonModal({
                                   placeholder={
                                     "আপনি কেন " +
                                     studnt.student_name_bn +
-                                    " কে চিহ্নিত করেননি তা আমাদের বলুন..."
+                                    " কে চিহ্নিত করেননি তার কারণ লিখুন..."
                                   }
                                   title="required"
                                   style={{

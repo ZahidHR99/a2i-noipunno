@@ -34,20 +34,18 @@ export default function StudentMullayonBehave({
 
       if (submit_status == 2) {
         if (submitData.length == 10) {
-          console.log(3333);
-
           await Bi_save(data);
           setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
           setsubmited(true);
         } else {
-          console.log(1111111, submitObj);
-
           setcomment_status(true);
           checkedIn_comment(submitObj);
         }
 
         seterr("");
       } else {
+        await Bi_save(data);
+        setsubmited(true);
         setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
         seterr("");
       }
@@ -171,8 +169,6 @@ export default function StudentMullayonBehave({
         const el: any = document.getElementsByClassName(textarea_id)[0];
         const el_comment: any = document.getElementById(comment_id);
 
-        console.log(`textarea_id`, textarea_id);
-
         el.style.display = "none";
         el_comment.style.visibility = "hidden";
         sumbitArray.push(obj[x]);
@@ -279,7 +275,7 @@ export default function StudentMullayonBehave({
                                 )
                               }
                               placeholder={
-                                "আপনি কেন  চিহ্নিত করেননি তা আমাদের বলুন..."
+                                "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
                               }
                               title="required"
                               style={{
