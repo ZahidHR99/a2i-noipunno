@@ -67,7 +67,7 @@ export default function
                         <img src="/assets/images/user-profile.png" alt="" />
                       </div>
                     </a>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownUser" >
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser" >
                       {/* <li className="border-bottom">
                         <div className="dropdown-item d-flex justify-content-start align-items-center gap-2  my-4">
                           <img src={teacher} className="avatar-instance mx-2" />
@@ -78,17 +78,17 @@ export default function
                         </div>
                       </li> */}
                       <li>
-                        <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" >
-                          <img src={myprofile} alt="" />
+                        <Link to={"edit-teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                          <img src={myprofile} alt="alt" />
                           আমার প্রোফাইল
-                        </a>
+                        </Link>
                       </li>
-                      {/* <li>
+                      <li>
                         <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
                           <img src={logoutImage} alt="img" />
                           সাইন আউট
                         </a>
-                      </li> */}
+                      </li>
                     </ul>
                   </li>
                 </ul>
