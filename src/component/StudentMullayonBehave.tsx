@@ -150,15 +150,11 @@ export default function StudentMullayonBehave({
         remark,
       };
 
-      if (remark) {
-
-        let obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
+      const obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
 
         setsubmitObj(obj);
 
         form_arry_comment(obj);
-        
-      }
 
       
     } catch (error) {
@@ -169,9 +165,12 @@ export default function StudentMullayonBehave({
 
   const form_arry_comment = (obj: any) => {
     
-    let sumbitArray: any = [];
+    const sumbitArray: any = [];
     for (const x in obj) {
+
+      if (obj[x].weight_uid || obj[x].remark ) {
       sumbitArray.push(obj[x]);
+      }
     }
 
     setsubmitData(sumbitArray);
@@ -198,6 +197,9 @@ export default function StudentMullayonBehave({
     const sumbitArray: any = [];
 
     for (const x in obj) {
+
+
+      if (obj[x].weight_uid || obj[x].remark ) {
       
       const comment_id = "comment_id_"+obj[x].bi_uid + "_" + obj[x].student_uid
       const textarea_id = obj[x].bi_uid + "_" + obj[x].student_uid
@@ -207,13 +209,14 @@ export default function StudentMullayonBehave({
       el.style.display = "none"; 
       el_comment.style.visibility = "hidden"; 
       sumbitArray.push(obj[x]);
+      }
     }
 
     setsubmitData(sumbitArray);
   };
 
 
-
+console.log(`submitData`, submitData);
 
 
 
@@ -314,11 +317,9 @@ export default function StudentMullayonBehave({
               ))}
             </div>
 
-            <div className="d-flex justify-content-end align-items-center pe-5 mb-2">
+            <div className="d-flex justify-content-between align-items-center pe-5 mb-2">
 
-            {msg && <h6 className="text-success">{msg}</h6>}
-
-{err && <h6 className="text-danger">{err}</h6>}
+            
               <button
                 type="button"
                 className="btn btn-warning m-1 "
@@ -331,6 +332,11 @@ export default function StudentMullayonBehave({
               >
                 খসড়া
               </button>
+
+
+              {msg && <h6 className="text-success">{msg}</h6>}
+
+              {err && <h6 className="text-danger">{err}</h6>}
 
               
 
