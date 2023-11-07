@@ -1,3 +1,5 @@
+import cogoToast from "cogo-toast";
+
 
 export const Validation = (
   customInputValidationCheck :any= [],
@@ -45,4 +47,15 @@ export const Validation = (
     alert("Required fields can not be empty")
   }
   return validate;
+};
+
+
+export const toast = (type:any, msg:any) => {
+  if (type === true) {
+    cogoToast.success(msg, { position: "top-right" });
+  }
+
+  if (type === false) {
+    cogoToast.error(msg, { position: "top-right" });
+  }
 };
