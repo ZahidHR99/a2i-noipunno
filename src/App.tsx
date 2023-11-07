@@ -29,8 +29,6 @@ function App() {
 
 
       if (render) {
-        console.log(11111);
-  
         const own_subjet = await teacher_own_subject();
         localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   

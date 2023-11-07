@@ -173,14 +173,9 @@ export default function StudentMullayonModal({
         remark,
       };
 
-      if (remark) {
-
-        const obj: any = { ...submitObj, [student_id]: params };
-        setsubmitObj(obj);
-
-        form_arry_comment(obj);
-        
-      }
+      const obj: any = { ...submitObj, [student_id]: params };
+      setsubmitObj(obj);
+      form_arry_comment(obj);
       
     } catch (error) {
       console.log(`error`, error);
@@ -190,9 +185,12 @@ export default function StudentMullayonModal({
 
   const form_arry_comment = (obj: any) => {
     
-    let sumbitArray: any = [];
+    const sumbitArray: any = [];
     for (const x in obj) {
+
+      if (obj[x].weight_uid || obj[x].remark ) {
       sumbitArray.push(obj[x]);
+      }
     }
 
     setsubmitData(sumbitArray);
@@ -207,24 +205,32 @@ export default function StudentMullayonModal({
       element.style.display = "block";
     }
 
-    let sumbitArray: any = [];
+    const sumbitArray: any = [];
 
     for (const x in obj) {
-      
-      let comment_id = "comment_id_"+x
-      let el: any = document.getElementsByClassName(x)[0];
-      let el_comment: any = document.getElementById(comment_id);
 
-      console.log("iddd" , x , el);
-      el.style.display = "none"; 
-      el_comment.style.display = "none"; 
-      sumbitArray.push(obj[x]);
+      if (obj[x].weight_uid || obj[x].remark ) {
+
+
+
+        const comment_id = "comment_id_"+x
+        const el: any = document.getElementsByClassName(x)[0];
+        const el_comment: any = document.getElementById(comment_id);
+
+        console.log("iddd" , x , el);
+        el.style.display = "none"; 
+        el_comment.style.display = "none"; 
+        sumbitArray.push(obj[x]);
+        
+      }
+      
+      
     }
 
     setsubmitData(sumbitArray);
   };
 
-  console.log(`submitObj`, submitObj);
+  console.log(`submitObj`, submitObj , submitData);
 
   return (
     <div className="content">
