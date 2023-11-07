@@ -12,8 +12,6 @@ export default function DetailsShikhonMullayonBehave({
   teacher
 }: any) {
 
-
-  console.log(`showDetailsshikhonKalinMullayon`, teacher);
   return (
     <div>
      

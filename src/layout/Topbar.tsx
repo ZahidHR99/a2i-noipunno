@@ -5,7 +5,8 @@ import logoutImage from "../../public/assets/images/logotIcon.png"
 
 import myprofile from "../../public/assets/images/my_profile.png"
 
-export default function Topbar() {
+export default function 
+Topbar() {
   const [classdata, setdata] = useState([]);
   // const navigate = useNavigate();
 
@@ -379,12 +380,14 @@ export default function Topbar() {
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
-                        <button className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button" type="button" >
-                          <Link to="/teachers-list" className="text-decoration-none d-flex justify-content-center gap-1">
+                      <Link to="/teachers-list" className="text-decoration-none d-flex justify-content-center gap-1">
+                        <button className=" collapsed d-flex justify-content-between align-items-center pt-2 mx-2 w-100 responsive-single-menu-button" type="button" >
+                          
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 ">শিক্ষক</span>
-                          </Link>
+                          
                         </button>
+                        </Link>
                       </h2>
                     </div>
                   </div>
