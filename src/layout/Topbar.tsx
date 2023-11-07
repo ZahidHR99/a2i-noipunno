@@ -68,15 +68,15 @@ export default function
                       </div>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser" >
-                      {/* <li className="border-bottom">
-                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2  my-4">
-                          <img src={teacher} className="avatar-instance mx-2" />
+                      <li className="border-bottom">
+                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2 mb-1">
+                          <img src={teacher} className="avatar-instance " />
                           <div className="text">
                             <div className="text-wrapper">{userDetails?.name}</div>
                             <div className="div">{(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}</div>
                           </div>
                         </div>
-                      </li> */}
+                      </li>
                       <li>
                         <Link to={"edit-teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
                           <img src={myprofile} alt="alt" />
