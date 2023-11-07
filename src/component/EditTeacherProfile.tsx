@@ -7,21 +7,29 @@ import cogoToast from 'cogo-toast';
 import { toast } from "../utils";
 
 const EditTeacherProfile = () => {
-
   const [userDetails, setuserDetails] = useState<any>({});
   const { caid, eiin, name, email, phone_no, role } = userDetails;
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("customer_login_auth"));
     if (items) {
-      setuserDetails(items.user);
+      setuserDetails(items.user)
+
     }
   }, []);
 
-  const handleTeacherProfileEdit = async (event: any) => {
 
+
+  const handleTeacherProfileEdit = async (event: any) => {
     event.preventDefault()
     const formDatas = new FormData(event.target);
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone_no = form.phone_no.value;
+
+    const user = {}
+
 
     try {
       const { data }: any = await update_teacher_profile(caid, formDatas);
@@ -32,6 +40,8 @@ const EditTeacherProfile = () => {
       cogoToast.error('আপডেট সম্পন্ন হয়নি, আবার চেষ্টা করুন!');
     }
   }
+
+  // console.log(userDetails);
 
 
   return (
@@ -70,15 +80,6 @@ const EditTeacherProfile = () => {
 
                 <div className="form-group  col-sm-4 col-md-6">
                   <div className="mb-3" style={{ fontSize: "16px" }}>
-                    <label className="form-label">ইউজার আইডি</label>
-                    <div className="input-group">
-                      <input type="text" id="pin" className="form-control" name="caid" defaultValue={eiin} />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-group  col-sm-4 col-md-6">
-                  <div className="mb-3" style={{ fontSize: "16px" }}>
                     <label className="form-label">ফোন নম্বর</label>
                     <div className="input-group">
                       <input type="text" id="pin" className="form-control" name="phone_no" defaultValue={phone_no} />
@@ -86,16 +87,7 @@ const EditTeacherProfile = () => {
                   </div>
                 </div>
 
-                {/* <div className="form-group  col-sm-4 col-md-6">
-         <div className="mb-3" style={{ fontSize: "16px" }}>
-          <label className="form-label">শিক্ষকের পদবি</label>
-          <div className="input-group">
-           <input type="text" id="pin" className="form-control" name="role" defaultValue={role} />
-          </div>
-         </div>
-        </div> */}
-
-                <div className="form-group col-sm-4 col-md-6">
+                {/* <div className="form-group col-sm-4 col-md-6">
                   <div className="mb-3" >
                     <label className="form-label" >
                       পদবি
@@ -110,7 +102,7 @@ const EditTeacherProfile = () => {
                       <option value={3}>প্রধান শিক্ষক</option>
                     </select>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="form-group  col-sm-4 col-md-6">
                   <div className="mb-3" style={{ fontSize: "16px" }}>

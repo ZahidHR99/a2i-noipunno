@@ -1,19 +1,17 @@
 import React from "react";
+import ".././assets/style.css";
 import teacher from "../assets/images/teacher.png";
-import ".././assets/style.css"
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { all_class } from "../Request";
 import logoutImage from "../../public/assets/images/logotIcon.png"
-
 import myprofile from "../../public/assets/images/my_profile.png"
 
 export default function
   Topbar() {
   const [classdata, setdata] = useState([]);
-  // const navigate = useNavigate();
   const [userDetails, setuserDetails] = useState<any>({});
+
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("customer_login_auth"));
     if (items) {
@@ -34,13 +32,6 @@ export default function
       setdata(data.data);
     }
   };
-
-
-
-  // const handleClassData = async (clss_id: any) => {
-  //   const classData = await clssWiseData(clss_id)
-  //   console.log("ClssWiseData=============", classData.data.data)
-  // };
 
   useEffect(() => {
     fetchData();

@@ -21,24 +21,24 @@ export default function Login() {
 
       const { data }: any = await loginPassword(datas);
 
-    if (data?.status === true) {
-      // console.log("user Details", data?.data.user)
-      const token = data?.data?.access_token;
-      localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
-      localStorage.setItem('token', token)
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      window.location.assign("/");
-    } else {
-      seterror("Wrong Crediantial")
-    }
-      
+      if (data?.status === true) {
+        // console.log("user Details", data?.data.user)
+        const token = data?.data?.access_token;
+        localStorage.setItem('customer_login_auth', JSON.stringify(data?.data))
+        localStorage.setItem('token', token)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        window.location.assign("/");
+      } else {
+        seterror("Wrong Crediantial")
+      }
+
     } catch (error) {
 
       // console.log(`error.response.data.error`, error.response.data.error);
       seterror("Something Went Wrong!")
     }
 
-    
+
   }
 
 
