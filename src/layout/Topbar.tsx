@@ -138,7 +138,6 @@ export default function
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="prothompata-headingOne" >
                         <button className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
-                          {/* <img src="/assets/images/home.svg" alt="" /> */}
                           <Link to={'/'}>
                             <span className="fs-6 px-2">প্রথম পাতা</span>
                           </Link>
