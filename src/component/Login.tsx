@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet";
 export default function Login() {
   const [error, seterror] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [value, setValue] = useState('');
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -41,11 +41,9 @@ export default function Login() {
     
   }
 
-  const [value, setValue] = useState('');
 
   const handleChange = event => {
     const result = event.target.value.replace(/\D/g, '');
-
     setValue(result);
   };
 
@@ -96,7 +94,7 @@ export default function Login() {
                         </div>
 
                         <input onChange={handleChange}
-                          className="form-control np-login-form-field"
+                          className="form-control np-login-form-field custom-input"
                           type="text"
                           value={value}
                           required
@@ -104,7 +102,6 @@ export default function Login() {
                           placeholder="আপনার ইউজার আইডি দিন"
                           name="caid"
                           id="caid"
-
                         />
 
                       </div>
@@ -114,9 +111,9 @@ export default function Login() {
                       <label htmlFor="pin" className="login-field-title"> পিন নম্বর </label>
                       <div className="input-group"><img src="/assets/images/lock.svg" className="np-login-field-icon" alt="logo" />
                         <input
+                          className={`form-control np-login-form-field no-spinners custom-input`}
                           type={showPassword ? "text" : "password"}
                           id="pin"
-                          className="form-control np-login-form-field no-spinners"
                           name="password"
                           required
                           placeholder="আপনার পাসওয়ার্ড দিন"
