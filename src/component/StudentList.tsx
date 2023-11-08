@@ -67,8 +67,8 @@ const StudentList = () => {
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
-                      <h5 className={styles.teacherName}>নামঃ {student?.student_name_bn} </h5>
-                      <h5 className={styles.teacherName}>রোলঃ {student?.roll} </h5>
+                      <h5 className={styles.teacherName}>নামঃ {student?.student_name_bn || "no-entry"} </h5>
+                      <h5 className={styles.teacherName}>রোলঃ {student?.roll || "no-entry"} </h5>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                       <button onClick={() => handleShowModal(student)} className="btn btn-primay btn-sm d-flex justify-content-center align-items-center" style={{ backgroundColor: "#428F92", color: "#fff", }} >
@@ -90,10 +90,14 @@ const StudentList = () => {
 
               <Modal.Header>
                 <Modal.Title>
-                  শিক্ষার্থীর বিস্তারিত তথ্য
+                  {selectedItem?.student_name_bn || "no-entry"}
                 </Modal.Title>
+                {selectedItem?.roll || "no-entry"}
               </Modal.Header>
               <Modal.Body className="">
+              <div>
+                    <img src={studentImage} className="img-fluid mb-2" style={{ height: "50px" }} />
+                  </div>
                 <div>
                   <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
                     <ul className={`${styles.teacher_info_list_group}`}>
