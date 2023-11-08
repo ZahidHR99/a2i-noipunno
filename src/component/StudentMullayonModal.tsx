@@ -102,7 +102,7 @@ export default function StudentMullayonModal({
         competence_uid,
         pi_uid,
         weight_uid,
-        class_room_id,
+        class_room_uid:class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
         submit_status: 2,
@@ -149,7 +149,7 @@ export default function StudentMullayonModal({
         evaluate_type: assessment_uid,
         competence_uid,
         pi_uid,
-        class_room_id,
+        class_room_uid:class_room_id,
         weight_uid: null,
         student_uid: student_id,
         teacher_uid: teacher.caid,
@@ -320,6 +320,8 @@ export default function StudentMullayonModal({
         </div>
 
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
+
+        {!submited && (
           <button
             type="button"
             className="btn btn-warning  my-2"
@@ -333,10 +335,11 @@ export default function StudentMullayonModal({
           >
             খসড়া
           </button>
+        )}
           {msg && <h6 className="text-success">{msg}</h6>}
 
           {err && <h6 className="text-danger">{err}</h6>}
-
+          {!submited && (
           <button
             type="button"
             className="btn btn-primay px-5 "
@@ -352,6 +355,7 @@ export default function StudentMullayonModal({
               <img src="/assets/images/arrow-right.png" alt="" />
             </span>
           </button>
+          )}
 
           {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
         </div>
