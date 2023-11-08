@@ -56,8 +56,8 @@ export default function TeachersList() {
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
-                      <h5 className={styles.teacherName}>নামঃ {teacher?.name_en} </h5>
-                      <h5 className={styles.teacherName}>আইডিঃ {teacher?.uid}</h5>
+                      <h5 className={styles.teacherName}>নামঃ {teacher?.name_en || "no-entry"} </h5>
+                      <h5 className={styles.teacherName}>আইডিঃ {teacher?.uid || "no-entry"}</h5>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                       <button onClick={() => handleShowModal(teacher)} className="btn btn-primay btn-sm d-flex justify-content-center align-items-center" style={{ backgroundColor: "#428F92", color: "#fff", }} >
@@ -88,10 +88,10 @@ export default function TeachersList() {
             <Modal.Header>
 
               <Modal.Title>
-              {selectedItem?.name_en}
+              {selectedItem?.name_en || "no-entry"}
               
               </Modal.Title>
-              {selectedItem?.uid}
+              {selectedItem?.uid || "no-entry"}
             </Modal.Header>
 
             <Modal.Body>
