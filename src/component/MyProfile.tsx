@@ -84,7 +84,7 @@ const MyProfile = () => {
 
                   <div className="d-flex justify-content-end align-items-center pt-5 pe-5">
                     <Link to={'/edit-teacher-profile'}>
-                      <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল আপডেট করুন{" "}
+                      <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > এডিট প্রোফাইল {" "}
                         <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
                     </Link>
                   </div>
