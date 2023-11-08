@@ -34,20 +34,18 @@ export default function StudentMullayonBehave({
 
       if (submit_status == 2) {
         if (submitData.length == 10) {
-          console.log(3333);
-
           await Bi_save(data);
           setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
           setsubmited(true);
         } else {
-          console.log(1111111, submitObj);
-
           setcomment_status(true);
           checkedIn_comment(submitObj);
         }
 
         seterr("");
       } else {
+        await Bi_save(data);
+        setsubmited(true);
         setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
         seterr("");
       }
@@ -67,7 +65,7 @@ export default function StudentMullayonBehave({
         evaluate_type: assessment_uid,
         bi_uid: pi_uid,
         weight_uid,
-        class_room_id,
+        class_room_uid:class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
         submit_status: 2,
@@ -120,7 +118,7 @@ export default function StudentMullayonBehave({
         evaluate_type: assessment_uid,
         bi_uid: pi_uid,
         weight_uid: null,
-        class_room_id,
+        class_room_uid:class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
         submit_status: 2,
@@ -171,8 +169,6 @@ export default function StudentMullayonBehave({
         const el: any = document.getElementsByClassName(textarea_id)[0];
         const el_comment: any = document.getElementById(comment_id);
 
-        console.log(`textarea_id`, textarea_id);
-
         el.style.display = "none";
         el_comment.style.visibility = "hidden";
         sumbitArray.push(obj[x]);
@@ -222,7 +218,6 @@ export default function StudentMullayonBehave({
                             style={{ backgroundColor: "#F0FAE9" }}
                             id={w_d.uid + "_" + student?.uid}
                           >
-                            
                             <div
                               className="d-flex "
                               style={{ cursor: "pointer" }}
@@ -279,7 +274,7 @@ export default function StudentMullayonBehave({
                                 )
                               }
                               placeholder={
-                                "আপনি কেন  চিহ্নিত করেননি তা আমাদের বলুন..."
+                                "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
                               }
                               title="required"
                               style={{
@@ -308,34 +303,37 @@ export default function StudentMullayonBehave({
             )}
 
             <div className="d-flex justify-content-between align-items-center pe-5 mb-2">
-              <button
-                type="button"
-                className="btn btn-warning m-1 "
-                style={{
-                  color: "#000",
-                  paddingLeft: "90px",
-                  paddingRight: "90px",
-                }}
-                onClick={(e) => handleSave(e, 1)}
-              >
-                খসড়া
-              </button>
+              {!submited && (
+                <button
+                  type="button"
+                  className="btn btn-warning m-1 "
+                  style={{
+                    color: "#000",
+                    paddingLeft: "90px",
+                    paddingRight: "90px",
+                  }}
+                  onClick={(e) => handleSave(e, 1)}
+                >
+                  খসড়া
+                </button>
+              )}
 
               {msg && <h6 className="text-success">{msg}</h6>}
 
               {err && <h6 className="text-danger">{err}</h6>}
-
-              <button
-                type="button"
-                className="btn btn-primay px-5 "
-                style={{
-                  backgroundColor: "#428F92",
-                  color: "#fff",
-                }}
-                onClick={(e) => handleSave(e, 2)}
-              >
-                সংরক্ষণ করুন
-              </button>
+              {!submited && (
+                <button
+                  type="button"
+                  className="btn btn-primay px-5 "
+                  style={{
+                    backgroundColor: "#428F92",
+                    color: "#fff",
+                  }}
+                  onClick={(e) => handleSave(e, 2)}
+                >
+                  সংরক্ষণ করুন
+                </button>
+              )}
             </div>
           </div>
         </div>

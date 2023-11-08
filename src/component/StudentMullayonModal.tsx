@@ -18,8 +18,8 @@ export default function StudentMullayonModal({
   al_pi_attr,
   pi_name,
   setpi_name,
+  Student
 }: any) {
-  const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [comment_status, setcomment_status] = useState<any>(false);
   const [submitObj, setsubmitObj] = useState<any>({});
@@ -36,20 +36,6 @@ export default function StudentMullayonModal({
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
-    const student: any = [];
-    own_subjet.data.data.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
-
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-
-    setStudent(uniqueObjectsArray);
     setteacher(own_subjet.data.data.user);
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
@@ -78,6 +64,8 @@ export default function StudentMullayonModal({
 
         seterr("");
       } else {
+        await Pi_save(data);
+        setsubmited(true);
         setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
         seterr("");
       }
@@ -100,7 +88,7 @@ export default function StudentMullayonModal({
         competence_uid,
         pi_uid,
         weight_uid,
-        class_room_id,
+        class_room_uid:class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
         submit_status: 2,
@@ -147,7 +135,7 @@ export default function StudentMullayonModal({
         evaluate_type: assessment_uid,
         competence_uid,
         pi_uid,
-        class_room_id,
+        class_room_uid:class_room_id,
         weight_uid: null,
         student_uid: student_id,
         teacher_uid: teacher.caid,
@@ -290,7 +278,7 @@ export default function StudentMullayonModal({
                                   placeholder={
                                     "আপনি কেন " +
                                     studnt.student_name_bn +
-                                    " কে চিহ্নিত করেননি তা আমাদের বলুন..."
+                                    " কে চিহ্নিত করেননি তার কারণ লিখুন..."
                                   }
                                   title="required"
                                   style={{
@@ -318,6 +306,8 @@ export default function StudentMullayonModal({
         </div>
 
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
+
+        {!submited && (
           <button
             type="button"
             className="btn btn-warning  my-2"
@@ -331,10 +321,11 @@ export default function StudentMullayonModal({
           >
             খসড়া
           </button>
+        )}
           {msg && <h6 className="text-success">{msg}</h6>}
 
           {err && <h6 className="text-danger">{err}</h6>}
-
+          {!submited && (
           <button
             type="button"
             className="btn btn-primay px-5 "
@@ -350,6 +341,7 @@ export default function StudentMullayonModal({
               <img src="/assets/images/arrow-right.png" alt="" />
             </span>
           </button>
+          )}
 
           {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
         </div>

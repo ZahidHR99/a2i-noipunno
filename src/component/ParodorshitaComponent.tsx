@@ -11,6 +11,7 @@ export default function ParodorshitaComponent({
   setShowcollaps,
   shikhonKalinMullayon,
   setshowDetailsshikhonKalinMullayon,
+  Student
 }: any) {
   return (
     <div className="py-2">
@@ -64,6 +65,7 @@ export default function ParodorshitaComponent({
                   showDetailsshikhonKalinMullayon={d}
                   assessment_uid={assessment_uid}
                   pi_attr={pi_attr}
+                  Student={Student}
                 />
               </div>
             </div>

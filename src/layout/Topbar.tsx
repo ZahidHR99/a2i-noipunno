@@ -128,14 +128,14 @@ export default function
                   <div className="accordion accordion-flush" id="prothomPata">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="prothompata-headingOne" >
-                        <button className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
+                        <button className="accordion-button  d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
                           <Link to={'/'}>
                             <span className="fs-6 px-2">প্রথম পাতা</span>
                           </Link>
                         </button>
                       </h2>
 
-                      <div id="prothompata-collapseOne" className="accordion-collapse collapse" aria-labelledby="prothompata-headingOne" data-bs-parent="#prothomPata" >
+                      {/* <div id="prothompata-collapseOne" className="accordion-collapse collapse" aria-labelledby="prothompata-headingOne" data-bs-parent="#prothomPata" >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
                           <a href="#" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
@@ -148,10 +148,10 @@ export default function
                             </button>
                           </a>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
-                  <div className="accordion accordion-flush" id="report">
+                  {/* <div className="accordion accordion-flush" id="report">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="report-headingOne">
                         <button
@@ -173,12 +173,12 @@ export default function
                         data-bs-parent="#report"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <Link to={"/student-mullayon"} className="d-block ">
+                          {/* <Link to={"/student-mullayon"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
-                          </Link>
-                          <Link to="/student-transcript" className="d-block ">
+                          </Link> */}
+                          {/*<Link to="/student-transcript" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
                             </button>
@@ -196,11 +196,11 @@ export default function
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" ><a href="/teachers-list" className="text-decoration-none">
-                        <button className="w-100 btn btn-light px-5 text-start" type="button" >
+                        <button className="w-100 btn btn-light px-3 text-start" type="button" >
                           <img src="/assets/images/teacher.svg" alt="" />
                           <span className="fs-6 px-2">শিক্ষক</span>
 
@@ -285,7 +285,7 @@ export default function
                     className="accordion accordion-flush responsive-single-menu-button"
                     id="shikkhok"
                   >
-                    <div className="accordion-item">
+                    {/* <div className="accordion-item">
                       <h2
                         className="accordion-header pages-buttons"
                         id="onurodh-headingOne"
@@ -298,7 +298,7 @@ export default function
                           <span className="fs-6 px-2">অনুরোধসমূহ</span>
                         </button>
                       </h2>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -341,7 +341,7 @@ export default function
                     </div>
                   </div> */}
                 </div>
-                <div className="dropdown">
+                {/* <div className="dropdown">
                   <button
                     className="d-flex justify-content-between align-items-center btn btn-ligh"
                     type="button"
@@ -355,30 +355,30 @@ export default function
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      {/* <Link to={"/student-mullayon"} className="dropdown-item">
+                      <Link to={"/student-mullayon"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীদের মূল্যায়ন</span>
                         </div>
-                      </Link> */}
+                      </Link>
 
                       <Link to="/student-transcript" className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর ট্রান্সক্রিপ্ট</span>
                         </div>
                       </Link>
-                      {/* <a className="dropdown-item">
+                      <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শ্রেণির প্রতিবেদন</span>
                         </div>
-                      </a>  */}
-                      {/* <a className="dropdown-item">
+                      </a> 
+                      <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর হাজিরা প্রতিবেদন</span>
                         </div>
-                      </a> */}
+                      </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
 
                 <div className="dropdown">
