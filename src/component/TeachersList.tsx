@@ -96,13 +96,13 @@ export default function TeachersList() {
 
             <Modal.Body>
             <div>
-                    <img src={TeacherImg} className="img-fluid" />
+                    <img src={TeacherImg} className="img-fluid mb-2" />
                   </div>
-              <div className="flex-md-column flex-lg-row d-flex justify-content-start gap-1 p-2 mb-2">
+              {/* <div className="flex-md-column flex-lg-row d-flex justify-content-start gap-1 p-2 mb-2">
                 <div className={styles.cardDesc}>বাংলা</div>
                 <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
                 <div className={styles.cardDesc}>বিজ্ঞান</div>
-              </div>
+              </div> */}
 
               <div className="">
                 <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
