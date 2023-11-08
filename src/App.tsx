@@ -20,6 +20,7 @@ import {
   teacher_own_subject,
 } from "./Request";
 import MyProfile from "./component/MyProfile";
+import Test from "./component/Test";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -41,7 +42,6 @@ function App() {
 
 
     }
-
 
   };
 
@@ -77,12 +77,13 @@ function App() {
             element={<EditTeacherProfile />}
           />
           <Route
-            path="/my-profile"
+            path="/teacher-profile"
             element={<MyProfile />}
           />
           <Route path="/teachers-list" element={<TeachersList />} />
         </Route>
         <Route path="/login" element={<Login />} />
+
 
       </Routes>
 
