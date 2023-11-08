@@ -43,7 +43,7 @@ const EditTeacherProfile = () => {
       const { data }: any = await update_teacher_profile(caid, formDatas);
       if (data.status === true) {
         toast(true, "আপনার একাউন্টটি সফলভাবে আপডেট হয়েছে!")
-        // localStorage.setItem("customer_login_auth", JSON.stringify(new_localstorage_data));
+        localStorage.setItem("customer_login_auth", JSON.stringify(new_localstorage_data));
 
         setTimeout(() => {
           window.location.replace("/");
@@ -127,6 +127,7 @@ const EditTeacherProfile = () => {
                   <div className="d-flex justify-content-end align-items-center pt-5 pe-5">
                     <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
                   </div>
+
                 </form>
               </div>
             </div>

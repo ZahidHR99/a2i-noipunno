@@ -18,8 +18,8 @@ export default function StudentMullayonModal({
   al_pi_attr,
   pi_name,
   setpi_name,
+  Student
 }: any) {
-  const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
   const [comment_status, setcomment_status] = useState<any>(false);
   const [submitObj, setsubmitObj] = useState<any>({});
@@ -36,26 +36,6 @@ export default function StudentMullayonModal({
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
-    const class_room_id: any = localStorage.getItem("class_room_id") || "";
-
-    const student: any = [];
-    own_subjet.data.data.subjects.map((std_data: any) => {
-
-      if (class_room_id == std_data.class_room_id ) {
-        return std_data.class_room.students.map((stu_data: any) => {
-          stu_data.competence = std_data.competence;
-          student.push(stu_data);
-        });
-      }
-      
-    });
-
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-
-    setStudent(uniqueObjectsArray);
     setteacher(own_subjet.data.data.user);
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
   };
