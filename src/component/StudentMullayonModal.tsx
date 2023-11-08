@@ -36,12 +36,18 @@ export default function StudentMullayonModal({
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
 
+    const class_room_id: any = localStorage.getItem("class_room_id") || "";
+
     const student: any = [];
     own_subjet.data.data.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
+
+      if (class_room_id == std_data.class_room_id ) {
+        return std_data.class_room.students.map((stu_data: any) => {
+          stu_data.competence = std_data.competence;
+          student.push(stu_data);
+        });
+      }
+      
     });
 
     const uniqueObjectsArray = student.filter(

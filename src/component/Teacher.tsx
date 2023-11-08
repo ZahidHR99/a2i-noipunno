@@ -100,28 +100,7 @@ export default function Teacher() {
         }
       });
     });
-
-
-
-
-    const student: any = [];
-
-    own_subjet.data.data.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
-
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-
-    setStudent(uniqueObjectsArray);
     setall_bis(own_subjet.data.data.bis);
-
-
 
     setsubject(all_subject);
     setloader(false)
@@ -146,6 +125,7 @@ export default function Teacher() {
   };
 
 
+  console.log(`subject -- - -`, subject);
   return (
     <div className="content mb-5">
       {
@@ -205,6 +185,7 @@ export default function Teacher() {
                             onClick={(e) => {
                               skill_behaibor_count(d);
                               seshowSubjectname(d.subject.name)
+                              setStudent(d?.own_subjet?.class_room?.students)
                               setShowProfile(false)
                               localStorage.setItem(
                                 "class_room_id",
