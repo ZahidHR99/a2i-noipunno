@@ -69,7 +69,7 @@ export default function
                         </div>
                       </li>
                       <li>
-                        <Link to={"edit-teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                        <Link to={"teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
                           <img src={myprofile} alt="alt" />
                           আমার প্রোফাইল
                         </Link>
@@ -178,7 +178,7 @@ export default function
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
                           </Link> */}
-                          {/*<Link to="/student-transcript" className="d-block ">
+                  {/*<Link to="/student-transcript" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
                             </button>
