@@ -90,10 +90,14 @@ const StudentList = () => {
 
               <Modal.Header>
                 <Modal.Title>
-                  শিক্ষার্থীর বিস্তারিত তথ্য
+                  {selectedItem?.student_name_bn}
                 </Modal.Title>
+                {selectedItem?.roll}
               </Modal.Header>
               <Modal.Body className="">
+              <div>
+                    <img src={studentImage} className="img-fluid mb-2" style={{ height: "50px" }} />
+                  </div>
                 <div>
                   <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
                     <ul className={`${styles.teacher_info_list_group}`}>

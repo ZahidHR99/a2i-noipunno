@@ -51,7 +51,7 @@ export default function TeachersList() {
               <div key={index} className="card p-2 border ">
                 <div className="d-flex justify-content-start align-items-center gap-5">
                   <div>
-                    <img src={TeacherImg} className="img-fluid" />
+                    <img src={TeacherImg} className="img-fluid mx-2" />
                   </div>
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
@@ -84,13 +84,20 @@ export default function TeachersList() {
                   Details
                 </Modal.Title>
               </Modal.Header> */}
+            
             <Modal.Header>
+
               <Modal.Title>
-                শিক্ষকের বিস্তারিত তথ্য
+              {selectedItem?.name_en}
+              
               </Modal.Title>
+              {selectedItem?.uid}
             </Modal.Header>
 
             <Modal.Body>
+            <div>
+                    <img src={TeacherImg} className="img-fluid" />
+                  </div>
               <div className="flex-md-column flex-lg-row d-flex justify-content-start gap-1 p-2 mb-2">
                 <div className={styles.cardDesc}>বাংলা</div>
                 <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
