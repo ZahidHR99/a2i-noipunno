@@ -20,6 +20,7 @@ import {
   teacher_own_subject,
 } from "./Request";
 import MyProfile from "./component/MyProfile";
+import Test from "./component/Test";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -76,14 +77,15 @@ function App() {
             path="/edit-teacher-profile"
             element={<EditTeacherProfile />}
           />
-          <Route
-            path="/my-profile"
+          {/* <Route
+            path="/teacher-profile"
             element={<MyProfile />}
-          />
+          /> */}
           <Route path="/teachers-list" element={<TeachersList />} />
         </Route>
         <Route path="/login" element={<Login />} />
-
+        <Route path="/teacher-profile" element={<MyProfile />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
 
       {topbar && <Footer />}

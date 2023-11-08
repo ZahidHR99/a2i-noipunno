@@ -43,7 +43,7 @@ const EditTeacherProfile = () => {
       const { data }: any = await update_teacher_profile(caid, formDatas);
       if (data.status === true) {
         toast(true, "আপনার একাউন্টটি সফলভাবে আপডেট হয়েছে!")
-        // localStorage.setItem("customer_login_auth", JSON.stringify(new_localstorage_data));
+        localStorage.setItem("customer_login_auth", JSON.stringify(new_localstorage_data));
 
         setTimeout(() => {
           window.location.replace("/");
