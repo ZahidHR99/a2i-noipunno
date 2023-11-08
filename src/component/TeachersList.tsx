@@ -5,7 +5,6 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import styles from "./Home.style.module.css";
 import { BiRadioCircle, } from "react-icons/bi";
 import { all_teachers } from "../Request";
-import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 
