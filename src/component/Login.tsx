@@ -8,10 +8,13 @@ import LogoIcon2 from "../assets/images/NCTB_logo.png";
 import LogoIcon3 from "../assets/images/Logo_Signature_Container_Circle_ENG_RGB-300x300 1.png";
 import LogoIcon4 from "../assets/images/Aspire_to_Innovate_Seal 2.png";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 
 export default function Login() {
   const [error, seterror] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [value, setValue] = useState('');
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -32,13 +35,21 @@ export default function Login() {
     }
   };
 
+  const handleChange = event => {
+    const result = event.target.value.replace(/\D/g, '');
+    setValue(result);
+  };
+
   return (
     <>
-      <div className="login-bg">
-        <div className="container">
+    <Helmet>
+        <title>নৈপুণ্য - লগ ইন</title>
+      </Helmet>
+      <div className="login-bg  " >
+        <div className="container ">
           <div>
             <div className="row d-flex justify-content-center align-items-center login-container">
-              <div className="col-md-7 cols-sm-12">
+              <div className="col-md-7 overflow-hidden cols-sm-12">
                 <img src={logo} alt="logo" className="mb-3" width={100} />
                 <p className="teacher-login-title">
                   বিষয়ভিত্তিক মূল্যায়ন অ্যাপ্লিকেশন
@@ -48,7 +59,7 @@ export default function Login() {
                   শুরু করুন
                 </p>
               </div>
-              <div className="col-md-5 cols-sm-12">
+              <div className="col-md-5 overflow-hidden cols-sm-12">
                 <div className="card login-form-card">
                   {error && <p className="text-center text-danger">{error}</p>}
 
@@ -96,14 +107,15 @@ export default function Login() {
                           </span>
                         </div>
 
-                        <input
-                          type="number"
-                          id="caid"
+                        <input onChange={handleChange}
+                          className="form-control np-login-form-field custom-input"
+                          type="text"
+                          value={value}
                           required
                           autoComplete="off"
-                          placeholder="৯১৩১৫০৩০৩০৪০১"
+                          placeholder="আপনার ইউজার আইডি দিন"
                           name="caid"
-                          className="form-control np-login-form-field"
+                          id="caid"
                         />
                       </div>
                     </div>
@@ -120,28 +132,20 @@ export default function Login() {
                           alt="logo"
                         />
                         <input
-                          type={showPassword ? "password" : "number"}
+                          className={`form-control np-login-form-field no-spinners custom-input`}
+                          type={showPassword ? "text" : "password"}
                           id="pin"
-                          className="form-control np-login-form-field"
                           name="password"
                           required
-                          placeholder="Password"
+                          placeholder="আপনার পাসওয়ার্ড দিন"
                         />
                         <div className="input-group-append password-toggle">
                           <span>
-                            {showPassword ? (
-                              <i
-                                onClick={() => setShowPassword(!showPassword)}
-                                id="password-toggle_2"
-                                className="fa fa-eye"
-                              />
-                            ) : (
-                              <i
-                                onClick={() => setShowPassword(!showPassword)}
-                                id="password-toggle"
-                                className="fa fa-eye-slash"
-                              />
-                            )}
+                            {
+                              showPassword ?
+                                <i onClick={() => setShowPassword(!showPassword)} id="password-toggle_2" className="fa fa-eye" /> :
+                                <i onClick={() => setShowPassword(!showPassword)} id="password-toggle" className="fa fa-eye-slash" />
+                            }
                           </span>
                         </div>
                       </div>
@@ -204,47 +208,9 @@ export default function Login() {
             </div>
           </div> */}
         </div>
-        <div className="row pb-2">
+        <div className="switch-container">
           <div className="d-flex flex-column flex-md-row justify-content-between">
-            <div className="d-flex gap-2 px-y py-2 justify-content-center">
-              <ul className="d-flex gap-2">
-                <div className="d-flex gap-2 flex-column flex-md-row">
-                  <div>
-                    <p>
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        © ২০২৩ সর্বস্বত্ব সংরক্ষিত
-                      </a>{" "}
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        গোপনীয়তা নীতি
-                      </a>{" "}
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        সাহায্য
-                      </a>{" "}
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        কোন প্রশ্ন?
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </ul>
-            </div>
-            <div
+          <div
               className="d-flex gap-2 px-5 py-2 justify-content-center"
               style={{ backgroundColor: "#fff", borderRadius: 43 }}
             >
@@ -289,6 +255,45 @@ export default function Login() {
                 </div>
               </div>
             </div>
+            <div className="d-flex gap-2 px-y py-2 justify-content-center">
+              <ul className="d-flex gap-2">
+                <div className="d-flex gap-2 flex-column flex-md-row">
+                  <div>
+                    <p>
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        © ২০২৩ সর্বস্বত্ব সংরক্ষিত
+                      </a>{" "}
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        গোপনীয়তা নীতি
+                      </a>{" "}
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        সাহায্য
+                      </a>{" "}
+                      <a
+                        href="#"
+                        className="text-dark"
+                        style={{ textDecoration: "none" }}
+                      >
+                        কোন প্রশ্ন?
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </ul>
+            </div>
+            
           </div>
         </div>
 

@@ -33,7 +33,7 @@ export default function Breadcumbtitle({ title }: any) {
               <h6 className="d-flex justify-content-lg-center align-items-center gap-1" style={{ color: "#428F92", fontSize: "12px" }}>
                 {" "}
                 <AiOutlineHome />
-                Dashboard{" "}
+                প্রথম পাতা{" "}
                 <span style={{ color: "#000" }}>
                   {" "}
                   <MdOutlineArrowForwardIos />
