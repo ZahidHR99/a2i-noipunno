@@ -4,7 +4,6 @@ import styles from "./Home.style.module.css";
 import { BiRadioCircle } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import Accordion from 'react-bootstrap/Accordion';
-
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -33,17 +32,17 @@ const StudentList = () => {
 
     setStudent(uniqueObjectsArray);
 
-      }
-      useEffect(() => {
-        fetchData()
+  }
+  useEffect(() => {
+    fetchData()
   }, []);
-  
+
 
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
 
-  const handleShowModal = (item) => {
+  const handleShowModal = (item: any) => {
     setSelectedItem(item);
     setShowModal(true);
   };
