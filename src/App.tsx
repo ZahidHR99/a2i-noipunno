@@ -43,7 +43,6 @@ function App() {
 
     }
 
-
   };
 
   useEffect(() => {
@@ -77,15 +76,15 @@ function App() {
             path="/edit-teacher-profile"
             element={<EditTeacherProfile />}
           />
-          {/* <Route
+          <Route
             path="/teacher-profile"
             element={<MyProfile />}
-          /> */}
+          />
           <Route path="/teachers-list" element={<TeachersList />} />
         </Route>
         <Route path="/login" element={<Login />} />
-        <Route path="/teacher-profile" element={<MyProfile />} />
-        <Route path="/test" element={<Test />} />
+
+
       </Routes>
 
       {topbar && <Footer />}
