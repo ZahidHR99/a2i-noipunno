@@ -36,11 +36,8 @@ function App() {
 
         const data_dash: any = await teacher_dashboard();
         localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
-
         setRender(false)
       }
-
-
     }
 
   };
