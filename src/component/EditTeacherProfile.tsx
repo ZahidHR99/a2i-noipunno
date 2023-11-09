@@ -68,7 +68,7 @@ const EditTeacherProfile = () => {
             <div className="tab-content" id="tabContent" style={{ backgroundColor: "#E4FEFF" }} >
               <div className="tab-pane fade show active" id="expertness" role="tabpanel" aria-labelledby="expertness-tab" >
 
-                <form className="row p-5" onSubmit={handleTeacherProfileEdit}>
+                <form className="row p-3" onSubmit={handleTeacherProfileEdit}>
 
 
                   {/* <div className="form-group  col-sm-4 col-md-6">
@@ -98,22 +98,6 @@ const EditTeacherProfile = () => {
                     </div>
                   </div>
 
-                  {/* <div className="form-group col-sm-4 col-md-6">
-                  <div className="mb-3" >
-                    <label className="form-label" >
-                      পদবি
-                    </label>
-                    <select name="role" className="form-select p-2 form-control" aria-label="Default select example" style={{ fontSize: "16px" }} >
-                      <option selected style={{ fontSize: "16px" }}>
-                        {" "}
-                        পদবী নির্বাচন করুন
-                      </option>
-                      <option value={1}>শিক্ষক</option>
-                      <option value={2}>সহকারী শিক্ষক</option>
-                      <option value={3}>প্রধান শিক্ষক</option>
-                    </select>
-                  </div>
-                </div> */}
 
                   <div className="form-group  col-sm-4 col-md-6">
                     <div className="mb-3" style={{ fontSize: "16px" }}>
@@ -124,7 +108,7 @@ const EditTeacherProfile = () => {
                     </div>
                   </div>
 
-                  <div className="d-flex justify-content-end align-items-center pt-5 pe-5">
+                  <div className="d-flex justify-content-end align-items-center pt-3 pe-3">
                     <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
                   </div>
 
