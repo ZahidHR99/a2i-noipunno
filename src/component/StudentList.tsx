@@ -64,7 +64,6 @@ const StudentList = () => {
                   <div>
                     <img src={studentImage} className="img-fluid" style={{ height: "50px" }} />
                   </div>
-
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
                       <h5 className={styles.teacherName}>নামঃ {student?.student_name_bn || "no-entry"} </h5>
@@ -77,10 +76,7 @@ const StudentList = () => {
                       </button>
                     </div>
                   </div>
-
                 </div>
-
-
               </div>
             ))}
 
@@ -89,170 +85,51 @@ const StudentList = () => {
               centered>
 
               <Modal.Header>
-                <Modal.Title>
-                  {selectedItem?.student_name_bn || "no-entry"}
+                <Modal.Title className="container">
+                  শিক্ষার্থীর নামঃ {selectedItem?.student_name_bn || "no-entry"}
                 </Modal.Title>
-                {selectedItem?.roll || "no-entry"}
               </Modal.Header>
-              <Modal.Body className="">
-              <div>
-                    <img src={studentImage} className="img-fluid mb-2" style={{ height: "50px" }} />
-                  </div>
-                <div>
-                  <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        {" "}
-                        <BiRadioCircle />
-                        রোলঃ
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {selectedItem?.roll || "no-entry"}</li>
-                    </ul>
-                  </div>
+              <Modal.Body>
 
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        {" "}
-                        <BiRadioCircle />
-                        মোবাইল :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {selectedItem?.student_mobile_no || "no-entry"}</li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        {" "}
-                        <BiRadioCircle />
-                        ইমেইল :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {selectedItem?.email || "no-entry"}</li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle /> জন্ম তারিখ :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {selectedItem?.date_of_birth || "no-entry"}</li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle /> লিঙ্গ :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {selectedItem?.gender || "no-entry"}</li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle /> রেজিস্টেশন তারিখ :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>{selectedItem?.registration_year || "no-entry"} </li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle />
-                        ধর্ম :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>{selectedItem?.religion || "no-entry"} </li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle />
-                        জন্মস্থান  :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>{selectedItem?.birth_place || "no-entry"} </li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle />
-                        বর্তমান ঠিকানা  :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>{selectedItem?.present_address || "no-entry"} </li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle />
-                        স্থায়ী ঠিকানা  :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>{selectedItem?.permanent_addres || "no-entry"} </li>
-                    </ul>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ marginLeft: "-1.5rem" }}
-                  >
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li>
-                        <BiRadioCircle />
-                        অভিবাবকের-ফোন :
-                      </li>
-                    </ul>
-                    <ul className={`${styles.teacher_info_list_group}`}>
-                      <li> {selectedItem?.guardian_mobile_no || "013654582555"}</li>
-                    </ul>
-                  </div>
+                <div className="container">
+                  <ul className="list-group">
+                    <li className="list-group-item">
+                      <img src={studentImage} className="img-fluid my-1" />
+                    </li>
+                    <li className="list-group-item">
+                      <strong>রোলঃ </strong> {selectedItem?.roll || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>মোবাইলঃ </strong> {selectedItem?.student_mobile_no || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>ইমেইল :</strong> {selectedItem?.email || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>জন্ম তারিখ : </strong> {selectedItem?.date_of_birth || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>লিঙ্গ : </strong> {selectedItem?.gender || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong> রেজিস্টেশন তারিখ : </strong> {selectedItem?.registration_year || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>ধর্ম : </strong> {selectedItem?.religion || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>জন্মস্থান  : </strong> {selectedItem?.birth_place || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>বর্তমান ঠিকানা  :  </strong> {selectedItem?.present_address || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>স্থায়ী ঠিকানা : </strong> {selectedItem?.present_address || "no-entry"}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>অভিবাবকের-ফোন : </strong> {selectedItem?.guardian_mobile_no || "no-entry"}
+                    </li>
+                  </ul>
                 </div>
               </Modal.Body>
               <Modal.Footer>

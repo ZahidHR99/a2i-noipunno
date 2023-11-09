@@ -36,7 +36,7 @@ export default function TeachersList() {
     setShowModal(false);
   };
 
-  console.log("Select Items", teachers);
+  // console.log("Select Items", teachers);
 
   return (
     <>
@@ -44,6 +44,7 @@ export default function TeachersList() {
         <Spinner animation="border" />
       </div>} */}
       <Breadcumb title={"শিক্ষকের তালিকা"} />
+
       {(teachers?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container mb-5">
         <section className="my-2">
           <div className={`${styles.grid_view} p-0 m-0 `}>
@@ -52,6 +53,7 @@ export default function TeachersList() {
                 <div className="d-flex justify-content-start align-items-center gap-5">
                   <div>
                     <img src={TeacherImg} className="img-fluid mx-2" />
+
                   </div>
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
@@ -84,27 +86,61 @@ export default function TeachersList() {
                   Details
                 </Modal.Title>
               </Modal.Header> */}
-            
-            <Modal.Header>
 
-              <Modal.Title>
-              {selectedItem?.name_en || "no-entry"}
-              
+            <Modal.Header>
+              <Modal.Title className="container">
+                শিক্ষকের নামঃ {selectedItem?.name_en || "no-entry"} <br />
               </Modal.Title>
-              {selectedItem?.uid || "no-entry"}
             </Modal.Header>
 
             <Modal.Body>
-            <div>
-                    <img src={TeacherImg} className="img-fluid mb-2" />
-                  </div>
+              {/* <div>
+                <img src={TeacherImg} className="img-fluid mb-2" />
+              </div> */}
               {/* <div className="flex-md-column flex-lg-row d-flex justify-content-start gap-1 p-2 mb-2">
                 <div className={styles.cardDesc}>বাংলা</div>
                 <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
                 <div className={styles.cardDesc}>বিজ্ঞান</div>
               </div> */}
 
-              <div className="">
+
+              <div className="container ">
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    <img src={TeacherImg} className="img-fluid my-1" />
+                  </li>
+                  <li className="list-group-item">
+                    <strong>আইডিঃ </strong> {selectedItem?.uid || "no-entry"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>পদবিঃ </strong> {"সহকারী শিক্ষক"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>মোবাইলঃ </strong> {selectedItem?.mobile_no}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>জন্ম তারিখঃ</strong> {"১২/১০/১৯৭৭"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>লিঙ্গঃ </strong> {"মহিলা"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>জাতীয়তাঃ </strong> {"বাংলাদেশী"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>ধর্মঃ </strong> {"ইসলাম"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>বৈবাহিক অবস্থাঃ </strong> {"বিবাহিতা"}
+                  </li>
+                  <li className="list-group-item">
+                    <strong>এনআইডি নম্বরঃ </strong> {"xxx-xxxxxxxxx"}
+                  </li>
+                </ul>
+              </div>
+
+
+              {/* <div className="">
                 <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
                   <ul className={`${styles.teacher_info_list_group}`}>
                     <li> {" "} <BiRadioCircle /> মোবাইল : </li>
@@ -147,7 +183,7 @@ export default function TeachersList() {
                 </div>
                 <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
                   <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> বৈবাহিক অবস্থা : </li>
+                    <li> <BiRadioCircle /> বৈবাহিক অবস্থা </li>
                   </ul>
                   <ul className={`${styles.teacher_info_list_group}`}>
                     <li> বিবাহিতা</li>
@@ -168,7 +204,7 @@ export default function TeachersList() {
                     <li> সহকারী শিক্ষক</li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
 
             </Modal.Body>

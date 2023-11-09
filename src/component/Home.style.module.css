@@ -197,6 +197,18 @@
 
 
 /* ==============> Army <=================== */
+
+/* =============> Teacher-Profile_Edit <========= */
+#view_containser {
+  /* background-color: #69CB1C; */
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+
+
+
+/* =============>  <========= */
 .form-control:focus {
   box-shadow: none;
   border-color: #BA68C8
@@ -239,7 +251,7 @@
 }
 
 
-/* =====================? */
+/*====================> Login form <=====================? */
 
 .custom-input::placeholder {
   color: rgb(0, 201, 77) !important;
@@ -312,11 +324,21 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
+  #view_containser {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 575.98px) {
   .grid_view {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+  }
+
+  #view_containser {
+    /* display: grid; */
+    grid-template-columns: 1fr;
   }
 }
