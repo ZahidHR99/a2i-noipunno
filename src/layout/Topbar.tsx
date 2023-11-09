@@ -151,7 +151,7 @@ export default function
                       </div> */}
                     </div>
                   </div>
-                  {/* <div className="accordion accordion-flush" id="report">
+                  <div className="accordion accordion-flush" id="report">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="report-headingOne">
                         <button
@@ -173,17 +173,17 @@ export default function
                         data-bs-parent="#report"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          {/* <Link to={"/student-mullayon"} className="d-block ">
+                           {/* <Link to={"/student-mullayon"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
                           </Link> */}
-                          {/*<Link to="/student-transcript" className="d-block ">
+                          <Link to="/student-transcript" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
                             </button>
                           </Link>
-                          <a href={"/product-details/"} className="d-block ">
+                          {/*<a href={"/product-details/"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শ্রেণির প্রতিবেদন
                             </button>
@@ -192,11 +192,11 @@ export default function
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর হাজিরা প্রতিবেদন
                             </button>
-                          </a>
+                          </a>*/}
                         </div>
                       </div>
                     </div>
-                  </div> */}
+                  </div> 
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" ><a href="/teachers-list" className="text-decoration-none">
@@ -341,7 +341,7 @@ export default function
                     </div>
                   </div> */}
                 </div>
-                {/* <div className="dropdown">
+                <div className="dropdown">
                   <button
                     className="d-flex justify-content-between align-items-center btn btn-ligh"
                     type="button"
@@ -355,30 +355,30 @@ export default function
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <Link to={"/student-mullayon"} className="dropdown-item">
+                      {/* <Link to={"/student-mullayon"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীদের মূল্যায়ন</span>
                         </div>
-                      </Link>
+                      </Link> */}
 
                       <Link to="/student-transcript" className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর ট্রান্সক্রিপ্ট</span>
                         </div>
                       </Link>
-                      <a className="dropdown-item">
+                      {/* <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শ্রেণির প্রতিবেদন</span>
                         </div>
-                      </a> 
-                      <a className="dropdown-item">
+                      </a>  */}
+                      {/* <a className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীর হাজিরা প্রতিবেদন</span>
                         </div>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
-                </div> */}
+                </div>
 
 
                 <div className="dropdown">

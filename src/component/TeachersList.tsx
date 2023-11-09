@@ -7,7 +7,7 @@ import { BiRadioCircle, } from "react-icons/bi";
 import { all_teachers } from "../Request";
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
-
+import { teacher_subject} from "../utils/Utils";
 
 export default function TeachersList() {
 
@@ -57,7 +57,7 @@ export default function TeachersList() {
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
                       <h5 className={styles.teacherName}>নামঃ {teacher?.name_en || "no-entry"} </h5>
-                      <h5 className={styles.teacherName}>আইডিঃ {teacher?.uid || "no-entry"}</h5>
+                      <h5 className={styles.teacherName}>পদবিঃ {teacher?.designation || "no-entry"}</h5>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                       <button onClick={() => handleShowModal(teacher)} className="btn btn-primay btn-sm d-flex justify-content-center align-items-center" style={{ backgroundColor: "#428F92", color: "#fff", }} >
@@ -91,18 +91,21 @@ export default function TeachersList() {
               {selectedItem?.name_en || "no-entry"}
               
               </Modal.Title>
-              {selectedItem?.uid || "no-entry"}
+              {selectedItem?.designation || "no-entry"}
             </Modal.Header>
 
             <Modal.Body>
             <div>
-                    <img src={TeacherImg} className="img-fluid mb-2" />
+                    <img src={TeacherImg} className="img-fluid mb-4" />
                   </div>
               {/* <div className="flex-md-column flex-lg-row d-flex justify-content-start gap-1 p-2 mb-2">
                 <div className={styles.cardDesc}>বাংলা</div>
                 <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
                 <div className={styles.cardDesc}>বিজ্ঞান</div>
               </div> */}
+              {/* <span>
+                                    {teacher_subject(d.own_subjet.teacher_id)}
+                                  </span> */}
 
               <div className="">
                 <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
@@ -118,7 +121,7 @@ export default function TeachersList() {
                     <li> <BiRadioCircle /> জন্ম তারিখ : </li>
                   </ul>
                   <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> ১২/১০/১৯৭৭</li>
+                    <li> {selectedItem?.date_of_birth || "no-entry"}</li>
                   </ul>
                 </div>
                 <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
@@ -165,7 +168,7 @@ export default function TeachersList() {
                   <ul className={`${styles.teacher_info_list_group}`}>
                     <li> <BiRadioCircle /> পদবি : </li> </ul>
                   <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> সহকারী শিক্ষক</li>
+                    <li> {selectedItem?.designation || "no-entry"}</li>
                   </ul>
                 </div>
               </div>

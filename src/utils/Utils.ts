@@ -43,3 +43,15 @@ export const teacher_name = (id: any) => {
     }
 
 }
+
+
+export const teacher_subject = (id: any) => {
+
+    const data = localStorage.getItem("teacher_dashboard");
+    const storageData = JSON.parse(data)
+    if (storageData) {
+        const shift = storageData.data.subjects.find(data => data.uid == id)
+        return shift?.assigned_subjects
+    }
+
+}

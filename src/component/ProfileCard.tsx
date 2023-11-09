@@ -29,14 +29,14 @@ export default function ProfileCard() {
               alt=""
             />
             <p className="mt-3 p-2">
-              {(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}
+              {userDetails?.role}
             </p>
           </div>
-          <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">
+          {/* <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">
             <img src="/assets/noipunno/images/icons/star.svg" />
             <img src="/assets/noipunno/images/icons/message.svg" />
             <img src="/assets/noipunno/images/icons/moon.svg" />
-          </div>
+          </div> */}
         </div>
         <div className="head-teacher-bottom d-flex flex-column ">
           <div className="w-100 d-flex flex-column  align-items-center justify-content-center mt-3 ">
