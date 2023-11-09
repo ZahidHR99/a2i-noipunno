@@ -68,7 +68,7 @@ const EditTeacherProfile = () => {
             <div className="tab-content" id="tabContent" style={{ backgroundColor: "#E4FEFF" }} >
               <div className="tab-pane fade show active" id="expertness" role="tabpanel" aria-labelledby="expertness-tab" >
 
-                <form className="row p-3" onSubmit={handleTeacherProfileEdit}>
+                <form className="row m-4" onSubmit={handleTeacherProfileEdit}>
 
 
                   {/* <div className="form-group  col-sm-4 col-md-6">
