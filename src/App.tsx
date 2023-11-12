@@ -19,7 +19,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
 } from "./Request";
-import AmarProfile from "./component/MyProfile";
+import AmarProfile from "./component/AmarProfile";
 import Test from "./component/Test";
 
 function App() {
