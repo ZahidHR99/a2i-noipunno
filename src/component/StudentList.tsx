@@ -10,8 +10,9 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const StudentList = () => {
 
-
-  const [student, setStudent] = useState([])
+  const [student, setStudent] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const fetchData = async () => {
     window.scroll(0, 0)
@@ -38,10 +39,6 @@ const StudentList = () => {
   }, []);
 
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-
-
   const handleShowModal = (item: any) => {
     setSelectedItem(item);
     setShowModal(true);
@@ -50,6 +47,8 @@ const StudentList = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  // console.log("selectedItem", selectedItem);
 
 
   return (
@@ -80,7 +79,7 @@ const StudentList = () => {
               </div>
             ))}
 
-            <Modal className="overflow-hidden" show={showModal} onHide={handleCloseModal} size="lg"
+            <Modal className="" show={showModal} onHide={handleCloseModal} size="lg"
               aria-labelledby="contained-modal-title-vcenter"
               centered>
 
@@ -90,47 +89,103 @@ const StudentList = () => {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-
                 <div className="container">
-                  <ul className="list-group">
-                    <li className="list-group-item">
-                      <img src={studentImage} className="img-fluid my-1" />
-                    </li>
-                    <li className="list-group-item">
-                      <strong>রোলঃ </strong> {selectedItem?.roll || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>মোবাইলঃ </strong> {selectedItem?.student_mobile_no || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>ইমেইল :</strong> {selectedItem?.email || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>জন্ম তারিখ : </strong> {selectedItem?.date_of_birth || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>লিঙ্গ : </strong> {selectedItem?.gender || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong> রেজিস্টেশন তারিখ : </strong> {selectedItem?.registration_year || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>ধর্ম : </strong> {selectedItem?.religion || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>জন্মস্থান  : </strong> {selectedItem?.birth_place || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>বর্তমান ঠিকানা  :  </strong> {selectedItem?.present_address || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>স্থায়ী ঠিকানা : </strong> {selectedItem?.present_address || "no-entry"}
-                    </li>
-                    <li className="list-group-item">
-                      <strong>অভিবাবকের-ফোন : </strong> {selectedItem?.guardian_mobile_no || "no-entry"}
-                    </li>
-                  </ul>
+                  <div className="text-end w-75 mx-auto">
+                    <img src={studentImage} width="50rem" className="img-fluid border border-info p-1" />
+                  </div>
+
+                  <table className="table w-75 text-sm mx-auto">
+                    <tbody>
+                      <tr>
+                        <td className="p-1">
+                          <strong> শ্রেণীঃ </strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.class || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>রোলঃ </strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.roll || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>মোবাইলঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.student_mobile_no || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>ইমেইলঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.email || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>জন্ম তারিখঃ</strong>
+                        </td>
+                        <td className="p-1">{"১২/১০/১৯৭৭"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>পিতার নামঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.father_name_bn || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>মাতার নামঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.mother_name_bn || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>লিঙ্গঃ</strong>
+                        </td>
+                        <td className="p-1">{"মহিলা"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong> রেজিস্টেশন তারিখঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.registration_year || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>ধর্মঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.religion || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>জন্মস্থানঃ</strong>
+                        </td>
+                        <td className="p-1">{"বিবাহিতা"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>বর্তমান ঠিকানাঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.present_address || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>স্থায়ী ঠিকানাঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.present_address || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>অভিবাবকের-ফোনঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.guardian_mobile_no || "no-entry"}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+
+
+
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>

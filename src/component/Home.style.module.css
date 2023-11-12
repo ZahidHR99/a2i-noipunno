@@ -197,10 +197,10 @@
 
 
 /* ==============> Army <=================== */
-.is-active {
-  background-color: #682773;
-}
 
+.teacher_table_row {
+  background-color: #69CB1C !important
+}
 
 /* =============> Teacher-List-page <========= */
 #view_containser {

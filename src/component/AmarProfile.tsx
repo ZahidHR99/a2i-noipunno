@@ -32,43 +32,55 @@ const AmarProfile = () => {
               </li>
             </ul>
 
-            <div className="tab-content" id="tabContent" style={{ backgroundColor: "#E4FEFF" }} >
-              <div className="tab-pane fade show active" id="expertness" role="tabpanel" aria-labelledby="expertness-tab" >
-                <div className="rounded my-2 my-lg-3 w-xl-75 w-lg-75 w-md-50 mx-auto p-2">
-                  <div id={style.view_containser} className="p-3 rounded bg-white">
-                    <div className="list-group">
-                      <Image className="list-group-item" src={techerAvatar} alt="" fluid />
-                    </div>
-                    <div className="m-0">
-                      <ul className="list-group m-0">
-                        <li className="list-group-item">
-                          <strong>নামঃ </strong> {userDetails?.name}
-                        </li>
-                        <li className="list-group-item">
-                          <strong>পদবীঃ </strong> {userDetails?.user_type?.name}
-                        </li>
-                        <li className="list-group-item">
-                          <strong>ইউজার আইডিঃ </strong> {userDetails?.eiin}
-                        </li>
-                        <li className="list-group-item">
-                          <strong>ইমেইলঃ </strong> {userDetails?.email}
-                        </li>
-                        <li className="list-group-item">
-                          <strong>মোবাইল নাম্বারঃ </strong> {userDetails?.phone_no}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+            <div className="container" style={{ backgroundColor: "#E4FEFF" }}>
+              <div className="w-75 text-start mx-auto ">
+                <img src={techerAvatar} width="150rem" className="img-fluid my-3 border  border-info" />
+              </div>
 
-                  <div className="d-flex justify-content-end align-items-center pt-3 pe-5">
-                    <Link to={'/edit-teacher-profile'}>
-                      <button type="submit" className="btn btn-primay px-3" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল হালনাগাদ {" "}
-                        <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
-                    </Link>
-                  </div>
-                </div>
+              <table className="table w-75 text-sm mx-auto">
+                <tbody className="rounded border border-ligh">
+                  <tr className="border-1 rounded">
+                    <td className="">
+                      <strong>নামঃ</strong>
+                    </td>
+                    <td className="">{userDetails?.name}</td>
+                  </tr>
+                  <tr className="border-1">
+                    <td className="">
+                      <strong>ইউজার আইডিঃ</strong>
+                    </td>
+                    <td className="">{userDetails?.eiin}</td>
+                  </tr>
+                  <tr className="border-1">
+                    <td className="">
+                      <strong>পদবীঃ</strong>
+                    </td>
+                    <td className="">{userDetails?.user_type?.name}</td>
+                  </tr>
+
+                  <tr className="border-1">
+                    <td className="">
+                      <strong>ইমেইলঃ</strong>
+                    </td>
+                    <td className="">{userDetails?.email}</td>
+                  </tr>
+                  <tr className="border-1">
+                    <td className="p-1 v">
+                      <strong>মোবাইল নাম্বারঃ</strong>
+                    </td>
+                    <td className="">{userDetails?.phone_no}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+              <div className="d-flex justify-content-end align-items-center py-3 pe-5">
+                <Link to={'/edit-teacher-profile'}>
+                  <button type="submit" className="btn btn-primay px-3" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল হালনাগাদ {" "}
+                    <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
+                </Link>
               </div>
             </div>
+
 
 
           </div>
