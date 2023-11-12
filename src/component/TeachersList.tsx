@@ -78,7 +78,7 @@ export default function TeachersList() {
           </div>
 
 
-          <Modal className="mt-5" show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter"
+          <Modal className="overflow-hidden" show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter"
             centered>
 
             {/* <Modal.Header closeButton>
