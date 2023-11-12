@@ -45,7 +45,7 @@ export default function Login() {
         <title>নৈপুণ্য - লগ ইন</title>
       </Helmet>
       <div className="login-bg">
-        <div className="container min-vh-100 vw-100 d-flex align-items-center justify-content-center">
+        <div className="container vh-100 vw-100 d-flex align-items-center justify-content-center">
           <div className="">
             <div className="row d-flex justify-content-center align-items-center login-container">
               <div className="col-md-7 overflow-hidden cols-sm-12">
