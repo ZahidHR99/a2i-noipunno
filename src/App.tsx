@@ -19,7 +19,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
 } from "./Request";
-import MyProfile from "./component/MyProfile";
+import AmarProfile from "./component/MyProfile";
 import Test from "./component/Test";
 
 function App() {
@@ -75,7 +75,7 @@ function App() {
           />
           <Route
             path="/teacher-profile"
-            element={<MyProfile />}
+            element={<AmarProfile />}
           />
           <Route path="/teachers-list" element={<TeachersList />} />
         </Route>

@@ -7,7 +7,7 @@ import style from './Home.style.module.css';
 import techerAvatar from "../../public/assets/images/teacher.jpeg"
 
 
-const MyProfile = () => {
+const AmarProfile = () => {
   const [userDetails, setuserDetails] = useState<any>({});
 
 
@@ -23,7 +23,6 @@ const MyProfile = () => {
   return (
     <>
       <Breadcumbtitle title={"আমার প্রোফাইল"} />
-
       <div className="container  my-2">
         <div className="d-flex align-items-center">
           <div className="card shadow-lg border-0 w-100 rounded">
@@ -32,7 +31,6 @@ const MyProfile = () => {
                 <h4> আমার প্রোফাইল  </h4>
               </li>
             </ul>
-
 
             <div className="tab-content" id="tabContent" style={{ backgroundColor: "#E4FEFF" }} >
               <div className="tab-pane fade show active" id="expertness" role="tabpanel" aria-labelledby="expertness-tab" >
@@ -60,12 +58,11 @@ const MyProfile = () => {
                         </li>
                       </ul>
                     </div>
-
                   </div>
 
                   <div className="d-flex justify-content-end align-items-center pt-3 pe-5">
                     <Link to={'/edit-teacher-profile'}>
-                      <button type="submit" className="btn btn-primay px-3" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল আপডেট {" "}
+                      <button type="submit" className="btn btn-primay px-3" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল হালনাগাদ {" "}
                         <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
                     </Link>
                   </div>
@@ -83,4 +80,4 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;
+export default AmarProfile;

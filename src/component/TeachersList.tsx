@@ -49,7 +49,7 @@ export default function TeachersList() {
         <section className="my-2">
           <div className={`${styles.grid_view} p-0 m-0 `}>
             {teachers?.map((teacher, index) => (
-              <div key={index} className="card p-2 border ">
+              <div key={index} id={styles.teacher_card_list} className="card p-2 border ">
                 <div className="d-flex justify-content-start align-items-center gap-5">
                   <div>
                     <img src={TeacherImg} className="img-fluid mx-2" />

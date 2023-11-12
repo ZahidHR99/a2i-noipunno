@@ -59,7 +59,7 @@ const StudentList = () => {
         <section>
           <div className={`${styles.grid_view} p-0 m-0`}>
             {student?.map((student, index) => (
-              <div key={index} className="p-2 g-2  border">
+              <div key={index} id={styles.student_card} className="p-2 g-2  border">
                 <div className="d-flex justify-content-start align-items-center gap-5 ">
                   <div>
                     <img src={studentImage} className="img-fluid" style={{ height: "50px" }} />

@@ -33,7 +33,7 @@ const ClassWiseSubject = () => {
       {(subjects?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <>
         {subjects?.map((subject, index) => (
           <div key={index} className="col-6 col-sm-4 col-md-3 mx-auto" >
-            <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+            <div id={styles.class_card} className="card shadow-sm border-1 p-1 p-lg-3 my-3 teacher-list-card">
               <div className="gap-1 gap-lg-3 justify-content-center">
                 <div className="d-flex justify-content-center py-2 pb-4">
                   <div
