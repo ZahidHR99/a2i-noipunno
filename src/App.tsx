@@ -19,7 +19,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
 } from "./Request";
-import MyProfile from "./component/MyProfile";
+import AmarProfile from "./component/AmarProfile";
 import Test from "./component/Test";
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
   const fetchData = async () => {
     if (window.location.pathname !== "/login") {
       settopbar(true);
-
 
       if (render) {
         const own_subjet = await teacher_own_subject();
@@ -49,7 +48,6 @@ function App() {
   return (
     <>
       {topbar && <Topbar />}
-
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
@@ -75,7 +73,7 @@ function App() {
           />
           <Route
             path="/teacher-profile"
-            element={<MyProfile />}
+            element={<AmarProfile />}
           />
           <Route path="/teachers-list" element={<TeachersList />} />
         </Route>

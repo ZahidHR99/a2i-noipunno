@@ -42,7 +42,7 @@ const EditTeacherProfile = () => {
     try {
       const { data }: any = await update_teacher_profile(caid, formDatas);
       if (data.status === true) {
-        toast(true, "আপনার একাউন্টটি সফলভাবে আপডেট হয়েছে!")
+        toast(true, "আপনার একাউন্টটি সফলভাবে হালনাগাদ হয়েছে!")
         localStorage.setItem("customer_login_auth", JSON.stringify(new_localstorage_data));
 
         setTimeout(() => {
@@ -50,19 +50,19 @@ const EditTeacherProfile = () => {
         }, 1000)
       }
     } catch (error) {
-      cogoToast.error('আপডেট সম্পন্ন হয়নি, আবার চেষ্টা করুন!');
+      cogoToast.error('হালনাগাদ সম্পন্ন হয়নি, আবার চেষ্টা করুন!');
     }
   }
 
   return (
     <>
-      <Breadcumbtitle title={"প্রোফাইল আপডেট"} />
+      <Breadcumbtitle title={"প্রোফাইল হালনাগাদ"} />
       <div className="container my-3">
         <div className="d-flex align-items-center">
           <div className="card shadow-lg border-0 w-100 rounded">
             <ul className="nav d-flex mt-2 justify-content-around py-1">
               <li className={`nav-item`}>
-                <h4>  প্রোফাইল আপডেট করুন </h4>
+                <h4>  প্রোফাইল হালনাগাদ </h4>
               </li>
             </ul>
             <div className="tab-content" id="tabContent" style={{ backgroundColor: "#E4FEFF" }} >
@@ -109,7 +109,7 @@ const EditTeacherProfile = () => {
                   </div>
 
                   <div className="d-flex justify-content-end align-items-center pt-3 pe-3">
-                    <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
+                    <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > প্রোফাইল হালনাগাদ করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button>
                   </div>
 
                 </form>

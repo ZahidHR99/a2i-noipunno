@@ -198,15 +198,30 @@
 
 /* ==============> Army <=================== */
 
-/* =============> Teacher-Profile_Edit <========= */
+.teacher_table_row {
+  background-color: #69CB1C !important
+}
+
+/* =============> Teacher-List-page <========= */
 #view_containser {
   /* background-color: #69CB1C; */
   display: grid;
   grid-template-columns: 2fr 10fr;
 }
 
+#teacher_card_list:hover {
+  background-color: rgb(240, 245, 245)
+}
 
+/* =============> student-List-page <========= */
+#student_card:hover {
+  background-color: rgb(240, 245, 245)
+}
 
+/* =============> Class-Page <========= */
+#class_card:hover {
+  background-color: rgb(246, 247, 247) !important
+}
 
 /* =============>  <========= */
 .form-control:focus {

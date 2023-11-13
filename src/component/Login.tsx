@@ -193,7 +193,7 @@ export default function Login() {
             <div className="" style={{}}>
               <div className="d-flex flex-column flex-md-row justify-content-between">
                 <div
-                  className="d-flex gap-2 px-5 py-1 justify-content-center"
+                  className="d-flex gap-2 px-5 justify-content-center"
                   style={{ backgroundColor: "#fff", borderRadius: 43 }}
                 >
                   <div>

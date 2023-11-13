@@ -96,7 +96,9 @@ export default function Teacher() {
       });
     });
     setall_bis(own_subjet.data.data.bis);
-
+console.log('====================================');
+console.log(all_subject);
+console.log('====================================');
     setsubject(all_subject);
     setloader(false);
   };
