@@ -21,14 +21,24 @@ export const shift_name = (shifts_id: any) => {
 
 }
 
+export const branch_name = (branch_id: any) => {
+    const data = localStorage.getItem("teacher_dashboard");
+    const storageData = JSON.parse(data)
+    if (storageData) {
+        const branch = storageData.data.branches.find(branches => branches.uid == branch_id)
+        return branch?.branch_name
+    }
+
+}
+
 
 export const section_name = (id: any) => {
 
     const data = localStorage.getItem("teacher_dashboard");
     const storageData = JSON.parse(data)
     if (storageData) {
-        const shift = storageData.data.sections.find(data => data.uid == id)
-        return shift?.section_name
+        const section = storageData.data.sections.find(data => data.uid == id)
+        return section?.section_name
     }
 
 }
@@ -38,8 +48,20 @@ export const teacher_name = (id: any) => {
     const data = localStorage.getItem("teacher_dashboard");
     const storageData = JSON.parse(data)
     if (storageData) {
-        const shift = storageData.data.teachers.find(data => data.uid == id)
-        return shift?.name_en
+        const teacher = storageData.data.teachers.find(data => data.uid == id)
+        return teacher?.name_en
+    }
+
+}
+
+
+export const teacher_subject = (id: any) => {
+
+    const data = localStorage.getItem("teacher_dashboard");
+    const storageData = JSON.parse(data)
+    if (storageData) {
+        const shift = storageData.data.subjects.find(data => data.uid == id)
+        return shift?.assigned_subjects
     }
 
 }

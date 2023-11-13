@@ -44,8 +44,8 @@ export default function Login() {
       <Helmet>
         <title>নৈপুণ্য - লগ ইন</title>
       </Helmet>
-      <div className="login-bg">
-        <div className="container vh-100 vw-100 d-flex align-items-center justify-content-center">
+      <div className="login-bg min-vh-100 vw-100 d-flex flex-column justify-content-between pb-1">
+        <div className="container">
           <div className="">
             <div className="row d-flex justify-content-center align-items-center login-container">
               <div className="col-md-7 overflow-hidden cols-sm-12">
@@ -59,7 +59,14 @@ export default function Login() {
                 </p>
               </div>
               <div className="col-md-5 overflow-hidden cols-sm-12">
-                <div className="card login-form-card">
+                <div
+                  className="card"
+                  style={{
+                    padding: "4%",
+                    border: "none",
+                    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                  }}
+                >
                   {error && <p className="text-center text-danger">{error}</p>}
 
                   <p className="teacher-login-title text-center">লগ ইন</p>
@@ -179,7 +186,11 @@ export default function Login() {
                 </div>
               </div>
             </div>
-            <div className="">
+          </div>
+        </div>
+        <div className="container" style={{ bottom: "10px" }}>
+          <div className="row align-items-end">
+            <div className="" style={{}}>
               <div className="d-flex flex-column flex-md-row justify-content-between">
                 <div
                   className="d-flex gap-2 px-5 justify-content-center"
@@ -187,7 +198,9 @@ export default function Login() {
                 >
                   <div>
                     <div>
-                      <h6 className="">পরিকল্পনা ও বাস্তবায়নে</h6>
+                      <h6 className="" style={{ fontSize: "12px" }}>
+                        পরিকল্পনা ও বাস্তবায়নে
+                      </h6>
                     </div>
                     <div
                       className="d-flex justify-content-around"
@@ -207,7 +220,9 @@ export default function Login() {
                   </div>
                   <div>
                     <div>
-                      <h6 className="">কারিগরি সহায়তায়</h6>
+                      <h6 className="" style={{ fontSize: "12px" }}>
+                        কারিগরি সহায়তায়
+                      </h6>
                     </div>
                     <div
                       className="d-flex justify-content-around"
@@ -229,7 +244,7 @@ export default function Login() {
                 <div className="d-flex gap-2 justify-content-center">
                   <ul className="d-flex gap-2">
                     <div className="d-flex gap-2 flex-column flex-md-row">
-                      <div>
+                      <div style={{ fontSize: "12px" }}>
                         <a
                           href="#"
                           className="text-dark"
@@ -266,118 +281,6 @@ export default function Login() {
             </div>
           </div>
         </div>
-
-        {/* footer  */}
-        {/* <div className="switch-container">
-          <div className="d-flex flex-column flex-md-row justify-content-between">
-            <div
-              className="d-flex gap-2 px-5 py-2 justify-content-center"
-              style={{ backgroundColor: "#fff", borderRadius: 43 }}
-            >
-              <div>
-                <div>
-                  <h6 className="">পরিকল্পনা ও বাস্তবায়নে</h6>
-                </div>
-                <div
-                  className="d-flex justify-content-around"
-                  style={{ marginTop: "-0.1rem" }}
-                >
-                  <img
-                    src={LogoIcon1}
-                    className="img-fluid"
-                    style={{ width: 25 }}
-                  />
-                  <img
-                    src={LogoIcon2}
-                    className="img-fluid"
-                    style={{ width: 25 }}
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  <h6 className="">কারিগরি সহায়তায়</h6>
-                </div>
-                <div
-                  className="d-flex justify-content-around"
-                  style={{ marginTop: "-0.1rem" }}
-                >
-                  <img
-                    src={LogoIcon3}
-                    className="img-fluid"
-                    style={{ width: 25 }}
-                  />
-                  <img
-                    src={LogoIcon4}
-                    className="img-fluid"
-                    style={{ width: 25 }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="d-flex gap-2 px-y py-2 justify-content-center">
-              <ul className="d-flex gap-2">
-                <div className="d-flex gap-2 flex-column flex-md-row">
-                  <div>
-                    <p>
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        © ২০২৩ সর্বস্বত্ব সংরক্ষিত
-                      </a>{" "}
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        গোপনীয়তা নীতি
-                      </a>{" "}
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        সাহায্য
-                      </a>{" "}
-                      <a
-                        href="#"
-                        className="text-dark"
-                        style={{ textDecoration: "none" }}
-                      >
-                        কোন প্রশ্ন?
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div> */}
-
-        {/* footer old */}
-        {/* <div className="switch-container mt-5">
-          <div className="d-flex justify-content-between align-content-center">
-            <div className="">
-              <input type="checkbox" id="switch" className="language-switch" />
-              <label
-                htmlFor="switch"
-                className="switch-label d-flex justify-content-start align-items-center gap-4"
-              >
-                <small className="login-language">
-                  © ২০২৩ সর্বস্বত্ব সংরক্ষিত{" "}
-                </small>
-                <small className="login-language">গোপনীয়তা নীতি </small>
-                <small className="login-language">সাহায্য </small>
-                <small className="login-language">কোন প্রশ্ন? </small>
-              </label>
-            </div>
-            <div>
-              <img src={nav_bottom_logo} width={217} alt="logos" />
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { subject_name } from "../utils/Utils";
 
+import { teacher_subject } from "../utils/Utils";
 
 export default function TeachersList() {
 
@@ -54,7 +55,7 @@ export default function TeachersList() {
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
                       <h5 className={styles.teacherName}>নামঃ {teacher?.name_en || "no-entry"} </h5>
-                      <h5 className={styles.teacherName}>আইডিঃ {teacher?.uid || "no-entry"}</h5>
+                      <h5 className={styles.teacherName}>পদবিঃ {teacher?.designation || "no-entry"}</h5>
                     </div>
                     <div className="d-flex justify-content-center align-items-center">
                       <button onClick={() => handleShowModal(teacher)} className="btn btn-primay btn-sm d-flex justify-content-center align-items-center" style={{ backgroundColor: "#428F92", color: "#fff", }} >
