@@ -8,7 +8,7 @@
     background-repeat: no-repeat;
     /* padding: 3%; */
     font-family: 'Inter', sans-serif
-    /* min-height: 100vh; */
+        /* min-height: 100vh; */
 }
 
 .login-form-card {
@@ -91,6 +91,7 @@
     text-decoration: none;
     color: black;
 }
+
 .login-language {
     font-weight: 400;
     color: #222;
@@ -152,6 +153,7 @@ Language Switch
     .switch-rail {
         left: 90%;
     }
+
     .login-language {
         font-size: 11px;
     }
