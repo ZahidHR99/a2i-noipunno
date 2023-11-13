@@ -15,6 +15,7 @@ const StudentList = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
+
   const fetchData = async () => {
     window.scroll(0, 0)
 
@@ -50,6 +51,34 @@ const StudentList = () => {
   };
 
   // console.log("selectedItem", selectedItem);
+  // console.log("student", student);
+
+  const [screenSize, setScreenSize] = useState('');
+  const handleResize = () => {
+    const width = window.innerWidth;
+    // Define your screen size breakpoints and corresponding class names
+    if (width <= 576) {
+      setScreenSize('small-screen');
+    } else if (width <= 1024) {
+      setScreenSize('medium-screen');
+    } else {
+      setScreenSize('large-screen');
+    }
+  };
+
+  useEffect(() => {
+
+    // Initial call to set the screen size
+    handleResize();
+
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
 
   return (
@@ -86,16 +115,16 @@ const StudentList = () => {
 
               <Modal.Header>
                 <Modal.Title className="container">
-                  শিক্ষার্থীর নামঃ {selectedItem?.student_name_bn || "no-entry"}
+                  শিক্ষার্থীর নামঃ {selectedItem?.student_name_bn || selectedItem?.student_name_en || "no-entry"}
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div className="container">
-                  <div className="text-center text-lg-end w-75 mb-1 mx-auto mb-4 mb-md-2 mb-lg-2">
+                  <div className={`text-center text-lg-end ${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"}  mb-1 mx-auto mb-4 mb-md-2 mb-lg-2`}>
                     <img src={studentImage} width="100rem" className="img-fluid border border-info p-1" />
                   </div>
 
-                  <table className="table w-75 text-sm mx-auto">
+                  <table className={`table ${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"} text-sm mx-auto`}>
                     <tbody>
                       <tr>
                         <td className="p-1">

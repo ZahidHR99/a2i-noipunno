@@ -7,7 +7,7 @@ import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { subject_name } from "../utils/Utils";
 
-import { teacher_subject } from "../utils/Utils";
+
 
 export default function TeachersList() {
 
@@ -35,7 +35,36 @@ export default function TeachersList() {
     setShowModal(false);
   };
 
-  console.log("Select Items", selectedItem);
+
+  const [screenSize, setScreenSize] = useState('');
+  const handleResize = () => {
+    const width = window.innerWidth;
+    // Define your screen size breakpoints and corresponding class names
+    if (width <= 576) {
+      setScreenSize('small-screen');
+    } else if (width <= 768) {
+      setScreenSize('medium-screen');
+    } else {
+      setScreenSize('large-screen');
+    }
+  };
+
+  useEffect(() => {
+
+    // Initial call to set the screen size
+    handleResize();
+
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+  // console.log("Select Items", selectedItem);
 
   return (
     <>
@@ -66,7 +95,6 @@ export default function TeachersList() {
                   </div>
                 </div>
               </div>
-
             ))}
           </div>
 
@@ -82,7 +110,7 @@ export default function TeachersList() {
 
             <Modal.Header>
               <Modal.Title className="container">
-                শিক্ষকের নামঃ {selectedItem?.name_en || "no-entry"} <br />
+                শিক্ষকের নামঃ {selectedItem?.name_bn || selectedItem?.name_en || "no-entry"} <br />
               </Modal.Title>
             </Modal.Header>
 
@@ -120,7 +148,7 @@ export default function TeachersList() {
                     </tr>
                     <tr>
                       <td className="p-1">
-                        <strong>এনআইডিঃ</strong>
+                        <strong>এন-আইডিঃ</strong>
                       </td>
                       <td className="p-1">{selectedItem?.nid || "no-entry"}</td>
                     </tr>
@@ -146,10 +174,10 @@ export default function TeachersList() {
                         {
                           (selectedItem?.assigned_subjects?.length > 0) ?
                             <>
-                              {selectedItem?.assigned_subjects.map((item: any, index: any) => (
+                              {selectedItem?.assigned_subjects?.map((item: any, index: any) => (
                                 <span key={index}>
                                   {subject_name(item.subject_id)}
-                                  {index !== (selectedItem.assigned_subjects.length - 1) && <span>, </span>}
+                                  {index !== (selectedItem?.assigned_subjects?.length - 1) && <span>, </span>}
                                 </span>
                               ))}
                             </>
