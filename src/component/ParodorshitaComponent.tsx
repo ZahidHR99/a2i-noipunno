@@ -32,7 +32,7 @@ export default function ParodorshitaComponent({
               style={{ cursor: "pointer" }}
               className="col-sm-12 col-md-12"
             >
-              <div className={`d-flex align-items-center py-2 gap-2`}>
+              <div className={`d-flex align-items-center custom-py-2 gap-2`}>
                 <div
                   className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
                 >

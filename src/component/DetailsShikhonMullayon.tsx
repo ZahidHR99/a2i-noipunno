@@ -14,6 +14,8 @@ export default function DetailsShikhonMullayon({
   const [competence_uid, setcompetence_uid] = useState<any>("");
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const [pi_name, setpi_name] = useState<any>("");
+  const [is_draft, setis_draft] = useState<any>(1);
+  const [all_submited_PI, setall_submited_PI] = useState<any>([]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -22,8 +24,16 @@ export default function DetailsShikhonMullayon({
   };
 
   const get_all_pi_evaluation_by_pi = async(pi_uid:any) => {
+    setis_draft(1)
+    setall_submited_PI([])
     const class_room_id: any = localStorage.getItem("class_room_id");
-    const {data}:any = await get_pi_evaluation_by_pi(class_room_id , pi_uid)
+    const {data}:any = await get_pi_evaluation_by_pi(class_room_id , pi_uid , assessment_uid)
+    setall_submited_PI(data?.data?.evaluation)
+    if (data.data?.evaluation?.length) {
+      setis_draft(data.data?.evaluation[0]?.submit_status)
+    }
+    setShowModal(true)
+    
 
     console.log(`data`, data);
   };
@@ -31,7 +41,6 @@ export default function DetailsShikhonMullayon({
 
   return (
     <div>
-      <h5>{showDetailsshikhonKalinMullayon?.details_bn}</h5>
       <div className="row">
         {showDetailsshikhonKalinMullayon?.pis?.map((d: any, ky: any) => (
           <div className="col-sm-6 col-md-12" key={ky}>
@@ -57,7 +66,7 @@ export default function DetailsShikhonMullayon({
                           get_all_pi_evaluation_by_pi(d.uid)
 
                           setpi_name(d?.name_bn);
-                          setShowModal(true)
+                          
                         }}
                         to={"#"}
                         
@@ -105,6 +114,8 @@ export default function DetailsShikhonMullayon({
                   setpi_name={setpi_name}
                   Student={Student}
                   teacher_uid={teacher_uid}
+                  is_draft={is_draft}
+                  all_submited_PI={all_submited_PI}
                 />
               </Modal.Body>
             </Modal>
