@@ -20,7 +20,6 @@ import {
   teacher_own_subject,
 } from "./Request";
 import MyProfile from "./component/MyProfile";
-import Test from "./component/Test";
 
 function App() {
   const [topbar, settopbar] = useState(false);

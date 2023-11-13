@@ -7,7 +7,8 @@ export default function DetailsShikhonMullayon({
   showDetailsshikhonKalinMullayon,
   assessment_uid,
   pi_attr,
-  Student
+  Student,
+  teacher_uid
 }: any) {
   const [competence_uid, setcompetence_uid] = useState<any>("");
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
@@ -93,6 +94,7 @@ export default function DetailsShikhonMullayon({
                   pi_name={pi_name}
                   setpi_name={setpi_name}
                   Student={Student}
+                  teacher_uid={teacher_uid}
                 />
               </Modal.Body>
             </Modal>

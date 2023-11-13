@@ -43,3 +43,14 @@ export const teacher_name = (id: any) => {
     }
 
 }
+
+export const check_pi = (id: any) => {
+
+    const data = localStorage.getItem("teacher_dashboard");
+    const storageData = JSON.parse(data)
+    if (storageData) {
+        const shift = storageData.data.teachers.find(data => data.uid == id)
+        return shift?.name_en
+    }
+
+}

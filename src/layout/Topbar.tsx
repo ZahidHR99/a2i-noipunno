@@ -69,7 +69,7 @@ export default function
                         </div>
                       </li>
                       <li>
-                        <Link to={"edit-teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                        <Link to={"teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
                           <img src={myprofile} alt="alt" />
                           আমার প্রোফাইল
                         </Link>

@@ -10,7 +10,8 @@ export default function AcorongotoComponent({
   assessment_uid,
   Showcollaps,
   setShowcollaps,
-  teacher
+  teacher,
+  teacher_uid
 }: any) {
 
 
@@ -81,6 +82,7 @@ export default function AcorongotoComponent({
                   assessment_uid={assessment_uid}
                   teacher={teacher}
                   student={d}
+                  teacher_uid={teacher_uid}
                 />
               </div>
             </div>

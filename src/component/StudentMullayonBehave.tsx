@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { weightId } from "../utils/Utils";
-import { BiCircle, BiSquareRounded } from "react-icons/bi";
+import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
 import { Bi_save } from "../Request";
 
@@ -10,6 +10,7 @@ export default function StudentMullayonBehave({
   assessment_uid,
   teacher,
   student,
+  teacher_uid,
 }: any) {
   const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
   const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -38,7 +39,10 @@ export default function StudentMullayonBehave({
           setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
           setsubmited(true);
         } else {
-          setcomment_status(true);
+          if (submitData.length > 0) {
+            setcomment_status(true);
+          }
+
           checkedIn_comment(submitObj);
         }
 
@@ -58,27 +62,65 @@ export default function StudentMullayonBehave({
     pi_uid: any,
     weight_uid: any,
     student_id: any,
-    bi_uid: any
+    bi_uid: any,
+    remark: any
   ) => {
     try {
       const params: any = {
         evaluate_type: assessment_uid,
         bi_uid: pi_uid,
         weight_uid,
-        class_room_uid:class_room_id,
+        class_room_uid: class_room_id,
         student_uid: student_id,
-        teacher_uid: teacher.caid,
+        teacher_uid: teacher_uid,
         submit_status: 2,
         is_approved: 1,
-        remark: null,
+        remark,
       };
 
-      let obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
+      if (remark) {
+        const obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
+        setsubmitObj(obj);
 
-      // console.log(`obj`, obj);
-      setsubmitObj(obj);
+        submit_object_common_func(remark, obj, pi_uid, student_id, weight_uid);
+      } else {
+        if (submitObj[bi_uid + "_" + student_id]) {
+          if (submitObj[bi_uid + "_" + student_id].weight_uid == weight_uid) {
+            delete submitObj[bi_uid + "_" + student_id];
 
-      checkedIn(obj);
+            setsubmitObj(submitObj);
+
+            submit_object_common_func(remark, submitObj);
+          } else {
+            const obj: any = {
+              ...submitObj,
+              [bi_uid + "_" + student_id]: params,
+            };
+            setsubmitObj(obj);
+
+            submit_object_common_func(
+              remark,
+              obj,
+              pi_uid,
+              student_id,
+              weight_uid
+            );
+          }
+        } else {
+          const obj: any = {
+            ...submitObj,
+            [bi_uid + "_" + student_id]: params,
+          };
+          setsubmitObj(obj);
+          submit_object_common_func(
+            remark,
+            obj,
+            pi_uid,
+            student_id,
+            weight_uid
+          );
+        }
+      }
     } catch (error) {
       console.log(`error`, error);
     }
@@ -89,8 +131,7 @@ export default function StudentMullayonBehave({
 
     for (let index = 0; index < all_elem.length; index++) {
       const element: any = all_elem[index];
-      element.style.color = "";
-      // element.style.background = "";
+      element.style.background = "";
     }
 
     const sumbitArray: any = [];
@@ -98,42 +139,14 @@ export default function StudentMullayonBehave({
     for (const x in obj) {
       let id: any = obj[x].bi_uid + "_" + obj[x].student_uid;
       let el: any = document.getElementById(id);
-      el.style.color = "green";
+      if (el) {
+        el.style.background = "#69CB1C";
+      }
 
       sumbitArray.push(obj[x]);
     }
 
     setsubmitData(sumbitArray);
-  };
-
-  const save_PI_evalution_comment = async (
-    pi_uid: any,
-    weight_uid: any,
-    student_id: any,
-    bi_uid: any,
-    remark: any
-  ) => {
-    try {
-      const params: any = {
-        evaluate_type: assessment_uid,
-        bi_uid: pi_uid,
-        weight_uid: null,
-        class_room_uid:class_room_id,
-        student_uid: student_id,
-        teacher_uid: teacher.caid,
-        submit_status: 2,
-        is_approved: 1,
-        remark,
-      };
-
-      const obj: any = { ...submitObj, [bi_uid + "_" + student_id]: params };
-
-      setsubmitObj(obj);
-
-      form_arry_comment(obj);
-    } catch (error) {
-      console.log(`error`, error);
-    }
   };
 
   const form_arry_comment = (obj: any) => {
@@ -149,7 +162,7 @@ export default function StudentMullayonBehave({
 
   const checkedIn_comment = (obj: any) => {
     for (const x in obj) {
-      const clss_id = "all_textarea_" + obj[x].student_uid;
+      const clss_id = "__" + obj[x].student_uid;
       const all_elem: any = document.getElementsByClassName(clss_id);
 
       for (let index = 0; index < all_elem.length; index++) {
@@ -178,6 +191,53 @@ export default function StudentMullayonBehave({
     setsubmitData(sumbitArray);
   };
 
+  const refresh = () => {
+    setsubmitObj({});
+    setsubmitData([]);
+    setcomment_status(false);
+
+    setmsg("");
+    seterr("");
+
+    checkedIn_comment({});
+    form_arry_comment({});
+    checkedIn({});
+    setsubmited(false);
+
+    const all_elem: any = document.getElementsByClassName(
+      "all_pi_arrtiburte_tr"
+    );
+
+    for (let index = 0; index < all_elem.length; index++) {
+      const element: any = all_elem[index];
+      element.style.visibility = "visible";
+    }
+
+    const all_elem_txtarea: any =
+      document.getElementsByClassName("all_textarea");
+
+    for (let index = 0; index < all_elem_txtarea.length; index++) {
+      const element: any = all_elem_txtarea[index];
+      element.style.display = "none";
+    }
+  };
+
+  const submit_object_common_func = (
+    remark: any,
+    obj: any,
+    bi_uid: any,
+    student_id: any,
+    weight_uid: any
+  ) => {
+    if (remark) {
+      form_arry_comment(obj);
+    } else {
+      if (remark == null && weight_uid == null) {
+        delete obj[bi_uid + "_" + student_id];
+      }
+      checkedIn(obj);
+    }
+  };
   console.log(`submitData`, submitData);
 
   return (
@@ -190,6 +250,16 @@ export default function StudentMullayonBehave({
                 <h5>শিক্ষার্থীর নাম: {student?.student_name_bn} </h5>
                 {/* <p>রোল নম্বর #৩২১০০</p> */}
               </div>
+
+              {comment_status && (
+                <button
+                  className="border-0  rounded shadow-sm bg-white"
+                  onClick={(e: any) => refresh()}
+                  title="প্রথম থেকে আবার শুরু করুন"
+                >
+                  <BiRefresh className="fs-3 text-secondary" />
+                </button>
+              )}
             </div>
 
             {!submited && (
@@ -208,29 +278,39 @@ export default function StudentMullayonBehave({
 
                     {d?.weights.map((w_d: any, k: any) => (
                       <div
-                        className="col-sm-6 col-md-3 py-2"
+                        className="col-sm-6 col-md-3 py-2 all_pi_arrtiburte_tr pointer"
                         key={k}
                         id={"comment_id_" + w_d.uid + "_" + student?.uid}
                       >
                         {!comment_status && (
                           <div
-                            className="card bg-light h-100 shadow-lg border-0 p-2 all_pi_arrtiburte"
-                            style={{ backgroundColor: "#F0FAE9" }}
-                            id={w_d.uid + "_" + student?.uid}
+                            className="card  h-100 shadow-lg border-0 p-2 "
+                            // style={{ backgroundColor: "#F0FAE9" }}
+                            onClick={(e: any) =>
+                              save_PI_evalution(
+                                w_d.uid,
+                                w_d.weight_uid,
+                                student.uid,
+                                w_d.bi_uid,
+                                null
+                              )
+                            }
                           >
                             <div
-                              className="d-flex "
+                              className="d-flex gap-2"
                               style={{ cursor: "pointer" }}
-                              onClick={(e: any) =>
-                                save_PI_evalution(
-                                  w_d.uid,
-                                  w_d.weight_uid,
-                                  student.uid,
-                                  w_d.bi_uid
-                                )
-                              }
                             >
-                              <div>
+                              <div
+                                className="all_pi_arrtiburte"
+                                style={{
+                                  border: "1px solid #eee",
+                                  padding: "5px 6px",
+                                  borderRadius: "3px",
+                                  maxHeight: "40px",
+                                  cursor: "pointer",
+                                }}
+                                id={w_d.uid + "_" + student?.uid}
+                              >
                                 {weightId(
                                   pi_attribute_weight,
                                   w_d?.weight_uid
@@ -265,12 +345,12 @@ export default function StudentMullayonBehave({
                           <div>
                             <textarea
                               onChange={(e: any) =>
-                                save_PI_evalution_comment(
+                                save_PI_evalution(
                                   w_d.uid,
-                                  w_d.weight_uid,
+                                  null,
                                   student.uid,
                                   w_d.bi_uid,
-                                  e.target.value
+                                  e.target.value == "" ? null : e.target.value
                                 )
                               }
                               placeholder={
@@ -282,7 +362,7 @@ export default function StudentMullayonBehave({
                                 border: "1px solid red",
                               }}
                               className={
-                                "form-control all_textarea_" +
+                                "all_textarea form-control __" +
                                 student?.uid +
                                 " " +
                                 w_d.bi_uid +
