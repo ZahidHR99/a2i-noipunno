@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StudentMullayonModal from "./StudentMullayonModal";
 import { Button, Modal } from "react-bootstrap";
+import { get_pi_evaluation_by_pi } from "../Request";
 
 export default function DetailsShikhonMullayon({
   showDetailsshikhonKalinMullayon,
@@ -18,6 +19,13 @@ export default function DetailsShikhonMullayon({
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const get_all_pi_evaluation_by_pi = async(pi_uid:any) => {
+    const class_room_id: any = localStorage.getItem("class_room_id");
+    const {data}:any = await get_pi_evaluation_by_pi(class_room_id , pi_uid)
+
+    console.log(`data`, data);
   };
 
 
@@ -45,6 +53,8 @@ export default function DetailsShikhonMullayon({
                           setcompetence_uid(
                             showDetailsshikhonKalinMullayon.uid
                           );
+
+                          get_all_pi_evaluation_by_pi(d.uid)
 
                           setpi_name(d?.name_bn);
                           setShowModal(true)

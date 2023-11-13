@@ -68,7 +68,7 @@ export default function StudentMullayonBehave({
     try {
       const params: any = {
         evaluate_type: assessment_uid,
-        bi_uid: pi_uid,
+        bi_uid,
         weight_uid,
         class_room_uid: class_room_id,
         student_uid: student_id,
@@ -76,6 +76,7 @@ export default function StudentMullayonBehave({
         submit_status: 2,
         is_approved: 1,
         remark,
+        pi_uid
       };
 
       if (remark) {
@@ -90,7 +91,9 @@ export default function StudentMullayonBehave({
 
             setsubmitObj(submitObj);
 
-            submit_object_common_func(remark, submitObj);
+            submit_object_common_func(remark, submitObj ,pi_uid,
+              student_id,
+              weight_uid);
           } else {
             const obj: any = {
               ...submitObj,
@@ -137,7 +140,7 @@ export default function StudentMullayonBehave({
     const sumbitArray: any = [];
 
     for (const x in obj) {
-      let id: any = obj[x].bi_uid + "_" + obj[x].student_uid;
+      let id: any = obj[x].pi_uid + "_" + obj[x].student_uid;
       let el: any = document.getElementById(id);
       if (el) {
         el.style.background = "#69CB1C";
@@ -176,7 +179,7 @@ export default function StudentMullayonBehave({
     for (const x in obj) {
       if (obj[x].weight_uid || obj[x].remark) {
         const comment_id =
-          "comment_id_" + obj[x].bi_uid + "_" + obj[x].student_uid;
+          "comment_id_" + obj[x].pi_uid + "_" + obj[x].student_uid;
         // const textarea_id = obj[x].bi_uid + "_" + obj[x].student_uid;
         const textarea_id = x;
         const el: any = document.getElementsByClassName(textarea_id)[0];

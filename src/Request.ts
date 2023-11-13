@@ -157,7 +157,7 @@ export function update_teacher_profile(caid: any, data: any) {
 }
 
 export function get_pi_evaluation_by_pi(class_room_uid:any , pi_uid:any) {
-  const page_list = `${EVULATION_API}/v1/get-pi-evaluation-by-pi?class_room_uid=${class_room_uid}&pi_uid=${pi_uid}`;
+  const page_list = `${EVULATION_API}/get-pi-evaluation-by-pi?class_room_uid=${class_room_uid}&pi_uid=${pi_uid}`;
 
   const options = {
     method: "get",

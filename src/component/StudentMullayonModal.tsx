@@ -61,9 +61,6 @@ export default function StudentMullayonModal({
         if (Student.length === submitData.length) {
           await Pi_save(data);
           setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
-          const obj_ = localStorage.getItem("PI_saved");
-
-          localStorage.setItem("PI_saved", JSON.stringify(data));
           setsubmited(true);
         } else {
           setcomment_status(true);
@@ -340,7 +337,7 @@ export default function StudentMullayonModal({
                                   }}
                                   onClick={() =>
                                     save_PI_evalution(
-                                      pi_attr.uid,
+                                      pi_attr.pi_uid,
                                       pi_attr.weight_uid,
                                       studnt.uid,
                                       null
@@ -370,7 +367,7 @@ export default function StudentMullayonModal({
                                     )
                                   }
                                 >
-                                  {pi_attr.title_bn}
+                                  {pi_attr.title_bn} {pi_attr.uid}
                                 </div>
                               </>
                             )}

@@ -20,6 +20,8 @@ import {
   teacher_own_subject,
 } from "./Request";
 import MyProfile from "./component/MyProfile";
+import AmarProfile from "./component/AmarProfile";
+import Test from "./component/Test";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -28,18 +30,14 @@ function App() {
     if (window.location.pathname !== "/login") {
       settopbar(true);
 
-
       if (render) {
         const own_subjet = await teacher_own_subject();
         localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
 
         const data_dash: any = await teacher_dashboard();
         localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
-
         setRender(false)
       }
-
-
     }
 
   };
@@ -51,7 +49,6 @@ function App() {
   return (
     <>
       {topbar && <Topbar />}
-
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
@@ -77,7 +74,7 @@ function App() {
           />
           <Route
             path="/teacher-profile"
-            element={<MyProfile />}
+            element={<AmarProfile />}
           />
           <Route path="/teachers-list" element={<TeachersList />} />
         </Route>
