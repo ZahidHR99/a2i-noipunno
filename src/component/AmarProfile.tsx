@@ -18,12 +18,12 @@ const AmarProfile = () => {
     }
   }, []);
 
-  console.log("userDetails", userDetails);
+  // console.log("userDetails", userDetails);
 
   return (
     <>
       <Breadcumbtitle title={"আমার প্রোফাইল"} />
-      <div className="container  my-2">
+      <div className="container  my-5">
         <div className="d-flex align-items-center">
           <div className="card shadow-lg border-0 w-100 rounded">
             <ul className="nav d-flex mt-2 justify-content-around py-1">

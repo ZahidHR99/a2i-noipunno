@@ -65,3 +65,23 @@ export const teacher_subject = (id: any) => {
     }
 
 }
+
+export const version_name = (id: any) => {
+    const data = localStorage.getItem("teacher_dashboard");
+    const storageData = JSON.parse(data)
+    if (storageData) {
+        const version = storageData.data.versions.find(data => data.uid == id)
+        return version?.version_name;
+    }
+
+}
+
+export const subject_name = (id: any) => {
+    const data = localStorage.getItem("teacher_dashboard");
+    const storageData = JSON.parse(data)
+    if (storageData) {
+        const subject = storageData.data.subjects.find(data => data.uid == id)
+        return subject?.name;
+    }
+
+}

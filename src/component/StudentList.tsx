@@ -7,6 +7,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { section_name, shift_name, version_name } from "../utils/Utils";
 
 const StudentList = () => {
 
@@ -58,10 +59,10 @@ const StudentList = () => {
         <section>
           <div className={`${styles.grid_view} p-0 m-0`}>
             {student?.map((student, index) => (
-              <div key={index} id={styles.student_card} className="p-2 g-2  border">
-                <div className="d-flex justify-content-start align-items-center gap-5 ">
+              <div key={index} id={styles.student_card} className="card p-2 border">
+                <div className="d-flex justify-content-start align-items-center gap-4 ">
                   <div>
-                    <img src={studentImage} className="img-fluid" style={{ height: "50px" }} />
+                    <img src={studentImage} width="60rem" className="img-fluid" />
                   </div>
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
@@ -79,7 +80,7 @@ const StudentList = () => {
               </div>
             ))}
 
-            <Modal className="" show={showModal} onHide={handleCloseModal} size="lg"
+            <Modal className="mx-auto pl-0" show={showModal} onHide={handleCloseModal} size="lg"
               aria-labelledby="contained-modal-title-vcenter"
               centered>
 
@@ -90,23 +91,48 @@ const StudentList = () => {
               </Modal.Header>
               <Modal.Body>
                 <div className="container">
-                  <div className="text-end w-75 mx-auto">
-                    <img src={studentImage} width="50rem" className="img-fluid border border-info p-1" />
+                  <div className="text-center text-lg-end w-75 mb-1 mx-auto mb-4 mb-md-2 mb-lg-2">
+                    <img src={studentImage} width="100rem" className="img-fluid border border-info p-1" />
                   </div>
 
                   <table className="table w-75 text-sm mx-auto">
                     <tbody>
                       <tr>
                         <td className="p-1">
-                          <strong> শ্রেণীঃ </strong>
-                        </td>
-                        <td className="p-1">{selectedItem?.class || "no-entry"}</td>
-                      </tr>
-                      <tr>
-                        <td className="p-1">
                           <strong>রোলঃ </strong>
                         </td>
                         <td className="p-1">{selectedItem?.roll || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong> শ্রেণীঃ </strong>
+                        </td>
+                        <td className="p-1">{
+                          (selectedItem?.class === "6") && "ষষ্ঠ" ||
+                          (selectedItem?.class === "7") && "সপ্তম" ||
+                          (selectedItem?.class === "8") && "অষ্টম" ||
+                          (selectedItem?.class === "9") && "নবম" ||
+                          (selectedItem?.class === "10") && "দশম" ||
+                          "no-entry"}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong> সেকশনঃ </strong>
+                        </td>
+                        <td className="p-1">{section_name(selectedItem?.section) || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong> শিফটঃ </strong>
+                        </td>
+                        <td className="p-1">{shift_name(selectedItem?.shift) || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong> ভার্শনঃ </strong>
+                        </td>
+                        <td className="p-1">{version_name(selectedItem?.version) || selectedItem?.version || "no-entry"}</td>
                       </tr>
                       <tr>
                         <td className="p-1">
@@ -124,7 +150,13 @@ const StudentList = () => {
                         <td className="p-1">
                           <strong>জন্ম তারিখঃ</strong>
                         </td>
-                        <td className="p-1">{"১২/১০/১৯৭৭"}</td>
+                        <td className="p-1">{selectedItem?.date_of_birth || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>রক্তের গ্রুপঃ </strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.blood_group || "no-entry"}</td>
                       </tr>
                       <tr>
                         <td className="p-1">
@@ -140,15 +172,15 @@ const StudentList = () => {
                       </tr>
                       <tr>
                         <td className="p-1">
-                          <strong>লিঙ্গঃ</strong>
-                        </td>
-                        <td className="p-1">{"মহিলা"}</td>
-                      </tr>
-                      <tr>
-                        <td className="p-1">
                           <strong> রেজিস্টেশন তারিখঃ</strong>
                         </td>
                         <td className="p-1">{selectedItem?.registration_year || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>লিঙ্গঃ</strong>
+                        </td>
+                        <td className="p-1">{"মহিলা"}</td>
                       </tr>
                       <tr>
                         <td className="p-1">
@@ -156,12 +188,7 @@ const StudentList = () => {
                         </td>
                         <td className="p-1">{selectedItem?.religion || "no-entry"}</td>
                       </tr>
-                      <tr>
-                        <td className="p-1">
-                          <strong>জন্মস্থানঃ</strong>
-                        </td>
-                        <td className="p-1">{"বিবাহিতা"}</td>
-                      </tr>
+
                       <tr>
                         <td className="p-1">
                           <strong>বর্তমান ঠিকানাঃ</strong>
@@ -176,7 +203,19 @@ const StudentList = () => {
                       </tr>
                       <tr>
                         <td className="p-1">
-                          <strong>অভিবাবকের-ফোনঃ</strong>
+                          <strong>পিতার মোবাইল নাম্বারঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.father_mobile_no || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>মাতার মোবাইল নাম্বারঃ</strong>
+                        </td>
+                        <td className="p-1">{selectedItem?.mother_mobile_no || "no-entry"}</td>
+                      </tr>
+                      <tr>
+                        <td className="p-1">
+                          <strong>অভিবাবকের মোবাইল নাম্বারঃ</strong>
                         </td>
                         <td className="p-1">{selectedItem?.guardian_mobile_no || "no-entry"}</td>
                       </tr>

@@ -90,6 +90,7 @@
   text-decoration: none;
   color: black;
 }
+
 .login-language {
   font-weight: 400;
   color: #222;
@@ -131,12 +132,12 @@ Language Switch
   background: #428f92;
 }
 
-.language-switch:checked + .switch-label .switch-rail {
+.language-switch:checked+.switch-label .switch-rail {
   transition: all 0.2s ease-in-out;
   background: #dddddd;
 }
 
-.language-switch:checked + .switch-label .switch-rail .switch-slider {
+.language-switch:checked+.switch-label .switch-rail .switch-slider {
   transition: all 0.2s ease-in-out;
   transform: translateX(15px);
 }
@@ -148,10 +149,22 @@ Language Switch
 /* mobile media query */
 
 @media (max-width: 768px) {
-  .switch-rail {
+  <<<<<<< HEAD .switch-rail {
     left: 90%;
   }
+
   .login-language {
     font-size: 11px;
   }
 }
+
+=======.switch-rail {
+  left: 90%;
+}
+
+.login-language {
+  font-size: 11px;
+}
+}
+
+>>>>>>>c053ea6e8c587c5b7fbc4d876ecb2f971ff0e7d7
