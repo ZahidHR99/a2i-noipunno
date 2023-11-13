@@ -32,9 +32,26 @@ export default function ShowAssesment({
     } catch (error: any) {}
   };
 
+  const tabAcorongoto = async (key:number) => {
+    try {
+
+      console.log(`key`, key , own_data?.assessments[key]?.assessment_details[0]);
+      setparodorshita_acoron_tab(key);
+      seshowCompitance(true);
+      setassessment_uid(own_data?.assessments[key]?.assessment_details[0].uid);
+      setShowSecounderyTab({
+        ...ShowSecounderyTab,
+        ["id"]: own_data?.assessments[key]?.assessment_details[0].uid,
+      });
+      setMullayon_name(own_data?.assessments[key]?.assessment_details[0]?.assessment_details_name_bn);
+    } catch (error: any) {}
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  // console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
 
   return (
     <div className="container">
@@ -55,6 +72,7 @@ export default function ShowAssesment({
                       href="#"
                       onClick={(e) => {
                         setparodorshita_acoron_tab(key);
+                        tabAcorongoto(key)
                         setallassessmet(d?.assessment_details);
                       }}
                     >
