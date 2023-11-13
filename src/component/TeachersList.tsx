@@ -1,10 +1,7 @@
 import TeacherImg from "../assets/images/teacher.png";
 import { useState, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-
 import styles from "./Home.style.module.css";
-import { BiRadioCircle, } from "react-icons/bi";
-import { all_teachers } from "../Request";
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { teacher_subject} from "../utils/Utils";
@@ -12,6 +9,8 @@ import { teacher_subject} from "../utils/Utils";
 export default function TeachersList() {
 
   const [teachers, setTeachers] = useState<any>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const fetchData = async () => {
     const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
@@ -23,9 +22,6 @@ export default function TeachersList() {
     fetchData()
   }, []);
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-
 
   const handleShowModal = (item) => {
     setSelectedItem(item);
@@ -36,19 +32,18 @@ export default function TeachersList() {
     setShowModal(false);
   };
 
-  console.log("Select Items", teachers);
+  // console.log("Select Items", teachers);
 
   return (
     <>
-      {/* {<div className={styles.loading_container}>
-        <Spinner animation="border" />
-      </div>} */}
+
       <Breadcumb title={"শিক্ষকের তালিকা"} />
+
       {(teachers?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container mb-5">
         <section className="my-2">
           <div className={`${styles.grid_view} p-0 m-0 `}>
             {teachers?.map((teacher, index) => (
-              <div key={index} className="card p-2 border ">
+              <div key={index} id={styles.teacher_card_list} className="card p-2 border ">
                 <div className="d-flex justify-content-start align-items-center gap-5">
                   <div>
                     <img src={TeacherImg} className="img-fluid mx-2" />
@@ -76,7 +71,7 @@ export default function TeachersList() {
           </div>
 
 
-          <Modal className="mt-5" show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter"
+          <Modal className="" show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter"
             centered>
 
             {/* <Modal.Header closeButton>
@@ -84,94 +79,81 @@ export default function TeachersList() {
                   Details
                 </Modal.Title>
               </Modal.Header> */}
-            
-            <Modal.Header>
 
-              <Modal.Title>
-              {selectedItem?.name_en || "no-entry"}
-              
+            <Modal.Header>
+              <Modal.Title className="container">
+                শিক্ষকের নামঃ {selectedItem?.name_en || "no-entry"} <br />
               </Modal.Title>
-              {selectedItem?.designation || "no-entry"}
             </Modal.Header>
 
             <Modal.Body>
-            <div>
-                    <img src={TeacherImg} className="img-fluid mb-4" />
-                  </div>
-              {/* <div className="flex-md-column flex-lg-row d-flex justify-content-start gap-1 p-2 mb-2">
-                <div className={styles.cardDesc}>বাংলা</div>
-                <div className={styles.cardDesc}>জীবন ও জীবিকা</div>
-                <div className={styles.cardDesc}>বিজ্ঞান</div>
-              </div> */}
-              {/* <span>
-                                    {teacher_subject(d.own_subjet.teacher_id)}
-                                  </span> */}
+              <div className="container">
+                <div className="text-end w-75 mx-auto" >
+                  <img src={TeacherImg} width="50rem" className="img-fluid border border-info p-1" />
+                </div>
 
-              <div className="">
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> {" "} <BiRadioCircle /> মোবাইল : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> {selectedItem?.mobile_no}</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> জন্ম তারিখ : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> {selectedItem?.date_of_birth || "no-entry"}</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> লিঙ্গ : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> মহিলা</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> জাতীয়তা : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> বাংলাদেশী</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> ধর্ম : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> ইসলাম</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> বৈবাহিক অবস্থা : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> বিবাহিতা</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> এনআইডি নম্বর : </li>
-                  </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> xxx-xxxxxxxxx</li>
-                  </ul>
-                </div>
-                <div className="d-flex" style={{ marginLeft: "-1.5rem" }} >
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> <BiRadioCircle /> পদবি : </li> </ul>
-                  <ul className={`${styles.teacher_info_list_group}`}>
-                    <li> {selectedItem?.designation || "no-entry"}</li>
-                  </ul>
-                </div>
+                <table className="table w-75 text-sm mx-auto">
+                  <tbody>
+                    <tr>
+                      <td className="p-1">
+                        <strong>আইডিঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.uid || "no-entry"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>পদবিঃ</strong>
+                      </td>
+                      <td className="p-1">{"সহকারী শিক্ষক"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>মোবাইলঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.mobile_no}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>জন্ম তারিখঃ</strong>
+                      </td>
+                      <td className="p-1">{"১২/১০/১৯৭৭"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>লিঙ্গঃ</strong>
+                      </td>
+                      <td className="p-1">{"মহিলা"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>জাতীয়তাঃ</strong>
+                      </td>
+                      <td className="p-1">{"বাংলাদেশী"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>ধর্মঃ</strong>
+                      </td>
+                      <td className="p-1">{"ইসলাম"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>বৈবাহিক অবস্থাঃ</strong>
+                      </td>
+                      <td className="p-1">{"বিবাহিতা"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>এনআইডি নম্বরঃ</strong>
+                      </td>
+                      <td className="p-1">{"xxx-xxxxxxxxx"}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
+
+
 
 
             </Modal.Body>

@@ -2,7 +2,7 @@ import React from "react";
 import ".././assets/style.css";
 import teacher from "../assets/images/teacher.png";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { all_class } from "../Request";
 import logoutImage from "../../public/assets/images/logotIcon.png"
 import myprofile from "../../public/assets/images/my_profile.png"
@@ -36,6 +36,11 @@ export default function
   useEffect(() => {
     fetchData();
   }, []);
+
+  const activeLinkStyle = {
+    color: 'red',
+    fontWeight: 'bold',
+  }
 
   return (
     <>
@@ -123,7 +128,6 @@ export default function
 
                 {/*For => Mobile Device */}
 
-
                 <div className="offcanvas-body subheader-accordion">
                   <div className="accordion accordion-flush" id="prothomPata">
                     <div className="accordion-item">
@@ -203,7 +207,6 @@ export default function
                         <button className="w-100 btn btn-light px-3 text-start" type="button" >
                           <img src="/assets/images/teacher.svg" alt="" />
                           <span className="fs-6 px-2">শিক্ষক</span>
-
                         </button>
                       </a>
                       </h2>
@@ -312,12 +315,9 @@ export default function
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
-
-
                         <button
                           className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button" type="button" >
                           <Link to="/" className="text-decoration-none">
-                            {/* <img src="/assets/images/teacher.svg" alt="" /> */}
                             <span className="fs-6 ">প্রথম পাতা</span>
                           </Link>
                         </button>
@@ -385,12 +385,17 @@ export default function
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
-                        <Link to="/teachers-list" className="text-decoration-none d-flex justify-content-center gap-1">
+
+
+                        <Link to="/teachers-list"
+                          className="text-decoration-none d-flex justify-content-center gap-1">
                           <button className=" collapsed d-flex justify-content-center gap-2 align-items-center pt-2 mx-2 w-100 responsive-single-menu-button" type="button" >
                             <img src="/assets/images/teacher.svg" alt="" />
                             <span className="fs-6 ">শিক্ষক</span>
                           </button>
                         </Link>
+
+
                       </h2>
                     </div>
                   </div>

@@ -4,6 +4,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
 } from "../Request";
+import { BsCheckCircle } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { PiBookOpenTextBold } from "react-icons/pi";
 import { BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
@@ -882,6 +883,171 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div> */}
+              <div className="container border">
+        <div className="row p-2">
+          <div className="text-center py-3">
+            <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
+            <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
+            <h6 style={{ fontSize: "14px" }}>
+              প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
+              ঢাকা-১২১৬
+            </h6>
+            <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
+              ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+              ট্রান্সক্রিপ্ট-২০২৩
+            </h6>
+          </div>
+          <div className="table-responsive">
+            <table className="table table-bordered table-sm table-responsive">
+              <thead>
+                <tr>
+                  <th
+                    colSpan={3}
+                    style={{ fontSize: "10px", fontWeight: "bold" }}
+                  >
+                    শিক্ষার্থীর নাম: ইনতিশার পারভেজ
+                  </th>
+                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    শিক্ষার্থীর আইডি: ৩২১০০
+                  </th>
+                </tr>
+                <tr>
+                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    শ্রেণী: ষষ্ঠ
+                  </th>
+                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    শাখা: পদ্মা
+                  </th>
+                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    বিষয়: বাংলা
+                  </th>
+                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    বিষয় শিক্ষকের নাম: তামান্না হাসিন
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    className="text-center"
+                    colSpan={4}
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    পারদর্শিতার সূচকের মাত্রা
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    colSpan={2}
+                    style={{ fontSize: "10px", fontWeight: "bold" }}
+                  >
+                    পারদর্শিতা সূচক (PI)
+                  </th>
+                  <th
+                    colSpan={2}
+                    style={{ fontSize: "10px", fontWeight: "bold" }}
+                  >
+                    শিক্ষার্থীর পারদর্শিতা মাত্রা
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ minWidth: "300px" }}>
+                    ৬.১.১ <br />
+                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                    পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    <BsCheckCircle className="fs-5 pe-1" />
+                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ minWidth: "300px" }}>
+                    ৬.১.১ <br />
+                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                    পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    <BsCheckCircle className="fs-5 pe-1" />
+                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ minWidth: "300px" }}>
+                    ৬.১.১ <br />
+                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                    পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    <BsCheckCircle className="fs-5 pe-1" />
+                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ minWidth: "300px" }}>
+                    ৬.১.১ <br />
+                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                    পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    <BsCheckCircle className="fs-5 pe-1" />
+                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                  </td>
+                  <td style={{ minWidth: "300px" }}>
+                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="d-flex pt-5 pb-1">
+              <div
+                className="w-50"
+                style={{ fontSize: "14px", fontWeight: "bold" }}
+              >
+                বিষয় শিক্ষকের স্বাক্ষরঃ
+              </div>
+              <div
+                className="w-50 ps-5"
+                style={{ fontSize: "14px", fontWeight: "bold" }}
+              >
+                প্রধান শিক্ষকের স্বাক্ষরঃ
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
       </div>
     </div>
