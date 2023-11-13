@@ -96,9 +96,9 @@ export default function Teacher() {
       });
     });
     setall_bis(own_subjet.data.data.bis);
-console.log('====================================');
-console.log(all_subject);
-console.log('====================================');
+    console.log("====================================");
+    console.log(all_subject);
+    console.log("====================================");
     setsubject(all_subject);
     setloader(false);
   };
@@ -321,7 +321,7 @@ console.log('====================================');
               ট্রান্সক্রিপ্ট-২০২৩
             </h6>
           </div>
-          <div className="table-responsive">
+          <div className="">
             <table className="table table-bordered table-sm table-responsive">
               <thead>
                 <tr>
@@ -378,77 +378,77 @@ console.log('====================================');
               </thead>
               <tbody>
                 <tr>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     ৬.১.১ <br />
                     নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
                     পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     <BsCheckCircle className="fs-5 pe-1" />
                     অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
                     চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
                     সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     ৬.১.১ <br />
                     নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
                     পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     <BsCheckCircle className="fs-5 pe-1" />
                     অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
                     চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
                     সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     ৬.১.১ <br />
                     নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
                     পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     <BsCheckCircle className="fs-5 pe-1" />
                     অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
                     চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
                     সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     ৬.১.১ <br />
                     নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
                     পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     <BsCheckCircle className="fs-5 pe-1" />
                     অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
                     চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
                   </td>
-                  <td style={{ minWidth: "300px" }}>
+                  <td className="w-25">
                     মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
                     সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
                   </td>
@@ -463,7 +463,7 @@ console.log('====================================');
                 বিষয় শিক্ষকের স্বাক্ষরঃ
               </div>
               <div
-                className="w-50 ps-5"
+                className="w-50"
                 style={{ fontSize: "14px", fontWeight: "bold" }}
               >
                 প্রধান শিক্ষকের স্বাক্ষরঃ
