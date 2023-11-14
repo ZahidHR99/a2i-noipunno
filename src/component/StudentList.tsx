@@ -46,11 +46,15 @@ const StudentList = () => {
   const handleResize = () => {
     const width = window.innerWidth;
     if (width <= 576) {
-      setScreenSize('small-screen');
-    } else if (width <= 1024) {
-      setScreenSize('medium-screen');
-    } else {
-      setScreenSize('large-screen');
+      setScreenSize('small_screen');
+    } else if ((width > 576) && (width <= 767)) {
+      setScreenSize('medium_screen');
+    } else if ((width > 768) && (width <= 1280)) {
+      setScreenSize('large_screen');
+    }
+    else {
+      // greater than 1280 px
+      setScreenSize('extra_large_screen');
     }
   };
 
@@ -58,6 +62,9 @@ const StudentList = () => {
   useEffect(() => {
     fetchData();
     window.scrollTo(0, 0)
+  }, []);
+
+  useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
@@ -105,11 +112,22 @@ const StudentList = () => {
               </Modal.Header>
               <Modal.Body>
                 <div className="container">
-                  <div className={`text-center text-lg-end ${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"}  mb-1 mx-auto mb-4 mb-md-2 mb-lg-2`}>
+                  <div className={`text-center text-lg-end 
+
+                  ${(screenSize === "small_screen") && "w-100" || ((screenSize === "medium_screen") ||
+                      (screenSize === "large_screen")) && "w-75" ||
+                    (screenSize === "extra_large_screen") && "w-75"
+                    } 
+                     
+                    mb-1 mx-auto mb-4 mb-md-2 mb-lg-2`}>
                     <img src={studentImage} width="100rem" className="img-fluid border border-info p-1" />
                   </div>
 
-                  <table className={`table ${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"} text-sm mx-auto`}>
+                  <table className={`table ${(screenSize === "small_screen") && "w-100" ||
+                    ((screenSize === "medium_screen") || (screenSize === "large_screen")) && "w-75" ||
+                    (screenSize === "extra_large_screen") && "w-75"
+                    } 
+                     text-sm mx-auto`}>
                     <tbody>
                       <tr>
                         <td className="p-1">

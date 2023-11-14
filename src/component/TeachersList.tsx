@@ -31,6 +31,7 @@ export default function TeachersList() {
 
   const handleResize = () => {
     const width = window.innerWidth;
+
     if (width <= 576) {
       setScreenSize('small-screen');
     } else if (width <= 768) {
@@ -42,6 +43,9 @@ export default function TeachersList() {
 
   useEffect(() => {
     fetchData()
+  }, []);
+
+  useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
@@ -50,9 +54,10 @@ export default function TeachersList() {
   }, []);
 
 
+
+
   return (
     <>
-
       <Breadcumb title={"শিক্ষকের তালিকা"} />
 
       {(teachers?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container mb-5">
