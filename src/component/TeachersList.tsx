@@ -1,4 +1,3 @@
-
 import teacher_photo from '../../public/assets/images/teacher.jpeg';
 import { useState, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -8,21 +7,19 @@ import { Button, Modal, Spinner } from 'react-bootstrap';
 import { subject_name } from "../utils/Utils";
 
 
-
 export default function TeachersList() {
-
   const [teachers, setTeachers] = useState<any>([]);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [screenSize, setScreenSize] = useState('');
+  const [showModal, setShowModal] = useState<any>(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [screenSize, setScreenSize] = useState<any>('');
 
   const fetchData = async () => {
     const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    setTeachers(teachersData.data.teachers)
+    setTeachers(teachersData?.data?.teachers)
 
   };
 
-  const handleShowModal = (item) => {
+  const handleShowModal = (item: any) => {
     setSelectedItem(item);
     setShowModal(true);
   };
@@ -154,7 +151,7 @@ export default function TeachersList() {
 
                     <tr>
                       <td className="p-1">
-                        <strong>বিষয় সমূহঃ</strong>
+                        <strong>অর্পিত বিষয়ঃ</strong>
                       </td>
 
                       <td className="p-1">
