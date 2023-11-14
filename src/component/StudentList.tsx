@@ -1,9 +1,7 @@
 
 import studentImage from "../../public/assets/noipunno/images/avatar/Layer_1.png";
 import styles from "./Home.style.module.css";
-import { BiRadioCircle } from "react-icons/bi";
 import { useState, useEffect } from "react";
-import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -14,11 +12,10 @@ const StudentList = () => {
   const [student, setStudent] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [screenSize, setScreenSize] = useState('');
 
 
   const fetchData = async () => {
-    window.scroll(0, 0)
-
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
     studentsData.data.data.subjects.map((std_data: any) => {
@@ -32,14 +29,9 @@ const StudentList = () => {
       (obj: any, index: any, self: any) =>
         index === self.findIndex((o: any) => o.uid === obj.uid)
     );
-
     setStudent(uniqueObjectsArray);
 
-  }
-  useEffect(() => {
-    fetchData()
-  }, []);
-
+  };
 
   const handleShowModal = (item: any) => {
     setSelectedItem(item);
@@ -50,13 +42,9 @@ const StudentList = () => {
     setShowModal(false);
   };
 
-  // console.log("selectedItem", selectedItem);
-  // console.log("student", student);
 
-  const [screenSize, setScreenSize] = useState('');
   const handleResize = () => {
     const width = window.innerWidth;
-    // Define your screen size breakpoints and corresponding class names
     if (width <= 576) {
       setScreenSize('small-screen');
     } else if (width <= 1024) {
@@ -66,15 +54,12 @@ const StudentList = () => {
     }
   };
 
+
   useEffect(() => {
-
-    // Initial call to set the screen size
+    fetchData();
+    window.scrollTo(0, 0)
     handleResize();
-
-    // Event listener for window resize
     window.addEventListener('resize', handleResize);
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
