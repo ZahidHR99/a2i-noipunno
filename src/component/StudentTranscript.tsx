@@ -12,11 +12,16 @@ import { TiTick } from "react-icons/ti";
 import styles from "./Home.style.module.css";
 import { IoIosArrowUp } from "react-icons/io";
 import { SlBookOpen } from "react-icons/sl";
-import { section_name, shift_name, teacher_name, branch_name } from "../utils/Utils";
+import {
+  section_name,
+  shift_name,
+  teacher_name,
+  branch_name,
+} from "../utils/Utils";
 import Breadcumb from "../layout/Breadcumb";
-import DatePicker from 'react-datepicker'
-import {toPng} from 'html-to-image'
-import {jsPDF} from 'jspdf'
+import DatePicker from "react-datepicker";
+import { toPng } from "html-to-image";
+import { jsPDF } from "jspdf";
 
 export default function StudentTranscript() {
   const [shift, setShift] = useState([]);
@@ -129,79 +134,77 @@ export default function StudentTranscript() {
     setelement(e);
   };
   const SaveAsPDFHandler = () => {
-    const dom: any = document.getElementById('print')
+    const dom: any = document.getElementById("print");
     toPng(dom)
       .then((dataUrl: any) => {
-        const img = new Image()
-        img.crossOrigin = 'annoymous'
-        img.src = dataUrl
+        const img = new Image();
+        img.crossOrigin = "annoymous";
+        img.src = dataUrl;
         img.onload = () => {
           // Initialize the PDF.
           const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'in',
+            orientation: "portrait",
+            unit: "in",
             format: [5.5, 8.5],
-          })
+          });
 
           // Define reused data
-          const imgProps = pdf.getImageProperties(img)
-          const imageType = imgProps.fileType
-          const pdfWidth = pdf.internal.pageSize.getWidth()
+          const imgProps = pdf.getImageProperties(img);
+          const imageType = imgProps.fileType;
+          const pdfWidth = pdf.internal.pageSize.getWidth();
 
           // Calculate the number of pages.
-          const pxFullHeight = imgProps.height
-          const pxPageHeight = Math.floor((imgProps.width * 8.5) / 5.5)
-          const nPages = Math.ceil(pxFullHeight / pxPageHeight)
+          const pxFullHeight = imgProps.height;
+          const pxPageHeight = Math.floor((imgProps.width * 8.5) / 5.5);
+          const nPages = Math.ceil(pxFullHeight / pxPageHeight);
 
           // Define pageHeight separately so it can be trimmed on the final page.
-          let pageHeight = pdf.internal.pageSize.getHeight()
+          let pageHeight = pdf.internal.pageSize.getHeight();
 
           // Create a one-page canvas to split up the full image.
-          const pageCanvas = document.createElement('canvas')
-          const pageCtx: any = pageCanvas.getContext('2d')
-          pageCanvas.width = imgProps.width
-          pageCanvas.height = pxPageHeight
+          const pageCanvas = document.createElement("canvas");
+          const pageCtx: any = pageCanvas.getContext("2d");
+          pageCanvas.width = imgProps.width;
+          pageCanvas.height = pxPageHeight;
 
           for (let page = 0; page < nPages; page++) {
             // Trim the final page to reduce file size.
             if (page === nPages - 1 && pxFullHeight % pxPageHeight !== 0) {
-              pageCanvas.height = pxFullHeight % pxPageHeight
-              pageHeight = (pageCanvas.height * pdfWidth) / pageCanvas.width
+              pageCanvas.height = pxFullHeight % pxPageHeight;
+              pageHeight = (pageCanvas.height * pdfWidth) / pageCanvas.width;
             }
             // Display the page.
-            const w = pageCanvas.width
-            const h = pageCanvas.height
-            pageCtx.fillStyle = 'white'
-            pageCtx.fillRect(0, 0, w, h)
-            pageCtx.drawImage(img, 0, page * pxPageHeight, w, h, 0, 0, w, h)
+            const w = pageCanvas.width;
+            const h = pageCanvas.height;
+            pageCtx.fillStyle = "white";
+            pageCtx.fillRect(0, 0, w, h);
+            pageCtx.drawImage(img, 0, page * pxPageHeight, w, h, 0, 0, w, h);
 
             // Add the page to the PDF.
-            if (page) pdf.addPage()
+            if (page) pdf.addPage();
 
-            const imgData = pageCanvas.toDataURL(`image/${imageType}`, 1)
-            pdf.addImage(imgData, imageType, 0, 0, pdfWidth, pageHeight)
+            const imgData = pageCanvas.toDataURL(`image/${imageType}`, 1);
+            pdf.addImage(imgData, imageType, 0, 0, pdfWidth, pageHeight);
           }
           // Output / Save
           // pdf.save(`sales-report${moment().format('YYYY-MM-DD')}.pdf`)
           pdf.save(`students-001.pdf`);
-        }
+        };
       })
       .catch((error: any) => {
-        console.error('oops, something went wrong!', error)
-      })
-  }
+        console.error("oops, something went wrong!", error);
+      });
+  };
 
   const storeSubjectData = (data: any) => {
-
-    console.log('====================================');
+    console.log("====================================");
     console.log("data", data);
-    console.log('====================================');
-    if(data){
+    console.log("====================================");
+    if (data) {
       setselectedSunject(JSON.parse(data));
-    }else{
+    } else {
       setselectedSunject({});
     }
-    
   };
 
   console.log("====================================");
@@ -265,7 +268,9 @@ export default function StudentTranscript() {
                           style={{ fontSize: "12px" }}
                           onChange={(e) => storeSubjectData(e.target.value)}
                         >
-                          <option selected value={""}>বিষয় নির্বাচন করুন</option>
+                          <option selected value={""}>
+                            বিষয় নির্বাচন করুন
+                          </option>
                           {subject?.map((data, index) => (
                             <option key={index} value={JSON.stringify(data)}>
                               {data?.subject?.name}
@@ -290,7 +295,9 @@ export default function StudentTranscript() {
                               {selectedSunject?.class == "6" ? "6 " : " 7 "}
                             </option>
                           ) : (
-                            <option selected value={""}>শ্রেণী নির্বাচন করুন</option>
+                            <option selected value={""}>
+                              শ্রেণী নির্বাচন করুন
+                            </option>
                           )}
                         </select>
                       </div>
@@ -304,16 +311,13 @@ export default function StudentTranscript() {
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                         >
-
-{selectedSunject?.section ? (
+                          {selectedSunject?.section ? (
                             <option selected>
                               {section_name(selectedSunject?.section)}
                             </option>
                           ) : (
                             <option selected>শাখা নির্বাচন করুন</option>
                           )}
-
-
                         </select>
                       </div>
                     </div>
@@ -328,7 +332,7 @@ export default function StudentTranscript() {
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                         >
-                         {selectedSunject?.shift ? (
+                          {selectedSunject?.shift ? (
                             <option selected>
                               {shift_name(selectedSunject?.shift)}
                             </option>
@@ -344,16 +348,19 @@ export default function StudentTranscript() {
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">
-                        ব্রাঞ্চ নির্বাচন করুন
+                          ব্রাঞ্চ নির্বাচন করুন
                         </label>
                         <select
                           className="form-select p-2"
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                         >
-                         {selectedSunject?.own_subjet?.class_room?.branch_id ? (
+                          {selectedSunject?.own_subjet?.class_room
+                            ?.branch_id ? (
                             <option selected>
-                              {branch_name(selectedSunject?.own_subjet.class_room.branch_id)}
+                              {branch_name(
+                                selectedSunject?.own_subjet.class_room.branch_id
+                              )}
                             </option>
                           ) : (
                             <option selected>ব্রাঞ্চ নির্বাচন করুন</option>
@@ -367,19 +374,22 @@ export default function StudentTranscript() {
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">
-                        শিক্ষার্থী নির্বাচন করুন
+                          শিক্ষার্থী নির্বাচন করুন
                         </label>
                         <select
                           className="form-select p-2"
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                         >
-                        
-                            <option selected>শিক্ষার্থী নির্বাচন করুন</option>
-                          
-                          {selectedSunject?.own_subjet?.class_room?.students?.map((data, index) => (
-                              <option key={index} value="1">{data.student_name_bn}</option>
-                              ))}
+                          <option selected>শিক্ষার্থী নির্বাচন করুন</option>
+
+                          {selectedSunject?.own_subjet?.class_room?.students?.map(
+                            (data, index) => (
+                              <option key={index} value="1">
+                                {data.student_name_bn}
+                              </option>
+                            )
+                          )}
                         </select>
                       </div>
                     </div>
@@ -651,7 +661,7 @@ export default function StudentTranscript() {
                   </div>
                 </div>
                 {/* subjects list end */}
-                <div className="row pb-5 pt-2" id='print'>
+                <div className="row pb-5 pt-2" id="print">
                   <div className="col-sm-6 col-md-3 py-2">
                     <div className="border-0 p-2 h-100">
                       <div className="d-flex">
@@ -883,171 +893,175 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div> */}
-              <div className="container border">
-        <div className="row p-2">
-          <div className="text-center py-3">
-            <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
-            <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
-            <h6 style={{ fontSize: "14px" }}>
-              প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
-              ঢাকা-১২১৬
-            </h6>
-            <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
-              ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
-              ট্রান্সক্রিপ্ট-২০২৩
-            </h6>
-          </div>
-          <div className="table-responsive">
-            <table className="table table-bordered table-sm table-responsive">
-              <thead>
-                <tr>
-                  <th
-                    colSpan={3}
-                    style={{ fontSize: "10px", fontWeight: "bold" }}
-                  >
-                    শিক্ষার্থীর নাম: ইনতিশার পারভেজ
-                  </th>
-                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    শিক্ষার্থীর আইডি: ৩২১০০
-                  </th>
-                </tr>
-                <tr>
-                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    শ্রেণী: ষষ্ঠ
-                  </th>
-                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    শাখা: পদ্মা
-                  </th>
-                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    বিষয়: বাংলা
-                  </th>
-                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    বিষয় শিক্ষকের নাম: তামান্না হাসিন
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    className="text-center"
-                    colSpan={4}
-                    style={{
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    পারদর্শিতার সূচকের মাত্রা
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    colSpan={2}
-                    style={{ fontSize: "10px", fontWeight: "bold" }}
-                  >
-                    পারদর্শিতা সূচক (PI)
-                  </th>
-                  <th
-                    colSpan={2}
-                    style={{ fontSize: "10px", fontWeight: "bold" }}
-                  >
-                    শিক্ষার্থীর পারদর্শিতা মাত্রা
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style={{ minWidth: "300px" }}>
-                    ৬.১.১ <br />
-                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                    পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    <BsCheckCircle className="fs-5 pe-1" />
-                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ minWidth: "300px" }}>
-                    ৬.১.১ <br />
-                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                    পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    <BsCheckCircle className="fs-5 pe-1" />
-                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ minWidth: "300px" }}>
-                    ৬.১.১ <br />
-                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                    পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    <BsCheckCircle className="fs-5 pe-1" />
-                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ minWidth: "300px" }}>
-                    ৬.১.১ <br />
-                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                    পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    <BsCheckCircle className="fs-5 pe-1" />
-                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                  </td>
-                  <td style={{ minWidth: "300px" }}>
-                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="d-flex pt-5 pb-1">
-              <div
-                className="w-50"
-                style={{ fontSize: "14px", fontWeight: "bold" }}
-              >
-                বিষয় শিক্ষকের স্বাক্ষরঃ
+          <div className="container border">
+            <div className="row p-2">
+              <div className="text-center py-3">
+                <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
+                <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
+                <h6 style={{ fontSize: "14px" }}>
+                  প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
+                  ঢাকা-১২১৬
+                </h6>
+                <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                  ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+                  ট্রান্সক্রিপ্ট-২০২৩
+                </h6>
               </div>
-              <div
-                className="w-50 ps-5"
-                style={{ fontSize: "14px", fontWeight: "bold" }}
-              >
-                প্রধান শিক্ষকের স্বাক্ষরঃ
+              <div className="table-responsive">
+                <table className="table table-bordered table-sm table-responsive">
+                  <thead>
+                    <tr>
+                      <th
+                        colSpan={3}
+                        style={{ fontSize: "10px", fontWeight: "bold" }}
+                      >
+                        শিক্ষার্থীর নাম: ইনতিশার পারভেজ
+                      </th>
+                      <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        শিক্ষার্থীর আইডি: ৩২১০০
+                      </th>
+                    </tr>
+                    <tr>
+                      <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        শ্রেণী: ষষ্ঠ
+                      </th>
+                      <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        শাখা: পদ্মা
+                      </th>
+                      <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        বিষয়: বাংলা
+                      </th>
+                      <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        বিষয় শিক্ষকের নাম: তামান্না হাসিন
+                      </th>
+                    </tr>
+                    <tr>
+                      <th
+                        className="text-center"
+                        colSpan={4}
+                        style={{
+                          fontSize: "12px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        পারদর্শিতার সূচকের মাত্রা
+                      </th>
+                    </tr>
+                    <tr>
+                      <th
+                        colSpan={2}
+                        style={{ fontSize: "10px", fontWeight: "bold" }}
+                      >
+                        পারদর্শিতা সূচক (PI)
+                      </th>
+                      <th
+                        colSpan={2}
+                        style={{ fontSize: "10px", fontWeight: "bold" }}
+                      >
+                        শিক্ষার্থীর পারদর্শিতা মাত্রা
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style={{ minWidth: "300px" }}>
+                        ৬.১.১ <br />
+                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ
+                        করতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        <BsCheckCircle className="fs-5 pe-1" />
+                        অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে
+                        পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির
+                        আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির
+                        সাথে সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style={{ minWidth: "300px" }}>
+                        ৬.১.১ <br />
+                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ
+                        করতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        <BsCheckCircle className="fs-5 pe-1" />
+                        অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে
+                        পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির
+                        আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির
+                        সাথে সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style={{ minWidth: "300px" }}>
+                        ৬.১.১ <br />
+                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ
+                        করতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        <BsCheckCircle className="fs-5 pe-1" />
+                        অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে
+                        পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির
+                        আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির
+                        সাথে সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style={{ minWidth: "300px" }}>
+                        ৬.১.১ <br />
+                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ
+                        করতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        <BsCheckCircle className="fs-5 pe-1" />
+                        অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে
+                        পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির
+                        আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                      </td>
+                      <td style={{ minWidth: "300px" }}>
+                        মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির
+                        সাথে সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="d-flex pt-5 pb-1">
+                  <div
+                    className="w-50"
+                    style={{ fontSize: "14px", fontWeight: "bold" }}
+                  >
+                    বিষয় শিক্ষকের স্বাক্ষরঃ
+                  </div>
+                  <div
+                    className="w-50 ps-5"
+                    style={{ fontSize: "14px", fontWeight: "bold" }}
+                  >
+                    প্রধান শিক্ষকের স্বাক্ষরঃ
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
         </div>
       </div>
     </div>

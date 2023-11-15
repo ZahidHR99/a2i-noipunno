@@ -167,3 +167,16 @@ export function get_pi_evaluation_by_pi(class_room_uid:any , pi_uid:any , evalua
 
   return axios(options);
 }
+
+
+export function get_bi_evaluation_by_bi(class_room_uid:any , evaluate_type:any , student_uid:any) {
+  const page_list = `${EVULATION_API}/get-bi-evaluation-by-bi?class_room_uid=${class_room_uid}&evaluate_type=${evaluate_type}&student_uid=${student_uid}`;
+
+  const options = {
+    method: "get",
+    headers: { "content-type": "application/json" },
+    url: page_list,
+  };
+
+  return axios(options);
+}

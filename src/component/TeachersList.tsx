@@ -1,10 +1,13 @@
-import TeacherImg from "../assets/images/teacher.png";
+
+import teacher_photo from '../../public/assets/images/teacher.jpeg';
 import { useState, useEffect } from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import styles from "./Home.style.module.css";
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
-import { teacher_subject} from "../utils/Utils";
+import { subject_name } from "../utils/Utils";
+
+import { teacher_subject } from "../utils/Utils";
 
 export default function TeachersList() {
 
@@ -32,7 +35,7 @@ export default function TeachersList() {
     setShowModal(false);
   };
 
-  // console.log("Select Items", teachers);
+  console.log("Select Items", selectedItem);
 
   return (
     <>
@@ -43,10 +46,10 @@ export default function TeachersList() {
         <section className="my-2">
           <div className={`${styles.grid_view} p-0 m-0 `}>
             {teachers?.map((teacher, index) => (
-              <div key={index} id={styles.teacher_card_list} className="card p-2 border ">
-                <div className="d-flex justify-content-start align-items-center gap-5">
+              <div key={index} id={styles.teacher_card_list} className="card p-2 border">
+                <div className="d-flex justify-content-start align-items-center gap-4">
                   <div>
-                    <img src={TeacherImg} className="img-fluid mx-2" />
+                    <img src={teacher_photo} width="60rem" className="img-fluid" />
                   </div>
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
@@ -61,10 +64,7 @@ export default function TeachersList() {
                       </button>
                     </div>
                   </div>
-
                 </div>
-
-
               </div>
 
             ))}
@@ -88,8 +88,8 @@ export default function TeachersList() {
 
             <Modal.Body>
               <div className="container">
-                <div className="text-end w-75 mx-auto" >
-                  <img src={TeacherImg} width="50rem" className="img-fluid border border-info p-1" />
+                <div className="w-75 text-center text-md-end mx-auto mb-4 mb-md-0 mb-lg-0 " >
+                  <img src={teacher_photo} width="100rem" className="img-fluid border border-info  p-1" />
                 </div>
 
                 <table className="table w-75 text-sm mx-auto">
@@ -98,55 +98,64 @@ export default function TeachersList() {
                       <td className="p-1">
                         <strong>আইডিঃ</strong>
                       </td>
-                      <td className="p-1">{selectedItem?.uid || "no-entry"}</td>
+                      <td className="p-1">{selectedItem?.id || "no-entry"}</td>
                     </tr>
                     <tr>
                       <td className="p-1">
                         <strong>পদবিঃ</strong>
                       </td>
-                      <td className="p-1">{"সহকারী শিক্ষক"}</td>
+                      <td className="p-1">{selectedItem?.designation || "no-entry"}</td>
                     </tr>
                     <tr>
                       <td className="p-1">
-                        <strong>মোবাইলঃ</strong>
+                        <strong>ইমেইলঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.email || "no-entry"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
+                        <strong>মোবাইল নাম্বারঃ</strong>
                       </td>
                       <td className="p-1">{selectedItem?.mobile_no}</td>
                     </tr>
                     <tr>
                       <td className="p-1">
+                        <strong>এনআইডিঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.nid || "no-entry"}</td>
+                    </tr>
+                    <tr>
+                      <td className="p-1">
                         <strong>জন্ম তারিখঃ</strong>
                       </td>
-                      <td className="p-1">{"১২/১০/১৯৭৭"}</td>
+                      <td className="p-1">{selectedItem?.date_of_birth || "no-entry"}</td>
                     </tr>
                     <tr>
                       <td className="p-1">
                         <strong>লিঙ্গঃ</strong>
                       </td>
-                      <td className="p-1">{"মহিলা"}</td>
+                      <td className="p-1">{selectedItem?.gender || "no-entry"}</td>
                     </tr>
+
                     <tr>
                       <td className="p-1">
-                        <strong>জাতীয়তাঃ</strong>
+                        <strong>বিষয় সমূহঃ</strong>
                       </td>
-                      <td className="p-1">{"বাংলাদেশী"}</td>
-                    </tr>
-                    <tr>
+
                       <td className="p-1">
-                        <strong>ধর্মঃ</strong>
+                        {
+                          (selectedItem?.assigned_subjects?.length > 0) ?
+                            <>
+                              {selectedItem?.assigned_subjects.map((item: any, index: any) => (
+                                <span key={index}>
+                                  {subject_name(item.subject_id)}
+                                  {index !== (selectedItem.assigned_subjects.length - 1) && <span>, </span>}
+                                </span>
+                              ))}
+                            </>
+                            : "no-entry"
+                        }
                       </td>
-                      <td className="p-1">{"ইসলাম"}</td>
-                    </tr>
-                    <tr>
-                      <td className="p-1">
-                        <strong>বৈবাহিক অবস্থাঃ</strong>
-                      </td>
-                      <td className="p-1">{"বিবাহিতা"}</td>
-                    </tr>
-                    <tr>
-                      <td className="p-1">
-                        <strong>এনআইডি নম্বরঃ</strong>
-                      </td>
-                      <td className="p-1">{"xxx-xxxxxxxxx"}</td>
                     </tr>
                   </tbody>
                 </table>

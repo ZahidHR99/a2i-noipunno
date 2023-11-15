@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { PiBookOpenTextBold } from "react-icons/pi";
-import { BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
-import { TiTick } from "react-icons/ti";
 import styles from "./Home.style.module.css";
-import { IoIosArrowUp } from "react-icons/io";
 import { SlBookOpen } from "react-icons/sl";
 import { Link } from "react-router-dom";
+import { pis_list_func } from "../utils/Utils";
 
 export default function ShowAssesment({
   seshowCompitance,
@@ -16,6 +13,9 @@ export default function ShowAssesment({
   setparodorshita_acoron_tab,
   parodorshita_acoron_tab,
   setallassessmet,
+  pi_selection,
+  allCompitance,
+  setShowcollaps
 }: any) {
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
 
@@ -32,10 +32,8 @@ export default function ShowAssesment({
     } catch (error: any) {}
   };
 
-  const tabAcorongoto = async (key:number) => {
+  const tabAcorongoto = async (key: number) => {
     try {
-
-      console.log(`key`, key , own_data?.assessments[key]?.assessment_details[0]);
       setparodorshita_acoron_tab(key);
       seshowCompitance(true);
       setassessment_uid(own_data?.assessments[key]?.assessment_details[0].uid);
@@ -43,7 +41,20 @@ export default function ShowAssesment({
         ...ShowSecounderyTab,
         ["id"]: own_data?.assessments[key]?.assessment_details[0].uid,
       });
-      setMullayon_name(own_data?.assessments[key]?.assessment_details[0]?.assessment_details_name_bn);
+      setMullayon_name(
+        own_data?.assessments[key]?.assessment_details[0]
+          ?.assessment_details_name_bn
+      );
+    } catch (error: any) {}
+  };
+
+  const pi_selection_list_by_subject = async (key: number) => {
+    try {
+      const subject = pi_selection.find((data) => data.assessment_type == key);
+      const pi_list = subject?.pi_list;
+      pis_list_func(allCompitance, pi_list);
+
+      console.log(`11`, 11);
     } catch (error: any) {}
   };
 
@@ -51,7 +62,7 @@ export default function ShowAssesment({
     fetchData();
   }, []);
 
-  // console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
+  console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
 
   return (
     <div className="container">
@@ -60,26 +71,25 @@ export default function ShowAssesment({
           <div className="card shadow-lg border-0 w-100 rounded">
             <ul className="nav d-flex mt-2 justify-content-around py-1 ">
               {own_data?.assessments.map((d: any, key: any) => (
-                <>
-                  <li className={`nav-item`}>
-                    <a
-                      className={`nav-link link-secondary ${
-                        styles.nav_tab_bottom_border
-                      } ${key === 0 ? "active" : ""} `}
-                      id="expertness-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#expertness"
-                      href="#"
-                      onClick={(e) => {
-                        setparodorshita_acoron_tab(key);
-                        tabAcorongoto(key)
-                        setallassessmet(d?.assessment_details);
-                      }}
-                    >
-                      <SlBookOpen className="me-1" /> {d.assessment_name_bn}{" "}
-                    </a>
-                  </li>
-                </>
+                <li className={`nav-item`} key={key}>
+                  <a
+                    className={`nav-link link-secondary ${
+                      styles.nav_tab_bottom_border
+                    } ${key === 0 ? "active" : ""} `}
+                    id="expertness-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#expertness"
+                    href="#"
+                    onClick={(e) => {
+                      setparodorshita_acoron_tab(key);
+                      tabAcorongoto(key);
+                      setallassessmet(d?.assessment_details);
+                      setShowcollaps({})
+                    }}
+                  >
+                    <SlBookOpen className="me-1" /> {d.assessment_name_bn}{" "}
+                  </a>
+                </li>
               ))}
             </ul>
 
@@ -111,6 +121,9 @@ export default function ShowAssesment({
                               seshowCompitance(true);
                               setparodorshita_acoron_tab(0);
                               setassessment_uid(ass_d.uid);
+
+                              pi_selection_list_by_subject(ass_d.uid);
+
                               setShowSecounderyTab({
                                 ...ShowSecounderyTab,
                                 ["id"]: ass_d.uid,
@@ -118,6 +131,7 @@ export default function ShowAssesment({
                               setMullayon_name(
                                 ass_d.assessment_details_name_bn
                               );
+                              setShowcollaps({})
                             }}
                           >
                             <SlBookOpen className="me-1" />{" "}
@@ -166,6 +180,7 @@ export default function ShowAssesment({
                               setMullayon_name(
                                 ass_d.assessment_details_name_bn
                               );
+                              setShowcollaps({})
                             }}
                           >
                             <SlBookOpen className="me-1" />{" "}

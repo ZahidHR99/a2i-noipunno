@@ -27,12 +27,14 @@ import { section_name, shift_name, teacher_name } from "../utils/Utils";
 export default function Teacher() {
   const [shift, setShift] = useState([]);
   const [subject, setsubject] = useState([]);
+  const [allCompitance, setallCompitance] = useState<any>({});
   const [element, setelement] = useState<any>("");
   const [Showcollaps, setShowcollaps] = useState<any>({});
   const [shikhonKalinMullayon, setshikhonKalinMullayon] = useState([]);
   const [allassessmet, setallassessmet] = useState([]);
   const [assessment_uid, setassessment_uid] = useState("");
   const [pi_attrbute, setpi_attrbute] = useState([]);
+  const [pi_selection, setpi_selection] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
   const [all_bis, setall_bis] = useState<any>([]);
   const [selected_subject, setselected_subject] = useState<any>("");
@@ -78,28 +80,32 @@ export default function Teacher() {
     setown_data(own_subjet?.data?.data);
     setteacher(own_subjet.data.data.user);
 
-    let all_subject: any = [];
+    const all_subject: any = [];
+
+    let compitnc_obj = {}
     own_subjet.data.data.subjects.map((d: any) => {
       data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-              let obj: any = {
+              setpi_selection(d.pi_selection)
+              const obj: any = {
                 subject: d_2,
                 own_subjet: d,
                 teacher: al_tech,
               };
-
+              d.competence.map((competnc)=>{
+                compitnc_obj = {...compitnc_obj , [competnc.uid] : competnc }
+              })
               all_subject.push(obj);
             }
           });
         }
       });
     });
+
     setall_bis(own_subjet.data.data.bis);
-console.log('====================================');
-console.log(all_subject);
-console.log('====================================');
+    setallCompitance(compitnc_obj)
     setsubject(all_subject);
     setloader(false);
   };
@@ -121,7 +127,6 @@ console.log('====================================');
     setelement(e);
   };
 
-  console.log(`subject -- - -`, subject);
   return (
     <div className="content mb-5">
       {loader && (
@@ -256,6 +261,9 @@ console.log('====================================');
                               setparodorshita_acoron_tab={
                                 setparodorshita_acoron_tab
                               }
+                              pi_selection={pi_selection}
+                              allCompitance={allCompitance}
+                              setShowcollaps={setShowcollaps}
                             />
                           </>
                         )}
@@ -274,25 +282,6 @@ console.log('====================================');
 
                             }
 
-                            {parodorshita_acoron_tab === 1 && (
-                              <AcorongotoComponent
-                                teacher={teacher}
-                                Student={Student}
-                                all_bis={all_bis}
-                                assessment_uid={assessment_uid}
-                                pi_attr={pi_attr}
-                                showDetailsshikhonKalinMullayon={
-                                  showDetailsshikhonKalinMullayon
-                                }
-                                Showcollaps={Showcollaps}
-                                setShowcollaps={setShowcollaps}
-                                Mullayon_name={Mullayon_name}
-                                shikhonKalinMullayon={shikhonKalinMullayon}
-                                setshowDetailsshikhonKalinMullayon={
-                                  setshowDetailsshikhonKalinMullayon
-                                }
-                              />
-                            )}
                           </>
                         )}
                       </>
