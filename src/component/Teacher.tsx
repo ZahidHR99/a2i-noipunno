@@ -128,7 +128,7 @@ export default function Teacher() {
     const element = document.getElementById('contentToConvert');
 
     const options = {
-      margin: 10,
+      margin: 20,
       filename: 'converted-document.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
