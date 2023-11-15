@@ -893,7 +893,7 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div> */}
-          <div className="container border">
+          <div className={`container border ${styles.ff_nikosh}`}>
             <div className="row p-2">
               <div className="text-center py-3">
                 <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>

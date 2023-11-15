@@ -54,6 +54,7 @@ export default function TeachersList() {
   }, []);
 
 
+  console.log(selectedItem);
 
 
   return (
@@ -111,42 +112,21 @@ export default function TeachersList() {
 
                 <table className={`${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"} table text-sm mx-auto`}>
                   <tbody>
-                    <tr>
-                      <td className="p-1">
-                        <strong>আইডিঃ</strong>
-                      </td>
-                      <td className="p-1">{selectedItem?.id || "no-entry"}</td>
-                    </tr>
-                    <tr>
-                      <td className="p-1">
-                        <strong>পদবিঃ</strong>
-                      </td>
-                      <td className="p-1">{selectedItem?.designation || "no-entry"}</td>
-                    </tr>
-                    <tr>
-                      <td className="p-1">
-                        <strong>ইমেইলঃ</strong>
-                      </td>
-                      <td className="p-1">{selectedItem?.email || "no-entry"}</td>
-                    </tr>
+
                     <tr>
                       <td className="p-1">
                         <strong>মোবাইল নাম্বারঃ</strong>
                       </td>
                       <td className="p-1">{selectedItem?.mobile_no}</td>
                     </tr>
-                    <tr>
-                      <td className="p-1">
-                        <strong>এন-আইডিঃ</strong>
-                      </td>
-                      <td className="p-1">{selectedItem?.nid || "no-entry"}</td>
-                    </tr>
+
                     <tr>
                       <td className="p-1">
                         <strong>জন্ম তারিখঃ</strong>
                       </td>
                       <td className="p-1">{selectedItem?.date_of_birth || "no-entry"}</td>
                     </tr>
+
                     <tr>
                       <td className="p-1">
                         <strong>লিঙ্গঃ</strong>
@@ -156,7 +136,36 @@ export default function TeachersList() {
 
                     <tr>
                       <td className="p-1">
-                        <strong>অর্পিত বিষয়ঃ</strong>
+                        <strong>আইডিঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.id || "no-entry"}</td>
+                    </tr>
+
+
+                    <tr>
+                      <td className="p-1">
+                        <strong>ইমেইলঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.email || "no-entry"}</td>
+                    </tr>
+
+                    <tr>
+                      <td className="p-1">
+                        <strong>এন-আইডিঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.nid || "no-entry"}</td>
+                    </tr>
+
+                    <tr>
+                      <td className="p-1">
+                        <strong>পদবিঃ</strong>
+                      </td>
+                      <td className="p-1">{selectedItem?.designation || "no-entry"}</td>
+                    </tr>
+
+                    <tr>
+                      <td className="p-1">
+                        <strong>অর্পিত বিষয় সমূহঃ</strong>
                       </td>
 
                       <td className="p-1">

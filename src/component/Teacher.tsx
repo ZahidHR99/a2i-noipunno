@@ -126,7 +126,6 @@ export default function Teacher() {
 
   const handleConvertToPdf = () => {
     const element = document.getElementById('contentToConvert');
-
     const options = {
       margin: 20,
       filename: 'transcript.pdf',
