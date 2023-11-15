@@ -1,9 +1,7 @@
 
 import studentImage from "../../public/assets/noipunno/images/avatar/Layer_1.png";
 import styles from "./Home.style.module.css";
-import { BiRadioCircle } from "react-icons/bi";
 import { useState, useEffect } from "react";
-import Accordion from 'react-bootstrap/Accordion';
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -14,10 +12,10 @@ const StudentList = () => {
   const [student, setStudent] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [screenSize, setScreenSize] = useState('');
+
 
   const fetchData = async () => {
-    window.scroll(0, 0)
-
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
     studentsData.data.data.subjects.map((std_data: any) => {
@@ -31,14 +29,9 @@ const StudentList = () => {
       (obj: any, index: any, self: any) =>
         index === self.findIndex((o: any) => o.uid === obj.uid)
     );
-
     setStudent(uniqueObjectsArray);
 
-  }
-  useEffect(() => {
-    fetchData()
-  }, []);
-
+  };
 
   const handleShowModal = (item: any) => {
     setSelectedItem(item);
@@ -49,7 +42,35 @@ const StudentList = () => {
     setShowModal(false);
   };
 
-  // console.log("selectedItem", selectedItem);
+
+  const handleResize = () => {
+    const width = window.innerWidth;
+    if (width <= 576) {
+      setScreenSize('small_screen');
+    } else if ((width > 576) && (width <= 767)) {
+      setScreenSize('medium_screen');
+    } else if ((width > 768) && (width <= 1280)) {
+      setScreenSize('large_screen');
+    }
+    else {
+      // greater than 1280 px
+      setScreenSize('extra_large_screen');
+    }
+  };
+
+
+  useEffect(() => {
+    fetchData();
+    window.scrollTo(0, 0)
+  }, []);
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
 
   return (
@@ -86,16 +107,27 @@ const StudentList = () => {
 
               <Modal.Header>
                 <Modal.Title className="container">
-                  শিক্ষার্থীর নামঃ {selectedItem?.student_name_bn || "no-entry"}
+                  শিক্ষার্থীর নামঃ {selectedItem?.student_name_bn || selectedItem?.student_name_en || "no-entry"}
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div className="container">
-                  <div className="text-center text-lg-end w-75 mb-1 mx-auto mb-4 mb-md-2 mb-lg-2">
+                  <div className={`text-center text-lg-end 
+
+                  ${(screenSize === "small_screen") && "w-100" || ((screenSize === "medium_screen") ||
+                      (screenSize === "large_screen")) && "w-75" ||
+                    (screenSize === "extra_large_screen") && "w-75"
+                    } 
+                     
+                    mb-1 mx-auto mb-4 mb-md-2 mb-lg-2`}>
                     <img src={studentImage} width="100rem" className="img-fluid border border-info p-1" />
                   </div>
 
-                  <table className="table w-75 text-sm mx-auto">
+                  <table className={`table ${(screenSize === "small_screen") && "w-100" ||
+                    ((screenSize === "medium_screen") || (screenSize === "large_screen")) && "w-75" ||
+                    (screenSize === "extra_large_screen") && "w-75"
+                    } 
+                     text-sm mx-auto`}>
                     <tbody>
                       <tr>
                         <td className="p-1">

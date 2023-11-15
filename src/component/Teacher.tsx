@@ -8,19 +8,12 @@ import {
 
 import styles from "./Home.style.module.css";
 import { BiSidebar } from "react-icons/bi";
-import { BsCheckCircle } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
 import ProfileCard from "./ProfileCard";
-// import { Link } from "react-router-dom";
-import { PiBookOpenText } from "react-icons/pi";
-import { Link } from "react-router-dom";
-import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import { Spinner } from "react-bootstrap";
 import ShowAssesment from "./ShowAssesment";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import AcorongotoComponent from "./AcorongotoComponent";
-import { MdArrowBackIosNew } from "react-icons/md";
-import Breadcumbtitle from "../layout/Breadcumb";
 import BreadcumbHome from "../layout/BreadcumbHome";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
 
@@ -293,7 +286,6 @@ export default function Teacher() {
           </section>
         </div>
       )}
-
       <style
         dangerouslySetInnerHTML={{
           __html:

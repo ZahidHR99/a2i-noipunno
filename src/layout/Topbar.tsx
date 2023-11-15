@@ -2,7 +2,7 @@ import React from "react";
 import ".././assets/style.css";
 import teacher from "../assets/images/teacher.png";
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { all_class } from "../Request";
 import logoutImage from "../../public/assets/images/logotIcon.png"
 import myprofile from "../../public/assets/images/my_profile.png"
@@ -23,7 +23,7 @@ export default function
     localStorage.clear();
     window.location.reload();
     // window.location = window.location.origin;
-    console.log("Logout successful", e);
+    // console.log("Logout successful", e);
   };
 
   const fetchData = async () => {
@@ -37,10 +37,7 @@ export default function
     fetchData();
   }, []);
 
-  const activeLinkStyle = {
-    color: 'red',
-    fontWeight: 'bold',
-  }
+
 
   return (
     <>
@@ -177,7 +174,7 @@ export default function
                         data-bs-parent="#report"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                           {/* <Link to={"/student-mullayon"} className="d-block ">
+                          {/* <Link to={"/student-mullayon"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
@@ -200,24 +197,24 @@ export default function
                         </div>
                       </div>
                     </div>
-                  </div> 
+                  </div>
                   <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
-                      <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" ><a href="/teachers-list" className="text-decoration-none">
-                        <button className="w-100 btn btn-light px-3 text-start" type="button" >
-                          <img src="/assets/images/teacher.svg" alt="" />
-                          <span className="fs-6 px-2">শিক্ষক</span>
-                        </button>
-                      </a>
+                      <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" ><span className="text-decoration-none">
+                        <Link to='/teachers-list'>
+                          <button className="w-100 btn btn-light px-3 text-start" type="button" >
+                            <img src="/assets/images/teacher.svg" alt="" />
+                            <span className="fs-6 px-2">শিক্ষক</span>
+                          </button>
+                        </Link>
+
+                      </span>
                       </h2>
                     </div>
                   </div>
                   <div className="accordion accordion-flush" id="shikkharthi">
                     <div className="accordion-item">
-                      <h2
-                        className="accordion-header "
-                        id="shikkharthi-headingOne"
-                      >
+                      <h2 className="accordion-header " id="shikkharthi-headingOne" >
                         <button
                           className="accordion-button collapsed d-flex justify-content-between align-items-center  w-100"
                           type="button"
@@ -237,11 +234,11 @@ export default function
                         data-bs-parent="#shikkharthi"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <a href="#" className="d-block ">
+                          <Link to='/student-list' className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর তালিকা
                             </button>
-                          </a>
+                          </Link>
                           {/* <a href="#" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর হাজিরা
