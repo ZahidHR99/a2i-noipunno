@@ -8,33 +8,26 @@ import {
 
 import styles from "./Home.style.module.css";
 import { BiSidebar } from "react-icons/bi";
-import { BsCheckCircle, BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
 import { SlBookOpen } from "react-icons/sl";
 import ProfileCard from "./ProfileCard";
-// import { Link } from "react-router-dom";
-import { PiBookOpenText } from "react-icons/pi";
-import { Link } from "react-router-dom";
-import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import { Spinner } from "react-bootstrap";
 import ShowAssesment from "./ShowAssesment";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import AcorongotoComponent from "./AcorongotoComponent";
-import { MdArrowBackIosNew } from "react-icons/md";
-import Breadcumbtitle from "../layout/Breadcumb";
 import BreadcumbHome from "../layout/BreadcumbHome";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
-import { IoIosArrowRoundUp } from "react-icons/io";
-import html2pdf from 'html2pdf.js';
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
   const [subject, setsubject] = useState([]);
+  const [allCompitance, setallCompitance] = useState<any>({});
   const [element, setelement] = useState<any>("");
   const [Showcollaps, setShowcollaps] = useState<any>({});
   const [shikhonKalinMullayon, setshikhonKalinMullayon] = useState([]);
   const [allassessmet, setallassessmet] = useState([]);
   const [assessment_uid, setassessment_uid] = useState("");
   const [pi_attrbute, setpi_attrbute] = useState([]);
+  const [pi_selection, setpi_selection] = useState([]);
   const [own_data, setown_data] = useState<any>([]);
   const [all_bis, setall_bis] = useState<any>([]);
   const [selected_subject, setselected_subject] = useState<any>("");
@@ -43,6 +36,7 @@ export default function Teacher() {
   const [ShowProfile, setShowProfile] = useState(true);
   const [Student, setStudent] = useState<any>([]);
   const [teacher, setteacher] = useState<any>({});
+  const [teacher_uid, setteacher_uid] = useState<any>("");
   const [showDetailsshikhonKalinMullayon, setshowDetailsshikhonKalinMullayon] =
     useState<any>("");
   const [showSubject, seshowSubject] = useState(true);
@@ -79,28 +73,32 @@ export default function Teacher() {
     setown_data(own_subjet?.data?.data);
     setteacher(own_subjet.data.data.user);
 
-    let all_subject: any = [];
+    const all_subject: any = [];
+
+    let compitnc_obj = {}
     own_subjet.data.data.subjects.map((d: any) => {
       data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-              let obj: any = {
+              setpi_selection(d.pi_selection)
+              const obj: any = {
                 subject: d_2,
                 own_subjet: d,
                 teacher: al_tech,
               };
-
+              d.competence.map((competnc) => {
+                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc }
+              })
               all_subject.push(obj);
             }
           });
         }
       });
     });
+
     setall_bis(own_subjet.data.data.bis);
-    console.log("====================================");
-    console.log(all_subject);
-    console.log("====================================");
+    setallCompitance(compitnc_obj)
     setsubject(all_subject);
     setloader(false);
   };
@@ -121,29 +119,6 @@ export default function Teacher() {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
-
-  console.log(`subject -- - -`, subject);
-
-  const handleConvertToPdf = () => {
-    const element = document.getElementById('contentToConvert');
-    const options = {
-      margin: 20,
-      filename: 'transcript.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: {
-        unit: 'mm',
-        format: 'a4',
-        orientation: 'portrait'
-      },
-    };
-
-    const pdf = html2pdf().from(element).set(options).outputPdf();
-    pdf.save();
-  };
-
-
-
 
   return (
     <div className="content mb-5">
@@ -205,9 +180,12 @@ export default function Teacher() {
                             key={key}
                             onClick={(e) => {
                               skill_behaibor_count(d);
-                              seshowSubjectname(d.subject.name);
-                              setStudent(d?.own_subjet?.class_room?.students);
-                              setShowProfile(false);
+                              seshowSubjectname(d.subject.name)
+                              setStudent(d?.own_subjet?.class_room?.students)
+
+                              setteacher_uid(d?.own_subjet.teacher_id)
+                              setStudent(d?.own_subjet?.class_room?.students)
+                              setShowProfile(false)
                               localStorage.setItem(
                                 "class_room_id",
                                 d.own_subjet.class_room_id
@@ -238,7 +216,7 @@ export default function Teacher() {
                                 <h5 className={styles.class_teacher}>
                                   শ্রেণি শিক্ষক :
                                   <span>
-                                    {teacher_name(d.own_subjet.teacher_id)}
+                                    {teacher_name(d.own_subjet.class_room.class_teacher_id)}
                                   </span>
                                 </h5>
                               </div>
@@ -276,49 +254,27 @@ export default function Teacher() {
                               setparodorshita_acoron_tab={
                                 setparodorshita_acoron_tab
                               }
+                              pi_selection={pi_selection}
+                              allCompitance={allCompitance}
+                              setShowcollaps={setShowcollaps}
                             />
                           </>
                         )}
 
                         {showCompitance && (
                           <>
-                            {parodorshita_acoron_tab === 0 && (
-                              <ParodorshitaComponent
-                                Student={Student}
-                                assessment_uid={assessment_uid}
-                                pi_attr={pi_attr}
-                                showDetailsshikhonKalinMullayon={
-                                  showDetailsshikhonKalinMullayon
-                                }
-                                Showcollaps={Showcollaps}
-                                setShowcollaps={setShowcollaps}
-                                Mullayon_name={Mullayon_name}
-                                shikhonKalinMullayon={shikhonKalinMullayon}
-                                setshowDetailsshikhonKalinMullayon={
-                                  setshowDetailsshikhonKalinMullayon
-                                }
-                              />
-                            )}
+                            {
+                              parodorshita_acoron_tab === 0 &&
+                              <ParodorshitaComponent teacher_uid={teacher_uid} Student={Student} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+                            }
 
-                            {parodorshita_acoron_tab === 1 && (
-                              <AcorongotoComponent
-                                teacher={teacher}
-                                Student={Student}
-                                all_bis={all_bis}
-                                assessment_uid={assessment_uid}
-                                pi_attr={pi_attr}
-                                showDetailsshikhonKalinMullayon={
-                                  showDetailsshikhonKalinMullayon
-                                }
-                                Showcollaps={Showcollaps}
-                                setShowcollaps={setShowcollaps}
-                                Mullayon_name={Mullayon_name}
-                                shikhonKalinMullayon={shikhonKalinMullayon}
-                                setshowDetailsshikhonKalinMullayon={
-                                  setshowDetailsshikhonKalinMullayon
-                                }
-                              />
-                            )}
+
+                            {
+                              parodorshita_acoron_tab === 1 &&
+                              <AcorongotoComponent teacher_uid={teacher_uid} teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
+
+                            }
+
                           </>
                         )}
                       </>
@@ -330,179 +286,6 @@ export default function Teacher() {
           </section>
         </div>
       )}
-
-      <section >
-        <div className="container">
-          <button onClick={handleConvertToPdf} type="button" className="btn btn-primary">Download</button>
-        </div>
-
-        <div id="contentToConvert" className="container border">
-          <div className="row p-2">
-            <div className="text-center py-3">
-              <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
-              <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
-              <h6 style={{ fontSize: "14px" }}>
-                প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
-                ঢাকা-১২১৬
-              </h6>
-              <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
-                ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
-                ট্রান্সক্রিপ্ট-২০২৩
-              </h6>
-            </div>
-            <div className="">
-              <table className="table table-bordered table-sm table-responsive">
-                <thead>
-                  <tr>
-                    <th
-                      colSpan={3}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      শিক্ষার্থীর নাম: ইনতিশার পারভেজ
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শিক্ষার্থীর আইডি: ৩২১০০
-                    </th>
-                  </tr>
-                  <tr>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শ্রেণী: ষষ্ঠ
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শাখা: পদ্মা
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      বিষয়: বাংলা
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      বিষয় শিক্ষকের নাম: তামান্না হাসিন
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      className="text-center"
-                      colSpan={4}
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      পারদর্শিতার সূচকের মাত্রা
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      colSpan={2}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      পারদর্শিতা সূচক (PI)
-                    </th>
-                    <th
-                      colSpan={2}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      শিক্ষার্থীর পারদর্শিতা মাত্রা
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="d-flex pt-5 pb-1">
-                <div
-                  className="w-50"
-                  style={{ fontSize: "14px", fontWeight: "bold" }}
-                >
-                  বিষয় শিক্ষকের স্বাক্ষরঃ
-                </div>
-                <div
-                  className="w-50"
-                  style={{ fontSize: "14px", fontWeight: "bold" }}
-                >
-                  প্রধান শিক্ষকের স্বাক্ষরঃ
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <style
         dangerouslySetInnerHTML={{
           __html:

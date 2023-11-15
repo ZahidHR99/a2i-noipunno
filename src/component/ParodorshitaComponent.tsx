@@ -2,6 +2,7 @@ import React from "react";
 import { PiBookOpenText } from "react-icons/pi";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import styles from "./Home.style.module.css";
+import { show_compitance } from "../utils/Utils";
 
 export default function ParodorshitaComponent({
   assessment_uid,
@@ -11,13 +12,20 @@ export default function ParodorshitaComponent({
   setShowcollaps,
   shikhonKalinMullayon,
   setshowDetailsshikhonKalinMullayon,
-  Student
+  Student,
+  teacher_uid,
 }: any) {
+
+  console.log(`shikhonKalinMullayon`, shikhonKalinMullayon);
   return (
     <div className="py-2">
       <div className="row">
         {shikhonKalinMullayon.map((d: any, key: any) => (
           <>
+          {
+            show_compitance(d.uid) && 
+
+            <>
             <div
               key={key}
               onClick={(e: any) => {
@@ -31,7 +39,7 @@ export default function ParodorshitaComponent({
               style={{ cursor: "pointer" }}
               className="col-sm-12 col-md-12"
             >
-              <div className={`d-flex align-items-center py-2 gap-2`}>
+              <div className={`d-flex align-items-center custom-py-2 gap-2`}>
                 <div
                   className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
                 >
@@ -41,12 +49,12 @@ export default function ParodorshitaComponent({
                         <PiBookOpenText className="me-2" />
                         {d.name_bn}
                       </div>
-                      <div
+                      {/* <div
                         className="px-2 rounded text-white"
                         style={{ backgroundColor: "#428F92" }}
                       >
                         {d?.pis.length}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -66,9 +74,13 @@ export default function ParodorshitaComponent({
                   assessment_uid={assessment_uid}
                   pi_attr={pi_attr}
                   Student={Student}
+                  teacher_uid={teacher_uid}
                 />
               </div>
             </div>
+
+            </>
+          }
           </>
         ))}
       </div>

@@ -46,7 +46,9 @@ export default function ProfileCard() {
           <div className="w-100 d-flex flex-column  align-items-center justify-content-center mt-3 ">
             <h5>{userDetails?.name}</h5>
             <small>{userDetails?.eiin}</small>
-            <small>TOAKUL BAZAR HIGH SCHOOL</small>
+            <small>{userDetails?.email}</small>
+            <small>{userDetails?.phone_no}</small>
+            {/* <small>TOAKUL BAZAR HIGH SCHOOL</small> */}
           </div>
           <button className="m-3 profile-button">
             <Link to={"/teacher-profile"} className="text-decoration-none">

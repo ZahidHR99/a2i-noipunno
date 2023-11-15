@@ -2,11 +2,17 @@ import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
 // import {  MdOutlineArrowForwardIos } from "react-icons/md";
 
-import { BiCircle, BiFilterAlt, BiSquareRounded } from "react-icons/bi";
+import {
+  BiCircle,
+  BiFilterAlt,
+  BiRefresh,
+  BiSquareRounded,
+} from "react-icons/bi";
 
 import { Pi_save, teacher_own_subject } from "../Request";
 import { GoPerson } from "react-icons/go";
 import { toast } from "../utils";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -18,7 +24,10 @@ export default function StudentMullayonModal({
   al_pi_attr,
   pi_name,
   setpi_name,
-  Student
+  Student,
+  teacher_uid,
+  is_draft,
+  all_submited_PI,
 }: any) {
   const [teacher, setteacher] = useState<any>({});
   const [comment_status, setcomment_status] = useState<any>(false);
@@ -35,9 +44,19 @@ export default function StudentMullayonModal({
       own_subjet = await teacher_own_subject();
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
-
     setteacher(own_subjet.data.data.user);
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+
+    if (all_submited_PI.length) {
+      let obj = {};
+      all_submited_PI.map((d: any) => {
+        obj = { ...obj, [d.student_uid]: d };
+      });
+      // setsubmitData(all_submited_PI)
+      setsubmitObj(obj);
+      checkedIn(obj);
+      console.log(`is_draft`, all_submited_PI, obj);
+    }
   };
 
   useEffect(() => {
@@ -53,7 +72,6 @@ export default function StudentMullayonModal({
 
       if (submit_status == 2) {
         if (Student.length === submitData.length) {
-
           await Pi_save(data);
           setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
           setsubmited(true);
@@ -66,6 +84,14 @@ export default function StudentMullayonModal({
       } else {
         await Pi_save(data);
         setsubmited(true);
+
+        const obj_ = localStorage.getItem("PI_saved");
+
+        const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
+
+        const submit_obj = { ...submit_obj_, ...submitObj };
+        localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
+
         setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
         seterr("");
       }
@@ -80,53 +106,6 @@ export default function StudentMullayonModal({
   const save_PI_evalution = async (
     pi_uid: any,
     weight_uid: any,
-    student_id: any
-  ) => {
-    try {
-      const params: any = {
-        evaluate_type: assessment_uid,
-        competence_uid,
-        pi_uid,
-        weight_uid,
-        class_room_uid:class_room_id,
-        student_uid: student_id,
-        teacher_uid: teacher.caid,
-        submit_status: 2,
-        is_approved: 1,
-        remark: null,
-      };
-      const obj: any = { ...submitObj, [student_id]: params };
-      setsubmitObj(obj);
-
-      checkedIn(obj);
-    } catch (error) {
-      console.log(`error`, error);
-    }
-  };
-
-  const checkedIn = (obj: any) => {
-    let all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
-
-    for (let index = 0; index < all_elem.length; index++) {
-      const element: any = all_elem[index];
-      element.style.background = "";
-    }
-
-    let sumbitArray: any = [];
-
-    for (const x in obj) {
-      let id: any = obj[x].weight_uid + "-" + x;
-      let el: any = document.getElementById(id);
-      el.style.background = "#69CB1C";
-      sumbitArray.push(obj[x]);
-    }
-
-    setsubmitData(sumbitArray);
-  };
-
-  const save_PI_evalution_comment = async (
-    pi_uid: any,
-    weight_uid: any = undefined,
     student_id: any,
     remark: any
   ) => {
@@ -135,21 +114,87 @@ export default function StudentMullayonModal({
         evaluate_type: assessment_uid,
         competence_uid,
         pi_uid,
-        class_room_uid:class_room_id,
-        weight_uid: null,
+        weight_uid,
+        class_room_uid: class_room_id,
         student_uid: student_id,
-        teacher_uid: teacher.caid,
+        teacher_uid: teacher_uid,
         submit_status: 2,
         is_approved: 1,
         remark,
       };
 
-      const obj: any = { ...submitObj, [student_id]: params };
-      setsubmitObj(obj);
-      form_arry_comment(obj);
+      if (submitObj[student_id]) {
+        if (submitObj[student_id].weight_uid == weight_uid) {
+          if (remark) {
+            const obj: any = {
+              ...submitObj,
+              [student_id]: params,
+            };
+            setsubmitObj(obj);
+
+            submit_object_common_func(
+              remark,
+              obj,
+              pi_uid,
+              student_id,
+              weight_uid
+            );
+          } else {
+            delete submitObj[student_id];
+            setsubmitObj(submitObj);
+
+            submit_object_common_func(
+              remark,
+              submitObj,
+              pi_uid,
+              student_id,
+              weight_uid
+            );
+          }
+        } else {
+          const obj: any = { ...submitObj, [student_id]: params };
+          setsubmitObj(obj);
+          submit_object_common_func(
+            remark,
+            obj,
+            pi_uid,
+            student_id,
+            weight_uid
+          );
+        }
+      } else {
+        const obj: any = { ...submitObj, [student_id]: params };
+        setsubmitObj(obj);
+
+        submit_object_common_func(remark, obj, pi_uid, student_id, weight_uid);
+      }
     } catch (error) {
       console.log(`error`, error);
     }
+  };
+
+  const checkedIn = (obj: any) => {
+    const all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
+
+    for (let index = 0; index < all_elem.length; index++) {
+      const element: any = all_elem[index];
+      element.style.background = "";
+    }
+
+    const sumbitArray: any = [];
+
+    for (const x in obj) {
+      const id: any = obj[x].weight_uid + "-" + x;
+      const el: any = document.getElementById(id);
+
+      if (el) {
+        el.style.background = "#69CB1C";
+      }
+
+      sumbitArray.push(obj[x]);
+    }
+
+    setsubmitData(sumbitArray);
   };
 
   const form_arry_comment = (obj: any) => {
@@ -179,8 +224,6 @@ export default function StudentMullayonModal({
         const el: any = document.getElementsByClassName(x)[0];
         const el_comment: any = document.getElementById(comment_id);
 
-        console.log(`el_comment`, el_comment);
-
         el.style.display = "none";
         el_comment.style.display = "none";
         sumbitArray.push(obj[x]);
@@ -189,6 +232,56 @@ export default function StudentMullayonModal({
 
     setsubmitData(sumbitArray);
   };
+
+  const refresh = () => {
+    setsubmitObj({});
+    setsubmitData([]);
+    setcomment_status(false);
+
+    setmsg("");
+    seterr("");
+
+    checkedIn_comment({});
+    form_arry_comment({});
+    checkedIn({});
+    setsubmited(false);
+
+    const all_elem: any = document.getElementsByClassName(
+      "all_pi_arrtiburte_tr"
+    );
+
+    for (let index = 0; index < all_elem.length; index++) {
+      const element: any = all_elem[index];
+      element.style.display = "table-row";
+    }
+
+    const all_elem_txtarea: any =
+      document.getElementsByClassName("all_textarea");
+
+    for (let index = 0; index < all_elem_txtarea.length; index++) {
+      const element: any = all_elem_txtarea[index];
+      element.style.display = "none";
+    }
+  };
+
+  const submit_object_common_func = (
+    remark: any,
+    obj: any,
+    bi_uid: any,
+    student_id: any,
+    weight_uid: any
+  ) => {
+    if (remark) {
+      form_arry_comment(obj);
+    } else {
+      if (remark == null && weight_uid == null) {
+        delete obj[bi_uid + "_" + student_id];
+      }
+      checkedIn(obj);
+    }
+  };
+
+  console.log(`submitData`, is_draft, all_submited_PI, al_pi_attr);
 
   return (
     <div className="content">
@@ -206,19 +299,32 @@ export default function StudentMullayonModal({
                   <th scope="col" style={{ width: "20%" }}>
                     {/* <BiFilterAlt className="fs-5" /> */}
                   </th>
-                  <th scope="col" style={{ width: "20%" }}></th>
+                  <th scope="col" style={{ width: "20%" }}>
+                    {comment_status && (
+                      <button
+                        className="border-0  rounded shadow-sm bg-white"
+                        onClick={(e: any) => refresh()}
+                        title="প্রথম থেকে আবার শুরু করুন"
+                      >
+                        <BiRefresh className="fs-3 text-secondary" />
+                      </button>
+                    )}
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {Student.map((studnt: any, k: any) => (
-                  <tr key={k} id={"comment_id_" + studnt.uid}>
+                  <tr
+                    key={k}
+                    id={"comment_id_" + studnt.uid}
+                    className="all_pi_arrtiburte_tr"
+                  >
                     <>
                       <td
                         style={{
                           fontSize: "14px",
                           fontWeight: "bold",
                         }}
-                        
                       >
                         <GoPerson className="fs-6 fw-bold" />{" "}
                         {studnt.student_name_bn}
@@ -239,12 +345,14 @@ export default function StudentMullayonModal({
                                     padding: "5px 6px",
                                     borderRadius: "3px",
                                     maxHeight: "40px",
+                                    cursor: "pointer",
                                   }}
                                   onClick={() =>
                                     save_PI_evalution(
-                                      pi_attr.uid,
+                                      pi_attr.pi_uid,
                                       pi_attr.weight_uid,
-                                      studnt.uid
+                                      studnt.uid,
+                                      null
                                     )
                                   }
                                 >
@@ -260,7 +368,19 @@ export default function StudentMullayonModal({
                                   )}
                                 </div>
 
-                                <div>{pi_attr.title_bn}</div>
+                                <div
+                                  className="pointer"
+                                  onClick={() =>
+                                    save_PI_evalution(
+                                      pi_attr.uid,
+                                      pi_attr.weight_uid,
+                                      studnt.uid,
+                                      null
+                                    )
+                                  }
+                                >
+                                  {pi_attr.title_bn} {pi_attr.uid}
+                                </div>
                               </>
                             )}
 
@@ -268,9 +388,9 @@ export default function StudentMullayonModal({
                               <div>
                                 <textarea
                                   onChange={(e: any) =>
-                                    save_PI_evalution_comment(
+                                    save_PI_evalution(
                                       pi_attr.uid,
-                                      undefined,
+                                      null,
                                       studnt.uid,
                                       e.target.value
                                     )
@@ -306,46 +426,58 @@ export default function StudentMullayonModal({
         </div>
 
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
+          {is_draft == "2" ? (
+            <div className="col-md-12">
+              <div className="row p-1">
+                <p className="text-success text-center">
+                  আপনার তথ্য সংরক্ষণ করা হয়েছিল
+                </p>
+              </div>
+            </div>
+          ) : (
+            <>
+              {!submited && (
+                <button
+                  type="button"
+                  className="btn btn-warning  my-2"
+                  style={{
+                    // backgroundColor: "#",
+                    color: "#000",
+                    paddingLeft: "90px",
+                    paddingRight: "90px",
+                  }}
+                  onClick={(e) => handleSave(e, 1)}
+                >
+                  খসড়া
+                </button>
+              )}
+              {msg && <h6 className="text-success">{msg}</h6>}
 
-        {!submited && (
-          <button
-            type="button"
-            className="btn btn-warning  my-2"
-            style={{
-              // backgroundColor: "#",
-              color: "#000",
-              paddingLeft: "90px",
-              paddingRight: "90px",
-            }}
-            onClick={(e) => handleSave(e, 1)}
-          >
-            খসড়া
-          </button>
-        )}
-          {msg && <h6 className="text-success">{msg}</h6>}
-
-          {err && <h6 className="text-danger">{err}</h6>}
-          {!submited && (
-          <button
-            type="button"
-            className="btn btn-primay px-5 "
-            style={{
-              backgroundColor: "#428F92",
-              color: "#fff",
-            }}
-            onClick={(e) => handleSave(e, 2)}
-          >
-            <span>
-              সংরক্ষণ করুন {"   "}
-              {/* {"   "}<MdOutlineArrowForwardIos  /> */}
-              <img src="/assets/images/arrow-right.png" alt="" />
-            </span>
-          </button>
+              {err && <h6 className="text-danger">{err}</h6>}
+              {!submited && (
+                <button
+                  type="button"
+                  className="btn btn-primay px-5 "
+                  style={{
+                    backgroundColor: "#428F92",
+                    color: "#fff",
+                  }}
+                  onClick={(e) => handleSave(e, 2)}
+                >
+                  <span>
+                    সংরক্ষণ করুন {"   "}
+                    {/* {"   "}<MdOutlineArrowForwardIos  /> */}
+                    <img src="/assets/images/arrow-right.png" alt="" />
+                  </span>
+                </button>
+              )}
+            </>
           )}
 
           {/* <button type="submit" className="btn btn-primay px-5" style={{ backgroundColor: "#428F92", color: "#fff", }} > একাউন্ট আপডেট করুন{" "} <MdOutlineKeyboardArrowRight className="fs-3" style={{ marginTop: "-0.3rem", }} />{" "} </button> */}
         </div>
       </div>
+
       <style
         dangerouslySetInnerHTML={{
           __html:
