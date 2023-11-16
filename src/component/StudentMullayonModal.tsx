@@ -301,7 +301,7 @@ export default function StudentMullayonModal({
                     {/* <BiFilterAlt className="fs-5" /> */}
                   </th>
                   <th scope="col" style={{ width: "20%" }}>
-                    {comment_status && (
+                    {/* {comment_status && (
                       <button
                         className="border-0  rounded shadow-sm bg-white"
                         onClick={(e: any) => refresh()}
@@ -309,7 +309,7 @@ export default function StudentMullayonModal({
                       >
                         <BiRefresh className="fs-3 text-secondary" />
                       </button>
-                    )}
+                    )} */}
                   </th>
                 </tr>
               </thead>

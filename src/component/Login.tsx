@@ -36,7 +36,7 @@ export default function Login() {
     }
       
     } catch (error) {
-      seterror(error?.response?.data?.error || "Something went wrong!");
+      seterror(error?.response?.data?.error?.message || error?.response?.data?.error || "Something went wrong!");
       console.log(`error`, error);
     }
 

@@ -265,7 +265,7 @@ export default function StudentMullayonBehave({
               {/* <p>রোল নম্বর #৩২১০০</p> */}
             </div>
 
-            {comment_status && (
+            {/* {comment_status && (
               <button
                 className="border-0  rounded shadow-sm bg-white"
                 onClick={(e: any) => refresh()}
@@ -273,7 +273,7 @@ export default function StudentMullayonBehave({
               >
                 <BiRefresh className="fs-3 text-secondary" />
               </button>
-            )}
+            )} */}
           </div>
 
           {!submited && (
