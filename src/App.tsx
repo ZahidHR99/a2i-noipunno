@@ -19,9 +19,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
 } from "./Request";
-import MyProfile from "./component/MyProfile";
 import AmarProfile from "./component/AmarProfile";
-import Test from "./component/Test";
 
 function App() {
   const [topbar, settopbar] = useState(false);

@@ -19,7 +19,6 @@ import {
   branch_name,
 } from "../utils/Utils";
 import Breadcumb from "../layout/Breadcumb";
-import DatePicker from "react-datepicker";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 

@@ -20,6 +20,7 @@ export default function ShowAssesment({
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
 
   const fetchData = async () => {
+
     try {
       seshowCompitance(true);
       setparodorshita_acoron_tab(0);
@@ -29,11 +30,13 @@ export default function ShowAssesment({
         ["id"]: allassessmet[0].uid,
       });
       setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
+      pis_list_func(allCompitance, "");
     } catch (error: any) {}
   };
 
   const tabAcorongoto = async (key: number) => {
     try {
+      pis_list_func(allCompitance, "");
       setparodorshita_acoron_tab(key);
       seshowCompitance(true);
       setassessment_uid(own_data?.assessments[key]?.assessment_details[0].uid);
@@ -54,7 +57,6 @@ export default function ShowAssesment({
       const pi_list = subject?.pi_list;
       pis_list_func(allCompitance, pi_list);
 
-      console.log(`11`, 11);
     } catch (error: any) {}
   };
 
