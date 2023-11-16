@@ -110,6 +110,7 @@ export default function StudentMullayonModal({
     remark: any
   ) => {
     try {
+      const class_room_id = localStorage.getItem("class_room_id");
       const params: any = {
         evaluate_type: assessment_uid,
         competence_uid,
