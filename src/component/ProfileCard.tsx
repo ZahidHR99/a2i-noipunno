@@ -10,6 +10,9 @@ export default function ProfileCard() {
     }
   }, []);
 
+  console.log(userDetails);
+
+
   return (
     <div className="col-md-12">
       <div className="card np-card head-teacher-card">
@@ -28,9 +31,9 @@ export default function ProfileCard() {
               alt=""
             />
             <p className="mt-3 p-2">
-              {(userDetails?.role == 1 && "শিক্ষক") ||
-                (userDetails?.role == 2 && "সহকারী শিক্ষক") ||
-                (userDetails?.role == 3 && "প্রধান শিক্ষক")}
+              {(userDetails?.user_type_id == 1 && "শিক্ষক") ||
+                (userDetails?.user_type_id == 2 && "সহকারী শিক্ষক") ||
+                (userDetails?.user_type_id == 3 && "প্রধান শিক্ষক")}
             </p>
           </div>
           {/* <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">

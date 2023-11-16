@@ -1,3 +1,23 @@
+/* Font-Nikosh */
+@font-face {
+  font-family: 'Nikosh';
+  src: url('../fonts/Nikosh.eot');
+  src: url('../fonts/Nikosh.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Nikosh.woff2') format('woff2'),
+    url('../fonts/Nikosh.woff') format('woff'),
+    url('../fonts/Nikosh.ttf') format('truetype'),
+    url('../fonts/Nikosh.svg#Nikosh') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* font-class Nikosh */
+.ff_nikosh {
+  /* background-color: blue; */
+  font-family: 'Nikosh' !important;
+}
+
 .teacherName {
   font-size: 12px;
   font-weight: 400;
@@ -196,11 +216,8 @@
 }
 
 
-/* ==============> Army <=================== */
+/* ==============> Army <=================== 
 
-.teacher_table_row {
-  background-color: #69CB1C !important
-}
 
 /* =============> Teacher-List-page <========= */
 #view_containser {

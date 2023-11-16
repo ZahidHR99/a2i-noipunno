@@ -87,8 +87,8 @@ export default function Teacher() {
                 own_subjet: d,
                 teacher: al_tech,
               };
-              d.competence.map((competnc)=>{
-                compitnc_obj = {...compitnc_obj , [competnc.uid] : competnc }
+              d.competence.map((competnc) => {
+                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc }
               })
               all_subject.push(obj);
             }

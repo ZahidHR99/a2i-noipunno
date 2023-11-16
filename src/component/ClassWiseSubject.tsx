@@ -15,7 +15,6 @@ const ClassWiseSubject = () => {
   const getClassData = async () => {
     const { data }: any = await clssWiseSubject(id);
     setSubjects(data.data)
-
   }
   useEffect(() => {
     window.scrollTo(0, 0)
