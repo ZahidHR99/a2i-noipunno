@@ -102,6 +102,9 @@
     border-bottom: 2px solid #428f92;
 }
 
+.swal2-container.swal2-center.swal2-backdrop-show {
+    z-index: 23323 !important
+}
 
 /* @media (min-width: 538px) {
     .modal-dialog.modal-lg.modal-dialog-centered {
@@ -111,3 +114,11 @@
     }
 } */
 
+.pointer {
+    cursor: pointer;
+}
+
+.custom-py-2 {
+    padding-top: .5rem;
+    padding-bottom: 0;
+}

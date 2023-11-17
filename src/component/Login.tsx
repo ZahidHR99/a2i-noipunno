@@ -19,7 +19,9 @@ export default function Login() {
     event.preventDefault();
     const datas = new FormData(event.target);
 
-    const { data }: any = await loginPassword(datas);
+    try {
+
+      const { data }: any = await loginPassword(datas);
 
     // console.log("data", data.status);
     if (data?.status === true) {
@@ -32,6 +34,13 @@ export default function Login() {
     } else {
       seterror("Wrong Crediantial");
     }
+      
+    } catch (error) {
+      seterror(error?.response?.data?.error?.message || error?.response?.data?.error || "Something went wrong!");
+      console.log(`error`, error);
+    }
+
+    
   };
 
   const handleChange = (event) => {

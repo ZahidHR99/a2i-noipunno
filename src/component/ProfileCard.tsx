@@ -10,6 +10,9 @@ export default function ProfileCard() {
     }
   }, []);
 
+  console.log(userDetails);
+
+
   return (
     <div className="col-md-12">
       <div className="card np-card head-teacher-card">
@@ -28,9 +31,9 @@ export default function ProfileCard() {
               alt=""
             />
             <p className="mt-3 p-2">
-              {(userDetails?.role == 1 && "শিক্ষক") ||
-                (userDetails?.role == 2 && "সহকারী শিক্ষক") ||
-                (userDetails?.role == 3 && "প্রধান শিক্ষক")}
+              {(userDetails?.user_type_id == 1 && "শিক্ষক") ||
+                (userDetails?.user_type_id == 2 && "সহকারী শিক্ষক") ||
+                (userDetails?.user_type_id == 3 && "প্রধান শিক্ষক")}
             </p>
           </div>
           {/* <div className="head-teacher-top-icons d-flex justify-content-center align-items-center">
@@ -43,7 +46,9 @@ export default function ProfileCard() {
           <div className="w-100 d-flex flex-column  align-items-center justify-content-center mt-3 ">
             <h5>{userDetails?.name}</h5>
             <small>{userDetails?.eiin}</small>
-            <small>TOAKUL BAZAR HIGH SCHOOL</small>
+            <small>{userDetails?.email}</small>
+            <small>{userDetails?.phone_no}</small>
+            {/* <small>TOAKUL BAZAR HIGH SCHOOL</small> */}
           </div>
           <button className="m-3 profile-button">
             <Link to={"/teacher-profile"} className="text-decoration-none">

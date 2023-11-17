@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { PiBookOpenText } from "react-icons/pi";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import styles from "./Home.style.module.css";
 import StudentMullayonBehave from "./StudentMullayonBehave";
+import { get_bi_evaluation_by_bi } from "../Request";
+import { add_pi_uid } from "../utils/Utils";
 
 export default function AcorongotoComponent({
   all_bis,
@@ -10,14 +12,75 @@ export default function AcorongotoComponent({
   assessment_uid,
   Showcollaps,
   setShowcollaps,
-  teacher
+  teacher,
+  teacher_uid,
 }: any) {
+  const [is_draft, setis_draft] = useState<any>(1);
+  const [all_submited_PI, setall_submited_PI] = useState<any>([]);
+  const [submitObj, setsubmitObj] = useState<any>({});
+  const [submitData, setsubmitData] = useState<any>([]);
 
+  const checkedIn = (obj: any) => {
+    const all_elem: any = document.getElementsByClassName("all_pi_arrtiburte");
 
-  const showOffCollaps = ( key :any)=>{
+    for (let index = 0; index < all_elem.length; index++) {
+      const element: any = all_elem[index];
+      element.style.background = "";
+    }
+
+    const sumbitArray: any = [];
+
+    for (const x in obj) {
+      const id: any = obj[x].pi_uid + "_" + obj[x].student_uid;
+      const el: any = document.getElementById(id);
+      if (el) {
+        el.style.background = "#69CB1C";
+      }
+
+      sumbitArray.push(obj[x]);
+    }
+
+    setsubmitData(sumbitArray);
+  };
+
+  const showOffCollaps = async (key: any, student) => {
+    
+
+    setis_draft(1);
+    setall_submited_PI([]);
+    const class_room_id: any = localStorage.getItem("class_room_id");
+    const { data }: any = await get_bi_evaluation_by_bi(
+      class_room_id,
+      assessment_uid,
+      student
+    );
+
+    const all_submited_PI_ = data?.data?.evaluation;
+    if (data.data?.evaluation?.length) {
+
+      console.log(`data.data?.evaluation[0]?.submit_status`, data.data?.evaluation[0]);
+      setis_draft(data.data?.evaluation[0]?.submit_status);
+    }
+
+    if (all_submited_PI_.length) {
+      let obj = {};
+      all_submited_PI_.map((d: any) => {
+        const pi_uid = add_pi_uid(all_bis, d);
+        if (pi_uid) {
+          d.pi_uid = pi_uid;
+          obj = { ...obj, [d.bi_uid + "_" + d.student_uid]: d };
+        }
+      });
+      setsubmitObj(obj);
+      checkedIn(obj);
+    }else{
+      setsubmitObj({});
+      checkedIn({});
+    }
+
 
     for (const x in Showcollaps) {
-      Showcollaps[x] = false
+      Showcollaps[x] = false;
     }
 
     setShowcollaps({
@@ -26,9 +89,9 @@ export default function AcorongotoComponent({
     });
 
     // console.log("obj" , obj , key);
-    
 
-  }
+  };
+
   return (
     <div className="py-2">
       <div className="row">
@@ -39,14 +102,12 @@ export default function AcorongotoComponent({
               onClick={(e: any) => {
                 // setshowDetailsshikhonKalinMullayon(d);
 
-                showOffCollaps( key)
-
-                
+                showOffCollaps(key, d.uid);
               }}
               style={{ cursor: "pointer" }}
               className="col-sm-12 col-md-12"
             >
-              <div className={`d-flex align-items-center py-2 gap-2`}>
+              <div className={`d-flex align-items-center custom-py-2 gap-2`}>
                 <div
                   className={`card shadow-lg border-0 p-1 w-100 ${styles.card_hover}`}
                 >
@@ -81,6 +142,12 @@ export default function AcorongotoComponent({
                   assessment_uid={assessment_uid}
                   teacher={teacher}
                   student={d}
+                  teacher_uid={teacher_uid}
+                  submitObj={submitObj}
+                  setsubmitObj={setsubmitObj}
+                  submitData={submitData}
+                  setsubmitData={setsubmitData}
+                  is_draft={is_draft}
                 />
               </div>
             </div>
