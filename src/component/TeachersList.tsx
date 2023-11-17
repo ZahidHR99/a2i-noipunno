@@ -6,8 +6,6 @@ import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { subject_name } from "../utils/Utils";
 
-
-
 export default function TeachersList() {
   const [teachers, setTeachers] = useState<any>([]);
   const [showModal, setShowModal] = useState<any>(false);
