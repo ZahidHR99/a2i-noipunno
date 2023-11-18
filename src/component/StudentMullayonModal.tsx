@@ -411,6 +411,10 @@ export default function StudentMullayonModal({
     };
   }, []);
 
+  console.log("submitObj", submitObj);
+  console.log("submitData==>", submitData);
+
+
   return (
     <div className="content">
       <div className="col-md-12">
@@ -491,7 +495,7 @@ export default function StudentMullayonModal({
                                     // }
 
                                     onClick={() => {
-                                      if (is_draft == 1) {
+                                      if (submitData.length == 0) {
                                         save_PI_evalution(
                                           pi_attr.pi_uid,
                                           pi_attr.weight_uid,
