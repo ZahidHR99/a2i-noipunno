@@ -50,12 +50,22 @@ export const Validation = (
 };
 
 
+// export const toast = (type: any, msg: any) => {
+//   if (type === true) {
+//     cogoToast.success(msg, { position: "bottom-right" });
+//   }
+
+//   if (type === false) {
+//     cogoToast.error(msg, { position: "bottom-right" });
+//   }
+// };
+
 export const toast = (type: any, msg: any) => {
   if (type === true) {
-    cogoToast.success(msg, { position: "bottom-right" });
+    alert(msg);
   }
 
   if (type === false) {
-    cogoToast.error(msg, { position: "bottom-right" });
+    alert(msg);
   }
 };

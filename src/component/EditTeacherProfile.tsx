@@ -1,9 +1,10 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { update_teacher_profile } from "../Request";
-import cogoToast from 'cogo-toast';
+// import cogoToast from 'cogo-toast';
 import { toast } from "../utils";
 import Breadcumbtitle from "../layout/Breadcumb";
+import Swal from 'sweetalert2';
 
 
 const EditTeacherProfile = () => {
@@ -42,7 +43,13 @@ const EditTeacherProfile = () => {
     try {
       const { data }: any = await update_teacher_profile(caid, formDatas);
       if (data.status === true) {
-        toast(true, "আপনার একাউন্টটি সফলভাবে হালনাগাদ হয়েছে!")
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "আপনার একাউন্টটি সফলভাবে হালনাগাদ হয়েছে!",
+          showConfirmButton: false,
+          timer: 1500
+        })
         localStorage.setItem("customer_login_auth", JSON.stringify(new_localstorage_data));
 
         setTimeout(() => {
@@ -50,7 +57,7 @@ const EditTeacherProfile = () => {
         }, 1000)
       }
     } catch (error) {
-      cogoToast.error('হালনাগাদ সম্পন্ন হয়নি, আবার চেষ্টা করুন!');
+      alert('হালনাগাদ সম্পন্ন হয়নি, আবার চেষ্টা করুন!');
     }
   }
 

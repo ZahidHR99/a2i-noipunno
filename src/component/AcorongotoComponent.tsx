@@ -44,7 +44,7 @@ export default function AcorongotoComponent({
   };
 
   const showOffCollaps = async (key: any, student) => {
-    
+
 
     setis_draft(1);
     setall_submited_PI([]);
@@ -58,7 +58,7 @@ export default function AcorongotoComponent({
     const all_submited_PI_ = data?.data?.evaluation;
     if (data.data?.evaluation?.length) {
 
-      console.log(`data.data?.evaluation[0]?.submit_status`, data.data?.evaluation[0]);
+      // console.log(`data.data?.evaluation[0]?.submit_status`, data.data?.evaluation[0]);
       setis_draft(data.data?.evaluation[0]?.submit_status);
     }
 
@@ -73,7 +73,7 @@ export default function AcorongotoComponent({
       });
       setsubmitObj(obj);
       checkedIn(obj);
-    }else{
+    } else {
       setsubmitObj({});
       checkedIn({});
     }
@@ -96,9 +96,9 @@ export default function AcorongotoComponent({
     <div className="py-2">
       <div className="row">
         {Student.map((d: any, key: any) => (
-          <>
+          <div key={key}>
             <div
-              key={key}
+
               onClick={(e: any) => {
                 // setshowDetailsshikhonKalinMullayon(d);
 
@@ -151,7 +151,7 @@ export default function AcorongotoComponent({
                 />
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>

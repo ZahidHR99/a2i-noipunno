@@ -31,7 +31,7 @@ export default function ShowAssesment({
       });
       setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
       pis_list_func(allCompitance, "");
-    } catch (error: any) {}
+    } catch (error: any) { }
   };
 
   const tabAcorongoto = async (key: number) => {
@@ -48,7 +48,7 @@ export default function ShowAssesment({
         own_data?.assessments[key]?.assessment_details[0]
           ?.assessment_details_name_bn
       );
-    } catch (error: any) {}
+    } catch (error: any) { }
   };
 
   const pi_selection_list_by_subject = async (key: number) => {
@@ -57,14 +57,14 @@ export default function ShowAssesment({
       const pi_list = subject?.pi_list;
       pis_list_func(allCompitance, pi_list);
 
-    } catch (error: any) {}
+    } catch (error: any) { }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
+  // console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
 
   return (
     <div className="container">
@@ -75,9 +75,8 @@ export default function ShowAssesment({
               {own_data?.assessments.map((d: any, key: any) => (
                 <li className={`nav-item`} key={key}>
                   <a
-                    className={`nav-link link-secondary ${
-                      styles.nav_tab_bottom_border
-                    } ${key === 0 ? "active" : ""} `}
+                    className={`nav-link link-secondary ${styles.nav_tab_bottom_border
+                      } ${key === 0 ? "active" : ""} `}
                     id="expertness-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#expertness"
@@ -108,13 +107,11 @@ export default function ShowAssesment({
                       {allassessmet?.map((ass_d: any, ky: any) => (
                         <li className={`nav-item`} key={ky}>
                           <a
-                            className={`fw-bold nav-link link-secondary ${
-                              styles.nav_tab_bottom_border
-                            } ${
-                              ShowSecounderyTab?.id === ass_d.uid
+                            className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
+                              } ${ShowSecounderyTab?.id === ass_d.uid
                                 ? " active"
                                 : ""
-                            } `}
+                              } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"
@@ -160,13 +157,11 @@ export default function ShowAssesment({
                       {allassessmet?.map((ass_d: any, ky: any) => (
                         <li className={`nav-item`} key={ky}>
                           <Link
-                            className={`fw-bold nav-link link-secondary ${
-                              styles.nav_tab_bottom_border
-                            } ${
-                              ShowSecounderyTab?.id === ass_d.uid
+                            className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
+                              } ${ShowSecounderyTab?.id === ass_d.uid
                                 ? " active"
                                 : ""
-                            } `}
+                              } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"

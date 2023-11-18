@@ -220,6 +220,10 @@
 
 
 /* =============> Teacher-List-page <========= */
+.swal2-popup {
+  z-index: 99999;
+}
+
 #view_containser {
   /* background-color: #69CB1C; */
   display: grid;
