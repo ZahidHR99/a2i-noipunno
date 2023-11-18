@@ -213,9 +213,22 @@ export default function Teacher() {
                                     : "সপ্তম "}
                                   শ্রেণি
                                 </h5>
-                                <h5 className={styles.class_teacher}>
+                                <h5
+                                  className={styles.class_teacher}
+                                  // style={{
+                                  //   overflow: "hidden",
+                                  //   display: "-webkit-flex",
+                                  //   WebkitLineClamp: "3",
+                                  //   lineClamp: "3",
+                                  //   WebkitBoxOrient: "vertical",
+                                  // }}
+                                >
                                   শ্রেণি শিক্ষক :
-                                  <span>
+                                  <span
+                                    style={{
+                                      display: "block",
+                                    }}
+                                  >
                                     {teacher_name(
                                       d.own_subjet.class_room.class_teacher_id
                                     )}
