@@ -411,6 +411,11 @@ export default function StudentMullayonModal({
     };
   }, []);
 
+  // console.log("submitObj", submitObj);
+  // console.log("all_submited_PI", all_submited_PI);
+
+  // console.log("is_draft", is_draft);
+
   return (
     <div className="content">
       <div className="col-md-12">
