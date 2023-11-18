@@ -75,21 +75,21 @@ export default function Teacher() {
 
     const all_subject: any = [];
 
-    let compitnc_obj = {}
+    let compitnc_obj = {};
     own_subjet.data.data.subjects.map((d: any) => {
       data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-              setpi_selection(d.pi_selection)
+              setpi_selection(d.pi_selection);
               const obj: any = {
                 subject: d_2,
                 own_subjet: d,
                 teacher: al_tech,
               };
               d.competence.map((competnc) => {
-                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc }
-              })
+                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc };
+              });
               all_subject.push(obj);
             }
           });
@@ -98,7 +98,7 @@ export default function Teacher() {
     });
 
     setall_bis(own_subjet.data.data.bis);
-    setallCompitance(compitnc_obj)
+    setallCompitance(compitnc_obj);
     setsubject(all_subject);
     setloader(false);
   };
@@ -180,19 +180,19 @@ export default function Teacher() {
                             key={key}
                             onClick={(e) => {
                               skill_behaibor_count(d);
-                              seshowSubjectname(d.subject.name)
-                              setStudent(d?.own_subjet?.class_room?.students)
+                              seshowSubjectname(d.subject.name);
+                              setStudent(d?.own_subjet?.class_room?.students);
 
-                              setteacher_uid(d?.own_subjet.teacher_id)
-                              setStudent(d?.own_subjet?.class_room?.students)
-                              setShowProfile(false)
+                              setteacher_uid(d?.own_subjet.teacher_id);
+                              setStudent(d?.own_subjet?.class_room?.students);
+                              setShowProfile(false);
                               localStorage.setItem(
                                 "class_room_id",
                                 d.own_subjet.class_room_id
                               );
                             }}
                           >
-                            <div className="card shadow-lg border-0 p-1 p-lg-3 my-3 teacher-list-card">
+                            <div className="card shadow-lg border-0 p-1 p-lg-3 teacher-list-card h-100">
                               <div className="gap-1 gap-lg-3 justify-content-center">
                                 <div className="d-flex justify-content-center py-2 pb-4">
                                   <div
@@ -216,7 +216,9 @@ export default function Teacher() {
                                 <h5 className={styles.class_teacher}>
                                   শ্রেণি শিক্ষক :
                                   <span>
-                                    {teacher_name(d.own_subjet.class_room.class_teacher_id)}
+                                    {teacher_name(
+                                      d.own_subjet.class_room.class_teacher_id
+                                    )}
                                   </span>
                                 </h5>
                               </div>
@@ -263,18 +265,45 @@ export default function Teacher() {
 
                         {showCompitance && (
                           <>
-                            {
-                              parodorshita_acoron_tab === 0 &&
-                              <ParodorshitaComponent teacher_uid={teacher_uid} Student={Student} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-                            }
+                            {parodorshita_acoron_tab === 0 && (
+                              <ParodorshitaComponent
+                                teacher_uid={teacher_uid}
+                                Student={Student}
+                                assessment_uid={assessment_uid}
+                                pi_attr={pi_attr}
+                                showDetailsshikhonKalinMullayon={
+                                  showDetailsshikhonKalinMullayon
+                                }
+                                Showcollaps={Showcollaps}
+                                setShowcollaps={setShowcollaps}
+                                Mullayon_name={Mullayon_name}
+                                shikhonKalinMullayon={shikhonKalinMullayon}
+                                setshowDetailsshikhonKalinMullayon={
+                                  setshowDetailsshikhonKalinMullayon
+                                }
+                              />
+                            )}
 
-
-                            {
-                              parodorshita_acoron_tab === 1 &&
-                              <AcorongotoComponent teacher_uid={teacher_uid} teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-
-                            }
-
+                            {parodorshita_acoron_tab === 1 && (
+                              <AcorongotoComponent
+                                teacher_uid={teacher_uid}
+                                teacher={teacher}
+                                Student={Student}
+                                all_bis={all_bis}
+                                assessment_uid={assessment_uid}
+                                pi_attr={pi_attr}
+                                showDetailsshikhonKalinMullayon={
+                                  showDetailsshikhonKalinMullayon
+                                }
+                                Showcollaps={Showcollaps}
+                                setShowcollaps={setShowcollaps}
+                                Mullayon_name={Mullayon_name}
+                                shikhonKalinMullayon={shikhonKalinMullayon}
+                                setshowDetailsshikhonKalinMullayon={
+                                  setshowDetailsshikhonKalinMullayon
+                                }
+                              />
+                            )}
                           </>
                         )}
                       </>
