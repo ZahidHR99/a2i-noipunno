@@ -39,16 +39,16 @@ export default function DetailsShikhonMullayon({
     }
     setShowModal(true);
 
-    console.log(`data`, data);
+    // console.log(`data`, data);
   };
 
   return (
     <div>
       <div className="row">
         {showDetailsshikhonKalinMullayon?.pis?.map((d: any, ky: any) => (
-          <>
+          <div key={ky}>
             {show_pis(d.uid) && (
-              <div className="col-sm-6 col-md-12" key={ky}>
+              <div className="col-sm-6 col-md-12" >
                 <div className={`d-flex align-items-center py-2 gap-2`}>
                   <div className={`border-0 w-100`}>
                     <div className="d-flex justify-content-between">
@@ -84,7 +84,7 @@ export default function DetailsShikhonMullayon({
                 </div>
               </div>
             )}
-          </>
+          </div>
         ))}
       </div>
 

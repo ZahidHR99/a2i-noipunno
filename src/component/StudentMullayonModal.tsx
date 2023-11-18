@@ -60,7 +60,7 @@ export default function StudentMullayonModal({
       // setsubmitData(all_submited_PI)
       setsubmitObj(obj);
       checkedIn(obj);
-      console.log(`is_draft`, all_submited_PI, obj);
+      // console.log(`is_draft`, all_submited_PI, obj);
     }
   };
 
@@ -386,7 +386,30 @@ export default function StudentMullayonModal({
   // console.log(`submitData`, is_draft, all_submited_PI, al_pi_attr);
   // console.log("is_draft================", is_draft);
 
+  const [screenSize, setScreenSize] = useState('');
+  const handleResize = () => {
+    const width = window.innerWidth;
+    if (width <= 576) {
+      setScreenSize('small_screen');
+    } else if ((width > 576) && (width <= 767)) {
+      setScreenSize('medium_screen');
+    } else if ((width > 768) && (width <= 1280)) {
+      setScreenSize('large_screen');
+    }
+    else {
+      // greater than 1280 px
+      setScreenSize('extra_large_screen');
+    }
+  };
 
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className="content">
@@ -395,7 +418,7 @@ export default function StudentMullayonModal({
           {!submited && (
             <div className="table-responsive ">
               <table className="table table-lg table-responsive">
-                <thead>
+                <thead >
                   <tr>
                     <th scope="col" className="col-md-3 col-lg-2" style={{ width: "30%" }}>
                       শিক্ষার্থীর নাম{" "}
@@ -419,7 +442,7 @@ export default function StudentMullayonModal({
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody className={`${(screenSize === "small_screen") && "d-flex flex-column"}`}>
                   {Student.map((studnt: any, k: any) => (
                     <tr
                       key={k}
@@ -441,8 +464,8 @@ export default function StudentMullayonModal({
                         </td>
 
                         {al_pi_attr?.map((pi_attr: any, kedy: any) => (
-                          <td style={{}} key={kedy}>
-                            <div className="d-flex gap-2">
+                          <td style={{}} key={kedy} className={`${(screenSize === "small_screen") && "d-flex flex-column"}`}>
+                            <div className="d-flex  gap-2">
                               {!comment_status && (
                                 <>
                                   <div
@@ -615,6 +638,6 @@ export default function StudentMullayonModal({
       />
 
       {/* studnts List end */}
-    </div>
+    </div >
   );
 }

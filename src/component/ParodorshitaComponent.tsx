@@ -21,13 +21,13 @@ export default function ParodorshitaComponent({
     <div className="py-2">
       <div className="row">
         {shikhonKalinMullayon.map((d: any, key: any) => (
-          <>
+          <div key={key}>
             {
               show_compitance(d.uid) &&
 
               <>
                 <div
-                  key={key}
+
                   onClick={(e: any) => {
                     setshowDetailsshikhonKalinMullayon(d);
 
@@ -81,7 +81,7 @@ export default function ParodorshitaComponent({
 
               </>
             }
-          </>
+          </div>
         ))}
       </div>
     </div>

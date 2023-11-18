@@ -64,7 +64,7 @@ export default function ShowAssesment({
     fetchData();
   }, []);
 
-  console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
+  // console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
 
   return (
     <div className="container">

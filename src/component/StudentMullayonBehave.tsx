@@ -122,7 +122,7 @@ export default function StudentMullayonBehave({
     }
   };
 
-  console.log("showModal", showModal);
+  // console.log("showModal", showModal);
 
 
   const save_PI_evalution = async (
@@ -217,7 +217,7 @@ export default function StudentMullayonBehave({
         el.style.background = "#69CB1C";
       }
 
-      console.log(`el`, el);
+      // console.log(`el`, el);
 
       sumbitArray.push(obj[x]);
     }
