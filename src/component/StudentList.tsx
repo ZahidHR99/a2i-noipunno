@@ -6,6 +6,8 @@ import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { section_name, shift_name, version_name } from "../utils/Utils";
+import female_avt_img from '../../public/assets/images/user_avatar/female_std.png';
+import male_avt_img from '../../public/assets/images/user_avatar/male_std.png';
 
 const StudentList = () => {
 
@@ -72,6 +74,7 @@ const StudentList = () => {
     };
   }, []);
 
+  console.log("student", student);
 
   return (
     <>
@@ -83,7 +86,7 @@ const StudentList = () => {
               <div key={index} id={styles.student_card} className="card p-2 border">
                 <div className="d-flex justify-content-start align-items-center gap-4 ">
                   <div>
-                    <img src={studentImage} width="60rem" className="img-fluid" />
+                    <img src={(student.gender === "Male") ? male_avt_img : female_avt_img || male_avt_img} width="60rem" className="img-fluid" />
                   </div>
                   <div className="d-flex flex-column justify-content-center align-items-start">
                     <div>
@@ -120,7 +123,7 @@ const StudentList = () => {
                     } 
                      
                     mb-1 mx-auto mb-4 mb-md-2 mb-lg-2`}>
-                    <img src={studentImage} width="100rem" className="img-fluid border border-info p-1" />
+                    <img src={(selectedItem?.gender === "Male") ? male_avt_img : female_avt_img} width="100rem" className="img-fluid border border-info p-1" />
                   </div>
 
                   <table className={`table ${(screenSize === "small_screen") && "w-100" ||
@@ -212,7 +215,7 @@ const StudentList = () => {
                         <td className="p-1">
                           <strong>লিঙ্গঃ</strong>
                         </td>
-                        <td className="p-1">{"মহিলা"}</td>
+                        <td className="p-1">{selectedItem?.gender || "no-entry"}</td>
                       </tr>
                       <tr>
                         <td className="p-1">

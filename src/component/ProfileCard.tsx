@@ -10,7 +10,7 @@ export default function ProfileCard() {
     }
   }, []);
 
-  console.log(userDetails);
+  // console.log(userDetails);
 
 
   return (

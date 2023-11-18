@@ -20,7 +20,7 @@ export default function StudentMullayonBehave({
 }: any) {
 
 
-  console.log(`is_draft`, is_draft);
+  // console.log(`is_draft`, is_draft);
   const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
   const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
   const pi_attribute_weight =

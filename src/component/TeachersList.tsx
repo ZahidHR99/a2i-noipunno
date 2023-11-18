@@ -5,6 +5,7 @@ import styles from "./Home.style.module.css";
 import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { subject_name } from "../utils/Utils";
+import female_tec_avatar from "../../public/assets/images/teacher_avatar/female_tec_avatar.png"
 
 export default function TeachersList() {
   const [teachers, setTeachers] = useState<any>([]);
@@ -53,7 +54,7 @@ export default function TeachersList() {
   }, []);
 
 
-  console.log(selectedItem);
+  console.log("teachers", teachers);
 
 
   return (
@@ -69,7 +70,7 @@ export default function TeachersList() {
               <div key={index} id={styles.teacher_card_list} className="card p-2 border">
                 <div className="d-flex justify-content-start align-items-center gap-4">
                   <div>
-                    <img src={teacher_photo} width="60rem" className="img-fluid" />
+                    <img src={(teacher.gender === 'Male') && teacher_photo || (teacher.gender === 'Female') && female_tec_avatar || teacher_photo} width="60rem" className="img-fluid" />
                   </div>
 
                   <div className="d-flex flex-column justify-content-center align-items-start">
@@ -108,7 +109,7 @@ export default function TeachersList() {
             <Modal.Body>
               <div className="container">
                 <div className={`${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"} text-center text-md-end mx-auto mb-4 mb-md-0 mb-lg-0`} >
-                  <img src={teacher_photo} width="100rem" className="img-fluid border border-info p-1" />
+                  <img src={(selectedItem?.gender === "Male") && teacher_photo || (selectedItem?.gender === "Female") && female_tec_avatar || teacher_photo} width="100rem" className="img-fluid border border-info p-1" />
                 </div>
 
                 <table className={`${(screenSize === "small-screen") && "w-100" || (screenSize === "large-screen") && "w-75" || "w-75"} table text-sm mx-auto`}>
