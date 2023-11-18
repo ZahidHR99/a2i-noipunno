@@ -19,8 +19,10 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { FiAlertOctagon, FiAlertCircle } from "react-icons/fi";
 import { IoEllipsisVerticalSharp } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
+import { AiOutlineFileText } from "react-icons/ai";
 import IcoImg from "../assets/images/ico.png";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
+import ClassRoutine from "./ClassRoutine";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -608,6 +610,167 @@ export default function Teacher() {
                 </div>
               </div>
             </div>
+            <div className="container py-5">
+              <p className={`${styles.report_title}`}>রিপোর্ট</p>
+              <div className="row">
+                <div className="col-sm-6 col-md-4">
+                  <div className="card shadow-sm border-0 py-2 px-2">
+                    <div className="d-flex gap-2 align-items-center">
+                      <div className={`${styles.report_icon}`}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8 13H12"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8 17H16"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <h6 className={`m-0 ${styles.report}`}>
+                        হাজিরা প্রতিবেদন
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className="card shadow-sm border-0 py-2 px-2">
+                    <div className="d-flex gap-2 align-items-center">
+                      <div className={`${styles.report_icon}`}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8 13H12"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8 17H16"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <h6 className={`m-0 ${styles.report}`}>
+                        পারদর্শিতার মূল্যায়ন প্রতিবেদন (PI)
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-6 col-md-4">
+                  <div className="card shadow-sm border-0 py-2 px-2">
+                    <div className="d-flex gap-2 align-items-center">
+                      <div className={`${styles.report_icon}`}>
+                        {" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M21 7V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V7C3 4 4.5 2 8 2H16C19.5 2 21 4 21 7Z"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M14.5 4.5V6.5C14.5 7.6 15.4 8.5 16.5 8.5H18.5"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8 13H12"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M8 17H16"
+                            stroke="#FF4D4C"
+                            stroke-width="1.5"
+                            stroke-miterlimit="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <h6 className={`m-0 ${styles.report}`}>
+                        আচরণগত মূল্যায়ন প্রতিবেদন (BI)
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="container">
               <div className="row">
                 {/* {ShowProfile && (
@@ -785,95 +948,95 @@ export default function Teacher() {
                 </div>
               </div>
             </div>
-            <div className="container pt-5">
+            {/* <div className="container pt-5">
               <div className="row">
-                <div className="card shadow-sm border-0 p-2">
-                  <div className="d-flex justify-content-between align-items-center">
+                <div className="card shadow-sm border-0 p-3">
+                  <div className="d-flex justify-content-between align-items-center flex-column flex-md-row">
                     <div className="">
                       <h6 className={`p-0 m-0 ${styles.class_routine}`}>
                         ক্লাস রুটিন
                       </h6>
                     </div>
                     <div className="d-flex gap-2 align-items-center">
-                      <div>
+                      <div className="d-flex gap-2 align-items-center">
                         <h6 className={`p-0 m-0 ${styles.time_line}`}>
                           টাইমলাইন
                         </h6>
-                      </div>
-                      <div className={`${styles.session_and_all_dropdown}`}>
-                        <div className="dropdown">
-                          <button
-                            className="dropdown-toggle border-0 bg-white"
-                            type="button"
-                            id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            প্রভাতি সেশন
-                          </button>
-                          <ul
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1"
-                          >
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Another action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Something else here
-                              </a>
-                            </li>
-                          </ul>
+                        <div className={`${styles.session_and_all_dropdown}`}>
+                          <div className="dropdown">
+                            <button
+                              className="dropdown-toggle border-0 bg-white"
+                              type="button"
+                              id="dropdownMenuButton1"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              প্রভাতি সেশন
+                            </button>
+                            <ul
+                              className="dropdown-menu"
+                              aria-labelledby="dropdownMenuButton1"
+                            >
+                              <li>
+                                <a className="dropdown-item" href="#">
+                                  Action
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#">
+                                  Another action
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#">
+                                  Something else here
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                      <div>
+                      <div className="d-flex gap-2 align-items-center">
                         <h6 className={`p-0 m-0 ${styles.time_line}`}>
                           ক্লাস অনুসারে ফিল্টার
                         </h6>
-                      </div>
-                      <div className={`${styles.session_and_all_dropdown}`}>
-                        <div className="dropdown">
-                          <button
-                            className="dropdown-toggle border-0 bg-white"
-                            type="button"
-                            id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            সব
-                          </button>
-                          <ul
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton2"
-                          >
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Another action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Something else here
-                              </a>
-                            </li>
-                          </ul>
+                        <div className={`${styles.session_and_all_dropdown}`}>
+                          <div className="dropdown">
+                            <button
+                              className="dropdown-toggle border-0 bg-white"
+                              type="button"
+                              id="dropdownMenuButton2"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              সব
+                            </button>
+                            <ul
+                              className="dropdown-menu"
+                              aria-labelledby="dropdownMenuButton2"
+                            >
+                              <li>
+                                <a className="dropdown-item" href="#">
+                                  Action
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#">
+                                  Another action
+                                </a>
+                              </li>
+                              <li>
+                                <a className="dropdown-item" href="#">
+                                  Something else here
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="">
+                  <div className="py-2">
                     <ul className="nav d-flex justify-content-between align-items-center px-2">
                       <li className="nav-item d-flex align-items-center">
                         <h6 className="p-0 m-0">
@@ -1138,7 +1301,8 @@ export default function Teacher() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <ClassRoutine />
           </section>
         </div>
       )}
