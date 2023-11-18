@@ -22,6 +22,7 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { AiOutlineFileText } from "react-icons/ai";
 import IcoImg from "../assets/images/ico.png";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
+import ClassRoutine from "./ClassRoutine";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -947,7 +948,7 @@ export default function Teacher() {
                 </div>
               </div>
             </div>
-            <div className="container pt-5">
+            {/* <div className="container pt-5">
               <div className="row">
                 <div className="card shadow-sm border-0 p-3">
                   <div className="d-flex justify-content-between align-items-center flex-column flex-md-row">
@@ -1300,7 +1301,8 @@ export default function Teacher() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <ClassRoutine />
           </section>
         </div>
       )}
