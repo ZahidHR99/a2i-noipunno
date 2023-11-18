@@ -401,7 +401,6 @@ export default function StudentMullayonModal({
       setSs('ls');
     }
     else {
-      // greater than 1280 px
       setSs('el');
     }
   };
