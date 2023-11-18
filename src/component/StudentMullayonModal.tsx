@@ -411,8 +411,8 @@ export default function StudentMullayonModal({
     };
   }, []);
 
-  console.log("submitObj", submitObj);
-  console.log("submitData==>", submitData);
+  // console.log("submitObj", submitObj);
+  // console.log("all_submited_PI", all_submited_PI);
 
 
   return (
@@ -495,7 +495,7 @@ export default function StudentMullayonModal({
                                     // }
 
                                     onClick={() => {
-                                      if (submitData.length == 0) {
+                                      if (all_submited_PI.length !== 4) {
                                         save_PI_evalution(
                                           pi_attr.pi_uid,
                                           pi_attr.weight_uid,
