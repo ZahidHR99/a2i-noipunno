@@ -241,10 +241,10 @@ export default function Teacher() {
                         <ul className="nav d-flex justify-content-between align-items-center px-2">
                           <li className="nav-item d-flex align-items-center">
                             <h6 className="p-0 m-0">
-                              <FiAlertOctagon className="fs-4" />
+                              <FiAlertOctagon className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav"
+                              className="nav-link tab_nav text-dark fs-5"
                               id="application-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#application"
@@ -255,12 +255,12 @@ export default function Teacher() {
                           </li>
                           <li className="nav-item d-flex align-items-center">
                             <h6 className="p-0 m-0">
-                              <FiAlertCircle className="fs-4" />
+                              <FiAlertCircle className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav"
-                              // id="notice-tab"
-                              // data-bs-toggle="tab"
+                              className="nav-link tab_nav text-dark fs-5"
+                              id="notice-tab"
+                              data-bs-toggle="tab"
                               data-bs-target="#notice"
                               href="#"
                             >
@@ -382,57 +382,6 @@ export default function Teacher() {
                                 </div>
                               </div>
                             </div>
-                            {/* <div className="border-bottom py-1">
-                              <div className="d-flex gap-2 px-2 align-items-center">
-                                <div style={{ color: "#69CB1C" }}>
-                                  <FaRegArrowAltCircleRight className="fs-5" />
-                                </div>
-                                <div
-                                  className={`${styles.request_to_change_ph_no}`}
-                                >
-                                  ফোন নম্বর পরিবর্তনের অনুরোধ করেছেন
-                                </div>
-                              </div>
-                              <div
-                                className={`px-2 ${styles.teacher_name_designation}`}
-                              >
-                                <div className="d-flex gap-2 p">
-                                  <div>সামিনা চৌধুরী</div>
-                                  <div>|</div>
-                                  <div>সহকারী শিক্ষক</div>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between py-2 px-2">
-                                <div className="d-flex gap-1">
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Class 6
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Day
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Section A
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div>
-                                  <p className={`m-0 ${styles.requested_date}`}>
-                                    অনুরোধ করেছেন ৬ অক্টোবর ২০২৩
-                                  </p>
-                                </div>
-                              </div>
-                            </div> */}
                           </div>
                           <div
                             className="tab-pane fade"
@@ -510,57 +459,6 @@ export default function Teacher() {
                                 className={`px-2 ${styles.teacher_name_designation}`}
                               >
                                 <div className="d-flex gap-2 pt-1">
-                                  <div>সামিনা চৌধুরী</div>
-                                  <div>|</div>
-                                  <div>সহকারী শিক্ষক</div>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between py-2 px-2">
-                                <div className="d-flex gap-1">
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Class 6
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Day
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Section A
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div>
-                                  <p className={`m-0 ${styles.requested_date}`}>
-                                    অনুরোধ করেছেন ৬ অক্টোবর ২০২৩
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="border-bottom py-1">
-                              <div className="d-flex gap-2 px-2 align-items-center">
-                                <div style={{ color: "#69CB1C" }}>
-                                  <FaRegArrowAltCircleRight className="fs-5" />
-                                </div>
-                                <div
-                                  className={`${styles.request_to_change_ph_no}`}
-                                >
-                                  ফোন নম্বর পরিবর্তনের অনুরোধ করেছেন
-                                </div>
-                              </div>
-                              <div
-                                className={`px-2 ${styles.teacher_name_designation}`}
-                              >
-                                <div className="d-flex gap-2 p">
                                   <div>সামিনা চৌধুরী</div>
                                   <div>|</div>
                                   <div>সহকারী শিক্ষক</div>
