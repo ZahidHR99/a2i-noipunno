@@ -25,6 +25,7 @@ import { section_name, shift_name, teacher_name } from "../utils/Utils";
 import ClassRoutine from "./ClassRoutine";
 
 export default function Teacher() {
+
   const [shift, setShift] = useState([]);
   const [subject, setsubject] = useState([]);
   const [allCompitance, setallCompitance] = useState<any>({});
@@ -118,14 +119,52 @@ export default function Teacher() {
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const pi_attr = (data: any, e: any = "") => {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
+
+  const [all_student, set_All_student] = useState([]);
+  const student_lsit = async () => {
+    const student: any = [];
+    const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+    studentsData.data.data.subjects.map((std_data: any) => {
+      return std_data.class_room.students.map((stu_data: any) => {
+        stu_data.competence = std_data.competence;
+        student.push(stu_data);
+      });
+    });
+
+    const uniqueObjectsArray = student.filter(
+      (obj: any, index: any, self: any) =>
+        index === self.findIndex((o: any) => o.uid === obj.uid)
+    );
+    set_All_student(uniqueObjectsArray);
+  };
+
+  const [all_teacher, set_all_teacher] = useState([]);
+  const teacher_list = async () => {
+    const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
+    set_all_teacher(teachersData?.data?.teachers)
+  };
+
+  const [total_class, set_Total_class] = useState([]);
+  const all_class = async () => {
+    const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
+    set_Total_class(local_storege_data?.data?.subjects);
+  };
+
+  useEffect(() => {
+    fetchData();
+    student_lsit();
+    teacher_list();
+    all_class();
+  }, []);
+
+  // console.log("all_student", all_student);
+  // console.log("all_teacher", all_teacher);
+
 
   return (
     <div className="content mb-5">
@@ -164,7 +203,8 @@ export default function Teacher() {
                         className={`d-flex justify-content-center align-items-center ${styles.total_students_circle}`}
                       >
                         <h5 className={`p-0 m-0 ${styles.total_students}`}>
-                          ৯২৩
+                          {/* "৯২৩" */}
+                          {all_student?.length}
                         </h5>
                       </div>
                     </div>
@@ -187,7 +227,8 @@ export default function Teacher() {
                         className={`d-flex justify-content-center align-items-center ${styles.total_class_rooms_circle}`}
                       >
                         <h5 className={`p-0 m-0 ${styles.total_students}`}>
-                          ৫২
+                          {/* ৫২ */}
+                          {all_teacher?.length}
                         </h5>
                       </div>
                     </div>
@@ -210,7 +251,8 @@ export default function Teacher() {
                         className={`d-flex justify-content-center align-items-center ${styles.total_class_rooms_circle}`}
                       >
                         <h5 className={`p-0 m-0 ${styles.total_students}`}>
-                          ৪১
+                          {/* ৪১ */}
+                          {total_class?.length}
                         </h5>
                       </div>
                     </div>
@@ -234,10 +276,10 @@ export default function Teacher() {
                         <ul className="nav d-flex justify-content-between align-items-center px-2">
                           <li className="nav-item d-flex align-items-center">
                             <h6 className="p-0 m-0">
-                              <FiAlertOctagon className="fs-4" />
+                              <FiAlertOctagon className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav"
+                              className="nav-link tab_nav text-dark fs-5 active"
                               id="application-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#application"
@@ -248,12 +290,12 @@ export default function Teacher() {
                           </li>
                           <li className="nav-item d-flex align-items-center">
                             <h6 className="p-0 m-0">
-                              <FiAlertCircle className="fs-4" />
+                              <FiAlertCircle className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav"
-                              // id="notice-tab"
-                              // data-bs-toggle="tab"
+                              className="nav-link tab_nav text-dark fs-5"
+                              id="notice-tab"
+                              data-bs-toggle="tab"
                               data-bs-target="#notice"
                               href="#"
                             >
@@ -375,57 +417,6 @@ export default function Teacher() {
                                 </div>
                               </div>
                             </div>
-                            {/* <div className="border-bottom py-1">
-                              <div className="d-flex gap-2 px-2 align-items-center">
-                                <div style={{ color: "#69CB1C" }}>
-                                  <FaRegArrowAltCircleRight className="fs-5" />
-                                </div>
-                                <div
-                                  className={`${styles.request_to_change_ph_no}`}
-                                >
-                                  ফোন নম্বর পরিবর্তনের অনুরোধ করেছেন
-                                </div>
-                              </div>
-                              <div
-                                className={`px-2 ${styles.teacher_name_designation}`}
-                              >
-                                <div className="d-flex gap-2 p">
-                                  <div>সামিনা চৌধুরী</div>
-                                  <div>|</div>
-                                  <div>সহকারী শিক্ষক</div>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between py-2 px-2">
-                                <div className="d-flex gap-1">
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Class 6
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Day
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Section A
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div>
-                                  <p className={`m-0 ${styles.requested_date}`}>
-                                    অনুরোধ করেছেন ৬ অক্টোবর ২০২৩
-                                  </p>
-                                </div>
-                              </div>
-                            </div> */}
                           </div>
                           <div
                             className="tab-pane fade"
@@ -503,57 +494,6 @@ export default function Teacher() {
                                 className={`px-2 ${styles.teacher_name_designation}`}
                               >
                                 <div className="d-flex gap-2 pt-1">
-                                  <div>সামিনা চৌধুরী</div>
-                                  <div>|</div>
-                                  <div>সহকারী শিক্ষক</div>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between py-2 px-2">
-                                <div className="d-flex gap-1">
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Class 6
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Day
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Section A
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div>
-                                  <p className={`m-0 ${styles.requested_date}`}>
-                                    অনুরোধ করেছেন ৬ অক্টোবর ২০২৩
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="border-bottom py-1">
-                              <div className="d-flex gap-2 px-2 align-items-center">
-                                <div style={{ color: "#69CB1C" }}>
-                                  <FaRegArrowAltCircleRight className="fs-5" />
-                                </div>
-                                <div
-                                  className={`${styles.request_to_change_ph_no}`}
-                                >
-                                  ফোন নম্বর পরিবর্তনের অনুরোধ করেছেন
-                                </div>
-                              </div>
-                              <div
-                                className={`px-2 ${styles.teacher_name_designation}`}
-                              >
-                                <div className="d-flex gap-2 p">
                                   <div>সামিনা চৌধুরী</div>
                                   <div>|</div>
                                   <div>সহকারী শিক্ষক</div>
