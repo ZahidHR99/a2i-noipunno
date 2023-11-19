@@ -174,21 +174,14 @@ export default function Teacher() {
         </div>
       )}
 
-      {!ShowProfile && (
-        <BreadcumbHome
-          showSubjectname={showSubjectname}
-          setShowProfile={setShowProfile}
-          seshowSubject={seshowSubject}
-          title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
-        />
-      )}
+      
       {!loader && (
         <div className="dashboard-section">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row">
                 <div className="col-sm-6 col-md-4 col-lg-3">
-                  {ShowProfile && <ProfileCard />}
+                <ProfileCard />
                 </div>
                 <div className="col-sm-6 col-md-4 col-lg-3">Chart</div>
                 <div className="col-sm-6 col-md-4 col-lg-3">
@@ -283,10 +276,10 @@ export default function Teacher() {
                         <ul className="nav d-flex justify-content-between align-items-center px-2">
                           <li className="nav-item d-flex align-items-center">
                             <h6 className="p-0 m-0">
-                              <FiAlertOctagon className="fs-4" />
+                              <FiAlertOctagon className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav"
+                              className="nav-link tab_nav text-dark fs-5 active"
                               id="application-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#application"
@@ -297,12 +290,12 @@ export default function Teacher() {
                           </li>
                           <li className="nav-item d-flex align-items-center">
                             <h6 className="p-0 m-0">
-                              <FiAlertCircle className="fs-4" />
+                              <FiAlertCircle className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav"
-                              // id="notice-tab"
-                              // data-bs-toggle="tab"
+                              className="nav-link tab_nav text-dark fs-5"
+                              id="notice-tab"
+                              data-bs-toggle="tab"
                               data-bs-target="#notice"
                               href="#"
                             >
@@ -424,57 +417,6 @@ export default function Teacher() {
                                 </div>
                               </div>
                             </div>
-                            {/* <div className="border-bottom py-1">
-                              <div className="d-flex gap-2 px-2 align-items-center">
-                                <div style={{ color: "#69CB1C" }}>
-                                  <FaRegArrowAltCircleRight className="fs-5" />
-                                </div>
-                                <div
-                                  className={`${styles.request_to_change_ph_no}`}
-                                >
-                                  ফোন নম্বর পরিবর্তনের অনুরোধ করেছেন
-                                </div>
-                              </div>
-                              <div
-                                className={`px-2 ${styles.teacher_name_designation}`}
-                              >
-                                <div className="d-flex gap-2 p">
-                                  <div>সামিনা চৌধুরী</div>
-                                  <div>|</div>
-                                  <div>সহকারী শিক্ষক</div>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between py-2 px-2">
-                                <div className="d-flex gap-1">
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Class 6
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Day
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Section A
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div>
-                                  <p className={`m-0 ${styles.requested_date}`}>
-                                    অনুরোধ করেছেন ৬ অক্টোবর ২০২৩
-                                  </p>
-                                </div>
-                              </div>
-                            </div> */}
                           </div>
                           <div
                             className="tab-pane fade"
@@ -552,57 +494,6 @@ export default function Teacher() {
                                 className={`px-2 ${styles.teacher_name_designation}`}
                               >
                                 <div className="d-flex gap-2 pt-1">
-                                  <div>সামিনা চৌধুরী</div>
-                                  <div>|</div>
-                                  <div>সহকারী শিক্ষক</div>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between py-2 px-2">
-                                <div className="d-flex gap-1">
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Class 6
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Day
-                                    </h6>
-                                  </div>
-                                  <div>
-                                    <h6
-                                      className={`m-0 ${styles.class_day_section}`}
-                                    >
-                                      Section A
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div>
-                                  <p className={`m-0 ${styles.requested_date}`}>
-                                    অনুরোধ করেছেন ৬ অক্টোবর ২০২৩
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="border-bottom py-1">
-                              <div className="d-flex gap-2 px-2 align-items-center">
-                                <div style={{ color: "#69CB1C" }}>
-                                  <FaRegArrowAltCircleRight className="fs-5" />
-                                </div>
-                                <div
-                                  className={`${styles.request_to_change_ph_no}`}
-                                >
-                                  ফোন নম্বর পরিবর্তনের অনুরোধ করেছেন
-                                </div>
-                              </div>
-                              <div
-                                className={`px-2 ${styles.teacher_name_designation}`}
-                              >
-                                <div className="d-flex gap-2 p">
                                   <div>সামিনা চৌধুরী</div>
                                   <div>|</div>
                                   <div>সহকারী শিক্ষক</div>
@@ -815,11 +706,14 @@ export default function Teacher() {
             </div>
             <div className="container">
               <div className="row">
-                {/* {ShowProfile && (
-                  <div className="col-md-3">
-                    <ProfileCard />
-                  </div>
-                )} */}
+              {!ShowProfile && (
+        <BreadcumbHome
+          showSubjectname={showSubjectname}
+          setShowProfile={setShowProfile}
+          seshowSubject={seshowSubject}
+          title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
+        />
+      )}
 
                 <div className={ShowProfile ? "col-md-9" : "col-md-12"}>
                   <div className="row d-flex gap-2">
@@ -990,360 +884,6 @@ export default function Teacher() {
                 </div>
               </div>
             </div>
-            {/* <div className="container pt-5">
-              <div className="row">
-                <div className="card shadow-sm border-0 p-3">
-                  <div className="d-flex justify-content-between align-items-center flex-column flex-md-row">
-                    <div className="">
-                      <h6 className={`p-0 m-0 ${styles.class_routine}`}>
-                        ক্লাস রুটিন
-                      </h6>
-                    </div>
-                    <div className="d-flex gap-2 align-items-center">
-                      <div className="d-flex gap-2 align-items-center">
-                        <h6 className={`p-0 m-0 ${styles.time_line}`}>
-                          টাইমলাইন
-                        </h6>
-                        <div className={`${styles.session_and_all_dropdown}`}>
-                          <div className="dropdown">
-                            <button
-                              className="dropdown-toggle border-0 bg-white"
-                              type="button"
-                              id="dropdownMenuButton1"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              প্রভাতি সেশন
-                            </button>
-                            <ul
-                              className="dropdown-menu"
-                              aria-labelledby="dropdownMenuButton1"
-                            >
-                              <li>
-                                <a className="dropdown-item" href="#">
-                                  Action
-                                </a>
-                              </li>
-                              <li>
-                                <a className="dropdown-item" href="#">
-                                  Another action
-                                </a>
-                              </li>
-                              <li>
-                                <a className="dropdown-item" href="#">
-                                  Something else here
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="d-flex gap-2 align-items-center">
-                        <h6 className={`p-0 m-0 ${styles.time_line}`}>
-                          ক্লাস অনুসারে ফিল্টার
-                        </h6>
-                        <div className={`${styles.session_and_all_dropdown}`}>
-                          <div className="dropdown">
-                            <button
-                              className="dropdown-toggle border-0 bg-white"
-                              type="button"
-                              id="dropdownMenuButton2"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              সব
-                            </button>
-                            <ul
-                              className="dropdown-menu"
-                              aria-labelledby="dropdownMenuButton2"
-                            >
-                              <li>
-                                <a className="dropdown-item" href="#">
-                                  Action
-                                </a>
-                              </li>
-                              <li>
-                                <a className="dropdown-item" href="#">
-                                  Another action
-                                </a>
-                              </li>
-                              <li>
-                                <a className="dropdown-item" href="#">
-                                  Something else here
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="py-2">
-                    <ul className="nav d-flex justify-content-between align-items-center px-2">
-                      <li className="nav-item d-flex align-items-center">
-                        <h6 className="p-0 m-0">
-                          <HiOutlineUsers className="fs-5" />
-                        </h6>
-                        <a
-                          className="nav-link tab_nav"
-                          id="class_six-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#class_six"
-                          href="#"
-                        >
-                          ষষ্ঠ শ্রেণী
-                        </a>
-                      </li>
-                      <li className="nav-item d-flex align-items-center">
-                        <h6 className="p-0 m-0">
-                          <HiOutlineUsers className="fs-5" />
-                        </h6>
-                        <a
-                          className="nav-link tab_nav"
-                          id="class_seven-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#class_seven"
-                          href="#"
-                        >
-                          সপ্তম শ্রেণী
-                        </a>
-                      </li>
-                      <li className="nav-item d-flex align-items-center">
-                        <h6 className="p-0 m-0">
-                          <HiOutlineUsers className="fs-5" />
-                        </h6>
-                        <a
-                          className="nav-link tab_nav"
-                          id="class_eight-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#class_eight"
-                          href="#"
-                        >
-                          অষ্টম শ্রেণী
-                        </a>
-                      </li>
-                      <li className="nav-item d-flex align-items-center">
-                        <h6 className="p-0 m-0">
-                          <HiOutlineUsers className="fs-5" />
-                        </h6>
-                        <a
-                          className="nav-link tab_nav"
-                          id="class_nine-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#class_nine"
-                          href="#"
-                        >
-                          নবম শ্রেণী
-                        </a>
-                      </li>
-                      <li className="nav-item d-flex align-items-center">
-                        <h6 className="p-0 m-0">
-                          <HiOutlineUsers className="fs-5" />
-                        </h6>
-                        <a
-                          className="nav-link tab_nav"
-                          id="class_ten-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#class_ten"
-                          href="#"
-                        >
-                          দশম শ্রেণী
-                        </a>
-                      </li>
-                    </ul>
-                    <div className="d-flex gap-2">
-                      <h6
-                        className={`my-2 py-1 px-3 p-0 m-0 ${styles.classes_name}`}
-                      >
-                        পদ্মা
-                      </h6>
-                      <h6
-                        className={`my-2 py-1 px-3 p-0 m-0 ${styles.classes_name}`}
-                      >
-                        মেঘনা
-                      </h6>
-                      <h6
-                        className={`my-2 py-1 px-3 p-0 m-0 ${styles.classes_name}`}
-                      >
-                        যমুনা
-                      </h6>
-                    </div>
-                    <div className="tab-content" id="tabContent">
-                      <div
-                        className="tab-pane fade show active"
-                        id="class_six"
-                        role="tabpanel"
-                        aria-labelledby="class_six-tab"
-                      >
-                        <div className="table-responsive">
-                          <table className="table table-bordered table-hover">
-                            <thead>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th scope="col"></th>
-                                <th
-                                  scope="col"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  8:00AM - 9:00AM
-                                </th>
-                                <th
-                                  scope="col"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  8:00AM - 9:00AM
-                                </th>
-                                <th
-                                  scope="col"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  8:00AM - 9:00AM
-                                </th>
-                                <th
-                                  scope="col"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  8:00AM - 9:00AM
-                                </th>
-                                <th
-                                  scope="col"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  8:00AM - 9:00AM
-                                </th>
-                                <th
-                                  scope="col"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  8:00AM - 9:00AM
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th
-                                  scope="row"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  Cell label
-                                </th>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                              </tr>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th
-                                  scope="row"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  Cell label
-                                </th>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                              </tr>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th
-                                  scope="row"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  Cell label
-                                </th>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                              </tr>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th
-                                  scope="row"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  Cell label
-                                </th>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                              </tr>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th
-                                  scope="row"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  Cell label
-                                </th>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                              </tr>
-                              <tr className={`${styles.table_row_style}`}>
-                                <th
-                                  scope="row"
-                                  style={{ backgroundColor: "#F0F9F9" }}
-                                >
-                                  Cell label
-                                </th>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                                <td>Cell label</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <div
-                        className="tab-pane fade"
-                        id="class_seven"
-                        role="tabpanel"
-                        aria-labelledby="class_seven-tab"
-                      >
-                        <h1>সপ্তম শ্রেণী</h1>
-                      </div>
-                      <div
-                        className="tab-pane fade"
-                        id="class_eight"
-                        role="tabpanel"
-                        aria-labelledby="class_eight-tab"
-                      >
-                        <h1>অষ্টম শ্রেণী</h1>
-                      </div>
-                      <div
-                        className="tab-pane fade"
-                        id="class_nine"
-                        role="tabpanel"
-                        aria-labelledby="class_nine-tab"
-                      >
-                        <h1>নবম শ্রেণী</h1>
-                      </div>
-                      <div
-                        className="tab-pane fade"
-                        id="class_ten"
-                        role="tabpanel"
-                        aria-labelledby="class_ten-tab"
-                      >
-                        <h1>class_ten</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <ClassRoutine />
           </section>
         </div>
