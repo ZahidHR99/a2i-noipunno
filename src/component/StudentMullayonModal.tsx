@@ -385,29 +385,32 @@ export default function StudentMullayonModal({
 
   // console.log(`submitData`, is_draft, all_submited_PI, al_pi_attr);
   // console.log("is_draft================", is_draft);
+  // sS
+  // setsS
+  //handleResize
+  // sm
 
-  const [screenSize, setScreenSize] = useState('');
-  const handleResize = () => {
-    const width = window.innerWidth;
-    if (width <= 576) {
-      setScreenSize('small_screen');
-    } else if ((width > 576) && (width <= 767)) {
-      setScreenSize('medium_screen');
-    } else if ((width > 768) && (width <= 1280)) {
-      setScreenSize('large_screen');
+  const [sS, setSs] = useState('');
+  const hR = () => {
+    const w = window.innerWidth;
+    if (w <= 576) {
+      setSs('sm');
+    } else if ((w > 576) && (w <= 767)) {
+      setSs('mc');
+    } else if ((w > 768) && (w <= 1280)) {
+      setSs('ls');
     }
     else {
-      // greater than 1280 px
-      setScreenSize('extra_large_screen');
+      setSs('el');
     }
   };
 
 
   useEffect(() => {
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    hR();
+    window.addEventListener('resize', hR);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', hR);
     };
   }, []);
 
@@ -447,7 +450,7 @@ export default function StudentMullayonModal({
                   </tr>
                 </thead>
 
-                <tbody className={`${(screenSize === "small_screen") && "d-flex flex-column"}`}>
+                <tbody className={`${(sS === "sm") && "d-flex flex-column"}`}>
                   {Student.map((studnt: any, k: any) => (
                     <tr
                       key={k}
@@ -469,7 +472,7 @@ export default function StudentMullayonModal({
                         </td>
 
                         {al_pi_attr?.map((pi_attr: any, kedy: any) => (
-                          <td style={{}} key={kedy} className={`${(screenSize === "small_screen") && "d-flex flex-column"}`}>
+                          <td style={{}} key={kedy} className={`${(sS === "sm") && "d-flex flex-column"}`}>
                             <div className="d-flex  gap-2">
                               {!comment_status && (
                                 <>
