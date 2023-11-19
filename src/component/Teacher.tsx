@@ -237,7 +237,7 @@ export default function Teacher() {
                               <FiAlertOctagon className="fs-5 text-dark" />
                             </h6>
                             <a
-                              className="nav-link tab_nav text-dark fs-5"
+                              className="nav-link tab_nav text-dark fs-5 active"
                               id="application-tab"
                               data-bs-toggle="tab"
                               data-bs-target="#application"
