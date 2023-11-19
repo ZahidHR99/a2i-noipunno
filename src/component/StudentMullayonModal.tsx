@@ -113,6 +113,8 @@ export default function StudentMullayonModal({
   const handleSave = async (e: any, submit_status: any) => {
 
     try {
+      setmsg("");
+      seterr("");
       const data: any = submitData.map((d: any) => {
         d.submit_status = submit_status;
         return d;
@@ -147,19 +149,28 @@ export default function StudentMullayonModal({
           setcomment_status(true);
           checkedIn_comment(submitObj);
         }
-        seterr("");
+        
 
       } else {
         /* Without Asking to Save Draft */
+        if (data.length > 0 ) {
+          await Pi_save(data);
+          setsubmited(true);
+          const obj_ = localStorage.getItem("PI_saved");
+          const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
+          const submit_obj = { ...submit_obj_, ...submitObj };
+          localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
+          setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+          seterr("");
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "আপনি কোন কিছু নির্বাচন করেন নি!",
+            confirmButtonText: "হ্যাঁ"
+          });
+        }
 
-        await Pi_save(data);
-        setsubmited(true);
-        const obj_ = localStorage.getItem("PI_saved");
-        const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
-        const submit_obj = { ...submit_obj_, ...submitObj };
-        localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
-        setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-        seterr("");
+        
 
 
         /*Asking to Save Draft */
@@ -194,11 +205,9 @@ export default function StudentMullayonModal({
       console.log("err", error);
       Swal.fire({
         icon: "error",
-        title: "আপনি কোন কিছু নির্বাচন করেন নি!",
+        title: "কিছু ভুল হয়েছে",
         confirmButtonText: "হ্যাঁ"
       });
-      // seterr("আপনি কোন কিছু সিলেক্ট করেন নি!");
-      setmsg("");
     }
   };
 
