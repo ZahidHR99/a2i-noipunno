@@ -4,6 +4,7 @@ import { add_pi_uid, weightId } from "../utils/Utils";
 import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
 import { Bi_save, get_bi_evaluation_by_bi } from "../Request";
+import Swal from "sweetalert2";
 
 export default function StudentMullayonBehave({
   all_bis,
@@ -19,7 +20,7 @@ export default function StudentMullayonBehave({
 }: any) {
 
 
-  console.log(`is_draft`, is_draft);
+  // console.log(`is_draft`, is_draft);
   const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
   const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
   const pi_attribute_weight =
@@ -30,6 +31,41 @@ export default function StudentMullayonBehave({
   const [err, seterr] = useState<any>("");
   const [comment_status, setcomment_status] = useState<any>(false);
   const [submited, setsubmited] = useState<any>(false);
+  const [showModal, setShowModal] = useState<any>(false);
+
+
+  // const handleSave = async (e: any, submit_status: any) => {
+  //   try {
+  //     const data: any = submitData.map((d: any) => {
+  //       d.submit_status = submit_status;
+  //       return d;
+  //     });
+
+  //     if (submit_status == 2) {
+  //       if (submitData.length == 10) {
+  //         await Bi_save(data);
+  //         setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
+  //         setsubmited(true);
+  //       } else {
+  //         if (submitData.length > 0) {
+  //           setcomment_status(true);
+  //         }
+
+  //         checkedIn_comment(submitObj);
+  //       }
+
+  //       seterr("");
+  //     } else {
+  //       await Bi_save(data);
+  //       setsubmited(true);
+  //       setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+  //       seterr("");
+  //     }
+  //   } catch (error) {
+  //     seterr(" কিছু ভুল হয়েছে");
+  //   }
+  // };
+
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
@@ -40,9 +76,27 @@ export default function StudentMullayonBehave({
 
       if (submit_status == 2) {
         if (submitData.length == 10) {
-          await Bi_save(data);
-          setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
-          setsubmited(true);
+          Swal.fire({
+            title: "আপনি কি তথ্য সংরক্ষণ করতে চান?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "না",
+            confirmButtonText: "হ্যাঁ"
+          }).then(async (result) => {
+            if (result.isConfirmed) {
+              await Bi_save(data);
+              setsubmited(true);
+              Swal.fire({
+                title: "আপনার তথ্য সংরক্ষণ করা হয়েছে!",
+                icon: "success"
+              });
+
+            }
+          });
+
+
         } else {
           if (submitData.length > 0) {
             setcomment_status(true);
@@ -59,9 +113,17 @@ export default function StudentMullayonBehave({
         seterr("");
       }
     } catch (error) {
-      seterr(" কিছু ভুল হয়েছে");
+      Swal.fire({
+        icon: "error",
+        title: "আপনি কোন কিছু নির্বাচন করেন নি!",
+        confirmButtonText: "হ্যাঁ"
+      });
+      // seterr(" কিছু ভুল হয়েছে");
     }
   };
+
+  // console.log("showModal", showModal);
+
 
   const save_PI_evalution = async (
     pi_uid: any,
@@ -155,7 +217,7 @@ export default function StudentMullayonBehave({
         el.style.background = "#69CB1C";
       }
 
-      console.log(`el`, el);
+      // console.log(`el`, el);
 
       sumbitArray.push(obj[x]);
     }
@@ -253,7 +315,8 @@ export default function StudentMullayonBehave({
     }
   };
 
-  console.log(`submitData`, submitData);
+  // console.log(`submitData`, submitData);
+
 
   return (
     <div className="content">
@@ -300,15 +363,31 @@ export default function StudentMullayonBehave({
                         <div
                           className="card  h-100 shadow-lg border-0 p-2 "
                           // style={{ backgroundColor: "#F0FAE9" }}
-                          onClick={(e: any) =>
-                            save_PI_evalution(
-                              w_d.uid,
-                              w_d.weight_uid,
-                              student.uid,
-                              w_d.bi_uid,
-                              null
-                            )
+                          // onClick={(e: any) =>
+                          //   save_PI_evalution(
+                          //     w_d.uid,
+                          //     w_d.weight_uid,
+                          //     student.uid,
+                          //     w_d.bi_uid,
+                          //     null
+                          //   )
+                          // }
+
+
+                          onClick={(e: any) => {
+                            if (is_draft == 1) {
+                              save_PI_evalution(
+                                w_d.uid,
+                                w_d.weight_uid,
+                                student.uid,
+                                w_d.bi_uid,
+                                null
+                              )
+                            }
                           }
+                          }
+
+
                         >
                           <div
                             className="d-flex gap-2"
@@ -327,14 +406,14 @@ export default function StudentMullayonBehave({
                             >
                               {weightId(pi_attribute_weight, w_d?.weight_uid) ==
                                 "Square" && (
-                                <BiSquareRounded className="fs-5 mt-1" />
-                              )}
+                                  <BiSquareRounded className="fs-5 mt-1" />
+                                )}
                               {weightId(pi_attribute_weight, w_d?.weight_uid) ==
                                 "Circle" && <BiCircle className="fs-5 mt-1" />}
                               {weightId(pi_attribute_weight, w_d?.weight_uid) ==
                                 "Triangle" && (
-                                <FiTriangle className="fs-5 mt-1" />
-                              )}
+                                  <FiTriangle className="fs-5 mt-1" />
+                                )}
 
                               {/* <TiTick className={`${styles.tick_mark}`} /> */}
                             </div>
