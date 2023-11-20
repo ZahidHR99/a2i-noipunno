@@ -95,6 +95,9 @@
 
 .assestment-tabs .active {
     border-bottom: 2px solid #428f92;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .fade.modal.show {
