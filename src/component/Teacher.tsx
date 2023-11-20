@@ -53,6 +53,10 @@ export default function Teacher() {
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
+  const [total_student, setTotal_student] = useState<any>([]);
+  const [total_teacher, setTotal_teacher] = useState<any>([]);
+  const [total_class, setTotal_class] = useState<any>([]);
+
   const fetchData = async () => {
     const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
     const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -125,7 +129,8 @@ export default function Teacher() {
     setelement(e);
   };
 
-  const [all_student, set_All_student] = useState([]);
+
+
   const student_lsit = async () => {
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
@@ -140,19 +145,17 @@ export default function Teacher() {
       (obj: any, index: any, self: any) =>
         index === self.findIndex((o: any) => o.uid === obj.uid)
     );
-    set_All_student(uniqueObjectsArray);
+    setTotal_student(uniqueObjectsArray);
   };
 
-  const [all_teacher, set_all_teacher] = useState([]);
   const teacher_list = async () => {
     const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    set_all_teacher(teachersData?.data?.teachers)
+    setTotal_teacher(teachersData?.data?.teachers)
   };
 
-  const [total_class, set_Total_class] = useState([]);
   const all_class = async () => {
     const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    set_Total_class(local_storege_data?.data?.subjects);
+    setTotal_class(local_storege_data?.data?.subjects);
   };
 
   useEffect(() => {
@@ -174,18 +177,19 @@ export default function Teacher() {
         </div>
       )}
 
-      
+
       {!loader && (
         <div className="dashboard-section">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row">
                 <div className="col-sm-6 col-md-4 col-lg-3">
-                <ProfileCard />
+                  <ProfileCard />
                 </div>
                 <div className="col-sm-6 col-md-4 col-lg-3">Chart</div>
+
                 <div className="col-sm-6 col-md-4 col-lg-3">
-                  <div className="card shadow-sm border-0">
+                  {/* <div className="card shadow-sm border-0">
                     <div className="d-flex align-items-center justify-content-around py-3 px-2">
                       <div>
                         <h6 className={`my-2 p-0 m-0 ${styles.total_student}`}>
@@ -203,8 +207,32 @@ export default function Teacher() {
                         className={`d-flex justify-content-center align-items-center ${styles.total_students_circle}`}
                       >
                         <h5 className={`p-0 m-0 ${styles.total_students}`}>
-                          {/* "৯২৩" */}
-                          {all_student?.length}
+
+                          {total_student?.length}
+                        </h5>
+                      </div>
+                    </div>
+                  </div> */}
+                  <div className="card shadow-sm border-0">
+                    <div className="d-flex align-items-center justify-content-around py-3 px-2">
+                      <div>
+                        <h6 className={`my-2 p-0 m-0 ${styles.total_student}`}>
+                          সর্বমোট
+                          <br />
+                          <span>শিক্ষার্থী</span>
+                        </h6>
+                        <h6
+                          className={`my-2 py-1 px-3 p-0 m-0 ${styles.classes_name}`}
+                        >
+                          শ্রেণী - ষষ্ঠ - সপ্তম
+                        </h6>
+                      </div>
+                      <div
+                        className={`d-flex justify-content-center align-items-center ${styles.total_class_rooms_circle}`}
+                      >
+                        <h5 className={`p-0 m-0 ${styles.total_students}`}>
+                          {/* ৫২ */}
+                          {total_student?.length}
                         </h5>
                       </div>
                     </div>
@@ -228,7 +256,7 @@ export default function Teacher() {
                       >
                         <h5 className={`p-0 m-0 ${styles.total_students}`}>
                           {/* ৫২ */}
-                          {all_teacher?.length}
+                          {total_teacher?.length}
                         </h5>
                       </div>
                     </div>
@@ -258,6 +286,7 @@ export default function Teacher() {
                     </div>
                   </div>
                 </div>
+
                 <div className="col-sm-6 col-md-4 col-lg-3">
                   <div className="card shadow-sm border-0 py-3">
                     <div className="d-flex justify-content-between px-2">
@@ -543,7 +572,10 @@ export default function Teacher() {
                 </div>
               </div>
             </div>
-            <div className="container py-5">
+
+            {/* Report-section */}
+
+            {/* <div className="container py-5">
               <p className={`${styles.report_title}`}>রিপোর্ট</p>
               <div className="row">
                 <div className="col-sm-6 col-md-4">
@@ -703,17 +735,18 @@ export default function Teacher() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+
             <div className="container">
               <div className="row">
-              {!ShowProfile && (
-        <BreadcumbHome
-          showSubjectname={showSubjectname}
-          setShowProfile={setShowProfile}
-          seshowSubject={seshowSubject}
-          title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
-        />
-      )}
+                {!ShowProfile && (
+                  <BreadcumbHome
+                    showSubjectname={showSubjectname}
+                    setShowProfile={setShowProfile}
+                    seshowSubject={seshowSubject}
+                    title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
+                  />
+                )}
 
                 <div className={ShowProfile ? "col-md-9" : "col-md-12"}>
                   <div className="row d-flex gap-2">
