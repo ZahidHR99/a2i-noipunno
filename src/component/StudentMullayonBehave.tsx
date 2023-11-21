@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { add_pi_uid, weightId } from "../utils/Utils";
+import { add_pi_uid, show_comment_box_bi, weightId } from "../utils/Utils";
 import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
 import { Bi_save, get_bi_evaluation_by_bi } from "../Request";
@@ -428,36 +428,55 @@ export default function StudentMullayonBehave({
 
                       {k === 0 && (
                         <div>
-                          <textarea
-                            onChange={(e: any) =>
-                              save_PI_evalution(
-                                w_d.uid,
-                                null,
-                                student.uid,
-                                w_d.bi_uid,
-                                e.target.value == "" ? null : e.target.value
-                              )
-                            }
-                            placeholder={
-                              "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
-                            }
-                            title="required"
-                            style={{
-                              visibility: "hidden",
-                              border: "1px solid red",
-                            }}
-                            className={
-                              "all_textarea form-control __" +
-                              student?.uid +
-                              " " +
-                              w_d.bi_uid +
-                              "_" +
-                              student?.uid
-                            }
-                            id=""
-                            cols={60}
-                            rows={4}
-                          ></textarea>
+
+                          {
+                            is_draft == "1" &&
+
+
+                            <textarea
+                              onChange={(e: any) =>
+                                save_PI_evalution(
+                                  w_d.uid,
+                                  null,
+                                  student.uid,
+                                  w_d.bi_uid,
+                                  e.target.value == "" ? null : e.target.value
+                                )
+                              }
+                              placeholder={
+                                "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
+                              }
+                              title="required"
+                              style={{
+                                visibility: "hidden",
+                                border: "1px solid red",
+                              }}
+                              className={
+                                "all_textarea form-control __" +
+                                student?.uid +
+                                " " +
+                                w_d.bi_uid +
+                                "_" +
+                                student?.uid
+                              }
+                              id=""
+                              cols={60}
+                              rows={4}
+                            ></textarea>
+
+                          }
+
+                          {
+                            is_draft == "2" &&
+
+                            <>
+                              {
+                                show_comment_box_bi(w_d, submitData)
+                              }
+                            </>
+                          }
+
+
                         </div>
                       )}
                     </div>

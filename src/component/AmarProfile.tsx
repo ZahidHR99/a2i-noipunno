@@ -25,7 +25,7 @@ const AmarProfile = () => {
       <Breadcumbtitle title={"আমার প্রোফাইল"} />
       <div className="container  my-5 mx-auto">
         <div className="d-flex align-items-center">
-          <div className="card shadow-lg border-0 w-100 rounded">
+          <div className="card shadow-sm border-1 w-100 rounded">
             <ul className="nav d-flex mt-2 justify-content-around py-1">
               <li className={`nav-item`}>
                 <h4> আমার প্রোফাইল  </h4>
@@ -34,7 +34,7 @@ const AmarProfile = () => {
 
             <div className="container" style={{ backgroundColor: "#E4FEFF" }}>
               <div className="w-75 text-sm-center text-md-start mx-auto ">
-                <img src={techerAvatar} width="150rem" className="img-fluid my-3 border  border-info" />
+                <img src={techerAvatar} loading="lazy" width="150rem" className="img-fluid my-3 border  border-info" />
               </div>
 
               <table className="table w-75 text-sm mx-auto">

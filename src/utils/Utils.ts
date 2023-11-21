@@ -130,3 +130,11 @@ export const show_pis = (compitance_uid: any) => {
   return all_compitance_id.includes(compitance_uid)
 
 };
+
+export const show_comment_box_bi = ( w_d :any, submitData :any ) => {
+ 
+  console.log(`w_d`, w_d , submitData );
+  return ""
+
+};
+

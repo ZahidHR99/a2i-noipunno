@@ -7,7 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowProfile, title }: any) {
+export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowProfile, title, selected_subject }: any) {
+
+
+
+  // console.log("selected_subject", selected_subject);
+
 
   const navigate = useNavigate()
   return (
@@ -15,12 +20,12 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
       <div className="d-flex align-items-center gap-2">
         <div className="card" style={{ backgroundColor: "white" }}>
           <button
-            className='border-0  rounded shadow-sm bg-white' onClick={() => { 
+            className='border-0  rounded shadow-sm bg-white' onClick={() => {
               seshowSubject(true);
               setShowProfile(true)
 
 
-             }} style={{ padding: "1.2rem" }}>
+            }} style={{ padding: "1.2rem" }}>
             <MdArrowBackIosNew className="fs-3 text-secondary" />
           </button>
         </div>
@@ -39,10 +44,13 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
                 {" "}
                 <AiOutlineHome />
                 প্রথম পাতা{" "}
-                <span style={{ color: "#000" }}>
+                <span style={{ color: "#000" }} className="d-flex justify-content-lg-center align-items-center">
                   {" "}
                   <MdOutlineArrowForwardIos />
                   {title}
+                  <MdOutlineArrowForwardIos />
+                  {" "}
+                  <strong>{(selected_subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || "সপ্তম শ্রেণি"}</strong>
                 </span>
               </h6>
             </div>
