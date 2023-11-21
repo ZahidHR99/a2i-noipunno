@@ -55,7 +55,9 @@ export default function ShowAssesment({
     try {
       const subject = pi_selection.find((data) => data.assessment_type == key);
       const pi_list = subject?.pi_list;
-      pis_list_func(allCompitance, pi_list);
+
+      // console.log(`allCompitance`, allCompitance , pi_list);
+      pis_list_func(allCompitance, pi_list , pi_selection);
 
     } catch (error: any) { }
   };
