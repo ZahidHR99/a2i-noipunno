@@ -15,13 +15,29 @@ export default function ShowAssesment({
   setallassessmet,
   pi_selection,
   allCompitance,
-  setShowcollaps
+  setShowcollaps,
 }: any) {
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
 
   const fetchData = async () => {
-
     try {
+      const pi_bi_evaluation_list__: any =
+        localStorage.getItem("pi_bi_evaluation_list") || "";
+      const pi_bi_evaluation_list = pi_bi_evaluation_list__
+        ? JSON.parse(pi_bi_evaluation_list__)
+        : "";
+
+      let own_subjet: any = "";
+      if (pi_bi_evaluation_list) {
+        own_subjet = pi_bi_evaluation_list;
+      } else {
+        own_subjet = await pi_bi_evaluation_list();
+      }
+      localStorage.setItem(
+        "pi_bi_evaluation_list",
+        JSON.stringify(own_subjet.data)
+      );
+
       seshowCompitance(true);
       setparodorshita_acoron_tab(0);
       setassessment_uid(allassessmet[0]?.uid);
@@ -31,7 +47,7 @@ export default function ShowAssesment({
       });
       setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
       pis_list_func(allCompitance, "");
-    } catch (error: any) { }
+    } catch (error: any) {}
   };
 
   const tabAcorongoto = async (key: number) => {
@@ -48,7 +64,7 @@ export default function ShowAssesment({
         own_data?.assessments[key]?.assessment_details[0]
           ?.assessment_details_name_bn
       );
-    } catch (error: any) { }
+    } catch (error: any) {}
   };
 
   const pi_selection_list_by_subject = async (key: number) => {
@@ -57,9 +73,8 @@ export default function ShowAssesment({
       const pi_list = subject?.pi_list;
 
       // console.log(`allCompitance`, allCompitance , pi_list);
-      pis_list_func(allCompitance, pi_list , pi_selection);
-
-    } catch (error: any) { }
+      pis_list_func(allCompitance, pi_list, pi_selection);
+    } catch (error: any) {}
   };
 
   useEffect(() => {
@@ -75,10 +90,15 @@ export default function ShowAssesment({
           <div className="card shadow-lg border-0 w-100 rounded">
             <ul className="nav d-flex mt-2 justify-content-around py-1 assestment-tabs">
               {own_data?.assessments.map((d: any, key: any) => (
-                <li className={`nav-item w-25 f-dlex justify-content-center ${styles.nav_tab_bottom_border
-                }`} key={key}  style={{fontSize:"14px"}}>
+                <li
+                  className={`nav-item w-25 f-dlex justify-content-center ${styles.nav_tab_bottom_border}`}
+                  key={key}
+                  style={{ fontSize: "14px" }}
+                >
                   <a
-                    className={`nav-link link-secondary fw-bold  ${key === 0 ? "active" : ""} `}
+                    className={`nav-link link-secondary fw-bold  ${
+                      key === 0 ? "active" : ""
+                    } `}
                     id="expertness-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#expertness"
@@ -87,7 +107,7 @@ export default function ShowAssesment({
                       setparodorshita_acoron_tab(key);
                       tabAcorongoto(key);
                       setallassessmet(d?.assessment_details);
-                      setShowcollaps({})
+                      setShowcollaps({});
                     }}
                   >
                     <SlBookOpen className="me-1" /> {d.assessment_name_bn}{" "}
@@ -107,13 +127,19 @@ export default function ShowAssesment({
                   <div className="row">
                     <ul className="nav d-flex mt-2 justify-content-around py-1 assestment-tabs">
                       {allassessmet?.map((ass_d: any, ky: any) => (
-                        <li className={`nav-item`} key={ky}  style={{fontSize:"14px"}}>
+                        <li
+                          className={`nav-item`}
+                          key={ky}
+                          style={{ fontSize: "14px" }}
+                        >
                           <a
-                            className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
-                              } ${ShowSecounderyTab?.id === ass_d.uid
+                            className={`fw-bold nav-link link-secondary ${
+                              styles.nav_tab_bottom_border
+                            } ${
+                              ShowSecounderyTab?.id === ass_d.uid
                                 ? " active"
                                 : ""
-                              } `}
+                            } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"
@@ -132,7 +158,7 @@ export default function ShowAssesment({
                               setMullayon_name(
                                 ass_d.assessment_details_name_bn
                               );
-                              setShowcollaps({})
+                              setShowcollaps({});
                             }}
                           >
                             <SlBookOpen className="me-1" />{" "}
@@ -157,13 +183,19 @@ export default function ShowAssesment({
                   <div className="row">
                     <ul className="nav d-flex mt-2 justify-content-around py-1 assestment-tabs">
                       {allassessmet?.map((ass_d: any, ky: any) => (
-                        <li className={`nav-item`} key={ky}  style={{fontSize:"14px"}}>
+                        <li
+                          className={`nav-item`}
+                          key={ky}
+                          style={{ fontSize: "14px" }}
+                        >
                           <Link
-                            className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
-                              } ${ShowSecounderyTab?.id === ass_d.uid
+                            className={`fw-bold nav-link link-secondary ${
+                              styles.nav_tab_bottom_border
+                            } ${
+                              ShowSecounderyTab?.id === ass_d.uid
                                 ? " active"
                                 : ""
-                              } `}
+                            } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"
@@ -179,7 +211,7 @@ export default function ShowAssesment({
                               setMullayon_name(
                                 ass_d.assessment_details_name_bn
                               );
-                              setShowcollaps({})
+                              setShowcollaps({});
                             }}
                           >
                             <SlBookOpen className="me-1" />{" "}

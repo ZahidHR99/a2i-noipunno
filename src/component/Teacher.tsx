@@ -204,7 +204,7 @@ export default function Teacher() {
                       >
                         {showSubject && subject.length > 0 && (
                           <>
-                            <BiSidebar /> বিষয়সমূহ{" "}
+                            <BiSidebar /> বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "}
                           </>
                         )}
                         {subject.length == 0 && (

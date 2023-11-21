@@ -180,3 +180,17 @@ export function get_bi_evaluation_by_bi(class_room_uid:any , evaluate_type:any ,
 
   return axios(options);
 }
+
+
+export function pi_bi_evaluation_list(data: any = "") {
+  const page_list = `${API_URL}/v1/pi-bi-evaluation-list`;
+
+  const options = {
+    method: "get",
+    headers: { "content-type": "application/json" },
+    data,
+    url: page_list,
+  };
+
+  return axios(options);
+}

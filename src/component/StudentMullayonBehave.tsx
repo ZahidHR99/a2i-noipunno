@@ -5,6 +5,7 @@ import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
 import { Bi_save, get_bi_evaluation_by_bi } from "../Request";
 import Swal from "sweetalert2";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function StudentMullayonBehave({
   all_bis,
@@ -107,10 +108,18 @@ export default function StudentMullayonBehave({
 
         seterr("");
       } else {
-        await Bi_save(data);
-        setsubmited(true);
-        setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-        seterr("");
+        if (submitData.length == 0) {
+          Swal.fire({
+            icon: "error",
+            title: "আপনি কোন কিছু নির্বাচন করেন নি!",
+            confirmButtonText: "হ্যাঁ",
+          });
+        } else {
+          await Bi_save(data);
+          setsubmited(true);
+          setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+          seterr("");
+        }
       }
     } catch (error) {
       Swal.fire({
@@ -434,7 +443,6 @@ export default function StudentMullayonBehave({
                                       </h6>
 
                                       <p>
-
                                         {show_comment_box_bi(
                                           w_d,
                                           submitObj_wid_null,
@@ -450,69 +458,75 @@ export default function StudentMullayonBehave({
                               }
                             </>
                           )}
-                        </div >
+                        </div>
                       )}
 
-                      {
-                        k === 0 && (
-                          <div>
-                            {is_draft == "1" && (
-                              <textarea
-                                onChange={(e: any) =>
-                                  save_PI_evalution(
-                                    w_d.uid,
-                                    null,
-                                    student.uid,
-                                    w_d.bi_uid,
-                                    e.target.value == "" ? null : e.target.value
-                                  )
-                                }
-                                placeholder={
-                                  "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
-                                }
-                                title="required"
-                                style={{
-                                  display: "none",
-                                  border: "1px solid red",
-                                }}
-                                className={
-                                  "all_textarea form-control __" +
-                                  student?.uid +
-                                  " " +
-                                  w_d.bi_uid +
-                                  "_" +
-                                  student?.uid
-                                }
-                                id=""
-                                cols={60}
-                                rows={4}
-                              ></textarea>
-                            )}
-                          </div>
-                        )
-                      }
-                    </div >
+                      {k === 0 && (
+                        <div>
+                          {is_draft == "1" && (
+                            <textarea
+                              onChange={(e: any) =>
+                                save_PI_evalution(
+                                  w_d.uid,
+                                  null,
+                                  student.uid,
+                                  w_d.bi_uid,
+                                  e.target.value == "" ? null : e.target.value
+                                )
+                              }
+                              placeholder={
+                                "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
+                              }
+                              title="required"
+                              style={{
+                                display: "none",
+                                border: "1px solid red",
+                              }}
+                              className={
+                                "all_textarea form-control __" +
+                                student?.uid +
+                                " " +
+                                w_d.bi_uid +
+                                "_" +
+                                student?.uid
+                              }
+                              id=""
+                              cols={60}
+                              rows={4}
+                            ></textarea>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </>
               ))}
-            </div >
+            </div>
           )}
 
           <div className="d-flex justify-content-between align-items-center pe-5 mb-2">
             {is_draft == "1" ? (
               <>
                 {!submited && (
-                  <button
-                    type="button"
-                    className="btn btn-warning m-1 "
-                    style={{
-                      color: "#000",
-                      paddingLeft: "90px",
-                      paddingRight: "90px",
-                    }}
-                    onClick={(e) => handleSave(e, 1)}
-                  >
-                    খসড়া
+                  // <button
+                  //   type="button"
+                  //   className="btn btn-warning m-1 "
+                  //   style={{
+                  //     color: "#000",
+                  //     paddingLeft: "90px",
+                  //     paddingRight: "90px",
+                  //   }}
+                  //   onClick={(e) => handleSave(e, 1)}
+                  // >
+                  //   খসড়া
+                  // </button>
+
+                  <button type="button" className="btn btn-sm btn-outline-secondary"
+                    onClick={(e) => handleSave(e, 1)} >
+                    <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
+                      <span className="text-sm">খসড়া সংরক্ষণ করুন</span>
+                      <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                    </div>
                   </button>
                 )}
 
@@ -520,16 +534,29 @@ export default function StudentMullayonBehave({
 
                 {err && <h6 className="text-danger">{err}</h6>}
                 {!submited && (
-                  <button
-                    type="button"
-                    className="btn btn-primay px-5 "
+                  // <button
+                  //   type="button"
+                  //   className="btn btn-primay px-5 "
+                  //   style={{
+                  //     backgroundColor: "#428F92",
+                  //     color: "#fff",
+                  //   }}
+                  //   onClick={(e) => handleSave(e, 2)}
+                  // >
+                  //   সংরক্ষণ করুন
+                  // </button>
+                  <button type="button"
+                    className="btn btn-sm "
+                    onClick={(e) => handleSave(e, 2)}
                     style={{
                       backgroundColor: "#428F92",
                       color: "#fff",
                     }}
-                    onClick={(e) => handleSave(e, 2)}
                   >
-                    সংরক্ষণ করুন
+                    <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                      <span className="text-sm">জমা দিন</span>
+                      <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                    </div>
                   </button>
                 )}
               </>
@@ -543,8 +570,8 @@ export default function StudentMullayonBehave({
               </div>
             )}
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
 
       <style
         dangerouslySetInnerHTML={{
@@ -554,6 +581,6 @@ export default function StudentMullayonBehave({
       />
 
       {/* Teachers List end */}
-    </div >
+    </div>
   );
 }

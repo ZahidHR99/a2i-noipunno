@@ -21,6 +21,7 @@ import {
   branch_name,
 } from "../utils/Utils";
 import Breadcumb from "../layout/Breadcumb";
+import DatePicker from "react-datepicker";
 // import { toPng } from "html-to-image";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
@@ -290,7 +291,7 @@ console.log('====================================');
                         >
                           {selectedSunject?.section ? (
                             <option selected>
-                              {section_name(uniqueSections)}
+                              {section_name(selectedSunject?.section)}
                             </option>
                           ) : (
                             <option selected>শাখা নির্বাচন করুন</option>
