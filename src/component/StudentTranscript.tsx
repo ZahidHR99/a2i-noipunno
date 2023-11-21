@@ -4,7 +4,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
 } from "../Request";
-import html2pdf from 'html2pdf.js';
+import html2pdf from "html2pdf.js";
 
 import { BsCheckCircle } from "react-icons/bs";
 import { useState, useEffect } from "react";
@@ -122,8 +122,6 @@ export default function StudentTranscript() {
     console.log("====================================");
   };
 
-  
-
   const skill_behaibor_count = async (datas: any) => {
     seshowSkillBehaibor(true);
     seshowSubject(false);
@@ -141,23 +139,26 @@ export default function StudentTranscript() {
     setelement(e);
   };
 
-
   const handleConvertToPdf = () => {
-    const element = document.getElementById('contentToConvert');
+    const element = document.getElementById("contentToConvert");
 
     const options = {
       margin: 10,
-      filename: 'converted-document.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
+      filename: "converted-document.pdf",
+      image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
     };
 
     const pdf = html2pdf().from(element).set(options).outputPdf();
     pdf.save();
   };
-  const uniqueSubjects = [...new Set(subject.map(data => data?.subject?.name))];
-  const uniqueclass = [...new Set(subject.map(data => data?.subject?.class_uid))];
+  const uniqueSubjects = [
+    ...new Set(subject.map((data) => data?.subject?.name)),
+  ];
+  const uniqueclass = [
+    ...new Set(subject.map((data) => data?.subject?.class_uid)),
+  ];
   // const uniqueSection = [...new Set(subject.map(data => data?.section?.name))];
   // Render options for unique subjects
   const uniqueSubjectOptions = uniqueSubjects.map((subject, index) => (
@@ -165,12 +166,10 @@ export default function StudentTranscript() {
       {subject}
     </option>
   ));
-  
-console.log('====================================');
-console.log("uniqueclass", subject , uniqueclass);
-console.log('====================================');
 
-  
+  console.log("====================================");
+  console.log("uniqueclass", subject, uniqueclass);
+  console.log("====================================");
 
   const storeSubjectData = (data: any) => {
     console.log("====================================");
@@ -183,29 +182,24 @@ console.log('====================================');
     }
   };
 
-
-
   const getSection = (class_id: any) => {
-    console.log("====================================" , class_id , subject );
+    console.log("====================================", class_id, subject);
 
     // const uniquesection = [...new Set(subject.map(data => data?.subject?.class_uid == class_id ? data?.subject?.section : ))];
     // if(class_id === subject.class_uid){
     //  const section = subject.sections;
     // }
-    const uniqueSections = [...new Set(
-      subject
-        .filter(data => data?.subject?.class_uid === class_id)
-        .map(data => data?.subject?.section)
-    )];
+    const uniqueSections = [
+      ...new Set(
+        subject
+          .filter((data) => data?.subject?.class_uid === class_id)
+          .map((data) => data?.subject?.section)
+      ),
+    ];
   };
 
-  
-
-
-
-
   console.log("====================================");
-  console.log("subject",subject, selectedSunject);
+  console.log("subject", subject, selectedSunject);
   console.log("====================================");
 
   return (
@@ -256,8 +250,6 @@ console.log('====================================');
                   aria-labelledby="expertness-tab"
                 >
                   <div className="row p-5">
-                    
-
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">
@@ -267,16 +259,14 @@ console.log('====================================');
                           className="form-select p-2"
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
-                          onChange={(e: any)=> getSection(e.target.value) }
+                          onChange={(e: any) => getSection(e.target.value)}
                         >
                           <option selected>Class নির্বাচন করুন</option>
-                          {uniqueclass?.map(
-                            (data, index) => (
-                              <option key={index} value={data}>
-                                {data}
-                              </option>
-                            )
-                          )}
+                          {uniqueclass?.map((data, index) => (
+                            <option key={index} value={data}>
+                              {data}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -326,17 +316,17 @@ console.log('====================================');
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">বিষয় নির্বাচন করুন</label>
-                        <select 
+                        <select
                           className="form-select p-2"
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                           onChange={(e) => storeSubjectData(e.target.value)}
                         >
                           <option selected value={""}>
-                          বিষয়
+                            বিষয়
                           </option>
                           {uniqueSubjectOptions}
-                          </select>
+                        </select>
                       </div>
                     </div>
                     <div className="col-6 col-sm-4 col-md-3">
@@ -588,17 +578,26 @@ console.log('====================================');
                 </div>
               </div>
               <h6 className="m-2">শিখনকালীন মূল্যায়ন প্রতিবেদন (PI)</h6>
-                <div id="accordion">
-                  <div className="card">
-                    <div className="card-header" id="headingOne">
-                      <h5 className="mb-0">
-                        <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <div id="accordion">
+                <div className="card">
+                  <div className="card-header" id="headingOne">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#collapseOne"
+                        aria-expanded="false"
+                        aria-controls="collapseOne"
+                      >
                         <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
                           <div className="">
                             <h5>শিক্ষার্থীর নাম: {student_name} </h5>
                             <p>রোল নম্বর #৩২১০০</p>
                           </div>
-                          <div className="d-flex gap-2" onClick={handleConvertToPdf}>
+                          <div
+                            className="d-flex gap-2"
+                            onClick={handleConvertToPdf}
+                          >
                             <div className={`${styles.download_btn}`}>
                               <BsFillFileEarmarkArrowDownFill className="fs-4 me-2" />
                               ডাউনলোড করুন
@@ -607,187 +606,251 @@ console.log('====================================');
                               <IoIosArrowUp className="fs-2" />
                             </div>
                           </div>
-                        </div>  
-                        </button>
-                      </h5>
-                    </div>
+                        </div>
+                      </button>
+                    </h5>
+                  </div>
 
-                    <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div className="card-body">
-                      <section >
-        {/* <div className="container">
+                  <div
+                    id="collapseOne"
+                    className="collapse show"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <section>
+                        {/* <div className="container">
           <button onClick={handleConvertToPdf} type="button" className="btn btn-primary">Download</button>
         </div> */}
 
-        <div id="contentToConvert" className="container border">
-          <div className="row p-2">
-            <div className="text-center py-3">
-              <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
-              <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
-              <h6 style={{ fontSize: "14px" }}>
-                প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
-                ঢাকা-১২১৬
-              </h6>
-              <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
-                ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
-                ট্রান্সক্রিপ্ট-২০২৩
-              </h6>
-            </div>
-            <div className="">
-              <table className="table table-bordered table-sm table-responsive">
-                <thead>
-                  <tr>
-                    <th
-                      colSpan={3}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      শিক্ষার্থীর নাম: {student_name}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শিক্ষার্থীর আইডি: ৩২১০০
-                    </th>
-                  </tr>
-                  <tr>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শ্রেণী: {selectedSunject?.class}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শাখা: {section_name(selectedSunject?.section)}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      বিষয়: {selectedSunject?.subject?.name}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      বিষয় শিক্ষকের নাম: {selectedSunject?.teacher?.name_en}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      className="text-center"
-                      colSpan={4}
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      পারদর্শিতার সূচকের মাত্রা
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      colSpan={2}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      পারদর্শিতা সূচক (PI)
-                    </th>
-                    <th
-                      colSpan={2}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      শিক্ষার্থীর পারদর্শিতা মাত্রা
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="d-flex pt-5 pb-1">
-                <div
-                  className="w-50"
-                  style={{ fontSize: "14px", fontWeight: "bold" }}
-                >
-                  বিষয় শিক্ষকের স্বাক্ষরঃ
-                </div>
-                <div
-                  className="w-50"
-                  style={{ fontSize: "14px", fontWeight: "bold" }}
-                >
-                  প্রধান শিক্ষকের স্বাক্ষরঃ
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>                      </div>
+                        <div id="contentToConvert" className="container border">
+                          <div className="row p-2">
+                            <div className="text-center py-3">
+                              <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
+                              <h6 style={{ fontSize: "14px" }}>
+                                [একটি আদর্শ উচ্চ বিদ্যালয়]
+                              </h6>
+                              <h6 style={{ fontSize: "14px" }}>
+                                প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ
+                                কলোনী, মিরপুর-১, ঢাকা-১২১৬
+                              </h6>
+                              <h6
+                                style={{ fontSize: "14px", fontWeight: "bold" }}
+                              >
+                                ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+                                ট্রান্সক্রিপ্ট-২০২৩
+                              </h6>
+                            </div>
+                            <div className="">
+                              <table className="table table-bordered table-sm table-responsive">
+                                <thead>
+                                  <tr>
+                                    <th
+                                      colSpan={3}
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      শিক্ষার্থীর নাম: {student_name}
+                                    </th>
+                                    <th
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      শিক্ষার্থীর আইডি: ৩২১০০
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <th
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      শ্রেণী: {selectedSunject?.class}
+                                    </th>
+                                    <th
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      শাখা:{" "}
+                                      {section_name(selectedSunject?.section)}
+                                    </th>
+                                    <th
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      বিষয়: {selectedSunject?.subject?.name}
+                                    </th>
+                                    <th
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      বিষয় শিক্ষকের নাম:{" "}
+                                      {selectedSunject?.teacher?.name_en}
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <th
+                                      className="text-center"
+                                      colSpan={4}
+                                      style={{
+                                        fontSize: "12px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      পারদর্শিতার সূচকের মাত্রা
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <th
+                                      colSpan={2}
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      পারদর্শিতা সূচক (PI)
+                                    </th>
+                                    <th
+                                      colSpan={2}
+                                      style={{
+                                        fontSize: "10px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      শিক্ষার্থীর পারদর্শিতা মাত্রা
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
+                                      নিয়ে যোগাযোগ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা
+                                      প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                      ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায়
+                                      নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের
+                                      পাশাপাশি ব্যাক্তির সাথে সম্পর্কের ধরন
+                                      অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
+                                      নিয়ে যোগাযোগ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা
+                                      প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                      ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায়
+                                      নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের
+                                      পাশাপাশি ব্যাক্তির সাথে সম্পর্কের ধরন
+                                      অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
+                                      নিয়ে যোগাযোগ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা
+                                      প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                      ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায়
+                                      নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের
+                                      পাশাপাশি ব্যাক্তির সাথে সম্পর্কের ধরন
+                                      অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
+                                      নিয়ে যোগাযোগ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা
+                                      প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                      ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায়
+                                      নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের
+                                      পাশাপাশি ব্যাক্তির সাথে সম্পর্কের ধরন
+                                      অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div className="d-flex pt-5 pb-1">
+                                <div
+                                  className="w-50"
+                                  style={{
+                                    fontSize: "14px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  বিষয় শিক্ষকের স্বাক্ষরঃ
+                                </div>
+                                <div
+                                  className="w-50"
+                                  style={{
+                                    fontSize: "14px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  প্রধান শিক্ষকের স্বাক্ষরঃ
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>{" "}
                     </div>
                   </div>
-                  </div>
+                </div>
+              </div>
               <div className="card shadow-lg border-0">
                 <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
                   <div className="">
@@ -806,25 +869,25 @@ console.log('====================================');
                 </div>
                 {/* subjects list start */}
                 <div className="content mb-5 mt-0">
-      {/* {loader && (
+                  {/* {loader && (
         <div className={loader && styles.loading_container}>
           {loader && <Spinner animation="border" />}
         </div>
       )} */}
 
-      {!ShowProfile && (
-        <BreadcumbHome
-          showSubjectname={showSubjectname}
-          setShowProfile={setShowProfile}
-          seshowSubject={seshowSubject}
-          title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
-        />
-      )}
-      {!loader && (
-        <div className="dashboard-section">
-          <section className="np-breadcumb-section pt-2 pb-5">
-            <div className="container">
-              {/* <div className="row">
+                  {!ShowProfile && (
+                    <BreadcumbHome
+                      showSubjectname={showSubjectname}
+                      setShowProfile={setShowProfile}
+                      seshowSubject={seshowSubject}
+                      title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
+                    />
+                  )}
+                  {!loader && (
+                    <div className="dashboard-section">
+                      <section className="np-breadcumb-section pt-2 pb-5">
+                        <div className="container">
+                          {/* <div className="row">
                 {ShowProfile && (
                   <div className="col-md-3">
                     <ProfileCard />
@@ -984,192 +1047,239 @@ console.log('====================================');
                   </div>
                 </div>
               </div> */}
-            </div>
-          </section>
-        </div>
-      )}
+                        </div>
+                      </section>
+                    </div>
+                  )}
 
-      <section >
-        {/* <div className="container">
+                  <section>
+                    {/* <div className="container">
           <button onClick={handleConvertToPdf} type="button" className="btn btn-primary">Download</button>
         </div> */}
 
-        <div id="contentToConvert" className="container border">
-          <div className="row p-2">
-            <div className="text-center py-3">
-              <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
-              <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
-              <h6 style={{ fontSize: "14px" }}>
-                প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
-                ঢাকা-১২১৬
-              </h6>
-              <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
-                ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
-                ট্রান্সক্রিপ্ট-২০২৩
-              </h6>
-            </div>
-            <div className="">
-              <table className="table table-bordered table-sm table-responsive">
-                <thead>
-                  <tr>
-                    <th
-                      colSpan={3}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      শিক্ষার্থীর নাম: {student_name}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শিক্ষার্থীর আইডি: ৩২১০০
-                    </th>
-                  </tr>
-                  <tr>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শ্রেণী: {selectedSunject?.class}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      শাখা: {section_name(selectedSunject?.section)}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      বিষয়: {selectedSunject?.subject?.name}
-                    </th>
-                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
-                      বিষয় শিক্ষকের নাম: {selectedSunject?.teacher?.name_en}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      className="text-center"
-                      colSpan={4}
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      পারদর্শিতার সূচকের মাত্রা
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      colSpan={2}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      পারদর্শিতা সূচক (PI)
-                    </th>
-                    <th
-                      colSpan={2}
-                      style={{ fontSize: "10px", fontWeight: "bold" }}
-                    >
-                      শিক্ষার্থীর পারদর্শিতা মাত্রা
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-25">
-                      ৬.১.১ <br />
-                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
-                      পারছে।
-                    </td>
-                    <td className="w-25">
-                      <BsCheckCircle className="fs-5 pe-1" />
-                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
-                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
-                    </td>
-                    <td className="w-25">
-                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
-                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="d-flex pt-5 pb-1">
-                <div
-                  className="w-50"
-                  style={{ fontSize: "14px", fontWeight: "bold" }}
-                >
-                  বিষয় শিক্ষকের স্বাক্ষরঃ
-                </div>
-                <div
-                  className="w-50"
-                  style={{ fontSize: "14px", fontWeight: "bold" }}
-                >
-                  প্রধান শিক্ষকের স্বাক্ষরঃ
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                    <div id="contentToConvert" className="container border">
+                      <div className="row p-2">
+                        <div className="text-center py-3">
+                          <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
+                          <h6 style={{ fontSize: "14px" }}>
+                            [একটি আদর্শ উচ্চ বিদ্যালয়]
+                          </h6>
+                          <h6 style={{ fontSize: "14px" }}>
+                            প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী,
+                            মিরপুর-১, ঢাকা-১২১৬
+                          </h6>
+                          <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                            ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+                            ট্রান্সক্রিপ্ট-২০২৩
+                          </h6>
+                        </div>
+                        <div className="">
+                          <table className="table table-bordered table-sm table-responsive">
+                            <thead>
+                              <tr>
+                                <th
+                                  colSpan={3}
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  শিক্ষার্থীর নাম: {student_name}
+                                </th>
+                                <th
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  শিক্ষার্থীর আইডি: ৩২১০০
+                                </th>
+                              </tr>
+                              <tr>
+                                <th
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  শ্রেণী: {selectedSunject?.class}
+                                </th>
+                                <th
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  শাখা: {section_name(selectedSunject?.section)}
+                                </th>
+                                <th
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  বিষয়: {selectedSunject?.subject?.name}
+                                </th>
+                                <th
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  বিষয় শিক্ষকের নাম:{" "}
+                                  {selectedSunject?.teacher?.name_en}
+                                </th>
+                              </tr>
+                              <tr>
+                                <th
+                                  className="text-center"
+                                  colSpan={4}
+                                  style={{
+                                    fontSize: "12px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  পারদর্শিতার সূচকের মাত্রা
+                                </th>
+                              </tr>
+                              <tr>
+                                <th
+                                  colSpan={2}
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  পারদর্শিতা সূচক (PI)
+                                </th>
+                                <th
+                                  colSpan={2}
+                                  style={{
+                                    fontSize: "10px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  শিক্ষার্থীর পারদর্শিতা মাত্রা
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td className="w-25">
+                                  ৬.১.১ <br />
+                                  নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                                  যোগাযোগ করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  <BsCheckCircle className="fs-5 pe-1" />
+                                  অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                                  করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                  ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে
+                                  পারছে।
+                                </td>
+                                <td className="w-25">
+                                  মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি
+                                  ব্যাক্তির সাথে সম্পর্কের ধরন অনুযায়ী
+                                  যথাযথভাবে সম্বোধন করতে পারছে
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="w-25">
+                                  ৬.১.১ <br />
+                                  নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                                  যোগাযোগ করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  <BsCheckCircle className="fs-5 pe-1" />
+                                  অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                                  করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                  ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে
+                                  পারছে।
+                                </td>
+                                <td className="w-25">
+                                  মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি
+                                  ব্যাক্তির সাথে সম্পর্কের ধরন অনুযায়ী
+                                  যথাযথভাবে সম্বোধন করতে পারছে
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="w-25">
+                                  ৬.১.১ <br />
+                                  নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                                  যোগাযোগ করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  <BsCheckCircle className="fs-5 pe-1" />
+                                  অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                                  করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                  ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে
+                                  পারছে।
+                                </td>
+                                <td className="w-25">
+                                  মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি
+                                  ব্যাক্তির সাথে সম্পর্কের ধরন অনুযায়ী
+                                  যথাযথভাবে সম্বোধন করতে পারছে
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="w-25">
+                                  ৬.১.১ <br />
+                                  নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে
+                                  যোগাযোগ করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  <BsCheckCircle className="fs-5 pe-1" />
+                                  অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ
+                                  করতে পারছে।
+                                </td>
+                                <td className="w-25">
+                                  অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ
+                                  ব্যক্তির আগ্রহ, চাহিদা ও আবেগ বিবেচনায় নিতে
+                                  পারছে।
+                                </td>
+                                <td className="w-25">
+                                  মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি
+                                  ব্যাক্তির সাথে সম্পর্কের ধরন অনুযায়ী
+                                  যথাযথভাবে সম্বোধন করতে পারছে
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div className="d-flex pt-5 pb-1">
+                            <div
+                              className="w-50"
+                              style={{ fontSize: "14px", fontWeight: "bold" }}
+                            >
+                              বিষয় শিক্ষকের স্বাক্ষরঃ
+                            </div>
+                            <div
+                              className="w-50"
+                              style={{ fontSize: "14px", fontWeight: "bold" }}
+                            >
+                              প্রধান শিক্ষকের স্বাক্ষরঃ
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html:
-            "\n            .np-table th,\n            td {\n                font-size: 11px;\n            }\n        ",
-        }}
-      />
-
-     
-    </div>
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        "\n            .np-table th,\n            td {\n                font-size: 11px;\n            }\n        ",
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -1205,15 +1315,8 @@ console.log('====================================');
                   </div>
                 </div>
               </div> */}
-      
-
-     
-
         </div>
       </div>
-      
-      
-    
     </div>
   );
 }

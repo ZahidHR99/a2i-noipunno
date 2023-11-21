@@ -42,7 +42,6 @@ export default function DetailsShikhonMullayon({
 
     // console.log(`data`, data);
   };
-  
 
   return (
     <div>
@@ -57,9 +56,14 @@ export default function DetailsShikhonMullayon({
                       <div className="d-flex justify-content-between align-items-center w-100 px-1">
                         <div className="d-flex" style={{ color: "#428F92" }}>
                           <h6>
-                            {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.
-                            {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.
-                            {convertToBanglaNumber(d?.pi_id)}{" "}
+                            {convertToBanglaNumber(
+                              showDetailsshikhonKalinMullayon?.class_id
+                            )}
+                            .
+                            {convertToBanglaNumber(
+                              showDetailsshikhonKalinMullayon?.oviggota_no
+                            )}
+                            .{convertToBanglaNumber(d?.pi_id)}{" "}
                           </h6>
 
                           <Link
@@ -102,7 +106,10 @@ export default function DetailsShikhonMullayon({
         <Modal.Header closeButton>
           <Modal.Title>
             {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.
-            {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.{convertToBanglaNumber(pi_id)} {pi_name}
+            {convertToBanglaNumber(
+              showDetailsshikhonKalinMullayon?.oviggota_no
+            )}
+            .{convertToBanglaNumber(pi_id)} {pi_name}
             <h6 className="text-center">
               {showDetailsshikhonKalinMullayon?.details_bn}
             </h6>
