@@ -75,25 +75,30 @@ export const subject_name = (id: any) => {
   }
 };
 
-export const pis_list_func = (allCompitance: any, pi_list: any) => {
+export const pis_list_func = (allCompitance: any, pi_list: any , pi_selection:any) => {
   const all_pis_id = [];
   const all_compitance_id = [];
-  for (const x in allCompitance) {
-    allCompitance[x].pis.map((d) => {
+  localStorage.setItem("show_shannasik_barsik", "false")
 
-      if (pi_list && pi_list?.length > 0) {
-        const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid)
-        if (found) {
+    for (const x in allCompitance) {
+      allCompitance[x].pis.map((d) => {
+  
+        if (pi_list && pi_list?.length > 0) {
+          const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid)
+          if (found) {
+
+            localStorage.setItem("show_shannasik_barsik", "true")
+            all_compitance_id.push(allCompitance[x].uid)
+            all_pis_id.push(d.uid)
+          }
+        } else {
           all_compitance_id.push(allCompitance[x].uid)
           all_pis_id.push(d.uid)
         }
-      } else {
-        all_compitance_id.push(allCompitance[x].uid)
-        all_pis_id.push(d.uid)
-      }
-
-    });
-  }
+  
+      });
+    }
+  
 
   localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id))
   localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id))
@@ -128,6 +133,14 @@ export const show_pis = (compitance_uid: any) => {
   const all_compitance_id = JSON.parse(localStorage.getItem("show_all_pis_id"))
 
   return all_compitance_id.includes(compitance_uid)
+
+};
+
+export const show_shannasik_barsik = () => {
+  const show_shannasik_barsik__ = JSON.parse(localStorage.getItem("show_shannasik_barsik"))
+  console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
+return show_shannasik_barsik__
+  
 
 };
 

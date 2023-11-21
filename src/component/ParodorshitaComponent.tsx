@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PiBookOpenText } from "react-icons/pi";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import styles from "./Home.style.module.css";
-import { show_compitance } from "../utils/Utils";
+import { show_compitance, show_shannasik_barsik } from "../utils/Utils";
 
 export default function ParodorshitaComponent({
   assessment_uid,
@@ -14,9 +14,9 @@ export default function ParodorshitaComponent({
   setshowDetailsshikhonKalinMullayon,
   Student,
   teacher_uid,
+  pi_selection,
 }: any) {
-
-  // console.log(`shikhonKalinMullayon`, shikhonKalinMullayon);
+  
   return (
     <div className="py-2">
       <div className="row">
@@ -26,11 +26,18 @@ export default function ParodorshitaComponent({
               show_compitance(d.uid) &&
 
               <>
+
+              {
+                show_shannasik_barsik() == false ? 
+
+                <>
+                
+                
+                
                 <div
 
                   onClick={(e: any) => {
                     setshowDetailsshikhonKalinMullayon(d);
-
                     setShowcollaps({
                       ...Showcollaps,
                       [key]: Showcollaps[key] ? !Showcollaps[key] : true,
@@ -78,6 +85,35 @@ export default function ParodorshitaComponent({
                     />
                   </div>
                 </div>
+
+                </>
+                
+                :
+
+
+
+                <>
+                
+                <div
+                  onClick={(e: any) => {
+                    setshowDetailsshikhonKalinMullayon(d);
+                  }}
+                >
+                  <div className="card card-body">
+                    <DetailsShikhonMullayon
+                      showDetailsshikhonKalinMullayon={d}
+                      assessment_uid={assessment_uid}
+                      pi_attr={pi_attr}
+                      Student={Student}
+                      teacher_uid={teacher_uid}
+                    />
+                  </div>
+                </div>
+
+                </>
+
+
+              }
 
               </>
             }
