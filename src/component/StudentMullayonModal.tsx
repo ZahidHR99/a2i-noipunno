@@ -9,7 +9,7 @@ import {
   BiSquareRounded,
 } from "react-icons/bi";
 
-import { Pi_save, teacher_own_subject } from "../Request";
+import { Pi_save, get_pi_bi_evaluation_list, teacher_own_subject } from "../Request";
 import { GoPerson } from "react-icons/go";
 import { toast } from "../utils";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -117,6 +117,16 @@ export default function StudentMullayonModal({
             confirmButtonText: "হ্যাঁ",
           }).then(async (result) => {
             if (result.isConfirmed) {
+
+
+            let own_subjet :any = await get_pi_bi_evaluation_list(2);
+
+            localStorage.setItem(
+              "pi_bi_evaluation_list",
+              JSON.stringify(own_subjet.data.data)
+            );
+
+
               await Pi_save(data);
               setsubmited(true);
               setShowModal(false);

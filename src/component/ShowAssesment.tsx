@@ -3,6 +3,7 @@ import styles from "./Home.style.module.css";
 import { SlBookOpen } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import { pis_list_func } from "../utils/Utils";
+import { get_pi_bi_evaluation_list } from "../Request";
 
 export default function ShowAssesment({
   seshowCompitance,
@@ -20,6 +21,8 @@ export default function ShowAssesment({
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
 
   const fetchData = async () => {
+
+    
     try {
       const pi_bi_evaluation_list__: any =
         localStorage.getItem("pi_bi_evaluation_list") || "";
@@ -31,12 +34,14 @@ export default function ShowAssesment({
       if (pi_bi_evaluation_list) {
         own_subjet = pi_bi_evaluation_list;
       } else {
-        own_subjet = await pi_bi_evaluation_list();
+        own_subjet = await get_pi_bi_evaluation_list(2);
+
+        localStorage.setItem(
+          "pi_bi_evaluation_list",
+          JSON.stringify(own_subjet.data.data)
+        );
       }
-      localStorage.setItem(
-        "pi_bi_evaluation_list",
-        JSON.stringify(own_subjet.data)
-      );
+    
 
       seshowCompitance(true);
       setparodorshita_acoron_tab(0);
@@ -47,7 +52,10 @@ export default function ShowAssesment({
       });
       setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
       pis_list_func(allCompitance, "");
-    } catch (error: any) {}
+    } catch (error: any) {
+
+      console.log(`error`, error);
+    }
   };
 
   const tabAcorongoto = async (key: number) => {

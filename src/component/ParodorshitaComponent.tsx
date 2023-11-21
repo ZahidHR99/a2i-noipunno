@@ -19,11 +19,11 @@ export default function ParodorshitaComponent({
   return (
     <div className="py-2">
       <div className="row">
-        {shikhonKalinMullayon.map((d: any, key: any) => (
-          <div key={key}>
-            {show_compitance(d.uid) && (
-              <>
-                {show_shannasik_barsik() == false ? (
+        {show_shannasik_barsik() == false ? (
+          <>
+            {shikhonKalinMullayon.map((d: any, key: any) => (
+              <div key={key}>
+                {show_compitance(d.uid) && (
                   <>
                     <div
                       onClick={(e: any) => {
@@ -81,29 +81,33 @@ export default function ParodorshitaComponent({
                       </div>
                     </div>
                   </>
-                ) : (
-                  <>
+                )}
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className="card card-body mx-2">
+            {shikhonKalinMullayon.map((d: any, key: any) => (
+              <div key={key}>
+                {show_compitance(d.uid) && (
                     <div
                       onClick={(e: any) => {
                         setshowDetailsshikhonKalinMullayon(d);
                       }}
                     >
-                      <div className="card card-body">
-                        <DetailsShikhonMullayon
-                          showDetailsshikhonKalinMullayon={d}
-                          assessment_uid={assessment_uid}
-                          pi_attr={pi_attr}
-                          Student={Student}
-                          teacher_uid={teacher_uid}
-                        />
-                      </div>
+                      <DetailsShikhonMullayon
+                        showDetailsshikhonKalinMullayon={d}
+                        assessment_uid={assessment_uid}
+                        pi_attr={pi_attr}
+                        Student={Student}
+                        teacher_uid={teacher_uid}
+                      />
                     </div>
-                  </>
                 )}
-              </>
-            )}
+              </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
