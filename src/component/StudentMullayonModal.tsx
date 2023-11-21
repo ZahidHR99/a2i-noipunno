@@ -504,22 +504,21 @@ export default function StudentMullayonModal({
                                   }}
                                 >
                                   {pi_attr.title_bn}
-
-
-                                  {
-  is_draft == "2" && 
-
-  <p>
-                                    
-                                    {show_comment_box_Pi(
-                                      pi_attr,
-                                      submitObj_wid_null,
-                                      studnt.uid
-                                    )}
-                                  </p>
-}
+                                  
                                   {/* {pi_attr.uid} */}
+
+                                  {is_draft == "2" && kedy === 0 && (
+                                    <td>
+                                      {show_comment_box_Pi(
+                                        pi_attr,
+                                        submitObj_wid_null,
+                                        studnt.uid
+                                      )}
+                                    </td>
+                                  )}
+
                                 </div>
+                                
                               </>
                             )}
 
@@ -554,6 +553,9 @@ export default function StudentMullayonModal({
                               </div>
                             )}
                           </div>
+
+
+                          
 
                         </td>
                       ))}

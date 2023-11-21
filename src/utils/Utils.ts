@@ -75,7 +75,7 @@ export const subject_name = (id: any) => {
   }
 };
 
-export const pis_list_func = (allCompitance: any, pi_list: any , pi_selection:any) => {
+export const pis_list_func = (allCompitance: any, pi_list: any , pi_selection:any = "") => {
   const all_pis_id = [];
   const all_compitance_id = [];
   localStorage.setItem("show_shannasik_barsik", "false")
