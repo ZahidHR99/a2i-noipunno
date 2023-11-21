@@ -163,3 +163,33 @@ export const show_comment_box_Pi = ( w_d :any, submitData :any , student_uid:any
 
 };
 
+
+export const convertToBanglaNumber = (number:any) => {
+
+  console.log('====================================');
+  console.log("number" , number);
+  console.log('====================================');
+  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯','১০',','];
+  const numString = number.toString();
+  let banglaNumber = '';
+  for (let i = 0; i < numString.length; i++) {
+
+
+    console.log('====================================');
+    console.log("numString[i]", numString[i]);
+    console.log('====================================');
+
+    if (numString[i] !== ",") {
+      const digit =  parseInt(numString[i]);
+    banglaNumber += banglaDigits[digit];
+    }else{
+      banglaNumber += ","
+    }
+  }
+  return banglaNumber;
+}
+
+
+
+
+
