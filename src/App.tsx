@@ -20,7 +20,6 @@ import {
   teacher_own_subject,
 } from "./Request";
 import AmarProfile from "./component/AmarProfile";
-import Test_Case from "./component/Test_Case";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -76,7 +75,7 @@ function App() {
             element={<AmarProfile />}
           />
           <Route path="/teachers-list" element={<TeachersList />} />
-          <Route path="/test-case" element={<Test_Case />} />
+
         </Route>
         <Route path="/login" element={<Login />} />
 
