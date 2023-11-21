@@ -5,6 +5,7 @@ import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
 import { Bi_save, get_bi_evaluation_by_bi, get_pi_bi_evaluation_list } from "../Request";
 import Swal from "sweetalert2";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function StudentMullayonBehave({
   all_bis,
@@ -305,9 +306,10 @@ export default function StudentMullayonBehave({
     <div className="content">
       <div className="row">
         <div className="border-0">
-          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
-            <div className="">
+          <div className="">
+            <div className="d-flex justify-content-between flex-md-row flex-column align-items-center ">
               <h5>শিক্ষার্থীর নাম: {student?.student_name_bn} </h5>
+              <h5>শিক্ষার্থীর রোল: {student?.roll} </h5>
               {/* <p>রোল নম্বর #৩২১০০</p> */}
             </div>
 
@@ -381,26 +383,26 @@ export default function StudentMullayonBehave({
                                   pi_attribute_weight,
                                   w_d?.weight_uid
                                 ) == "Square" && (
-                                  <BiSquareRounded className="fs-5 mt-1" />
-                                )}
+                                    <BiSquareRounded className="fs-5 mt-1" />
+                                  )}
                                 {weightId(
                                   pi_attribute_weight,
                                   w_d?.weight_uid
                                 ) == "Circle" && (
-                                  <BiCircle className="fs-5 mt-1" />
-                                )}
+                                    <BiCircle className="fs-5 mt-1" />
+                                  )}
                                 {weightId(
                                   pi_attribute_weight,
                                   w_d?.weight_uid
                                 ) == "Triangle" && (
-                                  <FiTriangle className="fs-5 mt-1" />
-                                )}
+                                    <FiTriangle className="fs-5 mt-1" />
+                                  )}
 
                                 {/* <TiTick className={`${styles.tick_mark}`} /> */}
                               </div>
                               <div>
                                 <h6 style={{ fontSize: "14px" }}>
-                                  {w_d.title_bn}
+                                  {w_d.title_bn} 
                                 </h6>
                               </div>
                             </div>
@@ -427,20 +429,20 @@ export default function StudentMullayonBehave({
                                         pi_attribute_weight,
                                         w_d?.weight_uid
                                       ) == "Square" && (
-                                        <BiSquareRounded className="fs-5 mt-1" />
-                                      )}
+                                          <BiSquareRounded className="fs-5 mt-1" />
+                                        )}
                                       {weightId(
                                         pi_attribute_weight,
                                         w_d?.weight_uid
                                       ) == "Circle" && (
-                                        <BiCircle className="fs-5 mt-1" />
-                                      )}
+                                          <BiCircle className="fs-5 mt-1" />
+                                        )}
                                       {weightId(
                                         pi_attribute_weight,
                                         w_d?.weight_uid
                                       ) == "Triangle" && (
-                                        <FiTriangle className="fs-5 mt-1" />
-                                      )}
+                                          <FiTriangle className="fs-5 mt-1" />
+                                        )}
 
                                       {/* <TiTick className={`${styles.tick_mark}`} /> */}
                                     </div>
@@ -459,7 +461,10 @@ export default function StudentMullayonBehave({
                                     </div>
                                   </div>
                                 </>
-                              )}
+                              )
+
+
+                              }
                             </>
                           )}
                         </div>
@@ -512,17 +517,25 @@ export default function StudentMullayonBehave({
             {is_draft == "1" ? (
               <>
                 {!submited && (
-                  <button
-                    type="button"
-                    className="btn btn-warning m-1 "
-                    style={{
-                      color: "#000",
-                      paddingLeft: "90px",
-                      paddingRight: "90px",
-                    }}
-                    onClick={(e) => handleSave(e, 1)}
-                  >
-                    খসড়া
+                  // <button
+                  //   type="button"
+                  //   className="btn btn-warning m-1 "
+                  //   style={{
+                  //     color: "#000",
+                  //     paddingLeft: "90px",
+                  //     paddingRight: "90px",
+                  //   }}
+                  //   onClick={(e) => handleSave(e, 1)}
+                  // >
+                  //   খসড়া
+                  // </button>
+
+                  <button type="button" className="btn btn-sm btn-outline-secondary"
+                    onClick={(e) => handleSave(e, 1)} >
+                    <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
+                      <span className="text-sm">খসড়া সংরক্ষণ করুন</span>
+                      <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                    </div>
                   </button>
                 )}
 
@@ -530,16 +543,29 @@ export default function StudentMullayonBehave({
 
                 {err && <h6 className="text-danger">{err}</h6>}
                 {!submited && (
-                  <button
-                    type="button"
-                    className="btn btn-primay px-5 "
+                  // <button
+                  //   type="button"
+                  //   className="btn btn-primay px-5 "
+                  //   style={{
+                  //     backgroundColor: "#428F92",
+                  //     color: "#fff",
+                  //   }}
+                  //   onClick={(e) => handleSave(e, 2)}
+                  // >
+                  //   সংরক্ষণ করুন
+                  // </button>
+                  <button type="button"
+                    className="btn btn-sm "
+                    onClick={(e) => handleSave(e, 2)}
                     style={{
                       backgroundColor: "#428F92",
                       color: "#fff",
                     }}
-                    onClick={(e) => handleSave(e, 2)}
                   >
-                    সংরক্ষণ করুন
+                    <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                      <span className="text-sm">জমা দিন</span>
+                      <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                    </div>
                   </button>
                 )}
               </>

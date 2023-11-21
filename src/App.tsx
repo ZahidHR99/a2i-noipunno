@@ -75,6 +75,7 @@ function App() {
             element={<AmarProfile />}
           />
           <Route path="/teachers-list" element={<TeachersList />} />
+
         </Route>
         <Route path="/login" element={<Login />} />
 

@@ -192,3 +192,23 @@ export function check_pi_submitted(pis_id: any, assessment_uid: any) {
     }
   }
 }
+
+export const convertToBanglaNumber = (number:any) => {
+  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯','১০',','];
+  const numString = number.toString();
+  let banglaNumber = '';
+  for (let i = 0; i < numString.length; i++) {
+    if (numString[i] !== ",") {
+      const digit =  parseInt(numString[i]);
+    banglaNumber += banglaDigits[digit];
+    }else{
+      banglaNumber += ","
+    }
+  }
+  return banglaNumber;
+}
+
+
+
+
+
