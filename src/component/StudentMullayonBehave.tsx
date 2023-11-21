@@ -107,10 +107,18 @@ export default function StudentMullayonBehave({
 
         seterr("");
       } else {
-        await Bi_save(data);
-        setsubmited(true);
-        setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-        seterr("");
+        if (submitData.length == 0) {
+          Swal.fire({
+            icon: "error",
+            title: "আপনি কোন কিছু নির্বাচন করেন নি!",
+            confirmButtonText: "হ্যাঁ",
+          });
+        } else {
+          await Bi_save(data);
+          setsubmited(true);
+          setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+          seterr("");
+        }
       }
     } catch (error) {
       Swal.fire({
@@ -365,20 +373,20 @@ export default function StudentMullayonBehave({
                                   pi_attribute_weight,
                                   w_d?.weight_uid
                                 ) == "Square" && (
-                                    <BiSquareRounded className="fs-5 mt-1" />
-                                  )}
+                                  <BiSquareRounded className="fs-5 mt-1" />
+                                )}
                                 {weightId(
                                   pi_attribute_weight,
                                   w_d?.weight_uid
                                 ) == "Circle" && (
-                                    <BiCircle className="fs-5 mt-1" />
-                                  )}
+                                  <BiCircle className="fs-5 mt-1" />
+                                )}
                                 {weightId(
                                   pi_attribute_weight,
                                   w_d?.weight_uid
                                 ) == "Triangle" && (
-                                    <FiTriangle className="fs-5 mt-1" />
-                                  )}
+                                  <FiTriangle className="fs-5 mt-1" />
+                                )}
 
                                 {/* <TiTick className={`${styles.tick_mark}`} /> */}
                               </div>
@@ -411,20 +419,20 @@ export default function StudentMullayonBehave({
                                         pi_attribute_weight,
                                         w_d?.weight_uid
                                       ) == "Square" && (
-                                          <BiSquareRounded className="fs-5 mt-1" />
-                                        )}
+                                        <BiSquareRounded className="fs-5 mt-1" />
+                                      )}
                                       {weightId(
                                         pi_attribute_weight,
                                         w_d?.weight_uid
                                       ) == "Circle" && (
-                                          <BiCircle className="fs-5 mt-1" />
-                                        )}
+                                        <BiCircle className="fs-5 mt-1" />
+                                      )}
                                       {weightId(
                                         pi_attribute_weight,
                                         w_d?.weight_uid
                                       ) == "Triangle" && (
-                                          <FiTriangle className="fs-5 mt-1" />
-                                        )}
+                                        <FiTriangle className="fs-5 mt-1" />
+                                      )}
 
                                       {/* <TiTick className={`${styles.tick_mark}`} /> */}
                                     </div>
@@ -434,7 +442,6 @@ export default function StudentMullayonBehave({
                                       </h6>
 
                                       <p>
-
                                         {show_comment_box_bi(
                                           w_d,
                                           submitObj_wid_null,
@@ -443,59 +450,54 @@ export default function StudentMullayonBehave({
                                       </p>
                                     </div>
                                   </div>
-
-
                                 </>
-                              )
-                              }
+                              )}
                             </>
                           )}
-                        </div >
+                        </div>
                       )}
 
-                      {
-                        k === 0 && (
-                          <div>
-                            {is_draft == "1" && (
-                              <textarea
-                                onChange={(e: any) =>
-                                  save_PI_evalution(
-                                    w_d.uid,
-                                    null,
-                                    student.uid,
-                                    w_d.bi_uid,
-                                    e.target.value == "" ? null : e.target.value
-                                  )
-                                }
-                                placeholder={
-                                  "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
-                                }
-                                title="required"
-                                style={{
-                                  display: "none",
-                                  border: "1px solid red",
-                                }}
-                                className={
-                                  "all_textarea form-control __" +
-                                  student?.uid +
-                                  " " +
-                                  w_d.bi_uid +
-                                  "_" +
-                                  student?.uid
-                                }
-                                id=""
-                                cols={60}
-                                rows={4}
-                              ></textarea>
-                            )}
-                          </div>
-                        )
-                      }
-                    </div >
+                      {k === 0 && (
+                        <div>
+                          {is_draft == "1" && (
+                            <textarea
+                              onChange={(e: any) =>
+                                save_PI_evalution(
+                                  w_d.uid,
+                                  null,
+                                  student.uid,
+                                  w_d.bi_uid,
+                                  e.target.value == "" ? null : e.target.value
+                                )
+                              }
+                              placeholder={
+                                "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
+                              }
+                              title="required"
+                              style={{
+                                display: "none",
+                                border: "1px solid red",
+                              }}
+                              className={
+                                "all_textarea form-control __" +
+                                student?.uid +
+                                " " +
+                                w_d.bi_uid +
+                                "_" +
+                                student?.uid
+                              }
+                              id=""
+                              cols={60}
+                              rows={4}
+                            ></textarea>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </>
               ))}
-            </div >
+            </div>
           )}
 
           <div className="d-flex justify-content-between align-items-center pe-5 mb-2">
@@ -543,8 +545,8 @@ export default function StudentMullayonBehave({
               </div>
             )}
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
 
       <style
         dangerouslySetInnerHTML={{
@@ -554,6 +556,6 @@ export default function StudentMullayonBehave({
       />
 
       {/* Teachers List end */}
-    </div >
+    </div>
   );
 }
