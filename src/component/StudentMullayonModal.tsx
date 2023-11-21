@@ -16,6 +16,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import Swal from "sweetalert2";
 import "./Home.style.module.css";
 import { useNavigate } from "react-router-dom";
+import { show_comment_box_Pi } from "../utils/Utils";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -39,6 +40,7 @@ export default function StudentMullayonModal({
   const [msg, setmsg] = useState<any>("");
   const [err, seterr] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
+  const [submitObj_wid_null, setsubmitObj_wid_null] = useState<any>([]);
   const [submited, setsubmited] = useState<any>(false);
 
   console.log(`submitObj`, submitObj);
@@ -63,22 +65,29 @@ export default function StudentMullayonModal({
       setsubmitObj(obj);
       checkedIn(obj);
 
+      const null_pi = []
+
       if (is_draft == "2") {
         for (const x in obj) {
           if (obj[x].weight_uid == null) {
-            const id: any = obj[x].student_uid;
-            const el: any = document.getElementsByClassName(id);
+            // const id: any = obj[x].student_uid;
+            // const el: any = document.getElementsByClassName(id);
 
-            if (el) {
-              el[0].parentElement.parentElement.parentElement.nextElementSibling.style.visibility =
-                "hidden";
-              el[0].parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.style.visibility =
-                "hidden";
-              el[0].parentElement.parentElement.innerHTML = obj[x].remark;
-            }
+            // if (el) {
+            //   el[0].parentElement.parentElement.parentElement.nextElementSibling.style.visibility =
+            //     "";
+            //   el[0].parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.style.visibility =
+            //     "";
+            //   el[0].parentElement.parentElement.parentElement.innerHTML = obj[x].remark;
+            // }
+
+            null_pi.push(obj[x])
+
+            
           }
         }
       }
+      setsubmitObj_wid_null(null_pi)
       // console.log(`is_draft`, all_submited_PI, obj);
     }
   };
@@ -86,46 +95,6 @@ export default function StudentMullayonModal({
   useEffect(() => {
     fetchData();
   }, []);
-
-  // const handleSave = async (e: any, submit_status: any) => {
-  //   try {
-  //     const data: any = submitData.map((d: any) => {
-  //       d.submit_status = submit_status;
-  //       return d;
-  //     });
-
-  //     if (submit_status == 2) {
-  //       if (Student.length === submitData.length) {
-  //         await Pi_save(data);
-  //         setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
-  //         setsubmited(true);
-  //       } else {
-  //         setcomment_status(true);
-  //         checkedIn_comment(submitObj);
-  //       }
-
-  //       seterr("");
-  //     } else {
-  //       await Pi_save(data);
-  //       setsubmited(true);
-
-  //       const obj_ = localStorage.getItem("PI_saved");
-
-  //       const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
-
-  //       const submit_obj = { ...submit_obj_, ...submitObj };
-  //       localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
-
-  //       setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-  //       seterr("");
-  //     }
-  //   } catch (error) {
-  //     console.log("err", error);
-
-  //     seterr(" কিছু ভুল হয়েছে");
-  //     setmsg("");
-  //   }
-  // };
 
   const handleSave = async (e: any, submit_status: any) => {
     try {
@@ -179,33 +148,6 @@ export default function StudentMullayonModal({
             confirmButtonText: "হ্যাঁ",
           });
         }
-
-        /*Asking to Save Draft */
-        // Swal.fire({
-        //   title: "আপনি কি খসড়া সংরক্ষণ করতে চান?",
-        //   icon: "warning",
-        //   showCancelButton: true,
-        //   confirmButtonColor: "#3085d6",
-        //   cancelButtonColor: "#d33",
-        //   cancelButtonText: "না",
-        //   confirmButtonText: "হ্যাঁ"
-        // }).then(async (result) => {
-        //   if (result.isConfirmed) {
-        //     await Pi_save(data);
-        //     setsubmited(true);
-        //     const obj_ = localStorage.getItem("PI_saved");
-        //     const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
-        //     const submit_obj = { ...submit_obj_, ...submitObj };
-        //     localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
-        //     // setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-        //     seterr("");
-        //     Swal.fire({
-        //       title: "আপনার খসড়াটি সংরক্ষণ করা হয়েছে!",
-        //       icon: "success"
-        //     });
-
-        //   }
-        // });
       }
     } catch (error) {
       console.log("err", error);
@@ -494,7 +436,7 @@ export default function StudentMullayonModal({
                         <GoPerson className="fs-6 fw-bold" />{" "}
                         {studnt.student_name_bn}
                         <br />
-                        {/* {studnt.uid} */}
+                        {studnt.uid}
                       </td>
 
                       {al_pi_attr?.map((pi_attr: any, kedy: any) => (
@@ -562,6 +504,20 @@ export default function StudentMullayonModal({
                                   }}
                                 >
                                   {pi_attr.title_bn}
+
+
+                                  {
+  is_draft == "2" && 
+
+  <p>
+                                    
+                                    {show_comment_box_Pi(
+                                      pi_attr,
+                                      submitObj_wid_null,
+                                      studnt.uid
+                                    )}
+                                  </p>
+}
                                   {/* {pi_attr.uid} */}
                                 </div>
                               </>
@@ -598,6 +554,7 @@ export default function StudentMullayonModal({
                               </div>
                             )}
                           </div>
+
                         </td>
                       ))}
                     </tr>

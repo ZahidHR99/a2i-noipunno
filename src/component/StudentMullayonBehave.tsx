@@ -92,8 +92,6 @@ export default function StudentMullayonBehave({
             }
           });
         } else {
-
-
           if (submitData.length > 0) {
             setcomment_status(true);
           } else {
@@ -268,8 +266,6 @@ export default function StudentMullayonBehave({
     setsubmitData(sumbitArray);
   };
 
-
-
   const submit_object_common_func = (
     remark: any,
     obj: any,
@@ -436,68 +432,70 @@ export default function StudentMullayonBehave({
                                       <h6 style={{ fontSize: "14px" }}>
                                         {w_d.title_bn}
                                       </h6>
+
+                                      <p>
+
+                                        {show_comment_box_bi(
+                                          w_d,
+                                          submitObj_wid_null,
+                                          student.uid
+                                        )}
+                                      </p>
                                     </div>
                                   </div>
 
 
-
-                                  <p>
-                                    Remark  :
-                                    {show_comment_box_bi(
-                                      w_d,
-                                      submitObj_wid_null,
-                                      student.uid
-                                    )}
-                                  </p>
-
                                 </>
-                              )}
+                              )
+                              }
                             </>
                           )}
-                        </div>
+                        </div >
                       )}
 
-                      {k === 0 && (
-                        <div>
-                          {is_draft == "1" && (
-                            <textarea
-                              onChange={(e: any) =>
-                                save_PI_evalution(
-                                  w_d.uid,
-                                  null,
-                                  student.uid,
-                                  w_d.bi_uid,
-                                  e.target.value == "" ? null : e.target.value
-                                )
-                              }
-                              placeholder={
-                                "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
-                              }
-                              title="required"
-                              style={{
-                                display: "none",
-                                border: "1px solid red",
-                              }}
-                              className={
-                                "all_textarea form-control __" +
-                                student?.uid +
-                                " " +
-                                w_d.bi_uid +
-                                "_" +
-                                student?.uid
-                              }
-                              id=""
-                              cols={60}
-                              rows={4}
-                            ></textarea>
-                          )}
-                        </div>
-                      )}
-                    </div>
+                      {
+                        k === 0 && (
+                          <div>
+                            {is_draft == "1" && (
+                              <textarea
+                                onChange={(e: any) =>
+                                  save_PI_evalution(
+                                    w_d.uid,
+                                    null,
+                                    student.uid,
+                                    w_d.bi_uid,
+                                    e.target.value == "" ? null : e.target.value
+                                  )
+                                }
+                                placeholder={
+                                  "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
+                                }
+                                title="required"
+                                style={{
+                                  display: "none",
+                                  border: "1px solid red",
+                                }}
+                                className={
+                                  "all_textarea form-control __" +
+                                  student?.uid +
+                                  " " +
+                                  w_d.bi_uid +
+                                  "_" +
+                                  student?.uid
+                                }
+                                id=""
+                                cols={60}
+                                rows={4}
+                              ></textarea>
+                            )}
+                          </div>
+                        )
+                      }
+                    </div >
                   ))}
                 </>
               ))}
-            </div>
+            </div >
           )}
 
           <div className="d-flex justify-content-between align-items-center pe-5 mb-2">
@@ -545,8 +543,8 @@ export default function StudentMullayonBehave({
               </div>
             )}
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
 
       <style
         dangerouslySetInnerHTML={{
@@ -556,6 +554,6 @@ export default function StudentMullayonBehave({
       />
 
       {/* Teachers List end */}
-    </div>
+    </div >
   );
 }
