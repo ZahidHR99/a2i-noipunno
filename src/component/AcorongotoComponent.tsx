@@ -71,7 +71,7 @@ export default function AcorongotoComponent({
         if (pi_uid) {
           d.pi_uid = pi_uid;
           obj = { ...obj, [d.bi_uid + "_" + d.student_uid]: d };
-        }else{
+        } else {
           W_id_null_obj.push(d)
         }
       });
@@ -126,7 +126,7 @@ export default function AcorongotoComponent({
                         className="px-2 rounded text-white"
                         style={{ backgroundColor: "#428F92" }}
                       >
-                        {d?.class == "6" ? "ষষ্ঠ শ্রেণি" : "সপ্তম শ্রেণি"}
+                        {/* {d?.class == "6" ? "ষষ্ঠ শ্রেণি" : "সপ্তম শ্রেণি"} */}
                       </div>
                     </div>
                   </div>
