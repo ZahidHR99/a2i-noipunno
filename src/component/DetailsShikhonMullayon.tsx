@@ -99,13 +99,27 @@ export default function DetailsShikhonMullayon({
         centered
       >
         <Modal.Header closeButton>
+
           <Modal.Title>
-            {showDetailsshikhonKalinMullayon?.class_id}.
+            {/* {showDetailsshikhonKalinMullayon?.class_id}.
             {showDetailsshikhonKalinMullayon?.oviggota_no}.{pi_id} {pi_name}
             <h6 className="text-center">
               {showDetailsshikhonKalinMullayon?.details_bn}
-            </h6>
+            </h6> */}
+
+            <span className="d-flex justify-content-start align-content-center gap-2">
+              <h4 className="font-weight-bold"><strong>পারদর্শিতা সূচক</strong></h4>
+              <h4>
+                <strong>
+                  {showDetailsshikhonKalinMullayon?.class_id}. {showDetailsshikhonKalinMullayon?.oviggota_no}.{pi_id}
+                </strong>
+              </h4>
+            </span>
+            <h6>{pi_name}</h6>
+
+
           </Modal.Title>
+
         </Modal.Header>
         <Modal.Body className="">
           <StudentMullayonModal

@@ -1,5 +1,6 @@
 import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 // import {  MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
@@ -338,12 +339,6 @@ export default function StudentMullayonModal({
     }
   };
 
-  // console.log(`submitData`, is_draft, all_submited_PI, al_pi_attr);
-  // console.log("is_draft================", is_draft);
-  // sS
-  // setsS
-  //handleResize
-  // sm
 
   const [sS, setSs] = useState("");
   const hR = () => {
@@ -577,38 +572,61 @@ export default function StudentMullayonModal({
           ) : (
             <>
               {!submited && (
-                <button
-                  type="button"
-                  className="btn btn-warning  my-2"
-                  style={{
-                    // backgroundColor: "#",
-                    color: "#000",
-                    paddingLeft: "90px",
-                    paddingRight: "90px",
-                  }}
-                  onClick={(e) => handleSave(e, 1)}
-                >
-                  খসড়া
+                // <button
+                //   type="button"
+                //   className="btn btn-warning  my-2"
+                //   style={{
+
+                //     color: "#000",
+                //     paddingLeft: "90px",
+                //     paddingRight: "90px",
+                //   }}
+                //   onClick={(e) => handleSave(e, 1)}
+                // >
+                //   খসড়া
+                // </button>
+
+                <button type="button" className="btn btn-sm btn-outline-secondary"
+                  onClick={(e) => handleSave(e, 1)} >
+                  <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
+                    <span className="text-sm">খসড়া সংরক্ষণ করুন</span>
+                    <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                  </div>
                 </button>
+
+
               )}
               {msg && <h6 className="text-success">{msg}</h6>}
 
               {err && <h6 className="text-danger">{err}</h6>}
               {!submited && (
-                <button
-                  type="button"
-                  className="btn btn-primay px-5 "
+                // <button
+                //   type="button"
+                //   className="btn btn-primay px-5 "
+                //   style={{
+                //     backgroundColor: "#428F92",
+                //     color: "#fff",
+                //   }}
+                //   onClick={(e) => handleSave(e, 2)}
+                // >
+                //   <span>
+                //     জমা দিন {"   "}
+                //     {/* {"   "}<MdOutlineArrowForwardIos  /> */}
+                //     <img src="/assets/images/arrow-right.png" alt="" />
+                //   </span>
+                // </button>
+                <button type="button"
+                  className="btn btn-sm "
+                  onClick={(e) => handleSave(e, 1)}
                   style={{
                     backgroundColor: "#428F92",
                     color: "#fff",
                   }}
-                  onClick={(e) => handleSave(e, 2)}
                 >
-                  <span>
-                    সংরক্ষণ করুন {"   "}
-                    {/* {"   "}<MdOutlineArrowForwardIos  /> */}
-                    <img src="/assets/images/arrow-right.png" alt="" />
-                  </span>
+                  <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                    <span className="text-sm">জমা দিন</span>
+                    <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                  </div>
                 </button>
               )}
             </>
