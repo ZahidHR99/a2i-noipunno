@@ -1,11 +1,8 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { update_teacher_profile } from "../Request";
-// import cogoToast from 'cogo-toast';
-import { toast } from "../utils";
 import Breadcumbtitle from "../layout/Breadcumb";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const EditTeacherProfile = () => {
 

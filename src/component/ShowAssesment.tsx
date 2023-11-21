@@ -69,14 +69,14 @@ export default function ShowAssesment({
   return (
     <div className="container">
       <div className="row">
-        <div className="d-flex align-items-center assestment-tabs">
+        <div className="d-flex align-items-center">
           <div className="card shadow-lg border-0 w-100 rounded">
-            <ul className="nav d-flex mt-2 justify-content-around py-1 ">
+            <ul className="nav d-flex mt-2 justify-content-around py-1 assestment-tabs">
               {own_data?.assessments.map((d: any, key: any) => (
-                <li className={`nav-item`} key={key}>
+                <li className={`nav-item w-25 f-dlex justify-content-center ${styles.nav_tab_bottom_border
+                }`} key={key}  style={{fontSize:"14px"}}>
                   <a
-                    className={`nav-link link-secondary ${styles.nav_tab_bottom_border
-                      } ${key === 0 ? "active" : ""} `}
+                    className={`nav-link link-secondary fw-bold  ${key === 0 ? "active" : ""} `}
                     id="expertness-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#expertness"
@@ -103,9 +103,9 @@ export default function ShowAssesment({
                   aria-labelledby="provati-tab"
                 >
                   <div className="row">
-                    <ul className="nav d-flex mt-2 justify-content-around py-1">
+                    <ul className="nav d-flex mt-2 justify-content-around py-1 assestment-tabs">
                       {allassessmet?.map((ass_d: any, ky: any) => (
-                        <li className={`nav-item`} key={ky}>
+                        <li className={`nav-item`} key={ky}  style={{fontSize:"14px"}}>
                           <a
                             className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
                               } ${ShowSecounderyTab?.id === ass_d.uid
@@ -153,9 +153,9 @@ export default function ShowAssesment({
                   aria-labelledby="expertness-tab"
                 >
                   <div className="row">
-                    <ul className="nav d-flex mt-2 justify-content-around py-1">
+                    <ul className="nav d-flex mt-2 justify-content-around py-1 assestment-tabs">
                       {allassessmet?.map((ass_d: any, ky: any) => (
-                        <li className={`nav-item`} key={ky}>
+                        <li className={`nav-item`} key={ky}  style={{fontSize:"14px"}}>
                           <Link
                             className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
                               } ${ShowSecounderyTab?.id === ass_d.uid

@@ -47,7 +47,7 @@ export default function ParodorshitaComponent({
                         <div className="d-flex justify-content-between align-items-center w-100 px-1">
                           <div className="py-2" style={{ color: "#428F92" }}>
                             <PiBookOpenText className="me-2" />
-                            {d.name_bn}
+                            {d.oviggota_title}
                           </div>
                           {/* <div
                         className="px-2 rounded text-white"

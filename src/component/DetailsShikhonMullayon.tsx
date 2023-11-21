@@ -15,6 +15,7 @@ export default function DetailsShikhonMullayon({
   const [competence_uid, setcompetence_uid] = useState<any>("");
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const [pi_name, setpi_name] = useState<any>("");
+  const [pi_id, setpi_id] = useState<any>("");
   const [is_draft, setis_draft] = useState<any>(1);
   const [all_submited_PI, setall_submited_PI] = useState<any>([]);
 
@@ -48,15 +49,15 @@ export default function DetailsShikhonMullayon({
         {showDetailsshikhonKalinMullayon?.pis?.map((d: any, ky: any) => (
           <div key={ky}>
             {show_pis(d.uid) && (
-              <div className="col-sm-6 col-md-12" >
+              <div className="col-sm-6 col-md-12">
                 <div className={`d-flex align-items-center py-2 gap-2`}>
                   <div className={`border-0 w-100`}>
                     <div className="d-flex justify-content-between">
                       <div className="d-flex justify-content-between align-items-center w-100 px-1">
                         <div className="d-flex" style={{ color: "#428F92" }}>
                           <h6>
-                            {showDetailsshikhonKalinMullayon?.class_uid}.
-                            {showDetailsshikhonKalinMullayon?.competence_id}.
+                            {showDetailsshikhonKalinMullayon?.class_id}.
+                            {showDetailsshikhonKalinMullayon?.oviggota_no}.
                             {d?.pi_id}{" "}
                           </h6>
 
@@ -71,6 +72,7 @@ export default function DetailsShikhonMullayon({
                               get_all_pi_evaluation_by_pi(d.uid);
 
                               setpi_name(d?.name_bn);
+                              setpi_id(d?.pi_id);
                             }}
                             to={"#"}
                             className="text-decoration text-success  ps-2"
@@ -98,7 +100,8 @@ export default function DetailsShikhonMullayon({
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            {pi_name}
+            {showDetailsshikhonKalinMullayon?.class_id}.
+            {showDetailsshikhonKalinMullayon?.oviggota_no}.{pi_id} {pi_name}
             <h6 className="text-center">
               {showDetailsshikhonKalinMullayon?.details_bn}
             </h6>

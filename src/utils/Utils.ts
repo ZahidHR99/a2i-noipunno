@@ -112,7 +112,6 @@ export const add_pi_uid = (all_bis: any, all_submited_PI_: any) => {
       }
     }
 
-
   }
 };
 
@@ -131,3 +130,13 @@ export const show_pis = (compitance_uid: any) => {
   return all_compitance_id.includes(compitance_uid)
 
 };
+
+export const show_comment_box_bi = ( w_d :any, submitData :any , student_uid:any ) => {
+  let obj =  submitData.filter((d:any)=>  d.bi_uid == w_d.bi_uid && student_uid == d.student_uid)
+  if (obj.length) {
+    return obj[0].remark
+  }
+  return ""
+
+};
+

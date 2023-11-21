@@ -129,10 +129,10 @@
 
 /* teacher info list start */
 /* nav tab start */
-.nav_tab_bottom_border:hover {
+/* .nav_tab_bottom_border:hover {
   border-bottom: 2px solid #428f92;
   padding-top  : 0px;
-}
+} */
 
 /* nav tab end */
 /* shikhon kalin mollaion start */
@@ -559,10 +559,9 @@
 }
 
 .session_and_all_dropdown {
-  display        : flex;
+  display        : block;
   padding        : 2px 10px;
   flex-direction : column;
-  justify-content: center;
   align-items    : center;
   gap            : 10px;
   border-radius  : 24px;
@@ -609,5 +608,7 @@
   font-weight          : 500;
   line-height          : 24px;
 }
-
+.tab_active_color{
+  color: red;
+}
 /* +++++++++++++++++++++++++++++++++++++++ */

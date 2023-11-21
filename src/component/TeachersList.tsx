@@ -54,7 +54,7 @@ export default function TeachersList() {
   }, []);
 
 
-  console.log("teachers", teachers);
+  // console.log("teachers", teachers);
 
 
   return (

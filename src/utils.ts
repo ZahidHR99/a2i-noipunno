@@ -1,6 +1,3 @@
-import cogoToast from "cogo-toast";
-
-
 export const Validation = (
   customInputValidationCheck: any = [],
   element = document
