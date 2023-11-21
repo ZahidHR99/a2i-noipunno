@@ -11,7 +11,7 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
 
 
 
-  // console.log("selected_subject", selected_subject);
+  console.log("selected_subject", selected_subject.subject);
 
 
   const navigate = useNavigate()
@@ -50,7 +50,14 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
                   {title}
                   <MdOutlineArrowForwardIos />
                   {" "}
-                  <strong>{(selected_subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || "সপ্তম শ্রেণি"}</strong>
+                  <strong>{
+                    (selected_subject?.subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || (selected_subject?.subject?.class_uid === "7") && "সপ্তম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "8") && " অস্টম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "9") && " নবম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "10") && " দশম শ্রেণি"
+                  }
+
+                  </strong>
                 </span>
               </h6>
             </div>

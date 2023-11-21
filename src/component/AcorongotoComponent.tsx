@@ -18,6 +18,7 @@ export default function AcorongotoComponent({
   const [is_draft, setis_draft] = useState<any>(1);
   const [all_submited_PI, setall_submited_PI] = useState<any>([]);
   const [submitObj, setsubmitObj] = useState<any>({});
+  const [submitObj_wid_null, setsubmitObj_wid_null] = useState<any>([]);
   const [submitData, setsubmitData] = useState<any>([]);
 
   const checkedIn = (obj: any) => {
@@ -64,13 +65,18 @@ export default function AcorongotoComponent({
 
     if (all_submited_PI_.length) {
       let obj = {};
+      let W_id_null_obj = [];
       all_submited_PI_.map((d: any) => {
         const pi_uid = add_pi_uid(all_bis, d);
         if (pi_uid) {
           d.pi_uid = pi_uid;
           obj = { ...obj, [d.bi_uid + "_" + d.student_uid]: d };
+        } else {
+          W_id_null_obj.push(d)
         }
       });
+
+      setsubmitObj_wid_null(W_id_null_obj)
       setsubmitObj(obj);
       checkedIn(obj);
     } else {
@@ -88,7 +94,6 @@ export default function AcorongotoComponent({
       [key]: Showcollaps[key] ? !Showcollaps[key] : true,
     });
 
-    // console.log("obj" , obj , key);
 
   };
 
@@ -121,7 +126,7 @@ export default function AcorongotoComponent({
                         className="px-2 rounded text-white"
                         style={{ backgroundColor: "#428F92" }}
                       >
-                        {d?.class == "6" ? "ষষ্ঠ শ্রেণি" : "সপ্তম শ্রেণি"}
+                        {/* {d?.class == "6" ? "ষষ্ঠ শ্রেণি" : "সপ্তম শ্রেণি"} */}
                       </div>
                     </div>
                   </div>
@@ -148,6 +153,7 @@ export default function AcorongotoComponent({
                   submitData={submitData}
                   setsubmitData={setsubmitData}
                   is_draft={is_draft}
+                  submitObj_wid_null={submitObj_wid_null}
                 />
               </div>
             </div>

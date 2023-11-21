@@ -131,9 +131,11 @@ export const show_pis = (compitance_uid: any) => {
 
 };
 
-export const show_comment_box_bi = ( w_d :any, submitData :any ) => {
- 
-  console.log(`w_d`, w_d , submitData );
+export const show_comment_box_bi = ( w_d :any, submitData :any , student_uid:any ) => {
+  let obj =  submitData.filter((d:any)=>  d.bi_uid == w_d.bi_uid && student_uid == d.student_uid)
+  if (obj.length) {
+    return obj[0].remark
+  }
   return ""
 
 };
