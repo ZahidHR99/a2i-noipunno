@@ -104,17 +104,28 @@ export default function DetailsShikhonMullayon({
         centered
       >
         <Modal.Header closeButton>
+
           <Modal.Title>
-            {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.
-            {convertToBanglaNumber(
-              showDetailsshikhonKalinMullayon?.oviggota_no
-            )}
-            .{convertToBanglaNumber(pi_id)} {pi_name}
+            {/* {showDetailsshikhonKalinMullayon?.class_id}.
+            {showDetailsshikhonKalinMullayon?.oviggota_no}.{pi_id} {pi_name}
             <h6 className="text-center">
               {showDetailsshikhonKalinMullayon?.details_bn}
-            </h6>
-          </Modal.Title>
-        </Modal.Header>
+            </h6> */}
+
+            <span className="d-flex justify-content-start align-content-center gap-2">
+              <h4 className="font-weight-bold"><strong>পারদর্শিতা সূচক</strong></h4>
+              <h4>
+                <strong>
+                  {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}. {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.{convertToBanglaNumber(pi_id)}
+                </strong>
+              </h4>
+            </span>
+            <h6>{pi_name}</h6>
+
+
+          </Modal.Title >
+
+        </Modal.Header >
         <Modal.Body className="">
           <StudentMullayonModal
             competence_uid={competence_uid}
@@ -130,7 +141,7 @@ export default function DetailsShikhonMullayon({
             setShowModal={setShowModal}
           />
         </Modal.Body>
-      </Modal>
-    </div>
+      </Modal >
+    </div >
   );
 }

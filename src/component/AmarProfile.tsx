@@ -18,7 +18,7 @@ const AmarProfile = () => {
     }
   }, []);
 
-  // console.log("userDetails", userDetails);
+
 
   return (
     <section className="mx-auto">
