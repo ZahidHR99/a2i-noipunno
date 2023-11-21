@@ -126,7 +126,7 @@ export default function
                 {/*For => Mobile Device */}
 
                 <div className="offcanvas-body subheader-accordion">
-                  <div className="accordion accordion-flush" id="prothomPata">
+                  <div className="" id="prothomPata">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="prothompata-headingOne" >
                         <button className="accordion-button  d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
@@ -308,8 +308,8 @@ export default function
               {/*For => Large Device */}
 
               <div className="d-none d-lg-flex pages-buttons">
-                <div className="dropdown">
-                  <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
+                <div className="">
+                  <div className=" responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
                         <button
