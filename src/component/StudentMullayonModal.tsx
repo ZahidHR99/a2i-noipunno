@@ -83,7 +83,7 @@ export default function StudentMullayonModal({
 
             null_pi.push(obj[x])
 
-            
+
           }
         }
       }
@@ -507,17 +507,17 @@ export default function StudentMullayonModal({
 
 
                                   {
-  is_draft == "2" && 
+                                    is_draft == "2" &&
 
-  <p>
-                                    
-                                    {show_comment_box_Pi(
-                                      pi_attr,
-                                      submitObj_wid_null,
-                                      studnt.uid
-                                    )}
-                                  </p>
-}
+                                    <p>
+
+                                      {show_comment_box_Pi(
+                                        pi_attr,
+                                        submitObj_wid_null,
+                                        studnt.uid
+                                      )}
+                                    </p>
+                                  }
                                   {/* {pi_attr.uid} */}
                                 </div>
                               </>
