@@ -85,7 +85,7 @@ export default function Teacher() {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-              setpi_selection(d.pi_selection)
+              
               const obj: any = {
                 subject: d_2,
                 own_subjet: d,
@@ -100,6 +100,7 @@ export default function Teacher() {
         }
       });
     });
+
 
     setall_bis(own_subjet.data.data.bis);
     setallCompitance(compitnc_obj)
@@ -204,7 +205,7 @@ export default function Teacher() {
                       >
                         {showSubject && subject.length > 0 && (
                           <>
-                            <BiSidebar /> বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "}
+                            বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "}
                           </>
                         )}
                         {subject.length == 0 && (
@@ -235,6 +236,13 @@ export default function Teacher() {
                                 "class_room_id",
                                 d.own_subjet.class_room_id
                               );
+
+                              localStorage.setItem(
+                                "subject_id",
+                                d.own_subjet.subject_id
+                              );
+
+                              setpi_selection(d.own_subjet?.pi_selection)
                             }}
                           >
                             <div className="card shadow-lg border-0 p-1 p-lg-3 teacher-list-card h-100">

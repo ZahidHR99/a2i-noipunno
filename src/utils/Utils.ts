@@ -78,24 +78,29 @@ export const subject_name = (id: any) => {
 export const pis_list_func = (
   allCompitance: any,
   pi_list: any,
-  pi_selection: any = ""
+  check_sannasik_barsik_or_not: any = ""
 ) => {
   const all_pis_id = [];
   const all_compitance_id = [];
-  localStorage.setItem("show_shannasik_barsik", "false");
+  console.log(`found`  , pi_list);
 
+  
   for (const x in allCompitance) {
     allCompitance[x].pis.map((d) => {
       if (pi_list && pi_list?.length > 0) {
+        
         const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid);
         if (found) {
-          localStorage.setItem("show_shannasik_barsik", "true");
           all_compitance_id.push(allCompitance[x].uid);
           all_pis_id.push(d.uid);
         }
       } else {
-        all_compitance_id.push(allCompitance[x].uid);
+
+        if (!check_sannasik_barsik_or_not) {
+          all_compitance_id.push(allCompitance[x].uid);
         all_pis_id.push(d.uid);
+        }
+        
       }
     });
   }

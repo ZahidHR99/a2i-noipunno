@@ -19,11 +19,16 @@ export default function ShowAssesment({
   setShowcollaps,
 }: any) {
   const [ShowSecounderyTab, setShowSecounderyTab] = useState<any>({});
+  const [class_id, setclass_id] = useState<any>('');
+  // const [pi_selection, setpi_selection] = useState<any>([]);
 
   const fetchData = async () => {
 
 
     try {
+      // setpi_selection(own_data.subjects[0].pi_selection)
+
+      setclass_id(own_data.subjects[0].class_room.class_id)
       const pi_bi_evaluation_list__: any =
         localStorage.getItem("pi_bi_evaluation_list") || "";
       const pi_bi_evaluation_list = pi_bi_evaluation_list__
@@ -51,7 +56,7 @@ export default function ShowAssesment({
         ["id"]: allassessmet[0].uid,
       });
       setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
-      pis_list_func(allCompitance, "");
+      pis_list_func(allCompitance, []);
     } catch (error: any) {
 
       console.log(`error`, error);
@@ -60,7 +65,9 @@ export default function ShowAssesment({
 
   const tabAcorongoto = async (key: number) => {
     try {
-      pis_list_func(allCompitance, "");
+
+      setclass_id(own_data.subjects[key].class_room.class_id)
+      pis_list_func(allCompitance, []);
       setparodorshita_acoron_tab(key);
       seshowCompitance(true);
       setassessment_uid(own_data?.assessments[key]?.assessment_details[0].uid);
@@ -77,11 +84,21 @@ export default function ShowAssesment({
 
   const pi_selection_list_by_subject = async (key: number) => {
     try {
-      const subject = pi_selection.find((data) => data.assessment_type == key);
-      const pi_list = subject?.pi_list;
 
-      // console.log(`allCompitance`, allCompitance , pi_list);
-      pis_list_func(allCompitance, pi_list, pi_selection);
+      const subject_id = localStorage.getItem(
+        "subject_id"
+      );
+      const subject = pi_selection.find((data) => data.assessment_type == key && data.subject_uid == subject_id && data.class_id == class_id);
+      const pi_list = subject?.pi_list || []
+
+      const check_sannasik_barsik_or_not = key === 1234567892 || key == 1234567891
+
+      localStorage.setItem("show_shannasik_barsik", "false");
+      if (check_sannasik_barsik_or_not) {
+        localStorage.setItem("show_shannasik_barsik", "true");
+      }
+
+      pis_list_func(allCompitance, pi_list, check_sannasik_barsik_or_not);
     } catch (error: any) { }
   };
 
@@ -101,10 +118,10 @@ export default function ShowAssesment({
                 <li
                   className={`nav-item w-25 f-dlex justify-content-center ${styles.nav_tab_bottom_border}`}
                   key={key}
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "15px" }}
                 >
                   <a
-                    className={`nav-link link-secondary fw-bold  ${key === 0 ? "active" : ""
+                    className={`nav-link link-secondary fw-bold  ${key === 0 ? "active " : ""
                       } `}
                     id="expertness-tab"
                     data-bs-toggle="tab"

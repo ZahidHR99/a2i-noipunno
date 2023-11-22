@@ -21,7 +21,6 @@ import {
   branch_name,
 } from "../utils/Utils";
 import Breadcumb from "../layout/Breadcumb";
-import DatePicker from "react-datepicker";
 // import { toPng } from "html-to-image";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
@@ -811,7 +810,7 @@ console.log('====================================');
           {loader && <Spinner animation="border" />}
         </div>
       )} */}
-
+{/* 
       {!ShowProfile && (
         <BreadcumbHome
           showSubjectname={showSubjectname}
@@ -819,7 +818,7 @@ console.log('====================================');
           seshowSubject={seshowSubject}
           title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
         />
-      )}
+      )} */}
       {!loader && (
         <div className="dashboard-section">
           <section className="np-breadcumb-section pt-2 pb-5">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { add_pi_uid, show_comment_box_bi, weightId } from "../utils/Utils";
+import { add_pi_uid, convertToBanglaNumber, show_comment_box_bi, weightId } from "../utils/Utils";
 import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
 import { FiTriangle } from "react-icons/fi";
 import { Bi_save, get_bi_evaluation_by_bi, get_pi_bi_evaluation_list } from "../Request";
@@ -311,7 +311,7 @@ export default function StudentMullayonBehave({
           <div className="">
             <div className="d-flex justify-content-between flex-md-row flex-column align-items-center ">
               <h5>শিক্ষার্থীর নাম: {student?.student_name_bn} </h5>
-              <h5>শিক্ষার্থীর রোল: {student?.roll} </h5>
+              <h5>শিক্ষার্থীর রোল: {convertToBanglaNumber(student.roll)} </h5>
               {/* <p>রোল নম্বর #৩২১০০</p> */}
             </div>
 
