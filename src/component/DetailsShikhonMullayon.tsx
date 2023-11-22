@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import StudentMullayonModal from "./StudentMullayonModal";
 import { Button, Modal } from "react-bootstrap";
 import { get_pi_evaluation_by_pi } from "../Request";
-import { show_pis, convertToBanglaNumber } from "../utils/Utils";
+import { check_pi_submitted, show_pis , convertToBanglaNumber } from "../utils/Utils";
 
 export default function DetailsShikhonMullayon({
   showDetailsshikhonKalinMullayon,
@@ -82,7 +82,7 @@ export default function DetailsShikhonMullayon({
                             to={"#"}
                             className="text-decoration text-success  ps-2"
                           >
-                            <h6>{d?.name_bn}</h6>
+                            <h6>{d?.name_bn}  {check_pi_submitted(d , assessment_uid ) && <i className="fa-regular fa-circle-check"></i>}  </h6>
                           </Link>
                         </div>
                       </div>
@@ -116,7 +116,7 @@ export default function DetailsShikhonMullayon({
               <h4 className="font-weight-bold"><strong>পারদর্শিতা সূচক</strong></h4>
               <h4>
                 <strong>
-                  {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}. {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.{convertToBanglaNumber(pi_id)}
+                  {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.{convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.{convertToBanglaNumber(pi_id)}
                 </strong>
               </h4>
             </span>

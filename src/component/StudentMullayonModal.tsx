@@ -10,14 +10,14 @@ import {
   BiSquareRounded,
 } from "react-icons/bi";
 
-import { Pi_save, teacher_own_subject } from "../Request";
+import { Pi_save, get_pi_bi_evaluation_list, teacher_own_subject } from "../Request";
 import { GoPerson } from "react-icons/go";
 import { toast } from "../utils";
 import { MdArrowBackIosNew } from "react-icons/md";
 import Swal from "sweetalert2";
 import "./Home.style.module.css";
 import { useNavigate } from "react-router-dom";
-import { show_comment_box_Pi } from "../utils/Utils";
+import { convertToBanglaNumber, show_comment_box_Pi } from "../utils/Utils";
 
 const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
 const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -118,6 +118,16 @@ export default function StudentMullayonModal({
             confirmButtonText: "হ্যাঁ",
           }).then(async (result) => {
             if (result.isConfirmed) {
+
+
+            let own_subjet :any = await get_pi_bi_evaluation_list(2);
+
+            localStorage.setItem(
+              "pi_bi_evaluation_list",
+              JSON.stringify(own_subjet.data.data)
+            );
+
+
               await Pi_save(data);
               setsubmited(true);
               setShowModal(false);
@@ -431,7 +441,7 @@ export default function StudentMullayonModal({
                         <GoPerson className="fs-6 fw-bold" />{" "}
                         {studnt.student_name_bn}
                         <br />
-                        {studnt.uid}
+                        রোল : {convertToBanglaNumber(studnt.roll)} 
                       </td>
 
                       {al_pi_attr?.map((pi_attr: any, kedy: any) => (
