@@ -513,13 +513,13 @@ export default function StudentMullayonModal({
                                   {/* {pi_attr.uid} */}
 
                                   {is_draft == "2" && kedy === 0 && (
-                                    <td>
+                                    <h5>
                                       {show_comment_box_Pi(
                                         pi_attr,
                                         submitObj_wid_null,
                                         studnt.uid
                                       )}
-                                    </td>
+                                    </h5>
                                   )}
 
                                 </div>
