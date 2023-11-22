@@ -117,7 +117,7 @@ export default function AcorongotoComponent({
                         {d.student_name_bn}
                       </div>
                       <div className="px-2 rounded ">
-                        <FaExpand />
+                      <img src="/assets/images/arrow-down.svg" alt="" />
                       </div>
                     </div>
                   </div>

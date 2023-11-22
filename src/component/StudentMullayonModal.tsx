@@ -19,8 +19,7 @@ import "./Home.style.module.css";
 import { useNavigate } from "react-router-dom";
 import { convertToBanglaNumber, show_comment_box_Pi } from "../utils/Utils";
 
-const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
-const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
 const class_room_id = localStorage.getItem("class_room_id");
 
 export default function StudentMullayonModal({
@@ -47,6 +46,11 @@ export default function StudentMullayonModal({
   console.log(`submitObj`, submitObj);
 
   const fetchData = async () => {
+
+    const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
+    const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
+
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -55,7 +59,6 @@ export default function StudentMullayonModal({
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
     setteacher(own_subjet.data.data.user);
-    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
 
     if (all_submited_PI.length) {
       let obj = {};
