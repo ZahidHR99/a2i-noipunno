@@ -139,7 +139,7 @@ export const show_shannasik_barsik = () => {
   const show_shannasik_barsik__ = JSON.parse(
     localStorage.getItem("show_shannasik_barsik")
   );
-  console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
+  // console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
   return show_shannasik_barsik__;
 };
 
@@ -193,15 +193,15 @@ export function check_pi_submitted(pis_id: any, assessment_uid: any) {
   }
 }
 
-export const convertToBanglaNumber = (number:any) => {
-  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯','১০',','];
+export const convertToBanglaNumber = (number: any) => {
+  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '১০', ','];
   const numString = number.toString();
   let banglaNumber = '';
   for (let i = 0; i < numString.length; i++) {
     if (numString[i] !== ",") {
-      const digit =  parseInt(numString[i]);
-    banglaNumber += banglaDigits[digit];
-    }else{
+      const digit = parseInt(numString[i]);
+      banglaNumber += banglaDigits[digit];
+    } else {
       banglaNumber += ","
     }
   }

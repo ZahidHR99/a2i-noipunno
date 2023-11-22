@@ -22,7 +22,7 @@ export default function ShowAssesment({
 
   const fetchData = async () => {
 
-    
+
     try {
       const pi_bi_evaluation_list__: any =
         localStorage.getItem("pi_bi_evaluation_list") || "";
@@ -41,7 +41,7 @@ export default function ShowAssesment({
           JSON.stringify(own_subjet.data.data)
         );
       }
-    
+
 
       seshowCompitance(true);
       setparodorshita_acoron_tab(0);
@@ -72,7 +72,7 @@ export default function ShowAssesment({
         own_data?.assessments[key]?.assessment_details[0]
           ?.assessment_details_name_bn
       );
-    } catch (error: any) {}
+    } catch (error: any) { }
   };
 
   const pi_selection_list_by_subject = async (key: number) => {
@@ -82,7 +82,7 @@ export default function ShowAssesment({
 
       // console.log(`allCompitance`, allCompitance , pi_list);
       pis_list_func(allCompitance, pi_list, pi_selection);
-    } catch (error: any) {}
+    } catch (error: any) { }
   };
 
   useEffect(() => {
@@ -104,9 +104,8 @@ export default function ShowAssesment({
                   style={{ fontSize: "14px" }}
                 >
                   <a
-                    className={`nav-link link-secondary fw-bold  ${
-                      key === 0 ? "active" : ""
-                    } `}
+                    className={`nav-link link-secondary fw-bold  ${key === 0 ? "active" : ""
+                      } `}
                     id="expertness-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#expertness"
@@ -141,13 +140,11 @@ export default function ShowAssesment({
                           style={{ fontSize: "14px" }}
                         >
                           <a
-                            className={`fw-bold nav-link link-secondary ${
-                              styles.nav_tab_bottom_border
-                            } ${
-                              ShowSecounderyTab?.id === ass_d.uid
+                            className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
+                              } ${ShowSecounderyTab?.id === ass_d.uid
                                 ? " active"
                                 : ""
-                            } `}
+                              } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"
@@ -197,13 +194,11 @@ export default function ShowAssesment({
                           style={{ fontSize: "14px" }}
                         >
                           <Link
-                            className={`fw-bold nav-link link-secondary ${
-                              styles.nav_tab_bottom_border
-                            } ${
-                              ShowSecounderyTab?.id === ass_d.uid
+                            className={`fw-bold nav-link link-secondary ${styles.nav_tab_bottom_border
+                              } ${ShowSecounderyTab?.id === ass_d.uid
                                 ? " active"
                                 : ""
-                            } `}
+                              } `}
                             id="expertness-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#expertness"

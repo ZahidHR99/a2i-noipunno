@@ -86,12 +86,12 @@ export default function StudentMullayonBehave({
             if (result.isConfirmed) {
               await Bi_save(data);
 
-              let own_subjet :any = await get_pi_bi_evaluation_list(2);
+              let own_subjet: any = await get_pi_bi_evaluation_list(2);
 
-            localStorage.setItem(
-              "pi_bi_evaluation_list",
-              JSON.stringify(own_subjet.data.data)
-            );
+              localStorage.setItem(
+                "pi_bi_evaluation_list",
+                JSON.stringify(own_subjet.data.data)
+              );
 
               setsubmited(true);
               Swal.fire({
@@ -301,6 +301,8 @@ export default function StudentMullayonBehave({
   };
 
   // console.log(`submitData`, submitData);
+  // console.log("all_bis", all_bis);
+
 
   return (
     <div className="content">
@@ -402,7 +404,7 @@ export default function StudentMullayonBehave({
                               </div>
                               <div>
                                 <h6 style={{ fontSize: "14px" }}>
-                                  {w_d.title_bn} 
+                                  {w_d.title_bn}
                                 </h6>
                               </div>
                             </div>

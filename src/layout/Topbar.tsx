@@ -52,7 +52,7 @@ export default function
                 <span className="navbar-toggler-icon" />
               </button>
 
-              <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
+              {/* <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
                 <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center">
                   <li className="btn-group dropleft">
                     <a className="nav-link dropdown-toggle noipunno-dropdown" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -85,7 +85,43 @@ export default function
                     </ul>
                   </li>
                 </ul>
+              </div> */}
+
+              <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
+                <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center ">
+                  <li className="btn-group dropleft d-flex flex-column justify-content-center align">
+                    <a className="nav-link dropdown-toggle noipunno-dropdown d-flex justify-content-center align-items-center" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                      <div className="">
+                        <img src="/assets/noipunno/images/avatar/teacher.png" className="border m-0" style={{ width: "2.2rem" }} />
+                      </div>
+                    </a>
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser" >
+                      <li className="border-bottom">
+                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2 mb-1">
+                          <img src={teacher} className="avatar-instance " />
+                          <div className="text">
+                            <div className="text-wrapper">{userDetails?.name}</div>
+                            <div className="div">{(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}</div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <Link to={"teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                          <img src={myprofile} alt="alt" />
+                          আমার প্রোফাইল
+                        </Link>
+                      </li>
+                      <li>
+                        <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
+                          <img src={logoutImage} alt="img" />
+                          সাইন আউট
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
+
             </div>
           </nav>
         </div>

@@ -11,7 +11,7 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
 
 
 
-  console.log("selected_subject", selected_subject.subject);
+  // console.log("selected_subject", selected_subject.subject);
 
 
   const navigate = useNavigate()
