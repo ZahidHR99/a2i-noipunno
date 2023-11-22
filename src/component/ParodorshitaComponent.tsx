@@ -3,6 +3,7 @@ import { PiBookOpenText } from "react-icons/pi";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import styles from "./Home.style.module.css";
 import { show_compitance, show_shannasik_barsik } from "../utils/Utils";
+import { FaExpand } from "react-icons/fa";
 
 export default function ParodorshitaComponent({
   assessment_uid,
@@ -19,11 +20,11 @@ export default function ParodorshitaComponent({
   return (
     <div className="py-2">
       <div className="row">
-        {shikhonKalinMullayon.map((d: any, key: any) => (
-          <div key={key}>
-            {show_compitance(d.uid) && (
-              <>
-                {show_shannasik_barsik() == false ? (
+        {show_shannasik_barsik() == false ? (
+          <>
+            {shikhonKalinMullayon.map((d: any, key: any) => (
+              <div key={key}>
+                {show_compitance(d.uid) && (
                   <>
                     <div
                       onClick={(e: any) => {
@@ -48,15 +49,12 @@ export default function ParodorshitaComponent({
                                 className="py-2"
                                 style={{ color: "#428F92" }}
                               >
-                                <PiBookOpenText className="me-2" />
+                                {key + 1}. <PiBookOpenText className="me-2" />
                                 {d.oviggota_title}
                               </div>
-                              {/* <div
-                        className="px-2 rounded text-white"
-                        style={{ backgroundColor: "#428F92" }}
-                      >
-                        {d?.pis.length}
-                      </div> */}
+                              <div className="px-2 rounded ">
+                                <FaExpand />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -81,29 +79,33 @@ export default function ParodorshitaComponent({
                       </div>
                     </div>
                   </>
-                ) : (
-                  <>
-                    <div
-                      onClick={(e: any) => {
-                        setshowDetailsshikhonKalinMullayon(d);
-                      }}
-                    >
-                      <div className="card card-body">
-                        <DetailsShikhonMullayon
-                          showDetailsshikhonKalinMullayon={d}
-                          assessment_uid={assessment_uid}
-                          pi_attr={pi_attr}
-                          Student={Student}
-                          teacher_uid={teacher_uid}
-                        />
-                      </div>
-                    </div>
-                  </>
                 )}
-              </>
-            )}
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className="card card-body mx-2">
+            {shikhonKalinMullayon.map((d: any, key: any) => (
+              <div key={key}>
+                {show_compitance(d.uid) && (
+                  <div
+                    onClick={(e: any) => {
+                      setshowDetailsshikhonKalinMullayon(d);
+                    }}
+                  >
+                    <DetailsShikhonMullayon
+                      showDetailsshikhonKalinMullayon={d}
+                      assessment_uid={assessment_uid}
+                      pi_attr={pi_attr}
+                      Student={Student}
+                      teacher_uid={teacher_uid}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

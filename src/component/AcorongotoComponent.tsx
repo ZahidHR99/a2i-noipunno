@@ -5,6 +5,7 @@ import styles from "./Home.style.module.css";
 import StudentMullayonBehave from "./StudentMullayonBehave";
 import { get_bi_evaluation_by_bi } from "../Request";
 import { add_pi_uid } from "../utils/Utils";
+import { FaExpand } from "react-icons/fa";
 
 export default function AcorongotoComponent({
   all_bis,
@@ -45,8 +46,6 @@ export default function AcorongotoComponent({
   };
 
   const showOffCollaps = async (key: any, student) => {
-
-
     setis_draft(1);
     setall_submited_PI([]);
     const class_room_id: any = localStorage.getItem("class_room_id");
@@ -58,7 +57,6 @@ export default function AcorongotoComponent({
 
     const all_submited_PI_ = data?.data?.evaluation;
     if (data.data?.evaluation?.length) {
-
       // console.log(`data.data?.evaluation[0]?.submit_status`, data.data?.evaluation[0]);
       setis_draft(data.data?.evaluation[0]?.submit_status);
     }
@@ -72,18 +70,17 @@ export default function AcorongotoComponent({
           d.pi_uid = pi_uid;
           obj = { ...obj, [d.bi_uid + "_" + d.student_uid]: d };
         } else {
-          W_id_null_obj.push(d)
+          W_id_null_obj.push(d);
         }
       });
 
-      setsubmitObj_wid_null(W_id_null_obj)
+      setsubmitObj_wid_null(W_id_null_obj);
       setsubmitObj(obj);
       checkedIn(obj);
     } else {
       setsubmitObj({});
       checkedIn({});
     }
-
 
     for (const x in Showcollaps) {
       Showcollaps[x] = false;
@@ -93,8 +90,6 @@ export default function AcorongotoComponent({
       ...Showcollaps,
       [key]: Showcollaps[key] ? !Showcollaps[key] : true,
     });
-
-
   };
 
   return (
@@ -103,7 +98,6 @@ export default function AcorongotoComponent({
         {Student.map((d: any, key: any) => (
           <div key={key}>
             <div
-
               onClick={(e: any) => {
                 // setshowDetailsshikhonKalinMullayon(d);
 
@@ -122,11 +116,8 @@ export default function AcorongotoComponent({
                         <PiBookOpenText className="me-2" />
                         {d.student_name_bn}
                       </div>
-                      <div
-                        className="px-2 rounded text-white"
-                        style={{ backgroundColor: "#428F92" }}
-                      >
-                        {/* {d?.class == "6" ? "ষষ্ঠ শ্রেণি" : "সপ্তম শ্রেণি"} */}
+                      <div className="px-2 rounded ">
+                        <FaExpand />
                       </div>
                     </div>
                   </div>
