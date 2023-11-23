@@ -26,8 +26,6 @@ export default function ShowAssesment({
 
 
     try {
-      // setpi_selection(own_data.subjects[0].pi_selection)
-
       setclass_id(own_data.subjects[0].class_room.class_id)
       const pi_bi_evaluation_list__: any =
         localStorage.getItem("pi_bi_evaluation_list") || "";
@@ -56,7 +54,7 @@ export default function ShowAssesment({
         ["id"]: allassessmet[0].uid,
       });
       setMullayon_name(allassessmet[0]?.assessment_details_name_bn);
-      pis_list_func(allCompitance, []);
+      pis_list_func(allCompitance, [] , false);
     } catch (error: any) {
 
       console.log(`error`, error);
@@ -93,10 +91,7 @@ export default function ShowAssesment({
 
       const check_sannasik_barsik_or_not = key === 1234567892 || key == 1234567891
 
-      localStorage.setItem("show_shannasik_barsik", "false");
-      if (check_sannasik_barsik_or_not) {
-        localStorage.setItem("show_shannasik_barsik", "true");
-      }
+      
 
       pis_list_func(allCompitance, pi_list, check_sannasik_barsik_or_not);
     } catch (error: any) { }

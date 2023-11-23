@@ -82,25 +82,24 @@ export const pis_list_func = (
 ) => {
   const all_pis_id = [];
   const all_compitance_id = [];
-  console.log(`found`  , pi_list);
+  localStorage.setItem("show_shannasik_barsik", "false");
+  if (check_sannasik_barsik_or_not) {
+    localStorage.setItem("show_shannasik_barsik", "true");
+  }
 
-  
   for (const x in allCompitance) {
     allCompitance[x].pis.map((d) => {
       if (pi_list && pi_list?.length > 0) {
-        
         const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid);
         if (found) {
           all_compitance_id.push(allCompitance[x].uid);
           all_pis_id.push(d.uid);
         }
       } else {
-
         if (!check_sannasik_barsik_or_not) {
           all_compitance_id.push(allCompitance[x].uid);
-        all_pis_id.push(d.uid);
+          all_pis_id.push(d.uid);
         }
-        
       }
     });
   }
@@ -201,19 +200,14 @@ export function check_pi_submitted(pis_id: any, assessment_uid: any) {
 export const convertToBanglaNumber = (number: any) => {
   const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '১০', ','];
   const numString = number.toString();
-  let banglaNumber = '';
+  let banglaNumber = "";
   for (let i = 0; i < numString.length; i++) {
     if (numString[i] !== ",") {
       const digit = parseInt(numString[i]);
       banglaNumber += banglaDigits[digit];
     } else {
-      banglaNumber += ","
+      banglaNumber += ",";
     }
   }
   return banglaNumber;
-}
-
-
-
-
-
+};
