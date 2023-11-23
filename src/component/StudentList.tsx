@@ -55,7 +55,6 @@ const StudentList = () => {
       setScreenSize('large_screen');
     }
     else {
-      // greater than 1280 px
       setScreenSize('extra_large_screen');
     }
   };
@@ -77,6 +76,7 @@ const StudentList = () => {
   console.log("student", student);
 
   return (
+
     <>
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
       {(student?.length == 0) ? <div className={styles.loading_container}><Spinner animation="border" /> </div> : <div className="container" my-5>
