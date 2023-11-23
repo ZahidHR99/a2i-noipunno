@@ -76,7 +76,6 @@ const StudentList = () => {
   console.log("student", student);
 
 
-
   return (
     <>
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
