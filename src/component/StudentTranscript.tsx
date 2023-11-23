@@ -188,13 +188,13 @@ export default function StudentTranscript() {
     // if(class_id === subject.class_uid){
     //  const section = subject.sections;
     // }
-    const uniqueSections = [
-      ...new Set(
-        subject
-          .filter((data) => data?.subject?.class_uid === class_id)
-          .map((data) => data?.subject?.section)
-      ),
-    ];
+    // const uniqueSections = [
+    //   ...new Set(
+    //     subject
+    //       .filter((data) => data?.subject?.class_uid === class_id)
+    //       .map((data) => data?.subject?.section)
+    //   ),
+    // ];
   };
 
   console.log("====================================");
@@ -278,13 +278,34 @@ export default function StudentTranscript() {
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                         >
-                          {selectedSunject?.section ? (
+                          {/* {selectedSunject?.section.map (
                             <option selected>
                               {section_name(selectedSunject?.section)}
                             </option>
                           ) : (
                             <option selected>শাখা নির্বাচন করুন</option>
+                          )} */}
+                          <option selected>শাখা নির্বাচন করুন</option>
+                          {subject?.class_room?.section_id?.map(
+                            (data, index) => (
+                              <option key={index} value="1">
+                                {section_name(subject?.section_id)}
+                              </option>
+                            )
                           )}
+                          {/* <select>
+                            {subject?.own_subjet?.class_room?.section_id? (
+                              subject.section.map((section) => (
+                                <option key={section_id} value={section_id}>
+                                  {section_name(section)}
+                                </option>
+                              ))
+                            ) : (
+                              <option value="" selected disabled>
+                                Select a Section
+                              </option>
+                            )}
+                          </select> */}
                         </select>
                       </div>
                     </div>
