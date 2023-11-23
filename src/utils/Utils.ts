@@ -210,5 +210,10 @@ export const convertToBanglaNumber = (number:any) => {
 
 
 
+// Retrieve the students array from the data in local storage
+const studentsArray = localStorage?.getItem?.data?.students || [];
 
+// Get the number of students (length of the students array)
+export const numberOfStudents = studentsArray.length;
 
+console.log("Number of students:", numberOfStudents);

@@ -24,23 +24,14 @@ export default function ShowAssesment({
 
     
     try {
-      const pi_bi_evaluation_list__: any =
-        localStorage.getItem("pi_bi_evaluation_list") || "";
-      const pi_bi_evaluation_list = pi_bi_evaluation_list__
-        ? JSON.parse(pi_bi_evaluation_list__)
-        : "";
+      
 
-      let own_subjet: any = "";
-      if (pi_bi_evaluation_list) {
-        own_subjet = pi_bi_evaluation_list;
-      } else {
-        own_subjet = await get_pi_bi_evaluation_list(2);
+        let own_subjet = await get_pi_bi_evaluation_list(2);
 
         localStorage.setItem(
           "pi_bi_evaluation_list",
           JSON.stringify(own_subjet.data.data)
         );
-      }
     
 
       seshowCompitance(true);

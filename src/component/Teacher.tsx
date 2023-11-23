@@ -4,6 +4,7 @@ import {
   all_teachers,
   teacher_dashboard,
   teacher_own_subject,
+  clssWiseSubject,
 } from "../Request";
 
 import styles from "./Home.style.module.css";
@@ -19,6 +20,7 @@ import { section_name, shift_name, teacher_name } from "../utils/Utils";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
+  const [numberOfStudents, setnumberOfStudents] = useState([]);
   const [subject, setsubject] = useState([]);
   const [allCompitance, setallCompitance] = useState<any>({});
   const [element, setelement] = useState<any>("");
@@ -79,21 +81,21 @@ export default function Teacher() {
 
     const all_subject: any = [];
 
-    let compitnc_obj = {}
+    let compitnc_obj = {};
     own_subjet.data.data.subjects.map((d: any) => {
       data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-              setpi_selection(d.pi_selection)
+              setpi_selection(d.pi_selection);
               const obj: any = {
                 subject: d_2,
                 own_subjet: d,
                 teacher: al_tech,
               };
               d.oviggota.map((competnc) => {
-                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc }
-              })
+                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc };
+              });
               all_subject.push(obj);
             }
           });
@@ -102,7 +104,7 @@ export default function Teacher() {
     });
 
     setall_bis(own_subjet.data.data.bis);
-    setallCompitance(compitnc_obj)
+    setallCompitance(compitnc_obj);
     setsubject(all_subject);
     setloader(false);
   };
@@ -124,11 +126,9 @@ export default function Teacher() {
     setelement(e);
   };
 
-
-
   const student_lsit = async () => {
     const student: any = [];
-    const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+    const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
     studentsData.data.data.subjects.map((std_data: any) => {
       return std_data.class_room.students.map((stu_data: any) => {
         stu_data.competence = std_data.competence;
@@ -142,16 +142,34 @@ export default function Teacher() {
     );
     setTotal_student(uniqueObjectsArray);
   };
+  console.log("====================================");
+  console.log("Total_student", total_student);
+  console.log("====================================");
 
   const teacher_list = async () => {
-    const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    setTotal_teacher(teachersData?.data?.teachers)
+    const teachersData = JSON.parse(localStorage.getItem("teacher_dashboard"));
+    setTotal_teacher(teachersData?.data?.teachers);
   };
 
   const all_class = async () => {
-    const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
+    const local_storege_data = JSON.parse(
+      localStorage.getItem("teacher_dashboard")
+    );
     setTotal_class(local_storege_data?.data?.subjects);
   };
+  // Retrieve the students array from the data in local storage
+  const subjectWiseStudents = async () => {
+    const studentsArray = JSON.parse(
+      localStorage.getItem("teacher_own_subject")
+    );
+    setnumberOfStudents(
+      studentsArray?.data?.data?.subjects?.class_room?.students?.length
+    );
+  };
+  // Get the number of students (length of the students array)
+  // const numberOfStudents = studentsArray.length;
+
+  console.log("Number of students:", teacher_own_subject);
 
   useEffect(() => {
     fetchData();
@@ -162,7 +180,6 @@ export default function Teacher() {
 
   // console.log("all_student", all_student);
   // console.log("all_teacher", all_teacher);
-
 
   return (
     <div className="content mb-5">
@@ -225,12 +242,12 @@ export default function Teacher() {
                             key={key}
                             onClick={(e) => {
                               skill_behaibor_count(d);
-                              seshowSubjectname(d.subject.name)
-                              setStudent(d?.own_subjet?.class_room?.students)
+                              seshowSubjectname(d.subject.name);
+                              setStudent(d?.own_subjet?.class_room?.students);
 
-                              setteacher_uid(d?.own_subjet.teacher_id)
-                              setStudent(d?.own_subjet?.class_room?.students)
-                              setShowProfile(false)
+                              setteacher_uid(d?.own_subjet.teacher_id);
+                              setStudent(d?.own_subjet?.class_room?.students);
+                              setShowProfile(false);
                               localStorage.setItem(
                                 "class_room_id",
                                 d.own_subjet.class_room_id
@@ -284,6 +301,56 @@ export default function Teacher() {
                                   শাথা
                                 </h6>
                               </div>
+                              <div
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                                  gap: 5,
+                                  display: "inline-flex",
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    color: "#7DAEB0",
+                                    fontSize: 13,
+                                    fontFamily: "Public Sans",
+                                    fontWeight: "400",
+                                    lineHeight: 2,
+                                    wordWrap: "break-word",
+                                  }}
+                                >
+                                  Total Student{" "}
+                                </div>
+                                <div
+                                  style={{
+                                    paddingLeft: 5,
+                                    paddingRight: 5,
+                                    paddingTop: 2,
+                                    paddingBottom: 2,
+                                    background: "#F0FAE9",
+                                    borderRadius: 4,
+                                    justifyContent: "flex-start",
+                                    alignItems: "center",
+                                    gap: 10,
+                                    display: "flex",
+                                  }}
+                                >
+                                  <div
+                                    style={{
+                                      color: "#69CB1C",
+                                      fontSize: 13,
+                                      fontFamily: "Public Sans",
+                                      fontWeight: "500",
+                                      lineHeight: 1,
+                                      wordWrap: "break-word",
+                                    }}
+                                  >
+                                    {total_student.length}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         ))}
@@ -314,18 +381,46 @@ export default function Teacher() {
 
                         {showCompitance && (
                           <>
-                            {
-                              parodorshita_acoron_tab === 0 &&
-                              <ParodorshitaComponent pi_selection={pi_selection} teacher_uid={teacher_uid} Student={Student} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-                            }
+                            {parodorshita_acoron_tab === 0 && (
+                              <ParodorshitaComponent
+                                pi_selection={pi_selection}
+                                teacher_uid={teacher_uid}
+                                Student={Student}
+                                assessment_uid={assessment_uid}
+                                pi_attr={pi_attr}
+                                showDetailsshikhonKalinMullayon={
+                                  showDetailsshikhonKalinMullayon
+                                }
+                                Showcollaps={Showcollaps}
+                                setShowcollaps={setShowcollaps}
+                                Mullayon_name={Mullayon_name}
+                                shikhonKalinMullayon={shikhonKalinMullayon}
+                                setshowDetailsshikhonKalinMullayon={
+                                  setshowDetailsshikhonKalinMullayon
+                                }
+                              />
+                            )}
 
-
-                            {
-                              parodorshita_acoron_tab === 1 &&
-                              <AcorongotoComponent teacher_uid={teacher_uid} teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-
-                            }
-
+                            {parodorshita_acoron_tab === 1 && (
+                              <AcorongotoComponent
+                                teacher_uid={teacher_uid}
+                                teacher={teacher}
+                                Student={Student}
+                                all_bis={all_bis}
+                                assessment_uid={assessment_uid}
+                                pi_attr={pi_attr}
+                                showDetailsshikhonKalinMullayon={
+                                  showDetailsshikhonKalinMullayon
+                                }
+                                Showcollaps={Showcollaps}
+                                setShowcollaps={setShowcollaps}
+                                Mullayon_name={Mullayon_name}
+                                shikhonKalinMullayon={shikhonKalinMullayon}
+                                setshowDetailsshikhonKalinMullayon={
+                                  setshowDetailsshikhonKalinMullayon
+                                }
+                              />
+                            )}
                           </>
                         )}
                       </>
