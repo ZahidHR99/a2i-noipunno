@@ -85,7 +85,7 @@ export default function Teacher() {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-              
+
               const obj: any = {
                 subject: d_2,
                 own_subjet: d,
@@ -186,14 +186,14 @@ export default function Teacher() {
         <div className="dashboard-section">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
-              <div className="row">
+              <div className="row mt-1">
                 {ShowProfile && (
-                  <div className="col-md-3">
+                  <div className="col-md-3 mt-2">
                     <ProfileCard />
                   </div>
                 )}
 
-                <div className={ShowProfile ? "col-md-9" : "col-md-12"}>
+                <div className={ShowProfile ? "col-md-9" : "col-md-12"} >
                   <div className="row d-flex gap-2">
                     <div></div>
                     <div className="d-flex" style={{ cursor: "pointer" }}>
@@ -221,7 +221,7 @@ export default function Teacher() {
                       <>
                         {subject.map((d: any, key: any) => (
                           <div
-                            className="col-6 col-sm-4 col-md-6 col-lg-4 col-xl-3"
+                            className="col-sm-12 col-md-6 col-lg-4 col-xl-3 g-2"
                             style={{ cursor: "pointer" }}
                             key={key}
                             onClick={(e) => {
@@ -245,7 +245,7 @@ export default function Teacher() {
                               setpi_selection(d.own_subjet?.pi_selection)
                             }}
                           >
-                            <div className="card shadow-lg border-0 p-1 p-lg-3 teacher-list-card h-100">
+                            <div className="card shadow-sm border-0 p-1 p-lg-3 teacher-list-card h-100 rounded-sm">
                               <div className="gap-1 gap-lg-3 justify-content-center">
                                 <div className="d-flex justify-content-center py-2 pb-4">
                                   <div
@@ -302,6 +302,7 @@ export default function Teacher() {
                       <>
                         {showSkillBehaibor && (
                           <>
+
                             <ShowAssesment
                               seshowCompitance={seshowCompitance}
                               setassessment_uid={setassessment_uid}

@@ -123,12 +123,12 @@ export default function StudentMullayonModal({
             if (result.isConfirmed) {
 
 
-            let own_subjet :any = await get_pi_bi_evaluation_list(2);
+              let own_subjet: any = await get_pi_bi_evaluation_list(2);
 
-            localStorage.setItem(
-              "pi_bi_evaluation_list",
-              JSON.stringify(own_subjet.data.data)
-            );
+              localStorage.setItem(
+                "pi_bi_evaluation_list",
+                JSON.stringify(own_subjet.data.data)
+              );
 
 
               await Pi_save(data);
@@ -444,7 +444,7 @@ export default function StudentMullayonModal({
                         <GoPerson className="fs-6 fw-bold" />{" "}
                         {studnt.student_name_bn}
                         <br />
-                        রোল : {convertToBanglaNumber(studnt.roll)} 
+                        রোল : {convertToBanglaNumber(studnt.roll)}
                       </td>
 
                       {al_pi_attr?.map((pi_attr: any, kedy: any) => (
