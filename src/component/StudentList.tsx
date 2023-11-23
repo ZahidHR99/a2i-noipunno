@@ -78,8 +78,6 @@ const StudentList = () => {
 
 
 
-
-
   return (
     <>
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
