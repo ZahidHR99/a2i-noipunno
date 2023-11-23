@@ -11,7 +11,7 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
 
 
 
-  console.log("selected_subject", selected_subject.subject);
+  // console.log("selected_subject", selected_subject.subject);
 
 
   const navigate = useNavigate()
@@ -37,8 +37,22 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
 
 
             <div className="d-flex flex-column gap-2">
-              <div style={{ fontSize: "14px" }}>
-                {showSubjectname}
+              <div className="d-flex  justify-content-start align-items-center" style={{ fontSize: "14px" }}>
+                <span>{showSubjectname}</span>
+
+
+                <MdOutlineArrowForwardIos />
+
+                <span>
+                  <>{
+                    (selected_subject?.subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || (selected_subject?.subject?.class_uid === "7") && "সপ্তম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "8") && " অস্টম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "9") && " নবম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "10") && " দশম শ্রেণি"
+                  }
+                  </>
+                </span>
+
               </div>
               <h6 className="d-flex justify-content-lg-center align-items-center gap-1" style={{ color: "#428F92", fontSize: "12px" }}>
                 {" "}
@@ -48,16 +62,15 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
                   {" "}
                   <MdOutlineArrowForwardIos />
                   {title}
-                  <MdOutlineArrowForwardIos />
-                  {" "}
-                  <strong>{
+                  {/* <MdOutlineArrowForwardIos />
+                  {" "} */}
+                  {/* <strong>{
                     (selected_subject?.subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || (selected_subject?.subject?.class_uid === "7") && "সপ্তম শ্রেণি" ||
                     (selected_subject?.subject?.class_uid === "8") && " অস্টম শ্রেণি" ||
                     (selected_subject?.subject?.class_uid === "9") && " নবম শ্রেণি" ||
                     (selected_subject?.subject?.class_uid === "10") && " দশম শ্রেণি"
                   }
-
-                  </strong>
+                  </strong> */}
                 </span>
               </h6>
             </div>

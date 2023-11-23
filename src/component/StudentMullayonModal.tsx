@@ -19,8 +19,7 @@ import "./Home.style.module.css";
 import { useNavigate } from "react-router-dom";
 import { convertToBanglaNumber, show_comment_box_Pi } from "../utils/Utils";
 
-const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
-const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
 const class_room_id = localStorage.getItem("class_room_id");
 
 export default function StudentMullayonModal({
@@ -47,6 +46,11 @@ export default function StudentMullayonModal({
   console.log(`submitObj`, submitObj);
 
   const fetchData = async () => {
+
+    const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
+    const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
+
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -55,7 +59,6 @@ export default function StudentMullayonModal({
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
     setteacher(own_subjet.data.data.user);
-    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
 
     if (all_submited_PI.length) {
       let obj = {};
@@ -120,12 +123,12 @@ export default function StudentMullayonModal({
             if (result.isConfirmed) {
 
 
-            let own_subjet :any = await get_pi_bi_evaluation_list(2);
+              let own_subjet: any = await get_pi_bi_evaluation_list(2);
 
-            localStorage.setItem(
-              "pi_bi_evaluation_list",
-              JSON.stringify(own_subjet.data.data)
-            );
+              localStorage.setItem(
+                "pi_bi_evaluation_list",
+                JSON.stringify(own_subjet.data.data)
+              );
 
 
               await Pi_save(data);
@@ -441,7 +444,7 @@ export default function StudentMullayonModal({
                         <GoPerson className="fs-6 fw-bold" />{" "}
                         {studnt.student_name_bn}
                         <br />
-                        রোল : {convertToBanglaNumber(studnt.roll)} 
+                        রোল : {convertToBanglaNumber(studnt.roll)}
                       </td>
 
                       {al_pi_attr?.map((pi_attr: any, kedy: any) => (

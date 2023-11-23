@@ -80,14 +80,9 @@ const AmarProfile = () => {
                 </Link>
               </div>
             </div>
-
-
-
           </div>
         </div>
       </div>
-
-
     </section>
   );
 };

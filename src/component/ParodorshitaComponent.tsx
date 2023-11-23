@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { PiBookOpenText } from "react-icons/pi";
 import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
 import styles from "./Home.style.module.css";
-import { show_compitance, show_shannasik_barsik } from "../utils/Utils";
+import { convertToBanglaNumber, show_compitance, show_shannasik_barsik } from "../utils/Utils";
 import { FaExpand } from "react-icons/fa";
 
 export default function ParodorshitaComponent({
@@ -47,13 +47,21 @@ export default function ParodorshitaComponent({
                             <div className="d-flex justify-content-between align-items-center w-100 px-1">
                               <div
                                 className="py-2"
-                                style={{ color: "#428F92" }}
+                                style={{
+                                  color: "#428F92",
+                                  fontSize: "16px",
+                                  fontWeight: "700",
+                                  fontFamily: "Poppins"
+                                }}
                               >
-                                {key + 1}. <PiBookOpenText className="me-2" />
+                                {convertToBanglaNumber(key + 1)}. <PiBookOpenText className="me-2" />
                                 {d.oviggota_title}
                               </div>
                               <div className="px-2 rounded ">
-                                <FaExpand />
+                                <img
+                                  src="/assets/images/arrow-down.svg"
+                                  alt=""
+                                />
                               </div>
                             </div>
                           </div>
