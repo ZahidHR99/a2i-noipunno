@@ -55,7 +55,6 @@ const StudentList = () => {
       setScreenSize('large_screen');
     }
     else {
-      // greater than 1280 px
       setScreenSize('extra_large_screen');
     }
   };
