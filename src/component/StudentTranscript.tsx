@@ -214,18 +214,7 @@ export default function StudentTranscript() {
       {/* expertness assessment start */}
 
       <div className="container">
-        {/* arafat start */}
-        <div className="text-end">
-          <Link to='/mollayon-koron'>
-            <button type="button" className="btn btn-sm "
-              style={{ backgroundColor: "#428F92", color: "#fff", }} >
-              <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
-                <span className="text-sm">মুল্যায়ন করুন</span>
-              </div>
-            </button>
-          </Link>
-        </div>
-        {/* arafat End */}
+
         <div className="row">
           <Breadcumb title={"মূল্যায়ন প্রতিবেদন"} />
           <div className="d-flex align-items-center">

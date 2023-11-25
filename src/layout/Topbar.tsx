@@ -493,8 +493,22 @@ export default function
                 </div> */}
               </div>
               <div>
-                {/* <div className="dropdown">
-                  <button
+                <div className="dropdown">
+
+
+                  <Link to='/mollayon-koron'>
+                    <button type="button" className="btn btn-sm "
+                      style={{ backgroundColor: "#428F92", color: "#fff", }} >
+                      <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                        <img src="/assets/images/add.svg" alt="" />
+                        <span className="text-sm">মুল্যায়ন করুন</span>
+                      </div>
+                    </button>
+                  </Link>
+
+
+
+                  {/* <button
                     className="np-btn-form-submit border-0 rounded-1 d-flex justify-content-between align-items-center rounded-1 dropdown-toggle"
                     type="button"
                     id="createMenuButton"
@@ -504,8 +518,8 @@ export default function
                     <img src="/assets/images/add.svg" alt="" />
                     <span className="px-3">যোগ করুন</span>
                     <img src="/assets/images/arrow-down-white.svg" alt="" />
-                  </button>
-                  <div
+                  </button> */}
+                  {/* <div
                     className="dropdown-menu"
                     aria-labelledby="createMenuButton"
                   >
@@ -602,8 +616,8 @@ export default function
                         </div>
                       </a>
                     </div>
-                  </div>
-                </div> */}
+                  </div> */}
+                </div>
               </div>
             </div>
           </nav>

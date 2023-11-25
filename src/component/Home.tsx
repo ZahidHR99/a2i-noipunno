@@ -1,13 +1,14 @@
 
 
-import Teacher from "./Teacher";
+import TeacherNew from "./TeacherNew";
 
 export default function Home() {
 
   return (
     <>
-      <Teacher />
+      {/* <Teacher /> */}
       {/* Dashbord Componnet Would be here */}
+      <TeacherNew />
     </>
   );
 }
