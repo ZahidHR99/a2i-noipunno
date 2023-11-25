@@ -24,6 +24,7 @@ import Breadcumb from "../layout/Breadcumb";
 // import { toPng } from "html-to-image";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
+import { Link } from "react-router-dom";
 
 export default function StudentTranscript() {
   const [shift, setShift] = useState([]);
@@ -121,6 +122,9 @@ export default function StudentTranscript() {
     console.log("====================================");
   };
 
+
+
+
   const skill_behaibor_count = async (datas: any) => {
     seshowSkillBehaibor(true);
     seshowSubject(false);
@@ -170,6 +174,12 @@ export default function StudentTranscript() {
   console.log("uniqueclass", subject, uniqueclass);
   console.log("====================================");
 
+  console.log('====================================');
+  console.log("uniqueclass", subject, uniqueclass);
+  console.log('====================================');
+
+
+
   const storeSubjectData = (data: any) => {
     console.log("====================================");
     console.log("data", data);
@@ -182,6 +192,7 @@ export default function StudentTranscript() {
   };
 
   const getSection = (class_id: any) => {
+    console.log("====================================", class_id, subject);
     console.log("====================================", class_id, subject);
 
     // const uniquesection = [...new Set(subject.map(data => data?.subject?.class_uid == class_id ? data?.subject?.section : ))];
@@ -197,7 +208,13 @@ export default function StudentTranscript() {
     // ];
   };
 
+
+
+
+
+
   console.log("====================================");
+  console.log("subject", subject, selectedSunject);
   console.log("subject", subject, selectedSunject);
   console.log("====================================");
 
@@ -207,6 +224,18 @@ export default function StudentTranscript() {
       {/* expertness assessment start */}
 
       <div className="container">
+        {/* arafat start */}
+        <div className="text-end">
+          <Link to='/mollayon-koron'>
+            <button type="button" className="btn btn-sm "
+              style={{ backgroundColor: "#428F92", color: "#fff", }} >
+              <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                <span className="text-sm">মুল্যায়ন করুন</span>
+              </div>
+            </button>
+          </Link>
+        </div>
+        {/* arafat End */}
         <div className="row">
           <Breadcumb title={"মূল্যায়ন প্রতিবেদন"} />
           <div className="d-flex align-items-center">
@@ -249,6 +278,9 @@ export default function StudentTranscript() {
                   aria-labelledby="expertness-tab"
                 >
                   <div className="row p-5">
+
+
+>>>>>>> d24fa075dbe0bb2b7e5e92163800662508e22139
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">
@@ -258,6 +290,7 @@ export default function StudentTranscript() {
                           className="form-select p-2"
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
+                          onChange={(e: any) => getSection(e.target.value)}
                           onChange={(e: any) => getSection(e.target.value)}
                         >
                           <option selected>Class নির্বাচন করুন</option>
@@ -278,34 +311,13 @@ export default function StudentTranscript() {
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
                         >
-                          {/* {selectedSunject?.section.map (
+                          {selectedSunject?.section ? (
                             <option selected>
                               {section_name(selectedSunject?.section)}
                             </option>
                           ) : (
                             <option selected>শাখা নির্বাচন করুন</option>
-                          )} */}
-                          <option selected>শাখা নির্বাচন করুন</option>
-                          {subject?.class_room?.section_id?.map(
-                            (data, index) => (
-                              <option key={index} value="1">
-                                {section_name(subject?.section_id)}
-                              </option>
-                            )
                           )}
-                          {/* <select>
-                            {subject?.own_subjet?.class_room?.section_id? (
-                              subject.section.map((section) => (
-                                <option key={section_id} value={section_id}>
-                                  {section_name(section)}
-                                </option>
-                              ))
-                            ) : (
-                              <option value="" selected disabled>
-                                Select a Section
-                              </option>
-                            )}
-                          </select> */}
                         </select>
                       </div>
                     </div>
@@ -337,6 +349,7 @@ export default function StudentTranscript() {
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">বিষয় নির্বাচন করুন</label>
                         <select
+                        <select
                           className="form-select p-2"
                           aria-label="Default select example"
                           style={{ fontSize: "12px" }}
@@ -344,8 +357,10 @@ export default function StudentTranscript() {
                         >
                           <option selected value={""}>
                             বিষয়
+                            বিষয়
                           </option>
                           {uniqueSubjectOptions}
+                        </select>
                         </select>
                       </div>
                     </div>
@@ -609,6 +624,200 @@ export default function StudentTranscript() {
                         aria-expanded="false"
                         aria-controls="collapseOne"
                       >
+
+              {/* Arafat-code-Start */}
+              <div className="accordion accordion-flush" id="accordionFlushExample">
+                <div className="accordion-item">
+                  <h2 className="accordion-header" id="flush-headingOne">
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      {/* Accordion Item #1 */}
+                      <div className="">
+                        <h5>শিক্ষার্থীর নাম: {student_name} </h5>
+                        <p>রোল নম্বর #৩২১০০</p>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div className="accordion-body">
+                      {/* Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body. */}
+                      <div className="container border">
+                        <div className="row p-2">
+                          <div className="text-center py-3">
+                            <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
+                            <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
+                            <h6 style={{ fontSize: "14px" }}>
+                              প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
+                              ঢাকা-১২১৬
+                            </h6>
+                            <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                              ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+                              ট্রান্সক্রিপ্ট-২০২৩
+                            </h6>
+                          </div>
+                          <div className="">
+                            <table className="table table-bordered table-sm table-responsive">
+                              <thead>
+                                <tr>
+                                  <th
+                                    colSpan={3}
+                                    style={{ fontSize: "10px", fontWeight: "bold" }}
+                                  >
+                                    শিক্ষার্থীর নাম: {student_name}
+                                  </th>
+                                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                    শিক্ষার্থীর আইডি: ৩২১০০
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                    শ্রেণী: {selectedSunject?.class}
+                                  </th>
+                                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                    শাখা: {section_name(selectedSunject?.section)}
+                                  </th>
+                                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                    বিষয়: {selectedSunject?.subject?.name}
+                                  </th>
+                                  <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                    বিষয় শিক্ষকের নাম: {selectedSunject?.teacher?.name_en}
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th
+                                    className="text-center"
+                                    colSpan={4}
+                                    style={{
+                                      fontSize: "12px",
+                                      fontWeight: "bold",
+                                    }}
+                                  >
+                                    পারদর্শিতার সূচকের মাত্রা
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th
+                                    colSpan={2}
+                                    style={{ fontSize: "10px", fontWeight: "bold" }}
+                                  >
+                                    পারদর্শিতা সূচক (PI)
+                                  </th>
+                                  <th
+                                    colSpan={2}
+                                    style={{ fontSize: "10px", fontWeight: "bold" }}
+                                  >
+                                    শিক্ষার্থীর পারদর্শিতা মাত্রা
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td className="w-25">
+                                    ৬.১.১ <br />
+                                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                    পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    <BsCheckCircle className="fs-5 pe-1" />
+                                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="w-25">
+                                    ৬.১.১ <br />
+                                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                    পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    <BsCheckCircle className="fs-5 pe-1" />
+                                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="w-25">
+                                    ৬.১.১ <br />
+                                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                    পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    <BsCheckCircle className="fs-5 pe-1" />
+                                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="w-25">
+                                    ৬.১.১ <br />
+                                    নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                    পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    <BsCheckCircle className="fs-5 pe-1" />
+                                    অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                    চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                  </td>
+                                  <td className="w-25">
+                                    মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                    সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div className="d-flex pt-5 pb-1">
+                              <div
+                                className="w-50"
+                                style={{ fontSize: "14px", fontWeight: "bold" }}
+                              >
+                                বিষয় শিক্ষকের স্বাক্ষরঃ
+                              </div>
+                              <div
+                                className="w-50"
+                                style={{ fontSize: "14px", fontWeight: "bold" }}
+                              >
+                                প্রধান শিক্ষকের স্বাক্ষরঃ
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Arafat-code-End */}
+
+
+
+              <div id="accordion">
+                <div className="card">
+                  <div className="card-header" id="headingOne">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
                           <div className="">
                             <h5>শিক্ষার্থীর নাম: {student_name} </h5>
@@ -639,6 +848,10 @@ export default function StudentTranscript() {
                   >
                     <div className="card-body">
                       <section>
+                        {/* <div className="container">
+                  <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div className="card-body">
+                      <section >
                         {/* <div className="container">
           <button onClick={handleConvertToPdf} type="button" className="btn btn-primary">Download</button>
         </div> */}
@@ -871,6 +1084,175 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div>
+                        <div id="contentToConvert" className="container border">
+                          <div className="row p-2">
+                            <div className="text-center py-3">
+                              <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
+                              <h6 style={{ fontSize: "14px" }}>[একটি আদর্শ উচ্চ বিদ্যালয়]</h6>
+                              <h6 style={{ fontSize: "14px" }}>
+                                প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
+                                ঢাকা-১২১৬
+                              </h6>
+                              <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                                ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+                                ট্রান্সক্রিপ্ট-২০২৩
+                              </h6>
+                            </div>
+                            <div className="">
+                              <table className="table table-bordered table-sm table-responsive">
+                                <thead>
+                                  <tr>
+                                    <th
+                                      colSpan={3}
+                                      style={{ fontSize: "10px", fontWeight: "bold" }}
+                                    >
+                                      শিক্ষার্থীর নাম: {student_name}
+                                    </th>
+                                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                      শিক্ষার্থীর আইডি: ৩২১০০
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                      শ্রেণী: {selectedSunject?.class}
+                                    </th>
+                                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                      শাখা: {section_name(selectedSunject?.section)}
+                                    </th>
+                                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                      বিষয়: {selectedSunject?.subject?.name}
+                                    </th>
+                                    <th style={{ fontSize: "10px", fontWeight: "bold" }}>
+                                      বিষয় শিক্ষকের নাম: {selectedSunject?.teacher?.name_en}
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <th
+                                      className="text-center"
+                                      colSpan={4}
+                                      style={{
+                                        fontSize: "12px",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      পারদর্শিতার সূচকের মাত্রা
+                                    </th>
+                                  </tr>
+                                  <tr>
+                                    <th
+                                      colSpan={2}
+                                      style={{ fontSize: "10px", fontWeight: "bold" }}
+                                    >
+                                      পারদর্শিতা সূচক (PI)
+                                    </th>
+                                    <th
+                                      colSpan={2}
+                                      style={{ fontSize: "10px", fontWeight: "bold" }}
+                                    >
+                                      শিক্ষার্থীর পারদর্শিতা মাত্রা
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                      পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                      পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                      পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td className="w-25">
+                                      ৬.১.১ <br />
+                                      নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায় নিয়ে যোগাযোগ করতে
+                                      পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      <BsCheckCircle className="fs-5 pe-1" />
+                                      অন্যের সাথে যোগাযোগের সময়ে নিজের চাহিদা প্রকাশ করতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      অন্যের কাছে নিজের চাহিদা প্রকাশ করার সময় ঐ ব্যক্তির আগ্রহ,
+                                      চাহিদা ও আবেগ বিবেচনায় নিতে পারছে।
+                                    </td>
+                                    <td className="w-25">
+                                      মর্যাদাপূর্ণ শারীরিক ভাষা প্রয়োগের পাশাপাশি ব্যাক্তির সাথে
+                                      সম্পর্কের ধরন অনুযায়ী যথাযথভাবে সম্বোধন করতে পারছে
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div className="d-flex pt-5 pb-1">
+                                <div
+                                  className="w-50"
+                                  style={{ fontSize: "14px", fontWeight: "bold" }}
+                                >
+                                  বিষয় শিক্ষকের স্বাক্ষরঃ
+                                </div>
+                                <div
+                                  className="w-50"
+                                  style={{ fontSize: "14px", fontWeight: "bold" }}
+                                >
+                                  প্রধান শিক্ষকের স্বাক্ষরঃ
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>                      </div>
+                  </div>
+                </div>
+              </div>
               <div className="card shadow-lg border-0">
                 <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border-bottom">
                   <div className="">
@@ -1067,10 +1449,10 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div> */}
-                        </div>
-                      </section>
-                    </div>
-                  )}
+                                    </div>
+                                  </section>
+                                </div>
+                              )}
 
                   <section>
                     {/* <div className="container">
@@ -1337,6 +1719,9 @@ export default function StudentTranscript() {
               </div> */}
         </div>
       </div>
+      
+      
+    
     </div>
   );
 }

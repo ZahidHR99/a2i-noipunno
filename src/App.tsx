@@ -20,6 +20,7 @@ import {
   teacher_own_subject,
 } from "./Request";
 import AmarProfile from "./component/AmarProfile";
+import MullayonKoron from "./component/MullayonKoron";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -66,15 +67,10 @@ function App() {
           <Route path="/class/:id" element={<ClassWiseSubject />} />
           <Route path="/student-list" element={<StudentList />} />
           <Route path="/student-transcript" element={<StudentTranscript />} />
-          <Route
-            path="/edit-teacher-profile"
-            element={<EditTeacherProfile />}
-          />
-          <Route
-            path="/teacher-profile"
-            element={<AmarProfile />}
-          />
+          <Route path="/edit-teacher-profile" element={<EditTeacherProfile />} />
+          <Route path="/teacher-profile" element={<AmarProfile />} />
           <Route path="/teachers-list" element={<TeachersList />} />
+          <Route path="/mollayon-koron" element={<MullayonKoron />} />
 
         </Route>
         <Route path="/login" element={<Login />} />

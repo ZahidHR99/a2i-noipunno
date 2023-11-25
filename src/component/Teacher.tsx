@@ -17,6 +17,7 @@ import ParodorshitaComponent from "./ParodorshitaComponent";
 import AcorongotoComponent from "./AcorongotoComponent";
 import BreadcumbHome from "../layout/BreadcumbHome";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
+import { useLocation } from "react-router-dom";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -46,6 +47,9 @@ export default function Teacher() {
   const [showSubjectname, seshowSubjectname] = useState("");
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
+
+  const location = useLocation()
+  console.log(location.pathname);
 
   const [total_student, setTotal_student] = useState<any>([]);
   const [total_teacher, setTotal_teacher] = useState<any>([]);
@@ -203,7 +207,7 @@ export default function Teacher() {
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row mt-1">
-                {ShowProfile && (
+                {ShowProfile && (location.pathname !== "/mollayon-koron") && (
                   <div className="col-md-3 mt-2">
                     <ProfileCard />
                   </div>
