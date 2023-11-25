@@ -21,6 +21,7 @@ import {
 } from "./Request";
 import AmarProfile from "./component/AmarProfile";
 import MullayonKoron from "./component/MullayonKoron";
+import TeacherDashboard from "./component/TeacherDashboard";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -71,6 +72,7 @@ function App() {
           <Route path="/teacher-profile" element={<AmarProfile />} />
           <Route path="/teachers-list" element={<TeachersList />} />
           <Route path="/mollayon-koron" element={<MullayonKoron />} />
+          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
 
         </Route>
         <Route path="/login" element={<Login />} />
