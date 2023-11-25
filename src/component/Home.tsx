@@ -1,5 +1,6 @@
 
 
+import TeacherDashboard from "./TeacherDashboard";
 import TeacherNew from "./TeacherNew";
 
 export default function Home() {
@@ -8,7 +9,8 @@ export default function Home() {
     <>
       {/* <Teacher /> */}
       {/* Dashbord Componnet Would be here */}
-      <TeacherNew />
+      {/* <TeacherNew /> */}
+      <TeacherDashboard />
     </>
   );
 }

@@ -1,6 +1,8 @@
 .dashboard-section {
-    background: var(--bg-color-1);
+    background-color: #efefef !important;
+    font-family: "Roboto" !important;
 }
+
 /* Styles for breadcrumbs */
 
 .np-teacher-list .title {
@@ -40,11 +42,7 @@
     border: 1px solid var(--border-color-2);
 }
 
-.dashboard-section
-    .head-teacher-card
-    .head-teacher-top
-    .head-teacher-top-icons
-    img {
+.dashboard-section .head-teacher-card .head-teacher-top .head-teacher-top-icons img {
     padding: 5px;
     border: 1px solid var(--border-color-2);
     border-radius: 50%;
