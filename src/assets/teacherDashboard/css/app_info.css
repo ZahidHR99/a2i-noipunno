@@ -54,17 +54,16 @@
   border-radius: 6px 6px 0px 0px;
 }
 
-.chat_app_info .popup-card-institutions {
+.chat_app_info .popup-card-institutions ul li {
   font-family: Noto Sans Bengali;
   font-size: 12px;
   font-weight: 400;
-  height: 60px;
   letter-spacing: 0px;
-  /* color: var(--text_dark); */
+  color: #000 !important;
   padding-top: 5px;
 }
 
-.chat_app_info .popup-card-institutions ul> :first-child {
+.chat_app_info .popup-card-institutions ul > :first-child {
   font-weight: 700;
 }
 
