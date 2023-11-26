@@ -187,17 +187,21 @@ export default function Teacher() {
         />
       )}
       {!loader && (
-        <div className="dashboard-section custom_bg_color">
+        <div className="dashboard-section ">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row mt-1">
-                {ShowProfile && (location.pathname !== "/mollayon-koron") && (
+                {/* {ShowProfile && (location.pathname !== "/mollayon-koron")  && (
                   <div className="col-md-3 mt-2">
                     <ProfileCard />
                   </div>
-                )}
+                )} */}
 
-                <div className={ShowProfile ? "col-md-9" : "col-md-12"} >
+                <div
+                  className={
+                    // ShowProfile ?
+                    // "col-md-9" :
+                    "col-md-12"} >
                   <div className="row d-flex gap-2">
                     <div></div>
                     <div className="d-flex" style={{ cursor: "pointer" }}>
@@ -225,7 +229,7 @@ export default function Teacher() {
                       <>
                         {subject.map((d: any, key: any) => (
                           <div
-                            className="col-sm-12 col-md-6 col-lg-4 col-xl-3 g-2"
+                            className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
                             style={{ cursor: "pointer" }}
                             key={key}
                             onClick={(e) => {
