@@ -56,9 +56,16 @@ const TeacherDashboard = () => {
     all_class();
   }, []);
 
-  const chatBox = () => {
-    alert("this is chat box");
-  };
+  // const chatBox = () => {
+  //   alert("this is chat box");
+  // };
+
+  const [togglePopup, setTogglePopup] = useState(false);
+  const hangleChatbox = () => {
+    setTogglePopup(!togglePopup)
+  }
+
+
   return (
     <div className="body">
       <>
@@ -1455,9 +1462,12 @@ const TeacherDashboard = () => {
         </section>
         {/* app info start */}
         <section className="chat_app_info">
-          <div className="chat_box">
+          <div className="chat_box" >
             <div className="chat_box">
-              <div id="popup" className="popup ">
+              <div id="popup"
+                className={`popup ${togglePopup ? 'show-popup' : 'hide-popup'}`}
+                style={{ display: togglePopup ? 'block' : 'none' }}
+              >
                 <div className="popup-app-info-top ">
                   <div className="popup-app-info-reserved">
                     <h2 className="reserved-app-info p-0 m-0">
@@ -1515,13 +1525,14 @@ const TeacherDashboard = () => {
                 <img
                   className="app-info-btn"
                   src={AppInfoIcon5}
-                  onClick={chatBox}
+                  onClick={hangleChatbox}
                   alt="app-info"
                 />
               </div>
             </div>
           </div>
         </section>
+
         {/* app info end */}
       </>
     </div>

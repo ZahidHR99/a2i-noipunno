@@ -168,6 +168,17 @@ export default function Teacher() {
   // console.log("all_student", all_student);
   // console.log("all_teacher", all_teacher);
 
+  // function togglePopup() {
+  //   var popup = document.getElementById("popup");
+  //   if (popup.style.display === "none" || popup.style.display === "") {
+  //     popup.style.display = "block";
+  //     overlay.style.display = "none";
+  //   } else {
+  //     popup.style.display = "none";
+  //     overlay.style.display = "none";
+  //   }
+  // }
+
 
   return (
     <div className="content mb-5">
