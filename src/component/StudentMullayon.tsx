@@ -70,7 +70,7 @@ export default function StudentMullayon(props: any) {
   const handleSave = async (e: any, submit_status: any) => {
     try {
 
-      const data :any = submitData.map((d:any)=>{
+      const data: any = submitData.map((d: any) => {
         d.submit_status = submit_status
         return d
       })
@@ -79,7 +79,7 @@ export default function StudentMullayon(props: any) {
 
       if (submit_status == 1) {
         alert("Saved Draft")
-      }else{
+      } else {
         alert("Saved Successfully")
       }
 
@@ -102,7 +102,7 @@ export default function StudentMullayon(props: any) {
         class_room_id,
         student_uid: student_id,
         teacher_uid: teacher.caid,
-        submit_status : 2,
+        submit_status: 2,
         is_approved: 1,
         remark: null
       };
@@ -111,6 +111,8 @@ export default function StudentMullayon(props: any) {
 
       checkedIn(obj);
     } catch (error) {
+      console.log(error.message);
+
     }
   };
 
@@ -219,16 +221,16 @@ export default function StudentMullayon(props: any) {
                                                 {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + teacher.uid} id={pi_attr.weight_uid + "-"+ teacher.uid} /> */}{" "}
                                                 {pi_attr.weight.name ==
                                                   "Square" && (
-                                                  <BiSquareRounded className="fs-5 mt-1" />
-                                                )}
+                                                    <BiSquareRounded className="fs-5 mt-1" />
+                                                  )}
                                                 {pi_attr.weight.name ==
                                                   "Circle" && (
-                                                  <BiCircle className="fs-5 mt-1" />
-                                                )}
+                                                    <BiCircle className="fs-5 mt-1" />
+                                                  )}
                                                 {pi_attr.weight.name ==
                                                   "Triangle" && (
-                                                  <FiTriangle className="fs-5 mt-1" />
-                                                )}
+                                                    <FiTriangle className="fs-5 mt-1" />
+                                                  )}
                                               </div>
 
                                               <div>{pi_attr.title_bn}</div>

@@ -75,30 +75,38 @@ export const subject_name = (id: any) => {
   }
 };
 
-export const pis_list_func = (allCompitance: any, pi_list: any) => {
+export const pis_list_func = (
+  allCompitance: any,
+  pi_list: any,
+  check_sannasik_barsik_or_not: any = ""
+) => {
   const all_pis_id = [];
   const all_compitance_id = [];
+  localStorage.setItem("show_shannasik_barsik", "false");
+  if (check_sannasik_barsik_or_not) {
+    localStorage.setItem("show_shannasik_barsik", "true");
+  }
+
   for (const x in allCompitance) {
     allCompitance[x].pis.map((d) => {
-
       if (pi_list && pi_list?.length > 0) {
-        const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid)
+        const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid);
         if (found) {
-          all_compitance_id.push(allCompitance[x].uid)
-          all_pis_id.push(d.uid)
+          all_compitance_id.push(allCompitance[x].uid);
+          all_pis_id.push(d.uid);
         }
       } else {
-        all_compitance_id.push(allCompitance[x].uid)
-        all_pis_id.push(d.uid)
+        if (!check_sannasik_barsik_or_not) {
+          all_compitance_id.push(allCompitance[x].uid);
+          all_pis_id.push(d.uid);
+        }
       }
-
     });
   }
 
-  localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id))
-  localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id))
+  localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id));
+  localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id));
 };
-
 
 export const add_pi_uid = (all_bis: any, all_submited_PI_: any) => {
   for (let x = 0; x < all_bis.length; x++) {
@@ -106,28 +114,100 @@ export const add_pi_uid = (all_bis: any, all_submited_PI_: any) => {
 
     for (let y = 0; y < weight.length; y++) {
       const weight_el = weight[y];
-      if (all_submited_PI_.bi_uid == weight_el.bi_uid && all_submited_PI_.weight_uid == weight_el.weight_uid) {
-        return weight_el.uid
-        break
+      if (
+        all_submited_PI_.bi_uid == weight_el.bi_uid &&
+        all_submited_PI_.weight_uid == weight_el.weight_uid
+      ) {
+        return weight_el.uid;
+        break;
       }
     }
-
-
   }
 };
 
-
-
 export const show_compitance = (compitance_uid: any) => {
-  const all_compitance_id = JSON.parse(localStorage.getItem("show_compitance_id"))
+  const all_compitance_id = JSON.parse(
+    localStorage.getItem("show_compitance_id")
+  );
 
-  return all_compitance_id.includes(compitance_uid)
-
+  return all_compitance_id.includes(compitance_uid);
 };
 
 export const show_pis = (compitance_uid: any) => {
-  const all_compitance_id = JSON.parse(localStorage.getItem("show_all_pis_id"))
+  const all_compitance_id = JSON.parse(localStorage.getItem("show_all_pis_id"));
 
-  return all_compitance_id.includes(compitance_uid)
+  return all_compitance_id.includes(compitance_uid);
+};
 
+export const show_shannasik_barsik = () => {
+  const show_shannasik_barsik__ = JSON.parse(
+    localStorage.getItem("show_shannasik_barsik")
+  );
+  // console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
+  return show_shannasik_barsik__;
+};
+
+export const show_comment_box_bi = (
+  w_d: any,
+  submitData: any,
+  student_uid: any
+) => {
+  let obj = submitData.filter(
+    (d: any) => d.bi_uid == w_d.bi_uid && student_uid == d.student_uid
+  );
+  if (obj.length) {
+    return "Remark : " + obj[0].remark;
+  }
+  return "";
+};
+
+export const show_comment_box_Pi = (
+  w_d: any,
+  submitData: any,
+  student_uid: any
+) => {
+  let obj = submitData.filter(
+    (d: any) => d.pi_uid == w_d.pi_uid && student_uid == d.student_uid
+  );
+  if (obj.length) {
+    return "Remark : " + obj[0].remark;
+  }
+  return "";
+};
+
+export function check_pi_submitted(pis_id: any, assessment_uid: any) {
+  const pi_bi_evaluation_list = JSON.parse(
+    localStorage.getItem("pi_bi_evaluation_list")
+  );
+  const class_room_id = JSON.parse(localStorage.getItem("class_room_id"));
+
+  const pi_list = pi_bi_evaluation_list?.pi_evaluation_list || [];
+
+  for (let index = 0; index < pi_list.length; index++) {
+    const pi_d = pi_list[index];
+
+    if (
+      pi_d.evaluate_type == assessment_uid &&
+      pis_id.uid == pi_d.pi_uid &&
+      pi_d.class_room_uid == class_room_id
+    ) {
+      return true;
+      break;
+    }
+  }
+}
+
+export const convertToBanglaNumber = (number: any) => {
+  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '১০', ','];
+  const numString = number.toString();
+  let banglaNumber = "";
+  for (let i = 0; i < numString.length; i++) {
+    if (numString[i] !== ",") {
+      const digit = parseInt(numString[i]);
+      banglaNumber += banglaDigits[digit];
+    } else {
+      banglaNumber += ",";
+    }
+  }
+  return banglaNumber;
 };

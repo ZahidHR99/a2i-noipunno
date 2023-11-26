@@ -7,7 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowProfile, title }: any) {
+export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowProfile, title, selected_subject }: any) {
+
+
+
+  // console.log("selected_subject", selected_subject.subject);
+
 
   const navigate = useNavigate()
   return (
@@ -15,12 +20,12 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
       <div className="d-flex align-items-center gap-2">
         <div className="card" style={{ backgroundColor: "white" }}>
           <button
-            className='border-0  rounded shadow-sm bg-white' onClick={() => { 
+            className='border-0  rounded shadow-sm bg-white' onClick={() => {
               seshowSubject(true);
               setShowProfile(true)
 
 
-             }} style={{ padding: "1.2rem" }}>
+            }} style={{ padding: "1.2rem" }}>
             <MdArrowBackIosNew className="fs-3 text-secondary" />
           </button>
         </div>
@@ -32,17 +37,40 @@ export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowP
 
 
             <div className="d-flex flex-column gap-2">
-              <div style={{ fontSize: "14px" }}>
-                {showSubjectname}
+              <div className="d-flex  justify-content-start align-items-center" style={{ fontSize: "14px" }}>
+                <span>{showSubjectname}</span>
+
+
+                <MdOutlineArrowForwardIos />
+
+                <span>
+                  <>{
+                    (selected_subject?.subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || (selected_subject?.subject?.class_uid === "7") && "সপ্তম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "8") && " অস্টম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "9") && " নবম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "10") && " দশম শ্রেণি"
+                  }
+                  </>
+                </span>
+
               </div>
               <h6 className="d-flex justify-content-lg-center align-items-center gap-1" style={{ color: "#428F92", fontSize: "12px" }}>
                 {" "}
                 <AiOutlineHome />
                 প্রথম পাতা{" "}
-                <span style={{ color: "#000" }}>
+                <span style={{ color: "#000" }} className="d-flex justify-content-lg-center align-items-center">
                   {" "}
                   <MdOutlineArrowForwardIos />
                   {title}
+                  {/* <MdOutlineArrowForwardIos />
+                  {" "} */}
+                  {/* <strong>{
+                    (selected_subject?.subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" || (selected_subject?.subject?.class_uid === "7") && "সপ্তম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "8") && " অস্টম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "9") && " নবম শ্রেণি" ||
+                    (selected_subject?.subject?.class_uid === "10") && " দশম শ্রেণি"
+                  }
+                  </strong> */}
                 </span>
               </h6>
             </div>

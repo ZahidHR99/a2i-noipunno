@@ -1,5 +1,6 @@
 import { FiTriangle } from "react-icons/fi";
 import { useState, useEffect } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 // import {  MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
@@ -9,16 +10,16 @@ import {
   BiSquareRounded,
 } from "react-icons/bi";
 
-import { Pi_save, teacher_own_subject } from "../Request";
+import { Pi_save, get_pi_bi_evaluation_list, teacher_own_subject } from "../Request";
 import { GoPerson } from "react-icons/go";
 import { toast } from "../utils";
 import { MdArrowBackIosNew } from "react-icons/md";
 import Swal from "sweetalert2";
-import './Home.style.module.css';
+import "./Home.style.module.css";
 import { useNavigate } from "react-router-dom";
+import { convertToBanglaNumber, show_comment_box_Pi } from "../utils/Utils";
 
-const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
-const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
 const class_room_id = localStorage.getItem("class_room_id");
 
 export default function StudentMullayonModal({
@@ -31,7 +32,7 @@ export default function StudentMullayonModal({
   teacher_uid,
   is_draft,
   all_submited_PI,
-  setShowModal
+  setShowModal,
 }: any) {
   const [teacher, setteacher] = useState<any>({});
   const [comment_status, setcomment_status] = useState<any>(false);
@@ -39,9 +40,17 @@ export default function StudentMullayonModal({
   const [msg, setmsg] = useState<any>("");
   const [err, seterr] = useState<any>("");
   const [submitData, setsubmitData] = useState<any>([]);
+  const [submitObj_wid_null, setsubmitObj_wid_null] = useState<any>([]);
   const [submited, setsubmited] = useState<any>(false);
 
+  console.log(`submitObj`, submitObj);
+
   const fetchData = async () => {
+
+    const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
+    const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
+
+
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -50,7 +59,6 @@ export default function StudentMullayonModal({
       localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
     }
     setteacher(own_subjet.data.data.user);
-    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
 
     if (all_submited_PI.length) {
       let obj = {};
@@ -60,6 +68,30 @@ export default function StudentMullayonModal({
       // setsubmitData(all_submited_PI)
       setsubmitObj(obj);
       checkedIn(obj);
+
+      const null_pi = []
+
+      if (is_draft == "2") {
+        for (const x in obj) {
+          if (obj[x].weight_uid == null) {
+            // const id: any = obj[x].student_uid;
+            // const el: any = document.getElementsByClassName(id);
+
+            // if (el) {
+            //   el[0].parentElement.parentElement.parentElement.nextElementSibling.style.visibility =
+            //     "";
+            //   el[0].parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.style.visibility =
+            //     "";
+            //   el[0].parentElement.parentElement.parentElement.innerHTML = obj[x].remark;
+            // }
+
+            null_pi.push(obj[x])
+
+
+          }
+        }
+      }
+      setsubmitObj_wid_null(null_pi)
       // console.log(`is_draft`, all_submited_PI, obj);
     }
   };
@@ -68,50 +100,7 @@ export default function StudentMullayonModal({
     fetchData();
   }, []);
 
-  // const handleSave = async (e: any, submit_status: any) => {
-  //   try {
-  //     const data: any = submitData.map((d: any) => {
-  //       d.submit_status = submit_status;
-  //       return d;
-  //     });
-
-  //     if (submit_status == 2) {
-  //       if (Student.length === submitData.length) {
-  //         await Pi_save(data);
-  //         setmsg("আপনার তথ্য সংরক্ষণ করা হয়েছে");
-  //         setsubmited(true);
-  //       } else {
-  //         setcomment_status(true);
-  //         checkedIn_comment(submitObj);
-  //       }
-
-  //       seterr("");
-  //     } else {
-  //       await Pi_save(data);
-  //       setsubmited(true);
-
-  //       const obj_ = localStorage.getItem("PI_saved");
-
-  //       const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
-
-  //       const submit_obj = { ...submit_obj_, ...submitObj };
-  //       localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
-
-  //       setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-  //       seterr("");
-  //     }
-  //   } catch (error) {
-  //     console.log("err", error);
-
-  //     seterr(" কিছু ভুল হয়েছে");
-  //     setmsg("");
-  //   }
-  // };
-
-
-
   const handleSave = async (e: any, submit_status: any) => {
-
     try {
       setmsg("");
       seterr("");
@@ -122,7 +111,6 @@ export default function StudentMullayonModal({
 
       if (submit_status == 2) {
         if (Student.length === submitData.length) {
-
           Swal.fire({
             title: "আপনি কি তথ্য সংরক্ষণ করতে চান?",
             icon: "warning",
@@ -130,30 +118,35 @@ export default function StudentMullayonModal({
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             cancelButtonText: "না",
-            confirmButtonText: "হ্যাঁ"
+            confirmButtonText: "হ্যাঁ",
           }).then(async (result) => {
             if (result.isConfirmed) {
+
+
+              let own_subjet: any = await get_pi_bi_evaluation_list(2);
+
+              localStorage.setItem(
+                "pi_bi_evaluation_list",
+                JSON.stringify(own_subjet.data.data)
+              );
+
+
               await Pi_save(data);
               setsubmited(true);
-              setShowModal(false)
+              setShowModal(false);
               Swal.fire({
                 title: "আপনার তথ্য সংরক্ষণ করা হয়েছে!",
-                icon: "success"
+                icon: "success",
               });
-
             }
           });
-
-        }
-        else {
+        } else {
           setcomment_status(true);
           checkedIn_comment(submitObj);
         }
-        
-
       } else {
         /* Without Asking to Save Draft */
-        if (data.length > 0 ) {
+        if (data.length > 0) {
           await Pi_save(data);
           setsubmited(true);
           const obj_ = localStorage.getItem("PI_saved");
@@ -162,56 +155,23 @@ export default function StudentMullayonModal({
           localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
           setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
           seterr("");
-        }else{
+        } else {
           Swal.fire({
             icon: "error",
             title: "আপনি কোন কিছু নির্বাচন করেন নি!",
-            confirmButtonText: "হ্যাঁ"
+            confirmButtonText: "হ্যাঁ",
           });
         }
-
-        
-
-
-        /*Asking to Save Draft */
-        // Swal.fire({
-        //   title: "আপনি কি খসড়া সংরক্ষণ করতে চান?",
-        //   icon: "warning",
-        //   showCancelButton: true,
-        //   confirmButtonColor: "#3085d6",
-        //   cancelButtonColor: "#d33",
-        //   cancelButtonText: "না",
-        //   confirmButtonText: "হ্যাঁ"
-        // }).then(async (result) => {
-        //   if (result.isConfirmed) {
-        //     await Pi_save(data);
-        //     setsubmited(true);
-        //     const obj_ = localStorage.getItem("PI_saved");
-        //     const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
-        //     const submit_obj = { ...submit_obj_, ...submitObj };
-        //     localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
-        //     // setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
-        //     seterr("");
-        //     Swal.fire({
-        //       title: "আপনার খসড়াটি সংরক্ষণ করা হয়েছে!",
-        //       icon: "success"
-        //     });
-
-        //   }
-        // });
-
       }
     } catch (error) {
       console.log("err", error);
       Swal.fire({
         icon: "error",
         title: "কিছু ভুল হয়েছে",
-        confirmButtonText: "হ্যাঁ"
+        confirmButtonText: "হ্যাঁ",
       });
     }
   };
-
-
 
   const save_PI_evalution = async (
     pi_uid: any,
@@ -392,34 +352,26 @@ export default function StudentMullayonModal({
     }
   };
 
-  // console.log(`submitData`, is_draft, all_submited_PI, al_pi_attr);
-  // console.log("is_draft================", is_draft);
-  // sS
-  // setsS
-  //handleResize
-  // sm
 
-  const [sS, setSs] = useState('');
+  const [sS, setSs] = useState("");
   const hR = () => {
     const w = window.innerWidth;
     if (w <= 576) {
-      setSs('sm');
-    } else if ((w > 576) && (w <= 767)) {
-      setSs('mc');
-    } else if ((w > 768) && (w <= 1280)) {
-      setSs('ls');
-    }
-    else {
-      setSs('el');
+      setSs("sm");
+    } else if (w > 576 && w <= 767) {
+      setSs("mc");
+    } else if (w > 768 && w <= 1280) {
+      setSs("ls");
+    } else {
+      setSs("el");
     }
   };
 
-
   useEffect(() => {
     hR();
-    window.addEventListener('resize', hR);
+    window.addEventListener("resize", hR);
     return () => {
-      window.removeEventListener('resize', hR);
+      window.removeEventListener("resize", hR);
     };
   }, []);
 
@@ -435,17 +387,33 @@ export default function StudentMullayonModal({
           {!submited && (
             <div className="table-responsive ">
               <table className="table table-lg table-responsive">
-                <thead >
+                <thead>
                   <tr>
-                    <th scope="col" className="col-md-3 col-lg-2" style={{ width: "30%" }}>
+                    <th
+                      scope="col"
+                      className="col-md-3 col-lg-2"
+                      style={{ width: "30%" }}
+                    >
                       শিক্ষার্থীর নাম{" "}
                       {/* <BiFilterAlt className="fs-5 ms-4" /> */}
                     </th>
-                    <th scope="col" className="col-md-3 col-lg-2" style={{ width: "20%" }}></th>
-                    <th scope="col" className="col-md-3 col-lg-2" style={{ width: "20%" }}>
+                    <th
+                      scope="col"
+                      className="col-md-3 col-lg-2"
+                      style={{ width: "20%" }}
+                    ></th>
+                    <th
+                      scope="col"
+                      className="col-md-3 col-lg-2"
+                      style={{ width: "20%" }}
+                    >
                       {/* <BiFilterAlt className="fs-5" /> */}
                     </th>
-                    <th scope="col" className="col-md-3 col-lg-2" style={{ width: "20%" }}>
+                    <th
+                      scope="col"
+                      className="col-md-3 col-lg-2"
+                      style={{ width: "20%" }}
+                    >
                       {/* {comment_status && (
                       <button
                         className="border-0  rounded shadow-sm bg-white"
@@ -459,136 +427,149 @@ export default function StudentMullayonModal({
                   </tr>
                 </thead>
 
-                <tbody className={`${(sS === "sm") && "d-flex flex-column"}`}>
+                <tbody className={`${sS === "sm" && "d-flex flex-column"}`}>
                   {Student.map((studnt: any, k: any) => (
                     <tr
                       key={k}
                       id={"comment_id_" + studnt.uid}
                       className="all_pi_arrtiburte_tr"
                     >
-                      <>
+                      <td
+                        // style={{
+                        //   fontSize: "14px",
+                        //   fontWeight: "bold",
+                        // }}
+                        className="fs-md-2 fs-lg-3 fw-bold"
+                      >
+                        <GoPerson className="fs-6 fw-bold" />{" "}
+                        {studnt.student_name_bn}
+                        <br />
+                        রোল : {convertToBanglaNumber(studnt.roll)}
+                      </td>
+
+                      {al_pi_attr?.map((pi_attr: any, kedy: any) => (
                         <td
-                          // style={{
-                          //   fontSize: "14px",
-                          //   fontWeight: "bold",
-                          // }}
-                          className="fs-md-2 fs-lg-3 fw-bold"
+                          style={{}}
+                          key={kedy}
+                          className={`${sS === "sm" && "d-flex flex-column"}`}
                         >
-                          <GoPerson className="fs-6 fw-bold" />{" "}
-                          {studnt.student_name_bn}
-                          <br />
-                          {/* {studnt.uid} */}
-                        </td>
+                          <div className="d-flex  gap-2">
+                            {!comment_status && (
+                              <>
+                                <div
+                                  id={pi_attr.weight_uid + "-" + studnt.uid}
+                                  className="all_pi_arrtiburte"
+                                  style={{
+                                    border: "1px solid #eee",
+                                    padding: "5px 6px",
+                                    borderRadius: "3px",
+                                    maxHeight: "40px",
+                                    cursor: "pointer",
+                                  }}
+                                  // onClick={() =>
+                                  //   save_PI_evalution(
+                                  //     pi_attr.pi_uid,
+                                  //     pi_attr.weight_uid,
+                                  //     studnt.uid,
+                                  //     null
+                                  //   )
+                                  // }
 
-                        {al_pi_attr?.map((pi_attr: any, kedy: any) => (
-                          <td style={{}} key={kedy} className={`${(sS === "sm") && "d-flex flex-column"}`}>
-                            <div className="d-flex  gap-2">
-                              {!comment_status && (
-                                <>
-                                  <div
-
-                                    id={pi_attr.weight_uid + "-" + studnt.uid}
-                                    className="all_pi_arrtiburte"
-                                    style={{
-                                      border: "1px solid #eee",
-                                      padding: "5px 6px",
-                                      borderRadius: "3px",
-                                      maxHeight: "40px",
-                                      cursor: "pointer",
-                                    }}
-
-
-                                    // onClick={() =>
-                                    //   save_PI_evalution(
-                                    //     pi_attr.pi_uid,
-                                    //     pi_attr.weight_uid,
-                                    //     studnt.uid,
-                                    //     null
-                                    //   )
-                                    // }
-
-                                    onClick={() => {
-                                      if (is_draft == 1) {
-                                        save_PI_evalution(
-                                          pi_attr.pi_uid,
-                                          pi_attr.weight_uid,
-                                          studnt.uid,
-                                          null
-                                        );
-                                      }
-                                    }}
-
-
-
-                                  >
-                                    {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + studnt.uid} id={pi_attr.weight_uid + "-"+ studnt.uid} /> */}{" "}
-                                    {pi_attr.weight.name == "Square" && (
-                                      <BiSquareRounded className="fs-5 mt-1" />
-                                    )}
-                                    {pi_attr.weight.name == "Circle" && (
-                                      <BiCircle className="fs-5 mt-1" />
-                                    )}
-                                    {pi_attr.weight.name == "Triangle" && (
-                                      <FiTriangle className="fs-5 mt-1" />
-                                    )}
-                                  </div>
-
-                                  <div
-
-                                    className="pointer"
-                                    onClick={() =>
+                                  onClick={() => {
+                                    if (is_draft == 1) {
                                       save_PI_evalution(
-                                        pi_attr.uid,
+                                        pi_attr.pi_uid,
                                         pi_attr.weight_uid,
                                         studnt.uid,
                                         null
-                                      )
+                                      );
                                     }
-                                  >
-                                    {pi_attr.title_bn}
-                                    {/* {pi_attr.uid} */}
-                                  </div>
-                                </>
-                              )}
-
-                              {kedy === 0 && (
-                                <div>
-                                  <textarea
-                                    onChange={(e: any) =>
-                                      save_PI_evalution(
-                                        pi_attr.uid,
-                                        null,
-                                        studnt.uid,
-                                        e.target.value
-                                      )
-                                    }
-                                    placeholder={
-                                      "আপনি কেন " +
-                                      studnt.student_name_bn +
-                                      " কে চিহ্নিত করেননি তার কারণ লিখুন..."
-                                    }
-                                    title="required"
-                                    style={{
-                                      display: "none",
-                                      border: "1px solid red",
-                                    }}
-                                    className={
-                                      "form-control all_textarea " + studnt.uid
-                                    }
-                                    id=""
-                                    cols={60}
-                                    rows={4}
-                                  ></textarea>
+                                  }}
+                                >
+                                  {/* <input type="radio" className="d-none" name={pi_attr.pi_uid + "-" + studnt.uid} id={pi_attr.weight_uid + "-"+ studnt.uid} /> */}{" "}
+                                  {pi_attr.weight.name == "Square" && (
+                                    <BiSquareRounded className="fs-5 mt-1" />
+                                  )}
+                                  {pi_attr.weight.name == "Circle" && (
+                                    <BiCircle className="fs-5 mt-1" />
+                                  )}
+                                  {pi_attr.weight.name == "Triangle" && (
+                                    <FiTriangle className="fs-5 mt-1" />
+                                  )}
                                 </div>
-                              )}
-                            </div>
-                          </td>
-                        ))}
-                      </>
+
+                                <div
+                                  className="pointer"
+                                  onClick={() => {
+                                    if (is_draft == 1) {
+                                      save_PI_evalution(
+                                        pi_attr.pi_uid,
+                                        pi_attr.weight_uid,
+                                        studnt.uid,
+                                        null
+                                      );
+                                    }
+                                  }}
+                                >
+                                  {pi_attr.title_bn}
+
+                                  {/* {pi_attr.uid} */}
+
+                                  {is_draft == "2" && kedy === 0 && (
+                                    <h5>
+                                      {show_comment_box_Pi(
+                                        pi_attr,
+                                        submitObj_wid_null,
+                                        studnt.uid
+                                      )}
+                                    </h5>
+                                  )}
+
+                                </div>
+
+                              </>
+                            )}
+
+                            {kedy === 0 && (
+                              <div>
+                                <textarea
+                                  onChange={(e: any) =>
+                                    save_PI_evalution(
+                                      pi_attr.pi_uid,
+                                      null,
+                                      studnt.uid,
+                                      e.target.value
+                                    )
+                                  }
+                                  placeholder={
+                                    "আপনি কেন " +
+                                    studnt.student_name_bn +
+                                    " কে চিহ্নিত করেননি তার কারণ লিখুন..."
+                                  }
+                                  title="required"
+                                  style={{
+                                    display: "none",
+                                    border: "1px solid red",
+                                  }}
+                                  className={
+                                    "form-control all_textarea " + studnt.uid
+                                  }
+                                  id=""
+                                  cols={60}
+                                  rows={4}
+                                ></textarea>
+                              </div>
+                            )}
+                          </div>
+
+
+
+
+                        </td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>
-
               </table>
             </div>
           )}
@@ -606,38 +587,61 @@ export default function StudentMullayonModal({
           ) : (
             <>
               {!submited && (
-                <button
-                  type="button"
-                  className="btn btn-warning  my-2"
-                  style={{
-                    // backgroundColor: "#",
-                    color: "#000",
-                    paddingLeft: "90px",
-                    paddingRight: "90px",
-                  }}
-                  onClick={(e) => handleSave(e, 1)}
-                >
-                  খসড়া
+                // <button
+                //   type="button"
+                //   className="btn btn-warning  my-2"
+                //   style={{
+
+                //     color: "#000",
+                //     paddingLeft: "90px",
+                //     paddingRight: "90px",
+                //   }}
+                //   onClick={(e) => handleSave(e, 1)}
+                // >
+                //   খসড়া
+                // </button>
+
+                <button type="button" className="btn btn-sm btn-outline-secondary"
+                  onClick={(e) => handleSave(e, 1)} >
+                  <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
+                    <span className="text-sm">খসড়া সংরক্ষণ করুন</span>
+                    <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                  </div>
                 </button>
+
+
               )}
               {msg && <h6 className="text-success">{msg}</h6>}
 
               {err && <h6 className="text-danger">{err}</h6>}
               {!submited && (
-                <button
-                  type="button"
-                  className="btn btn-primay px-5 "
+                // <button
+                //   type="button"
+                //   className="btn btn-primay px-5 "
+                //   style={{
+                //     backgroundColor: "#428F92",
+                //     color: "#fff",
+                //   }}
+                //   onClick={(e) => handleSave(e, 2)}
+                // >
+                //   <span>
+                //     জমা দিন {"   "}
+                //     {/* {"   "}<MdOutlineArrowForwardIos  /> */}
+                //     <img src="/assets/images/arrow-right.png" alt="" />
+                //   </span>
+                // </button>
+                <button type="button"
+                  className="btn btn-sm "
+                  onClick={(e) => handleSave(e, 2)}
                   style={{
                     backgroundColor: "#428F92",
                     color: "#fff",
                   }}
-                  onClick={(e) => handleSave(e, 2)}
                 >
-                  <span>
-                    সংরক্ষণ করুন {"   "}
-                    {/* {"   "}<MdOutlineArrowForwardIos  /> */}
-                    <img src="/assets/images/arrow-right.png" alt="" />
-                  </span>
+                  <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                    <span className="text-sm">জমা দিন</span>
+                    <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                  </div>
                 </button>
               )}
             </>
@@ -655,6 +659,6 @@ export default function StudentMullayonModal({
       />
 
       {/* studnts List end */}
-    </div >
+    </div>
   );
 }

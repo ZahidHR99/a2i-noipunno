@@ -52,7 +52,7 @@ export default function
                 <span className="navbar-toggler-icon" />
               </button>
 
-              <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
+              {/* <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
                 <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center">
                   <li className="btn-group dropleft">
                     <a className="nav-link dropdown-toggle noipunno-dropdown" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -85,7 +85,43 @@ export default function
                     </ul>
                   </li>
                 </ul>
+              </div> */}
+
+              <div className="collapse navbar-collapse navbar-end" id="navbarSupportedContent" >
+                <ul className="navbar-nav d-flex justify-content-end ms-auto align-items-center ">
+                  <li className="btn-group dropleft d-flex flex-column justify-content-center align">
+                    <a className="nav-link dropdown-toggle noipunno-dropdown d-flex justify-content-center align-items-center" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                      <div className="">
+                        <img src="/assets/noipunno/images/avatar/teacher.png" className="border m-0" style={{ width: "2.2rem" }} />
+                      </div>
+                    </a>
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser" >
+                      <li className="border-bottom">
+                        <div className="dropdown-item d-flex justify-content-start align-items-center gap-2 mb-1">
+                          <img src={teacher} className="avatar-instance " />
+                          <div className="text">
+                            <div className="text-wrapper">{userDetails?.name}</div>
+                            <div className="div">{(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}</div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <Link to={"teacher-profile"} className="dropdown-item d-flex justify-content-start align-items-center gap-2" >
+                          <img src={myprofile} alt="alt" />
+                          আমার প্রোফাইল
+                        </Link>
+                      </li>
+                      <li>
+                        <a className="dropdown-item d-flex justify-content-start align-items-center gap-2" href="#" onClick={(e: any) => handleLogout(e)} >
+                          <img src={logoutImage} alt="img" />
+                          সাইন আউট
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
+
             </div>
           </nav>
         </div>
@@ -126,7 +162,7 @@ export default function
                 {/*For => Mobile Device */}
 
                 <div className="offcanvas-body subheader-accordion">
-                  <div className="accordion accordion-flush" id="prothomPata">
+                  <div className="" id="prothomPata">
                     <div className="accordion-item">
                       <h2 className="accordion-header " id="prothompata-headingOne" >
                         <button className="accordion-button  d-flex justify-content-between align-items-center  w-100" type="button" data-bs-toggle="collapse" data-bs-target="#prothompata-collapseOne" aria-expanded="false" aria-controls="prothompata-collapseOne" >
@@ -174,11 +210,11 @@ export default function
                         data-bs-parent="#report"
                       >
                         <div className="accordion-body d-flex flex-column py-0 px-0 pages-buttons">
-                          <Link to={"/teacher"} className="d-block ">
+                          {/* <Link to={"/teacher"} className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীদের মূল্যায়ন
                             </button>
-                          </Link>
+                          </Link> */}
                           <Link to="/student-transcript" className="d-block ">
                             <button className="w-100 btn btn-light px-5 text-start">
                               শিক্ষার্থীর ট্রান্সক্রিপ্ট
@@ -308,12 +344,13 @@ export default function
               {/*For => Large Device */}
 
               <div className="d-none d-lg-flex pages-buttons">
-                <div className="dropdown">
-                  <div className="accordion accordion-flush responsive-single-menu-button" id="shikkhok" >
+                <div className="">
+                  <div className=" responsive-single-menu-button" id="shikkhok" >
                     <div className="accordion-item">
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
                         <button
-                          className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button" type="button" >
+                          className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button gap-2" type="button" >
+                          <img src="../../public/assets/teacherDashboard/icons/home.svg" class="img-fluid icon-right-space" alt="main logo" />
                           <Link to="/" className="text-decoration-none">
                             <span className="fs-6 ">প্রথম পাতা</span>
                           </Link>
@@ -352,11 +389,11 @@ export default function
                   </button>
                   <div className="dropdown-menu" aria-labelledby="prothomPata">
                     <div className="create-profile-dropdown-container">
-                      <Link to={"/teacher"} className="dropdown-item">
+                      {/* <Link to={"/teacher"} className="dropdown-item">
                         <div className="d-flex ">
                           <span>শিক্ষার্থীদের মূল্যায়ন</span>
                         </div>
-                      </Link>
+                      </Link> */}
 
                       <Link to="/student-transcript" className="dropdown-item">
                         <div className="d-flex ">
@@ -457,8 +494,22 @@ export default function
                 </div> */}
               </div>
               <div>
-                {/* <div className="dropdown">
-                  <button
+                <div className="dropdown">
+
+
+                  <Link to='/mollayon-koron'>
+                    <button type="button" className="btn btn-sm "
+                      style={{ backgroundColor: "#428F92", color: "#fff", }} >
+                      <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                        <img src="/assets/images/add.svg" alt="" />
+                        <span className="text-sm">মুল্যায়ন করুন</span>
+                      </div>
+                    </button>
+                  </Link>
+
+
+
+                  {/* <button
                     className="np-btn-form-submit border-0 rounded-1 d-flex justify-content-between align-items-center rounded-1 dropdown-toggle"
                     type="button"
                     id="createMenuButton"
@@ -468,8 +519,8 @@ export default function
                     <img src="/assets/images/add.svg" alt="" />
                     <span className="px-3">যোগ করুন</span>
                     <img src="/assets/images/arrow-down-white.svg" alt="" />
-                  </button>
-                  <div
+                  </button> */}
+                  {/* <div
                     className="dropdown-menu"
                     aria-labelledby="createMenuButton"
                   >
@@ -566,8 +617,8 @@ export default function
                         </div>
                       </a>
                     </div>
-                  </div>
-                </div> */}
+                  </div> */}
+                </div>
               </div>
             </div>
           </nav>

@@ -16,7 +16,6 @@ export default function TeachersList() {
   const fetchData = async () => {
     const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
     setTeachers(teachersData?.data?.teachers)
-
   };
 
   const handleShowModal = (item: any) => {
@@ -54,7 +53,7 @@ export default function TeachersList() {
   }, []);
 
 
-  console.log("teachers", teachers);
+  // console.log("teachers", teachers);
 
 
   return (
