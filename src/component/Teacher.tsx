@@ -135,14 +135,13 @@ export default function Teacher() {
         </div>
       )}
 
-      
       {!loader && (
         <div className="dashboard-section">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row">
                 <div className="col-sm-6 col-md-4 col-lg-3">
-                <ProfileCard />
+                  <ProfileCard />
                 </div>
                 <div className="col-sm-6 col-md-4 col-lg-3">Chart</div>
                 <div className="col-sm-6 col-md-4 col-lg-3">
@@ -664,14 +663,14 @@ export default function Teacher() {
             </div>
             <div className="container">
               <div className="row">
-              {!ShowProfile && (
-        <BreadcumbHome
-          showSubjectname={showSubjectname}
-          setShowProfile={setShowProfile}
-          seshowSubject={seshowSubject}
-          title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
-        />
-      )}
+                {!ShowProfile && (
+                  <BreadcumbHome
+                    showSubjectname={showSubjectname}
+                    setShowProfile={setShowProfile}
+                    seshowSubject={seshowSubject}
+                    title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
+                  />
+                )}
 
                 <div className={ShowProfile ? "col-md-9" : "col-md-12"}>
                   <div className="row d-flex gap-2">
