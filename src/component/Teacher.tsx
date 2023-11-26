@@ -202,8 +202,8 @@ export default function Teacher() {
                     // ShowProfile ?
                     // "col-md-9" :
                     "col-md-12"} >
-                  <div className="row d-flex gap-2">
-                    <div></div>
+                  <div className={`row d-flex gap-2 ${styles.subject_container}`}>
+
                     <div className="d-flex" style={{ cursor: "pointer" }}>
                       <h5
                         onClick={(e) => {
@@ -225,6 +225,7 @@ export default function Teacher() {
                     </div>
                   </div>
                   <div className="row">
+
                     {showSubject && (
                       <>
                         {subject.map((d: any, key: any) => (
@@ -255,13 +256,16 @@ export default function Teacher() {
                           >
                             <div className="card shadow-sm border-0 p-1 p-lg-3 teacher-list-card h-100 rounded-sm">
                               <div className="gap-1 gap-lg-3 justify-content-center">
-                                <div className="d-flex justify-content-center py-2 pb-4">
-                                  <div
+                                <div className={`d-flex justify-content-center py-2 pb-4 ${styles.subject_number}`}>
+                                  {/* <div
                                     className={`p-3 border border-1 border-light rounded-circle ${styles.icon_bg_color}`}
                                   >
                                     <div className={styles.icons}>
                                       <SlBookOpen className="fs-3" />
                                     </div>
+                                  </div> */}
+                                  <div className={styles.icon_sub}>
+                                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
                                   </div>
                                 </div>
                                 <h5 className={styles.subject}>

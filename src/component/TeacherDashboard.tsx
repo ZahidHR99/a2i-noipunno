@@ -56,47 +56,7 @@ const TeacherDashboard = () => {
         <section className="container my-3">
           <div className="card-container">
             <div className="row g-3 ">
-              {/* <div className="col-lg-2 col-md-6">
-                <div className="card teacher-profile border-0">
-                  <div className="card-header border-0">
-                    <div className="edit-icon">
-                      <img src="../../public/assets/teacherDashboard/images/dashboard/edit-2.svg" alt="" />
-
-                    </div>
-                    <div className="profile-img">
-                      <img src="../../public/assets/teacherDashboard/images/dashboard/60px.png" alt="" />
-
-                    </div>
-                    <div className="teacher-title">
-                      <h2>প্রধান শিক্ষক</h2>
-                    </div>
-                    <div className="icon">
-                      <div className="single-icon">
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/ico.svg" alt="" />
-                      </div>
-                      <div className="single-icon">
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/message.svg" alt="" />
-                      </div>
-                      <div className="single-icon">
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/moon.svg" alt="" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="teacher-info">
-                    <h2 className="card-title">আতাউর রহমান</h2>
-                    <p className="card-text">95481468716473</p>
-                    <p className="card-text">পাবনা জিলা স্কুল, পাবনা</p>
-                    <div className="button">
-                      <img src="../../public/assets/teacherDashboard/images/dashboard/eye.svg" alt="" />
-                      <a href="#" className="">
-                        আমার প্রোফাইল
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
               <ProfileCard />
-
               {/* Chart */}
 
               <div className="col-lg-5 col-md-6">
@@ -462,62 +422,6 @@ const TeacherDashboard = () => {
           {/* <div className="container subject-container">
             <h2>বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
             <div className="row">
-              <div className="col">
-                <a href="#" className="subject-number">
-                  <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
-                  </div>
-                  <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
-                  <div className="total-student">
-                    <p>মোট ছাত্র</p>
-                    <div className="number">
-                      <p className="">54</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className="col">
-                <a href="#" className="subject-number">
-                  <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
-                  </div>
-                  <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
-                  <div className="total-student">
-                    <p>মোট ছাত্র</p>
-                    <div className="number">
-                      <p className="">54</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className="col">
-                <a href="#" className="subject-number">
-                  <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
-                  </div>
-                  <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
-                  <div className="total-student">
-                    <p>মোট ছাত্র</p>
-                    <div className="number">
-                      <p className="">54</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className="col">
-                <a href="#" className="subject-number">
-                  <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
-                  </div>
-                  <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
-                  <div className="total-student">
-                    <p>মোট ছাত্র</p>
-                    <div className="number">
-                      <p className="">54</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
               <div className="col">
                 <a href="#" className="subject-number">
                   <div className="icon">

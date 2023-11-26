@@ -309,7 +309,7 @@ h6 {
   padding: 0 5px;
 }
 
-.student-chart .header .all .form-select select option {}
+/* .student-chart .header .all .form-select select option {} */
 
 .student-chart .chart img {
   width: 100%;
@@ -318,11 +318,13 @@ h6 {
 }
 
 .all-teacher-student-card {
+  /* background-color: #195153; */
   height: 394px;
 }
 
 .all-teacher-student-card .card-container {
-  height: 91px;
+  /* background-color: #2d6668; */
+  height: 124.5px;
   border-radius: 6px;
   background-color: #fff;
   box-shadow: 0px 2px 3px 0px #0000001a, 0px 0px 1px 0px #0000001a;
