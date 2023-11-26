@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <>
       <Teacher />
-      {/* Dashbord Componnet Would be here */}
     </>
   );
 }

@@ -187,7 +187,7 @@ export default function Teacher() {
         />
       )}
       {!loader && (
-        <div className="dashboard-section">
+        <div className="dashboard-section custom_bg_color">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row mt-1">
