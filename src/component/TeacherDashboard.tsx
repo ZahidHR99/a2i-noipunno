@@ -15,18 +15,22 @@ const TeacherDashboard = () => {
   const student_lsit = async () => {
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
-    studentsData.data.data.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
 
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-    set_All_student(uniqueObjectsArray);
+    if (studentsData) {
+      studentsData.data.data.subjects.map((std_data: any) => {
+        return std_data.class_room.students.map((stu_data: any) => {
+          stu_data.competence = std_data.competence;
+          student.push(stu_data);
+        });
+      });
+
+      const uniqueObjectsArray = student.filter(
+        (obj: any, index: any, self: any) =>
+          index === self.findIndex((o: any) => o.uid === obj.uid)
+      );
+      set_All_student(uniqueObjectsArray);
+    }
+
   };
 
   const [all_teacher, set_all_teacher] = useState([]);
@@ -69,7 +73,7 @@ const TeacherDashboard = () => {
   return (
     <div className="body">
       <>
-        {/* student-chart */}
+        {/* শিক্ষার্থীর হাজিরা চার্ট - student-chart Saart */}
         <section className="container my-3">
           <div className="card-container">
             <div className="row g-3 ">
@@ -112,6 +116,8 @@ const TeacherDashboard = () => {
                 </div>
               </div>
 
+
+              {/* সর্বমোট শিক্ষার্থী, শিক্ষক, শ্রেণী কক্ষ- start */}
               <div className="col-lg-2 col-md-6 ">
                 <div className="all-teacher-student-card gy-5">
                   <a href="#">
@@ -165,25 +171,28 @@ const TeacherDashboard = () => {
                       </div>
                     </div>
                   </a>
-                  {/* <a href="#">
+                  <a href="#">
                     <div className="card-container">
                       <div className="total-student">
                         <div className="title">
                           <h3>
-                            সর্বমোট
+                            *****
                             <br />
-                            <span>শিক্ষার্থী</span>
+                            <span>*****</span>
                           </h3>
-                          <h6>শ্রেণী - ষষ্ঠ - সপ্তম</h6>
+                          <h6>** - ** - ***</h6>
                         </div>
                         <div className="circle">
-                          <h5>৯২৩</h5>
+                          <h5>***</h5>
                         </div>
                       </div>
                     </div>
-                  </a> */}
+                  </a>
                 </div>
               </div>
+
+
+              {/* অনুরোধ- Start */}
               <div className="col-lg-3 col-md-6 ">
                 <div className="request-container">
                   <div className="header">
@@ -399,10 +408,12 @@ const TeacherDashboard = () => {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
-        {/* report */}
+
+        {/* রিপোর্ট report-Start*/}
         <section>
           <div className="container report-container">
             <h2>রিপোর্ট</h2>
@@ -466,7 +477,8 @@ const TeacherDashboard = () => {
           </div>
         </section>
 
-        {/* subject info*/}
+
+        {/*বিষয় ভিত্তিক তথ্য ও মূল্যায়ন subject info*/}
         <section>
           <Teacher />
           {/* <div className="container subject-container">
@@ -489,7 +501,9 @@ const TeacherDashboard = () => {
             </div>
           </div> */}
         </section>
-        {/* information on proficiency */}
+        {/*বিষয় ভিত্তিক তথ্য ও মূল্যায়ন subject info*/}
+
+        {/* information on proficiency পারদর্শিতা সূচক বিষয়ক তথ্য-start*/}
         <section className="container">
           <div className="proficiency-container">
             <div className="title">
@@ -515,7 +529,9 @@ const TeacherDashboard = () => {
             </div>
           </div>
         </section>
-        {/* teacher list */}
+
+
+        {/* teacher list শিক্ষকের তালিকা-Start*/}
         <section className="container mt-3">
           <div className="teacher-list">
             <div className="title">
@@ -523,7 +539,7 @@ const TeacherDashboard = () => {
               <a href="#">View All</a>
             </div>
             <div className="teacher_list_container">
-              {teachers.map((teacher, index) => (
+              {teachers?.map((teacher, index) => (
                 <div key={index} className="">
                   <div className="teacher-container">
                     <a href="#">
@@ -570,7 +586,9 @@ const TeacherDashboard = () => {
             </div>
           </div>
         </section>
-        {/* class routine  */}
+        {/* teacher list শিক্ষকের তালিকা-Start*/}
+
+        {/* class routine=> ক্লাস রুটিন-Start */}
         <section className="container">
           <div className="class-routine-container">
             <div className="class-routine-header">
@@ -1460,7 +1478,10 @@ const TeacherDashboard = () => {
             </div>
           </div>
         </section>
-        {/* app info start */}
+        {/* class routine=> ক্লাস রুটিন-Start */}
+
+
+        {/* পপ আপ কার্ড- app info start */}
         <section className="chat_app_info">
           <div className="chat_box" >
             <div className="chat_box">
@@ -1532,8 +1553,7 @@ const TeacherDashboard = () => {
             </div>
           </div>
         </section>
-
-        {/* app info end */}
+        {/* পপ আপ কার্ড-app info end */}
       </>
     </div>
   );

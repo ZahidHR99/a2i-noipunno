@@ -11,7 +11,7 @@ axios.defaults.headers.common[
 ] = `Bearer ${token?.access_token}`;
 
 export function loginPassword(data: any) {
-  const page_list = `${API_URL}/v1/login1`;
+  const page_list = `${API_URL}/v1/login`;
 
   const options = {
     method: "POST",
@@ -156,7 +156,7 @@ export function update_teacher_profile(caid: any, data: any) {
   return axios(options);
 }
 
-export function get_pi_evaluation_by_pi(class_room_uid:any , pi_uid:any , evaluate_type:any) {
+export function get_pi_evaluation_by_pi(class_room_uid: any, pi_uid: any, evaluate_type: any) {
   const page_list = `${EVULATION_API}/get-pi-evaluation-by-pi?class_room_uid=${class_room_uid}&pi_uid=${pi_uid}&evaluate_type=${evaluate_type}`;
 
   const options = {
@@ -169,7 +169,7 @@ export function get_pi_evaluation_by_pi(class_room_uid:any , pi_uid:any , evalua
 }
 
 
-export function get_bi_evaluation_by_bi(class_room_uid:any , evaluate_type:any , student_uid:any) {
+export function get_bi_evaluation_by_bi(class_room_uid: any, evaluate_type: any, student_uid: any) {
   const page_list = `${EVULATION_API}/get-bi-evaluation-by-bi?class_room_uid=${class_room_uid}&evaluate_type=${evaluate_type}&student_uid=${student_uid}`;
 
   const options = {
@@ -182,8 +182,8 @@ export function get_bi_evaluation_by_bi(class_room_uid:any , evaluate_type:any ,
 }
 
 
-export function get_pi_bi_evaluation_list( submit_status:any = "") {
-  const page_list = `${API_URL}/v1/pi-bi-evaluation-list?submit_status=`+submit_status;
+export function get_pi_bi_evaluation_list(submit_status: any = "") {
+  const page_list = `${API_URL}/v1/pi-bi-evaluation-list?submit_status=` + submit_status;
 
   const options = {
     method: "get",

@@ -134,18 +134,23 @@ export default function Teacher() {
   const student_lsit = async () => {
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
-    studentsData.data.data.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
 
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-    setTotal_student(uniqueObjectsArray);
+    if (student) {
+      studentsData?.data?.data?.subjects.map((std_data: any) => {
+        return std_data?.class_room?.students?.map((stu_data: any) => {
+          stu_data.competence = std_data.competence;
+          student.push(stu_data);
+        });
+      });
+
+      const uniqueObjectsArray = student.filter(
+        (obj: any, index: any, self: any) =>
+          index === self.findIndex((o: any) => o.uid === obj.uid)
+      );
+      setTotal_student(uniqueObjectsArray);
+    }
+
+
   };
 
   const teacher_list = async () => {
