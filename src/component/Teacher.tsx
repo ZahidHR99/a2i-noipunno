@@ -16,6 +16,7 @@ import ParodorshitaComponent from "./ParodorshitaComponent";
 import AcorongotoComponent from "./AcorongotoComponent";
 import BreadcumbHome from "../layout/BreadcumbHome";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
+import { useLocation } from "react-router-dom";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -44,6 +45,9 @@ export default function Teacher() {
   const [showSubjectname, seshowSubjectname] = useState("");
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
+
+  const location = useLocation()
+  console.log(location.pathname);
 
   const [total_student, setTotal_student] = useState<any>([]);
   const [total_teacher, setTotal_teacher] = useState<any>([]);
@@ -139,11 +143,22 @@ export default function Teacher() {
       });
     });
 
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-    setTotal_student(uniqueObjectsArray);
+    if (student) {
+      studentsData?.data?.data?.subjects.map((std_data: any) => {
+        return std_data?.class_room?.students?.map((stu_data: any) => {
+          stu_data.competence = std_data.competence;
+          student.push(stu_data);
+        });
+      });
+
+      const uniqueObjectsArray = student.filter(
+        (obj: any, index: any, self: any) =>
+          index === self.findIndex((o: any) => o.uid === obj.uid)
+      );
+      setTotal_student(uniqueObjectsArray);
+    }
+
+
   };
 
   const teacher_list = async () => {
@@ -166,6 +181,17 @@ export default function Teacher() {
   // console.log("all_student", all_student);
   // console.log("all_teacher", all_teacher);
 
+  // function togglePopup() {
+  //   var popup = document.getElementById("popup");
+  //   if (popup.style.display === "none" || popup.style.display === "") {
+  //     popup.style.display = "block";
+  //     overlay.style.display = "none";
+  //   } else {
+  //     popup.style.display = "none";
+  //     overlay.style.display = "none";
+  //   }
+  // }
+
 
   return (
     <div className="content mb-5">
@@ -185,19 +211,23 @@ export default function Teacher() {
         />
       )}
       {!loader && (
-        <div className="dashboard-section">
+        <div className="dashboard-section ">
           <section className="np-breadcumb-section pt-2 pb-5">
             <div className="container">
               <div className="row mt-1">
-                {ShowProfile && (
+                {/* {ShowProfile && (location.pathname !== "/mollayon-koron")  && (
                   <div className="col-md-3 mt-2">
                     <ProfileCard />
                   </div>
-                )}
+                )} */}
 
-                <div className={ShowProfile ? "col-md-9" : "col-md-12"} >
-                  <div className="row d-flex gap-2">
-                    <div></div>
+                <div
+                  className={
+                    // ShowProfile ?
+                    // "col-md-9" :
+                    "col-md-12"} >
+                  <div className={`row d-flex gap-2 ${styles.subject_container}`}>
+
                     <div className="d-flex" style={{ cursor: "pointer" }}>
                       <h5
                         onClick={(e) => {
@@ -219,11 +249,12 @@ export default function Teacher() {
                     </div>
                   </div>
                   <div className="row">
+
                     {showSubject && (
                       <>
                         {subject.map((d: any, key: any) => (
                           <div
-                            className="col-sm-12 col-md-6 col-lg-4 col-xl-3 g-2"
+                            className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
                             style={{ cursor: "pointer" }}
                             key={key}
                             onClick={(e) => {
@@ -249,13 +280,16 @@ export default function Teacher() {
                           >
                             <div className="card shadow-sm border-0 p-1 p-lg-3 teacher-list-card h-100 rounded-sm">
                               <div className="gap-1 gap-lg-3 justify-content-center">
-                                <div className="d-flex justify-content-center py-2 pb-4">
-                                  <div
+                                <div className={`d-flex justify-content-center py-2 pb-4 ${styles.subject_number}`}>
+                                  {/* <div
                                     className={`p-3 border border-1 border-light rounded-circle ${styles.icon_bg_color}`}
                                   >
                                     <div className={styles.icons}>
                                       <SlBookOpen className="fs-3" />
                                     </div>
+                                  </div> */}
+                                  <div className={styles.icon_sub}>
+                                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
                                   </div>
                                 </div>
                                 <h5 className={styles.subject}>

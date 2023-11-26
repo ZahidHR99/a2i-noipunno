@@ -26,6 +26,7 @@ export default function ShowAssesment({
 
 
     try {
+      setassessment_uid(own_data?.assessments[0]?.assessment_details[0].uid);
       setclass_id(own_data.subjects[0].class_room.class_id)
       const pi_bi_evaluation_list__: any =
         localStorage.getItem("pi_bi_evaluation_list") || "";
@@ -63,11 +64,7 @@ export default function ShowAssesment({
 
   const tabAcorongoto = async (key: number) => {
     try {
-
-      setclass_id(own_data.subjects[key].class_room.class_id)
-      pis_list_func(allCompitance, []);
-      setparodorshita_acoron_tab(key);
-      seshowCompitance(true);
+      console.log(`own_data?.assessments`, own_data?.assessments[key]?.assessment_details , key);
       setassessment_uid(own_data?.assessments[key]?.assessment_details[0].uid);
       setShowSecounderyTab({
         ...ShowSecounderyTab,
@@ -77,6 +74,13 @@ export default function ShowAssesment({
         own_data?.assessments[key]?.assessment_details[0]
           ?.assessment_details_name_bn
       );
+      setparodorshita_acoron_tab(key);
+      seshowCompitance(true);
+
+      setclass_id(own_data.subjects[key].class_room.class_id)
+      pis_list_func(allCompitance, []);
+      
+      
     } catch (error: any) { }
   };
 
@@ -100,6 +104,8 @@ export default function ShowAssesment({
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log(`ShowSecounderyTab`, ShowSecounderyTab);
 
   // console.log(`parodorshita_acoron_tab`, ShowSecounderyTab, parodorshita_acoron_tab);
 

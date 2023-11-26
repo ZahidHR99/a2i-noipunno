@@ -396,7 +396,7 @@ export default function StudentMullayonModal({
         </div>
         
         
-                )}
+          )}
           {!submited && (
             <div className="table-responsive ">
               <table className="table table-lg table-responsive">

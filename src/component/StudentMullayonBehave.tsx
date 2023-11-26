@@ -174,8 +174,6 @@ export default function StudentMullayonBehave({
                     return d;
                   });
 
-                  console.log(`data`, data);
-
                   await Bi_save(data);
 
                   Swal.fire({
@@ -717,7 +715,10 @@ export default function StudentMullayonBehave({
                       <button
                         type="button"
                         className="btn btn-sm btn-outline-info mx-1"
-                        onClick={(e: any) => refresh()}
+                        onClick={(e: any) => {
+                        
+                          refresh( ) ;
+                        } }
                       >
                         <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
                           <span className="text-sm">পেছনে</span>
