@@ -77,9 +77,6 @@ table th {
   display: none;
 }
 
-
-
-
 /* .teacher-list-card {
   position: relative;
   overflow: hidden;
@@ -103,8 +100,8 @@ table th {
 
 /* +++++++++++++++added new task all css++++++++++++++++++++++++ */
 .total_student {
-  color: #428F92;
-  font-feature-settings: 'clig' off, 'liga' off;
+  color: #428f92;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 14px;
   font-style: normal;
@@ -114,8 +111,8 @@ table th {
 }
 
 .total_student span {
-  color: #2D6668;
-  font-feature-settings: 'clig' off, 'liga' off;
+  color: #2d6668;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 14px;
   font-style: normal;
@@ -131,9 +128,9 @@ table th {
   align-items: flex-start;
   gap: 10px;
   border-radius: 100px;
-  background: #E4FEFF;
+  background: #e4feff;
   color: #555;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 10px;
   font-style: normal;
@@ -155,9 +152,9 @@ table th {
 
 .total_students {
   border-radius: 50%;
-  color: #428F92;
+  color: #428f92;
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 18px;
   font-style: normal;
@@ -186,7 +183,7 @@ table th {
 
 .request_paragraph {
   color: #555;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 13px;
   font-style: normal;
@@ -196,7 +193,7 @@ table th {
 
 .request_to_change_ph_no {
   color: #222;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 12px;
   font-style: normal;
@@ -206,7 +203,7 @@ table th {
 
 .teacher_name_designation {
   color: #555;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 12px;
   font-style: normal;
@@ -216,7 +213,7 @@ table th {
 
 .requested_date {
   color: #555;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 8px;
   font-style: normal;
@@ -230,9 +227,9 @@ table th {
   align-items: flex-start;
   gap: 10px;
   border-radius: 16px;
-  background: #F0F9F9;
+  background: #f0f9f9;
   color: #555;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 10px;
   font-style: normal;
@@ -250,8 +247,8 @@ table th {
   gap: 10px;
   align-self: stretch;
   border-radius: 16px;
-  border: 1px solid #428F92;
-  color: #428F92;
+  border: 1px solid #428f92;
+  color: #428f92;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -263,7 +260,7 @@ table th {
 
 .class_routine {
   color: #222;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Public Sans;
   font-size: 22px;
   font-style: normal;
@@ -288,8 +285,8 @@ table th {
   align-items: center;
   gap: 10px;
   border-radius: 24px;
-  border: 1px solid #428F92;
-  color: #428F92;
+  border: 1px solid #428f92;
+  color: #428f92;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -308,3 +305,4 @@ table th {
 }
 
 /* +++++++++++++++++++++++++++++++++++++++ */
+

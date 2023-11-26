@@ -1,14 +1,20 @@
-import '../styles/TeacherDashboard.css';
-import { subject_name } from '../utils/Utils';
-import ProfileCard from './ProfileCard';
+import "../styles/TeacherDashboard.css";
+import "../assets/teacherDashboard/css/app_info.css";
+import { subject_name } from "../utils/Utils";
+import ProfileCard from "./ProfileCard";
 import { useEffect, useState } from "react";
-import Teacher from './Teacher';
+import Teacher from "./Teacher";
+import AppInfoIcon1 from "../assets/images/app-info-icons/bd-map.svg";
+import AppInfoIcon2 from "../assets/images/app-info-icons/NCTB_logo-2.svg";
+import AppInfoIcon3 from "../assets/images/app-info-icons/Aspire_to_Innovate_Seal 2.svg";
+import AppInfoIcon4 from "../assets/images/app-info-icons/unicef logo.svg";
+import AppInfoIcon5 from "../assets/images/app-info-icons/app-info.svg";
 
 const TeacherDashboard = () => {
   const [all_student, set_All_student] = useState([]);
   const student_lsit = async () => {
     const student: any = [];
-    const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+    const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
     studentsData.data.data.subjects.map((std_data: any) => {
       return std_data.class_room.students.map((stu_data: any) => {
         stu_data.competence = std_data.competence;
@@ -25,32 +31,36 @@ const TeacherDashboard = () => {
 
   const [all_teacher, set_all_teacher] = useState([]);
   const teacher_list = async () => {
-    const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    set_all_teacher(teachersData?.data?.teachers)
+    const teachersData = JSON.parse(localStorage.getItem("teacher_dashboard"));
+    set_all_teacher(teachersData?.data?.teachers);
   };
 
   const [total_class, set_Total_class] = useState([]);
   const all_class = async () => {
-    const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
+    const local_storege_data = JSON.parse(
+      localStorage.getItem("teacher_dashboard")
+    );
     set_Total_class(local_storege_data?.data?.subjects);
   };
 
   const [teachers, setTeachers] = useState<any>([]);
   const fetchData = async () => {
-    const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    setTeachers(teachersData?.data?.teachers)
+    const teachersData = JSON.parse(localStorage.getItem("teacher_dashboard"));
+    setTeachers(teachersData?.data?.teachers);
   };
 
-
   useEffect(() => {
-    fetchData()
+    fetchData();
     student_lsit();
     teacher_list();
     all_class();
   }, []);
 
+  const chatBox = () => {
+    alert("this is chat box");
+  };
   return (
-    <div className='body'>
+    <div className="body">
       <>
         {/* student-chart */}
         <section className="container my-3">
@@ -87,7 +97,10 @@ const TeacherDashboard = () => {
                     </div>
                   </div>
                   <div className="chart">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/Chart.png" alt="" />
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/Chart.png"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -169,7 +182,10 @@ const TeacherDashboard = () => {
                   <div className="header">
                     <div className="title">
                       <h5 className="request">অনুরোধ</h5>
-                      <img src="../../public/assets/teacherDashboard/images/dashboard/dots-vertical.svg" alt="" />
+                      <img
+                        src="../../public/assets/teacherDashboard/images/dashboard/dots-vertical.svg"
+                        alt=""
+                      />
                     </div>
                     <p className="request_paragraph">
                       বিষয়গুলি আপনার পর্যালোচনা করা দরকার
@@ -184,7 +200,10 @@ const TeacherDashboard = () => {
                           data-bs-toggle="tab"
                           data-bs-target="#apply"
                         >
-                          <img src="../../public/assets/teacherDashboard/images/dashboard/alertico.png" alt="" />
+                          <img
+                            src="../../public/assets/teacherDashboard/images/dashboard/alertico.png"
+                            alt=""
+                          />
                           <h2>আবেদন</h2>
                         </a>
                       </li>
@@ -195,7 +214,10 @@ const TeacherDashboard = () => {
                           data-bs-toggle="tab"
                           data-bs-target="#notice"
                         >
-                          <img src="../../public/assets/teacherDashboard/images/dashboard/info-circle.png" alt="" />
+                          <img
+                            src="../../public/assets/teacherDashboard/images/dashboard/info-circle.png"
+                            alt=""
+                          />
                           <h2>বিজ্ঞপ্তি</h2>
                         </a>
                       </li>
@@ -279,7 +301,10 @@ const TeacherDashboard = () => {
                       </div>
                       <div className="button">
                         <a>সব অনুরোধগুলি দেখুন</a>
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/arrow-right.svg" alt="" />
+                        <img
+                          src="../../public/assets/teacherDashboard/images/dashboard/arrow-right.svg"
+                          alt=""
+                        />
                       </div>
                     </div>
                     <div
@@ -358,7 +383,10 @@ const TeacherDashboard = () => {
                       </div>
                       <div className="button">
                         <a>সব অনুরোধগুলি দেখুন</a>
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/arrow-right.svg" alt="" />
+                        <img
+                          src="../../public/assets/teacherDashboard/images/dashboard/arrow-right.svg"
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -375,7 +403,10 @@ const TeacherDashboard = () => {
               <div className="col">
                 <a href="#" className="student-container">
                   <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg" alt="" />
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
                   </div>
                   <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
                 </a>
@@ -383,7 +414,10 @@ const TeacherDashboard = () => {
               <div className="col">
                 <a href="#" className="student-container">
                   <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg" alt="" />
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
                   </div>
                   <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
                 </a>
@@ -391,7 +425,10 @@ const TeacherDashboard = () => {
               <div className="col">
                 <a href="#" className="student-container">
                   <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg" alt="" />
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
                   </div>
                   <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
                 </a>
@@ -399,7 +436,10 @@ const TeacherDashboard = () => {
               <div className="col">
                 <a href="#" className="student-container">
                   <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg" alt="" />
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
                   </div>
                   <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
                 </a>
@@ -407,7 +447,10 @@ const TeacherDashboard = () => {
               <div className="col">
                 <a href="#" className="student-container">
                   <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg" alt="" />
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
                   </div>
                   <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
                 </a>
@@ -438,7 +481,6 @@ const TeacherDashboard = () => {
               </div>
             </div>
           </div> */}
-
         </section>
         {/* information on proficiency */}
         <section className="container">
@@ -458,7 +500,10 @@ const TeacherDashboard = () => {
             </div>
             <div className="row">
               <div className="col-lg-12 col-md-6">
-                <img src="../../public/assets/teacherDashboard/images/dashboard/Chart44.svg" alt="" />
+                <img
+                  src="../../public/assets/teacherDashboard/images/dashboard/Chart44.svg"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -476,35 +521,45 @@ const TeacherDashboard = () => {
                   <div className="teacher-container">
                     <a href="#">
                       <div className="card-top-icon">
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/ico.svg" alt="" />
+                        <img
+                          src="../../public/assets/teacherDashboard/images/dashboard/ico.svg"
+                          alt=""
+                        />
                       </div>
                       <div className="teacher">
-                        <img src="../../public/assets/teacherDashboard/images/dashboard/60px.png" alt="" />
+                        <img
+                          src="../../public/assets/teacherDashboard/images/dashboard/60px.png"
+                          alt=""
+                        />
                         <div className="name">
-                          <h3>{teacher?.name_bn || teacher?.name_en || "no-entry"}</h3>
+                          <h3>
+                            {teacher?.name_bn || teacher?.name_en || "no-entry"}
+                          </h3>
                           <h4>{teacher?.designation || "no-entry"}</h4>
                         </div>
                       </div>
 
                       <div className="subjects">
-                        {
-                          (teacher?.assigned_subjects?.length > 0) ?
-                            <>
-                              {teacher?.assigned_subjects?.map((item: any, index: any) => (
+                        {teacher?.assigned_subjects?.length > 0 ? (
+                          <>
+                            {teacher?.assigned_subjects?.map(
+                              (item: any, index: any) => (
                                 <div key={index} className="subject">
                                   <h3>{subject_name(item.subject_id)}</h3>
                                 </div>
-                              ))}
-                            </>
-                            : <div className="subject"><h3>no-entry</h3></div>
-                        }
+                              )
+                            )}
+                          </>
+                        ) : (
+                          <div className="subject">
+                            <h3>no-entry</h3>
+                          </div>
+                        )}
                       </div>
-
                     </a>
                   </div>
                 </div>
               ))}
-
             </div>
           </div>
         </section>
@@ -516,7 +571,10 @@ const TeacherDashboard = () => {
               <div className="class-routine-selector">
                 <div className="timeline">
                   <h4>টাইমলাইন</h4>
-                  <select className="form-select" aria-label="Default select example">
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                  >
                     <option selected="">সাপ্তাহিক </option>
                     <option value={1}>মাসিক</option>
                     <option value={2}>বছর</option>
@@ -524,7 +582,10 @@ const TeacherDashboard = () => {
                 </div>
                 <div className="all">
                   <h4>ক্লাস অনুসারে ফিল্টার</h4>
-                  <select className="form-select" aria-label="Default select example">
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                  >
                     <option selected="">সব</option>
                     <option value={1}>সাপ্তাহিক</option>
                     <option value={2}>দিন</option>
@@ -1392,8 +1453,77 @@ const TeacherDashboard = () => {
             </div>
           </div>
         </section>
+        {/* app info start */}
+        <section className="chat_app_info">
+          <div className="chat_box">
+            <div className="chat_box">
+              <div id="popup" className="popup ">
+                <div className="popup-app-info-top ">
+                  <div className="popup-app-info-reserved">
+                    <h2 className="reserved-app-info p-0 m-0">
+                      সর্বস্বত্ব সংরক্ষিত ২০২৩
+                    </h2>
+                  </div>
+                  <div className="popup-card-body">
+                    <div className="d-flex popup-card-icons">
+                      <div className="">
+                        <img src={AppInfoIcon1} className="img-fluid" alt="" />
+                      </div>
+                      <div className="">
+                        <img src={AppInfoIcon2} className="img-fluid" alt="" />
+                      </div>
+                    </div>
+                    <div className="popup-card-institutions">
+                      <ul>
+                        <li>পরিকল্পনা ও বাস্তবায়নে:</li>
+                        <li>জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড</li>
+                        <li>(এনসিটিবি), শিক্ষা মন্ত্রণালয়,</li>
+                        <li>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr className="m-0 my-2 p-0" />
+                  <div className="popup-app-info-bottom">
+                    <div className="d-flex popup-card-icons align-items-end">
+                      <div className="">
+                        <img src={AppInfoIcon3} className="img-fluid" alt="" />
+                      </div>
+                      <div className="">
+                        <img src={AppInfoIcon4} className="img-fluid" alt="" />
+                      </div>
+                    </div>
+                    <div className="popup-card-institutions">
+                      <ul>
+                        <li>কারিগরি সহায়তায়:</li>
+                        <li>এসপায়ার টু ইনোভেট (এটুআই), আইসিটি বিভাগ </li>
+                        <li>এবং ইউনিসেফ </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="">
+                  <div className="popup-version-bottom">
+                    <div className="d-flex align-items-center popup-version">
+                      <p className="popup-version-info text-white">
+                        Version 1.0.2 &amp; Last relies 24/10/23
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="chat_btn bg-transparent border-0">
+                <img
+                  className="app-info-btn"
+                  src={AppInfoIcon5}
+                  onClick={chatBox}
+                  alt="app-info"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* app info end */}
       </>
-
     </div>
   );
 };
