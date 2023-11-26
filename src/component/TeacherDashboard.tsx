@@ -73,14 +73,14 @@ const TeacherDashboard = () => {
   return (
     <div className="body">
       <>
-        {/* শিক্ষার্থীর হাজিরা চার্ট - student-chart Saart */}
+        {/* Profile-Card */}
         <section className="container my-3">
           <div className="card-container">
             <div className="row g-3 ">
               <ProfileCard />
-              {/* Chart */}
 
-              <div className="col-lg-5 col-md-6">
+              {/*শিক্ষার্থীর হাজিরা চার্ট */}
+              {/* <div className="col-lg-5 col-md-6">
                 <div className="student-chart">
                   <div className="header">
                     <h3>শিক্ষার্থীর হাজিরা</h3>
@@ -114,7 +114,7 @@ const TeacherDashboard = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
 
 
               {/* সর্বমোট শিক্ষার্থী, শিক্ষক, শ্রেণী কক্ষ- start */}
@@ -193,7 +193,7 @@ const TeacherDashboard = () => {
 
 
               {/* অনুরোধ- Start */}
-              <div className="col-lg-3 col-md-6 ">
+              {/* <div className="col-lg-3 col-md-6 ">
                 <div className="request-container">
                   <div className="header">
                     <div className="title">
@@ -239,7 +239,7 @@ const TeacherDashboard = () => {
                       </li>
                     </ul>
                   </div>
-                  {/* Tab Content */}
+
                   <div className="tab-content" id="tabContent">
                     <div
                       className="tab-pane fade show active"
@@ -407,7 +407,7 @@ const TeacherDashboard = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
             </div>
           </div>
@@ -426,10 +426,32 @@ const TeacherDashboard = () => {
                       alt=""
                     />
                   </div>
-                  <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
+                  <h2>হাজিরা প্রতিবেদন</h2>
                 </a>
               </div>
               <div className="col">
+                <a href="#" className="student-container">
+                  <div className="icon">
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
+                  </div>
+                  <h2>পারদর্শিতার মূল্যায়ন প্রতিবেদন (PI)</h2>
+                </a>
+              </div>
+              <div className="col">
+                <a href="#" className="student-container">
+                  <div className="icon">
+                    <img
+                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      alt=""
+                    />
+                  </div>
+                  <h2>আচরণগত মূল্যায়ন প্রতিবেদন (BI)</h2>
+                </a>
+              </div>
+              {/* <div className="col">
                 <a href="#" className="student-container">
                   <div className="icon">
                     <img
@@ -450,29 +472,7 @@ const TeacherDashboard = () => {
                   </div>
                   <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
                 </a>
-              </div>
-              <div className="col">
-                <a href="#" className="student-container">
-                  <div className="icon">
-                    <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
-                      alt=""
-                    />
-                  </div>
-                  <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
-                </a>
-              </div>
-              <div className="col">
-                <a href="#" className="student-container">
-                  <div className="icon">
-                    <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
-                      alt=""
-                    />
-                  </div>
-                  <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
-                </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -481,6 +481,7 @@ const TeacherDashboard = () => {
         {/*বিষয় ভিত্তিক তথ্য ও মূল্যায়ন subject info*/}
         <section>
           <Teacher />
+
           {/* <div className="container subject-container">
             <h2>বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
             <div className="row">
@@ -504,7 +505,7 @@ const TeacherDashboard = () => {
         {/*বিষয় ভিত্তিক তথ্য ও মূল্যায়ন subject info*/}
 
         {/* information on proficiency পারদর্শিতা সূচক বিষয়ক তথ্য-start*/}
-        <section className="container">
+        {/* <section className="container">
           <div className="proficiency-container">
             <div className="title">
               <h3>পারদর্শিতা সূচক বিষয়ক তথ্য</h3>
@@ -528,11 +529,11 @@ const TeacherDashboard = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
 
         {/* teacher list শিক্ষকের তালিকা-Start*/}
-        <section className="container mt-3">
+        {/* <section className="container mt-3">
           <div className="teacher-list">
             <div className="title">
               <h3>শিক্ষকের তালিকা</h3>
@@ -585,8 +586,8 @@ const TeacherDashboard = () => {
               ))}
             </div>
           </div>
-        </section>
-        {/* teacher list শিক্ষকের তালিকা-Start*/}
+        </section> */}
+
 
         {/* class routine=> ক্লাস রুটিন-Start */}
         <section className="container">
