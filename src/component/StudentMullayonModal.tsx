@@ -384,6 +384,19 @@ export default function StudentMullayonModal({
     <div className="content">
       <div className="col-md-12">
         <div className="row p-1">
+        {Student.length == 0 && (
+        
+
+        <div className="col-md-12">
+        <div className="row p-1">
+          <p className="text-success text-center">
+          কোন ছাত্র পাওয়া যায়নি
+          </p>
+        </div>
+        </div>
+        
+        
+                )}
           {!submited && (
             <div className="table-responsive ">
               <table className="table table-lg table-responsive">
@@ -576,6 +589,10 @@ export default function StudentMullayonModal({
         </div>
 
         <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
+
+        
+
+        
           {is_draft == "2" ? (
             <div className="col-md-12">
               <div className="row p-1">

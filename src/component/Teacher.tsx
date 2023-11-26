@@ -56,13 +56,14 @@ export default function Teacher() {
     const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
     const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
 
-    let own_subjet: any = "";
-    if (own_SUbjects) {
-      own_subjet = own_SUbjects;
-    } else {
-      own_subjet = await teacher_own_subject();
-      localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
-    }
+    const own_subjet: any = await teacher_own_subject();
+    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+    // if (own_SUbjects) {
+    //   own_subjet = own_SUbjects;
+    // } else {
+    //   own_subjet = await teacher_own_subject();
+      
+    // }
 
     let data: any = "";
     if (teacher_dash) {
@@ -130,7 +131,8 @@ export default function Teacher() {
   const student_lsit = async () => {
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
-    studentsData.data.data.subjects.map((std_data: any) => {
+
+    studentsData?.data?.data?.subjects.map((std_data: any) => {
       return std_data.class_room.students.map((stu_data: any) => {
         stu_data.competence = std_data.competence;
         student.push(stu_data);

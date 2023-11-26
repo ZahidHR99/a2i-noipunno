@@ -176,6 +176,7 @@ export default function ShowAssesment({
                                 ass_d.assessment_details_name_bn
                               );
                               setShowcollaps({});
+
                             }}
                           >
                             <SlBookOpen className="me-1" />{" "}
