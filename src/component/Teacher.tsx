@@ -320,7 +320,6 @@ export default function Teacher() {
                         {showSubject && <>
                           {subject.map((d: any, key: any) => (
                             <div
-
                               className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
                               style={{ cursor: "pointer" }}
                               key={key}
@@ -383,8 +382,6 @@ export default function Teacher() {
 
                       </div>
                     </div>
-
-
 
                     {ShowProfile === false && (
                       <>

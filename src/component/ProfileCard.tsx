@@ -64,13 +64,13 @@ export default function ProfileCard() {
           <div className="card-header border-0">
             <Link to={"/edit-teacher-profile"}>
               <div className="edit-icon">
-                <img src="../../public/assets/teacherDashboard/images/dashboard/edit-2.svg" alt="" />
+                <img src="assets/teacherDashboard/images/dashboard/edit-2.svg" alt="" />
 
               </div>
             </Link>
 
             <div className="profile-img">
-              <img src="../../public/assets/teacherDashboard/images/dashboard/60px.png" alt="" />
+              <img src="assets/teacherDashboard/images/dashboard/60px.png" alt="" />
 
             </div>
             <div className="teacher-title">
@@ -83,13 +83,13 @@ export default function ProfileCard() {
             </div>
             <div className="icon">
               <div className="single-icon">
-                <img src="../../public/assets/teacherDashboard/images/dashboard/ico.svg" alt="" />
+                <img src="assets/teacherDashboard/images/dashboard/ico.svg" alt="" />
               </div>
               <div className="single-icon">
-                <img src="../../public/assets/teacherDashboard/images/dashboard/message.svg" alt="" />
+                <img src="assets/teacherDashboard/images/dashboard/message.svg" alt="" />
               </div>
               <div className="single-icon">
-                <img src="../../public/assets/teacherDashboard/images/dashboard/moon.svg" alt="" />
+                <img src="assets/teacherDashboard/images/dashboard/moon.svg" alt="" />
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function ProfileCard() {
             <p className="card-text">School Name- No entry</p>
 
             <div className="button">
-              <img src="../../public/assets/teacherDashboard/images/dashboard/eye.svg" alt="" />
+              <img src="assets/teacherDashboard/images/dashboard/eye.svg" alt="" />
               <Link to={"/teacher-profile"}>
                 আমার প্রোফাইল
               </Link>
