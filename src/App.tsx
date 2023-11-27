@@ -21,7 +21,9 @@ import {
 } from "./Request";
 import AmarProfile from "./component/AmarProfile";
 import MullayonKoron from "./component/MullayonKoron";
-import TeacherDashboard from "./component/TeacherDashboard";
+import HeadTeacherDashboard from "./component/Dashboards/HeadTeacherDashboard";
+import TeacherDashboardNew from "./component/Dashboards/TeacherDashboardNew";
+import Header from "./layout/Header";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -49,6 +51,7 @@ function App() {
   return (
     <>
       {topbar && <Topbar />}
+      {/* {topbar && <Header />} */}
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
@@ -72,7 +75,9 @@ function App() {
           <Route path="/teacher-profile" element={<AmarProfile />} />
           <Route path="/teachers-list" element={<TeachersList />} />
           <Route path="/mollayon-koron" element={<MullayonKoron />} />
-          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+          <Route path="/teacher-dashboard" element={<TeacherDashboardNew />} />
+          <Route path="/head-teacher-dashboard" element={<HeadTeacherDashboard />} />
+
 
         </Route>
         <Route path="/login" element={<Login />} />
