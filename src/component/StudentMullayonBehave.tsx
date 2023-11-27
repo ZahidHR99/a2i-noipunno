@@ -9,7 +9,7 @@ import {
   weightId,
 } from "../utils/Utils";
 import { BiCircle, BiRefresh, BiSquareRounded } from "react-icons/bi";
-import { FiTriangle } from "react-icons/fi";
+import { FiSave, FiTriangle } from "react-icons/fi";
 import {
   Bi_save,
   get_bi_evaluation_by_bi,
@@ -17,6 +17,12 @@ import {
 } from "../Request";
 import Swal from "sweetalert2";
 import { IoIosArrowForward } from "react-icons/io";
+
+declare global {
+  interface Window {
+    myTimeout?: number;
+  }
+}
 
 export default function StudentMullayonBehave({
   all_bis,
@@ -285,7 +291,7 @@ export default function StudentMullayonBehave({
         is_approved: 1,
         remark,
         pi_uid,
-        subject_uid
+        subject_uid,
       };
 
       if (remark) {
@@ -426,6 +432,7 @@ export default function StudentMullayonBehave({
   ) => {
     if (remark) {
       form_arry_comment(obj);
+      // console.log(`11111111`, 11111111 , obj);
     } else {
       if (remark == null && weight_uid == null) {
         delete obj[bi_uid + "_" + student_id + "_" + assessment_uid];
@@ -463,7 +470,10 @@ export default function StudentMullayonBehave({
     for (let index = 0; index < all_elem_txtarea.length; index++) {
       const element: any = all_elem_txtarea[index];
       element.style.display = "none";
+      element.value = "";
     }
+
+    showOffCollaps(Number(keynext - 1) , student?.uid);
   };
 
   setTimeout(() => {
@@ -475,26 +485,25 @@ export default function StudentMullayonBehave({
         const element: any = all_elem[index];
         element.style.background = "";
       }
-    }
 
-    for (const x in submitObj) {
-      const id: any =
-        submitObj[x].pi_uid +
-        "_" +
-        submitObj[x].student_uid +
-        "_" +
-        assessment_uid;
-      const el: any = document.getElementById(id);
-      console.log(`el`, id);
+      for (const x in submitObj) {
+        const id: any =
+          submitObj[x].pi_uid +
+          "_" +
+          submitObj[x].student_uid +
+          "_" +
+          assessment_uid;
+        const el: any = document.getElementById(id);
 
-      if (el) {
-        el.style.background = "#69CB1C";
+        if (el) {
+          el.style.background = "#69CB1C";
+        }
       }
+      // setfirstRender(false);
     }
-  }, 700);
+  }, 300);
 
-  console.log(`submitData`, submitData);
-  // console.log("all_bis", all_bis);
+  console.log("all_bis", submitObj);
 
   return (
     <div className="content">
@@ -664,15 +673,17 @@ export default function StudentMullayonBehave({
                       <div>
                         {is_draft == "1" && (
                           <textarea
-                            onChange={(e: any) =>
-                              save_PI_evalution(
-                                w_d.uid,
-                                null,
-                                student.uid,
-                                w_d.bi_uid,
-                                e.target.value == "" ? null : e.target.value
-                              )
-                            }
+                            onKeyUp={(e: any) => {
+                              window.myTimeout = setTimeout(function () {
+                                save_PI_evalution(
+                                  w_d.uid,
+                                  null,
+                                  student.uid,
+                                  w_d.bi_uid,
+                                  e.target.value == "" ? null : e.target.value
+                                );
+                              }, 2000);
+                            }}
                             placeholder={
                               "আপনি কেন চিহ্নিত করেননি তার কারণ লিখুন..."
                             }
@@ -716,9 +727,8 @@ export default function StudentMullayonBehave({
                         type="button"
                         className="btn btn-sm btn-outline-info mx-1"
                         onClick={(e: any) => {
-                        
-                          refresh( ) ;
-                        } }
+                          refresh();
+                        }}
                       >
                         <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
                           <span className="text-sm">পেছনে</span>
