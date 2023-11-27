@@ -47,22 +47,15 @@ const TeacherDashboard = () => {
     set_Total_class(local_storege_data?.data?.subjects);
   };
 
-  const [teachers, setTeachers] = useState<any>([]);
-  const fetchData = async () => {
-    const teachersData = JSON.parse(localStorage.getItem("teacher_dashboard"));
-    setTeachers(teachersData?.data?.teachers);
-  };
+
 
   useEffect(() => {
-    fetchData();
     student_lsit();
     teacher_list();
     all_class();
   }, []);
 
-  // const chatBox = () => {
-  //   alert("this is chat box");
-  // };
+
 
   const [togglePopup, setTogglePopup] = useState(false);
   const hangleChatbox = () => {
@@ -109,7 +102,7 @@ const TeacherDashboard = () => {
                   </div>
                   <div className="chart">
                     <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/Chart.png"
+                      src="assets/teacherDashboard/images/dashboard/Chart.png"
                       alt=""
                     />
                   </div>
@@ -199,7 +192,7 @@ const TeacherDashboard = () => {
                     <div className="title">
                       <h5 className="request">অনুরোধ</h5>
                       <img
-                        src="../../public/assets/teacherDashboard/images/dashboard/dots-vertical.svg"
+                        src="assets/teacherDashboard/images/dashboard/dots-vertical.svg"
                         alt=""
                       />
                     </div>
@@ -217,7 +210,7 @@ const TeacherDashboard = () => {
                           data-bs-target="#apply"
                         >
                           <img
-                            src="../../public/assets/teacherDashboard/images/dashboard/alertico.png"
+                            src="assets/teacherDashboard/images/dashboard/alertico.png"
                             alt=""
                           />
                           <h2>আবেদন</h2>
@@ -231,7 +224,7 @@ const TeacherDashboard = () => {
                           data-bs-target="#notice"
                         >
                           <img
-                            src="../../public/assets/teacherDashboard/images/dashboard/info-circle.png"
+                            src="assets/teacherDashboard/images/dashboard/info-circle.png"
                             alt=""
                           />
                           <h2>বিজ্ঞপ্তি</h2>
@@ -252,7 +245,7 @@ const TeacherDashboard = () => {
                           <div className="heading">
                             <div className="icon">
                               <img
-                                src="../../public/assets/teacherDashboard/images/dashboard/ico2.svg"
+                                src="assets/teacherDashboard/images/dashboard/ico2.svg"
                                 className="img-fluid"
                                 alt="icon"
                               />
@@ -279,7 +272,7 @@ const TeacherDashboard = () => {
                           <div className="heading">
                             <div className="icon">
                               <img
-                                src="../../public/assets/teacherDashboard/images/dashboard/arrow-right2.svg"
+                                src="assets/teacherDashboard/images/dashboard/arrow-right2.svg"
                                 className="img-fluid"
                                 alt="icon"
                               />
@@ -306,7 +299,7 @@ const TeacherDashboard = () => {
                           <div className="heading">
                             <div className="icon">
                               <img
-                                src="../../public/assets/teacherDashboard/images/dashboard/arrow-right2.svg"
+                                src="assets/teacherDashboard/images/dashboard/arrow-right2.svg"
                                 className="img-fluid"
                                 alt="icon"
                               />
@@ -318,7 +311,7 @@ const TeacherDashboard = () => {
                       <div className="button">
                         <a>সব অনুরোধগুলি দেখুন</a>
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/arrow-right.svg"
+                          src="assets/teacherDashboard/images/dashboard/arrow-right.svg"
                           alt=""
                         />
                       </div>
@@ -334,7 +327,7 @@ const TeacherDashboard = () => {
                           <div className="heading">
                             <div className="icon">
                               <img
-                                src="../../public/assets/teacherDashboard/images/dashboard/ico2.svg"
+                                src="assets/teacherDashboard/images/dashboard/ico2.svg"
                                 className="img-fluid"
                                 alt="icon"
                               />
@@ -361,7 +354,7 @@ const TeacherDashboard = () => {
                           <div className="heading">
                             <div className="icon">
                               <img
-                                src="../../public/assets/teacherDashboard/images/dashboard/arrow-right2.svg"
+                                src="assets/teacherDashboard/images/dashboard/arrow-right2.svg"
                                 className="img-fluid"
                                 alt="icon"
                               />
@@ -388,7 +381,7 @@ const TeacherDashboard = () => {
                           <div className="heading">
                             <div className="icon">
                               <img
-                                src="../../public/assets/teacherDashboard/images/dashboard/arrow-right2.svg"
+                                src="assets/teacherDashboard/images/dashboard/arrow-right2.svg"
                                 className="img-fluid"
                                 alt="icon"
                               />
@@ -400,7 +393,7 @@ const TeacherDashboard = () => {
                       <div className="button">
                         <a>সব অনুরোধগুলি দেখুন</a>
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/arrow-right.svg"
+                          src="assets/teacherDashboard/images/dashboard/arrow-right.svg"
                           alt=""
                         />
                       </div>
@@ -422,7 +415,7 @@ const TeacherDashboard = () => {
                 <a href="#" className="student-container">
                   <div className="icon">
                     <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      src="assets/teacherDashboard/images/dashboard/document-text.svg"
                       alt=""
                     />
                   </div>
@@ -433,7 +426,7 @@ const TeacherDashboard = () => {
                 <a href="#" className="student-container">
                   <div className="icon">
                     <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      src="assets/teacherDashboard/images/dashboard/document-text.svg"
                       alt=""
                     />
                   </div>
@@ -444,7 +437,7 @@ const TeacherDashboard = () => {
                 <a href="#" className="student-container">
                   <div className="icon">
                     <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      src="assets/teacherDashboard/images/dashboard/document-text.svg"
                       alt=""
                     />
                   </div>
@@ -455,7 +448,7 @@ const TeacherDashboard = () => {
                 <a href="#" className="student-container">
                   <div className="icon">
                     <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      src="assets/teacherDashboard/images/dashboard/document-text.svg"
                       alt=""
                     />
                   </div>
@@ -466,7 +459,7 @@ const TeacherDashboard = () => {
                 <a href="#" className="student-container">
                   <div className="icon">
                     <img
-                      src="../../public/assets/teacherDashboard/images/dashboard/document-text.svg"
+                      src="assets/teacherDashboard/images/dashboard/document-text.svg"
                       alt=""
                     />
                   </div>
@@ -488,7 +481,7 @@ const TeacherDashboard = () => {
               <div className="col">
                 <a href="#" className="subject-number">
                   <div className="icon">
-                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
+                    <img src="assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
                   </div>
                   <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
                   <div className="total-student">
@@ -523,7 +516,7 @@ const TeacherDashboard = () => {
             <div className="row">
               <div className="col-lg-12 col-md-6">
                 <img
-                  src="../../public/assets/teacherDashboard/images/dashboard/Chart44.svg"
+                  src="assets/teacherDashboard/images/dashboard/Chart44.svg"
                   alt=""
                 />
               </div>
@@ -546,13 +539,13 @@ const TeacherDashboard = () => {
                     <a href="#">
                       <div className="card-top-icon">
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/ico.svg"
+                          src="assets/teacherDashboard/images/dashboard/ico.svg"
                           alt=""
                         />
                       </div>
                       <div className="teacher">
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/60px.png"
+                          src="assets/teacherDashboard/images/dashboard/60px.png"
                           alt=""
                         />
                         <div className="name">
@@ -637,7 +630,7 @@ const TeacherDashboard = () => {
                       <div className="d-flex gap-2">
                         {" "}
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/profile-2user.svg"
+                          src="assets/teacherDashboard/images/dashboard/profile-2user.svg"
                           alt="user-icon"
                         />{" "}
                         ষষ্ঠ শ্রেণী
@@ -655,7 +648,7 @@ const TeacherDashboard = () => {
                       <div className="d-flex gap-2">
                         {" "}
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/profile-2user.svg"
+                          src="assets/teacherDashboard/images/dashboard/profile-2user.svg"
                           alt="user-icon"
                         />{" "}
                         সপ্তম শ্রেণী
@@ -673,7 +666,7 @@ const TeacherDashboard = () => {
                       <div className="d-flex gap-2">
                         {" "}
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/profile-2user.svg"
+                          src="assets/teacherDashboard/images/dashboard/profile-2user.svg"
                           alt="user-icon"
                         />{" "}
                         অষ্টম শ্রেণী
@@ -691,7 +684,7 @@ const TeacherDashboard = () => {
                       <div className="d-flex gap-2">
                         {" "}
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/profile-2user.svg"
+                          src="assets/teacherDashboard/images/dashboard/profile-2user.svg"
                           alt="user-icon"
                         />{" "}
                         নবম শ্রেণী
@@ -709,7 +702,7 @@ const TeacherDashboard = () => {
                       <div className="d-flex gap-2">
                         {" "}
                         <img
-                          src="../../public/assets/teacherDashboard/images/dashboard/profile-2user.svg"
+                          src="assets/teacherDashboard/images/dashboard/profile-2user.svg"
                           alt="user-icon"
                         />{" "}
                         দশম শ্রেণী
