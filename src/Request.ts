@@ -11,7 +11,7 @@ axios.defaults.headers.common[
 ] = `Bearer ${token?.access_token}`;
 
 export function loginPassword(data: any) {
-  const page_list = `${API_URL}/v1/login1`;
+  const page_list = `${API_URL}/v1/login`;
 
   const options = {
     method: "POST",
