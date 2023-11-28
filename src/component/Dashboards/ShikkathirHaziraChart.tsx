@@ -1,4 +1,6 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
+import chart from '../../assets/dashboard_materials/images/dashboard/Chart.png';
+
 
 const ShikkathirHaziraChart = () => {
   return (
@@ -30,7 +32,7 @@ const ShikkathirHaziraChart = () => {
           </div>
         </div>
         <div className="chart">
-          <img src="dashboardAssets/images/dashboard/Chart.png" alt="" />
+          <img src={chart} alt="chart" />
         </div>
       </div>
     </div>

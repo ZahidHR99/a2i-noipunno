@@ -13,6 +13,7 @@ import AcorongotoComponent from "./AcorongotoComponent";
 import styles from "./Home.style.module.css";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import ShowAssesment from "./ShowAssesment";
+import bookIcon from '../../src/assets/dashboard_materials/images/dashboard/bicon.svg';
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -62,7 +63,7 @@ export default function Teacher() {
     //   own_subjet = own_SUbjects;
     // } else {
     //   own_subjet = await teacher_own_subject();
-      
+
     // }
 
     let data: any = "";
@@ -269,7 +270,7 @@ export default function Teacher() {
                                 <div className={`d-flex justify-content-center py-2 pb-4 ${styles.subject_number}`}>
 
                                   <div className={styles.icon_sub}>
-                                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
+                                    <img src={bookIcon} alt="bookIcon" />
                                   </div>
                                 </div>
                                 <h5 className={styles.subject}>
@@ -346,7 +347,7 @@ export default function Teacher() {
                             >
                               <a className="subject-number">
                                 <div className="icon">
-                                  <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
+                                  <img src={bookIcon} alt="bookIcon" />
                                 </div>
                                 <h2 className="mt-3">  {d?.subject?.name}</h2>
                                 <div className="total-student">

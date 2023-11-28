@@ -1,4 +1,5 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
+import bookIcon from '../../assets/dashboard_materials/images/dashboard/bicon.svg';
 
 const SryniBishoyokTottho = () => {
   return (
@@ -9,7 +10,7 @@ const SryniBishoyokTottho = () => {
           <div className="col">
             <a href="#" className="subject-number">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/bicon.svg" alt="" />
+                <img src={bookIcon} alt="bookIcon" />
               </div>
               <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
               <div className="total-student">
@@ -23,7 +24,7 @@ const SryniBishoyokTottho = () => {
           <div className="col">
             <a href="#" className="subject-number">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/bicon.svg" alt="" />
+                <img src={bookIcon} alt="bookIcon" />
               </div>
               <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
               <div className="total-student">
@@ -37,7 +38,7 @@ const SryniBishoyokTottho = () => {
           <div className="col">
             <a href="#" className="subject-number">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/bicon.svg" alt="" />
+                <img src={bookIcon} alt="bookIcon" />
               </div>
               <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
               <div className="total-student">
@@ -51,7 +52,7 @@ const SryniBishoyokTottho = () => {
           <div className="col">
             <a href="#" className="subject-number">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/bicon.svg" alt="" />
+                <img src={bookIcon} alt="bookIcon" />
               </div>
               <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
               <div className="total-student">
@@ -65,7 +66,7 @@ const SryniBishoyokTottho = () => {
           <div className="col">
             <a href="#" className="subject-number">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/bicon.svg" alt="" />
+                <img src={bookIcon} alt="bookIcon" />
               </div>
               <h2 className="mt-3">শিক্ষার্থীদের প্রতিবেদন</h2>
               <div className="total-student">

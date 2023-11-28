@@ -1,4 +1,10 @@
-
+import '../../assets/dashboard_materials/css/dashboard.css';
+import threeDoots from '../../assets/dashboard_materials/images/dashboard/dots-vertical.svg';
+import abedonIcon from '../../assets/dashboard_materials/images/dashboard/alertico.png';
+import biggoftiIcon from '../../assets/dashboard_materials/images/dashboard/info-circle.png';
+import PhoneNuberChangeiIcon from '../../assets/dashboard_materials/images/dashboard/ico2.svg';
+import bishoiPoribortonIcon from '../../assets/dashboard_materials/images/dashboard/arrow-right2.svg';
+import rightArrow from '../../assets/dashboard_materials/images/dashboard/arrow-right.svg';
 
 const OnorudhShomohu = () => {
   return (
@@ -8,7 +14,7 @@ const OnorudhShomohu = () => {
         <div className="header">
           <div className="title">
             <h5 className="request">অনুরোধ</h5>
-            <img src="dashboardAssets/images/dashboard/dots-vertical.svg" alt="" />
+            <img src={threeDoots} alt="threeDoots" />
           </div>
           <p className="request_paragraph">
             বিষয়গুলি আপনার পর্যালোচনা করা দরকার
@@ -23,7 +29,7 @@ const OnorudhShomohu = () => {
                 data-bs-toggle="tab"
                 data-bs-target="#apply"
               >
-                <img src="dashboardAssets/images/dashboard/alertico.png" alt="" />
+                <img src={abedonIcon} alt="abedonIcon" />
                 <h2>আবেদন</h2>
               </a>
             </li>
@@ -34,7 +40,7 @@ const OnorudhShomohu = () => {
                 data-bs-toggle="tab"
                 data-bs-target="#notice"
               >
-                <img src="dashboardAssets/images/dashboard/info-circle.png" alt="" />
+                <img src={biggoftiIcon} alt="biggoftiIcon" />
                 <h2>বিজ্ঞপ্তি</h2>
               </a>
             </li>
@@ -53,7 +59,7 @@ const OnorudhShomohu = () => {
                 <div className="heading">
                   <div className="icon">
                     <img
-                      src="dashboardAssets/images/dashboard/ico2.svg"
+                      src={PhoneNuberChangeiIcon}
                       className="img-fluid"
                       alt="icon"
                     />
@@ -80,7 +86,7 @@ const OnorudhShomohu = () => {
                 <div className="heading">
                   <div className="icon">
                     <img
-                      src="dashboardAssets/images/dashboard/arrow-right2.svg"
+                      src={bishoiPoribortonIcon}
                       className="img-fluid"
                       alt="icon"
                     />
@@ -107,7 +113,7 @@ const OnorudhShomohu = () => {
                 <div className="heading">
                   <div className="icon">
                     <img
-                      src="dashboardAssets/images/dashboard/arrow-right2.svg"
+                      src={PhoneNuberChangeiIcon}
                       className="img-fluid"
                       alt="icon"
                     />
@@ -118,7 +124,7 @@ const OnorudhShomohu = () => {
             </div>
             <div className="button">
               <a>সব অনুরোধগুলি দেখুন</a>
-              <img src="dashboardAssets/images/dashboard/arrow-right.svg" alt="" />
+              <img src={rightArrow} alt="rightArrow" />
             </div>
           </div>
           <div
@@ -132,7 +138,7 @@ const OnorudhShomohu = () => {
                 <div className="heading">
                   <div className="icon">
                     <img
-                      src="dashboardAssets/images/dashboard/ico2.svg"
+                      src={PhoneNuberChangeiIcon}
                       className="img-fluid"
                       alt="icon"
                     />
@@ -159,7 +165,7 @@ const OnorudhShomohu = () => {
                 <div className="heading">
                   <div className="icon">
                     <img
-                      src="dashboardAssets/images/dashboard/arrow-right2.svg"
+                      src={bishoiPoribortonIcon}
                       className="img-fluid"
                       alt="icon"
                     />
@@ -186,7 +192,7 @@ const OnorudhShomohu = () => {
                 <div className="heading">
                   <div className="icon">
                     <img
-                      src="dashboardAssets/images/dashboard/arrow-right2.svg"
+                      src={PhoneNuberChangeiIcon}
                       className="img-fluid"
                       alt="icon"
                     />
@@ -197,7 +203,7 @@ const OnorudhShomohu = () => {
             </div>
             <div className="button">
               <a>সব অনুরোধগুলি দেখুন</a>
-              <img src="dashboardAssets/images/dashboard/arrow-right.svg" alt="" />
+              <img src={rightArrow} alt="rightArrow" />
             </div>
           </div>
         </div>

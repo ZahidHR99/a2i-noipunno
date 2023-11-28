@@ -1,4 +1,4 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
 import OnorudhShomohu from './OnorudhShomohu';
 import ShikkathirHaziraChart from './ShikkathirHaziraChart';
 import ShorbomotHishabforHeadTeaherDashboard from './ShorbomotHishabforHeadTeaherDashboard';
@@ -12,9 +12,9 @@ const BannerSection = () => {
       <div className="card-container">
         <div className="row g-3 ">
           <TeacherProfileCard />
-          {/* <ShikkathirHaziraChart /> */}
+          <ShikkathirHaziraChart />
           <TotalNumberOfSudentTeacherClassRoom />
-          {/* <OnorudhShomohu /> */}
+          <OnorudhShomohu />
         </div>
       </div>
     </section>

@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <>
       {/* <Teacher /> */}
-      {<TeacherDashboardNew />}
-      {/* {<HeadTeacherDashboard />} */}
+      {/* {<TeacherDashboardNew />} */}
+      {<HeadTeacherDashboard />}
     </>
   );
 }

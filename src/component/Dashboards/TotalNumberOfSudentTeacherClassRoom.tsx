@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import '../../../public/dashboardAssets/css/dashboard.css';
+
 import "./TotalNumberOfStudent.css"
 
 const TotalNumberOfSudentTeacherClassRoom = () => {

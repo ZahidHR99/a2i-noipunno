@@ -1,11 +1,11 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
-import '../../../public/dashboardAssets/css/app_info.css';
-
+import '../../assets/dashboard_materials/css/dashboard.css';
+import '../../assets/dashboard_materials/css/app_info.css';
 import AppInfoIcon1 from "../../assets/images/app-info-icons/bd-map.svg";
 import AppInfoIcon2 from "../../assets/images/app-info-icons/NCTB_logo-2.svg";
 import AppInfoIcon3 from "../../assets/images/app-info-icons/Aspire_to_Innovate_Seal 2.svg";
 import AppInfoIcon4 from "../../assets/images/app-info-icons/unicef logo.svg";
 import AppInfoIcon5 from "../../assets/images/app-info-icons/app-info.svg";
+
 import { useState } from 'react';
 
 const PopUpCard = () => {

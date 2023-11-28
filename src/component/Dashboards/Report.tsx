@@ -1,4 +1,5 @@
-
+import '../../assets/dashboard_materials/css/dashboard.css';
+import reportIcon from '../../assets/dashboard_materials/images/dashboard/document-text.png';
 
 const Report = () => {
   return (
@@ -9,7 +10,7 @@ const Report = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/document-text.svg" alt="" />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
             </a>
@@ -17,7 +18,7 @@ const Report = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/document-text.svg" alt="" />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
             </a>
@@ -25,7 +26,7 @@ const Report = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/document-text.svg" alt="" />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
             </a>
@@ -33,7 +34,7 @@ const Report = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/document-text.svg" alt="" />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
             </a>
@@ -41,7 +42,7 @@ const Report = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img src="dashboardAssets/images/dashboard/document-text.svg" alt="" />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>শিক্ষার্থীদের প্রতিবেদন</h2>
             </a>
