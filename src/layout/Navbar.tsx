@@ -1,11 +1,43 @@
+import '../styles/navbar.css';
 import { useEffect, useState } from 'react';
-import '../../public/dashboardAssets/css/style.css';
-import { all_class } from '../Request';
+import { Link, NavLink } from 'react-router-dom';
+
+import noipunnologo from "../assets/navbar_materials/images/noipunno-new-logo.svg";
+import searchIcon from "../assets/navbar_materials/icons/search-normal.svg";
+import startIcon from "../assets/navbar_materials/icons/star.svg";
+import dark_light_mode_icon from "../assets/navbar_materials/icons/dark-light-mode.svg";
+import notificationIcon from "../assets/navbar_materials/icons/notification.svg";
+import teacherIcon from "../assets/navbar_materials/icons/teacher.svg";
+import teacherActiveIcon from "../assets/navbar_materials/icons/Status.svg";
+import amarProfileIcon from "../assets/navbar_materials/icons/profile-icon.svg";
+import settingIcon from "../assets/navbar_materials/icons/setting-2.svg";
+import shahajjuIcon from "../assets/navbar_materials/icons/help.svg";
+import shadaronProshonUttorIcon from "../assets/navbar_materials/icons/info-circle.svg";
+import opnushondanKoronIcon from "../assets/navbar_materials/icons/search-normal.svg";
+import prioBishoyIcon from "../assets/navbar_materials/icons/star.svg";
+import themeNirbahonKoronIcon from "../assets/navbar_materials/icons/dark-light-mode.svg";
+import signoutIcon from "../assets/navbar_materials/icons/sign-out.svg";
+import mobileMenuIcon from "../assets/navbar_materials/icons/menu.png";
+import prothomPatha from "../assets/navbar_materials/icons/home.svg";
+import downArrorIcon from "../assets/navbar_materials/icons/tik-ico.svg";
+import unOrderListIcon from "../assets/navbar_materials/icons/nav-icos.svg";
+import reportIcon from "../assets/navbar_materials/icons/report.svg";
+import shikkokIcon from "../assets/navbar_materials/icons/nav-teacher-icon.svg";
+import shikkarthiIcon from "../assets/navbar_materials/icons/student-icon.svg";
+import shreniIcon from "../assets/navbar_materials/icons/class-icon.svg";
+import onurudhGoliIcon from "../assets/navbar_materials/icons/requests.svg";
+import addIcon from "../assets/navbar_materials/icons/add.svg";
+import tikicowhite from "../assets/navbar_materials/icons/tik-ico-white.svg";
+import shikkarthiBebostapona from "../assets/navbar_materials/icons/std-management.svg";
+import shikkokBebostapona from "../assets/navbar_materials/icons/teacher-management.svg";
+import branchBebostapona from "../assets/navbar_materials/icons/branch-ico.svg";
+import srenikokkoBebostapona from "../assets/navbar_materials/icons/branch-ico.svg";
+import dayitthoOrponKoron from "../assets/navbar_materials/icons/users.svg";
 
 
-const Header = () => {
 
-  const [classdata, setdata] = useState([]);
+const Navbar = () => {
+
   const [userDetails, setuserDetails] = useState<any>({});
 
   useEffect(() => {
@@ -15,6 +47,9 @@ const Header = () => {
     }
   }, []);
 
+  // console.log("userDetails", userDetails);
+
+
   const handleLogout = (e: any) => {
     localStorage.clear();
     window.location.reload();
@@ -22,118 +57,41 @@ const Header = () => {
     // console.log("Logout successful", e);
   };
 
-  const fetchData = async () => {
-    const { data }: any = await all_class();
-    if (data.status) {
-      setdata(data.data);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
 
   return (
     <>
-
       {/* topnav */}
       <div className="topnav border-bottom">
         <div className="container">
           <div className="row">
             <div className="d-flex justify-content-between align-items-center py-2">
               <div>
-                <img
-                  src="dashboardAssets/images/noipunno-new-logo.svg"
-                  className="img-fluid"
-                  alt="main logo"
-                />
+                <img src={noipunnologo} className="img-fluid" alt="main logo" />
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                {/* Search Icon and modal */}
-                {/* <div
-                  className="d-none d-lg-block"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
+
+                {/* <div className="d-none d-lg-block" >
                   <a href="#">
-                    <img
-                      src="dashboardAssets/icons/search-normal.svg"
-                      className="img-fluid mx-2"
-                      alt="search icon"
-                    />
+                    <img src={searchIcon} className="img-fluid mx-2" alt="search icon" />
                   </a>
-                  
-                  <div
-                    className="modal fade"
-                    id="exampleModal"
-                    tabIndex={-1}
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog modal-lg">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">
-                            Modal title
-                          </h5>
-                          <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          />
-                        </div>
-                        <div className="modal-body">...</div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 </div> */}
-
-                {/* Star Icon */}
-                {/* <div className="d-none d-lg-block">
+                {/* 
+                <div className="d-none d-lg-block">
                   {" "}
                   <a href="#">
-                    <img
-                      src="dashboardAssets/icons/star.svg"
-                      className="img-fluid mx-2"
-                      alt="=favourite logo"
-                    />
+                    <img src={startIcon} className="img-fluid mx-2" alt="=favourite logo" />
                   </a>
                 </div> */}
 
-                {/* Half Moon Icon  */}
-                {/* <div className="d-none d-lg-block" onclick="myFunction()">
+                {/* <div className="d-none d-lg-block" >
                   <a href="#">
-                    <img
-                      src="dashboardAssets/icons/dark-light-mode.svg"
-                      className="img-fluid mx-2 tick-icons"
-                      alt="main logo"
-                    />
+                    <img src={dark_light_mode_icon} className="img-fluid mx-2 tick-icons" alt="main logo" />
                   </a>
                 </div> */}
 
-                {/* Notification icon */}
                 {/* <div className=" position-relative">
                   <a href="#">
-                    <img
-                      src="dashboardAssets/icons/notification.svg"
-                      className="img-fluid"
-                      alt="main logo"
-                    />
+                    <img src={notificationIcon} className="img-fluid" alt="main logo" />
                     <span className="position-absolute top-0 start-50 translate-middle d-flex mt-1  mx-2 justify-content-center align-items-center badge notification-badge rounded-pill bg-danger">
                       4
                     </span>
@@ -141,143 +99,113 @@ const Header = () => {
                 </div> */}
 
                 <div className="btn-group position-relative">
-                  <a
-                    className="navbar-menu-item d-flex align-items-center ms-2"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
+                  <a className="navbar-menu-item d-flex align-items-center ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                     {" "}
-                    <img
-                      src="dashboardAssets/icons/teacher.svg"
-                      className="img-fluid topnav-profile-icon-style"
-                      alt="moon icon"
-                    />
+                    <img src={teacherIcon} className="img-fluid topnav-profile-icon-style" alt="moon icon" />
                     {/* active icon */}
-                    <img src="dashboardAssets/icons/Status.svg" class="img-fluid position-absolute bottom-0 end-0"
-                      alt="Status icon" />
+                    <img src={teacherActiveIcon} className="img-fluid position-absolute bottom-0 end-0" alt="Status icon" />
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
+
                     <li>
                       <div className="border-bottom topnav-dropdown-style">
                         <div className="d-flex align-items-center gap-2">
                           <div>
-                            <img
-                              src="dashboardAssets/icons/teacher.svg"
-                              className="img-fluid icon-right-space"
-                              alt="profile icon"
-                            />
+                            <img src={teacherIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           </div>
                           <div>
-                            <h6 className="profile-style">আতাউর রহমান</h6>
-                            <h6 className="profile-style">Head শিক্ষক</h6>
+                            <h6 className="profile-style">{userDetails?.name}</h6>
+                            <h6 className="profile-style">
+                              {
+                                (userDetails?.user_type_id == 1) && "শিক্ষক" ||
+                                (userDetails?.role == 2) && "সহকারী শিক্ষক" ||
+                                (userDetails?.role == 3) && "প্রধান শিক্ষক"
+                              }
+                            </h6>
                           </div>
                         </div>
                       </div>
                     </li>
+
                     <li>
-                      <a href="#">
+                      <NavLink to='teacher-profile'>
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/profile-icon.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={amarProfileIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           আমার প্রোফাইল
                         </div>
-                      </a>
+                      </NavLink>
                     </li>
-                    <li>
+
+                    {/* <li>
                       <a href="#">
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/setting-2.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={settingIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           সেটিংস
                         </div>
                       </a>
-                    </li>
+                    </li> */}
+
                     <hr className="p-0 m-0" />
-                    <li>
+                    {/* <li>
                       <a href="#">
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/help.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={shahajjuIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           সাহায্য
                         </div>
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+
+                    {/* <li>
                       <a href="#">
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/info-circle.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={shadaronProshonUttorIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           সাধারণ প্রশ্ন উত্তর
                         </div>
                       </a>
-                    </li>
+                    </li> */}
+
                     <hr className="p-0 m-0" />
-                    <li>
+
+                    {/* This is For Samll Device */}
+
+                    {/* <li>
                       <a href="#" className="d-lg-none">
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/search-normal.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={opnushondanKoronIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           অনুসন্ধান করুন
                         </div>
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+
+                    {/* <li>
                       <a href="#" className="d-lg-none">
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/star.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={prioBishoyIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           প্রিয় বিষয়
                         </div>
                       </a>
-                    </li>
-                    <hr className="p-0 m-0" />
-                    <li>
+                    </li> */}
+
+                    <hr className="d-lg-none p-0 m-0" />
+
+                    {/* <li>
                       <a href="#" className="d-lg-none">
-                        <div
-                          className="topnav-dropdown-style dropdown-item profile-style"
-                          onclick="myFunction()"
-                        >
-                          <img
-                            src="dashboardAssets/icons/dark-light-mode.svg"
-                            className="img-fluid mx-2 tick-icons"
-                            alt="main logo"
-                          />
+                        <div className="topnav-dropdown-style dropdown-item profile-style" >
+                          <img src={themeNirbahonKoronIcon} className="img-fluid tick-icons" alt="main logo" />
                           থিম নির্বাচন করুন
                         </div>
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+
+                    <li onClick={handleLogout}>
                       <a href="#">
                         <div className="topnav-dropdown-style dropdown-item profile-style">
-                          <img
-                            src="dashboardAssets/icons/sign-out.svg"
-                            className="img-fluid icon-right-space"
-                            alt="profile icon"
-                          />
+                          <img src={signoutIcon} className="img-fluid icon-right-space" alt="profile icon" />
                           সাইন আউট
                         </div>
                       </a>
                     </li>
+
                   </ul>
                 </div>
               </div>
@@ -285,7 +213,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {/* navbar */}
+
+      {/* bottom Nav */}
       <div className="main-nav border-bottom">
         <div className="container">
           <div className="row">
@@ -304,7 +233,7 @@ const Header = () => {
                     >
                       <span>
                         <img
-                          src="dashboardAssets/icons/menu.png"
+                          src={mobileMenuIcon}
                           className="img-fluid d-flex align-items-center"
                           alt=""
                         />
@@ -314,38 +243,30 @@ const Header = () => {
                       className="collapse navbar-collapse"
                       id="navbarSupportedContent"
                     >
-                      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item dropdown nav-item-style">
+
+                      <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-1">
+
+                        {/* <li className="nav-item dropdown nav-item-style">
                           <a
                             className="nav-link active navbar-menu-item d-flex align-items-center"
                             role="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                            <img
-                              src="dashboardAssets/icons/home.svg"
-                              className="img-fluid icon-right-space"
-                              alt="main logo"
-                            />
+                            <img src={prothomPatha} className="img-fluid icon-right-space" alt="main logo" />
                             প্রথম পাতা
-                            <img
-                              src="dashboardAssets/icons/tik-ico.svg"
-                              className="img-fluid icon-left-space tick-icons"
-                              alt="tik icon"
-                            />
+                            <img src={downArrorIcon} className="img-fluid icon-left-space tick-icons" alt="tik icon" />
                           </a>
                           <ul className="dropdown-menu border-0 dropdown-menu-item-style">
                             <li>
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
-                                  <p className="dropdown-class-list">
-                                    প্রধান শিক্ষক
-                                  </p>
+                                  <p className="dropdown-class-list">প্রধান শিক্ষক</p>
                                 </div>
                               </a>
                             </li>
@@ -353,7 +274,7 @@ const Header = () => {
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -364,7 +285,23 @@ const Header = () => {
                               </a>
                             </li>
                           </ul>
+                        </li> */}
+
+                        <li className="nav-item dropdown nav-item-style " >
+                          <NavLink to='/'
+                            activeClassName='active'
+                            className="nav-link navbar-menu-item d-flex align-items-center"
+                            role="button"
+                            // data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <img src={prothomPatha} className="img-fluid icon-right-space" alt="main logo" />
+                            প্রথম পাতা
+
+                          </NavLink>
                         </li>
+
+
                         <li className="nav-item dropdown nav-item-style">
                           <a
                             className="nav-link navbar-menu-item d-flex align-items-center"
@@ -373,23 +310,25 @@ const Header = () => {
                             aria-expanded="false"
                           >
                             <img
-                              src="dashboardAssets/icons/report.svg"
+                              src={reportIcon}
                               className="img-fluid icon-right-space"
                               alt="main logo"
                             />
                             রিপোর্ট
                             <img
-                              src="dashboardAssets/icons/tik-ico.svg"
+                              src={downArrorIcon}
                               className="img-fluid icon-left-space"
                               alt="tik icon"
                             />
                           </a>
                           <ul className="dropdown-menu border-0 dropdown-menu-item-style">
                             <li>
-                              <a className="dropdown-item" href="#">
-                                <div className="dropdown-list-item-style d-flex align-items-center">
+                              <NavLink to="/student-transcript" className="dropdown-item" >
+                                <div
+                                  activeClassName='active'
+                                  className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -397,13 +336,13 @@ const Header = () => {
                                     শিক্ষার্থীর ট্রান্সক্রিপ্ট
                                   </p>
                                 </div>
-                              </a>
+                              </NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -412,12 +351,12 @@ const Header = () => {
                                   </p>
                                 </div>
                               </a>
-                            </li>
-                            <li>
+                            </li> */}
+                            {/* <li>
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -426,12 +365,12 @@ const Header = () => {
                                   </p>
                                 </div>
                               </a>
-                            </li>
-                            <li>
+                            </li> */}
+                            {/* <li>
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -440,25 +379,29 @@ const Header = () => {
                                   </p>
                                 </div>
                               </a>
-                            </li>
+                            </li> */}
                           </ul>
                         </li>
+
+
+
                         <li className="nav-item dropdown nav-item-style">
-                          <a
+                          <NavLink to="/teachers-list"
+                            activeClassName='active'
                             className="nav-link navbar-menu-item d-flex align-items-center"
-                            href="#"
                             role="button"
-                            data-bs-toggle="dropdown"
+                            // data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
                             <img
-                              src="dashboardAssets/icons/nav-teacher-icon.svg"
+                              src={shikkokIcon}
                               className="img-fluid icon-right-space"
                               alt="main logo"
                             />
                             শিক্ষক
-                          </a>
+                          </NavLink>
                         </li>
+
                         <li className="nav-item dropdown nav-item-style">
                           <a
                             className="nav-link navbar-menu-item d-flex align-items-center"
@@ -468,23 +411,25 @@ const Header = () => {
                             aria-expanded="false"
                           >
                             <img
-                              src="dashboardAssets/icons/student-icon.svg"
+                              src={shikkarthiIcon}
                               className="img-fluid icon-right-space"
                               alt="main logo"
                             />
                             শিক্ষার্থী{" "}
                             <img
-                              src="dashboardAssets/icons/tik-ico.svg"
+                              src={downArrorIcon}
                               className="img-fluid icon-left-space"
                               alt="tik icon"
                             />
                           </a>
                           <ul className="dropdown-menu border-0 dropdown-menu-item-style">
                             <li>
-                              <a className="dropdown-item" href="#">
+                              <NavLink to='/student-list'
+                                activeClassName='active'
+                                className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={shikkarthiIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -492,13 +437,13 @@ const Header = () => {
                                     শিক্ষার্থীর তালিকা
                                   </p>
                                 </div>
-                              </a>
+                              </NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={shikkarthiIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
@@ -507,7 +452,7 @@ const Header = () => {
                                   </p>
                                 </div>
                               </a>
-                            </li>
+                            </li> */}
                           </ul>
                         </li>
                         <li className="nav-item dropdown nav-item-style">
@@ -519,47 +464,49 @@ const Header = () => {
                             aria-expanded="false"
                           >
                             <img
-                              src="dashboardAssets/icons/class-icon.svg"
+                              src={shreniIcon}
                               className="img-fluid icon-right-space"
                               alt="main logo"
                             />
                             শ্রেণী{" "}
                             <img
-                              src="dashboardAssets/icons/tik-ico.svg"
+                              src={downArrorIcon}
                               className="img-fluid icon-left-space"
                               alt="tik icon"
                             />
                           </a>
                           <ul className="dropdown-menu border-0 dropdown-menu-item-style">
                             <li>
-                              <a className="dropdown-item" href="#">
+                              <NavLink to="/class/6"
+                                activeClassName='active'
+                                className="dropdown-item" >
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
                                   <p className="dropdown-class-list">ষষ্ঠ শ্রেণী</p>
                                 </div>
-                              </a>
+                              </NavLink>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#">
+                              <NavLink to="/class/7"
+                                activeClassName='active'
+                                className="dropdown-item" >
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
-                                    src="dashboardAssets/icons/nav-icos.svg"
+                                    src={unOrderListIcon}
                                     className="img-fluid dropdown-list-item-icon"
                                     alt="icon"
                                   />
-                                  <p className="dropdown-class-list">
-                                    সপ্তম শ্রেণী
-                                  </p>
+                                  <p className="dropdown-class-list">সপ্তম শ্রেণী</p>
                                 </div>
-                              </a>
+                              </NavLink>
                             </li>
                           </ul>
                         </li>
-                        <li className="nav-item dropdown nav-item-style">
+                        {/* <li className="nav-item dropdown nav-item-style">
                           <a
                             className="nav-link navbar-menu-item d-flex align-items-center"
                             href="#"
@@ -568,44 +515,38 @@ const Header = () => {
                             aria-expanded="false"
                           >
                             <img
-                              src="dashboardAssets/icons/requests.svg"
+                              src={onurudhGoliIcon}
                               className="img-fluid icon-right-space"
                               alt="main logo"
                             />
                             অনুরোধগুলি
                           </a>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </nav>
                 </div>
               </div>
+
               <div className="d-lg-flex d-block align-items-lg-center mt-2 mt-lg-0">
                 <div className="btn-group position-relative">
-                  <a
-                    className="nav-link navbar-menu-item nav-right-dorpdown text-white d-flex align-items-center"
+                  <Link to='/mollayon-koron' id="mollayon_koron_btn"
+                    className="nav-link navbar-menu-item nav-right-dorpdown  d-flex align-items-center"
                     role="button"
-                    data-bs-toggle="dropdown"
+                    // data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <img
-                      src="dashboardAssets/icons/add.svg"
-                      className="img-fluid icon-right-space"
-                      alt="add icon"
-                    />
-                    ব্যবস্থাপনা
-                    <img
-                      src="dashboardAssets/icons/tik-ico-white.svg"
-                      className="img-fluid icon-left-space"
-                      alt="dropdown icon"
-                    />
-                  </a>
-                  <ul className="dropdown-menu dropdown-menu-end">
+                    <img src={addIcon} className="img-fluid icon-right-space" alt="add icon" />
+                    মুল্যায়ন করুন
+                    {/* <img src={tikicowhite} className="img-fluid icon-left-space" alt="dropdown icon" /> */}
+                  </Link>
+
+                  {/* <ul className="dropdown-menu dropdown-menu-end">
                     <li>
                       <a href="#">
                         <div className="management-dropdown-style dropdown-item profile-style">
                           <img
-                            src="dashboardAssets/icons/std-management.svg"
+                            src={shikkarthiBebostapona}
                             className="img-fluid icon-right-space"
                             alt="profile icon"
                           />
@@ -617,7 +558,7 @@ const Header = () => {
                       <a href="#">
                         <div className="management-dropdown-style dropdown-item profile-style">
                           <img
-                            src="dashboardAssets/icons/teacher-management.svg"
+                            src={shikkokBebostapona}
                             className="img-fluid icon-right-space"
                             alt="profile icon"
                           />
@@ -629,7 +570,7 @@ const Header = () => {
                       <a href="#">
                         <div className="management-dropdown-style dropdown-item profile-style">
                           <img
-                            src="dashboardAssets/icons/branch-ico.svg"
+                            src={branchBebostapona}
                             className="img-fluid icon-right-space"
                             alt="profile icon"
                           />
@@ -641,7 +582,7 @@ const Header = () => {
                       <a href="#">
                         <div className="management-dropdown-style dropdown-item profile-style">
                           <img
-                            src="dashboardAssets/icons/branch-ico.svg"
+                            src={branchBebostapona}
                             className="img-fluid icon-right-space"
                             alt="profile icon"
                           />
@@ -653,7 +594,7 @@ const Header = () => {
                       <a href="#">
                         <div className="management-dropdown-style dropdown-item profile-style">
                           <img
-                            src="dashboardAssets/icons/class-room-cion.svg"
+                            src={srenikokkoBebostapona}
                             className="img-fluid icon-right-space"
                             alt="profile icon"
                           />
@@ -665,7 +606,7 @@ const Header = () => {
                       <a href="">
                         <div className="management-dropdown-style dropdown-item profile-style">
                           <img
-                            src="dashboardAssets/icons/users.svg"
+                            src={dayitthoOrponKoron}
                             className="img-fluid icon-right-space"
                             alt="profile icon"
                           />
@@ -673,16 +614,24 @@ const Header = () => {
                         </div>
                       </a>
                     </li>
-                  </ul>
+                  </ul> */}
+
                 </div>
               </div>
+
+
+
             </div>
           </div>
         </div>
       </div>
+
+
+
     </>
+
 
   );
 };
 
-export default Header;
+export default Navbar;

@@ -2,7 +2,7 @@ import BannerSection from "./BannerSection";
 import BishoybittikThottoOMullayon from "./BishoybittikThottoOMullayon";
 import ClassRoutine from "./ClassRoutine";
 import ReportForTeacherDashboard from "./ReportForTeacherDashboard";
-import '../../../public/dashboardAssets/css/globalSyles.css'
+// import '../../../public/dashboardAssets/css/globalSyles.css'
 import PopUpCard from "./PopUpCard";
 
 const TeacherDashboardNew = () => {

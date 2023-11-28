@@ -75,14 +75,7 @@ const EditTeacherProfile = () => {
                 <form className="row m-4" onSubmit={handleTeacherProfileEdit}>
 
 
-                  {/* <div className="form-group  col-sm-4 col-md-6">
-         <div className="mb-3" style={{ fontSize: "16px" }}>
-          <label className="form-label"> শিক্ষকের ছবি আপলোড করুন</label>
-          <div className="input-group mb-3">
-           <input type="file" className="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" />
-          </div>
-         </div>
-        </div> */}
+
 
                   <div className="form-group  col-sm-4 col-md-6">
                     <div className="mb-3" style={{ fontSize: "16px" }}>
@@ -108,6 +101,15 @@ const EditTeacherProfile = () => {
                       <label className="form-label">ইমেইল আইডি </label>
                       <div className="input-group">
                         <input type="text" id="pin" className="form-control" name="email" defaultValue={email} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="form-group  col-sm-4 col-md-6">
+                    <div className="mb-3" style={{ fontSize: "16px" }}>
+                      <label className="form-label"> শিক্ষকের স্বাক্ষর আপলোড করুন</label>
+                      <div className="input-group mb-3">
+                        <input type="file" className="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" />
                       </div>
                     </div>
                   </div>

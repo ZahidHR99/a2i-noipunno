@@ -1,4 +1,4 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+// import '../../../public/dashboardAssets/css/dashboard.css';
 import BannerSection from './BannerSection';
 import ClassRoutine from './ClassRoutine';
 import ParodorshitarSuchokBishoyokTottho from './ParodorshitarSuchokBishoyokTottho';

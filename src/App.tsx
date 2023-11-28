@@ -23,7 +23,8 @@ import AmarProfile from "./component/AmarProfile";
 import MullayonKoron from "./component/MullayonKoron";
 import HeadTeacherDashboard from "./component/Dashboards/HeadTeacherDashboard";
 import TeacherDashboardNew from "./component/Dashboards/TeacherDashboardNew";
-import Header from "./layout/Header";
+
+import Navbar from "./layout/Navbar";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -50,8 +51,9 @@ function App() {
 
   return (
     <>
-      {topbar && <Topbar />}
-      {/* {topbar && <Header />} */}
+      {/* {topbar && <Topbar />} */}
+      {topbar && <Navbar />}
+
       <Routes>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />

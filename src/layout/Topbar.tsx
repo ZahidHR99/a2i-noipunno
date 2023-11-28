@@ -101,7 +101,9 @@ export default function
                           <img src={teacher} className="avatar-instance " />
                           <div className="text">
                             <div className="text-wrapper">{userDetails?.name}</div>
-                            <div className="div">{(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}</div>
+                            <div className="div">
+                              {(userDetails?.role == 1) && "শিক্ষক" || (userDetails?.role == 2) && "সহকারী শিক্ষক" || (userDetails?.role == 3) && "প্রধান শিক্ষক"}
+                            </div>
                           </div>
                         </div>
                       </li>

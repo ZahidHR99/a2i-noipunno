@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import '../../../public/dashboardAssets/css/dashboard.css';
+// import '../../../public/dashboardAssets/css/dashboard.css';
+import "./TotalNumberOfStudent.css"
 
 const TotalNumberOfSudentTeacherClassRoom = () => {
   const [all_student, set_All_student] = useState([]);
@@ -46,7 +47,7 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
 
   return (
     <div className="col-lg-2 col-md-6 ">
-      <div className="all-teacher-student-card gy-5">
+      <div className="teacher-student-card gy-5">
         <a href="#">
           <div className="card-container">
             <div className="total-student">
