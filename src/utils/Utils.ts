@@ -146,10 +146,11 @@ export const show_shannasik_barsik = () => {
 export const show_comment_box_bi = (
   w_d: any,
   submitData: any,
-  student_uid: any
+  student_uid: any,
+  assessment_uid
 ) => {
   let obj = submitData.filter(
-    (d: any) => d.bi_uid == w_d.bi_uid && student_uid == d.student_uid
+    (d: any) => d.bi_uid == w_d.bi_uid && student_uid == d.student_uid && d.evaluate_type == assessment_uid
   );
   if (obj.length) {
     return "Remark : " + obj[0].remark;
@@ -193,8 +194,21 @@ export function check_pi_submitted(pis_id: any, assessment_uid: any) {
   }
 }
 
-export const convertToBanglaNumber = (number:any) => {
-  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯','১০',','];
+export const convertToBanglaNumber = (number: any) => {
+  const banglaDigits = [
+    "০",
+    "১",
+    "২",
+    "৩",
+    "৪",
+    "৫",
+    "৬",
+    "৭",
+    "৮",
+    "৯",
+    "১০",
+    ",",
+  ];
   const numString = number.toString();
   let banglaNumber = '';
   for (let i = 0; i < numString.length; i++) {
@@ -206,8 +220,38 @@ export const convertToBanglaNumber = (number:any) => {
     }
   }
   return banglaNumber;
-}
+};
+
+export const make_group_by = (studentData: any) => {
+  const groupedByStudentId = studentData.reduce((acc, student) => {
+    const { student_uid } = student;
+    if (!acc[student_uid]) {
+      acc[student_uid] = [];
+    }
+    acc[student_uid].push(student);
+
+    return acc;
+  }, {});
+
+  return groupedByStudentId;
+};
 
 
+export const get_unique_index = (students: any , uid) => {
 
+  console.log(`students`, students , uid);
+  
+  // Function to find the index of an object with a specific property value
+  function findIndexByProperty(array, propertyName, value) {
+    return array.findIndex(element => element[propertyName] === value);
+  }
+  const index = findIndexByProperty(students, 'uid', uid);
+  
+  if (index !== -1) {
+    return index
+  } else {
+    return null
+  }
 
+  
+};

@@ -1,23 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import {
-  all_teachers,
   teacher_dashboard,
-  teacher_own_subject,
-  clssWiseSubject,
+  teacher_own_subject
 } from "../Request";
 
-import styles from "./Home.style.module.css";
-import { BiSidebar } from "react-icons/bi";
-import { SlBookOpen } from "react-icons/sl";
-import ProfileCard from "./ProfileCard";
 import { Spinner } from "react-bootstrap";
-import ShowAssesment from "./ShowAssesment";
-import ParodorshitaComponent from "./ParodorshitaComponent";
-import AcorongotoComponent from "./AcorongotoComponent";
+import { useLocation } from "react-router-dom";
 import BreadcumbHome from "../layout/BreadcumbHome";
 import { section_name, shift_name, teacher_name } from "../utils/Utils";
-import { useLocation } from "react-router-dom";
+import AcorongotoComponent from "./AcorongotoComponent";
+import styles from "./Home.style.module.css";
+import ParodorshitaComponent from "./ParodorshitaComponent";
+import ShowAssesment from "./ShowAssesment";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -62,13 +57,14 @@ export default function Teacher() {
     const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
     const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
 
-    let own_subjet: any = "";
-    if (own_SUbjects) {
-      own_subjet = own_SUbjects;
-    } else {
-      own_subjet = await teacher_own_subject();
-      localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
-    }
+    const own_subjet: any = await teacher_own_subject();
+    localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+    // if (own_SUbjects) {
+    //   own_subjet = own_SUbjects;
+    // } else {
+    //   own_subjet = await teacher_own_subject();
+      
+    // }
 
     let data: any = "";
     if (teacher_dash) {
@@ -132,19 +128,31 @@ export default function Teacher() {
 
   const student_lsit = async () => {
     const student: any = [];
-    const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
-    studentsData.data.data.subjects.map((std_data: any) => {
+    const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+
+    studentsData?.data?.data?.subjects.map((std_data: any) => {
       return std_data.class_room.students.map((stu_data: any) => {
         stu_data.competence = std_data.competence;
         student.push(stu_data);
       });
     });
 
-    const uniqueObjectsArray = student.filter(
-      (obj: any, index: any, self: any) =>
-        index === self.findIndex((o: any) => o.uid === obj.uid)
-    );
-    setTotal_student(uniqueObjectsArray);
+    if (student) {
+      studentsData?.data?.data?.subjects.map((std_data: any) => {
+        return std_data?.class_room?.students?.map((stu_data: any) => {
+          stu_data.competence = std_data.competence;
+          student.push(stu_data);
+        });
+      });
+
+      const uniqueObjectsArray = student.filter(
+        (obj: any, index: any, self: any) =>
+          index === self.findIndex((o: any) => o.uid === obj.uid)
+      );
+      setTotal_student(uniqueObjectsArray);
+    }
+
+
   };
   console.log("====================================");
   console.log("Total_student", total_student);
@@ -185,6 +193,8 @@ export default function Teacher() {
   // console.log("all_student", all_student);
   // console.log("all_teacher", all_teacher);
 
+
+
   return (
     <div className="content mb-5">
       {loader && (
@@ -218,8 +228,7 @@ export default function Teacher() {
                     // ShowProfile ?
                     // "col-md-9" :
                     "col-md-12"} >
-                  <div className="row d-flex gap-2">
-                    <div></div>
+                  <div className={`row d-flex gap-2 ${styles.subject_container}`}>
                     <div className="d-flex" style={{ cursor: "pointer" }}>
                       <h5
                         onClick={(e) => {
@@ -229,7 +238,7 @@ export default function Teacher() {
                       >
                         {showSubject && subject.length > 0 && (
                           <>
-                            <BiSidebar /> বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "}
+                            {/* বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "} */}
                           </>
                         )}
                         {subject.length == 0 && (
@@ -241,7 +250,9 @@ export default function Teacher() {
                     </div>
                   </div>
                   <div className="row">
-                    {showSubject && (
+
+
+                    {/* {showSubject && (
                       <>
                         {subject.map((d: any, key: any) => (
                           <div
@@ -271,13 +282,10 @@ export default function Teacher() {
                           >
                             <div className="card shadow-sm border-0 p-1 p-lg-3 teacher-list-card h-100 rounded-sm">
                               <div className="gap-1 gap-lg-3 justify-content-center">
-                                <div className="d-flex justify-content-center py-2 pb-4">
-                                  <div
-                                    className={`p-3 border border-1 border-light rounded-circle ${styles.icon_bg_color}`}
-                                  >
-                                    <div className={styles.icons}>
-                                      <SlBookOpen className="fs-3" />
-                                    </div>
+                                <div className={`d-flex justify-content-center py-2 pb-4 ${styles.subject_number}`}>
+
+                                  <div className={styles.icon_sub}>
+                                    <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
                                   </div>
                                 </div>
                                 <h5 className={styles.subject}>
@@ -370,7 +378,79 @@ export default function Teacher() {
                           </div>
                         ))}
                       </>
-                    )}
+                    )} */}
+
+                    <div className="container subject-container">
+                      <h2 className="m-0">বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
+                      <div className="row">
+                        {showSubject && <>
+                          {subject.map((d: any, key: any) => (
+                            <div
+
+                              className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
+                              style={{ cursor: "pointer" }}
+                              key={key}
+                              onClick={(e) => {
+                                skill_behaibor_count(d);
+                                seshowSubjectname(d.subject.name)
+                                setStudent(d?.own_subjet?.class_room?.students)
+
+                                setteacher_uid(d?.own_subjet.teacher_id)
+                                setStudent(d?.own_subjet?.class_room?.students)
+                                setShowProfile(false)
+                                localStorage.setItem(
+                                  "class_room_id",
+                                  d.own_subjet.class_room_id
+                                );
+
+                                localStorage.setItem(
+                                  "subject_id",
+                                  d.own_subjet.subject_id
+                                );
+
+                                setpi_selection(d.own_subjet?.pi_selection)
+                              }}
+                            >
+                              <a className="subject-number">
+                                <div className="icon">
+                                  <img src="../../public/assets/teacherDashboard/images/dashboard/bicon.svg" alt="" />
+                                </div>
+                                <h2 className="mt-3">  {d?.subject?.name}</h2>
+                                <div className="total-student">
+                                  <p> {d?.subject.class_uid == "6" ? "ষষ্ঠ " : "সপ্তম "} শ্রেণি </p>
+                                </div>
+                                <div className="total-student">
+                                  <p>  শ্রেণি শিক্ষক : </p>
+                                </div>
+                                <div className="total-student">
+                                  <p>
+                                    {teacher_name(
+                                      d.own_subjet.class_room.class_teacher_id
+                                    )}
+                                  </p>
+                                </div>
+                                <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
+                                  <h6 className={styles.session}>
+                                    {shift_name(d.own_subjet.class_room.shift_id)}{" "}
+                                    সেশন
+                                  </h6>
+                                  <h6 className={styles.horizontal_bar}>। </h6>
+                                  <h6 className={styles.branch}>
+                                    {section_name(
+                                      d.own_subjet.class_room.section_id
+                                    )}{" "}
+                                    শাথা
+                                  </h6>
+                                </div>
+                              </a>
+                            </div>
+                          ))}
+                        </>}
+
+                      </div>
+                    </div>
+
+
 
                     {ShowProfile === false && (
                       <>
