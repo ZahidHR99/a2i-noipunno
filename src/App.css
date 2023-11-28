@@ -1,3 +1,12 @@
+.root_styles {
+
+  font-family: "Roboto";
+  box-sizing: border-box;
+  background-color: #efefef;
+  color: #000000;
+
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
