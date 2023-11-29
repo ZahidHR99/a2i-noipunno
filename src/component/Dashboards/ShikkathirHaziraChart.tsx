@@ -1,0 +1,40 @@
+import '../../../public/dashboardAssets/css/dashboard.css';
+
+const ShikkathirHaziraChart = () => {
+  return (
+    <div className="col-lg-5 col-md-6">
+      <div className="student-chart">
+        <div className="header">
+          <h3>শিক্ষার্থীর হাজিরা</h3>
+          <div className="timeline">
+            <h4>টাইমলাইন</h4>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+            >
+              <option selected="">সাপ্তাহিক </option>
+              <option value={1}>মাসিক</option>
+              <option value={2}>বছর</option>
+            </select>
+          </div>
+          <div className="all">
+            <h4>ক্লাস অনুসারে ফিল্টার</h4>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+            >
+              <option selected="">সব</option>
+              <option value={2}>দিন</option>
+              <option value={3}>মাসিক</option>
+            </select>
+          </div>
+        </div>
+        <div className="chart">
+          <img src="dashboardAssets/images/dashboard/Chart.png" alt="" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ShikkathirHaziraChart;

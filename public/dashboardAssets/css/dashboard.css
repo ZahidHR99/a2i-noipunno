@@ -22,7 +22,7 @@ h6 {
 
 body {
   background-color: #ffffff;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 :root {
@@ -328,7 +328,7 @@ body {
 }
 .all-teacher-student-card .card-container .total-student .title h3 {
   color: #428f92;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Public Sans;
   font-size: 14px;
   font-style: normal;
@@ -338,7 +338,7 @@ body {
 }
 .all-teacher-student-card .card-container .total-student .title h3 span {
   color: #2d6668;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Public Sans;
   font-size: 14px;
   font-style: normal;
@@ -522,7 +522,7 @@ body {
 }
 .request-container .header p {
   color: #555;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Public Sans;
   font-size: 13px;
   font-style: normal;
@@ -538,10 +538,14 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.request-container .tab-bar .nav-link.active {
+  border-bottom: 2px solid var(--bg_primary);
+}
 .request-container .tab-bar ul li a {
   display: flex;
   justify-content: start;
   align-items: center;
+  cursor: pointer;
 }
 .request-container .tab-bar ul li h2 {
   font-family: Inter;
@@ -575,7 +579,7 @@ body {
 }
 .request-container .tab-container .heading h2 {
   color: #222;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Public Sans;
   font-size: 12px;
   font-style: normal;
@@ -615,7 +619,7 @@ body {
   border-radius: 16px;
   background-color: #f0f9f9;
   color: #555;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Public Sans;
   font-size: 8px;
   font-style: normal;
@@ -624,7 +628,7 @@ body {
 }
 .request-container .tab-container .class-section p {
   color: #555;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-family: Public Sans;
   font-size: 8px;
   font-style: normal;
@@ -818,7 +822,7 @@ body {
 }
 /* class routine */
 .class-routine-container {
-  margin: 16px 0;
+  margin-top: 13px;
   padding: 24px;
   border-radius: 6px;
   gap: 32px;
@@ -829,7 +833,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
+}
+.class-routine-container .class-routine-header .class_routine {
+  font-family: Public Sans;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0px;
 }
 .class-routine-container .class-routine-header .class-routine-selector {
   display: flex;
@@ -875,7 +886,6 @@ body {
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.0225em;
-  text-align: left;
 }
 .class-routine-container .class-routine-header .class-routine-selector .all {
   display: flex;
@@ -942,35 +952,92 @@ body {
 
 .class-routine-container .routine-section {
   display: flex;
-  margin-right: 12px;
+  margin: 16px 0px 16px 0px;
 }
-.class-routine-container .routine-section .title {
-  height: 32px;
-  border-radius: 16px;
+.class-routine-container .routine-section ul {
   gap: 10px;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 3px 0px #0000001a, 0px 0px 1px 0px #0000001a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 12px;
-  cursor: pointer;
-  margin: 12px 12px;
 }
-.class-routine-container .routine-section .title:hover {
-  background-color: #428f92;
+.class-routine-container .routine-section .class-section {
+  padding: 4px 12px;
+  border-radius: 16px;
+  box-shadow: 0px 2px 3px 0px #0000001a;
 }
-.class-routine-container .routine-section .title h6 {
-  font-family: Inter;
-  font-size: 14px;
+
+.routine-section .nav-item .nav-link {
+  color: var(--text_dark);
+}
+.routine-section .nav-item.active {
+  border-bottom: none;
+  background-color: var(--bg_primary);
+}
+.routine-section .nav-item.active a {
+  color: var(--text_white);
+}
+
+.dataTables_length label {
+  font-size: 16px;
+  margin: 16px 0px 16px 0px;
+  font-family: Roboto;
   font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.0225em;
-  text-align: left;
-  color: #222222;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: var(--text_dark);
 }
-.class-routine-container .routine-section .title h6:hover {
-  color: #fff;
+.dataTables_filter label {
+  font-size: 16px;
+  margin: 16px 0px 16px 0px;
+  font-family: Roboto;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: var(--text_dark);
+}
+.pagination .page-item a {
+  color: var(--text_dark);
+}
+
+.dataTables_paginate {
+  font-size: 16px;
+  margin: 16px 0px 16px 0px !important;
+  font-family: Roboto;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: var(--text_dark);
+}
+.dataTables_info {
+  font-size: 16px;
+  margin: 16px 0px 16px 0px !important;
+}
+.previous a {
+  font-size: 16px;
+  color: var(--bg_primary);
+}
+.page-item.active .page-link {
+  background-color: var(--bg_primary);
+  color: var(--text_white);
+}
+.next a {
+  font-size: 16px;
+  color: var(--bg_primary);
+}
+.class-routine-container .class-routine-table {
+  padding: 16px 0px 16px 0px;
+}
+.class-routine-container .class-routine-table .class-routine-table-tab-nav {
+  background-color: #dddddd54;
+  border-radius: 6px;
+  line-height: 22px;
+}
+.class-routine-container
+  .class-routine-table
+  .class-routine-table-tab-nav
+  .gap-distance {
+  gap: 10px;
+}
+.class-routine-container .class-routine-table .class-routine-table-tab-nav a {
+  color: #555555;
+  font-size: 14px;
 }
 .class-routine-table .tab-th-style {
   font-family: Roboto;
@@ -981,6 +1048,7 @@ body {
   background-color: #f0f9f9;
   padding: 18px 16px;
 }
+
 .class-routine-table .nav-link.active {
   border-bottom: 2px solid var(--bg_primary);
 }

@@ -40,6 +40,10 @@ function togglePopup() {
 
 // data table start
 $(document).ready(function () {
-  $("#example").DataTable();
+  $("#classSix").DataTable();
+  $("#classSeven").DataTable();
+  $("#classEight").DataTable();
+  $("#classNine").DataTable();
+  $("#classTen").DataTable();
 });
 // data table end
