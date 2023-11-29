@@ -10,7 +10,12 @@ import {
   BiSquareRounded,
 } from "react-icons/bi";
 
-import { Pi_save, get_pi_bi_evaluation_list, teacher_own_subject } from "../Request";
+import {
+  Pi_save,
+  get_pi_bi_evaluation_list,
+  get_pi_evaluation_by_pi,
+  teacher_own_subject,
+} from "../Request";
 import { GoPerson } from "react-icons/go";
 import { toast } from "../utils";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -18,7 +23,6 @@ import Swal from "sweetalert2";
 import "./Home.style.module.css";
 import { useNavigate } from "react-router-dom";
 import { convertToBanglaNumber, show_comment_box_Pi } from "../utils/Utils";
-
 
 const class_room_id = localStorage.getItem("class_room_id");
 
@@ -32,7 +36,10 @@ export default function StudentMullayonModal({
   teacher_uid,
   is_draft,
   all_submited_PI,
+  setall_submited_PI,
   setShowModal,
+  pi_uid_,
+  get_all_pi_evaluation_by_pi,
 }: any) {
   const [teacher, setteacher] = useState<any>({});
   const [comment_status, setcomment_status] = useState<any>(false);
@@ -42,15 +49,12 @@ export default function StudentMullayonModal({
   const [submitData, setsubmitData] = useState<any>([]);
   const [submitObj_wid_null, setsubmitObj_wid_null] = useState<any>([]);
   const [submited, setsubmited] = useState<any>(false);
-
-  console.log(`submitObj`, submitObj);
+  const [firstRender, setfirstRender] = useState<any>(true);
 
   const fetchData = async () => {
-
     const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
     const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
-
-
+    
     let own_subjet: any = "";
     if (own_SUbjects) {
       own_subjet = own_SUbjects;
@@ -69,11 +73,10 @@ export default function StudentMullayonModal({
       setsubmitObj(obj);
       checkedIn(obj);
 
-      const null_pi = []
+      const null_pi = [];
 
-      if (is_draft == "2") {
         for (const x in obj) {
-          if (obj[x].weight_uid == null) {
+          if (obj[x]?.weight_uid == null) {
             // const id: any = obj[x].student_uid;
             // const el: any = document.getElementsByClassName(id);
 
@@ -85,13 +88,10 @@ export default function StudentMullayonModal({
             //   el[0].parentElement.parentElement.parentElement.innerHTML = obj[x].remark;
             // }
 
-            null_pi.push(obj[x])
-
-
+            null_pi.push(obj[x]);
           }
         }
-      }
-      setsubmitObj_wid_null(null_pi)
+      setsubmitObj_wid_null(null_pi);
       // console.log(`is_draft`, all_submited_PI, obj);
     }
   };
@@ -121,15 +121,12 @@ export default function StudentMullayonModal({
             confirmButtonText: "হ্যাঁ",
           }).then(async (result) => {
             if (result.isConfirmed) {
-
-
               let own_subjet: any = await get_pi_bi_evaluation_list(2);
 
               localStorage.setItem(
                 "pi_bi_evaluation_list",
                 JSON.stringify(own_subjet.data.data)
               );
-
 
               await Pi_save(data);
               setsubmited(true);
@@ -148,12 +145,21 @@ export default function StudentMullayonModal({
         /* Without Asking to Save Draft */
         if (data.length > 0) {
           await Pi_save(data);
-          setsubmited(true);
+          // setsubmited(true);
           const obj_ = localStorage.getItem("PI_saved");
           const submit_obj_ = obj_ ? JSON.parse(obj_) : {};
           const submit_obj = { ...submit_obj_, ...submitObj };
           localStorage.setItem("PI_saved", JSON.stringify(submit_obj));
-          setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+          
+          // refresh()
+          // setmsg("আপনার খসড়া সংরক্ষণ করা হয়েছে");
+
+          Swal.fire({
+            title: "আপনার খসড়া সংরক্ষণ করা হয়েছে!",
+            icon: "success",
+          });
+          setShowModal(false);
+
           seterr("");
         } else {
           Swal.fire({
@@ -304,17 +310,17 @@ export default function StudentMullayonModal({
     setsubmitData(sumbitArray);
   };
 
-  const refresh = () => {
-    setsubmitObj({});
-    setsubmitData([]);
+  const refresh = async () => {
+    setsubmitObj(submitObj);
+    setsubmitData(submitData);
     setcomment_status(false);
 
     setmsg("");
     seterr("");
+    checkedIn_comment(submitObj);
+    form_arry_comment(submitObj);
+    checkedIn(submitObj);
 
-    checkedIn_comment({});
-    form_arry_comment({});
-    checkedIn({});
     setsubmited(false);
 
     const all_elem: any = document.getElementsByClassName(
@@ -332,7 +338,13 @@ export default function StudentMullayonModal({
     for (let index = 0; index < all_elem_txtarea.length; index++) {
       const element: any = all_elem_txtarea[index];
       element.style.display = "none";
+      element.value = "";
     }
+
+    await get_all_pi_evaluation_by_pi(pi_uid_);
+    // setall_submited_PI([])
+    fetchData()
+    setfirstRender(true);
   };
 
   const submit_object_common_func = (
@@ -351,7 +363,6 @@ export default function StudentMullayonModal({
       checkedIn(obj);
     }
   };
-
 
   const [sS, setSs] = useState("");
   const hR = () => {
@@ -375,27 +386,27 @@ export default function StudentMullayonModal({
     };
   }, []);
 
-  // console.log("submitObj", submitObj);
-  // console.log("all_submited_PI", all_submited_PI);
+  setTimeout(() => {
+    if (firstRender) {
+      checkedIn(submitObj);
+      setfirstRender(false);
+    }
+  }, 300);
 
-  // console.log("is_draft", is_draft);
+  console.log(`submitObj_wid_null`, submitObj_wid_null);
 
   return (
     <div className="content">
       <div className="col-md-12">
         <div className="row p-1">
-        {Student.length == 0 && (
-        
-
-        <div className="col-md-12">
-        <div className="row p-1">
-          <p className="text-success text-center">
-          কোন ছাত্র পাওয়া যায়নি
-          </p>
-        </div>
-        </div>
-        
-        
+          {Student.length == 0 && (
+            <div className="col-md-12">
+              <div className="row p-1">
+                <p className="text-success text-center">
+                  কোন ছাত্র পাওয়া যায়নি
+                </p>
+              </div>
+            </div>
           )}
           {!submited && (
             <div className="table-responsive ">
@@ -427,15 +438,19 @@ export default function StudentMullayonModal({
                       className="col-md-3 col-lg-2"
                       style={{ width: "20%" }}
                     >
-                      {/* {comment_status && (
-                      <button
-                        className="border-0  rounded shadow-sm bg-white"
-                        onClick={(e: any) => refresh()}
-                        title="প্রথম থেকে আবার শুরু করুন"
-                      >
-                        <BiRefresh className="fs-3 text-secondary" />
-                      </button>
-                    )} */}
+                      {comment_status && (
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-info mx-1"
+                          onClick={(e: any) => {
+                            refresh();
+                          }}
+                        >
+                          <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
+                            <span className="text-sm">পেছনে</span>
+                          </div>
+                        </button>
+                      )}
                     </th>
                   </tr>
                 </thead>
@@ -455,7 +470,7 @@ export default function StudentMullayonModal({
                         className="fs-md-2 fs-lg-3 fw-bold"
                       >
                         <GoPerson className="fs-6 fw-bold" />{" "}
-                        {studnt.student_name_bn}
+                        {studnt?.student_name_bn || studnt?.student_name_en}
                         <br />
                         রোল : {convertToBanglaNumber(studnt.roll)}
                       </td>
@@ -528,7 +543,7 @@ export default function StudentMullayonModal({
 
                                   {/* {pi_attr.uid} */}
 
-                                  {is_draft == "2" && kedy === 0 && (
+                                  { kedy === 0 && (
                                     <h5>
                                       {show_comment_box_Pi(
                                         pi_attr,
@@ -537,9 +552,7 @@ export default function StudentMullayonModal({
                                       )}
                                     </h5>
                                   )}
-
                                 </div>
-
                               </>
                             )}
 
@@ -556,7 +569,8 @@ export default function StudentMullayonModal({
                                   }
                                   placeholder={
                                     "আপনি কেন " +
-                                    studnt.student_name_bn +
+                                    (studnt.student_name_bn ||
+                                      studnt.student_name_en) +
                                     " কে চিহ্নিত করেননি তার কারণ লিখুন..."
                                   }
                                   title="required"
@@ -574,10 +588,6 @@ export default function StudentMullayonModal({
                               </div>
                             )}
                           </div>
-
-
-
-
                         </td>
                       ))}
                     </tr>
@@ -588,11 +598,7 @@ export default function StudentMullayonModal({
           )}
         </div>
 
-        <div className="d-flex justify-content-between align-items-center pe-5 mb-5">
-
-        
-
-        
+        <div className="d-flex justify-content-end align-items-center pe-5 mb-5">
           {is_draft == "2" ? (
             <div className="col-md-12">
               <div className="row p-1">
@@ -603,6 +609,9 @@ export default function StudentMullayonModal({
             </div>
           ) : (
             <>
+              {msg && <h6 className="text-success mx-1">{msg}</h6>}
+
+              {err && <h6 className="text-danger mx-1">{err}</h6>}
               {!submited && (
                 // <button
                 //   type="button"
@@ -618,19 +627,21 @@ export default function StudentMullayonModal({
                 //   খসড়া
                 // </button>
 
-                <button type="button" className="btn btn-sm btn-outline-secondary"
-                  onClick={(e) => handleSave(e, 1)} >
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={(e) => handleSave(e, 1)}
+                >
                   <div className=" d-flex justify-content-center align-items-center gap-2 p-1">
                     <span className="text-sm">খসড়া সংরক্ষণ করুন</span>
-                    <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                    <span style={{ marginBottom: "0.1rem" }}>
+                      {" "}
+                      <IoIosArrowForward />{" "}
+                    </span>
                   </div>
                 </button>
-
-
               )}
-              {msg && <h6 className="text-success">{msg}</h6>}
 
-              {err && <h6 className="text-danger">{err}</h6>}
               {!submited && (
                 // <button
                 //   type="button"
@@ -647,17 +658,21 @@ export default function StudentMullayonModal({
                 //     <img src="/assets/images/arrow-right.png" alt="" />
                 //   </span>
                 // </button>
-                <button type="button"
-                  className="btn btn-sm "
+                <button
+                  type="button"
+                  className="btn btn-sm mx-1"
                   onClick={(e) => handleSave(e, 2)}
                   style={{
                     backgroundColor: "#428F92",
                     color: "#fff",
                   }}
                 >
-                  <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1">
+                  <div className=" d-flex justify-content-center align-items-center gap-2 px-5 py-1 ">
                     <span className="text-sm">জমা দিন</span>
-                    <span style={{ marginBottom: "0.1rem" }}> <IoIosArrowForward /> </span>
+                    <span style={{ marginBottom: "0.1rem" }}>
+                      {" "}
+                      <IoIosArrowForward />{" "}
+                    </span>
                   </div>
                 </button>
               )}

@@ -503,7 +503,6 @@ export default function StudentMullayonBehave({
     }
   }, 300);
 
-  console.log("all_bis", submitObj);
 
   return (
     <div className="content">

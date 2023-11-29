@@ -59,6 +59,8 @@ export default function Teacher() {
 
     const own_subjet: any = await teacher_own_subject();
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
+
+    console.log(`own_subjet----`, own_subjet);
     // if (own_SUbjects) {
     //   own_subjet = own_SUbjects;
     // } else {
@@ -316,7 +318,10 @@ export default function Teacher() {
                     )} */}
 
                     <div className="container subject-container">
-                      <h2 className="m-0">বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
+                      {
+                        ShowProfile && <h2 className="m-0">বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
+                      }
+
                       <div className="row">
                         {showSubject && <>
                           {subject.map((d: any, key: any) => (

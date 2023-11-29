@@ -18,6 +18,7 @@ export default function DetailsShikhonMullayon({
   const [pi_id, setpi_id] = useState<any>("");
   const [is_draft, setis_draft] = useState<any>(1);
   const [all_submited_PI, setall_submited_PI] = useState<any>([]);
+  const [pi_uid_, setpi_uid_] = useState<any>("");
 
   const [showModal, setShowModal] = useState(false);
 
@@ -26,6 +27,7 @@ export default function DetailsShikhonMullayon({
   };
 
   const get_all_pi_evaluation_by_pi = async (pi_uid: any) => {
+    setpi_uid_(pi_uid)
     setis_draft(1);
     setall_submited_PI([]);
     const class_room_id: any = localStorage.getItem("class_room_id");
@@ -102,12 +104,6 @@ export default function DetailsShikhonMullayon({
         <Modal.Header closeButton>
 
           <Modal.Title>
-            {/* {showDetailsshikhonKalinMullayon?.class_id}.
-            {showDetailsshikhonKalinMullayon?.oviggota_no}.{pi_id} {pi_name}
-            <h6 className="text-center">
-              {showDetailsshikhonKalinMullayon?.details_bn}
-            </h6> */}
-
             <span className="d-flex justify-content-start align-content-center gap-2">
               <h4 className="font-weight-bold"><strong>পারদর্শিতা সূচক</strong></h4>
               <h4>
@@ -135,6 +131,8 @@ export default function DetailsShikhonMullayon({
             is_draft={is_draft}
             all_submited_PI={all_submited_PI}
             setShowModal={setShowModal}
+            get_all_pi_evaluation_by_pi={get_all_pi_evaluation_by_pi}
+            pi_uid_={pi_uid_}
           />
         </Modal.Body>
       </Modal >

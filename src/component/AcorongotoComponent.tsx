@@ -107,7 +107,6 @@ export default function AcorongotoComponent({
     checkedIn({});
   }, [assessment_uid]);
 
-  console.log(`assessment_uid`, assessment_uid);
 
   return (
     <div className="py-2">
@@ -140,7 +139,7 @@ export default function AcorongotoComponent({
                     <div className="d-flex justify-content-between align-items-center w-100 px-1">
                       <div className="py-2" style={{ color: "#428F92" }}>
                         <PiBookOpenText className="me-2" />
-                        {d.student_name_bn}
+                        {d?.student_name_bn || d?.student_name_en }
                       </div>
 
                       <div
