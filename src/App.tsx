@@ -25,6 +25,7 @@ import HeadTeacherDashboard from "./component/Dashboards/HeadTeacherDashboard/He
 import TeacherDashboard from "./component/Dashboards/TeacherDashboard/TeacherDashboard";
 
 import Navbar from "./layout/Navbar";
+import FAQ from "./component/FAQ/FAQ";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -79,6 +80,7 @@ function App() {
           <Route path="/mollayon-koron" element={<MullayonKoron />} />
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
           <Route path="/head-teacher-dashboard" element={<HeadTeacherDashboard />} />
+          <Route path="/faq" element={<FAQ />} />
 
 
         </Route>

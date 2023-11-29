@@ -59,6 +59,7 @@ const Navbar = () => {
   const [isReportPathActive, setIsReportPathActive] = useState(false);
   const [isShikkarthiPathActive, setIsShikkarthiPathActive] = useState(false);
   const [isSryniPathActive, setIsSryniPathActive] = useState(false);
+  const [isFAQpathActive, setIsFAQpathActive] = useState(false);
 
   const pathName = location.pathname.slice(1);
   // console.log("pathName", pathName);
@@ -69,21 +70,32 @@ const Navbar = () => {
       setIsReportPathActive(true);
       setIsShikkarthiPathActive(false);
       setIsSryniPathActive(false);
+      setIsFAQpathActive(false);
     }
     else if (pathName === "student-list") {
       setIsShikkarthiPathActive(true);
       setIsReportPathActive(false);
-      setIsSryniPathActive(false)
+      setIsSryniPathActive(false);
+      setIsFAQpathActive(false);
     }
     else if ((pathName === "class/6") || pathName === "class/7") {
       setIsSryniPathActive(true);
       setIsReportPathActive(false);
+      setIsShikkarthiPathActive(false);
+      setIsFAQpathActive(false);
+    }
+    else if (pathName === "faq") {
+      setIsFAQpathActive(true);
+      setIsSryniPathActive(false);
+      setIsReportPathActive(false);
       setIsShikkarthiPathActive(false)
     }
     else {
+
       setIsReportPathActive(false)
       setIsShikkarthiPathActive(false)
       setIsSryniPathActive(false)
+      setIsFAQpathActive(false);
     }
   }, [pathName])
 
@@ -560,6 +572,22 @@ const Navbar = () => {
                             অনুরোধগুলি
                           </a>
                         </li> */}
+                        <li className="nav-item dropdown nav-item-style">
+                          <NavLink to='/faq'
+                            className={`nav-link navbar-menu-item d-flex align-items-center
+                            ${isFAQpathActive && "active"}`}
+                            role="button"
+                            // data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <img
+                              src={onurudhGoliIcon}
+                              className="img-fluid icon-right-space"
+                              alt="main logo"
+                            />
+                            প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী
+                          </NavLink>
+                        </li>
                       </ul>
                     </div>
                   </nav>
