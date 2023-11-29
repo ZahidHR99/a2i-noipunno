@@ -350,7 +350,7 @@ export default function
                       <h2 className="accordion-header pages-buttons" id="shikkhok-headingOne" >
                         <button
                           className="accordion-button collapsed d-flex justify-content-between align-items-center pt-2 w-100 responsive-single-menu-button gap-2" type="button" >
-                          <img src="../../public/assets/teacherDashboard/icons/home.svg" className="img-fluid icon-right-space" alt="main logo" />
+                          <img src="assets/teacherDashboard/icons/home.svg" className="img-fluid icon-right-space" alt="main logo" />
                           <Link to="/" className="text-decoration-none">
                             <span className="fs-6 ">প্রথম পাতা</span>
                           </Link>
