@@ -154,7 +154,10 @@ export const show_comment_box_bi = (
   assessment_uid
 ) => {
   let obj = submitData.filter(
-    (d: any) => d.bi_uid == w_d.bi_uid && student_uid == d.student_uid && d.evaluate_type == assessment_uid
+    (d: any) =>
+      d.bi_uid == w_d.bi_uid &&
+      student_uid == d.student_uid &&
+      d.evaluate_type == assessment_uid
   );
   if (obj.length) {
     return "Remark : " + obj[0].remark;
@@ -240,22 +243,17 @@ export const make_group_by = (studentData: any) => {
   return groupedByStudentId;
 };
 
+export const get_unique_index = (students: any, uid) => {
 
-export const get_unique_index = (students: any , uid) => {
-
-  console.log(`students`, students , uid);
-  
   // Function to find the index of an object with a specific property value
   function findIndexByProperty(array, propertyName, value) {
-    return array.findIndex(element => element[propertyName] === value);
+    return array.findIndex((element) => element[propertyName] === value);
   }
-  const index = findIndexByProperty(students, 'uid', uid);
-  
-  if (index !== -1) {
-    return index
-  } else {
-    return null
-  }
+  const index = findIndexByProperty(students, "uid", uid);
 
-  
+  if (index !== -1) {
+    return index;
+  } else {
+    return null;
+  }
 };
