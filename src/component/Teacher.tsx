@@ -43,12 +43,6 @@ export default function Teacher() {
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
-  const location = useLocation()
-  // console.log(location.pathname);
-
-  const [total_student, setTotal_student] = useState<any>([]);
-  const [total_teacher, setTotal_teacher] = useState<any>([]);
-  const [total_class, setTotal_class] = useState<any>([]);
 
   const fetchData = async () => {
     const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
@@ -129,57 +123,58 @@ export default function Teacher() {
     setelement(e);
   };
 
+  // const location = useLocation()
+  // const [total_student, setTotal_student] = useState<any>([]);
+  // const [total_teacher, setTotal_teacher] = useState<any>([]);
+  // const [total_class, setTotal_class] = useState<any>([]);
+
+  // const student_lsit = async () => {
+  //   const student: any = [];
+  //   const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+
+  //   studentsData?.data?.data?.subjects.map((std_data: any) => {
+  //     return std_data.class_room.students.map((stu_data: any) => {
+  //       stu_data.competence = std_data.competence;
+  //       student.push(stu_data);
+  //     });
+  //   });
+
+  //   if (student) {
+  //     studentsData?.data?.data?.subjects.map((std_data: any) => {
+  //       return std_data?.class_room?.students?.map((stu_data: any) => {
+  //         stu_data.competence = std_data.competence;
+  //         student.push(stu_data);
+  //       });
+  //     });
+
+  //     const uniqueObjectsArray = student.filter(
+  //       (obj: any, index: any, self: any) =>
+  //         index === self.findIndex((o: any) => o.uid === obj.uid)
+  //     );
+  //     setTotal_student(uniqueObjectsArray);
+  //   }
 
 
-  const student_lsit = async () => {
-    const student: any = [];
-    const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
+  // };
 
-    studentsData?.data?.data?.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
+  // const teacher_list = async () => {
+  //   const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
+  //   setTotal_teacher(teachersData?.data?.teachers)
+  // };
 
-    if (student) {
-      studentsData?.data?.data?.subjects.map((std_data: any) => {
-        return std_data?.class_room?.students?.map((stu_data: any) => {
-          stu_data.competence = std_data.competence;
-          student.push(stu_data);
-        });
-      });
+  // const all_class = async () => {
+  //   const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
+  //   setTotal_class(local_storege_data?.data?.subjects);
+  // };
 
-      const uniqueObjectsArray = student.filter(
-        (obj: any, index: any, self: any) =>
-          index === self.findIndex((o: any) => o.uid === obj.uid)
-      );
-      setTotal_student(uniqueObjectsArray);
-    }
-
-
-  };
-
-  const teacher_list = async () => {
-    const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    setTotal_teacher(teachersData?.data?.teachers)
-  };
-
-  const all_class = async () => {
-    const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
-    setTotal_class(local_storege_data?.data?.subjects);
-  };
-
-  useEffect(() => {
-    fetchData();
-    student_lsit();
-    teacher_list();
-    all_class();
-  }, []);
+  // useEffect(() => {
+  //   student_lsit();
+  //   teacher_list();
+  //   all_class();
+  // }, []);
 
   // console.log("all_student", all_student);
   // console.log("all_teacher", all_teacher);
-
 
 
   return (
@@ -353,7 +348,7 @@ export default function Teacher() {
                               <a className="subject-number">
                                 <div className="icon">
                                   <img src={bookIcon} alt="bookIcon" />
-                                </div>
+                                </div >
                                 <h2 className="mt-3">  {d?.subject?.name}</h2>
                                 <div className="total-student">
                                   <p> {d?.subject.class_uid == "6" ? "ষষ্ঠ " : "সপ্তম "} শ্রেণি </p>
@@ -381,13 +376,14 @@ export default function Teacher() {
                                     শাথা
                                   </h6>
                                 </div>
-                              </a>
-                            </div>
-                          ))}
+                              </a >
+                            </div >
+                          ))
+                          }
                         </>}
 
-                      </div>
-                    </div>
+                      </div >
+                    </div >
 
                     {ShowProfile === false && (
                       <>
@@ -430,12 +426,12 @@ export default function Teacher() {
                         )}
                       </>
                     )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+                  </div >
+                </div >
+              </div >
+            </div >
+          </section >
+        </div >
       )}
       <style
         dangerouslySetInnerHTML={{
@@ -445,6 +441,6 @@ export default function Teacher() {
       />
 
       {/* Teachers List end */}
-    </div>
+    </div >
   );
 }
