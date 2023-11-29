@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./component/PrivateRoute";
 import Login from "./component/Login";
-import Topbar from "./layout/Topbar";
+// import Topbar from "./layout/Topbar";
 import Footer from "./layout/Footer";
 import Home from "./component/Home";
 import { useEffect, useState } from "react";
@@ -21,8 +21,8 @@ import {
 } from "./Request";
 import AmarProfile from "./component/AmarProfile";
 import MullayonKoron from "./component/MullayonKoron";
-import HeadTeacherDashboard from "./component/Dashboards/HeadTeacherDashboard";
-import TeacherDashboardNew from "./component/Dashboards/TeacherDashboardNew";
+import HeadTeacherDashboard from "./component/Dashboards/HeadTeacherDashboard/HeadTeacherDashboard";
+import TeacherDashboard from "./component/Dashboards/TeacherDashboard/TeacherDashboard";
 
 import Navbar from "./layout/Navbar";
 
@@ -77,7 +77,7 @@ function App() {
           <Route path="/teacher-profile" element={<AmarProfile />} />
           <Route path="/teachers-list" element={<TeachersList />} />
           <Route path="/mollayon-koron" element={<MullayonKoron />} />
-          <Route path="/teacher-dashboard" element={<TeacherDashboardNew />} />
+          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
           <Route path="/head-teacher-dashboard" element={<HeadTeacherDashboard />} />
 
 

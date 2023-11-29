@@ -44,7 +44,7 @@ export default function Teacher() {
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
 
   const location = useLocation()
-  console.log(location.pathname);
+  // console.log(location.pathname);
 
   const [total_student, setTotal_student] = useState<any>([]);
   const [total_teacher, setTotal_teacher] = useState<any>([]);

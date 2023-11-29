@@ -12,9 +12,9 @@ const BannerSection = () => {
       <div className="card-container">
         <div className="row g-3 ">
           <TeacherProfileCard />
-          <ShikkathirHaziraChart />
+          {/* <ShikkathirHaziraChart /> */}
           <TotalNumberOfSudentTeacherClassRoom />
-          <OnorudhShomohu />
+          {/* <OnorudhShomohu /> */}
         </div>
       </div>
     </section>

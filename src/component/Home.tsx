@@ -1,15 +1,14 @@
-import HeadTeacherDashboard from "./Dashboards/HeadTeacherDashboard";
-import TeacherDashboardNew from "./Dashboards/TeacherDashboardNew";
-import Teacher from "./Teacher";
-import TeacherNew from "./TeacherNew";
+import HeadTeacherDashboard from "./Dashboards/HeadTeacherDashboard/HeadTeacherDashboard";
+import TeacherDashboard from "./Dashboards/TeacherDashboard/TeacherDashboard";
+
+
 
 export default function Home() {
 
   return (
     <>
-      {/* <Teacher /> */}
-      {/* {<TeacherDashboardNew />} */}
-      {<HeadTeacherDashboard />}
+      {<TeacherDashboard />}
+      {/* {<HeadTeacherDashboard />} */}
     </>
   );
 }
