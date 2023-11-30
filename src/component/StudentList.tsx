@@ -67,7 +67,7 @@ const StudentList = () => {
     };
   }, []);
 
-  console.log("student", student);
+  // console.log("student", student);
 
   return (
     <section className="student_list_page">
