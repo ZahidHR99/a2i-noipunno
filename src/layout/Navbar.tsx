@@ -335,7 +335,7 @@ const Navbar = () => {
 
                         <li className="nav-item dropdown nav-item-style " >
                           <NavLink to='/'
-                            activeClassName='active'
+                            // activeClassName='active'
                             className="nav-link navbar-menu-item d-flex align-items-center"
                             role="button"
                             // data-bs-toggle="dropdown"
@@ -372,7 +372,7 @@ const Navbar = () => {
                             <li>
                               <NavLink to="/student-transcript" className="dropdown-item" >
                                 <div
-                                  activeClassName='active'
+                                  // activeClassName='active'
                                   className="dropdown-list-item-style d-flex align-items-center">
                                   <img
                                     src={unOrderListIcon}
@@ -434,7 +434,7 @@ const Navbar = () => {
 
                         <li className="nav-item dropdown nav-item-style">
                           <NavLink to="/teachers-list"
-                            activeClassName='active'
+                            // activeClassName='active'
                             className="nav-link navbar-menu-item d-flex align-items-center"
                             role="button"
                             // data-bs-toggle="dropdown"
@@ -473,8 +473,8 @@ const Navbar = () => {
                           <ul className="dropdown-menu border-0 dropdown-menu-item-style">
                             <li>
                               <NavLink to='/student-list'
-                                activeClassName='active'
-                                className="dropdown-item" href="#">
+                                // activeClassName='active'
+                                className="dropdown-item" >
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
                                     src={shikkarthiIcon}
@@ -527,7 +527,7 @@ const Navbar = () => {
                           <ul className="dropdown-menu border-0 dropdown-menu-item-style">
                             <li>
                               <NavLink to="/class/6"
-                                activeClassName='active'
+                                // activeClassName='active'
                                 className="dropdown-item" >
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img
@@ -541,7 +541,7 @@ const Navbar = () => {
                             </li>
                             <li>
                               <NavLink to="/class/7"
-                                activeClassName='active'
+                                // activeClassName='active'
                                 className="dropdown-item" >
                                 <div className="dropdown-list-item-style d-flex align-items-center">
                                   <img

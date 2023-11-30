@@ -5,7 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 import { get_pi_evaluation_by_pi } from "../Request";
 import { check_pi_submitted, show_pis , convertToBanglaNumber } from "../utils/Utils";
 
-export default function DetailsShikhonMullayon({
+export default function DetailsShikhonMullayonShikhonKalin({
   showDetailsshikhonKalinMullayon,
   assessment_uid,
   pi_attr,
@@ -51,7 +51,6 @@ export default function DetailsShikhonMullayon({
       <div className="row">
         {showDetailsshikhonKalinMullayon?.pis?.map((d: any, ky: any) => (
           <div key={ky}>
-            {show_pis(d.uid) && (
               <div className="col-sm-6 col-md-12">
                 <div className={`d-flex align-items-center py-2 gap-2`}>
                   <div className={`border-0 w-100`}>
@@ -62,6 +61,10 @@ export default function DetailsShikhonMullayon({
                             {/* {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.
                             {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no )}.
                             {convertToBanglaNumber(d?.pi_id)}{" "} */}
+
+                            {
+                             convertToBanglaNumber(d.pi_no) || d.pi_no 
+                            }
                           </h6>
 
                           <Link
@@ -75,7 +78,7 @@ export default function DetailsShikhonMullayon({
                               get_all_pi_evaluation_by_pi(d.uid);
 
                               setpi_name(d?.name_bn);
-                              setpi_id(d?.pi_id);
+                              setpi_id(d?.pi_no);
                             }}
                             to={"#"}
                             className="text-decoration text-success  ps-2"
@@ -88,7 +91,6 @@ export default function DetailsShikhonMullayon({
                   </div>
                 </div>
               </div>
-            )}
           </div>
         ))}
       </div>
@@ -108,6 +110,9 @@ export default function DetailsShikhonMullayon({
               <h4 className="font-weight-bold"><strong>পারদর্শিতা সূচক</strong></h4>
               <h4>
                 <strong>
+                {
+                             convertToBanglaNumber(pi_id) || pi_id 
+                            }
                   {/* {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.{convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.{convertToBanglaNumber(pi_id)} */}
                 </strong>
               </h4>

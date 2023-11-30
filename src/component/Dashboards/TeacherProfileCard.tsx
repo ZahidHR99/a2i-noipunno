@@ -8,7 +8,7 @@ import starIcon from '../../assets/dashboard_materials/images/dashboard/ico.svg'
 import messageIcon from '../../assets/dashboard_materials/images/dashboard/message.svg';
 import darkMoodIcon from '../../assets/dashboard_materials/images/dashboard/moon.svg';
 import eyeIcon from '../../assets/dashboard_materials/images/dashboard/eye.svg';
-import { logged_teacher_details } from "../../utils/Utils";
+// import { logged_teacher_details } from "../../utils/Utils";
 
 
 const TeacherProfileCard = () => {

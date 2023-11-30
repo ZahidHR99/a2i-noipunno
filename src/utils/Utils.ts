@@ -228,7 +228,7 @@ export const convertToBanglaNumber = (number: any) => {
   for (let i = 0; i < numString.length; i++) {
     if (numString[i] !== "," && numString[i] !== ".") {
       const digit = parseInt(numString[i]);
-      banglaNumber += banglaDigits[digit];
+      banglaNumber += banglaDigits[digit] || numString[i];
     } else {
       banglaNumber += numString[i]
     }

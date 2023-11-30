@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PiBookOpenText } from "react-icons/pi";
-import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
+import DetailsShikhonMullayon from "./DetailsShikhonMullayonSannasikBarshik";
 import styles from "./Home.style.module.css";
 import StudentMullayonBehave from "./StudentMullayonBehave";
 import { get_bi_evaluation_by_bi } from "../Request";

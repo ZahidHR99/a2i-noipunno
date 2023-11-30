@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { PiBookOpenText } from "react-icons/pi";
-import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
+// import DetailsShikhonMullayon from "./DetailsShikhonMullayonSannasikBarshik";
 import styles from "./Home.style.module.css";
 import {
   convertToBanglaNumber,
@@ -8,7 +8,8 @@ import {
   show_shannasik_barsik,
 } from "../utils/Utils";
 import { FaExpand } from "react-icons/fa";
-import DetailsShikhonMullayonSannasikBarsik from "./DetailsShikhonMullayonSannasikBarsik";
+import DetailsShikhonMullayonSannasikBarshik from "./DetailsShikhonMullayonSannasikBarshik";
+import DetailsShikhonMullayonShikhonKalin from "./DetailsShikhonMullayonShikhonKalin";
 
 export default function ParodorshitaComponent({
   assessment_uid,
@@ -23,11 +24,7 @@ export default function ParodorshitaComponent({
   teacher_uid,
   pi_selection,
 }: any) {
-  console.log(
-    `shikhonKalinMullayon 111111`,
-    shikhonKalinMullayon_sannasik_barsik,
-    shikhonKalinMullayon
-  );
+  
   return (
     <div className="py-2">
       <div className="row">
@@ -89,7 +86,7 @@ export default function ParodorshitaComponent({
                       }
                     >
                       <div className="card card-body">
-                        <DetailsShikhonMullayonSannasikBarsik
+                        <DetailsShikhonMullayonShikhonKalin
                           showDetailsshikhonKalinMullayon={d}
                           assessment_uid={assessment_uid}
                           pi_attr={pi_attr}
@@ -105,38 +102,14 @@ export default function ParodorshitaComponent({
           </>
         ) : (
           <div className="card card-body mx-2">
-            {/* {shikhonKalinMullayon.map((d: any, key: any) => (
-              <div key={key}>
-                {show_compitance(d.uid) && (
-                  <div
-                    onClick={(e: any) => {
-                      setshowDetailsshikhonKalinMullayon(d);
-                    }}
-                  >
-                    <DetailsShikhonMullayon
-                      showDetailsshikhonKalinMullayon={d}
-                      assessment_uid={assessment_uid}
-                      pi_attr={pi_attr}
-                      Student={Student}
-                      teacher_uid={teacher_uid}
-                    />
-                  </div>
-                )}
-              </div>
-            ))} */}
-
-            {/* <p>1</p> */}
-
             {shikhonKalinMullayon_sannasik_barsik.map((d: any, key: any) => (
               <div key={key}>
-                
-
                 <div
                   onClick={(e: any) => {
                     setshowDetailsshikhonKalinMullayon(d);
                   }}
                 >
-                  <DetailsShikhonMullayonSannasikBarsik
+                  <DetailsShikhonMullayonSannasikBarshik
                     showDetailsshikhonKalinMullayon={d}
                     assessment_uid={assessment_uid}
                     pi_attr={pi_attr}

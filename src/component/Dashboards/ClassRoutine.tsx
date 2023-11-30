@@ -12,7 +12,7 @@ const ClassRoutine = () => {
             <div className="timeline">
               <h4>টাইমলাইন</h4>
               <select className="form-select" aria-label="Default select example">
-                <option selected="">প্রভাতি সেশন </option>
+                <option value={""}>প্রভাতি সেশন </option>
                 <option value={0}>সাপ্তাহিক </option>
                 <option value={1}>মাসিক</option>
                 <option value={2}>বছর</option>
@@ -21,7 +21,7 @@ const ClassRoutine = () => {
             <div className="all">
               <h4>ক্লাস অনুসারে ফিল্টার</h4>
               <select className="form-select" aria-label="Default select example">
-                <option selected="">সব</option>
+                <option value={""}>সব</option>
                 <option value={1}>সাপ্তাহিক</option>
                 <option value={2}>দিন</option>
                 <option value={3}>মাসিক</option>
