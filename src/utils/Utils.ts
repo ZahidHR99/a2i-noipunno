@@ -88,24 +88,31 @@ export const pis_list_func = (
   }
 
   for (const x in allCompitance) {
-    allCompitance[x].pis.map((d) => {
-      if (pi_list && pi_list?.length > 0) {
-        const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid);
-        if (found) {
-          all_compitance_id.push(allCompitance[x].uid);
-          all_pis_id.push(d.uid);
-        }
-      } else {
-        if (!check_sannasik_barsik_or_not) {
-          all_compitance_id.push(allCompitance[x].uid);
-          all_pis_id.push(d.uid);
-        }
-      }
-    });
+    all_compitance_id.push(allCompitance[x].uid);
+    // allCompitance[x].pis.map((d) => {
+    //   if (pi_list && pi_list?.length > 0) {
+    //     const found = pi_list.find((pi_list_d) => pi_list_d.pi_uid == d.uid);
+    //     if (found) {
+    //       all_compitance_id.push(allCompitance[x].uid);
+    //       all_pis_id.push(d.uid);
+    //     }
+    //   } else {
+    //     if (!check_sannasik_barsik_or_not) {
+    //       all_compitance_id.push(allCompitance[x].uid);
+    //       all_pis_id.push(d.uid);
+    //     }
+    //   }
+    // });
   }
 
+  const selectedIds = pi_list.map((item:any) => 
+    {
+      return item.pi_uid
+    })
+
   localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id));
-  localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id));
+  // localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id));
+  localStorage.setItem("show_pi_list", JSON.stringify(selectedIds));
 };
 
 export const add_pi_uid = (all_bis: any, all_submited_PI_: any) => {
@@ -134,7 +141,7 @@ export const show_compitance = (compitance_uid: any) => {
 };
 
 export const show_pis = (compitance_uid: any) => {
-  const all_compitance_id = JSON.parse(localStorage.getItem("show_all_pis_id"));
+  const all_compitance_id = JSON.parse(localStorage.getItem("show_pi_list"));
 
   return all_compitance_id.includes(compitance_uid);
 };
@@ -219,11 +226,11 @@ export const convertToBanglaNumber = (number: any) => {
   const numString = number.toString();
   let banglaNumber = "";
   for (let i = 0; i < numString.length; i++) {
-    if (numString[i] !== ",") {
+    if (numString[i] !== "," && numString[i] !== ".") {
       const digit = parseInt(numString[i]);
       banglaNumber += banglaDigits[digit];
     } else {
-      banglaNumber += ",";
+      banglaNumber += numString[i]
     }
   }
   return banglaNumber;

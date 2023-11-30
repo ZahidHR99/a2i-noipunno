@@ -5,7 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 import { get_pi_evaluation_by_pi } from "../Request";
 import { check_pi_submitted, show_pis , convertToBanglaNumber } from "../utils/Utils";
 
-export default function DetailsShikhonMullayon({
+export default function DetailsShikhonMullayonSannasikBarsik({
   showDetailsshikhonKalinMullayon,
   assessment_uid,
   pi_attr,
@@ -51,7 +51,6 @@ export default function DetailsShikhonMullayon({
       <div className="row">
         {showDetailsshikhonKalinMullayon?.pis?.map((d: any, ky: any) => (
           <div key={ky}>
-            {show_pis(d.uid) && (
               <div className="col-sm-6 col-md-12">
                 <div className={`d-flex align-items-center py-2 gap-2`}>
                   <div className={`border-0 w-100`}>
@@ -62,6 +61,10 @@ export default function DetailsShikhonMullayon({
                             {/* {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.
                             {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no )}.
                             {convertToBanglaNumber(d?.pi_id)}{" "} */}
+
+                            {
+                              d.pi_no
+                            }
                           </h6>
 
                           <Link
@@ -88,7 +91,6 @@ export default function DetailsShikhonMullayon({
                   </div>
                 </div>
               </div>
-            )}
           </div>
         ))}
       </div>

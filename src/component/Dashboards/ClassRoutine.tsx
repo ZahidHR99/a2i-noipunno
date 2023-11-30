@@ -1,4 +1,6 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
+import stdIcon from '../../assets/dashboard_materials/images/dashboard/profile-2user.png';
+
 
 const ClassRoutine = () => {
   return (
@@ -41,10 +43,8 @@ const ClassRoutine = () => {
                   >
                     <div className="d-flex gap-distance">
                       {" "}
-                      <img
-                        src="dashboardAssets/images/dashboard/profile-2user.svg"
-                        alt="user-icon"
-                      />{" "}
+                      <img src={stdIcon} alt="user-icon" />
+                      {" "}
                       ষষ্ঠ শ্রেণী
                     </div>
                   </a>
@@ -59,10 +59,7 @@ const ClassRoutine = () => {
                   >
                     <div className="d-flex gap-distance">
                       {" "}
-                      <img
-                        src="dashboardAssets/images/dashboard/profile-2user.svg"
-                        alt="user-icon"
-                      />{" "}
+                      <img src={stdIcon} alt="user-icon" />{" "}
                       সপ্তম শ্রেণী
                     </div>
                   </a>
@@ -77,10 +74,7 @@ const ClassRoutine = () => {
                   >
                     <div className="d-flex gap-distance">
                       {" "}
-                      <img
-                        src="dashboardAssets/images/dashboard/profile-2user.svg"
-                        alt="user-icon"
-                      />{" "}
+                      <img src={stdIcon} alt="user-icon" />{" "}
                       অষ্টম শ্রেণী
                     </div>
                   </a>
@@ -95,10 +89,7 @@ const ClassRoutine = () => {
                   >
                     <div className="d-flex gap-distance">
                       {" "}
-                      <img
-                        src="dashboardAssets/images/dashboard/profile-2user.svg"
-                        alt="user-icon"
-                      />{" "}
+                      <img src={stdIcon} alt="user-icon" />{" "}
                       নবম শ্রেণী
                     </div>
                   </a>
@@ -113,10 +104,7 @@ const ClassRoutine = () => {
                   >
                     <div className="d-flex gap-distance">
                       {" "}
-                      <img
-                        src="dashboardAssets/images/dashboard/profile-2user.svg"
-                        alt="user-icon"
-                      />{" "}
+                      <img src={stdIcon} alt="user-icon" />{" "}
                       দশম শ্রেণী
                     </div>
                   </a>

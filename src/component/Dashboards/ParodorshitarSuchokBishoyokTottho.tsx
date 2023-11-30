@@ -1,4 +1,5 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
+import parodorshitarSuchokBishoyokTotthoChart from '../../assets/dashboard_materials/images/dashboard/Chart44.svg';
 
 const ParodorshitarSuchokBishoyokTottho = () => {
   return (
@@ -19,7 +20,7 @@ const ParodorshitarSuchokBishoyokTottho = () => {
         </div>
         <div className="row">
           <div className="col-lg-12 col-md-6">
-            <img src="dashboardAssets/images/dashboard/Chart44.svg" alt="" />
+            <img src={parodorshitarSuchokBishoyokTotthoChart} alt="chart" />
           </div>
         </div>
       </div>

@@ -93,6 +93,8 @@ export default function ShowAssesment({
       const subject = pi_selection.find((data) => data.assessment_type == key && data.subject_uid == subject_id && data.class_id == class_id);
       const pi_list = subject?.pi_list || []
 
+      console.log(`pi_listpi_list`, pi_list);
+
       const check_sannasik_barsik_or_not = key === 1234567892 || key == 1234567891
 
       

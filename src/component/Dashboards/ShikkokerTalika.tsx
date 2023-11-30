@@ -1,4 +1,6 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
+import headtecherMarker from '../../assets/dashboard_materials/images/dashboard/ico.svg';
+import teacherAvater from '../../assets/dashboard_materials/images/dashboard/60px.png';
 
 const ShikkokerTalika = () => {
   return (
@@ -13,10 +15,10 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="card-top-icon">
-                  <img src="dashboardAssets/images/dashboard/ico.svg" alt="" />
+                  <img src={headtecherMarker} alt="headtecherMarker" />
                 </div>
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -40,7 +42,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -64,7 +66,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -88,7 +90,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -112,7 +114,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -136,7 +138,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -160,7 +162,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -184,7 +186,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -208,7 +210,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -232,7 +234,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -256,7 +258,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>
@@ -280,7 +282,7 @@ const ShikkokerTalika = () => {
             <div className="teacher-container">
               <a href="#">
                 <div className="teacher">
-                  <img src="dashboardAssets/images/dashboard/60px.png" alt="" />
+                  <img src={teacherAvater} alt="teacherAvater" />
                   <div className="name">
                     <h3>আতাউর রহমান</h3>
                     <h4>প্রধান শিক্ষক</h4>

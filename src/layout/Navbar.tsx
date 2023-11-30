@@ -34,12 +34,12 @@ import branchBebostapona from "../assets/navbar_materials/icons/branch-ico.svg";
 import srenikokkoBebostapona from "../assets/navbar_materials/icons/branch-ico.svg";
 import dayitthoOrponKoron from "../assets/navbar_materials/icons/users.svg";
 
-
+import { useLocation } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const [userDetails, setuserDetails] = useState<any>({});
 
+  const [userDetails, setuserDetails] = useState<any>({});
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("customer_login_auth"));
     if (items) {
@@ -49,13 +49,60 @@ const Navbar = () => {
 
   // console.log("userDetails", userDetails);
 
-
   const handleLogout = (e: any) => {
     localStorage.clear();
     window.location.reload();
-    // window.location = window.location.origin;
-    // console.log("Logout successful", e);
   };
+
+
+  const location = useLocation();
+  const [isReportPathActive, setIsReportPathActive] = useState(false);
+  const [isShikkarthiPathActive, setIsShikkarthiPathActive] = useState(false);
+  const [isSryniPathActive, setIsSryniPathActive] = useState(false);
+  const [isFAQpathActive, setIsFAQpathActive] = useState(false);
+
+  const pathName = location.pathname.slice(1);
+  // console.log("pathName", pathName);
+
+  useEffect(() => {
+    // console.log("path===>", pathName);
+    if (pathName === "student-transcript") {
+      setIsReportPathActive(true);
+      setIsShikkarthiPathActive(false);
+      setIsSryniPathActive(false);
+      setIsFAQpathActive(false);
+    }
+    else if (pathName === "student-list") {
+      setIsShikkarthiPathActive(true);
+      setIsReportPathActive(false);
+      setIsSryniPathActive(false);
+      setIsFAQpathActive(false);
+    }
+    else if ((pathName === "class/6") || pathName === "class/7") {
+      setIsSryniPathActive(true);
+      setIsReportPathActive(false);
+      setIsShikkarthiPathActive(false);
+      setIsFAQpathActive(false);
+    }
+    else if (pathName === "faq") {
+      setIsFAQpathActive(true);
+      setIsSryniPathActive(false);
+      setIsReportPathActive(false);
+      setIsShikkarthiPathActive(false)
+    }
+    else {
+
+      setIsReportPathActive(false)
+      setIsShikkarthiPathActive(false)
+      setIsSryniPathActive(false)
+      setIsFAQpathActive(false);
+    }
+  }, [pathName])
+
+  // console.log("isReportPathActive===>", isReportPathActive);
+  // console.log("isShikkarthiPathActive===>", isShikkarthiPathActive);
+  // console.log("isSryniPathActive===>", isSryniPathActive);
+
 
 
   return (
@@ -304,7 +351,8 @@ const Navbar = () => {
 
                         <li className="nav-item dropdown nav-item-style">
                           <a
-                            className="nav-link navbar-menu-item d-flex align-items-center"
+                            className={` nav-link navbar-menu-item d-flex align-items-center
+                            ${isReportPathActive && "active"}`}
                             role="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
@@ -404,7 +452,8 @@ const Navbar = () => {
 
                         <li className="nav-item dropdown nav-item-style">
                           <a
-                            className="nav-link navbar-menu-item d-flex align-items-center"
+                            className={`nav-link navbar-menu-item d-flex align-items-center
+                            ${isShikkarthiPathActive && "active"}`}
                             href="#"
                             role="button"
                             data-bs-toggle="dropdown"
@@ -457,7 +506,8 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item dropdown nav-item-style">
                           <a
-                            className="nav-link navbar-menu-item d-flex align-items-center"
+                            className={`nav-link navbar-menu-item d-flex align-items-center
+                            ${isSryniPathActive && "active"}`}
                             href="#"
                             role="button"
                             data-bs-toggle="dropdown"
@@ -522,6 +572,22 @@ const Navbar = () => {
                             অনুরোধগুলি
                           </a>
                         </li> */}
+                        <li className="nav-item dropdown nav-item-style">
+                          <NavLink to='/faq'
+                            className={`nav-link navbar-menu-item d-flex align-items-center
+                            ${isFAQpathActive && "active"}`}
+                            role="button"
+                            // data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <img
+                              src={onurudhGoliIcon}
+                              className="img-fluid icon-right-space"
+                              alt="main logo"
+                            />
+                            প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী
+                          </NavLink>
+                        </li>
                       </ul>
                     </div>
                   </nav>
@@ -625,9 +691,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-
-
     </>
 
 

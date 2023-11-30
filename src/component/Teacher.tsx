@@ -10,6 +10,7 @@ import AcorongotoComponent from "./AcorongotoComponent";
 import styles from "./Home.style.module.css";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import ShowAssesment from "./ShowAssesment";
+import bookIcon from '../../src/assets/dashboard_materials/images/dashboard/bicon.svg';
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -38,17 +39,9 @@ export default function Teacher() {
   const [showSubjectname, seshowSubjectname] = useState("");
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
-
-  const location = useLocation();
-  console.log(location.pathname);
-
-  const [total_student, setTotal_student] = useState<any>([]);
-  const [total_teacher, setTotal_teacher] = useState<any>([]);
-  const [total_class, setTotal_class] = useState<any>([]);
+  const [shikhonKalinMullayon_sannasik_barsik, setshikhonKalinMullayon_sannasik_barsik] = useState([]);
 
   const fetchData = async () => {
-    const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
-    const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 
     const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
     const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
@@ -57,12 +50,7 @@ export default function Teacher() {
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
 
     console.log(`own_subjet----`, own_subjet);
-    // if (own_SUbjects) {
-    //   own_subjet = own_SUbjects;
-    // } else {
-    //   own_subjet = await teacher_own_subject();
 
-    // }
 
     let data: any = "";
     if (teacher_dash) {
@@ -93,6 +81,8 @@ export default function Teacher() {
               d.oviggota.map((competnc) => {
                 compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc };
               });
+
+
               all_subject.push(obj);
             }
           });
@@ -111,6 +101,7 @@ export default function Teacher() {
     seshowSubject(false);
     setselected_subject(datas);
     setshikhonKalinMullayon(datas.own_subjet.oviggota);
+    setshikhonKalinMullayon_sannasik_barsik(datas.own_subjet.competence);
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
@@ -122,56 +113,6 @@ export default function Teacher() {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
-
-  const student_lsit = async () => {
-    const student: any = [];
-    const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
-
-    studentsData?.data?.data?.subjects.map((std_data: any) => {
-      return std_data.class_room.students.map((stu_data: any) => {
-        stu_data.competence = std_data.competence;
-        student.push(stu_data);
-      });
-    });
-
-    if (student) {
-      // studentsData?.data?.data?.subjects.map((std_data: any) => {
-      //   return std_data?.class_room?.students?.map((stu_data: any) => {
-      //     stu_data.competence = std_data.competence;
-      //     student.push(stu_data);
-      //   });
-      // });
-
-      const uniqueObjectsArray = student.filter(
-        (obj: any, index: any, self: any) =>
-          index === self.findIndex((o: any) => o.uid === obj.uid)
-      );
-
-      uniqueObjectsArray.sort(function (a, b) {
-        return a.roll - b.roll;
-      });
-      setTotal_student(uniqueObjectsArray);
-    }
-  };
-
-  const teacher_list = async () => {
-    const teachersData = JSON.parse(localStorage.getItem("teacher_dashboard"));
-    setTotal_teacher(teachersData?.data?.teachers);
-  };
-
-  const all_class = async () => {
-    const local_storege_data = JSON.parse(
-      localStorage.getItem("teacher_dashboard")
-    );
-    setTotal_class(local_storege_data?.data?.subjects);
-  };
-
-  useEffect(() => {
-    fetchData();
-    student_lsit();
-    teacher_list();
-    all_class();
-  }, []);
 
   // console.log("all_student", all_student);
   // console.log("all_teacher", all_teacher);
@@ -277,7 +218,7 @@ export default function Teacher() {
                                 <a className="subject-number">
                                   <div className="icon">
                                     <img
-                                      src="assets/teacherDashboard/images/dashboard/bicon.svg"
+                                      src={bookIcon}
                                       alt=""
                                     />
                                   </div>
@@ -360,6 +301,7 @@ export default function Teacher() {
                                 showDetailsshikhonKalinMullayon={
                                   showDetailsshikhonKalinMullayon
                                 }
+                                shikhonKalinMullayon_sannasik_barsik={shikhonKalinMullayon_sannasik_barsik}
                                 Showcollaps={Showcollaps}
                                 setShowcollaps={setShowcollaps}
                                 Mullayon_name={Mullayon_name}
@@ -381,6 +323,7 @@ export default function Teacher() {
                                 showDetailsshikhonKalinMullayon={
                                   showDetailsshikhonKalinMullayon
                                 }
+                                shikhonKalinMullayon_sannasik_barsik={shikhonKalinMullayon_sannasik_barsik}
                                 Showcollaps={Showcollaps}
                                 setShowcollaps={setShowcollaps}
                                 Mullayon_name={Mullayon_name}
@@ -394,12 +337,12 @@ export default function Teacher() {
                         )}
                       </>
                     )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+                  </div >
+                </div >
+              </div >
+            </div >
+          </section >
+        </div >
       )}
       <style
         dangerouslySetInnerHTML={{
@@ -409,6 +352,6 @@ export default function Teacher() {
       />
 
       {/* Teachers List end */}
-    </div>
+    </div >
   );
 }

@@ -1,4 +1,4 @@
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
 import OnorudhShomohu from './OnorudhShomohu';
 import ShikkathirHaziraChart from './ShikkathirHaziraChart';
 import ShorbomotHishabforHeadTeaherDashboard from './ShorbomotHishabforHeadTeaherDashboard';
