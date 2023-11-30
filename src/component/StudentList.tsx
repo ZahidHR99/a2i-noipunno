@@ -7,6 +7,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { section_name, shift_name, version_name } from "../utils/Utils";
 import female_avt_img from "../../public/assets/images/user_avatar/female_std.png";
 import male_avt_img from "../../public/assets/images/user_avatar/male_std.png";
+import "../styles/noipunno_custom_styles.css";
 
 const StudentList = () => {
   const [student, setStudent] = useState([]);
@@ -71,10 +72,10 @@ const StudentList = () => {
     };
   }, []);
 
-  console.log("student", student);
+  // console.log("student", student);
 
   return (
-    <>
+    <section className="student_list_page">
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
       {student?.length == 0 ? (
         <div className="container my-5 text-center" >No Student Found</div>
@@ -145,13 +146,12 @@ const StudentList = () => {
                     <div
                       className={`text-center text-lg-end 
 
-                  ${
-                    (screenSize === "small_screen" && "w-100") ||
-                    ((screenSize === "medium_screen" ||
-                      screenSize === "large_screen") &&
-                      "w-75") ||
-                    (screenSize === "extra_large_screen" && "w-75")
-                  } 
+                  ${(screenSize === "small_screen" && "w-100") ||
+                        ((screenSize === "medium_screen" ||
+                          screenSize === "large_screen") &&
+                          "w-75") ||
+                        (screenSize === "extra_large_screen" && "w-75")
+                        } 
                      
                     mb-1 mx-auto mb-4 mb-md-2 mb-lg-2`}
                     >
@@ -167,13 +167,12 @@ const StudentList = () => {
                     </div>
 
                     <table
-                      className={`table ${
-                        (screenSize === "small_screen" && "w-100") ||
+                      className={`table ${(screenSize === "small_screen" && "w-100") ||
                         ((screenSize === "medium_screen" ||
                           screenSize === "large_screen") &&
                           "w-75") ||
                         (screenSize === "extra_large_screen" && "w-75")
-                      } 
+                        } 
                      text-sm mx-auto`}
                     >
                       <tbody>
@@ -351,7 +350,7 @@ const StudentList = () => {
           </section>
         </div>
       )}
-    </>
+    </section>
   );
 };
 

@@ -1,4 +1,4 @@
-import '../styles/navbar.css';
+import '../assets/navbar_materials/navbar.css'
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -61,11 +61,9 @@ const Navbar = () => {
   const [isSryniPathActive, setIsSryniPathActive] = useState(false);
   const [isFAQpathActive, setIsFAQpathActive] = useState(false);
 
-  const pathName = location.pathname.slice(1);
-  // console.log("pathName", pathName);
-
-  useEffect(() => {
-    // console.log("path===>", pathName);
+  const activeRoute = () => {
+    const pathName = location.pathname.slice(1);
+    // console.log("pathName", pathName);
     if (pathName === "student-transcript") {
       setIsReportPathActive(true);
       setIsShikkarthiPathActive(false);
@@ -91,19 +89,20 @@ const Navbar = () => {
       setIsShikkarthiPathActive(false)
     }
     else {
-
       setIsReportPathActive(false)
       setIsShikkarthiPathActive(false)
       setIsSryniPathActive(false)
       setIsFAQpathActive(false);
     }
-  }, [pathName])
+  }
+
+  useEffect(() => {
+    activeRoute();
+  }, [location])
 
   // console.log("isReportPathActive===>", isReportPathActive);
   // console.log("isShikkarthiPathActive===>", isShikkarthiPathActive);
   // console.log("isSryniPathActive===>", isSryniPathActive);
-
-
 
   return (
     <>
