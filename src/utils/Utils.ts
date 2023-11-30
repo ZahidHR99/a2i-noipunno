@@ -241,21 +241,21 @@ export const make_group_by = (studentData: any) => {
 };
 
 
-export const get_unique_index = (students: any , uid) => {
+export const get_unique_index = (students: any, uid) => {
 
-  console.log(`students`, students , uid);
-  
+  console.log(`students`, students, uid);
+
   // Function to find the index of an object with a specific property value
   function findIndexByProperty(array, propertyName, value) {
     return array.findIndex(element => element[propertyName] === value);
   }
   const index = findIndexByProperty(students, 'uid', uid);
-  
+
   if (index !== -1) {
     return index
   } else {
     return null
   }
 
-  
+
 };

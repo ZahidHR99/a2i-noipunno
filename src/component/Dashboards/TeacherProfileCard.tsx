@@ -3,20 +3,25 @@ import '../../assets/dashboard_materials/css/dashboard.css';
 import { Link } from "react-router-dom";
 import editIcon from '../../assets/dashboard_materials/images/dashboard/edit-2.svg';
 import teacherProfileImg from '../../assets/dashboard_materials/images/dashboard/60px.png';
+import femaleTeacherProfileImg from '../../assets/images/teacher_avatar/female_tec_avatar.png';
 import starIcon from '../../assets/dashboard_materials/images/dashboard/ico.svg';
 import messageIcon from '../../assets/dashboard_materials/images/dashboard/message.svg';
 import darkMoodIcon from '../../assets/dashboard_materials/images/dashboard/moon.svg';
 import eyeIcon from '../../assets/dashboard_materials/images/dashboard/eye.svg';
+import { logged_teacher_details } from "../../utils/Utils";
 
 
 const TeacherProfileCard = () => {
-  const [userDetails, setuserDetails] = useState<any>({});
+  const [teacherInfos, setTeacherInfos] = useState<any>({});
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("customer_login_auth"));
     if (items) {
-      setuserDetails(items.user);
+      setTeacherInfos(items?.user);
     }
   }, []);
+
+
+
 
   // console.log(userDetails);
 
@@ -36,10 +41,11 @@ const TeacherProfileCard = () => {
           </div>
           <div className="teacher-title">
             <h2>
-              {/* প্রধান শিক্ষক */}
-              {(userDetails?.user_type_id == 1 && "শিক্ষক") ||
-                (userDetails?.user_type_id == 2 && "সহকারী শিক্ষক") ||
-                (userDetails?.user_type_id == 3 && "প্রধান শিক্ষক")}
+              {
+                (teacherInfos?.user_type_id == 1 && "শিক্ষক") ||
+                (teacherInfos?.user_type_id == 2 && "সহকারী শিক্ষক") ||
+                (teacherInfos?.user_type_id == 3 && "প্রধান শিক্ষক")
+              }
             </h2>
           </div>
           <div className="icon">
@@ -57,11 +63,11 @@ const TeacherProfileCard = () => {
         <div className="teacher-info">
           <h2 className="card-title">
             {/* আতাউর রহমান */}
-            {userDetails?.name}
+            {teacherInfos?.name}
           </h2>
           <p className="card-text">
             {/* 95481468716473 */}
-            {userDetails?.eiin}
+            {teacherInfos?.eiin}
           </p>
           {/* <p className="card-text">পাবনা জিলা স্কুল, পাবনা</p> */}
           <p className="card-text">School Name- No entry</p>

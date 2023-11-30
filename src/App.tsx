@@ -52,7 +52,6 @@ function App() {
 
   return (
     <>
-      {/* {topbar && <Topbar />} */}
       {topbar && <Navbar />}
 
       <Routes>
@@ -81,8 +80,6 @@ function App() {
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
           <Route path="/head-teacher-dashboard" element={<HeadTeacherDashboard />} />
           <Route path="/faq" element={<FAQ />} />
-
-
         </Route>
         <Route path="/login" element={<Login />} />
 

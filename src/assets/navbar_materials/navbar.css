@@ -1,66 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-ul,
-ol,
-a,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-
-.min-vh-90-100 {
-  height: calc(100vh - 100px);
-}
-
-.max-width-540 {
-  max-width: 540px;
-}
-
-body {
-  font-family: "Roboto";
-  box-sizing: border-box;
-  background-color: #efefef;
-  color: #000000;
-}
-
-.dark-mode {
-  background-color: #000000;
-  color: white;
-}
-
-:root {
-  /* color */
-  --bg_primary_dark: #2d6668;
-  --bg_primary: #428f92;
-  --bg_secondary: #a9fcff;
-  --bg_success: #f0fae9;
-  --text_primary_dark: #2d6668;
-  --text_secondary_dark: #0e7e7e;
-  --text_primary_fade: #7daeb0;
-  --text_success: #69cb1c;
-  --text_dark: #222222;
-  --text_white: #ffffff;
-  --text_blue_dark: #181c32;
-}
-
-
-/* ---------deshboard page start------------------- */
-.dashboard-bg-color {
-  background-color: #fafafa;
-}
-
 /* topnav bar start */
 .topnav {
   background-color: #ffffff;
@@ -221,7 +158,7 @@ body {
 .nav-right-dorpdown {
   background-color: var(--bg_primary);
   border-radius: 4px;
-  color: var(--text_white) !important;
+  color: var(--text_white);
   font-family: Inter;
   font-size: 14px;
   font-weight: 500;
@@ -403,4 +340,264 @@ body {
   }
 }
 
+<<<<<<< HEAD
 /* media query end */
+=======
+/* media query end */
+
+/* reportCard start */
+.reportHeader {
+  height: 62px;
+  margin-top: 16px;
+  margin-bottom: 13px;
+}
+
+.reportHeader .reportHeaderLeft {
+  border-radius: 6px;
+  background: var(--surface-forground-background, #fff);
+  box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
+  display: flex;
+  width: 62px;
+  height: 62px;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.reportHeader .reportHeaderLeftIcon {
+  width: 9.463px;
+  height: 21.12px;
+}
+
+.reportHeader .reportHeaderRight {
+  border-radius: 6px;
+  background: var(--surface-forground-background, #fff);
+  box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
+  height: 62px;
+  width: 100%;
+  padding: 12px 24px;
+  margin-left: 5px;
+}
+
+.reportHeader .reportHeader-book-icon {
+  display: flex;
+  padding: 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--primary-30, #a9fcff);
+  background: var(--primary-10, #e4feff);
+  margin-right: 5px;
+}
+
+.reportHeader .transcriptHeader {
+  margin-left: 5px;
+}
+
+.reportHeader .transcriptHeaderAssesment {
+  color: #555;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Noto Sans Bengali;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 375.98px) {
+  .reportHeader .transcriptHeaderAssesment {
+    font-size: 12px;
+  }
+}
+
+.reportHeader .dashboard-data {
+  color: #555;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Noto Sans Bengali;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  gap: 4px;
+}
+
+.reportHeader .dashboard-data .data {
+  color: #888;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Noto Sans Bengali;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+}
+
+.reportHeader .dashboard {
+  color: #428f92;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Noto Sans Bengali;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+}
+
+.reportHeader .favourite-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.reportHeader .vertical-line {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+}
+
+/* reportCard end */
+
+/* form design start */
+.form-design {
+  background-color: #e4feff;
+  margin-top: 13px;
+  padding: 19px 24px;
+}
+
+.form-design .form-label {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.0225em;
+  text-align: left;
+  color: var(--text_dark);
+  margin-bottom: 3px;
+}
+
+.form-design .form-select {
+  height: 48px;
+  padding: 11px 26px;
+  margin: 3px 0px 3px 0px;
+  border-radius: 4px;
+}
+
+.select-option {
+  padding: 5px 0px;
+}
+
+.assesment-btn {
+  margin-top: 37px;
+  height: 46px;
+  background-color: var(--bg_primary);
+  color: var(--text_white);
+  line-height: 1.1;
+}
+
+.assesment-btn img {
+  height: 20px;
+  width: 20px;
+}
+
+.assesment-btn:hover {
+  background-color: var(--bg_primary);
+  color: var(--text_blue_dark);
+}
+
+/* form design end */
+<<<<<<< HEAD>>>>>>>b1184690bb62bc068ee612911ca268c1d5450514=======
+
+/* all subject start */
+.all-subjects {
+  margin: 7px 0px;
+}
+
+.all-subjects .books {
+  padding: 0px 10px;
+}
+
+.all-subjects .books-icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 5px;
+}
+
+/* all subject end */
+
+/* assessment-report-cards start */
+.assessment-report-cards {
+  padding: 20px;
+}
+
+.assessment-report-cards p {
+  color: var(--text-regular, #222);
+  font-family: Noto Sans Bengali;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.assessment-report-cards h6 {
+  color: var(--text-regular, #222);
+  font-family: Noto Sans Bengali;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  /* 155.556% */
+}
+
+/* assessment-report-cards end */
+
+/* report-download-bar start */
+.report-download-bar {
+  margin: 10px 0px;
+}
+
+.report-download-bar .student-name {
+  color: #222;
+  font-family: Roboto;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+}
+
+.report-download-bar .student-rollno {
+  color: var(--text-regular, #222);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.report-download-bar .download-bg-style {
+  border-radius: 4px;
+  background: #e4feff;
+  height: 48px;
+  padding: 8px 16px;
+  gap: 10px;
+}
+
+.report-download-bar .download-bg-style .download-img {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.report-download-bar .download-btn-icon {
+  border-radius: 100px;
+  background: var(--color-warning-10, #fffae6);
+  display: flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+}

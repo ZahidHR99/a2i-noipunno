@@ -1,3 +1,4 @@
+import { convertToBanglaNumber } from '../../utils/Utils';
 import './faq.css'
 
 
@@ -7,7 +8,7 @@ const FAQ = () => {
     {
       "id": 1,
       "question": " 'নৈপুণ্য' কি?",
-      "answer": "নতুন শিক্ষাক্রমে মূল্যায়ন পদ্ধতিতে শিখনকালীন ও সামষ্টিক মূল্যায়নের তথ্য সংরক্ষণ ও স্বয়ংক্রিয়ভাবে রিপোর্ট কার্ড প্রস্তুতের জন্য ‘নৈপুণ্য’ অ্যাপ তৈরি করা হয়েছে।"
+      "answer": "নতুন শিক্ষাক্রমের মূল্যায়ন পদ্ধতিতে শিখনকালীন ও সামষ্টিক মূল্যায়নের তথ্য সংরক্ষণ ও স্বয়ংক্রিয়ভাবে রিপোর্ট কার্ড প্রস্তুতের জন্য ‘নৈপুণ্য’ ওয়েব অ্যাপ্লিকেশন এবং মোবাইল অ্যাপ তৈরি করা হয়েছে।"
     },
     // {
     //   "id": 2,
@@ -58,12 +59,11 @@ const FAQ = () => {
 
 
   return (
-    <div className="container mt-5">
-
+    <div className="container">
       <div className="container">
         <div className="d-flex align-items-center">
           <div className="card shadow-lg border-0 w-100 rounded">
-            <ul className="nav d-flex mt-2 justify-content-around py-1">
+            <ul className="nav d-flex mt-2 justify-content-around ">
               <li className={`my-2 nav-item`}>
                 <h4>  প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী </h4>
               </li>
@@ -71,16 +71,17 @@ const FAQ = () => {
             <div className="accordion" id="accordionExample">
               {allQusetion.map((item, index) => (
                 <div className="accordion-item" key={item.id}>
-                  <h2 className="accordion-header " id={`heading${item.id}`}>
+                  <h2 className="accordion-header" id={`heading${item.id}`} >
                     <button
-                      className="accordion-button test_accordion"
+                      className="accordion-button test_accordion bg-white"
+
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target={`#collapse${item.id}`}
                       aria-expanded="true"
                       aria-controls={`collapse${item.id}`}
                     >
-                      {index + 1}. {item.question}
+                      {convertToBanglaNumber((index + 1))}। {item.question}
                     </button>
                   </h2>
                   <div

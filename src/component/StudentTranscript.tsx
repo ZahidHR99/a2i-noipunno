@@ -25,6 +25,7 @@ import Breadcumb from "../layout/Breadcumb";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 import { Link } from "react-router-dom";
+import '../../src/styles/noipunno_custom_styles.css';
 
 export default function StudentTranscript() {
   const [shift, setShift] = useState([]);
@@ -209,7 +210,7 @@ export default function StudentTranscript() {
   console.log("====================================");
 
   return (
-    <div className="">
+    <div className="report_page">
       {/* report end */}
       {/* expertness assessment start */}
 
