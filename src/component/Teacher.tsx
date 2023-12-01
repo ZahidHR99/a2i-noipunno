@@ -123,58 +123,6 @@ export default function Teacher() {
     setelement(e);
   };
 
-  // const location = useLocation()
-  // const [total_student, setTotal_student] = useState<any>([]);
-  // const [total_teacher, setTotal_teacher] = useState<any>([]);
-  // const [total_class, setTotal_class] = useState<any>([]);
-
-  // const student_lsit = async () => {
-  //   const student: any = [];
-  //   const studentsData = JSON.parse(localStorage.getItem('own_subjet'));
-
-  //   studentsData?.data?.data?.subjects.map((std_data: any) => {
-  //     return std_data.class_room.students.map((stu_data: any) => {
-  //       stu_data.competence = std_data.competence;
-  //       student.push(stu_data);
-  //     });
-  //   });
-
-  //   if (student) {
-  //     studentsData?.data?.data?.subjects.map((std_data: any) => {
-  //       return std_data?.class_room?.students?.map((stu_data: any) => {
-  //         stu_data.competence = std_data.competence;
-  //         student.push(stu_data);
-  //       });
-  //     });
-
-  //     const uniqueObjectsArray = student.filter(
-  //       (obj: any, index: any, self: any) =>
-  //         index === self.findIndex((o: any) => o.uid === obj.uid)
-  //     );
-  //     setTotal_student(uniqueObjectsArray);
-  //   }
-
-
-  // };
-
-  // const teacher_list = async () => {
-  //   const teachersData = JSON.parse(localStorage.getItem('teacher_dashboard'));
-  //   setTotal_teacher(teachersData?.data?.teachers)
-  // };
-
-  // const all_class = async () => {
-  //   const local_storege_data = JSON.parse(localStorage.getItem('teacher_dashboard'));
-  //   setTotal_class(local_storege_data?.data?.subjects);
-  // };
-
-  // useEffect(() => {
-  //   student_lsit();
-  //   teacher_list();
-  //   all_class();
-  // }, []);
-
-  // console.log("all_student", all_student);
-  // console.log("all_teacher", all_teacher);
 
 
   return (
