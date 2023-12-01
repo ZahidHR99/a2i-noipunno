@@ -55,34 +55,37 @@ const ClassWiseSubject = () => {
           </div>))}
       </>} */}
 
-        {(subjects?.length == 0) ?
-          <div className={styles.loading_container}><Spinner animation="border" />
-          </div> :
-          <section>
-            <div className="container subject-container">
-              <h2>{(id == "6") && "ষষ্ঠ" || (id == "7") && "সপ্তম"} শ্রেণির বিষয় সমুহ </h2>
-              <div className="row">
-                {subjects?.map((subject, index) => (
-                  <div key={index} className="col">
-                    <a href="#" className="subject-number">
-                      <div className="icon">
-                        <img src={bookIcon} alt="bookIcon" />
-                      </div>
-                      <h2 className="mt-3">{subject?.name}</h2>
-                      <div className="total-student">
-                        <p>
-                          {
-                            (subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" ||
-                            (subject?.class_uid === "7") && "সপ্তম শ্রেণি"
-                          }
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-                ))}
-              </div>
+        {
+          (subjects?.length == 0) ?
+            <div className={styles.loading_container}>
+              <Spinner animation="border" />
             </div>
-          </section>
+            :
+            <section>
+              <div className="container subject-container">
+                <h2>{(id == "6") && "ষষ্ঠ" || (id == "7") && "সপ্তম"} শ্রেণির বিষয় সমুহ </h2>
+                <div className="row">
+                  {subjects?.map((subject, index) => (
+                    <div key={index} className="col-sm-12 col-md-6 col-lg-4 col-xl-3 g-2">
+                      <a href="#" className="subject-number">
+                        <div className="icon">
+                          <img src={bookIcon} alt="bookIcon" />
+                        </div>
+                        <h2 className="mt-3">{subject?.name}</h2>
+                        <div className="total-student">
+                          <p>
+                            {
+                              (subject?.class_uid === "6") && "ষষ্ঠ শ্রেণি" ||
+                              (subject?.class_uid === "7") && "সপ্তম শ্রেণি"
+                            }
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
         }
       </div>
     </section>

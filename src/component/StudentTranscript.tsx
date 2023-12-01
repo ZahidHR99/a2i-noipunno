@@ -997,20 +997,7 @@ export default function StudentTranscript() {
                 </div>
                 {/* subjects list start */}
                 <div className="content mb-5 mt-0">
-                  {/* {loader && (
-        <div className={loader && styles.loading_container}>
-          {loader && <Spinner animation="border" />}
-        </div>
-      )} */}
-                  {/* 
-      {!ShowProfile && (
-        <BreadcumbHome
-          showSubjectname={showSubjectname}
-          setShowProfile={setShowProfile}
-          seshowSubject={seshowSubject}
-          title={" পারদর্শিতা এবং আচরণগত মূল্যায়ন"}
-        />
-      )} */}
+                  
                   {!loader && (
                     <div className="dashboard-section">
                       <section className="np-breadcumb-section pt-2 pb-5">

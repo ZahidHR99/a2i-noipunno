@@ -29,6 +29,11 @@ const StudentList = () => {
       (obj: any, index: any, self: any) =>
         index === self.findIndex((o: any) => o.uid === obj.uid)
     );
+
+    uniqueObjectsArray.sort(function(a, b) {
+      return a.roll - b.roll;
+  });
+
     setStudent(uniqueObjectsArray);
   };
 

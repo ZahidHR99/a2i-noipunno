@@ -14,7 +14,7 @@ const ShikkathirHaziraChart = () => {
               className="form-select"
               aria-label="Default select example"
             >
-              <option selected="">সাপ্তাহিক </option>
+              <option value="">সাপ্তাহিক </option>
               <option value={1}>মাসিক</option>
               <option value={2}>বছর</option>
             </select>
@@ -25,7 +25,7 @@ const ShikkathirHaziraChart = () => {
               className="form-select"
               aria-label="Default select example"
             >
-              <option selected="">সব</option>
+              <option value="">সব</option>
               <option value={2}>দিন</option>
               <option value={3}>মাসিক</option>
             </select>

@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
-import {
-  teacher_dashboard,
-  teacher_own_subject
-} from "../Request";
+import { teacher_dashboard, teacher_own_subject } from "../Request";
 
 import { Spinner } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
@@ -14,6 +11,7 @@ import styles from "./Home.style.module.css";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import ShowAssesment from "./ShowAssesment";
 import bookIcon from '../../src/assets/dashboard_materials/images/dashboard/bicon.svg';
+import "../styles/noipunno_custom_styles.css";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
@@ -42,11 +40,9 @@ export default function Teacher() {
   const [showSubjectname, seshowSubjectname] = useState("");
   const [showCompitance, seshowCompitance] = useState(false);
   const [parodorshita_acoron_tab, setparodorshita_acoron_tab] = useState(0);
-
+  const [shikhonKalinMullayon_sannasik_barsik, setshikhonKalinMullayon_sannasik_barsik] = useState([]);
 
   const fetchData = async () => {
-    const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
-    const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
 
     const teacher_dash__: any = localStorage.getItem("teacher_dashboard") || "";
     const teacher_dash = teacher_dash__ ? JSON.parse(teacher_dash__) : "";
@@ -55,12 +51,7 @@ export default function Teacher() {
     localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
 
     console.log(`own_subjet----`, own_subjet);
-    // if (own_SUbjects) {
-    //   own_subjet = own_SUbjects;
-    // } else {
-    //   own_subjet = await teacher_own_subject();
 
-    // }
 
     let data: any = "";
     if (teacher_dash) {
@@ -77,21 +68,22 @@ export default function Teacher() {
 
     const all_subject: any = [];
 
-    let compitnc_obj = {}
+    let compitnc_obj = {};
     own_subjet.data.data.subjects.map((d: any) => {
       data.data.subjects.map((d_2: any) => {
         if (d_2.uid === d.subject_id) {
           data.data.teachers.map((al_tech: any) => {
             if (d.teacher_id == al_tech.uid) {
-
               const obj: any = {
                 subject: d_2,
                 own_subjet: d,
                 teacher: al_tech,
               };
               d.oviggota.map((competnc) => {
-                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc }
-              })
+                compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc };
+              });
+
+
               all_subject.push(obj);
             }
           });
@@ -99,9 +91,8 @@ export default function Teacher() {
       });
     });
 
-
     setall_bis(own_subjet.data.data.bis);
-    setallCompitance(compitnc_obj)
+    setallCompitance(compitnc_obj);
     setsubject(all_subject);
     setloader(false);
   };
@@ -111,6 +102,7 @@ export default function Teacher() {
     seshowSubject(false);
     setselected_subject(datas);
     setshikhonKalinMullayon(datas.own_subjet.oviggota);
+    setshikhonKalinMullayon_sannasik_barsik(datas.own_subjet.competence);
     setallassessmet(own_data.assessments[0].assessment_details);
   };
 
@@ -123,10 +115,11 @@ export default function Teacher() {
     setelement(e);
   };
 
-
+  // console.log("all_student", all_student);
+  // console.log("all_teacher", all_teacher);
 
   return (
-    <div className="content mb-5">
+    <div className="content mb-5 teacher_compo_bg">
       {loader && (
         <div className={loader && styles.loading_container}>
           {loader && <Spinner animation="border" />}
@@ -157,8 +150,12 @@ export default function Teacher() {
                   className={
                     // ShowProfile ?
                     // "col-md-9" :
-                    "col-md-12"} >
-                  <div className={`row d-flex gap-2 ${styles.subject_container}`}>
+                    "col-md-12"
+                  }
+                >
+                  <div
+                    className={`row d-flex gap-2 ${styles.subject_container}`}
+                  >
                     <div className="d-flex" style={{ cursor: "pointer" }}>
                       <h5
                         onClick={(e) => {
@@ -167,9 +164,7 @@ export default function Teacher() {
                         }}
                       >
                         {showSubject && subject.length > 0 && (
-                          <>
-                            {/* বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "} */}
-                          </>
+                          <>{/* বিষয়ভিত্তিক তথ্য ও মূল্যায়ন{" "} */}</>
                         )}
                         {subject.length == 0 && (
                           <>কোন বিষয় খুঁজে পাওয়া যায়নি</>
@@ -180,164 +175,103 @@ export default function Teacher() {
                     </div>
                   </div>
                   <div className="row">
-
-
-                    {/* {showSubject && (
-                      <>
-                        {subject.map((d: any, key: any) => (
-                          <div
-                            className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
-                            style={{ cursor: "pointer" }}
-                            key={key}
-                            onClick={(e) => {
-                              skill_behaibor_count(d);
-                              seshowSubjectname(d.subject.name)
-                              setStudent(d?.own_subjet?.class_room?.students)
-
-                              setteacher_uid(d?.own_subjet.teacher_id)
-                              setStudent(d?.own_subjet?.class_room?.students)
-                              setShowProfile(false)
-                              localStorage.setItem(
-                                "class_room_id",
-                                d.own_subjet.class_room_id
-                              );
-
-                              localStorage.setItem(
-                                "subject_id",
-                                d.own_subjet.subject_id
-                              );
-
-                              setpi_selection(d.own_subjet?.pi_selection)
-                            }}
-                          >
-                            <div className="card shadow-sm border-0 p-1 p-lg-3 teacher-list-card h-100 rounded-sm">
-                              <div className="gap-1 gap-lg-3 justify-content-center">
-                                <div className={`d-flex justify-content-center py-2 pb-4 ${styles.subject_number}`}>
-
-                                  <div className={styles.icon_sub}>
-                                    <img src={bookIcon} alt="bookIcon" />
-                                  </div>
-                                </div>
-                                <h5 className={styles.subject}>
-                                  {d?.subject?.name}
-                                </h5>
-
-                                <h5 className={styles.std_class}>
-                                  {d?.subject.class_uid == "6"
-                                    ? "ষষ্ঠ "
-                                    : "সপ্তম "}
-                                  শ্রেণি
-                                </h5>
-                                <h5 className={styles.class_teacher}>
-                                  শ্রেণি শিক্ষক :
-                                  <span
-                                    style={{
-                                      display: "block",
-                                    }}
-                                  >
-                                    {teacher_name(
-                                      d.own_subjet.class_room.class_teacher_id
-                                    )}
-                                  </span>
-                                </h5>
-                              </div>
-                              <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
-                                <h6 className={styles.session}>
-                                  {shift_name(d.own_subjet.class_room.shift_id)}{" "}
-                                  সেশন
-                                </h6>
-                                <h6 className={styles.horizontal_bar}>। </h6>
-                                <h6 className={styles.branch}>
-                                  {section_name(
-                                    d.own_subjet.class_room.section_id
-                                  )}{" "}
-                                  শাথা
-                                </h6>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </>
-                    )} */}
-
                     <div className="container subject-container">
-                      {
-                        ShowProfile && <h2 className="m-0">বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
-                      }
+                      {ShowProfile && (
+                        <h2 className="m-0">বিষয় ভিত্তিক তথ্য ও মূল্যায়ন</h2>
+                      )}
 
                       <div className="row">
-                        {showSubject && <>
-                          {subject.map((d: any, key: any) => (
-                            <div
-                              className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
-                              style={{ cursor: "pointer" }}
-                              key={key}
-                              onClick={(e) => {
-                                skill_behaibor_count(d);
-                                seshowSubjectname(d.subject.name)
-                                setStudent(d?.own_subjet?.class_room?.students)
+                        {showSubject && (
+                          <>
+                            {subject.map((d: any, key: any) => (
+                              <div
+                                className="col-sm-12 col-md-6 col-lg-3 col-xl-2 g-2"
+                                style={{ cursor: "pointer" }}
+                                key={key}
+                                onClick={(e) => {
+                                  skill_behaibor_count(d);
+                                  seshowSubjectname(d.subject.name);
 
-                                setteacher_uid(d?.own_subjet.teacher_id)
-                                setStudent(d?.own_subjet?.class_room?.students)
-                                setShowProfile(false)
-                                localStorage.setItem(
-                                  "class_room_id",
-                                  d.own_subjet.class_room_id
-                                );
+                                  const studnt =
+                                    d?.own_subjet?.class_room?.students;
 
-                                localStorage.setItem(
-                                  "subject_id",
-                                  d.own_subjet.subject_id
-                                );
+                                  studnt.sort(function (a, b) {
+                                    return a.roll - b.roll;
+                                  });
 
-                                setpi_selection(d.own_subjet?.pi_selection)
-                              }}
-                            >
-                              <a className="subject-number">
-                                <div className="icon">
-                                  <img src={bookIcon} alt="bookIcon" />
-                                </div >
-                                <h2 className="mt-3">  {d?.subject?.name}</h2>
-                                <div className="total-student">
-                                  <p> {d?.subject.class_uid == "6" ? "ষষ্ঠ " : "সপ্তম "} শ্রেণি </p>
-                                </div>
-                                <div className="total-student">
-                                  <p>  শ্রেণি শিক্ষক : </p>
-                                </div>
-                                <div className="total-student">
-                                  <p>
-                                    {teacher_name(
-                                      d.own_subjet.class_room.class_teacher_id
-                                    )}
-                                  </p>
-                                </div>
-                                <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
-                                  <h6 className={styles.session}>
-                                    {shift_name(d.own_subjet.class_room.shift_id)}{" "}
-                                    সেশন
-                                  </h6>
-                                  <h6 className={styles.horizontal_bar}>। </h6>
-                                  <h6 className={styles.branch}>
-                                    {section_name(
-                                      d.own_subjet.class_room.section_id
-                                    )}{" "}
-                                    শাথা
-                                  </h6>
-                                </div>
-                              </a >
-                            </div >
-                          ))
-                          }
-                        </>}
+                                  setStudent(studnt);
 
-                      </div >
-                    </div >
+                                  setteacher_uid(d?.own_subjet.teacher_id);
+                                  setShowProfile(false);
+                                  localStorage.setItem(
+                                    "class_room_id",
+                                    d.own_subjet.class_room_id
+                                  );
+
+                                  localStorage.setItem(
+                                    "subject_id",
+                                    d.own_subjet.subject_id
+                                  );
+
+                                  setpi_selection(d.own_subjet?.pi_selection);
+                                }}
+                              >
+                                <a className="subject-number">
+                                  <div className="icon">
+                                    <img
+                                      src={bookIcon}
+                                      alt=""
+                                    />
+                                  </div>
+                                  <h2 className="mt-3"> {d?.subject?.name}</h2>
+                                  <div className="total-student">
+                                    <p>
+                                      {" "}
+                                      {d?.subject.class_uid == "6"
+                                        ? "ষষ্ঠ "
+                                        : "সপ্তম "}{" "}
+                                      শ্রেণি{" "}
+                                    </p>
+                                  </div>
+                                  <div className="total-student">
+                                    <p> শ্রেণি শিক্ষক : </p>
+                                  </div>
+                                  <div className="total-student">
+                                    <p>
+                                      {teacher_name(
+                                        d.own_subjet.class_room.class_teacher_id
+                                      )}
+                                    </p>
+                                  </div>
+                                  <div className="flex-md-row flex-lg-row d-flex  justify-content-center gap-2">
+                                    <h6 className={styles.session}>
+                                      {shift_name(
+                                        d.own_subjet.class_room.shift_id
+                                      )}{" "}
+                                      সেশন
+                                    </h6>
+                                    <h6 className={styles.horizontal_bar}>
+                                      ।{" "}
+                                    </h6>
+                                    <h6 className={styles.branch}>
+                                      {section_name(
+                                        d.own_subjet.class_room.section_id
+                                      )}{" "}
+                                      শাথা
+                                    </h6>
+                                  </div>
+                                </a>
+                              </div>
+                            ))}
+                          </>
+                        )}
+                      </div>
+                    </div>
 
                     {ShowProfile === false && (
                       <>
                         {showSkillBehaibor && (
                           <>
-
                             <ShowAssesment
                               seshowCompitance={seshowCompitance}
                               setassessment_uid={setassessment_uid}
@@ -358,18 +292,48 @@ export default function Teacher() {
 
                         {showCompitance && (
                           <>
-                            {
-                              parodorshita_acoron_tab === 0 &&
-                              <ParodorshitaComponent pi_selection={pi_selection} teacher_uid={teacher_uid} Student={Student} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-                            }
+                            {parodorshita_acoron_tab === 0 && (
+                              <ParodorshitaComponent
+                                pi_selection={pi_selection}
+                                teacher_uid={teacher_uid}
+                                Student={Student}
+                                assessment_uid={assessment_uid}
+                                pi_attr={pi_attr}
+                                showDetailsshikhonKalinMullayon={
+                                  showDetailsshikhonKalinMullayon
+                                }
+                                shikhonKalinMullayon_sannasik_barsik={shikhonKalinMullayon_sannasik_barsik}
+                                Showcollaps={Showcollaps}
+                                setShowcollaps={setShowcollaps}
+                                Mullayon_name={Mullayon_name}
+                                shikhonKalinMullayon={shikhonKalinMullayon}
+                                setshowDetailsshikhonKalinMullayon={
+                                  setshowDetailsshikhonKalinMullayon
+                                }
+                              />
+                            )}
 
-
-                            {
-                              parodorshita_acoron_tab === 1 &&
-                              <AcorongotoComponent teacher_uid={teacher_uid} teacher={teacher} Student={Student} all_bis={all_bis} assessment_uid={assessment_uid} pi_attr={pi_attr} showDetailsshikhonKalinMullayon={showDetailsshikhonKalinMullayon} Showcollaps={Showcollaps} setShowcollaps={setShowcollaps} Mullayon_name={Mullayon_name} shikhonKalinMullayon={shikhonKalinMullayon} setshowDetailsshikhonKalinMullayon={setshowDetailsshikhonKalinMullayon} />
-
-                            }
-
+                            {parodorshita_acoron_tab === 1 && (
+                              <AcorongotoComponent
+                                teacher_uid={teacher_uid}
+                                teacher={teacher}
+                                Student={Student}
+                                all_bis={all_bis}
+                                assessment_uid={assessment_uid}
+                                pi_attr={pi_attr}
+                                showDetailsshikhonKalinMullayon={
+                                  showDetailsshikhonKalinMullayon
+                                }
+                                shikhonKalinMullayon_sannasik_barsik={shikhonKalinMullayon_sannasik_barsik}
+                                Showcollaps={Showcollaps}
+                                setShowcollaps={setShowcollaps}
+                                Mullayon_name={Mullayon_name}
+                                shikhonKalinMullayon={shikhonKalinMullayon}
+                                setshowDetailsshikhonKalinMullayon={
+                                  setshowDetailsshikhonKalinMullayon
+                                }
+                              />
+                            )}
                           </>
                         )}
                       </>
