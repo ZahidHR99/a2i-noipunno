@@ -234,7 +234,7 @@ export const convertToBanglaNumber = (number: any) => {
     }
     return banglaNumber;
   }else{
-    return "PI নম্বর খুঁজে পাওয়া যায়নি."
+    return "নম্বর খুঁজে পাওয়া যায়নি."
   }
 };
 
