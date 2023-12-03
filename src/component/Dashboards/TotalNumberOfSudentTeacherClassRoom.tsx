@@ -41,17 +41,13 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
       set_Total_class(local_storege_data?.data?.classes);
       setLoadin(false)
     }
-
-
   };
 
 
   setTimeout(() => {
 
     if (loading) {
-
       // console.log(777777777);
-
       student_lsit();
       teacher_list();
       all_class();
