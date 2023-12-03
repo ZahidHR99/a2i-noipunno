@@ -43,7 +43,6 @@ const LoginPage = () => {
   };
 
 
-
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const datas = new FormData(event.target);
