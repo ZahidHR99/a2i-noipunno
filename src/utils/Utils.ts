@@ -78,11 +78,11 @@ export const subject_name = (id: any) => {
 export const pis_list_func = (
   allCompitance: any,
   pi_list: any,
-  pi_selection: any = ""
+  check_sannasik_barsik_or_not: any = false
 ) => {
   const all_pis_id = [];
   const all_compitance_id = [];
-  localStorage.setItem("show_shannasik_barsik", "false");
+  localStorage.setItem("show_shannasik_barsik", check_sannasik_barsik_or_not);
 
   for (const x in allCompitance) {
     all_compitance_id.push(allCompitance[x].uid);
@@ -102,10 +102,9 @@ export const pis_list_func = (
     // });
   }
 
-  const selectedIds = pi_list.map((item:any) => 
-    {
-      return item.pi_uid
-    })
+  const selectedIds = pi_list.map((item: any) => {
+    return item.pi_uid;
+  });
 
   localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id));
   // localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id));
@@ -220,17 +219,23 @@ export const convertToBanglaNumber = (number: any) => {
     "১০",
     ",",
   ];
-  const numString = number.toString();
-  let banglaNumber = "";
-  for (let i = 0; i < numString.length; i++) {
-    if (numString[i] !== "," && numString[i] !== ".") {
-      const digit = parseInt(numString[i]);
-      banglaNumber += banglaDigits[digit] || numString[i];
-    } else {
-      banglaNumber += numString[i]
+
+  console.log(`number`, number);
+  if (number?.toString()) {
+    const numString = number?.toString() || "";
+    let banglaNumber = "";
+    for (let i = 0; i < numString.length; i++) {
+      if (numString[i] !== "," && numString[i] !== ".") {
+        const digit = parseInt(numString[i]);
+        banglaNumber += banglaDigits[digit] || numString[i];
+      } else {
+        banglaNumber += numString[i];
+      }
     }
+    return banglaNumber;
+  }else{
+    return "নম্বর খুঁজে পাওয়া যায়নি."
   }
-  return banglaNumber;
 };
 
 export const make_group_by = (studentData: any) => {
@@ -248,7 +253,6 @@ export const make_group_by = (studentData: any) => {
 };
 
 export const get_unique_index = (students: any, uid) => {
-
   // Function to find the index of an object with a specific property value
   function findIndexByProperty(array, propertyName, value) {
     return array.findIndex((element) => element[propertyName] === value);
@@ -276,6 +280,6 @@ export const all_students = (students_id: any) => {
       });
     });
 
-    return student
+    return student;
   }
 };

@@ -4,6 +4,7 @@ import "./TotalNumberOfStudent.css"
 
 const TotalNumberOfSudentTeacherClassRoom = () => {
   const [all_student, set_All_student] = useState([]);
+  const [loading, setLoadin] = useState(true);
   const student_lsit = async () => {
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
@@ -11,7 +12,6 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
     if (studentsData) {
       studentsData.data.data.subjects.map((std_data: any) => {
         return std_data.class_room.students.map((stu_data: any) => {
-          stu_data.competence = std_data.competence;
           student.push(stu_data);
         });
       });
@@ -36,14 +36,33 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
     const local_storege_data = JSON.parse(
       localStorage.getItem("teacher_dashboard")
     );
-    set_Total_class(local_storege_data?.data?.subjects);
+
+    if (local_storege_data?.data?.classes) {
+      set_Total_class(local_storege_data?.data?.classes);
+      setLoadin(false)
+    }
   };
 
-  useEffect(() => {
-    student_lsit();
-    teacher_list();
-    all_class();
-  }, []);
+
+  setTimeout(() => {
+
+    if (loading) {
+      // console.log(777777777);
+      student_lsit();
+      teacher_list();
+      all_class();
+
+    }
+
+
+  }, 1000)
+
+
+  // useEffect(() => {
+  //   student_lsit();
+  //   teacher_list();
+  //   all_class();
+  // }, [loading]);
 
   return (
     <div className="col-lg-2 col-md-6 ">
