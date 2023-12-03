@@ -78,11 +78,11 @@ export const subject_name = (id: any) => {
 export const pis_list_func = (
   allCompitance: any,
   pi_list: any,
-  pi_selection: any = ""
+  check_sannasik_barsik_or_not: any = false
 ) => {
   const all_pis_id = [];
   const all_compitance_id = [];
-  localStorage.setItem("show_shannasik_barsik", "false");
+  localStorage.setItem("show_shannasik_barsik", check_sannasik_barsik_or_not);
 
   for (const x in allCompitance) {
     all_compitance_id.push(allCompitance[x].uid);
