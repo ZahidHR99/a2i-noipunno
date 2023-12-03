@@ -45,7 +45,6 @@ export default function DetailsShikhonMullayonSannasikBarshik({
     // console.log(`data`, data);
   };
 
-
   return (
     <div>
       <div className="row">

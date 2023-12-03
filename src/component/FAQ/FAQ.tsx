@@ -55,6 +55,8 @@ const FAQ = () => {
     //   "question": "What is the largest planet in our solar system?",
     //   "answer": "Jupiter is the largest planet in our solar system."
     // }
+
+
   ]
 
 

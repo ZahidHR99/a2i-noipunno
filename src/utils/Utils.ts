@@ -78,14 +78,11 @@ export const subject_name = (id: any) => {
 export const pis_list_func = (
   allCompitance: any,
   pi_list: any,
-  check_sannasik_barsik_or_not: any = ""
+  pi_selection: any = ""
 ) => {
   const all_pis_id = [];
   const all_compitance_id = [];
   localStorage.setItem("show_shannasik_barsik", "false");
-  if (check_sannasik_barsik_or_not) {
-    localStorage.setItem("show_shannasik_barsik", "true");
-  }
 
   for (const x in allCompitance) {
     all_compitance_id.push(allCompitance[x].uid);
@@ -150,7 +147,7 @@ export const show_shannasik_barsik = () => {
   const show_shannasik_barsik__ = JSON.parse(
     localStorage.getItem("show_shannasik_barsik")
   );
-  // console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
+  console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
   return show_shannasik_barsik__;
 };
 
@@ -262,5 +259,23 @@ export const get_unique_index = (students: any, uid) => {
     return index;
   } else {
     return null;
+  }
+};
+
+export const all_students = (students_id: any) => {
+  const data = localStorage.getItem("own_subjet");
+  const storageData = JSON.parse(data);
+
+  let student = {};
+  if (storageData) {
+    const students = storageData.data.data.subjects.filter((sub: any) => {
+      sub.class_room.students.map((stu_data: any) => {
+        if (stu_data.uid == students_id) {
+          student = stu_data;
+        }
+      });
+    });
+
+    return student
   }
 };

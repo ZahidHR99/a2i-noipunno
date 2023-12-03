@@ -11,9 +11,11 @@ import styles from "./Home.style.module.css";
 import ParodorshitaComponent from "./ParodorshitaComponent";
 import ShowAssesment from "./ShowAssesment";
 import bookIcon from '../../src/assets/dashboard_materials/images/dashboard/bicon.svg';
+import "../styles/noipunno_custom_styles.css";
 
 export default function Teacher() {
   const [shift, setShift] = useState([]);
+  const [numberOfStudents, setnumberOfStudents] = useState([]);
   const [subject, setsubject] = useState([]);
   const [allCompitance, setallCompitance] = useState<any>({});
   const [element, setelement] = useState<any>("");
@@ -81,8 +83,6 @@ export default function Teacher() {
               d.oviggota.map((competnc) => {
                 compitnc_obj = { ...compitnc_obj, [competnc.uid]: competnc };
               });
-
-
               all_subject.push(obj);
             }
           });
@@ -114,11 +114,9 @@ export default function Teacher() {
     setelement(e);
   };
 
-  // console.log("all_student", all_student);
-  // console.log("all_teacher", all_teacher);
 
   return (
-    <div className="content mb-5">
+    <div className="content mb-5 teacher_compo_bg">
       {loader && (
         <div className={loader && styles.loading_container}>
           {loader && <Spinner animation="border" />}
