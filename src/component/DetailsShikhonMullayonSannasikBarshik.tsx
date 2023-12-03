@@ -17,6 +17,7 @@ export default function DetailsShikhonMullayonSannasikBarshik({
   teacher_uid,
 }: any) {
   const [competence_uid, setcompetence_uid] = useState<any>("");
+  const [oviggota_uid, setoviggota_uid] = useState<any>("");
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const [pi_name, setpi_name] = useState<any>("");
   const [pi_id, setpi_id] = useState<any>("");
@@ -82,8 +83,10 @@ export default function DetailsShikhonMullayonSannasikBarshik({
                               pi_attr(d, e);
                               setal_pi_attr(d?.pi_attribute);
                               setcompetence_uid(
-                                showDetailsshikhonKalinMullayon.uid
+                                d.competence_uid
                               );
+
+                              setoviggota_uid(showDetailsshikhonKalinMullayon.uid)
 
                               get_all_pi_evaluation_by_pi(d.uid);
 
@@ -146,6 +149,7 @@ export default function DetailsShikhonMullayonSannasikBarshik({
         <Modal.Body className="">
           <StudentMullayonModal
             competence_uid={competence_uid}
+            oviggota_uid={oviggota_uid}
             assessment_uid={assessment_uid}
             al_pi_attr={al_pi_attr}
             setal_pi_attr={setal_pi_attr}
