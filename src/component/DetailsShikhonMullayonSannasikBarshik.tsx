@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import StudentMullayonModal from "./StudentMullayonModal";
 import { Button, Modal } from "react-bootstrap";
 import { get_pi_evaluation_by_pi } from "../Request";
-import { check_pi_submitted, show_pis , convertToBanglaNumber } from "../utils/Utils";
+import {
+  check_pi_submitted,
+  show_pis,
+  convertToBanglaNumber,
+} from "../utils/Utils";
 
 export default function DetailsShikhonMullayonSannasikBarshik({
   showDetailsshikhonKalinMullayon,
@@ -13,6 +17,7 @@ export default function DetailsShikhonMullayonSannasikBarshik({
   teacher_uid,
 }: any) {
   const [competence_uid, setcompetence_uid] = useState<any>("");
+  const [oviggota_uid, setoviggota_uid] = useState<any>("");
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const [pi_name, setpi_name] = useState<any>("");
   const [pi_id, setpi_id] = useState<any>("");
@@ -27,7 +32,7 @@ export default function DetailsShikhonMullayonSannasikBarshik({
   };
 
   const get_all_pi_evaluation_by_pi = async (pi_uid: any) => {
-    setpi_uid_(pi_uid)
+    setpi_uid_(pi_uid);
     setis_draft(1);
     setall_submited_PI([]);
     const class_room_id: any = localStorage.getItem("class_room_id");
@@ -45,14 +50,11 @@ export default function DetailsShikhonMullayonSannasikBarshik({
     // console.log(`data`, data);
   };
 
-
   return (
     <div>
       <div className="row">
         {showDetailsshikhonKalinMullayon?.pis?.map((d: any, ky: any) => (
           <div key={ky}>
-
-            {/* <p>{d.uid}</p> */}
             {show_pis(d.uid) && (
               <div className="col-sm-6 col-md-12">
                 <div className={`d-flex align-items-center py-2 gap-2`}>
@@ -61,12 +63,19 @@ export default function DetailsShikhonMullayonSannasikBarshik({
                       <div className="d-flex justify-content-between align-items-center w-100 px-1">
                         <div className="d-flex" style={{ color: "#428F92" }}>
                           <h6>
-                            {/* {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.
-                            {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no )}.
-                            {convertToBanglaNumber(d?.pi_id)}{" "} */}
-                            {
+                            {convertToBanglaNumber(
+                              showDetailsshikhonKalinMullayon?.class_id ||
+                                showDetailsshikhonKalinMullayon?.class_uid
+                            )}
+                            .
+                            {convertToBanglaNumber(
+                              showDetailsshikhonKalinMullayon?.competence_id
+                            )}
+                            .{convertToBanglaNumber(d?.pi_id)}{" "}
+                            {/* {
                              convertToBanglaNumber(d.pi_no) || d.pi_no 
-                            }
+                            } */}
+                            {/* <p>{showDetailsshikhonKalinMullayon.class_uid } .{showDetailsshikhonKalinMullayon.competence_id} . {d.pi_id}</p> */}
                           </h6>
 
                           <Link
@@ -74,8 +83,10 @@ export default function DetailsShikhonMullayonSannasikBarshik({
                               pi_attr(d, e);
                               setal_pi_attr(d?.pi_attribute);
                               setcompetence_uid(
-                                showDetailsshikhonKalinMullayon.uid
+                                d.competence_uid
                               );
+
+                              setoviggota_uid(showDetailsshikhonKalinMullayon.uid)
 
                               get_all_pi_evaluation_by_pi(d.uid);
 
@@ -85,7 +96,12 @@ export default function DetailsShikhonMullayonSannasikBarshik({
                             to={"#"}
                             className="text-decoration text-success  ps-2"
                           >
-                            <h6>{d?.name_bn}  {check_pi_submitted(d , assessment_uid ) && <i className="fa-regular fa-circle-check"></i>}  </h6>
+                            <h6>
+                              {d?.name_bn}{" "}
+                              {check_pi_submitted(d, assessment_uid) && (
+                                <i className="fa-regular fa-circle-check"></i>
+                              )}{" "}
+                            </h6>
                           </Link>
                         </div>
                       </div>
@@ -107,25 +123,33 @@ export default function DetailsShikhonMullayonSannasikBarshik({
         centered
       >
         <Modal.Header closeButton>
-
           <Modal.Title>
             <span className="d-flex justify-content-start align-content-center gap-2">
-              <h4 className="font-weight-bold"><strong>পারদর্শিতা সূচক</strong></h4>
+              <h4 className="font-weight-bold">
+                <strong>পারদর্শিতা সূচক</strong>
+              </h4>
               <h4>
                 <strong>
+                  {convertToBanglaNumber(
+                    showDetailsshikhonKalinMullayon?.class_id ||
+                      showDetailsshikhonKalinMullayon?.class_uid
+                  )}
+                  .
+                  {convertToBanglaNumber(
+                    showDetailsshikhonKalinMullayon?.competence_id
+                  )}
+                  .{convertToBanglaNumber(pi_id)}{" "}
                   {/* {convertToBanglaNumber(showDetailsshikhonKalinMullayon?.class_id)}.{convertToBanglaNumber(showDetailsshikhonKalinMullayon?.oviggota_no)}.{convertToBanglaNumber(pi_id)} */}
                 </strong>
               </h4>
             </span>
             <h6>{pi_name}</h6>
-
-
-          </Modal.Title >
-
-        </Modal.Header >
+          </Modal.Title>
+        </Modal.Header>
         <Modal.Body className="">
           <StudentMullayonModal
             competence_uid={competence_uid}
+            oviggota_uid={oviggota_uid}
             assessment_uid={assessment_uid}
             al_pi_attr={al_pi_attr}
             setal_pi_attr={setal_pi_attr}
@@ -140,7 +164,7 @@ export default function DetailsShikhonMullayonSannasikBarshik({
             pi_uid_={pi_uid_}
           />
         </Modal.Body>
-      </Modal >
-    </div >
+      </Modal>
+    </div>
   );
 }

@@ -13,6 +13,7 @@ export default function DetailsShikhonMullayonShikhonKalin({
   teacher_uid,
 }: any) {
   const [competence_uid, setcompetence_uid] = useState<any>("");
+  const [oviggota_uid, setoviggota_uid] = useState<any>("");
   const [al_pi_attr, setal_pi_attr] = useState<any>([]);
   const [pi_name, setpi_name] = useState<any>("");
   const [pi_id, setpi_id] = useState<any>("");
@@ -72,8 +73,10 @@ export default function DetailsShikhonMullayonShikhonKalin({
                               pi_attr(d, e);
                               setal_pi_attr(d?.pi_attribute);
                               setcompetence_uid(
-                                showDetailsshikhonKalinMullayon.uid
+                                d.competence_uid
                               );
+
+                              setoviggota_uid(showDetailsshikhonKalinMullayon.uid)
 
                               get_all_pi_evaluation_by_pi(d.uid);
 
@@ -130,6 +133,7 @@ export default function DetailsShikhonMullayonShikhonKalin({
             al_pi_attr={al_pi_attr}
             setal_pi_attr={setal_pi_attr}
             pi_name={pi_name}
+            oviggota_uid={oviggota_uid}
             setpi_name={setpi_name}
             Student={Student}
             teacher_uid={teacher_uid}

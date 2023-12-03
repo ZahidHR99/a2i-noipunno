@@ -11,7 +11,6 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
     if (studentsData) {
       studentsData.data.data.subjects.map((std_data: any) => {
         return std_data.class_room.students.map((stu_data: any) => {
-          stu_data.competence = std_data.competence;
           student.push(stu_data);
         });
       });
@@ -36,7 +35,7 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
     const local_storege_data = JSON.parse(
       localStorage.getItem("teacher_dashboard")
     );
-    set_Total_class(local_storege_data?.data?.subjects);
+    set_Total_class(local_storege_data?.data?.classes);
   };
 
   useEffect(() => {

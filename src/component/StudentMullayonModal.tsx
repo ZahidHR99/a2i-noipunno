@@ -29,6 +29,7 @@ const class_room_id = localStorage.getItem("class_room_id");
 export default function StudentMullayonModal({
   assessment_uid,
   competence_uid,
+  oviggota_uid,
   al_pi_attr,
   pi_name,
   setpi_name,
@@ -190,6 +191,7 @@ export default function StudentMullayonModal({
       const params: any = {
         evaluate_type: assessment_uid,
         competence_uid,
+        oviggota_uid : ( assessment_uid == 1234567892 || assessment_uid == 1234567891 ) ? null : oviggota_uid,
         pi_uid,
         weight_uid,
         class_room_uid: class_room_id,
@@ -472,7 +474,7 @@ export default function StudentMullayonModal({
                         <GoPerson className="fs-6 fw-bold" />{" "}
                         {studnt?.student_name_bn || studnt?.student_name_en}
                         <br />
-                        রোল : {convertToBanglaNumber(studnt.roll)}
+                        রোল : {convertToBanglaNumber(studnt?.roll)}
                       </td>
 
                       {al_pi_attr?.map((pi_attr: any, kedy: any) => (

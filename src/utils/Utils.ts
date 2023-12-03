@@ -78,14 +78,11 @@ export const subject_name = (id: any) => {
 export const pis_list_func = (
   allCompitance: any,
   pi_list: any,
-  check_sannasik_barsik_or_not: any = ""
+  check_sannasik_barsik_or_not: any = false
 ) => {
   const all_pis_id = [];
   const all_compitance_id = [];
-  localStorage.setItem("show_shannasik_barsik", "false");
-  if (check_sannasik_barsik_or_not) {
-    localStorage.setItem("show_shannasik_barsik", "true");
-  }
+  localStorage.setItem("show_shannasik_barsik", check_sannasik_barsik_or_not);
 
   for (const x in allCompitance) {
     all_compitance_id.push(allCompitance[x].uid);
@@ -105,10 +102,9 @@ export const pis_list_func = (
     // });
   }
 
-  const selectedIds = pi_list.map((item:any) => 
-    {
-      return item.pi_uid
-    })
+  const selectedIds = pi_list.map((item: any) => {
+    return item.pi_uid;
+  });
 
   localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id));
   // localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id));
@@ -150,7 +146,7 @@ export const show_shannasik_barsik = () => {
   const show_shannasik_barsik__ = JSON.parse(
     localStorage.getItem("show_shannasik_barsik")
   );
-  // console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
+  console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
   return show_shannasik_barsik__;
 };
 
@@ -223,17 +219,23 @@ export const convertToBanglaNumber = (number: any) => {
     "১০",
     ",",
   ];
-  const numString = number.toString();
-  let banglaNumber = "";
-  for (let i = 0; i < numString.length; i++) {
-    if (numString[i] !== "," && numString[i] !== ".") {
-      const digit = parseInt(numString[i]);
-      banglaNumber += banglaDigits[digit] || numString[i];
-    } else {
-      banglaNumber += numString[i]
+
+  console.log(`number`, number);
+  if (number?.toString()) {
+    const numString = number?.toString() || "";
+    let banglaNumber = "";
+    for (let i = 0; i < numString.length; i++) {
+      if (numString[i] !== "," && numString[i] !== ".") {
+        const digit = parseInt(numString[i]);
+        banglaNumber += banglaDigits[digit] || numString[i];
+      } else {
+        banglaNumber += numString[i];
+      }
     }
+    return banglaNumber;
+  }else{
+    return "নম্বর খুঁজে পাওয়া যায়নি."
   }
-  return banglaNumber;
 };
 
 export const make_group_by = (studentData: any) => {
@@ -251,7 +253,6 @@ export const make_group_by = (studentData: any) => {
 };
 
 export const get_unique_index = (students: any, uid) => {
-
   // Function to find the index of an object with a specific property value
   function findIndexByProperty(array, propertyName, value) {
     return array.findIndex((element) => element[propertyName] === value);
@@ -262,5 +263,23 @@ export const get_unique_index = (students: any, uid) => {
     return index;
   } else {
     return null;
+  }
+};
+
+export const all_students = (students_id: any) => {
+  const data = localStorage.getItem("own_subjet");
+  const storageData = JSON.parse(data);
+
+  let student = {};
+  if (storageData) {
+    const students = storageData.data.data.subjects.filter((sub: any) => {
+      sub.class_room.students.map((stu_data: any) => {
+        if (stu_data.uid == students_id) {
+          student = stu_data;
+        }
+      });
+    });
+
+    return student;
   }
 };
