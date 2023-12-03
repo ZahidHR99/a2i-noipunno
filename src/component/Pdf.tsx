@@ -10,13 +10,13 @@ import {
     branch_name,
   } from "../utils/Utils";
 
-function Pdf({data, selectedSunject}:any) {
+function Pdf({data, selectedSunject, allFelter}:any) {
   const handleConvertToPdf = () => {
     const element = document.getElementById("contentToConvert");
 
     const options = {
       margin: 10,
-      filename: "converted-document.pdf",
+      filename: "Student-Transcript-document.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
@@ -25,7 +25,7 @@ function Pdf({data, selectedSunject}:any) {
     const pdf = html2pdf().from(element).set(options).outputPdf();
     pdf.save();
   };
-  console.log("data",data,selectedSunject);
+  console.log("data",data,selectedSunject,allFelter);
   
   return (
     <div>
@@ -241,8 +241,16 @@ function Pdf({data, selectedSunject}:any) {
                 প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১,
                 ঢাকা-১২১৬
               </h6>
+              
               <h6 style={{ fontSize: "14px", fontWeight: "bold" }}>
-                ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক
+                
+              {allFelter?.mullayon == 1234567890 && "শিখনকালীন মূল্যায়ন"  }
+              {allFelter?.mullayon == 1234567891 && "ষাষ্মাসিক সামষ্টিক মূল্যায়ন"  }
+              {allFelter?.mullayon == 1234567892 && "বার্ষিক সামষ্টিক মূল্যায়ন"  }
+              {allFelter?.mullayon == 1234567893 && "ষান্মাসিক আচরণিক মূল্যায়ন"  }
+              {allFelter?.mullayon == 1234567894 && "বার্ষিক আচরণিক মূল্যায়ন"  }
+                
+                এর বিষয়ভিত্তিক
                 ট্রান্সক্রিপ্ট-২০২৩
               </h6>
             </div>

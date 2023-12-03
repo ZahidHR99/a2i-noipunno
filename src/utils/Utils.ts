@@ -150,7 +150,10 @@ export const show_comment_box_bi = (
   assessment_uid
 ) => {
   let obj = submitData.filter(
-    (d: any) => d.bi_uid == w_d.bi_uid && student_uid == d.student_uid && d.evaluate_type == assessment_uid
+    (d: any) =>
+      d.bi_uid == w_d.bi_uid &&
+      student_uid == d.student_uid &&
+      d.evaluate_type == assessment_uid
   );
   if (obj.length) {
     return "Remark : " + obj[0].remark;
@@ -210,13 +213,13 @@ export const convertToBanglaNumber = (number: any) => {
     ",",
   ];
   const numString = number.toString();
-  let banglaNumber = '';
+  let banglaNumber = "";
   for (let i = 0; i < numString.length; i++) {
     if (numString[i] !== ",") {
-      const digit =  parseInt(numString[i]);
-    banglaNumber += banglaDigits[digit];
-    }else{
-      banglaNumber += ","
+      const digit = parseInt(numString[i]);
+      banglaNumber += banglaDigits[digit];
+    } else {
+      banglaNumber += ",";
     }
   }
   return banglaNumber;
@@ -236,22 +239,36 @@ export const make_group_by = (studentData: any) => {
   return groupedByStudentId;
 };
 
+export const get_unique_index = (students: any, uid) => {
+  console.log(`students`, students, uid);
 
-export const get_unique_index = (students: any , uid) => {
-
-  console.log(`students`, students , uid);
-  
   // Function to find the index of an object with a specific property value
   function findIndexByProperty(array, propertyName, value) {
-    return array.findIndex(element => element[propertyName] === value);
+    return array.findIndex((element) => element[propertyName] === value);
   }
-  const index = findIndexByProperty(students, 'uid', uid);
-  
-  if (index !== -1) {
-    return index
-  } else {
-    return null
-  }
+  const index = findIndexByProperty(students, "uid", uid);
 
-  
+  if (index !== -1) {
+    return index;
+  } else {
+    return null;
+  }
+};
+
+export const all_students = (students_id: any) => {
+  const data = localStorage.getItem("own_subjet");
+  const storageData = JSON.parse(data);
+
+  let student = {};
+  if (storageData) {
+    const students = storageData.data.data.subjects.filter((sub: any) => {
+      sub.class_room.students.map((stu_data: any) => {
+        if (stu_data.uid == students_id) {
+          student = stu_data;
+        }
+      });
+    });
+
+    return student
+  }
 };

@@ -15,7 +15,7 @@ export default function Breadcumbtitle({ title }: any) {
       <div className="d-flex align-items-center my-4 gap-2">
         <div className="card" style={{ backgroundColor: "white" }}>
           <button
-            className='border-0  rounded shadow-sm bg-white' onClick={() => { navigate(-1) }} style={{ padding: "1.2rem" }}>
+            className='border-0  rounded shadow-sm bg-white' onClick={() => { navigate(-1) }} style={{ padding: "1rem" }}>
             <MdArrowBackIosNew className="fs-3 text-secondary" />
           </button>
         </div>
