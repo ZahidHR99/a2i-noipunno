@@ -1,8 +1,10 @@
-/* @import url("../widget/login-card.css");
+/* @import url("../widget/login-card.css"); */
+
 
 .login-bg {
   background: linear-gradient(180deg, #befdff 0%, #51b9bd 100%);
-  background-image: url("../../../images/login-bg.png");
+  /* background-image: url("../../../images/login-bg.png"); */
+  background-image: url("assets/images/login-bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -154,4 +156,4 @@
 
 .login-language {
   font-size: 11px;
-} */
+}

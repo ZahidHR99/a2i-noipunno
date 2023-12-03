@@ -90,7 +90,7 @@ const EditTeacherProfile = () => {
                     <div className="mb-3" style={{ fontSize: "16px" }}>
                       <label className="form-label">ফোন নম্বর</label>
                       <div className="input-group">
-                        <input type="text" id="pin" className="form-control" name="phone_no" defaultValue={phone_no} />
+                        <input type="text" id="pin" className="form-control" readOnly name="phone_no" defaultValue={phone_no} />
                       </div>
                     </div>
                   </div>
@@ -100,7 +100,7 @@ const EditTeacherProfile = () => {
                     <div className="mb-3" style={{ fontSize: "16px" }}>
                       <label className="form-label">ইমেইল আইডি </label>
                       <div className="input-group">
-                        <input type="text" id="pin" className="form-control" name="email" defaultValue={email} />
+                        <input type="text" id="pin" className="form-control" readOnly name="email" defaultValue={email} />
                       </div>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+import "../styles/old_login_page.css";
 import { useState } from "react";
 import { loginPassword } from "../Request";
 import axios from "axios";
@@ -9,6 +10,7 @@ import LogoIcon3 from "../assets/images/Logo_Signature_Container_Circle_ENG_RGB-
 import LogoIcon4 from "../assets/images/Aspire_to_Innovate_Seal 2.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 
 export default function Login() {
   const [error, seterror] = useState("");
@@ -81,6 +83,7 @@ export default function Login() {
                   {error && <p className="text-center text-danger">{error}</p>}
 
                   <p className="teacher-login-title text-center">লগ ইন</p>
+
                   <form noValidate onSubmit={handleSubmit}>
                     <div className="form-group">
                       <label
@@ -176,7 +179,7 @@ export default function Login() {
                     <div className="form-group form-check my-2">
                       <p className="mb-1">
                         <Link
-                          to={"https://accounts.project-ca.com/password/reset"}
+                          to="https://accounts.project-ca.com/password/reset"
                           className="link-success"
                           style={{ color: "#428F92" }}
                         >
@@ -194,6 +197,7 @@ export default function Login() {
                       লগ ইন করুন
                     </button>
                   </form>
+
                 </div>
               </div>
             </div>
