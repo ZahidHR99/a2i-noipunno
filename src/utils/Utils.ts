@@ -220,7 +220,9 @@ export const convertToBanglaNumber = (number: any) => {
     "১০",
     ",",
   ];
-  const numString = number.toString();
+
+  console.log(`number`, number);
+  const numString = number?.toString() || ""
   let banglaNumber = "";
   for (let i = 0; i < numString.length; i++) {
     if (numString[i] !== "," && numString[i] !== ".") {

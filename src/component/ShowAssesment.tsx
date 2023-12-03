@@ -90,10 +90,11 @@ export default function ShowAssesment({
       const subject_id = localStorage.getItem(
         "subject_id"
       );
-      const subject = pi_selection.find((data) => data.assessment_type == key && data.subject_uid == subject_id && data.class_id == class_id);
+      // const subject = pi_selection.find((data) => data.assessment_type == key && data.subject_uid == subject_id && data.class_id == class_id);
+      const subject = pi_selection.find((data) => data.assessment_type == key);
       const pi_list = subject?.pi_list || []
 
-      console.log(`pi_listpi_list`, pi_list , key);
+      console.log(`pi_listpi_list`, pi_list , pi_selection, key);
       let check_sannasik_barsik_or_not = false
       if (key == 1234567892 || key == 1234567891) {
         check_sannasik_barsik_or_not = true

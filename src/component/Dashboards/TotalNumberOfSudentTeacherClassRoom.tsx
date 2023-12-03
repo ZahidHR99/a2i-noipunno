@@ -44,8 +44,6 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
     all_class();
   }, []);
 
-  console.log(`all_student`, all_student);
-
   return (
     <div className="col-lg-2 col-md-6 ">
       <div className="teacher-student-card gy-5">
