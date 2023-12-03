@@ -32,6 +32,7 @@ import Pdf from "./Pdf";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 import { Link } from "react-router-dom";
+import '../../src/styles/noipunno_custom_styles.css';
 
 export default function StudentTranscript() {
   const [mulllayon, setmulllayon] = useState<any>("");
@@ -216,7 +217,7 @@ export default function StudentTranscript() {
   console.log("selected_student", selected_student);
 
   return (
-    <div className="my-4">
+    <div className="report_page">
       {/* report end */}
       {/* expertness assessment start */}
 

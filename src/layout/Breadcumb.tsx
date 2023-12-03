@@ -12,7 +12,7 @@ export default function Breadcumbtitle({ title }: any) {
   const navigate = useNavigate()
   return (
     <section className="container">
-      <div className="d-flex align-items-center my-4 gap-2">
+      <div className="d-flex align-items-center py-4 gap-2">
         <div className="card" style={{ backgroundColor: "white" }}>
           <button
             className='border-0  rounded shadow-sm bg-white' onClick={() => { navigate(-1) }} style={{ padding: "1rem" }}>

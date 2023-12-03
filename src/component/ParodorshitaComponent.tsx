@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
 import { PiBookOpenText } from "react-icons/pi";
-import DetailsShikhonMullayon from "./DetailsShikhonMullayon";
+// import DetailsShikhonMullayon from "./DetailsShikhonMullayonSannasikBarshik";
 import styles from "./Home.style.module.css";
-import { convertToBanglaNumber, show_compitance, show_shannasik_barsik } from "../utils/Utils";
+import {
+  convertToBanglaNumber,
+  show_compitance,
+  show_shannasik_barsik,
+} from "../utils/Utils";
 import { FaExpand } from "react-icons/fa";
+import DetailsShikhonMullayonSannasikBarshik from "./DetailsShikhonMullayonSannasikBarshik";
+import DetailsShikhonMullayonShikhonKalin from "./DetailsShikhonMullayonShikhonKalin";
 
 export default function ParodorshitaComponent({
   assessment_uid,
@@ -12,11 +18,13 @@ export default function ParodorshitaComponent({
   Showcollaps,
   setShowcollaps,
   shikhonKalinMullayon,
+  shikhonKalinMullayon_sannasik_barsik,
   setshowDetailsshikhonKalinMullayon,
   Student,
   teacher_uid,
   pi_selection,
 }: any) {
+  
   return (
     <div className="py-2">
       <div className="row">
@@ -51,10 +59,11 @@ export default function ParodorshitaComponent({
                                   color: "#428F92",
                                   fontSize: "16px",
                                   fontWeight: "700",
-                                  fontFamily: "Poppins"
+                                  fontFamily: "Poppins",
                                 }}
                               >
-                                {convertToBanglaNumber(key + 1)}. <PiBookOpenText className="me-2" />
+                                {convertToBanglaNumber(key + 1)}.{" "}
+                                <PiBookOpenText className="me-2" />
                                 {d.oviggota_title}
                               </div>
                               <div className="px-2 rounded ">
@@ -77,7 +86,7 @@ export default function ParodorshitaComponent({
                       }
                     >
                       <div className="card card-body">
-                        <DetailsShikhonMullayon
+                        <DetailsShikhonMullayonShikhonKalin
                           showDetailsshikhonKalinMullayon={d}
                           assessment_uid={assessment_uid}
                           pi_attr={pi_attr}
@@ -93,23 +102,21 @@ export default function ParodorshitaComponent({
           </>
         ) : (
           <div className="card card-body mx-2">
-            {shikhonKalinMullayon.map((d: any, key: any) => (
+            {shikhonKalinMullayon_sannasik_barsik.map((d: any, key: any) => (
               <div key={key}>
-                {show_compitance(d.uid) && (
-                  <div
-                    onClick={(e: any) => {
-                      setshowDetailsshikhonKalinMullayon(d);
-                    }}
-                  >
-                    <DetailsShikhonMullayon
-                      showDetailsshikhonKalinMullayon={d}
-                      assessment_uid={assessment_uid}
-                      pi_attr={pi_attr}
-                      Student={Student}
-                      teacher_uid={teacher_uid}
-                    />
-                  </div>
-                )}
+                <div
+                  onClick={(e: any) => {
+                    setshowDetailsshikhonKalinMullayon(d);
+                  }}
+                >
+                  <DetailsShikhonMullayonSannasikBarshik
+                    showDetailsshikhonKalinMullayon={d}
+                    assessment_uid={assessment_uid}
+                    pi_attr={pi_attr}
+                    Student={Student}
+                    teacher_uid={teacher_uid}
+                  />
+                </div>
               </div>
             ))}
           </div>

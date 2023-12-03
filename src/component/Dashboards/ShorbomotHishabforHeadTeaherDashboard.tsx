@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../../../public/dashboardAssets/css/dashboard.css';
+import '../../assets/dashboard_materials/css/dashboard.css';
 
 const ShorbomotHishabforHeadTeaherDashboard = () => {
   const [all_student, set_All_student] = useState([]);
@@ -101,7 +101,7 @@ const ShorbomotHishabforHeadTeaherDashboard = () => {
           </div>
         </a>
 
-        {/* <a href="#">
+        <a href="#">
           <div className="card-container">
             <div className="total-student">
               <div className="title">
@@ -117,7 +117,7 @@ const ShorbomotHishabforHeadTeaherDashboard = () => {
               </div>
             </div>
           </div>
-        </a> */}
+        </a>
 
       </div>
     </div>

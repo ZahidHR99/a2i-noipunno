@@ -1,4 +1,4 @@
-
+import reportIcon from '../../assets/dashboard_materials/images/dashboard/document-text.png';
 
 const ReportForTeacherDashboard = () => {
   return (
@@ -9,10 +9,7 @@ const ReportForTeacherDashboard = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img
-                  src="assets/teacherDashboard/images/dashboard/document-text.svg"
-                  alt=""
-                />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>হাজিরা প্রতিবেদন</h2>
             </a>
@@ -20,10 +17,7 @@ const ReportForTeacherDashboard = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img
-                  src="assets/teacherDashboard/images/dashboard/document-text.svg"
-                  alt=""
-                />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>পারদর্শিতার মূল্যায়ন প্রতিবেদন (PI)</h2>
             </a>
@@ -31,10 +25,7 @@ const ReportForTeacherDashboard = () => {
           <div className="col">
             <a href="#" className="student-container">
               <div className="icon">
-                <img
-                  src="assets/teacherDashboard/images/dashboard/document-text.svg"
-                  alt=""
-                />
+                <img src={reportIcon} alt="reportIcon" />
               </div>
               <h2>আচরণগত মূল্যায়ন প্রতিবেদন (BI)</h2>
             </a>
