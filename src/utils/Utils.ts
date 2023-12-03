@@ -102,10 +102,9 @@ export const pis_list_func = (
     // });
   }
 
-  const selectedIds = pi_list.map((item:any) => 
-    {
-      return item.pi_uid
-    })
+  const selectedIds = pi_list.map((item: any) => {
+    return item.pi_uid;
+  });
 
   localStorage.setItem("show_compitance_id", JSON.stringify(all_compitance_id));
   // localStorage.setItem("show_all_pis_id", JSON.stringify(all_pis_id));
@@ -222,17 +221,21 @@ export const convertToBanglaNumber = (number: any) => {
   ];
 
   console.log(`number`, number);
-  const numString = number?.toString() || ""
-  let banglaNumber = "";
-  for (let i = 0; i < numString.length; i++) {
-    if (numString[i] !== "," && numString[i] !== ".") {
-      const digit = parseInt(numString[i]);
-      banglaNumber += banglaDigits[digit] || numString[i];
-    } else {
-      banglaNumber += numString[i]
+  if (number?.toString()) {
+    const numString = number?.toString() || "";
+    let banglaNumber = "";
+    for (let i = 0; i < numString.length; i++) {
+      if (numString[i] !== "," && numString[i] !== ".") {
+        const digit = parseInt(numString[i]);
+        banglaNumber += banglaDigits[digit] || numString[i];
+      } else {
+        banglaNumber += numString[i];
+      }
     }
+    return banglaNumber;
+  }else{
+    return "PI নম্বর খুঁজে পাওয়া যায়নি."
   }
-  return banglaNumber;
 };
 
 export const make_group_by = (studentData: any) => {
@@ -250,7 +253,6 @@ export const make_group_by = (studentData: any) => {
 };
 
 export const get_unique_index = (students: any, uid) => {
-
   // Function to find the index of an object with a specific property value
   function findIndexByProperty(array, propertyName, value) {
     return array.findIndex((element) => element[propertyName] === value);
@@ -278,6 +280,6 @@ export const all_students = (students_id: any) => {
       });
     });
 
-    return student
+    return student;
   }
 };
