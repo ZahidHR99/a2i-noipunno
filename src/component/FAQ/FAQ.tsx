@@ -1,5 +1,6 @@
 import { convertToBanglaNumber } from '../../utils/Utils';
-import './faq.css'
+import './faq.css';
+import "../../styles/noipunno_custom_styles.css"
 
 
 const FAQ = () => {
@@ -61,51 +62,52 @@ const FAQ = () => {
 
 
   return (
-    <div className="container">
-      <div className="container">
-        <div className="d-flex align-items-center">
-          <div className="card shadow-lg border-0 w-100 rounded">
-            <ul className="nav d-flex mt-2 justify-content-around ">
-              <li className={`my-2 nav-item`}>
-                <h4>  প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী </h4>
-              </li>
-            </ul>
-            <div className="accordion" id="accordionExample">
-              {allQusetion.map((item, index) => (
-                <div className="accordion-item" key={item.id}>
-                  <h2 className="accordion-header" id={`heading${item.id}`} >
-                    <button
-                      className="accordion-button test_accordion bg-white"
+    <section className='faq_page_bg_color'>
+      <div className="container py-5">
+        <div className="container">
+          <div className="d-flex align-items-center">
+            <div className="card shadow-lg border-0 w-100 rounded">
+              <ul className="nav d-flex mt-2 justify-content-around ">
+                <li className={`my-2 nav-item`}>
+                  <h4>  প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী </h4>
+                </li>
+              </ul>
+              <div className="accordion" id="accordionExample">
+                {allQusetion.map((item, index) => (
+                  <div className="accordion-item" key={item.id}>
+                    <h2 className="accordion-header" id={`heading${item.id}`} >
+                      <button
+                        className="accordion-button test_accordion bg-white"
 
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#collapse${item.id}`}
-                      aria-expanded="true"
-                      aria-controls={`collapse${item.id}`}
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#collapse${item.id}`}
+                        aria-expanded="true"
+                        aria-controls={`collapse${item.id}`}
+                      >
+                        {convertToBanglaNumber((index + 1))}। {item.question}
+                      </button>
+                    </h2>
+                    <div
+                      id={`collapse${item.id}`}
+                      className="accordion-collapse collapse  "
+                      aria-labelledby={`heading${item.id}`}
+                      data-bs-parent="#accordionExample"
                     >
-                      {convertToBanglaNumber((index + 1))}। {item.question}
-                    </button>
-                  </h2>
-                  <div
-                    id={`collapse${item.id}`}
-                    className="accordion-collapse collapse  "
-                    aria-labelledby={`heading${item.id}`}
-                    data-bs-parent="#accordionExample"
-                  >
-                    <div className="accordion-body">
-                      {item.answer}
+                      <div className="accordion-body">
+                        {item.answer}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
+
       </div>
-
-
-    </div>
-
+    </section>
   );
 };
 
