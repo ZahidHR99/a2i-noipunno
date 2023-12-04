@@ -97,7 +97,6 @@ const LoginPage = () => {
   }, []);
 
   const redirect = () => {
-    console.log(`1111111`, 1111111);
     window.location.href = "https://forms.gle/sFrdsXavPaQryQ6k8";
   };
 

@@ -146,7 +146,6 @@ export const show_shannasik_barsik = () => {
   const show_shannasik_barsik__ = JSON.parse(
     localStorage.getItem("show_shannasik_barsik")
   );
-  console.log(`show_shannasik_barsik__`, show_shannasik_barsik__);
   return show_shannasik_barsik__;
 };
 
@@ -220,7 +219,6 @@ export const convertToBanglaNumber = (number: any) => {
     ",",
   ];
 
-  console.log(`number`, number);
   if (number?.toString()) {
     const numString = number?.toString() || "";
     let banglaNumber = "";
