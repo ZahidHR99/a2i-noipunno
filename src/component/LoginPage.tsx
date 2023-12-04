@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { loginPassword } from "../Request";
+import PopUpAppInfo from "./PopUpAppInfo/PopUpAppInfo";
 
 const LoginPage = () => {
   const [error, seterror] = useState("");
@@ -265,6 +266,7 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
+
           <div className="row">
             <div className="login_footer position-absolute bottom-0">
               <div className="d-flex flex-column flex-md-row justify-content-between align-items-end sm-row-reverse ps-5 pe-3 my-2">
@@ -327,6 +329,7 @@ const LoginPage = () => {
                 </div>
               </div>
             </div>
+            <PopUpAppInfo />
           </div>
         </div>
         {/* bootstrap 5.0.2 min.js */}

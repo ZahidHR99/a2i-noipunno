@@ -3,7 +3,8 @@ import '../../assets/dashboard_materials/css/dashboard.css';
 import { Link } from "react-router-dom";
 import editIcon from '../../assets/dashboard_materials/images/dashboard/edit-2.svg';
 import teacherProfileImg from '../../assets/dashboard_materials/images/dashboard/60px.png';
-import femaleTeacherProfileImg from '../../assets/images/teacher_avatar/female_tec_avatar.png';
+import femaleProfileImg from '../../assets/dashboard_materials/images/dashboard/female_teacher.png';
+
 import starIcon from '../../assets/dashboard_materials/images/dashboard/ico.svg';
 import messageIcon from '../../assets/dashboard_materials/images/dashboard/message.svg';
 import darkMoodIcon from '../../assets/dashboard_materials/images/dashboard/moon.svg';
@@ -13,17 +14,19 @@ import eyeIcon from '../../assets/dashboard_materials/images/dashboard/eye.svg';
 
 const TeacherProfileCard = () => {
   const [teacherInfos, setTeacherInfos] = useState<any>({});
+  const [schoolName, setSchoolName] = useState<any>("");
+
+  const items = JSON.parse(localStorage.getItem("customer_login_auth"));
+  const teacherDashboard = JSON.parse(localStorage.getItem("teacher_dashboard"));
+
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("customer_login_auth"));
     if (items) {
       setTeacherInfos(items?.user);
     }
-  }, []);
-
-
-
-
-  // console.log(userDetails);
+    if (teacherDashboard) {
+      teacherDashboard?.data?.institute?.map(item => setSchoolName(item.institute_name))
+    }
+  }, [teacherDashboard]);
 
   return (
     <div className="col-lg-2 col-md-6">
@@ -70,7 +73,7 @@ const TeacherProfileCard = () => {
             {teacherInfos?.eiin}
           </p>
           {/* <p className="card-text">পাবনা জিলা স্কুল, পাবনা</p> */}
-          <p className="card-text">School Name- No entry</p>
+          <p className="card-text">{schoolName}</p>
 
           <div className="button">
             <img src={eyeIcon} alt="eyeIcon" />
