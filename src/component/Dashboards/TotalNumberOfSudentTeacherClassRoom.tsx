@@ -79,7 +79,7 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
                 <h6>শ্রেণী - ষষ্ঠ - সপ্তম</h6>
               </div>
               <div className="circle">
-                <h5>{all_student?.length}</h5>
+                <h5>{all_student?.length || "00"}</h5>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
                 <h6>আপনার স্কুল এ</h6>
               </div>
               <div className="circle">
-                <h5>{all_teacher?.length}</h5>
+                <h5>{all_teacher?.length || "00"}</h5>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
                 <h6>আপনার স্কুল এ</h6>
               </div>
               <div className="circle">
-                <h5>{total_class?.length}</h5>
+                <h5>{total_class?.length || "00"}</h5>
               </div>
             </div>
           </div>
