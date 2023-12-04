@@ -126,3 +126,12 @@
     padding-top: .5rem;
     padding-bottom: 0;
 }
+
+
+.custom-px-2{
+    padding-right: 40% !important 
+}
+
+/* .custom-ps{
+    padding-right: 10% !important;
+} */
