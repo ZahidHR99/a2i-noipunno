@@ -96,6 +96,11 @@ const LoginPage = () => {
     }
   }, []);
 
+  const redirect = () => {
+    console.log(`1111111`, 1111111);
+    window.location.href = "https://forms.gle/sFrdsXavPaQryQ6k8";
+  };
+
   return (
     <>
       <Helmet>
@@ -104,16 +109,15 @@ const LoginPage = () => {
 
       <section id="body" className="login-page">
         <div className="login-bg min-vh-100 position-relative">
-          <div className="marque-notification">
+          <div className="marque-notification pointer" onClick={redirect} >
             <div className="marquee-container">
               <div className="marquee-content">
                 প্রতিষ্ঠান প্রধান হিসেবে লগইন এসএমএস না পেয়ে থাকলে{" "}
-                <a href="https://forms.gle/sFrdsXavPaQryQ6k8" target="_blank">
-                  এখানে ক্লিক করুন
-                </a>{" "}
+                এখানে ক্লিক করুন
               </div>
             </div>
           </div>
+
           <div className="container">
             <div className="row min-vh-90-100 position-relative d-flex align-items-center justify-content-center py-3">
               <div className="col-sm-12 col-md-5 py-2">
