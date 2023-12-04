@@ -34,7 +34,6 @@ function App() {
   const fetchData = async () => {
     if (window.location.pathname !== "/login") {
       settopbar(true);
-
       if (render) {
         const own_subjet = await teacher_own_subject();
         localStorage.setItem("own_subjet", JSON.stringify(own_subjet));
