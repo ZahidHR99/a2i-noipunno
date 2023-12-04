@@ -15,6 +15,7 @@ import eyeIcon from '../../assets/dashboard_materials/images/dashboard/eye.svg';
 const TeacherProfileCard = () => {
   const [teacherInfos, setTeacherInfos] = useState<any>({});
   const [schoolName, setSchoolName] = useState<any>("");
+  const [loading, setLoading] = useState(true);
 
   const items = JSON.parse(localStorage.getItem("customer_login_auth"));
   const teacherDashboard = JSON.parse(localStorage.getItem("teacher_dashboard"));
@@ -23,10 +24,16 @@ const TeacherProfileCard = () => {
     if (items) {
       setTeacherInfos(items?.user);
     }
-    if (teacherDashboard) {
-      teacherDashboard?.data?.institute?.map(item => setSchoolName(item.institute_name))
-    }
-  }, [teacherDashboard]);
+  }, []);
+
+  if (loading) {
+    setTimeout(() => {
+      if (teacherDashboard) {
+        teacherDashboard?.data?.institute?.map(item => setSchoolName(item.institute_name))
+        setLoading(false)
+      };
+    }, 1000)
+  }
 
   return (
     <div className="col-lg-2 col-md-6">

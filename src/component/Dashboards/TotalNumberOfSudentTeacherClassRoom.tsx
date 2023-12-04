@@ -5,6 +5,7 @@ import "./TotalNumberOfStudent.css"
 const TotalNumberOfSudentTeacherClassRoom = () => {
   const [all_student, set_All_student] = useState([]);
   const [loading, setLoadin] = useState(true);
+
   const student_lsit = async () => {
     const student: any = [];
     const studentsData = JSON.parse(localStorage.getItem("own_subjet"));
@@ -53,7 +54,6 @@ const TotalNumberOfSudentTeacherClassRoom = () => {
       all_class();
 
     }
-
 
   }, 1000)
 
