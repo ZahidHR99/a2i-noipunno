@@ -79,8 +79,8 @@ const StudentList = () => {
     <section className="student_list_page">
       <Breadcumb title={"শিক্ষার্থীর তালিকা"} />
       {student?.length == 0 ?
-        (<div className="container student_list_page my-5 text-center" >No Student Found</div>) :
-        (<div className="container my-5" >
+        (<div className="container student_list_page py-5 text-center" >No Student Found</div>) :
+        (<div className="container py-3" >
           <section>
             <div className={`${styles.grid_view} p-0 m-0`}>
               {student?.map((student, index) => (

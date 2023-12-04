@@ -90,7 +90,7 @@ const AmarProfile = () => {
   return (
     <section className="mx-auto myProfilePage">
       <Breadcumbtitle title={"আমার প্রোফাইল"} />
-      <div className="container  py-5 mx-auto">
+      <div className="container  py-3 mx-auto">
         <div className="d-flex align-items-center">
           <div className="card shadow-sm border-1 w-100 rounded">
             <ul className="nav d-flex mt-2 justify-content-around py-1">
