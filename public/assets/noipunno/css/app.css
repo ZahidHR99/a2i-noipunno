@@ -135,3 +135,22 @@
 /* .custom-ps{
     padding-right: 10% !important;
 } */
+
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    animation: marquee-animation 10s linear infinite; /* Adjust the duration as needed */
+  }
+  
+  @keyframes marquee-animation {
+    from {
+      transform: translateX(100%); /* Move the text offscreen initially */
+    }
+    to {
+      transform: translateX(-100%); /* Scroll the text to the left */
+    }
+  }
