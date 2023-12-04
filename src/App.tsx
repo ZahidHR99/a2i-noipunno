@@ -26,6 +26,7 @@ import TeacherDashboard from "./component/Dashboards/TeacherDashboard/TeacherDas
 
 import Navbar from "./layout/Navbar";
 import FAQ from "./component/FAQ/FAQ";
+import LoginPage from "./component/LoginPage";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -81,7 +82,8 @@ function App() {
           <Route path="/head-teacher-dashboard" element={<HeadTeacherDashboard />} />
           <Route path="/faq" element={<FAQ />} />
         </Route>
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<LoginPage />} />
 
 
       </Routes>

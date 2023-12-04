@@ -32,9 +32,10 @@ import Pdf from "./Pdf";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 import { Link } from "react-router-dom";
-import '../../src/styles/noipunno_custom_styles.css';
+import "../../src/styles/noipunno_custom_styles.css";
 
 export default function StudentTranscript() {
+  const [student_info_pdf, setStudent_info_pdf] = useState<any>("");
   const [mulllayon, setmulllayon] = useState<any>("");
   const [shift, setShift] = useState([]);
   const [subject, setsubject] = useState([]);
@@ -214,7 +215,27 @@ export default function StudentTranscript() {
     }
   });
 
-  console.log("selected_student", selected_student);
+  const handleConvertToPdf = () => {
+    const element = document.getElementById("contentToConvert");
+
+    const options = {
+      margin: 5,
+      filename: "Student-Transcript-document.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    const pdf = html2pdf().from(element).set(options).outputPdf();
+    pdf.save();
+  };
+
+  console.log(
+    "student_info_pdf",
+    student_info_pdf,
+    student_name,
+    uniquestudents
+  );
 
   return (
     <div className="report_page">
@@ -392,7 +413,8 @@ export default function StudentTranscript() {
                           <option value={""}>শ্রেণী নির্বাচন করুন</option>
                           {uniqueclass?.map((data, index) => (
                             <option key={index} value={data}>
-                              {convertToBanglaNumber(data)} শ্রেণী
+                              {data == 6 && "ষষ্ঠ"}
+                              {data == 7 && "সপ্তম"} শ্রেণী
                             </option>
                           ))}
                         </select>
@@ -436,9 +458,7 @@ export default function StudentTranscript() {
                             setallFelter({
                               ...allFelter,
                               [e.target.name]: e.target.value,
-                              
                             })
-                            
                           }
                         >
                           <option selected>
@@ -461,33 +481,70 @@ export default function StudentTranscript() {
                       allFelter.shift &&
                       allFelter.version &&
                       allFelter.mullayon && (
-                        <div className="col-6 col-sm-4 col-md-3">
-                          <div className="mb-3" style={{ fontSize: "12px" }}>
-                            <label className="form-label">
-                              শিক্ষার্থী নির্বাচন করুন
-                            </label>
-                            <select
-                              className="form-select p-2"
-                              aria-label="Default select example"
-                              style={{ fontSize: "12px" }}
-                              onChange={(e) => setstudent_name(e.target.value)}
-                            >
-                              <option value={""}>শিক্ষার্থী </option>
+                        <>
+                          <div className="col-6 col-sm-4 col-md-3">
+                            <div className="mb-3" style={{ fontSize: "12px" }}>
+                              <label className="form-label">
+                                শিক্ষার্থী নির্বাচন করুন
+                              </label>
+                              <select
+                                className="form-select p-2"
+                                aria-label="Default select example"
+                                style={{ fontSize: "12px" }}
+                                onChange={(e) =>
+                                  setstudent_name(e.target.value)
+                                }
+                              >
+                                <option value={""}>শিক্ষার্থী </option>
 
-                              {new_student?.map((data: any, index) => (
-                                <option key={index} value={data?.uid}>
-                                  {data?.student_name_bn ||
-                                    data?.student_name_en}
-                                </option>
-                              ))}
-                            </select>
+                                {new_student?.map((data: any, index) => (
+                                  <option key={index} value={data?.uid}>
+                                    {data?.student_name_bn ||
+                                      data?.student_name_en}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
                           </div>
-                        </div>
+                          <div className="col-6 col-sm-4 col-md-3 pointer">
+                            <div className="mb-3">
+                              <label className="form-label "></label>
+                              <div className="">
+                                <button
+                                  onClick={fetchDataFromAPI}
+                                  className="form-control py-1 border-right-0 bg-success border-0"
+                                  defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                                  id="example-search-input"
+                                  style={{
+                                    fontSize: "12px",
+                                  }}
+                                >
+                                  সকল শিক্ষার্থী মূল্যায়ন <br /> ডাউনলোড করুন
+                                  <div
+                                    className="btn btn-outline-secondary py-1 border-0"
+                                    type="button"
+                                    style={{
+                                      backgroundColor: "#428F92",
+                                    }}
+                                  ></div>
+                                </button>
+
+                                <span
+                                  className="input-group-append rounded-end"
+                                  style={{
+                                    fontSize: "12px",
+                                    backgroundColor: "white",
+                                  }}
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                        </>
                       )}
                     <div className="col-6 col-sm-4 col-md-3 pointer">
                       <div className="mb-3">
                         <label className="form-label "></label>
-                        <div className="input-group">
+                        <div className="">
                           <button
                             onClick={fetchDataFromAPI}
                             className="form-control py-1 border-right-0 border-0"
@@ -510,7 +567,7 @@ export default function StudentTranscript() {
                             </div>
                           </button>
                           <span
-                            className="input-group-append rounded-end"
+                            className=" "
                             style={{
                               fontSize: "12px",
                               backgroundColor: "#428F92",
@@ -608,7 +665,7 @@ export default function StudentTranscript() {
                     </div>
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
-                      <label className="form-label">
+                        <label className="form-label">
                           ভার্সন নির্বাচন করুন
                         </label>
                         <select
@@ -635,7 +692,7 @@ export default function StudentTranscript() {
 
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
-                      <label className="form-label">
+                        <label className="form-label">
                           মূল্যায়ন শিরোনাম নির্বাচন করুন
                         </label>
                         <select
@@ -647,9 +704,7 @@ export default function StudentTranscript() {
                             setallFelter({
                               ...allFelter,
                               [e.target.name]: e.target.value,
-                              
                             })
-                            
                           }
                         >
                           <option selected>
@@ -667,7 +722,7 @@ export default function StudentTranscript() {
                     </div>
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
-                      <label className="form-label">সেশন নির্বাচন করুন</label>
+                        <label className="form-label">সেশন নির্বাচন করুন</label>
                         <select
                           className="form-select p-2"
                           name="shift"
@@ -793,7 +848,7 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div>
-              
+
               {/* <h6 className="m-2">
                 
                             <h5 >
@@ -810,270 +865,324 @@ export default function StudentTranscript() {
                 allFelter.mullayon && (
                   <Accordion>
                     {selected_student?.length > 0 ? (
-                    selected_student?.map((data: any, index) => (
-                      
-                      <Accordion.Item eventKey={index}>
-                        <Accordion.Header className="px-4 " key={index}>
-                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border">
-                            {(() => {
-                              const Stu_data: any = all_students(data[0]);
+                      selected_student?.map((data: any, index) => (
+                        <Accordion.Item eventKey={index}>
+                          <Accordion.Header className="px-4 " key={index}>
+                            <>
+                              {(() => {
+                                const Stu_data: any = all_students(data[0]);
 
-                              return (
-                                <>
-                                  <h5>
-                                    শিক্ষার্থীর নাম:{" "}
-                                    {Stu_data.student_name_bn ||
-                                      Stu_data.student_name_en}<br/>
-                                      রোল নম্বর # {convertToBanglaNumber(Stu_data.roll)}  
-                                  </h5>
-                                  
-                                  {/* <h5>{"  "}রোল নম্বর # {Stu_data.roll}</h5> */}
-                                </>
-                              );
-                            })()}
+                                return (
+                                  <>
+                                    <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2">
+                                      <h5>
+                                        শিক্ষার্থীর নাম:{" "}
+                                        {Stu_data.student_name_bn ||
+                                          Stu_data.student_name_en}
+                                        <br />
+                                        রোল নম্বর #{" "}
+                                        {convertToBanglaNumber(Stu_data.roll)}
+                                      </h5>
 
-                            {/* <p>রোল নম্বর #</p> */}
-                            <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3  ms-5">
-                              <button
-                                type="button"
-                                className="btn btn-primary end-0"
-                                data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"
-                                onClick={(e) => setdata(data)}
-                              >
-                                ডাউনলোড করুন
-                              </button>
+                                      {/* <p>রোল নম্বর #</p> */}
+                                    </div>
+                                    <div className="d-flex justify-content-between flex-md-row flex-column align-items-center flex-end">
+                                      <button
+                                        type="button"
+                                        className="btn btn-primary end-0"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop"
+                                        onClick={(e) => {
+                                          handleConvertToPdf();
+                                          setdata(data);
+                                          setStudent_info_pdf(Stu_data);
+                                        }}
+                                      >
+                                        ডাউনলোড করুন
+                                      </button>
+                                    </div>
+                                  </>
+                                );
+                              })()}
+                            </>
+                            {/* <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3 border">
+                              {(() => {
+                                const Stu_data: any = all_students(data[0]);
+
+                                return (
+                                  <>
+                                    <h5>
+                                      শিক্ষার্থীর নাম:{" "}
+                                      {Stu_data.student_name_bn ||
+                                        Stu_data.student_name_en}
+                                      <br />
+                                      রোল নম্বর #{" "}
+                                      {convertToBanglaNumber(Stu_data.roll)}
+                                    </h5>
+
+                                   
+                                  </>
+                                );
+                              })()}
+
+                              
+                              <div className="d-flex justify-content-between flex-md-row flex-column align-items-center p-3  ms-5">
+                                <button
+                                  type="button"
+                                  className="btn btn-primary end-0"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#staticBackdrop"
+                                  onClick={(e) => setdata(data)}
+                                >
+                                  ডাউনলোড করুন
+                                </button>
+                              </div>
+                            </div> */}
+                          </Accordion.Header>
+                          <Accordion.Body>
+                            <div className="container border">
+                              <div className="row pb-5 pt-2">
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div className="border-0 p-2 h-100">
+                                    <div className="d-flex">
+                                      <div>
+                                        <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          নিজের এবং অন্যের প্রয়োজন ও আবেগ
+                                          বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div
+                                    className="card h-100 shadow-lg border-0 p-2"
+                                    style={{ backgroundColor: "#F0FAE9" }}
+                                  >
+                                    <div className="d-flex">
+                                      <div>
+                                        <TiTick
+                                          className={`${styles.tick_mark}`}
+                                        />
+                                      </div>
+                                      <div>
+                                        <h6
+                                          className="border "
+                                          style={{ fontSize: "14px" }}
+                                        >
+                                          নিজের এবং অন্যের প্রয়োজন ও আবেগ
+                                          বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div className="card shadow-lg border-0 p-2 h-100">
+                                    <div className="d-flex ">
+                                      <div>
+                                        {/* <TiTick
+                                        className={`${styles.tick_mark}`}
+                                      /> */}
+                                      </div>
+                                      <div>
+                                        <h6
+                                          className="border"
+                                          style={{ fontSize: "14px" }}
+                                        >
+                                          দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে
+                                          যথাযথভাবে অংশগ্রহণ না করলেও দলীয়
+                                          নির্দেশনা অনুযায়ী নিজের দায়িত্বটুকু
+                                          যথাযথভাবে পালন করছে
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div
+                                    className="card shadow-lg border-0 p-2 h-100"
+                                    style={{ backgroundColor: "#F0FAE9" }}
+                                  >
+                                    <div className="d-flex">
+                                      <div>
+                                        {/* <TiTick
+                                        className={`${styles.tick_mark}`}
+                                      /> */}
+                                      </div>
+                                      <div>
+                                        <h6
+                                          className="border"
+                                          style={{ fontSize: "14px" }}
+                                        >
+                                          দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয়
+                                          অংশগ্রহণ করছে, সেই অনুযায়ী নিজের
+                                          ভূমিকা যথাযথভাবে পালন করছে
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div className="border-0 p-2 h-100">
+                                    <div className="d-flex">
+                                      <div>
+                                        <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          নিজের এবং অন্যের প্রয়োজন ও আবেগ
+                                          বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div
+                                    className="card h-100 shadow-lg border-0 p-2"
+                                    style={{ backgroundColor: "#F0FAE9" }}
+                                  >
+                                    <div className="d-flex">
+                                      <div>
+                                        {/* <TiTick
+                                        className={`${styles.tick_mark}`}
+                                      /> */}
+                                      </div>
+                                      <div>
+                                        <h6
+                                          className="border"
+                                          style={{ fontSize: "14px" }}
+                                        >
+                                          নিজের এবং অন্যের প্রয়োজন ও আবেগ
+                                          বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div className="card shadow-lg border-0 p-2 h-100">
+                                    <div className="d-flex ">
+                                      <div>
+                                        <TiTick
+                                          className={`${styles.tick_mark}`}
+                                        />
+                                      </div>
+                                      <div>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে
+                                          যথাযথভাবে অংশগ্রহণ না করলেও দলীয়
+                                          নির্দেশনা অনুযায়ী নিজের দায়িত্বটুকু
+                                          যথাযথভাবে পালন করছে
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div
+                                    className="card shadow-lg border-0 p-2 h-100"
+                                    style={{ backgroundColor: "#F0FAE9" }}
+                                  >
+                                    <div className="d-flex">
+                                      <div>
+                                        {/* <TiTick
+                                        className={`${styles.tick_mark}`}
+                                      /> */}
+                                      </div>
+                                      <div>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয়
+                                          অংশগ্রহণ করছে, সেই অনুযায়ী নিজের
+                                          ভূমিকা যথাযথভাবে পালন করছে
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div className="border-0 p-2 h-100">
+                                    <div className="d-flex">
+                                      <div>
+                                        <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          নিজের এবং অন্যের প্রয়োজন ও আবেগ
+                                          বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div
+                                    className="card h-100 shadow-lg border-0 p-2"
+                                    style={{ backgroundColor: "#F0FAE9" }}
+                                  >
+                                    <div className="d-flex">
+                                      <div>
+                                        <TiTick
+                                          className={`${styles.tick_mark}`}
+                                        />
+                                      </div>
+                                      <div>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          নিজের এবং অন্যের প্রয়োজন ও আবেগ
+                                          বিবেচনায় নিয়ে যোগাযোগ করতে পারছে।
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div className="card shadow-lg border-0 p-2 h-100">
+                                    <div className="d-flex ">
+                                      <div>
+                                        {/* <TiTick
+                                        className={`${styles.tick_mark}`}
+                                      /> */}
+                                      </div>
+                                      <div>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে
+                                          যথাযথভাবে অংশগ্রহণ না করলেও দলীয়
+                                          নির্দেশনা অনুযায়ী নিজের দায়িত্বটুকু
+                                          যথাযথভাবে পালন করছে
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-sm-6 col-md-3 py-2">
+                                  <div
+                                    className="card shadow-lg border-0 p-2 h-100"
+                                    style={{ backgroundColor: "#F0FAE9" }}
+                                  >
+                                    <div className="d-flex">
+                                      <div>
+                                        {/* <TiTick
+                                        className={`${styles.tick_mark}`}
+                                      /> */}
+                                      </div>
+                                      <div>
+                                        <h6 style={{ fontSize: "14px" }}>
+                                          দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয়
+                                          অংশগ্রহণ করছে, সেই অনুযায়ী নিজের
+                                          ভূমিকা যথাযথভাবে পালন করছে
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="container border">
-                            <div className="row pb-5 pt-2">
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div className="border-0 p-2 h-100">
-                                  <div className="d-flex">
-                                    <div>
-                                      <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
-                                        নিয়ে যোগাযোগ করতে পারছে।
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div
-                                  className="card h-100 shadow-lg border-0 p-2"
-                                  style={{ backgroundColor: "#F0FAE9" }}
-                                >
-                                  <div className="d-flex">
-                                    <div>
-                                      <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      />
-                                    </div>
-                                    <div>
-                                      <h6 className="border "  style={{ fontSize: "14px" }}>
-                                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
-                                        নিয়ে যোগাযোগ করতে পারছে।
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div className="card shadow-lg border-0 p-2 h-100">
-                                  <div className="d-flex ">
-                                    <div>
-                                      {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
-                                    </div>
-                                    <div>
-                                      <h6 className="border"  style={{ fontSize: "14px" }}>
-                                        দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে
-                                        যথাযথভাবে অংশগ্রহণ না করলেও দলীয়
-                                        নির্দেশনা অনুযায়ী নিজের দায়িত্বটুকু
-                                        যথাযথভাবে পালন করছে
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div
-                                  className="card shadow-lg border-0 p-2 h-100"
-                                  style={{ backgroundColor: "#F0FAE9" }}
-                                >
-                                  <div className="d-flex">
-                                    <div>
-                                      {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
-                                    </div>
-                                    <div>
-                                      <h6 className="border"  style={{ fontSize: "14px" }}>
-                                        দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয়
-                                        অংশগ্রহণ করছে, সেই অনুযায়ী নিজের ভূমিকা
-                                        যথাযথভাবে পালন করছে
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div className="border-0 p-2 h-100">
-                                  <div className="d-flex">
-                                    <div>
-                                      <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
-                                        নিয়ে যোগাযোগ করতে পারছে।
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div
-                                  className="card h-100 shadow-lg border-0 p-2"
-                                  style={{ backgroundColor: "#F0FAE9" }}
-                                >
-                                  <div className="d-flex">
-                                    <div>
-                                      {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
-                                    </div>
-                                    <div>
-                                      <h6 className="border"  style={{ fontSize: "14px" }}>
-                                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
-                                        নিয়ে যোগাযোগ করতে পারছে।
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div className="card shadow-lg border-0 p-2 h-100">
-                                  <div className="d-flex ">
-                                    <div>
-                                      <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      />
-                                    </div>
-                                    <div>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে
-                                        যথাযথভাবে অংশগ্রহণ না করলেও দলীয়
-                                        নির্দেশনা অনুযায়ী নিজের দায়িত্বটুকু
-                                        যথাযথভাবে পালন করছে
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div
-                                  className="card shadow-lg border-0 p-2 h-100"
-                                  style={{ backgroundColor: "#F0FAE9" }}
-                                >
-                                  <div className="d-flex">
-                                    <div>
-                                      {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
-                                    </div>
-                                    <div>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয়
-                                        অংশগ্রহণ করছে, সেই অনুযায়ী নিজের ভূমিকা
-                                        যথাযথভাবে পালন করছে
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div className="border-0 p-2 h-100">
-                                  <div className="d-flex">
-                                    <div>
-                                      <h6>পারদর্শিতা সূচক ৬.১.১ </h6>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
-                                        নিয়ে যোগাযোগ করতে পারছে।
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div
-                                  className="card h-100 shadow-lg border-0 p-2"
-                                  style={{ backgroundColor: "#F0FAE9" }}
-                                >
-                                  <div className="d-flex">
-                                    <div>
-                                      <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      />
-                                    </div>
-                                    <div>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        নিজের এবং অন্যের প্রয়োজন ও আবেগ বিবেচনায়
-                                        নিয়ে যোগাযোগ করতে পারছে।
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div className="card shadow-lg border-0 p-2 h-100">
-                                  <div className="d-flex ">
-                                    <div>
-                                      {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
-                                    </div>
-                                    <div>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        দলের কর্মপরিকল্পনায় বা সিদ্ধান্তগ্রহণে
-                                        যথাযথভাবে অংশগ্রহণ না করলেও দলীয়
-                                        নির্দেশনা অনুযায়ী নিজের দায়িত্বটুকু
-                                        যথাযথভাবে পালন করছে
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-sm-6 col-md-3 py-2">
-                                <div
-                                  className="card shadow-lg border-0 p-2 h-100"
-                                  style={{ backgroundColor: "#F0FAE9" }}
-                                >
-                                  <div className="d-flex">
-                                    <div>
-                                      {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
-                                    </div>
-                                    <div>
-                                      <h6 style={{ fontSize: "14px" }}>
-                                        দলের সিদ্ধান্ত ও কর্মপরিকল্পনায় সক্রিয়
-                                        অংশগ্রহণ করছে, সেই অনুযায়ী নিজের ভূমিকা
-                                        যথাযথভাবে পালন করছে
-                                      </h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    )) ):  (<p className="m-5">শিক্ষার্থীর মূল্যায়ন পাওয়া যায়নি ।</p>)
-                          } 
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      ))
+                    ) : (
+                      <p className="m-5">
+                        শিক্ষার্থীর মূল্যায়ন পাওয়া যায়নি ।
+                      </p>
+                    )}
                   </Accordion>
                 )}
             </div>
@@ -1094,9 +1203,12 @@ export default function StudentTranscript() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">
-                <h5>শিক্ষার্থীর নাম:{data.student_name_bn} </h5>
+                <h5>
+                  শিক্ষার্থীর নাম:
+                  {student_info_pdf.student_name_bn}{" "}
+                </h5>
 
-                <p>রোল নম্বর # {data.roll}</p>
+                <p>রোল নম্বর # {student_info_pdf.roll}</p>
               </h5>
               <button
                 type="button"
@@ -1110,6 +1222,8 @@ export default function StudentTranscript() {
                 data={data}
                 selectedSunject={selectedSunject}
                 allFelter={allFelter}
+                student_info_pdf={student_info_pdf}
+                handleConvertToPdf={handleConvertToPdf}
               />
             </div>
             <div className="modal-footer">
@@ -1124,6 +1238,68 @@ export default function StudentTranscript() {
           </div>
         </div>
       </div>
+      {/* {selected_student?.length > 0 ? (
+                      selected_student?.map((data: any, index) => (
+                        <>
+                        {(() => {
+                                const Stu_data: any = all_students(data[0]);
+
+                                return (
+                                  <>
+                        <div
+                          className="modal fade"
+                          id="staticBackdrop"
+                          data-bs-backdrop="static"
+                          data-bs-keyboard="false"
+                          tabindex="-1"
+                          aria-labelledby="staticBackdropLabel"
+                          aria-hidden="true"
+                        >
+                          <div className="modal-dialog modal-lg">
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5 className="modal-title" id="staticBackdropLabel">
+                                  <h5>
+                                    শিক্ষার্থীর নাম:
+                                    {student_info_pdf.student_name_bn}{" "}
+                                  </h5>
+
+                                  <p>রোল নম্বর # {student_info_pdf.roll}</p>
+                                </h5>
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div className="modal-body">
+                                <Pdf
+                                  data={data}
+                                  selectedSunject={selectedSunject}
+                                  allFelter={allFelter}
+                                  student_info_pdf={student_info_pdf}
+                                  handleConvertToPdf={handleConvertToPdf}
+                                />
+                              </div>
+                              <div className="modal-footer">
+                                <button
+                                  type="button"
+                                  className="btn btn-secondary"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </>
+                                )
+                        })()}
+                        </>
+                      )
+                      ))} */}
     </div>
   );
 }

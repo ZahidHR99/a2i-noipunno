@@ -10,23 +10,9 @@ import {
     branch_name,
   } from "../utils/Utils";
 
-function Pdf({data, selectedSunject, allFelter}:any) {
-  const handleConvertToPdf = () => {
-    const element = document.getElementById("contentToConvert");
+function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvertToPdf }:any) {
 
-    const options = {
-      margin: 10,
-      filename: "Student-Transcript-document.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
 
-    const pdf = html2pdf().from(element).set(options).outputPdf();
-    pdf.save();
-  };
-  console.log("data",data,selectedSunject,allFelter);
-  
   return (
     <div>
       <div>
@@ -265,7 +251,7 @@ function Pdf({data, selectedSunject, allFelter}:any) {
                         fontWeight: "bold",
                       }}
                     >
-                      শিক্ষার্থীর নাম: {data.student_name_bn}
+                      শিক্ষার্থীর নাম: {student_info_pdf.student_name_bn}
                     </th>
                     <th
                       style={{
@@ -273,7 +259,7 @@ function Pdf({data, selectedSunject, allFelter}:any) {
                         fontWeight: "bold",
                       }}
                     >
-                      শিক্ষার্থীর আইডি: {data.roll}
+                      শিক্ষার্থীর আইডি: {student_info_pdf.roll}
                     </th>
                   </tr>
                   <tr>
@@ -283,7 +269,7 @@ function Pdf({data, selectedSunject, allFelter}:any) {
                         fontWeight: "bold",
                       }}
                     >
-                      শ্রেণী: {data.class}
+                      শ্রেণী: {student_info_pdf.class}
                     </th>
                     <th
                       style={{
@@ -291,7 +277,7 @@ function Pdf({data, selectedSunject, allFelter}:any) {
                         fontWeight: "bold",
                       }}
                     >
-                      শাখা: {section_name(data.section)}
+                      শাখা: {section_name(student_info_pdf.section)}
                     </th>
                     <th
                       style={{
