@@ -101,8 +101,8 @@ const StudentList = () => {
                         className="img-fluid"
                       />
                     </div>
-                    <div className="d-flex flex-column justify-content-center align-items-start">
-                      <div>
+                    <div className="d-flex flex-column justify-content-center align-items-start gap-1">
+                      <div className="d-flex flex-column justify-content-center align-items-start gap-1">
                         <h5 className={styles.teacherName}>
                           নামঃ {student?.student_name_bn || "no-entry"}{" "}
                         </h5>
@@ -117,7 +117,7 @@ const StudentList = () => {
                           style={{ backgroundColor: "#428F92", color: "#fff" }}
                         >
                           বিস্তারিত{" "}
-                          <MdOutlineKeyboardArrowRight className="fs-3" />{" "}
+                          <MdOutlineKeyboardArrowRight className="fs-5" />{" "}
                         </button>
                       </div>
                     </div>

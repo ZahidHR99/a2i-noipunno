@@ -13,7 +13,7 @@ const TeacherDashboard = () => {
   return (
     <div className="dashboard_page">
       <BannerSection />
-      <ReportForTeacherDashboard />
+      {/* <ReportForTeacherDashboard /> */}
       <BishoybittikThottoOMullayon />
       {/* <ClassRoutine /> */}
       <PopUpAppInfo />
