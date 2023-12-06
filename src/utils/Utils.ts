@@ -281,3 +281,31 @@ export const all_students = (students_id: any) => {
     return student;
   }
 };
+
+
+export const formate_own_subject_data = (own_subjet: any , class_room:any) => {
+  
+  const own_subject_data :any = [];
+    own_subjet.data.data.subjects.map((d: any) => {
+      let obj = {};
+      class_room.data.data.subjects.map((d_2: any) => {
+        if (d_2.subject_id === d.subject_id) {
+          obj = { ...d_2, ...d };
+          own_subject_data.push(obj)
+        }
+      });
+
+      return obj
+    });
+
+    own_subjet.data.data.subjects = own_subject_data
+
+    delete own_subjet['config']
+    delete own_subjet['headers']
+    delete own_subjet['request']
+
+    return own_subjet
+
+
+
+};
