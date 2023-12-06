@@ -15,6 +15,7 @@ const TeacherProfileCard = () => {
   const [loading, setloading] = useState<any>(true);
   const [teacherInfos, setTeacherInfos] = useState<any>({});
   const [schoolName, setSchoolName] = useState<any>("");
+
   const teacherDashboard = JSON.parse(
     localStorage.getItem("teacher_dashboard")
   );
