@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import "../../assets/dashboard_materials/css/total_student_teacher_classroom_for_teacher_dashboard.css";
 
 const Total_Student_Teacher_ClassRoom_for_TeacherDashboard = () => {
@@ -14,8 +14,15 @@ const Total_Student_Teacher_ClassRoom_for_TeacherDashboard = () => {
       localStorage.getItem("teacher_dashboard")
     );
 
+    let obj: any = {};
+
     if (studentsData && local_storege_data) {
       studentsData.data.data.subjects.map((std_data: any) => {
+        obj = {
+          ...obj,
+          [std_data.class_room.class_teacher.uid]:
+            std_data.class_room.class_teacher.uid,
+        };
         return std_data.class_room.students.map((stu_data: any) => {
           student.push(stu_data);
         });
@@ -26,22 +33,20 @@ const Total_Student_Teacher_ClassRoom_for_TeacherDashboard = () => {
           index === self.findIndex((o: any) => o.uid === obj.uid)
       );
       set_All_student(uniqueObjectsArray);
+
       if (local_storege_data?.data?.classes) {
         set_Total_class(local_storege_data?.data?.classes);
-        set_all_teacher(local_storege_data?.data?.teachers);
+        set_all_teacher(Object.keys(obj));
         setLoadin(false);
       }
     }
   };
 
   setInterval(() => {
-
     if (loading) {
       student_lsit();
     }
-    
   }, 4000);
-
 
   return (
     <div className="col-lg-2 col-md-6 ">
