@@ -83,7 +83,7 @@ export default function Teacher() {
       data.data.subjects.map((d_2: any) => {
         if (d_2.subject_id === d.subject_id) {
           const obj: any = {
-            subject: d_2,
+            subject: d_2.subject_info,
             own_subjet: d,
             teacher: d.class_room.class_teacher,
           };
@@ -118,7 +118,7 @@ export default function Teacher() {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
-
+console.log(`subject`, subject );
  
   return (
     <div className="content mb-5 teacher_compo_bg">
@@ -226,7 +226,7 @@ export default function Teacher() {
                                   <div className="total-student">
                                     <p>
                                       {" "}
-                                      {d?.subject.class_uid == "6"
+                                      {d?.subject?.class_uid == "6"
                                         ? "ষষ্ঠ "
                                         : "সপ্তম "}{" "}
                                       শ্রেণি{" "}

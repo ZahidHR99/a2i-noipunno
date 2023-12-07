@@ -305,7 +305,4 @@ export const formate_own_subject_data = (own_subjet: any , class_room:any) => {
     delete own_subjet['request']
 
     return own_subjet
-
-
-
 };
