@@ -6,11 +6,6 @@ import styles from "../component/Home.style.module.css";
 
 export default function BreadcumbHome({ showSubjectname, seshowSubject, setShowProfile, title, selected_subject }: any) {
 
-
-
-  console.log("selected_subject", selected_subject.subject);
-
-
   return (
     <section className="container pt-3">
       <div className="d-flex align-items-center gap-2">

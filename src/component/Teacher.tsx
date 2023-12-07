@@ -118,8 +118,8 @@ export default function Teacher() {
     setpi_attrbute(data.pi_attribute);
     setelement(e);
   };
-console.log(`subject`, subject );
- 
+
+  
   return (
     <div className="content mb-5 teacher_compo_bg">
       {loader && (
