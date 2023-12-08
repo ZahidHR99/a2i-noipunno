@@ -1,6 +1,6 @@
 import React from "react";
 import html2pdf from "html2pdf.js";
-import { BsCheckCircle, BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
+import { BsCheckCircle, BsFillFileEarmarkArrowDownFill ,   } from "react-icons/bs";
 import styles from "./Home.style.module.css";
 import { TiTick } from "react-icons/ti";
 import {
@@ -10,7 +10,7 @@ import {
     branch_name,
   } from "../utils/Utils";
 
-function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvertToPdf }:any) {
+function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvertToPdf , unique_id }:any) {
 
 
   return (
@@ -218,7 +218,8 @@ function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvert
               </div>
             </div>
           </div> */}
-        <div id="contentToConvert" className="container border">
+      
+        <div id={"contentToConvert_" + unique_id}  className="container border">
           <div className="row p-2">
             <div className="text-center py-3">
               <h6 style={{ fontSize: "14px" }}>মডেল একাডেমি</h6>
@@ -251,7 +252,7 @@ function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvert
                         fontWeight: "bold",
                       }}
                     >
-                      শিক্ষার্থীর নাম: {student_info_pdf.student_name_bn}
+                      শিক্ষার্থীর নাম: {student_info_pdf.student_name_bn || student_info_pdf.student_name_en }
                     </th>
                     <th
                       style={{
@@ -432,7 +433,7 @@ function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvert
           
         </div>
 
-        <div
+        {/* <div
           className="d-flex gap-2 pointer"
           onClick={(e) => handleConvertToPdf()}
         >
@@ -440,7 +441,7 @@ function Pdf({data, selectedSunject, allFelter, student_info_pdf , handleConvert
             <BsFillFileEarmarkArrowDownFill className="fs-4 me-2" />
             ডাউনলোড করুন
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

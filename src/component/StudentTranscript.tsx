@@ -6,11 +6,11 @@ import {
   get_pi_bi_evaluation_list,
 } from "../Request";
 import html2pdf from "html2pdf.js";
-
+import { RotatingLines } from "react-loader-spinner";
 import { BsCheckCircle } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { PiBookOpenTextBold } from "react-icons/pi";
-import { BsFillFileEarmarkArrowDownFill } from "react-icons/bs";
+import { BsFillFileEarmarkArrowDownFill, BsFiletypePdf } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
 import styles from "./Home.style.module.css";
 import { IoIosArrowUp } from "react-icons/io";
@@ -53,6 +53,7 @@ export default function StudentTranscript() {
   const [oviggota, setoviggota] = useState<any>([]);
   const [selected_student, setselected_student] = useState<any>([]);
   const [allFelter, setallFelter] = useState<any>({});
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
@@ -135,7 +136,7 @@ export default function StudentTranscript() {
       });
     });
 
-    console.log("own_subjet", all_Pi);
+    // console.log("own_subjet", all_Pi);
   };
 
   useEffect(() => {
@@ -182,7 +183,7 @@ export default function StudentTranscript() {
 
       const allPi = data?.data?.data?.pi_evaluation_list;
 
-      console.log("allPi", allPi);
+      // console.log("allPi", allPi);
 
       const student_pi = allPi.filter((d: any) => {
         if (
@@ -197,7 +198,7 @@ export default function StudentTranscript() {
 
       let x = Object.entries(groupByData);
       setselected_student(x);
-      console.log("pi_data", x, groupByData, student_name, student_pi);
+      // console.log("pi_data", x, groupByData, student_name, student_pi);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -215,27 +216,56 @@ export default function StudentTranscript() {
     }
   });
 
-  const handleConvertToPdf = () => {
-    const element = document.getElementById("contentToConvert");
+  const handleConvertToPdf = (student: any, multiple = false) => {
+    if (!multiple) {
+      const id = "contentToConvert_" + student;
+      const element = document.getElementById(id);
 
-    const options = {
-      margin: 5,
-      filename: "Student-Transcript-document.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
+      const options = {
+        margin: 5,
+        filename: "Student-Transcript-document.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      };
 
-    const pdf = html2pdf().from(element).set(options).outputPdf();
-    pdf.save();
+      const pdf = html2pdf().from(element).set(options).outputPdf();
+      pdf.save();
+    } else {
+      setLoading(true);
+      for (let index = 0; index < selected_student.length; index++) {
+        const el = selected_student[index];
+
+        const Stu_data: any = all_students(el[0]);
+
+        const id = "contentToConvert_" + el[0];
+        const element = document.getElementById(id);
+
+        const filename =
+          Stu_data.student_name_bn ||
+          Stu_data.student_name_en + Stu_data.roll + ".pdf";
+
+        const options = {
+          margin: 5,
+          filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        };
+
+        // setTimeout(() => {
+        //   const pdf = html2pdf().from(element).set(options).outputPdf();
+        //   pdf.save();
+        //   console.log("element", element);
+        // }, 800);
+      }
+
+      setLoading(false);
+      // console.log("student", student);
+    }
   };
 
-  console.log(
-    "student_info_pdf",
-    student_info_pdf,
-    student_name,
-    uniquestudents
-  );
+  console.log("loading", loading);
 
   return (
     <div className="report_page">
@@ -506,44 +536,13 @@ export default function StudentTranscript() {
                               </select>
                             </div>
                           </div>
-                          <div className="col-6 col-sm-4 col-md-3 pointer">
-                            <div className="mb-3">
-                              <label className="form-label "></label>
-                              <div className="">
-                                <button
-                                  onClick={fetchDataFromAPI}
-                                  className="form-control py-1 border-right-0 bg-success border-0"
-                                  defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
-                                  id="example-search-input"
-                                  style={{
-                                    fontSize: "12px",
-                                  }}
-                                >
-                                  সকল শিক্ষার্থী মূল্যায়ন <br /> ডাউনলোড করুন
-                                  <div
-                                    className="btn btn-outline-secondary py-1 border-0"
-                                    type="button"
-                                    style={{
-                                      backgroundColor: "#428F92",
-                                    }}
-                                  ></div>
-                                </button>
-
-                                <span
-                                  className="input-group-append rounded-end"
-                                  style={{
-                                    fontSize: "12px",
-                                    backgroundColor: "white",
-                                  }}
-                                ></span>
-                              </div>
-                            </div>
-                          </div>
                         </>
                       )}
                     <div className="col-6 col-sm-4 col-md-3 pointer">
                       <div className="mb-3">
-                        <label className="form-label "></label>
+                        <label className="form-label ">
+                          আপনার নির্বাচন সম্পূর্ণ করুন
+                        </label>
                         <div className="">
                           <button
                             onClick={fetchDataFromAPI}
@@ -848,6 +847,44 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div>
+              {allFelter.branch &&
+                allFelter.class &&
+                allFelter.section &&
+                allFelter.shift &&
+                allFelter.version &&
+                allFelter.mullayon && (
+                  <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2 ">
+                    <div className=" d-flex ">
+                      <div className="form-label p-4 ms-4 fw-bold ">
+                        সকল শিক্ষার্থী মূল্যায়ন ডাউনলোড করুন
+                      </div>
+                      <div className="d-flex justify-content-between flex-md-row flex-column align-items-center flex-end">
+                        <button
+                          onClick={fetchDataFromAPI}
+                          className={`${styles.download_btn}`}
+                          defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                          id="example-search-input"
+                          data-bs-toggle="modal"
+                          data-bs-target="#allstaticBackdrop"
+                          style={{
+                            fontSize: "12px",
+                          }}
+                        >
+                          <BsFiletypePdf className="fs-4 me-2 " />
+                          ডাউনলোড করুন
+                        </button>
+
+                        {/* <span
+                          className="input-group-append rounded-end"
+                          style={{
+                            fontSize: "12px",
+                            backgroundColor: "white",
+                          }}
+                        ></span> */}
+                      </div>
+                    </div>
+                  </div>
+                )}
 
               {/* <h6 className="m-2">
                 
@@ -874,6 +911,33 @@ export default function StudentTranscript() {
 
                                 return (
                                   <>
+                                    {/* <div className="report-download-bar accordion-header">
+                                      <div className="d-md-flex d-sm-row align-items-center justify-content-between">
+                                        <div>
+                                          <p className="student-name">
+                                            শিক্ষার্থীর নাম: ইনতিশার পারভেজ{" "}
+                                          </p>
+                                          <p className="student-rollno">
+                                            রোল নম্বর #৩২১০০
+                                          </p>
+                                        </div>
+                                        <div className="d-flex align-items-center gap-3">
+                                          <div className="d-flex gap-1 download-bg-style">
+                                            <p className="student-rollno">
+                                              ডাউনলোড করুন
+                                            </p>
+                                          </div>
+                                          <div
+                                            className="download-btn-icon accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false"
+                                            aria-controls="flush-collapseOne"
+                                          ></div>
+                                        </div>
+                                      </div>
+                                    </div> */}
                                     <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2">
                                       <h5>
                                         শিক্ষার্থীর নাম:{" "}
@@ -884,20 +948,24 @@ export default function StudentTranscript() {
                                         {convertToBanglaNumber(Stu_data.roll)}
                                       </h5>
 
-                                      {/* <p>রোল নম্বর #</p> */}
+                                     
                                     </div>
                                     <div className="d-flex justify-content-between flex-md-row flex-column align-items-center flex-end">
                                       <button
                                         type="button"
-                                        className="btn btn-primary end-0"
+                                        className={`${styles.download_btn}`}
                                         data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop"
                                         onClick={(e) => {
-                                          handleConvertToPdf();
+                                          handleConvertToPdf(
+                                            Stu_data.uid,
+                                            false
+                                          );
                                           setdata(data);
                                           setStudent_info_pdf(Stu_data);
                                         }}
                                       >
+                                        <BsFiletypePdf className="fs-4 me-2" />
                                         ডাউনলোড করুন
                                       </button>
                                     </div>
@@ -982,9 +1050,7 @@ export default function StudentTranscript() {
                                   <div className="card shadow-lg border-0 p-2 h-100">
                                     <div className="d-flex ">
                                       <div>
-                                        {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
+                                        
                                       </div>
                                       <div>
                                         <h6
@@ -1007,9 +1073,7 @@ export default function StudentTranscript() {
                                   >
                                     <div className="d-flex">
                                       <div>
-                                        {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
+                                       
                                       </div>
                                       <div>
                                         <h6
@@ -1044,9 +1108,7 @@ export default function StudentTranscript() {
                                   >
                                     <div className="d-flex">
                                       <div>
-                                        {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
+                                        
                                       </div>
                                       <div>
                                         <h6
@@ -1086,9 +1148,7 @@ export default function StudentTranscript() {
                                   >
                                     <div className="d-flex">
                                       <div>
-                                        {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
+                                       
                                       </div>
                                       <div>
                                         <h6 style={{ fontSize: "14px" }}>
@@ -1137,9 +1197,7 @@ export default function StudentTranscript() {
                                   <div className="card shadow-lg border-0 p-2 h-100">
                                     <div className="d-flex ">
                                       <div>
-                                        {/* <TiTick
-                                        className={`${styles.tick_mark}`}
-                                      /> */}
+                                        
                                       </div>
                                       <div>
                                         <h6 style={{ fontSize: "14px" }}>
@@ -1192,6 +1250,81 @@ export default function StudentTranscript() {
 
       <div
         className="modal fade"
+        id="allstaticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="allstaticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="allstaticBackdropLabel">
+                <button
+                  type="button"
+                  onClick={(e) => handleConvertToPdf(selected_student, true)}
+                >
+                  Download
+                </button>
+
+                <h5>
+                  শিক্ষার্থীর নাম:
+                  {student_info_pdf.student_name_bn}{" "}
+                </h5>
+
+                <p>রোল নম্বর # {student_info_pdf.roll}</p>
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              {loading ? (
+                <p>Loading...</p>
+              ) : selected_student?.length > 0 ? (
+                selected_student?.map((data: any, index) => (
+                  <>
+                    {(() => {
+                      const Stu_data: any = all_students(data[0]);
+
+                      return (
+                        <>
+                          <Pdf
+                            data={data}
+                            selectedSunject={selectedSunject}
+                            allFelter={allFelter}
+                            student_info_pdf={Stu_data}
+                            unique_id={data[0]}
+                            handleConvertToPdf={handleConvertToPdf}
+                          />
+                        </>
+                      );
+                    })()}
+                  </>
+                ))
+              ) : (
+                "No Students"
+              )}
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="modal fade"
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -1222,6 +1355,7 @@ export default function StudentTranscript() {
                 data={data}
                 selectedSunject={selectedSunject}
                 allFelter={allFelter}
+                unique_id={student_info_pdf.uid}
                 student_info_pdf={student_info_pdf}
                 handleConvertToPdf={handleConvertToPdf}
               />
@@ -1238,68 +1372,6 @@ export default function StudentTranscript() {
           </div>
         </div>
       </div>
-      {/* {selected_student?.length > 0 ? (
-                      selected_student?.map((data: any, index) => (
-                        <>
-                        {(() => {
-                                const Stu_data: any = all_students(data[0]);
-
-                                return (
-                                  <>
-                        <div
-                          className="modal fade"
-                          id="staticBackdrop"
-                          data-bs-backdrop="static"
-                          data-bs-keyboard="false"
-                          tabindex="-1"
-                          aria-labelledby="staticBackdropLabel"
-                          aria-hidden="true"
-                        >
-                          <div className="modal-dialog modal-lg">
-                            <div className="modal-content">
-                              <div className="modal-header">
-                                <h5 className="modal-title" id="staticBackdropLabel">
-                                  <h5>
-                                    শিক্ষার্থীর নাম:
-                                    {student_info_pdf.student_name_bn}{" "}
-                                  </h5>
-
-                                  <p>রোল নম্বর # {student_info_pdf.roll}</p>
-                                </h5>
-                                <button
-                                  type="button"
-                                  className="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                ></button>
-                              </div>
-                              <div className="modal-body">
-                                <Pdf
-                                  data={data}
-                                  selectedSunject={selectedSunject}
-                                  allFelter={allFelter}
-                                  student_info_pdf={student_info_pdf}
-                                  handleConvertToPdf={handleConvertToPdf}
-                                />
-                              </div>
-                              <div className="modal-footer">
-                                <button
-                                  type="button"
-                                  className="btn btn-secondary"
-                                  data-bs-dismiss="modal"
-                                >
-                                  Close
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </>
-                                )
-                        })()}
-                        </>
-                      )
-                      ))} */}
     </div>
   );
 }
