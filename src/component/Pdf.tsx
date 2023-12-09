@@ -94,7 +94,7 @@ function Pdf({
                       }}
                     >
                       বিষয়:
-                      {subject_name(allFelter?.subject.split("-")[0]) }
+                      {subject_name(allFelter?.subject?.split("-")[0]) }
                     </th>
                     <th
                       style={{
