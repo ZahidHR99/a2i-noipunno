@@ -278,9 +278,28 @@ export function get_pi_bi_evaluation_list(submit_status: any = "") {
 }
 
 
-export function get_pi_bi(submit_status: any = "") {
-  const page_list =
-    `${API_URL}/v2/transcript` + submit_status;
+// export function get_pi_bi(submit_status: any = "") {
+//   const page_list =
+//     `${API_URL}/v2/transcript` + submit_status;
+
+//   const options = {
+//     method: "get",
+//     headers: { "content-type": "application/json" },
+//     url: page_list,
+//   };
+
+//   return axios(options);
+// }
+
+export function get_pi_bi(
+  subject_uid: any,
+  branch_uid: any,
+  version_uid: any,
+  shift_uid: any,
+  class_uid: any,
+  section_uid: any,
+) {
+  const page_list = `${EVULATION_API}/transcript?class_uid=${class_uid}&subject_uid=${subject_uid}&branch_uid=${branch_uid}&version_uid=${version_uid}&shift_uid=${shift_uid}&section_uid=${section_uid}`;
 
   const options = {
     method: "get",

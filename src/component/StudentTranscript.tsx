@@ -4,6 +4,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
   get_pi_bi_evaluation_list,
+  get_pi_bi,
   
 } from "../Request";
 import html2pdf from "html2pdf.js";
@@ -454,7 +455,7 @@ export default function StudentTranscript() {
                       </div>
                     </div>
 
-                    <div className="col-6 col-sm-4 col-md-3">
+                    {/* <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">বিষয় নির্বাচন করুন</label>
                         <select
@@ -475,9 +476,9 @@ export default function StudentTranscript() {
                           ))}
                         </select>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="col-6 col-sm-4 col-md-3">
+                    {/* <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">
                           মূল্যায়ন শিরোনাম নির্বাচন করুন
@@ -506,14 +507,14 @@ export default function StudentTranscript() {
                           ))}
                         </select>
                       </div>
-                    </div>
+                    </div> */}
 
                     {allFelter.branch &&
                       allFelter.class &&
                       allFelter.section &&
                       allFelter.shift &&
                       allFelter.version &&
-                      allFelter.mullayon && (
+                       (
                         <>
                           <div className="col-6 col-sm-4 col-md-3">
                             <div className="mb-3" style={{ fontSize: "12px" }}>
@@ -856,7 +857,7 @@ export default function StudentTranscript() {
                 allFelter.section &&
                 allFelter.shift &&
                 allFelter.version &&
-                allFelter.mullayon && (
+                 (
                   <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2 ">
                     <div className=" d-flex ">
                       <div className="form-label p-4 ms-4 fw-bold ">
@@ -903,7 +904,7 @@ export default function StudentTranscript() {
                 allFelter.section &&
                 allFelter.shift &&
                 allFelter.version &&
-                allFelter.mullayon && (
+                 (
                   <Accordion>
                     {selected_student?.length > 0 ? (
                       selected_student?.map((data: any, index) => (
