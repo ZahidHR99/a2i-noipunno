@@ -291,20 +291,22 @@ export function get_pi_bi_evaluation_list(submit_status: any = "") {
 //   return axios(options);
 // }
 
-export function get_pi_bi(
-  subject_uid: any,
-  branch_uid: any,
-  version_uid: any,
-  shift_uid: any,
-  class_uid: any,
-  section_uid: any,
-) {
-  const page_list = `${EVULATION_API}/transcript?class_uid=${class_uid}&subject_uid=${subject_uid}&branch_uid=${branch_uid}&version_uid=${version_uid}&shift_uid=${shift_uid}&section_uid=${section_uid}`;
+export function get_pi_bi(subject_uid , branch_uid , version_uid , shift_uid , class_uid , section_uid , student_uid="") {
+  const page_list = `${EVULATION_API}/transcript`;
 
   const options = {
     method: "get",
     headers: { "content-type": "application/json" },
     url: page_list,
+    params : {
+      subject_uid,
+      branch_uid,
+      version_uid,
+      shift_uid,
+      class_uid,
+      section_uid,
+      student_uid
+    }
   };
 
   return axios(options);
