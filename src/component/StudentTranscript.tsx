@@ -202,6 +202,7 @@ export default function StudentTranscript() {
   });
 
   const handleConvertToPdf = (student: any, multiple = false) => {
+    setsubmittingLoading(true);
     if (!multiple) {
       const id = "contentToConvert_" + student;
       const element = document.getElementById(id);
@@ -217,13 +218,12 @@ export default function StudentTranscript() {
       const pdf = html2pdf().from(element).set(options).outputPdf();
       pdf.save();
     } else {
-      setLoading(true);
+      setsubmittingLoading(true);
       for (let index = 0; index < selected_student.length; index++) {
         const el = selected_student[index];
+        const Stu_data: any = all_students(el.student_data.uid);
 
-        const Stu_data: any = all_students(el[0]);
-
-        const id = "contentToConvert_" + el[0];
+        const id = "contentToConvert_" + el.student_data.uid;
         const element = document.getElementById(id);
 
         const filename =
@@ -245,12 +245,10 @@ export default function StudentTranscript() {
         }, 800);
       }
 
-      setLoading(false);
+      setsubmittingLoading(false);
       // console.log("student", student);
     }
   };
-
-  console.log("loading", allFelter);
 
   return (
     <div className="report_page">
@@ -952,26 +950,34 @@ export default function StudentTranscript() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="allstaticBackdropLabel">
+
+
+
+              <button
+              type="button"
+              onClick={(e) => handleConvertToPdf(selected_student, true)}
+                        className={`${styles.download_btn}`}
+                        defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                        id="example-search-input"
+                        data-bs-toggle="modal"
+                        data-bs-target="#allstaticBackdrop"
+                        style={{
+                          fontSize: "12px",
+                        }}
+                      >
+                        <BsFiletypePdf className="fs-4 me-2 " />
+                        ডাউনলোড করুন
+                      </button>
+
+              </h5>
+              {!submittingLoading && (
                 <button
                   type="button"
-                  onClick={(e) => handleConvertToPdf(selected_student, true)}
-                >
-                  Download
-                </button>
-
-                <h5>
-                  শিক্ষার্থীর নাম:
-                  {student_info_pdf.student_name_bn}{" "}
-                </h5>
-
-                <p>রোল নম্বর # {student_info_pdf.roll}</p>
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              )}
             </div>
             <div className="modal-body">
               {loading ? (
@@ -982,8 +988,8 @@ export default function StudentTranscript() {
                     data={data}
                     selectedSunject={selectedSunject}
                     allFelter={allFelter}
-                    student_info_pdf={student_info_pdf}
-                    unique_id={data[0]}
+                    student_info_pdf={data.student_data}
+                    unique_id={data.student_data.uid}
                     handleConvertToPdf={handleConvertToPdf}
                     instititute={instititute[0]}
                   />
@@ -992,6 +998,7 @@ export default function StudentTranscript() {
                 "No Students"
               )}
             </div>
+            {!submittingLoading && (
             <div className="modal-footer">
               <button
                 type="button"
@@ -1000,7 +1007,7 @@ export default function StudentTranscript() {
               >
                 Close
               </button>
-            </div>
+            </div>)}
           </div>
         </div>
       </div>
