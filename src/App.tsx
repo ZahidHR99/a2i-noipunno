@@ -27,6 +27,7 @@ import TeacherDashboard from "./component/Dashboards/TeacherDashboard/TeacherDas
 import Navbar from "./layout/Navbar";
 import FAQ from "./component/FAQ/FAQ";
 import LoginPage from "./component/LoginPage";
+import PasswordReset from "./component/PasswordReset";
 
 function App() {
   const [topbar, settopbar] = useState(false);
@@ -83,6 +84,7 @@ function App() {
         </Route>
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/password/reset" element={<PasswordReset />} />
 
 
       </Routes>
