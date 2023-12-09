@@ -4,6 +4,7 @@ import {
   teacher_dashboard,
   teacher_own_subject,
   get_pi_bi_evaluation_list,
+  
 } from "../Request";
 import html2pdf from "html2pdf.js";
 import { RotatingLines } from "react-loader-spinner";
@@ -178,6 +179,8 @@ export default function StudentTranscript() {
       const data = await get_pi_bi_evaluation_list(1); // Call your API function here
 
       // Set the response data to state to display or use it in your component
+
+      const pi_bi_data = await get_pi_bi();
       setResponseData(data);
       setPi_data(data?.data?.data?.pi_evaluation_list);
 
@@ -451,7 +454,7 @@ export default function StudentTranscript() {
                       </div>
                     </div>
 
-                    {/* <div className="col-6 col-sm-4 col-md-3">
+                    <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
                         <label className="form-label">বিষয় নির্বাচন করুন</label>
                         <select
@@ -472,7 +475,7 @@ export default function StudentTranscript() {
                           ))}
                         </select>
                       </div>
-                    </div> */}
+                    </div>
 
                     <div className="col-6 col-sm-4 col-md-3">
                       <div className="mb-3" style={{ fontSize: "12px" }}>
@@ -545,6 +548,7 @@ export default function StudentTranscript() {
                         </label>
                         <div className="">
                           <button
+                            type="button"
                             onClick={fetchDataFromAPI}
                             className="form-control py-1 border-right-0 border-0"
                             defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
@@ -557,7 +561,6 @@ export default function StudentTranscript() {
                             নিম্নে মূল্যায়ন প্রতিবেদন দেখুন
                             <div
                               className="btn btn-outline-secondary py-1 border-0"
-                              type="button"
                               style={{
                                 backgroundColor: "#428F92",
                               }}
@@ -780,6 +783,7 @@ export default function StudentTranscript() {
                         <label className="form-label "></label>
                         <div className="input-group">
                           <button
+                            type="button"
                             onClick={fetchDataFromAPI}
                             className="form-control py-1 border-right-0 border-0"
                             defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
@@ -792,7 +796,7 @@ export default function StudentTranscript() {
                             নিম্নে মূল্যায়ন প্রতিবেদন দেখুন
                             <div
                               className="btn btn-outline-secondary py-1 border-0"
-                              type="button"
+                              
                               style={{
                                 backgroundColor: "#428F92",
                               }}
@@ -1328,7 +1332,6 @@ export default function StudentTranscript() {
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
-        tabindex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
