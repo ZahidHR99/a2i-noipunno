@@ -216,6 +216,8 @@ export default function StudentMullayonBehave({
             }
           });
         } else {
+
+          console.log(`444`, 444);
           if (submitData.length > 0) {
             setcomment_status(true);
             checkedIn_comment(submitObj);

@@ -51,7 +51,6 @@ export default function StudentMullayonModal({
   const [submitObj_wid_null, setsubmitObj_wid_null] = useState<any>([]);
   const [submited, setsubmited] = useState<any>(false);
   const [firstRender, setfirstRender] = useState<any>(true);
-console.log(`oviggota_uid`, oviggota_uid);
   const fetchData = async () => {
     const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
     const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";

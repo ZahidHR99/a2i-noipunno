@@ -75,7 +75,7 @@ const TeacherProfileCard = () => {
           </h2>
           <p className="card-text">
             {/* 95481468716473 */}
-            {teacherInfos?.eiin}
+            {teacherInfos?.pdsid || teacherInfos?.caid }  
           </p>
           {/* <p className="card-text">পাবনা জিলা স্কুল, পাবনা</p> */}
           <p className="card-text">{schoolName}</p>
