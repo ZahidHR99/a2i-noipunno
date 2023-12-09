@@ -276,3 +276,17 @@ export function get_pi_bi_evaluation_list(submit_status: any = "") {
 
   return axios(options);
 }
+
+
+export function get_pi_bi(submit_status: any = "") {
+  const page_list =
+    `${API_URL}/v2/transcript` + submit_status;
+
+  const options = {
+    method: "get",
+    headers: { "content-type": "application/json" },
+    url: page_list,
+  };
+
+  return axios(options);
+}
