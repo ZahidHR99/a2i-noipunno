@@ -958,9 +958,6 @@ export default function StudentTranscript() {
               onClick={(e) => handleConvertToPdf(selected_student, true)}
                         className={`${styles.download_btn}`}
                         defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
-                        id="example-search-input"
-                        data-bs-toggle="modal"
-                        data-bs-target="#allstaticBackdrop"
                         style={{
                           fontSize: "12px",
                         }}
