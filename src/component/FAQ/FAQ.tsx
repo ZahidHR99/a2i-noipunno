@@ -26,11 +26,9 @@ const FAQ = () => {
       "question": "লগইন পরবর্তী করণীয় কি?",
       "answer": "লগইন শেষে হোম পেজে আপনি বিদ্যালয় সংশ্লিষ্ট সাতটি ব্যবস্থাপনা দেখতে পাবেন। উক্ত ব্যবস্থাপনাগুলো ব্যবস্থাপনা ট্যাবের ড্রপ-ডাউনেও দেখতে পাবেন। এই ব্যবস্থাপনাগুলো প্রতিষ্ঠান প্রধানের আইডি থেকে সম্পন্ন করতে হবে।"
     },
-    // {
-    //   "id": 5,
-    //   "question": "What is the capital of Japan?",
-    //   "answer": "The capital of Japan is Tokyo."
-    // },
+
+
+
     // {
     //   "id": 6,
     //   "question": "What is the boiling point of water in Celsius?",
