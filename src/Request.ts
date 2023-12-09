@@ -24,6 +24,35 @@ export function loginPassword(data: any) {
   return axios(options);
 }
 
+
+export function resetPassword(data: any) {
+  const page_list = `${API_URL}/v2/account-otp`;
+
+  const options = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    data,
+    url: page_list,
+  };
+
+  return axios(options);
+}
+
+
+export function otpComfirm(data: any) {
+  const page_list = `${API_URL}/v2/account-otp-verify`;
+
+  const options = {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    data,
+    url: page_list,
+  };
+
+  return axios(options);
+}
+
+
 export function all_teachers(data: any = "") {
   const page_list = `${API_URL}/v2/teacher-dashboard`;
 

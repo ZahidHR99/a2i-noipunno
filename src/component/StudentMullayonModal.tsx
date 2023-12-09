@@ -51,7 +51,7 @@ export default function StudentMullayonModal({
   const [submitObj_wid_null, setsubmitObj_wid_null] = useState<any>([]);
   const [submited, setsubmited] = useState<any>(false);
   const [firstRender, setfirstRender] = useState<any>(true);
-
+console.log(`oviggota_uid`, oviggota_uid);
   const fetchData = async () => {
     const own_SUbjects__: any = localStorage.getItem("own_subjet") || "";
     const own_SUbjects = own_SUbjects__ ? JSON.parse(own_SUbjects__) : "";
@@ -417,7 +417,7 @@ export default function StudentMullayonModal({
                     <th
                       scope="col"
                       className="col-md-3 col-lg-2"
-                      style={{ width: "30%" }}
+                      style={{ width: "20%" }}
                     >
                       শিক্ষার্থীর নাম{" "}
                       {/* <BiFilterAlt className="fs-5 ms-4" /> */}
@@ -425,19 +425,19 @@ export default function StudentMullayonModal({
                     <th
                       scope="col"
                       className="col-md-3 col-lg-2"
-                      style={{ width: "20%" }}
+                      style={{ width: "10%" }}
                     ></th>
                     <th
                       scope="col"
                       className="col-md-3 col-lg-2"
-                      style={{ width: "20%" }}
+                      style={{ width: "10%" }}
                     >
                       {/* <BiFilterAlt className="fs-5" /> */}
                     </th>
                     <th
                       scope="col"
                       className="col-md-3 col-lg-2"
-                      style={{ width: "20%" }}
+                      style={{ width: "10%" }}
                     >
                       {comment_status && (
                         <button
