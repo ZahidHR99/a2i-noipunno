@@ -41,7 +41,7 @@ function App() {
 
         // const data_dash: any = await teacher_dashboard();
         // localStorage.setItem("teacher_dashboard", JSON.stringify(data_dash.data));
-        setRender(false)
+        // setRender(false)
       }
     }
 
@@ -82,14 +82,14 @@ function App() {
           <Route path="/head-teacher-dashboard" element={<HeadTeacherDashboard />} />
           <Route path="/faq" element={<FAQ />} />
         </Route>
-        {/* <Route path="/login" element={<Login />} /> */}
+
         <Route path="/login" element={<LoginPage />} />
         <Route path="/password/reset" element={<PasswordReset />} />
-
 
       </Routes>
 
       {topbar && <Footer />}
+
     </>
   );
 }
