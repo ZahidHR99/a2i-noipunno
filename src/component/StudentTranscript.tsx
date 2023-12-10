@@ -277,7 +277,7 @@ export default function StudentTranscript() {
                     প্রতিবেদন(PI)
                   </a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a
                     className={`nav-link link-secondary ${styles.nav_tab_bottom_border}`}
                     id="behaviour-tab"
@@ -288,7 +288,7 @@ export default function StudentTranscript() {
                     <SlBookOpen className="me-1" /> আচরণগত মূল্যায়ন
                     প্রতিবেদন(BI)
                   </a>
-                </li>
+                </li> */}
               </ul>
               <div
                 className="tab-content"
@@ -838,7 +838,7 @@ export default function StudentTranscript() {
                     <Accordion.Item eventKey={index}>
                       <Accordion.Header className="px-4 " key={index}>
                         <>
-                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2">
+                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center  px-4">
                             <button
                               type="button"
                               className={`${styles.download_btn}`}
@@ -855,7 +855,7 @@ export default function StudentTranscript() {
                             >
                               <BsFiletypePdf className="fs-4 me-2" />
                             </button>
-                            <h5>
+                            <h5 className="px-2">
                               শিক্ষার্থীর নাম:{" "}
                               {data.student_data.student_name_bn ||
                                 data.student_data.student_name_en}
