@@ -169,6 +169,7 @@ export default function StudentTranscript() {
   const fetchDataFromAPI = async () => {
     setsubmittingLoading(true);
     try {
+      setselected_student([])
       const pi_bi_data = await get_pi_bi(
         allFelter.subject.split("-")[0],
         allFelter.branch,
@@ -204,12 +205,16 @@ export default function StudentTranscript() {
   const handleConvertToPdf = (student: any, multiple = false) => {
     setsubmittingLoading(true);
     if (!multiple) {
-      const id = "contentToConvert_" + student;
+      const filename =
+        student.student_name_bn ||
+        student.student_name_en + "-roll-" + student.roll + ".pdf";
+
+      const id = "contentToConvert_" + student.uid;
       const element = document.getElementById(id);
 
       const options = {
         margin: 5,
-        filename: "Student-Transcript-document.pdf",
+        filename: filename,
         image: { type: "jpeg", quality: 0.98 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
@@ -218,7 +223,6 @@ export default function StudentTranscript() {
       const pdf = html2pdf().from(element).set(options).outputPdf();
       pdf.save();
     } else {
-      setsubmittingLoading(true);
       for (let index = 0; index < selected_student.length; index++) {
         const el = selected_student[index];
         const Stu_data: any = all_students(el.student_data.uid);
@@ -228,7 +232,7 @@ export default function StudentTranscript() {
 
         const filename =
           Stu_data.student_name_bn ||
-          Stu_data.student_name_en + Stu_data.roll + ".pdf";
+          Stu_data.student_name_en + "-roll-" + Stu_data.roll + ".pdf";
 
         const options = {
           margin: 5,
@@ -242,13 +246,14 @@ export default function StudentTranscript() {
           const pdf = html2pdf().from(element).set(options).outputPdf();
           pdf.save();
           console.log("element", element);
-        }, 800);
+        }, 700);
       }
-
-      setsubmittingLoading(false);
       // console.log("student", student);
     }
+    setsubmittingLoading(false);
   };
+
+  console.log(`submittingLoading`, submittingLoading);
 
   return (
     <div className="report_page">
@@ -842,10 +847,7 @@ export default function StudentTranscript() {
                               data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop"
                               onClick={(e) => {
-                                handleConvertToPdf(
-                                  data.student_data.uid,
-                                  false
-                                );
+                                handleConvertToPdf(data.student_data, false);
                                 setdata(data);
                                 setStudent_info_pdf(data.student_data);
                               }}
@@ -950,22 +952,18 @@ export default function StudentTranscript() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="allstaticBackdropLabel">
-
-
-
-              <button
-              type="button"
-              onClick={(e) => handleConvertToPdf(selected_student, true)}
-                        className={`${styles.download_btn}`}
-                        defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
-                        style={{
-                          fontSize: "12px",
-                        }}
-                      >
-                        <BsFiletypePdf className="fs-4 me-2 " />
-                        ডাউনলোড করুন
-                      </button>
-
+                <button
+                  type="button"
+                  onClick={(e) => handleConvertToPdf(selected_student, true)}
+                  className={`${styles.download_btn}`}
+                  defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                  style={{
+                    fontSize: "12px",
+                  }}
+                >
+                  <BsFiletypePdf className="fs-4 me-2 " />
+                  ডাউনলোড করুন
+                </button>
               </h5>
               {!submittingLoading && (
                 <button
@@ -977,6 +975,9 @@ export default function StudentTranscript() {
               )}
             </div>
             <div className="modal-body">
+              {
+                submittingLoading && <p>Loading...</p>
+              }
               {loading ? (
                 <p>Loading...</p>
               ) : selected_student?.length > 0 ? (
@@ -996,15 +997,16 @@ export default function StudentTranscript() {
               )}
             </div>
             {!submittingLoading && (
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>)}
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
