@@ -27,7 +27,7 @@ import {
   convertToBanglaNumber,
   formate_teanscript_data,
 } from "../utils/Utils";
-// import {handleConvertToPdf} from "./Pdf"
+
 import Breadcumb from "../layout/Breadcumb";
 import Pdf from "./Pdf";
 // import { toPng } from "html-to-image";
