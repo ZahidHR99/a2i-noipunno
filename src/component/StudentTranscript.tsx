@@ -167,9 +167,9 @@ export default function StudentTranscript() {
   );
 
   const fetchDataFromAPI = async () => {
-    setsubmittingLoading(true)
+    setsubmittingLoading(true);
     try {
-      
+      setselected_student([])
       const pi_bi_data = await get_pi_bi(
         allFelter.subject.split("-")[0],
         allFelter.branch,
@@ -182,13 +182,12 @@ export default function StudentTranscript() {
       const data = formate_teanscript_data(pi_bi_data.data.transcript);
 
       setselected_student(data);
-      
 
       console.log(`data`, data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-    setsubmittingLoading(false)
+    setsubmittingLoading(false);
   };
 
   const new_student = Stuent_result.filter((d: any) => {
@@ -204,13 +203,18 @@ export default function StudentTranscript() {
   });
 
   const handleConvertToPdf = (student: any, multiple = false) => {
+    setsubmittingLoading(true);
     if (!multiple) {
-      const id = "contentToConvert_" + student;
+      const filename =
+        student.student_name_bn ||
+        student.student_name_en + "-roll-" + student.roll + ".pdf";
+
+      const id = "contentToConvert_" + student.uid;
       const element = document.getElementById(id);
 
       const options = {
         margin: 5,
-        filename: "Student-Transcript-document.pdf",
+        filename: filename,
         image: { type: "jpeg", quality: 0.98 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
@@ -219,18 +223,16 @@ export default function StudentTranscript() {
       const pdf = html2pdf().from(element).set(options).outputPdf();
       pdf.save();
     } else {
-      setLoading(true);
       for (let index = 0; index < selected_student.length; index++) {
         const el = selected_student[index];
+        const Stu_data: any = all_students(el.student_data.uid);
 
-        const Stu_data: any = all_students(el[0]);
-
-        const id = "contentToConvert_" + el[0];
+        const id = "contentToConvert_" + el.student_data.uid;
         const element = document.getElementById(id);
 
         const filename =
           Stu_data.student_name_bn ||
-          Stu_data.student_name_en + Stu_data.roll + ".pdf";
+          Stu_data.student_name_en + "-roll-" + Stu_data.roll + ".pdf";
 
         const options = {
           margin: 5,
@@ -240,19 +242,18 @@ export default function StudentTranscript() {
           jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         };
 
-        // setTimeout(() => {
-        //   const pdf = html2pdf().from(element).set(options).outputPdf();
-        //   pdf.save();
-        //   console.log("element", element);
-        // }, 800);
+        setTimeout(() => {
+          const pdf = html2pdf().from(element).set(options).outputPdf();
+          pdf.save();
+          console.log("element", element);
+        }, 700);
       }
-
-      setLoading(false);
       // console.log("student", student);
     }
+    setsubmittingLoading(false);
   };
 
-  console.log("loading", allFelter);
+  console.log(`submittingLoading`, submittingLoading);
 
   return (
     <div className="report_page">
@@ -506,7 +507,8 @@ export default function StudentTranscript() {
                                   backgroundColor: "#428F92",
                                 }}
                               >
-                                নিম্নে মূল্যায়ন প্রতিবেদন দেখুন {submittingLoading && "......"}
+                                নিম্নে মূল্যায়ন প্রতিবেদন দেখুন{" "}
+                                {submittingLoading && "......"}
                                 <div
                                   className="btn btn-outline-secondary py-1 border-0"
                                   style={{
@@ -799,38 +801,38 @@ export default function StudentTranscript() {
                   </div>
                 </div>
               </div>
-              { selected_student?.length > 0 && (
-                  <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2 ">
-                    <div className=" d-flex ">
-                      <div className="form-label p-4 ms-4 fw-bold ">
-                        সকল শিক্ষার্থী মূল্যায়ন ডাউনলোড করুন
-                      </div>
-                      <div className="d-flex justify-content-between flex-md-row flex-column align-items-center flex-end">
-                        <button
-                          className={`${styles.download_btn}`}
-                          defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
-                          id="example-search-input"
-                          data-bs-toggle="modal"
-                          data-bs-target="#allstaticBackdrop"
-                          style={{
-                            fontSize: "12px",
-                          }}
-                        >
-                          <BsFiletypePdf className="fs-4 me-2 " />
-                          ডাউনলোড করুন
-                        </button>
+              {selected_student?.length > 0 && (
+                <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2 ">
+                  <div className=" d-flex ">
+                    <div className="form-label p-4 ms-4 fw-bold ">
+                      সকল শিক্ষার্থী মূল্যায়ন ডাউনলোড করুন
+                    </div>
+                    <div className="d-flex justify-content-between flex-md-row flex-column align-items-center flex-end">
+                      <button
+                        className={`${styles.download_btn}`}
+                        defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                        id="example-search-input"
+                        data-bs-toggle="modal"
+                        data-bs-target="#allstaticBackdrop"
+                        style={{
+                          fontSize: "12px",
+                        }}
+                      >
+                        <BsFiletypePdf className="fs-4 me-2 " />
+                        ডাউনলোড করুন
+                      </button>
 
-                        {/* <span
+                      {/* <span
                           className="input-group-append rounded-end"
                           style={{
                             fontSize: "12px",
                             backgroundColor: "white",
                           }}
                         ></span> */}
-                      </div>
                     </div>
                   </div>
-                )}
+                </div>
+              )}
 
               <Accordion>
                 {selected_student?.length > 0 ? (
@@ -845,10 +847,7 @@ export default function StudentTranscript() {
                               data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop"
                               onClick={(e) => {
-                                handleConvertToPdf(
-                                  data.student_data.uid,
-                                  false
-                                );
+                                handleConvertToPdf(data.student_data, false);
                                 setdata(data);
                                 setStudent_info_pdf(data.student_data);
                               }}
@@ -946,7 +945,6 @@ export default function StudentTranscript() {
         id="allstaticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
-        tabindex="-1"
         aria-labelledby="allstaticBackdropLabel"
         aria-hidden="true"
       >
@@ -957,62 +955,58 @@ export default function StudentTranscript() {
                 <button
                   type="button"
                   onClick={(e) => handleConvertToPdf(selected_student, true)}
+                  className={`${styles.download_btn}`}
+                  defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                  style={{
+                    fontSize: "12px",
+                  }}
                 >
-                  Download
+                  <BsFiletypePdf className="fs-4 me-2 " />
+                  ডাউনলোড করুন
                 </button>
-
-                <h5>
-                  শিক্ষার্থীর নাম:
-                  {student_info_pdf.student_name_bn}{" "}
-                </h5>
-
-                <p>রোল নম্বর # {student_info_pdf.roll}</p>
               </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              {!submittingLoading && (
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              )}
             </div>
             <div className="modal-body">
+              {
+                submittingLoading && <p>Loading...</p>
+              }
               {loading ? (
                 <p>Loading...</p>
               ) : selected_student?.length > 0 ? (
                 selected_student?.map((data: any, index) => (
-                  <>
-                    {(() => {
-                      const Stu_data: any = all_students(data[0]);
-
-                      return (
-                        <>
-                          <Pdf
-                            data={data}
-                            selectedSunject={selectedSunject}
-                            allFelter={allFelter}
-                            student_info_pdf={Stu_data}
-                            unique_id={data[0]}
-                            handleConvertToPdf={handleConvertToPdf}
-                            instititute={instititute[0]}
-                          />
-                        </>
-                      );
-                    })()}
-                  </>
+                  <Pdf
+                    data={data}
+                    selectedSunject={selectedSunject}
+                    allFelter={allFelter}
+                    student_info_pdf={data.student_data}
+                    unique_id={data.student_data.uid}
+                    handleConvertToPdf={handleConvertToPdf}
+                    instititute={instititute[0]}
+                  />
                 ))
               ) : (
                 "No Students"
               )}
             </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
+            {!submittingLoading && (
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
