@@ -21,6 +21,11 @@ function Pdf({
   handleConvertToPdf,
   unique_id,
 }: any) {
+
+  const imageShow = JSON.parse(localStorage.getItem("teacher_sign_show")) 
+  const image = localStorage.getItem("teacher_sign")
+
+  console.log(`imageShow`, imageShow);
   return (
     <div>
       <div>
@@ -45,8 +50,8 @@ function Pdf({
                 ট্রান্সক্রিপ্ট-২০২৩
               </h6> */}
             </div>
-            <div className="">
-              <table className="table table-bordered table-sm table-responsive">
+            <div className="pdf_table">
+              <table className="table table-bordered border-dark table-sm table-responsive ">
                 <thead>
                   <tr>
                     <th
@@ -138,7 +143,7 @@ function Pdf({
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="pdf_table_pi_show">
                   {data?.all_PI_array?.map((all_pi: any, k: any) => (
                     <tr key={k}>
                       <td className="w-25">
@@ -160,12 +165,21 @@ function Pdf({
                 </tbody>
               </table>
               <div className="d-flex pt-5 pb-1">
+                
+                
                 <div
                   className="w-50"
                   style={{ fontSize: "14px", fontWeight: "bold" }}
                 >
+                  
                   বিষয় শিক্ষকের স্বাক্ষরঃ
+                  {
+                  imageShow && <img src={image} style={{width : "40%"}}/>
+                }
+                  
                 </div>
+
+                
                 <div
                   className="w-50"
                   style={{ fontSize: "14px", fontWeight: "bold" }}

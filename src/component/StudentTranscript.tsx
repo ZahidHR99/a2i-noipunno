@@ -840,7 +840,7 @@ export default function StudentTranscript() {
                     <Accordion.Item eventKey={index}>
                       <Accordion.Header className="px-4 " key={index}>
                         <>
-                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center border custom-px-2">
+                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center custom-px-2">
                             <button
                               type="button"
                               className={`${styles.download_btn}`}
