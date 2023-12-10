@@ -254,15 +254,24 @@ export default function StudentTranscript() {
   };
 
 
-  const [teachersName, setTeacherName] = useState([])
+
   // console.log("allFelter ==>", allFelter);
-  console.log("subject ==>", subject);
+  // console.log("subject ==>", subject);
+  // const [teachersName, setTeachersName] = useState([]);
+  // let teachers = [];
+  // if (subject) {
+  //   subject?.map((item) => {
+  //     console.log(item?.own_subjet?.class_room?.class_teacher?.name_bn);
+  //     teachers.push(item?.own_subjet?.class_room?.class_teacher?.name_bn)
+  //     setTeachersName(teachers)
+  //   })
+  // }
+  console.log(allFelter);
 
-  subject?.map((item) => {
-    console.log(item?.own_subjet.class_room.class_teacher.name_bn);
 
-  })
-  console.log(`submittingLoading`, submittingLoading);
+
+
+  // console.log(`submittingLoading`, submittingLoading);
 
   return (
     <div className="report_page">
