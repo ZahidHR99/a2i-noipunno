@@ -326,20 +326,15 @@ export const formate_teanscript_data = (data: any) => {
         (d: any) => d.uid == stu.student_uid
       );
 
-
       const all_PI_array = []
-
       for (let y = 0; y < allPi.length; y++) {
         const pi = allPi[y];
-
         const pi_data = our_all_piData.filter((d: any) => d.uid == pi.pi_uid);
-
         const Pi_obj = {
           ...pi,
           student_data: student_dta[0],
           pi_data: pi_data[0],
         };
-
         all_PI_array.push(Pi_obj)
       }
 
@@ -353,3 +348,29 @@ export const formate_teanscript_data = (data: any) => {
 
   return result;
 };
+
+export const teacher_list = () => {
+  const own_subject = JSON.parse(localStorage.getItem("own_subjet"));
+  let all_teachers_with_duplicate = [];
+
+  if (own_subject) {
+    let subjects = [];
+    subjects = [...own_subject?.data?.data?.subjects];
+    subjects.map(item => all_teachers_with_duplicate?.push(item.class_room?.class_teacher));
+  }
+
+  const removeDuplicates = (arr, uniqueKey) => {
+    const uniqueMap = {};
+    return arr.reduce((uniqueArray, obj) => {
+      const key = obj[uniqueKey];
+      if (!uniqueMap[key]) {
+        uniqueMap[key] = true;
+        uniqueArray.push(obj);
+      }
+      return uniqueArray;
+    }, []);
+  }
+
+  let all_teachers = removeDuplicates(all_teachers_with_duplicate, 'pdsid');
+  return all_teachers;
+}

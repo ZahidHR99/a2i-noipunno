@@ -34,7 +34,7 @@ import Pdf from "./Pdf";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 import { Link } from "react-router-dom";
-import "../../src/styles/noipunno_custom_styles.css";
+
 
 export default function StudentTranscript() {
   const [student_info_pdf, setStudent_info_pdf] = useState<any>("");
@@ -44,7 +44,7 @@ export default function StudentTranscript() {
   const [own_data, setown_data] = useState<any>([]);
   const [all_bis, setall_bis] = useState<any>([]);
   const [assesment, setassesment] = useState<any>([]);
-  const [teacher, setteacher] = useState<any>({});
+  const [teacher, setteacher] = useState<any>('');
   const [loader, setloader] = useState(true);
   const [selectedSunject, setselectedSunject] = useState<any>("");
   const [instititute, setinstititute] = useState<any>("");
@@ -166,9 +166,15 @@ export default function StudentTranscript() {
     studnt.reduce((acc, obj) => ({ ...acc, [obj.uid]: obj }), {})
   );
 
+  // console.log("allFelter=====>", allFelter.subject.split("-")[2]);
+  console.log(teacher);
+
+
   const fetchDataFromAPI = async () => {
+
     setsubmittingLoading(true);
     try {
+      setteacher(allFelter.subject.split("-")[2])
       setselected_student([])
       const pi_bi_data = await get_pi_bi(
         allFelter.subject.split("-")[0],
@@ -177,7 +183,8 @@ export default function StudentTranscript() {
         allFelter.shift,
         allFelter.subject.split("-")[1],
         allFelter.section,
-        student_name
+        student_name,
+
       );
       const data = formate_teanscript_data(pi_bi_data.data.transcript);
 
@@ -252,27 +259,6 @@ export default function StudentTranscript() {
     }
     setsubmittingLoading(false);
   };
-
-
-
-  // console.log("allFelter ==>", allFelter);
-  // console.log("subject ==>", subject);
-  // const [teachersName, setTeachersName] = useState([]);
-  // let teachers = [];
-  // if (subject) {
-  //   subject?.map((item) => {
-  //     console.log(item?.own_subjet?.class_room?.class_teacher?.name_bn);
-  //     teachers.push(item?.own_subjet?.class_room?.class_teacher?.name_bn)
-  //     setTeachersName(teachers)
-  //   })
-  // }
-  console.log(allFelter);
-
-
-
-
-  // console.log(`submittingLoading`, submittingLoading);
-
   return (
     <div className="report_page">
       {/* report end */}
@@ -457,7 +443,9 @@ export default function StudentTranscript() {
                                 "-" +
                                 data?.subject?.subject_info?.class_uid +
                                 "-" +
-                                data?.own_subjet.class_room.class_teacher.name_bn
+                                (data?.own_subjet.class_room.class_teacher.name_bn ||
+                                  data?.own_subjet.class_room.class_teacher.name_en)
+
                               }
                             >
                               {data?.subject?.subject_info?.name}{" "}
@@ -860,7 +848,7 @@ export default function StudentTranscript() {
                     <Accordion.Item eventKey={index}>
                       <Accordion.Header className="px-4 " key={index}>
                         <>
-                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center  px-4">
+                          <div className="d-flex justify-content-between flex-md-row flex-column align-items-center custom-px-2">
                             <button
                               type="button"
                               className={`${styles.download_btn}`}
@@ -1009,7 +997,9 @@ export default function StudentTranscript() {
                     student_info_pdf={data.student_data}
                     unique_id={data.student_data.uid}
                     handleConvertToPdf={handleConvertToPdf}
-                    instititute={instititute[0]}
+                    instititute={instititute ? instititute[0] : {}}
+                    teacher={teacher}
+
                   />
                 ))
               ) : (
@@ -1067,7 +1057,8 @@ export default function StudentTranscript() {
                 unique_id={student_info_pdf.uid}
                 student_info_pdf={student_info_pdf}
                 handleConvertToPdf={handleConvertToPdf}
-                instititute={instititute[0]}
+                instititute={instititute ? instititute[0] : {}}
+                teacher={teacher}
               />
             </div>
             <div className="modal-footer">

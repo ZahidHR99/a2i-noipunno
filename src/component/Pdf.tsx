@@ -20,14 +20,19 @@ function Pdf({
   student_info_pdf,
   handleConvertToPdf,
   unique_id,
+  teacher,
 }: any) {
+  const imageShow = JSON.parse(localStorage.getItem("teacher_sign_show"));
+  const image = localStorage.getItem("teacher_sign");
   return (
     <div>
       <div>
         <div id={"contentToConvert_" + unique_id} className="container border">
           <div className="row p-2">
             <div className="text-center py-3">
-              <h6 style={{ fontSize: "14px" }}>{instititute?.institute_name}</h6>
+              <h6 style={{ fontSize: "14px" }}>
+                {instititute?.institute_name}
+              </h6>
               <h6 style={{ fontSize: "14px" }}>
                 {instititute?.unions} ,{" "}
                 {instititute?.district?.district_name_bn}
@@ -45,8 +50,8 @@ function Pdf({
                 ট্রান্সক্রিপ্ট-২০২৩
               </h6> */}
             </div>
-            <div className="">
-              <table className="table table-bordered table-sm table-responsive">
+            <div className="pdf_table">
+              <table className="table table-bordered border-dark table-sm table-responsive ">
                 <thead>
                   <tr>
                     <th
@@ -94,7 +99,7 @@ function Pdf({
                       }}
                     >
                       বিষয়:
-                      {subject_name(allFelter?.subject?.split("-")[0]) }
+                      {subject_name(allFelter?.subject?.split("-")[0])}
                     </th>
                     <th
                       style={{
@@ -102,7 +107,7 @@ function Pdf({
                         fontWeight: "bold",
                       }}
                     >
-                      বিষয় শিক্ষকের নাম:
+                      বিষয় শিক্ষকের নাম: {teacher}
                     </th>
                   </tr>
                   <tr>
@@ -138,7 +143,7 @@ function Pdf({
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="pdf_table_pi_show">
                   {data?.all_PI_array?.map((all_pi: any, k: any) => (
                     <tr key={k}>
                       <td className="w-25">
@@ -164,8 +169,13 @@ function Pdf({
                   className="w-50"
                   style={{ fontSize: "14px", fontWeight: "bold" }}
                 >
-                  বিষয় শিক্ষকের স্বাক্ষরঃ
+                  <p>বিষয় শিক্ষকের নাম: {teacher}</p>
+                  
+                  {imageShow && <img src={image} style={{ width: "40%" }} />}
+                   
+                  <p>বিষয় শিক্ষকের স্বাক্ষরঃ</p>
                 </div>
+
                 <div
                   className="w-50"
                   style={{ fontSize: "14px", fontWeight: "bold" }}
