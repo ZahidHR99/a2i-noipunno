@@ -276,6 +276,7 @@ export function get_pi_bi_evaluation_list(submit_status: any = "") {
 
 export function get_pi_bi(subject_uid , branch_uid , version_uid , shift_uid , class_uid , section_uid , student_uid="") {
   const page_list = `${EVULATION_API}/transcript`;
+  // const page_list = `/assets/transcript_response.json`;
 
   const options = {
     method: "get",

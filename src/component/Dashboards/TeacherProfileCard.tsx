@@ -70,7 +70,7 @@ const TeacherProfileCard = () => {
           </div>
         </div>
         <div className="teacher-info">
-          <h2 className="card-title">
+          <h2 className="card-title text-two-line" >
             {/* আতাউর রহমান */}
             {teacherInfos?.name}
           </h2>
