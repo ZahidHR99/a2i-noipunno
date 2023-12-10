@@ -250,6 +250,16 @@ export default function StudentTranscript() {
     }
   };
 
+
+  const [teachersName, setTeacherName] = useState([])
+  // console.log("allFelter ==>", allFelter);
+  console.log("subject ==>", subject);
+
+  subject?.map((item) => {
+    console.log(item?.own_subjet.class_room.class_teacher.name_bn);
+
+  })
+
   return (
     <div className="report_page">
       {/* report end */}
@@ -432,7 +442,9 @@ export default function StudentTranscript() {
                               value={
                                 data?.subject?.subject_info?.uid +
                                 "-" +
-                                data?.subject?.subject_info?.class_uid
+                                data?.subject?.subject_info?.class_uid +
+                                "-" +
+                                data?.own_subjet.class_room.class_teacher.name_bn
                               }
                             >
                               {data?.subject?.subject_info?.name}{" "}
@@ -897,7 +909,7 @@ export default function StudentTranscript() {
                                       style={{
                                         backgroundColor:
                                           data.weight_uid ==
-                                          pi_attribute_data.weight_uid
+                                            pi_attribute_data.weight_uid
                                             ? "#F0FAE9"
                                             : "#FFF",
                                       }}
@@ -905,12 +917,12 @@ export default function StudentTranscript() {
                                       <div className="d-flex">
                                         {data.weight_uid ==
                                           pi_attribute_data.weight_uid && (
-                                          <div>
-                                            <TiTick
-                                              className={`${styles.tick_mark}`}
-                                            />
-                                          </div>
-                                        )}
+                                            <div>
+                                              <TiTick
+                                                className={`${styles.tick_mark}`}
+                                              />
+                                            </div>
+                                          )}
 
                                         <div>
                                           <h6 style={{ fontSize: "14px" }}>
@@ -953,18 +965,18 @@ export default function StudentTranscript() {
 
 
 
-              <button
-              type="button"
-              onClick={(e) => handleConvertToPdf(selected_student, true)}
-                        className={`${styles.download_btn}`}
-                        defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
-                        style={{
-                          fontSize: "12px",
-                        }}
-                      >
-                        <BsFiletypePdf className="fs-4 me-2 " />
-                        ডাউনলোড করুন
-                      </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleConvertToPdf(selected_student, true)}
+                  className={`${styles.download_btn}`}
+                  defaultValue="নিম্নে মূল্যায়ন প্রতিবেদন দেখুন"
+                  style={{
+                    fontSize: "12px",
+                  }}
+                >
+                  <BsFiletypePdf className="fs-4 me-2 " />
+                  ডাউনলোড করুন
+                </button>
 
               </h5>
               {!submittingLoading && (
@@ -996,15 +1008,15 @@ export default function StudentTranscript() {
               )}
             </div>
             {!submittingLoading && (
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>)}
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>)}
           </div>
         </div>
       </div>
