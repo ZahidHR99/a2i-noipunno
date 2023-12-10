@@ -196,3 +196,12 @@
     color: #7daeb0;
     font-family: 'Public Sans';
 }
+
+
+.alert-danger,.alert-error,.bg-danger,.label-danger {
+    background-color: #dc3545!important;
+}
+
+a.alert-danger:focus,a.alert-danger:hover,a.alert-error:focus,a.alert-error:hover,a.bg-danger:focus,a.bg-danger:hover,a.label-danger:focus,a.label-danger:hover,button.alert-danger:focus,button.alert-danger:hover,button.alert-error:focus,button.alert-error:hover,button.bg-danger:focus,button.bg-danger:hover,button.label-danger:focus,button.label-danger:hover {
+    background-color: #bd2130!important
+}

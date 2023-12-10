@@ -254,7 +254,7 @@ export default function Teacher() {
                                       {section_name(
                                         d.own_subjet.class_room.section_id
                                       )}{" "}
-                                      শাথা
+                                      শাখা
                                     </h6>
                                   </div>
 
