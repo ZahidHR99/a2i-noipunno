@@ -20,6 +20,7 @@ function Pdf({
   student_info_pdf,
   handleConvertToPdf,
   unique_id,
+  teacher
 }: any) {
   return (
     <div>
@@ -94,7 +95,7 @@ function Pdf({
                       }}
                     >
                       বিষয়:
-                      {subject_name(allFelter?.subject?.split("-")[0]) }
+                      {subject_name(allFelter?.subject?.split("-")[0])}
                     </th>
                     <th
                       style={{
@@ -102,7 +103,7 @@ function Pdf({
                         fontWeight: "bold",
                       }}
                     >
-                      বিষয় শিক্ষকের নাম:
+                      বিষয় শিক্ষকের নাম: {teacher}
                     </th>
                   </tr>
                   <tr>

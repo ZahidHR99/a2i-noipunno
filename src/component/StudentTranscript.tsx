@@ -44,7 +44,7 @@ export default function StudentTranscript() {
   const [own_data, setown_data] = useState<any>([]);
   const [all_bis, setall_bis] = useState<any>([]);
   const [assesment, setassesment] = useState<any>([]);
-  const [teacher, setteacher] = useState<any>({});
+  const [teacher, setteacher] = useState<any>('');
   const [loader, setloader] = useState(true);
   const [selectedSunject, setselectedSunject] = useState<any>("");
   const [instititute, setinstititute] = useState<any>("");
@@ -166,9 +166,15 @@ export default function StudentTranscript() {
     studnt.reduce((acc, obj) => ({ ...acc, [obj.uid]: obj }), {})
   );
 
+  // console.log("allFelter=====>", allFelter.subject.split("-")[2]);
+  console.log(teacher);
+
+
   const fetchDataFromAPI = async () => {
+
     setsubmittingLoading(true);
     try {
+      setteacher(allFelter.subject.split("-")[2])
       setselected_student([])
       const pi_bi_data = await get_pi_bi(
         allFelter.subject.split("-")[0],
@@ -177,7 +183,8 @@ export default function StudentTranscript() {
         allFelter.shift,
         allFelter.subject.split("-")[1],
         allFelter.section,
-        student_name
+        student_name,
+
       );
       const data = formate_teanscript_data(pi_bi_data.data.transcript);
 
@@ -266,7 +273,7 @@ export default function StudentTranscript() {
   //     setTeachersName(teachers)
   //   })
   // }
-  console.log(allFelter);
+  // console.log(allFelter);
 
 
 
@@ -1010,6 +1017,8 @@ export default function StudentTranscript() {
                     unique_id={data.student_data.uid}
                     handleConvertToPdf={handleConvertToPdf}
                     instititute={instititute[0]}
+                    teacher={teacher}
+
                   />
                 ))
               ) : (
@@ -1068,6 +1077,7 @@ export default function StudentTranscript() {
                 student_info_pdf={student_info_pdf}
                 handleConvertToPdf={handleConvertToPdf}
                 instititute={instititute[0]}
+                teacher={teacher}
               />
             </div>
             <div className="modal-footer">
