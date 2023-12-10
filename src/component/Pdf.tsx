@@ -20,19 +20,19 @@ function Pdf({
   student_info_pdf,
   handleConvertToPdf,
   unique_id,
+  teacher,
 }: any) {
-
-  const imageShow = JSON.parse(localStorage.getItem("teacher_sign_show")) 
-  const image = localStorage.getItem("teacher_sign")
-
-  console.log(`imageShow`, imageShow);
+  const imageShow = JSON.parse(localStorage.getItem("teacher_sign_show"));
+  const image = localStorage.getItem("teacher_sign");
   return (
     <div>
       <div>
         <div id={"contentToConvert_" + unique_id} className="container border">
           <div className="row p-2">
             <div className="text-center py-3">
-              <h6 style={{ fontSize: "14px" }}>{instititute?.institute_name}</h6>
+              <h6 style={{ fontSize: "14px" }}>
+                {instititute?.institute_name}
+              </h6>
               <h6 style={{ fontSize: "14px" }}>
                 {instititute?.unions} ,{" "}
                 {instititute?.district?.district_name_bn}
@@ -99,7 +99,7 @@ function Pdf({
                       }}
                     >
                       বিষয়:
-                      {subject_name(allFelter?.subject?.split("-")[0]) }
+                      {subject_name(allFelter?.subject?.split("-")[0])}
                     </th>
                     <th
                       style={{
@@ -107,7 +107,7 @@ function Pdf({
                         fontWeight: "bold",
                       }}
                     >
-                      বিষয় শিক্ষকের নাম:
+                      বিষয় শিক্ষকের নাম: {teacher}
                     </th>
                   </tr>
                   <tr>
@@ -165,21 +165,17 @@ function Pdf({
                 </tbody>
               </table>
               <div className="d-flex pt-5 pb-1">
-                
-                
                 <div
                   className="w-50"
                   style={{ fontSize: "14px", fontWeight: "bold" }}
                 >
+                  <p>বিষয় শিক্ষকের নাম: {teacher}</p>
                   
-                  বিষয় শিক্ষকের স্বাক্ষরঃ
-                  {
-                  imageShow && <img src={image} style={{width : "40%"}}/>
-                }
-                  
+                  {imageShow && <img src={image} style={{ width: "40%" }} />}
+                   
+                  <p>বিষয় শিক্ষকের স্বাক্ষরঃ</p>
                 </div>
 
-                
                 <div
                   className="w-50"
                   style={{ fontSize: "14px", fontWeight: "bold" }}

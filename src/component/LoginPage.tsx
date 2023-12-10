@@ -80,14 +80,14 @@ const LoginPage = () => {
     }
   };
 
-  const handleChange = (event) => {
-    const result = event.target.value.replace(/\D/g, "");
-    setValue(result);
-  };
 
   useEffect(() => {
     const userId_Cookes = getCookie("userId");
     const userPin_Cookies = getCookie("userPin");
+
+    localStorage.removeItem("customer_login_auth");
+    localStorage.removeItem("token");
+
     // console.log("userId_Cookes", userId_Cookes);
     // console.log("userPin_Cookies", userPin_Cookies);
     if (userId_Cookes && userPin_Cookies) {
@@ -96,9 +96,6 @@ const LoginPage = () => {
     }
   }, []);
 
-  const redirect = () => {
-    window.location.href = "https://forms.gle/sFrdsXavPaQryQ6k8";
-  };
 
   return (
     <>

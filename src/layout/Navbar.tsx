@@ -48,8 +48,8 @@ const Navbar = () => {
         setuserDetails(items.user);
       }
     }
-    
-    
+
+
   }, 500);
 
   // console.log("userDetails", userDetails);
@@ -418,20 +418,20 @@ const Navbar = () => {
                                     </div>
                                   </NavLink>
                                 </li>
-                                {/* <li>
-                              <a className="dropdown-item" href="#">
-                                <div className="dropdown-list-item-style d-flex align-items-center">
-                                  <img
-                                    src={unOrderListIcon}
-                                    className="img-fluid dropdown-list-item-icon"
-                                    alt="icon"
-                                  />
-                                  <p className="dropdown-class-list">
-                                    শিক্ষার্থীদের রিপোর্ট কার্ড
-                                  </p>
-                                </div>
-                              </a>
-                            </li> */}
+                                <li>
+                                  <NavLink to={"shikkarthir-report-card"} className="dropdown-item" >
+                                    <div className="dropdown-list-item-style d-flex align-items-center">
+                                      <img
+                                        src={unOrderListIcon}
+                                        className="img-fluid dropdown-list-item-icon"
+                                        alt="icon"
+                                      />
+                                      <p className="dropdown-class-list">
+                                        শিক্ষার্থীদের রিপোর্ট কার্ড
+                                      </p>
+                                    </div>
+                                  </NavLink>
+                                </li>
                                 {/* <li>
                               <a className="dropdown-item" href="#">
                                 <div className="dropdown-list-item-style d-flex align-items-center">
