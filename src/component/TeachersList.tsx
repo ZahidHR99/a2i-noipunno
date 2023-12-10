@@ -6,7 +6,7 @@ import Breadcumb from "../layout/Breadcumb";
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { subject_name, teacher_list } from "../utils/Utils";
 import female_tec_avatar from "../../public/assets/images/teacher_avatar/female_tec_avatar.png";
-import "../../src/styles/noipunno_custom_styles.css";
+
 
 export default function TeachersList() {
   const [teachers, setTeachers] = useState<any>([]);

@@ -34,7 +34,7 @@ import Pdf from "./Pdf";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 import { Link } from "react-router-dom";
-import "../../src/styles/noipunno_custom_styles.css";
+
 
 export default function StudentTranscript() {
   const [student_info_pdf, setStudent_info_pdf] = useState<any>("");
@@ -443,9 +443,9 @@ export default function StudentTranscript() {
                                 "-" +
                                 data?.subject?.subject_info?.class_uid +
                                 "-" +
-                                (data?.own_subjet.class_room.class_teacher.name_bn || 
+                                (data?.own_subjet.class_room.class_teacher.name_bn ||
                                   data?.own_subjet.class_room.class_teacher.name_en)
-                                
+
                               }
                             >
                               {data?.subject?.subject_info?.name}{" "}
@@ -997,7 +997,7 @@ export default function StudentTranscript() {
                     student_info_pdf={data.student_data}
                     unique_id={data.student_data.uid}
                     handleConvertToPdf={handleConvertToPdf}
-                    instititute={ instititute ? instititute[0] : {}}
+                    instititute={instititute ? instititute[0] : {}}
                     teacher={teacher}
 
                   />
@@ -1057,7 +1057,7 @@ export default function StudentTranscript() {
                 unique_id={student_info_pdf.uid}
                 student_info_pdf={student_info_pdf}
                 handleConvertToPdf={handleConvertToPdf}
-                instititute={ instititute ? instititute[0] : {}}
+                instititute={instititute ? instititute[0] : {}}
                 teacher={teacher}
               />
             </div>
