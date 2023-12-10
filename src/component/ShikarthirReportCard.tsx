@@ -13,7 +13,7 @@ const ShikarthirReportCard = () => {
     const options = {
       margin: 0,
       filename: filename,
-      image: { type: "jpeg", quality: 1.98 },
+      image: { type: "jpeg", quality: 3.98 },
       html2canvas: { scale: 1 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
     };
@@ -41,39 +41,39 @@ const ShikarthirReportCard = () => {
           ডাউনলোড করুন
         </button>
       </div>
-      <div>
- 
- </div>
+      <div></div>
       <div id={"contentToConvert_"}>
         <div className="bg-white">
-          <div
-            className="container"
-            style={{ borderBottom: "8px solid #201B58" }}
-          >
-           <div className="row">
-              <div className="text-center">
-                <img
-                  src="/assets/images/Report_page-0002.jpg"
-                  className="img-fluid w-100"
-                />
-              </div>
+          <div className="row">
+            <div className="text-center">
+              <img
+                src="/assets/images/Report_page-0002.jpg"
+                className="img-fluid w-100"
+              />
             </div>
-            <div className="row mx-5">
+          </div>
+          <div
+            className="container px-5"
+            style={{
+              borderBottom: "8px solid #201B58",
+              borderTop: "8px solid #201B58",
+            }}
+          >
+            <div className="row mx-5 mt-5">
               <div className="text-center">
                 <img
                   src="/assets/images/noipunno-new-logo.svg"
-                  className="img-fluid w-25"
+                  className="img-fluid w-50"
                 />
               </div>
             </div>
-            <div className="row mx-1">
+            <div className="row mx-1 mt-2">
               <div className="col-sm-6 col-md-12 ">
                 <div className="d-flex std-identity">
                   <div className="institution-name">প্রতিষ্ঠানের নাম</div>
                   <div className="dots">
-                    {" "}
                     :
-                    .........................................................................................................................................................
+                    ..........................................................................................................................
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@ const ShikarthirReportCard = () => {
                   <div className="institution-name">শিক্ষার্থীর নাম</div>
                   <div className="dots">
                     {" "}
-                    : .........................................................
+                    : ....................................................
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const ShikarthirReportCard = () => {
                   <div className="institution-name">শিক্ষার্থীর আইডি</div>
                   <div className="dots">
                     {" "}
-                    : .........................................................
+                    : ....................................................
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ const ShikarthirReportCard = () => {
                   <div className="institution-name">শ্রেণি </div>
                   <div className="dots">
                     {" "}
-                    : .........................................................
+                    : ....................................................
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ const ShikarthirReportCard = () => {
               </div>
             </div>
           </div>
-          <div className="container" style={{ backgroundColor: "#DDDEE0" }}>
+          <div className="container pb-5" style={{ backgroundColor: "#DDDEE0" }}>
             <div className="row p-0 m-0">
               <h1 className="sucjects pt-2 pb-2 text-center">বিষয়সমূহ</h1>
               <div className="d-flex justify-content-center">
@@ -126,111 +126,111 @@ const ShikarthirReportCard = () => {
               <div className="d-flex justify-content-center pb-5">
                 <div className="col-8">
                   <div className="row">
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-3">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">বাংলা</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-3">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">ইতিহাস ও সামাজিক বিজ্ঞান</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">ইংরেজি</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">জীবন ও জীবিকা</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">গণিত</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">ধর্ম শিক্ষা</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">বিজ্ঞান</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">স্বাস্থথ্য সুরক্ষা</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">ডিজিটাল প্রযুক্ত</div>
                       </div>
                     </div>
-                    <div className="col-sm-6 col-md-6 p-3">
+                    <div className="col-sm-6 col-md-6 pt-1">
                       <div className="d-flex gap-3 align-content-center subjucts-icon-name">
                         <div className="icon">
                           <img
                             src="/assets/icons/graduation-cap.png"
-                            className="img-fluid"
+                            className="img-fluid w-50"
                           />
                         </div>
                         <div className="subject">শিল্প ও সংস্কৃতি</div>
@@ -252,14 +252,14 @@ const ShikarthirReportCard = () => {
               borderBottom: "10px solid #DDDEE0",
             }}
           >
-            <h1 className="report-card-design-title text-center py-1 my-1">
+            <h1 className="report-card-design-title text-center py-1 mt-3">
               বাংলা
             </h1>
             <div className="row">
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
-                    <h4 className="report-card-design-subject-title text-center py-2 border-bottom border-dark">
+                    <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                       যোগাযোগ
                     </h4>
                   </div>
@@ -284,7 +284,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center  border-bottom border-dark">
                     ভাষারীতি
                   </h4>
                   <div
@@ -310,7 +310,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center  border-bottom border-dark">
                     প্রায়োোগিক যোগাযোগ
                   </h4>
                   <div
@@ -334,7 +334,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     সৃজনশীল ও মননশীল প্রকাশ
                   </h4>
                   <div
@@ -359,7 +359,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     মানবিক চিন্তন
                   </h4>
                   <div
@@ -383,14 +383,14 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-1 mt-1 mb-1">
+            <h1 className="report-card-design-title text-center pt-1 mt-2">
               English
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
-                    <h4 className="report-card-design-subject-title text-center  py-2 border-bottom border-dark">
+                    <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                       Communication
                     </h4>
                   </div>
@@ -413,9 +413,9 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     Linguistic norms
                   </h4>
                   <div
@@ -438,9 +438,9 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     Democratic practice
                   </h4>
                   <div
@@ -463,9 +463,9 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2 border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     Creative expression
                   </h4>
                   <div
@@ -488,14 +488,14 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-2 mt-5 mb-1">
+            <h1 className="report-card-design-title text-center py-1 mt-2">
               গণিত
             </h1>
             <div className="row">
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
-                    <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                    <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                       গাণিতিক অনুসন্ধান
                     </h4>
                   </div>
@@ -521,7 +521,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2 border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     সংখ্যা ও পরিমাণ
                   </h4>
                   <div
@@ -545,7 +545,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     জ্যামিতিক আকৃতি
                   </h4>
                   <div
@@ -568,9 +568,9 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     গাণিতিক সম্পর্ক
                   </h4>
                   <div
@@ -592,9 +592,9 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center  border-bottom border-dark">
                     সম্ভাব্যতা বিশ্লেষণ
                   </h4>
                   <div
@@ -618,17 +618,16 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-1 mt-1 mb-1">
+            <h1 className="report-card-design-title text-center py-1 mt-5">
               বিজ্ঞান
             </h1>
             <div className="row">
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3 ">
-                <div className="card border border-2 border-dark  h-100">
-                 
-                    <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
-                      বৈজ্ঞানিক অনুসন্ধান
-                    </h4>
-                  
+                <div className="card border border-2 border-dark my-3 h-100">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
+                    বৈজ্ঞানিক অনুসন্ধান
+                  </h4>
+
                   <div
                     className="align-items-center card border-0 flex-direction-column justify-content-center align-items-center text-center"
                     style={{ height: "30%" }}
@@ -650,8 +649,8 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
-                <div className="card border border-2 border-dark  h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                <div className="card border border-2 border-dark my-3 h-100">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     বস্তুর গঠন ও আচরণ
                   </h4>
                   <div
@@ -675,8 +674,8 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
-                <div className="card border border-2 border-dark  h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                <div className="card border border-2 border-dark my-3 h-100">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     বস্তু ও শক্তির মিথস্ক্রিয়া
                   </h4>
                   <div
@@ -700,7 +699,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     স্থিতি ও পরিবর্তন
                   </h4>
                   <div
@@ -725,7 +724,7 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
                 <div className="card border border-2 border-dark my-3 h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     বিজ্ঞানলব্ধ সামাজিক মূল্যবোধ
                   </h4>
                   <div
@@ -749,14 +748,14 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-3 mt-5 mb-5">
+            <h1 className="report-card-design-title text-center py-1 mt-2">
               ডিজিটাল প্রযুক্তি{" "}
             </h1>
             <div className="row">
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
-                <div className="card border border-2 border-dark  h-100">
+                <div className="card border border-2 border-dark my-3 h-100">
                   <div>
-                    <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                    <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                       ডিজিটাল সাক্ষরতা
                     </h4>
                   </div>
@@ -781,8 +780,8 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
-                <div className="card border border-2 border-dark  h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                <div className="card border border-2 border-dark my-3 h-100">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     আইসিটি সক্ষমতা
                   </h4>
                   <div
@@ -806,8 +805,8 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
-                <div className="card border border-2 border-dark h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                <div className="card border border-2 border-dark my-3 h-100">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     ডিজিটাল সলিউশন উদ্ভাবন
                   </h4>
                   <div
@@ -831,8 +830,8 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
               <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
-                <div className="card border border-2 border-dark  h-100">
-                  <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
+                <div className="card border border-2 border-dark my-3 h-100">
+                  <h4 className="report-card-design-subject-title text-center border-bottom border-dark">
                     আইসিটির নিরাপদ, নৈতিক ও দায়িত্বশীল ব্যবহার
                   </h4>
                   <div
@@ -856,11 +855,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-1 mt-1 mb-3">
+            <h1 className="report-card-design-title text-center py-1 mt-2">
               ইতিহাস ও সামাজিক বিজ্ঞান{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 mb-3 h-100">
                   <div>
                     <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
@@ -887,7 +886,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 mb-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     মুক্তিযুদ্ধের চেতনা
@@ -912,7 +911,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 mb-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     প্রাকৃতিক ও সামাজিক কাঠাম
@@ -938,7 +937,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5 mt-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5 mt-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     সম্পদ ব্যবস্থাপনা
@@ -963,7 +962,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5 mt-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5 mt-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     পরিবর্তনশীলতায় ভূমিকা
@@ -989,11 +988,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-5 mt-5 mb-3">
+            <h1 className="report-card-design-title text-center py-1 my-1">
               জীবন ও জীবিকা{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
                     <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
@@ -1020,7 +1019,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     ক্যারিয়ার প্ল্যানিং
@@ -1046,7 +1045,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     পেশাগত দক্ষতা
@@ -1071,7 +1070,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     ভবিষ্যৎ কর্মদক্ষতা
@@ -1097,11 +1096,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-2 mt-5 mb-3">
+            <h1 className="report-card-design-title text-center py-1 mt-2">
               ধর্ম শিক্ষা{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
                     <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
@@ -1127,7 +1126,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     ধর্মীয় বিধিবিধান
@@ -1151,7 +1150,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     ধর্মীয় মূল্যবোধ
@@ -1176,11 +1175,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-2 mt-5 mb-3">
-              স্বাস্থথ্য সুরক্ষা{" "}
+            <h1 className="report-card-design-title text-center py-1 mt-2">
+              স্বাস্থ সুরক্ষা{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
                     <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
@@ -1207,7 +1206,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     আবেগিক বুদ্ধিমত্তা
@@ -1232,7 +1231,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-5">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     সামাজিক বুদ্ধিমত্তা
@@ -1257,11 +1256,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-4 mt-5 mb-3">
+            <h1 className="report-card-design-title text-center py-1 mt-5">
               শিল্প ও সংস্কৃতি{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
                     <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
@@ -1288,7 +1287,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     নান্দনিকতার বহুমাত্রিক প্রকাশ
@@ -1313,7 +1312,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center  py-2  border-bottom border-dark">
                     যাপিত জীবনে নান্দনিকতা
@@ -1338,11 +1337,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title text-center py-2 mt-5 mb-3">
+            <h1 className="report-card-design-title text-center py-1 my-5">
               আচরণিক নির্দেশক{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <div>
                     <h4 className="report-card-design-subject-title text-center py-3 border-dark">
@@ -1369,7 +1368,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center py-2 border-dark">
                     নিষ্ঠা ও সততা
@@ -1394,7 +1393,7 @@ const ShikarthirReportCard = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6 col-md-6 col-lg-4 position-relative py-5">
+              <div className="col-sm-6 col-md-6 col-lg-4 position-relative pb-3">
                 <div className="card border border-2 border-dark my-3 h-100">
                   <h4 className="report-card-design-subject-title text-center py-2 border-dark">
                     পারস্পরিক শ্রদ্ধা ও সহযোোগিতা
@@ -1419,11 +1418,11 @@ const ShikarthirReportCard = () => {
                 </div>
               </div>
             </div>
-            <h1 className="report-card-design-title ps-2 py-2 mt-5 mb-3">
+            <h1 className="report-card-design-title ps-2 py-1 my-5">
               মূল্যায়নের স্কেল{" "}
             </h1>
             <div className="row">
-              <div className="col-sm-6 col-md-6 col-lg-7 position-relative py-3">
+              <div className="col-sm-6 col-md-6 col-lg-7 position-relative pb-5">
                 <div className="py-3 px-0 h-100">
                   <div className="d-flex gap-2 align-items-center">
                     <div className="d-flex gap-2 indicators-check-boxes">
@@ -1555,6 +1554,14 @@ const ShikarthirReportCard = () => {
               </div>
               <div className="col-sm-6 col-md-6 col-lg-5 position-relative py-3"></div>
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="text-center mt-5">
+            <img
+              src="/assets/images/Report_page-0006.jpg"
+              className="img-fluid w-100"
+            />
           </div>
         </div>
       </div>
