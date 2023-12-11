@@ -8,9 +8,6 @@ import { MyDocument } from './PDFData';
 const RawPDFDownload = () => {
   const handleDownload = () => {
 
-    
-    
-
     // Create a blob URL for the generated PDF
 
     // ReactPDF.renderToStream(<MyDocument />);
