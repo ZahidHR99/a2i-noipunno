@@ -50,7 +50,24 @@ const RawPDFDownload = () => {
         },
         colortext: {
            color:'#000'
-          }
+          },
+          table: {
+            flexDirection: 'row',
+            borderBottomWidth: 1,
+            borderColor: '#000',
+            marginBottom: 10,
+          },
+          tableHeader: {
+            flexDirection: 'row',
+            borderBottomWidth: 1,
+            borderColor: '#000',
+            marginBottom: 10,
+            fontWeight: 'bold',
+          },
+          cell: {
+            padding: 5,
+            flexGrow: 1,
+          },
     })
   const handleDownload = () => {
 
@@ -65,10 +82,11 @@ const RawPDFDownload = () => {
 
   return (
     <div>
-      <h1>Raw PDF Download Example with @react-pdf/renderer</h1>
+
       <button onClick={handleDownload}>Download PDF</button>
+
       {/* Render the PDF for preview (optional) */}
-      <PDFViewer width={600} height={400}>
+      <PDFViewer width={1200} height={1200}>
         <Document>
           <Page size="A4" >
             <view style={styles.section}>
@@ -77,7 +95,24 @@ const RawPDFDownload = () => {
             <Text style={[styles.h3,  styles.colortext ]}>[একটি আদর্শ উচ্চ বিদ্যালয়]<br/></Text>
             <Text style={[styles.h3,  styles.colortext ]}>প্রিন্সিপাল আব্দুল কাশেম সড়ক, সরকারি ডি-টাইপ কলোনী, মিরপুর-১, ঢাকা-১২১৬</Text>
             <Text style={[styles.h3,  styles.colortext ]}>ষাণ্মাসিক সামষ্টিক মূল্যায়ন (PI) এর বিষয়ভিত্তিক ট্রান্সক্রিপ্ট-২০২৩</Text>
-    </view>
+              <view style={styles.tableHeader}>
+                    <view style={styles.cell}><Text>Column 1 Header</Text></view>
+                    <view style={styles.cell}><Text>Column 2 Header</Text></view>
+                    <view style={styles.cell}><Text>Column 3 Header</Text></view>
+                </view>
+                <view style={styles.table}>
+                    <view style={styles.cell}><Text>Data 1</Text></view>
+                    <view style={styles.cell}><Text>Data 2</Text></view>
+                    <view style={styles.cell}><Text>Data 3</Text></view>
+                </view>
+                <view style={styles.table}>
+                    <view style={styles.cell}><Text>Data 4</Text></view>
+                    <view style={styles.cell}><Text>Data 5</Text></view>
+                    <view style={styles.cell}><Text>Data 6</Text></view>
+                </view>
+       
+            </view>
+          
           </Page>
         </Document>
       </PDFViewer>
